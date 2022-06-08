@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>패스워드확인</title>
+    <link rel="stylesheet" href="mypage.css" />
+  </head>
+  <style></style>
+  <body>
+    <div class="myPage-wrap">
+      <header class="sectionPadding">
+        <div class="innerContainer">
+          <h1>마이페이지</h1>
+        </div>
+      </header>
+      <div class="sectionPadding mypage-header">
+        <div class="">
+          <ul>
+            <li class="mypage-list"><a class="current" href="">개인정보 관리</a></li>
+            <li class="mypage-list"><a class="" href="">관심 아티스트</a></li>
+            <li class="mypage-list"><a class="" href="">관심 작품</a></li>
+            <li class="mypage-list"><a class="" href="">아티스트 계정</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="sectionPadding">
+          <div class="innerContainer">
+            <nav class="segmented">
+              <a class="first" href="mypagePwCheck.html">개인정보 변경</a>
+              <a class="secpnd selected" href="">비밀번호 변경</a>
+              <a class="last" href="mypageDelete.html">회원 탈퇴</a>
+          </nav>
+      
+          <div class="desc-pw">회원님의 개인정보보호를 위해 현재 사용중인 <span class="pwRed">비밀번호를 한번 더 입력</span>해 주시기 바랍니다.
+          </div>
+          <div class="pwCheck-form">
+          <div class="mypage-row">
+            <label id="" class=" pwChange-label"><span></span>아이디</label>
+          <div class="mypage-col">
+            <input class="" type="text" id="userId" value="soothingkim123" readonly />
+          </div>
+        </div>
+          <div class="mypage-row">
+            <label id="" class=" pwChange-label"><span></span>새 비밀번호 입력</label>
+            <div class="pwChange mypage-col">
+            <input type="password" name="" id="" class="pwChange-input">
+           
+          </div>
+          </div>
+          <p class="pwCheck">영문 대소문자, 숫자 및 특수문자 중 <br> 2가지 이상 조합하여
+            8~20자리로 사용해<br> 주시고 빈칸은 사용하지 마세요.<br>
+            (입력가능 특수문자:!,@,#,$,%,^,&,*,?,_,~)</p>
+          <div class="mypage-row">
+            <label id="" class=" pwChange-label"><span></span>새 비밀번호 확인</label>
+            <div class="pwChange mypage-col">
+            <input type="password" name="" id="" class="pwChange-input">
+          </div>
+          </div>
+        
+      <div class="mypage-btn-pwcheck">
+        <input type="button" class="btnNormal small" value="확인" />
+      </div>
+    </div> 
+    </div>
+    </div>
+  </body>
+  <script src="mypage.js"></script>
+</html>
