@@ -400,3 +400,11 @@ input[type=checkbox] {
     
     text-decoration: none;
 }
+
+.artist-list {
+    text-align: center;
+}
+
+.artist-list td {
+    margin-left: 20px;
+}

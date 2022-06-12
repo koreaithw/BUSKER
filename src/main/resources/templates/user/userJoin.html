@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-    <link rel="stylesheet" href="/src/main/resources/static/assets/css/user.css" />
+    <link rel="stylesheet" href="/static/assets/css/user.css" />
 </head>
 
 <body>
@@ -76,24 +76,26 @@
     <div class="signin-container" style="display: none;">
         <div class="signin-form">
             <h1>회원가입</h1>
-            <p>이름: 타임리프 / 휴대폰 번호: 타임리프</p>
-            <div class="select-id">
-                <input type="text" class="inputText" placeholder="아이디(이메일)"> @
-                <select class="inputText">
-                    <option value="">선택</option>
-                    <option value="naver.com">naver.com</option>
-                    <option value="gmail.com">gmail.com</option>
-                </select>
-            </div>
-            <div>
-                <input type="password" id="password" class="inputText" placeholder="비밀번호">
-                <p class="signin-password"></p>
-                <input type="password" id="pw-check" class="inputText" placeholder="비밀번호 확인">
-                <p class="check-password"></p>
-            </div>
-            <div class="btn-signup">
-                <a href="" onclick="chkPW()" class="btn-selfnext">가입 완료</a>
-            </div>
+            <form action="">
+                <p>이름: 타임리프 / 휴대폰 번호: 타임리프</p>
+                <div class="select-id">
+                    <input type="text" class="inputText" placeholder="아이디(이메일)"> @
+                    <select class="inputText">
+                        <option value="">선택</option>
+                        <option value="naver.com">naver.com</option>
+                        <option value="gmail.com">gmail.com</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="password" id="password" class="inputText" placeholder="비밀번호">
+                    <p class="signin-password"></p>
+                    <input type="password" id="pw-check" class="inputText" placeholder="비밀번호 확인">
+                    <p class="check-password"></p>
+                </div>
+                <div class="btn-signup">
+                    <a href="/templates/main/main.html" onclick="chkPW()" class="btn-selfnext">가입 완료</a>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -131,9 +133,19 @@
             $(".signin-password").text("영문,숫자를 혼합하여 입력해주세요.");
             return false;
         } else {
-            console.log("통과");
-            return true;
+            $(".signin-password").text("");
         }
+
+        if (pw != check) { 
+            $(".check-password").text("두 비밀번호가 맞지 않습니다.");
+            pw = ""; 
+            check = "";
+            return false; 
+        }else {
+            $(".check-password").text("");
+        }
+
+        return true;
     }
 
     $(document).ready(function () {
