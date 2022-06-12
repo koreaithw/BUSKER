@@ -1,0 +1,1408 @@
+.myPage-wrap {
+  width: 1300px;
+  margin: 0 auto;
+}
+
+.sectionPadding {
+  min-width: 940px;
+  padding-right: 40px;
+  padding-left: 40px;
+}
+
+div.innerContainer > h1 {
+  font-size: 21px;
+}
+
+div.innerContainer {
+  padding-bottom: 27px;
+}
+
+div.mypage-header {
+  height: 50px;
+  margin-bottom: 30px;
+  padding-left: 40px;
+  position: relative;
+}
+
+header.sectionPadding > .innerContainer {
+  position: relative;
+  max-width: 1580px;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+div.mypage-header ul li a:hover {
+  color: #3a3635;
+}
+div.mypage-header {
+  background-color: rgba(199, 199, 199, 0.048);
+  border: 1px solid #e6e6e6;
+}
+div.mypage-header ul li {
+  margin-right: 30px;
+}
+div.mypage-header ul li a {
+  display: inline-block;
+  padding: 4px 0px 0px 0px;
+  font-size: 15px;
+  color: #757271;
+  line-height: 43px;
+  text-decoration: none;
+  vertical-align: top;
+}
+
+a#current {
+  border-bottom: 3px solid #ff564c;
+  transition: 0.5;
+}
+
+div.mypage-header ul {
+  display: flex;
+  margin: 0;
+  padding-left: 0;
+}
+
+div.mypage-header ul li {
+  justify-content: flex-start;
+}
+
+li.mypage-list {
+  list-style: none;
+}
+
+.mypage-list > a,
+.segmented > a {
+  cursor: pointer;
+}
+
+.segmented {
+  margin-bottom: 30px;
+  overflow: hidden;
+  padding-left: 1px;
+}
+
+.segmented > a {
+  display: block;
+  float: left;
+  overflow: hidden;
+  min-width: 37px;
+  margin-left: -1px;
+  padding: 7px 15px;
+  font-size: 13px;
+  color: #757271;
+  text-align: center;
+  text-decoration: none;
+  /* border: 0.5px solid #b2b7ba; */
+  background-color: rgb(236, 233, 233);
+}
+
+.segmented > a.first {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.segmented > a.last {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.segmented > a#selected,
+.segmented > a#selected-artistUser {
+  color: #fff !important;
+  background: #b2b8bb !important;
+  border: 0;
+}
+
+.segmented > a:hover {
+  color: #3a3635;
+}
+
+.desc {
+  float: left;
+  margin-bottom: 14px;
+  margin-top: 0;
+  font-size: 13px;
+  color: #757271;
+  line-height: 24px;
+}
+
+.guide {
+  float: right;
+  font-size: 13px;
+  color: #757271;
+  line-height: 24px;
+}
+
+.myinfoEditForm {
+  clear: both;
+  padding: 12px 0 20px;
+  border-top: 1px solid #e1e1e1;
+}
+
+.input-label {
+  width: 120px;
+  font-size: 13px;
+  color: #757271;
+  line-height: 34px;
+}
+
+label > span,
+span.guide > span {
+  float: left;
+  left: 0;
+  margin-right: 0px;
+  display: block;
+  font-style: normal;
+  color: #f68074;
+}
+
+.mypage-row {
+  margin-top: 6px;
+  display: flex;
+  padding-top: 10px;
+}
+
+p.phoneCheck {
+  font-size: 9px;
+  color: #757271;
+  line-height: 15px;
+  margin: 0px;
+}
+
+#checkNickname,
+#checkPhoneNumber,
+#checkEmail {
+  margin: 0;
+  font-weight: bold;
+  font-size: 10px;
+  color: #ff4d78;
+  display: block;
+  bottom: -13px;
+  position: absolute;
+}
+
+.mypage-col > input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  height: 33px;
+  padding: 1px 10px 0 10px;
+  font-size: 13px;
+  color: #3a3635;
+  line-height: 33px;
+  border: 1px solid #c4c2c2;
+  border-radius: 3px;
+  margin-top: 1px;
+}
+
+.mypage-col {
+  position: relative;
+}
+
+#userEmailDomain {
+  box-sizing: border-box;
+  height: 33px;
+  width: 134px !important;
+  padding: 1px 10px 0 10px;
+  font-size: 13px;
+  color: #3a3635;
+  line-height: 33px;
+  border: 1px solid #c4c2c2;
+  border-radius: 3px;
+}
+
+select[name="selectEmail"] {
+  box-sizing: border-box;
+  height: 33px;
+  width: auto;
+  padding: 1px 10px 0 10px;
+  font-size: 13px;
+  color: #3a3635;
+  line-height: 33px;
+  border: 1px solid #c4c2c2;
+  border-radius: 3px;
+}
+
+.profile-wrapper {
+  display: flex;
+  position: relative;
+}
+
+img.profile-image {
+  border-radius: 100%;
+  border: 1px solid #c8c7c7;
+}
+
+#btn-modal {
+  width: 40px;
+  height: 40px;
+  background-image: url("templates/artists/myInfo/camera-icon.png");
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  margin: 0;
+  position: absolute;
+  background-color: white;
+  right: 0px;
+  bottom: 0;
+  border-radius: 100%;
+  border: 1px solid #c8c7c7;
+  padding: 0;
+}
+
+/* 모달 */
+#modal.modal-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.25);
+  display: none;
+}
+
+.modal-back {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+#modal .modal-window {
+  background-color: white;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(13.5px);
+  -webkit-backdrop-filter: blur(13.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 400px;
+  height: 481px;
+  top: -100px;
+  z-index: 999;
+}
+
+.modal-box {
+  padding: 30px;
+}
+
+#modal .title {
+  padding-left: 10px;
+  display: inline;
+  padding: 0;
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#modal .close-area {
+  width: 30px;
+  height: 30px;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  opacity: 0.3;
+  right: 0;
+  cursor: pointer;
+  background-image: url("templates/artists/myInfo/close-icon.png");
+}
+
+#modal .close-area:hover {
+  opacity: 0.8;
+}
+
+#modal .content {
+  display: flex;
+  flex-direction: column;
+  width: 317px;
+}
+
+.save-profile-image {
+  background-color: #e0dddd;
+  border: 1px solid white !important;
+  color: black !important;
+  margin-bottom: 10px !important;
+}
+
+.save-profile-image:hover {
+  background-color: #b1afaf;
+  border: 1px solid white !important;
+  color: black !important;
+}
+
+#sample-profile-image {
+  cursor: pointer;
+}
+
+span.profile-image-select {
+  border: 1px solid #d4d4d4;
+  padding: 10px;
+  width: 100%;
+  border-radius: 3px;
+  color: #7e7d7d !important;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.profile-wrapper-preview {
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  padding-left: 25px;
+}
+
+input[readonly] {
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  outline: none !important;
+}
+
+input:focus {
+  outline-color: #ff564c;
+}
+
+#profile,
+#userId,
+#userRegisterDate {
+  padding-left: 6px;
+}
+
+.mypage-btn {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid #e1e1e1;
+  text-align: center;
+}
+
+.mypage-btn-pwcheck {
+  margin-top: 30px;
+  padding-top: 0px;
+  text-align: center;
+}
+
+.btnNormal {
+  border-radius: 3px;
+  height: 28px;
+  padding: 0 14px;
+  font-size: 12px;
+  line-height: 28px;
+  color: #fff;
+  border: 1px solid #ff564c;
+  background-color: #ff564c !important;
+  cursor: pointer;
+}
+
+.mypage-image {
+  cursor: pointer;
+}
+
+/* pwcheck */
+.desc-pw {
+  padding-top: 50px;
+  font-size: 17px;
+  text-align: center;
+}
+
+.pwCheck-form {
+  width: 340px;
+  margin: 35px auto 0;
+}
+
+.pwCheck-label {
+  font-size: 13px !important;
+}
+
+span.pwRed {
+  color: #ff564c;
+}
+
+span#checkPw {
+  margin: 0;
+  font-size: 10px;
+  color: #ff4d78;
+  position: absolute;
+  display: block;
+  right: 100px;
+  bottom: -13px;
+}
+span#notEqualPw {
+  margin: 0;
+  font-size: 10px;
+  color: #ff4d78;
+  position: absolute;
+  display: block;
+  right: 76px;
+  bottom: -13px;
+}
+
+.pwCheck-div {
+  position: relative;
+}
+
+/* pwChange */
+p.pwCheck {
+  font-size: 9px;
+  color: #757271;
+  margin: 0px 0px 10px 120px;
+  line-height: 15px;
+}
+
+span#newPassword,
+span#newPasswordNotEqual {
+  margin: 0;
+  font-weight: bold;
+  font-size: 10px;
+  color: #ff4d78;
+  display: block;
+  right: 76px;
+  bottom: -13px;
+}
+
+div#pwImgNew {
+  width: 33px;
+  height: 33px;
+  background-image: url("templates/artists/myInfo/eye_hide.png");
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  opacity: 0.3;
+  margin: 0;
+  position: absolute;
+  right: -0;
+  top: 0;
+  z-index: 999;
+}
+
+div#pwImgNewCheck {
+  width: 33px;
+  height: 33px;
+  background-image: url("templates/artists/myInfo/eye_hide.png");
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  opacity: 0.3;
+  margin: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 999;
+}
+
+div#pwImgNew:hover,
+div#pwImgNewCheck:hover {
+  opacity: 0.8;
+}
+
+.myInfo-pwChange {
+  width: 400px;
+  margin: 35px auto 0;
+}
+
+input.pwChange-input {
+  width: 280px;
+}
+
+div.pwChange {
+  width: calc(100% - 100px);
+}
+
+.pwChange-label {
+  font-size: 13px;
+  color: #757271;
+  line-height: 34px;
+  width: 127px;
+}
+
+.delete-text > li {
+  padding-top: 2px;
+  font-size: 13px;
+  color: #000000;
+  list-style: none;
+}
+
+.delete-text > ul > li {
+  font-size: 13px;
+  color: #757271;
+  line-height: 34px;
+  list-style: none;
+}
+
+.delete-text > ul {
+  padding-left: 0px;
+}
+
+.mypageDelete {
+  clear: both;
+  padding: 35px 0 20px;
+  border-top: 1px solid #e1e1e1;
+}
+
+/* myArtist */
+.myArtist-Category-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.myDonation {
+  width: 137px;
+  line-height: 45px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(249, 105, 87, 1) 0%,
+    rgba(255, 0, 116, 1) 100%
+  );
+  border-radius: 50px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.myDonation-user {
+  width: 137px;
+  line-height: 45px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(249, 105, 87, 1) 0%,
+    rgba(255, 0, 116, 1) 100%
+  );
+  border-radius: 50px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.myDonation a,
+.myDonation-user a {
+  text-decoration: none;
+}
+
+.sorting > a#selected,
+.sorting > a#selected-artistUser {
+  color: #3a3635;
+}
+
+.sorting > a {
+  position: relative;
+  margin-right: 14px;
+  padding-right: 8px;
+  font-size: 13px;
+  color: #757271;
+  vertical-align: middle;
+}
+
+a.myArtist {
+  text-decoration: none;
+}
+
+.sorting > a.myArtist:hover {
+  text-decoration: underline;
+}
+
+span.sorting {
+  font-size: 40px;
+  color: #757271;
+}
+
+span#current {
+  color: #ff3d33;
+  text-decoration: none;
+}
+
+.myArtistList {
+  clear: both;
+  padding: 40px 40px 20px;
+  background-color: rgba(199, 199, 199, 0.048);
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.top {
+  border-top: 1px solid #e1e1e1;
+}
+
+div.artistList > a.myArtist {
+  max-width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.artistList {
+  margin-top: 30px;
+}
+
+.myArtist > .myArtistName {
+  margin-top: 10px;
+  color: #3d3b3b;
+  font-size: 16px;
+}
+
+.myArtist > .myArtistType {
+  margin-top: 10px;
+  color: #757271;
+  font-size: 13px;
+}
+
+img.myArtist-image {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.myArtistList > .artistList {
+  width: 210px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.myArtist > span {
+  font-size: 14px;
+}
+
+.artistLike {
+  margin-top: 15px;
+}
+
+/* myWork */
+.myWork > .myWorkName {
+  margin-top: 10px;
+  color: #3d3b3b;
+  font-size: 16px;
+}
+
+.myWork-image {
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+}
+
+a.myWork {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.myWork > .myWorkName {
+  margin-top: 5px;
+  color: #1a1919;
+  font-size: 14px;
+}
+
+.myWork > .myArtistName {
+  margin-top: 5px;
+  color: #757271;
+  font-size: 12px;
+}
+
+.myWork > .myWorkType {
+  margin-top: 5px;
+  color: #757271;
+  font-size: 11px;
+}
+
+.workInfo-width {
+  width: 123px;
+}
+
+.workLike {
+  position: absolute;
+  top: 7px;
+  right: 23px;
+}
+
+img.myWorkLike {
+  padding-left: 124px;
+  padding-top: 216px;
+  padding-right: 0px;
+}
+
+.info {
+  padding: 11px 12px 8px 12px;
+}
+
+a.myWork {
+  border: 1px solid #e1e1e1;
+}
+
+/* 마이페이지 페이징 스타일 */
+.mypage-paging {
+  outline: none;
+}
+.mypage-pageStyle {
+  text-align: center;
+  padding-top: 35px;
+  display: flex;
+  justify-content: center;
+}
+
+.mypage-pageStyle a {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  font-size: 15px;
+  color: #666;
+  margin: 0 3px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.mypage-pageStyle a:hover {
+  border-bottom: 3px solid #ff564c;
+}
+
+.my-heart {
+  cursor: pointer;
+}
+
+/* 아티스트 계정 */
+.mypage-list > a,
+.segmented > a {
+  cursor: pointer;
+}
+
+.segmented {
+  margin-bottom: 30px;
+  overflow: hidden;
+  padding-left: 1px;
+}
+
+.segmented > a {
+  display: block;
+  float: left;
+  overflow: hidden;
+  min-width: 37px;
+  margin-left: -1px;
+  padding: 7px 15px;
+  font-size: 13px;
+  color: #757271;
+  text-align: center;
+  text-decoration: none;
+}
+
+.segmented > a.first {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-right: 1.5px solid #b3b2b2 !important;
+}
+
+.segmented > a.second {
+  border: 0;
+}
+
+.segmented > a.last {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-left: 0.5px solid #b3b2b2 !important;
+}
+
+.segmented > a#selected,
+.segmented > a#selected-artistUser {
+  color: #fff !important;
+  /* background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(249, 105, 87, 1) 0%,
+    rgba(255, 0, 116, 1) 100%
+  ) !important; */
+}
+
+.segmented > a:hover {
+  color: #3a3635;
+  background-color: #d3d2d2;
+}
+
+.myArtist-Category-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.artistUser-flex {
+}
+
+.myDonation {
+  width: 125px;
+  line-height: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(249,105,87,1) 0%, rgba(255,0,116,1) 100%); */
+  background: linear-gradient(
+    90deg,
+    rgba(53, 0, 202, 112) 0%,
+    rgba(434, 164, 89, 109) 0%,
+    rgba(255, 0, 18, 1) 185%
+  );
+  border-radius: 50px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  position: absolute;
+  top: -9px;
+  right: 552px;
+  opacity: 0.9;
+}
+
+.myDonation:hover {
+  opacity: 1;
+}
+
+.myDonation a {
+  text-decoration: none;
+}
+
+.myDonation-user a {
+  text-decoration: none;
+}
+
+/* 아티스트 등록 메인 */
+.artistUser-section {
+  height: 100%;
+  padding: 95px 80px 40px;
+  background-color: #fff;
+}
+
+.artistUser-logo {
+  margin: 0px auto 0px auto;
+  cursor: pointer;
+  position: relative;
+  width: 100px;
+  height: 30px;
+}
+
+.artistJoic-desc {
+}
+
+/* 아티스트 후원회원 목록 */
+.artistUserDonation,
+.myArtistDonation {
+  background: #fdf2ea;
+  padding: 30px 52px 40px 52px;
+}
+
+.donation-p {
+  display: inline-block;
+  font-size: 30px;
+  color: #333;
+  font-weight: bold;
+  border-bottom: 3px solid #ec7d2c;
+  padding-bottom: 10px;
+  margin-bottom: 22px;
+  letter-spacing: -0.03em;
+  font-family: "Noto Sans KR", "NanumBarunGothic", "맑은 고딕", "Malgun Gothic",
+    sans-serif;
+}
+
+.donation-tbl {
+  width: 1000px;
+  margin: 0 auto 37px auto;
+  border-bottom: 1px solid #999;
+}
+
+.donation-tbl table {
+  border-spacing: 0;
+  width: 100%;
+}
+
+.donation-title {
+  margin: 0 auto 37px auto;
+  width: 1000px;
+}
+/* 표 라인 */
+
+.donation-tbl {
+  border-bottom: 1px solid #999;
+}
+.donation-tbl th {
+  line-height: 49px;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  background: #f6f6f6;
+  border-top: 2px solid #333;
+  text-align: center;
+}
+.donation-tbl td {
+  font-size: 14px;
+  color: #333;
+  border-top: 1px solid #ddd;
+  min-height: 22px;
+  padding: 19px 0 17px 0;
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* th {
+  display: table-cell;
+  vertical-align: inherit;
+  font-weight: bold;
+  text-align: -internal-center;
+} */
+
+table {
+  border-collapse: separate;
+  text-indent: initial;
+  border-spacing: 2px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+}
+
+em {
+  font-style: italic;
+}
+
+a:-webkit-any-link {
+  cursor: pointer;
+}
+
+a em {
+  display: table-cell;
+  vertical-align: middle;
+  color: #000;
+  font-style: normal;
+}
+
+/* 내가 쓴 댓글 */
+.reply-admin {
+  background-color: rgba(199, 199, 199, 0.192);
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+  padding-left: 18px;
+}
+
+.reply-button {
+  border: 1px solid #d9d9db;
+  border-radius: 10%;
+  vertical-align: middle;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.reply-button:hover {
+  background-color: rgb(233, 231, 231);
+}
+
+.replyBox {
+  margin-top: 10px;
+  display: flex;
+  border-bottom: 1px solid #bdbdbd;
+  padding-left: 18px;
+  justify-content: space-between;
+}
+
+.reply-flex-box {
+  display: flex;
+  margin-right: 10px;
+}
+
+.reply-profile {
+  padding: 10px 0 15px 15px;
+  border-radius: 50%;
+}
+
+.reply-img {
+  border-radius: 50%;
+  border: 1px solid #e6e6e6;
+  width: 60px;
+}
+
+.reply-content-box {
+  padding: 10px 0 15px 15px;
+}
+
+.reply-nickname {
+  color: #444;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  text-decoration: none;
+  font-weight: bold;
+}
+.replyDate {
+  padding-left: 6px;
+  color: #a1a1a1;
+  font-size: 12px;
+}
+
+.reply-img-artist {
+  width: 90px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.replyContent {
+  padding: 12px 15px 11px 0;
+}
+
+.reply-content-box > .artist {
+  color: #a1a1a1;
+  font-size: 14px;
+  padding: 0;
+}
+
+.reply-artistBox {
+  display: flex;
+  align-items: center;
+  width: 350px;
+}
+.replyArtist {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  border-left: 1px solid #dfdfdf;
+}
+
+.reply-artist-content {
+  padding-left: 15px;
+}
+
+.reply-artist-type {
+  color: #4e4e4e;
+  font-weight: bold;
+}
+
+.reply-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reply-content-width {
+  width: 650px;
+}
+
+.list-button {
+  height: 37px;
+}
+
+/* 아티스트 계정 목록 */
+.artistUser-list-admin {
+  background-color: rgba(199, 199, 199, 0.192);
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+  padding-left: 18px;
+  width: 1220px;
+  height: 44px;
+}
+
+.artistUser-list-button {
+  border: 1px solid #d9d9db;
+  border-radius: 10%;
+  vertical-align: middle;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.artistUser-list-button:hover {
+  background-color: rgb(233, 231, 231);
+}
+
+.artistUser-listBox {
+  margin-top: 10px;
+  display: flex;
+  border-bottom: 1px solid #bdbdbd;
+  padding-left: 18px;
+}
+
+.artistUser-list-flex-box {
+  display: flex;
+  margin-right: 10px;
+}
+
+.artistUser-list-profile {
+  padding: 10px 0 15px 15px;
+  border-radius: 50%;
+}
+
+.artistUser-list-img {
+  border-radius: 50%;
+  border: 1px solid #e6e6e6;
+  width: 60px;
+}
+
+.artistUser-list-content-box {
+  padding: 10px 0 15px 15px;
+}
+
+.artistUser-list-nickname {
+  color: #444;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  text-decoration: none;
+  font-weight: bold;
+}
+.artistUser-listDate {
+  padding-left: 6px;
+  color: #a1a1a1;
+  font-size: 12px;
+}
+
+.artistUser-list-img-artist {
+  width: 90px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.artistUser-listContent {
+  padding: 12px 15px 11px 0;
+}
+
+.artistUser-list-content-box > .artist {
+  color: #a1a1a1;
+  font-size: 14px;
+  padding: 0;
+}
+
+.artistUser-list-artistBox {
+  display: flex;
+  align-items: center;
+  width: 350px;
+}
+.artistUser-listArtist {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  border-left: 1px solid #dfdfdf;
+}
+
+.artistUser-list-artist-content {
+  padding-left: 15px;
+}
+
+.artistUser-list-artist-type {
+  color: #4e4e4e;
+  font-weight: bold;
+}
+
+.artistUser-list-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.artistUser-list-content-width {
+  width: 650px;
+}
+
+.list-button {
+  height: 37px;
+}
+
+/* 아티스트 계정 등록 폼 */
+.artist-join-title {
+  margin-top: 16px;
+  position: relative;
+  border-bottom: 2px solid #333;
+}
+
+.input-artist-join-name {
+  width: 100%;
+  font-size: 35px;
+  color: #333;
+  font-weight: bold;
+  letter-spacing: -0.003em;
+  font-family: "Noto Sans KR", "NanumBarunGothic", "맑은 고딕", "Malgun Gothic",
+    sans-serif;
+  outline: none;
+  text-indent: 13px;
+  border: 0 none;
+}
+.input-artist-join-name::placeholder {
+  color: rgb(173, 173, 173);
+}
+
+.input-artist-image-desc {
+  width: 100%;
+  font-size: 35px;
+  color: #333;
+  font-weight: bold;
+  letter-spacing: -0.003em;
+  font-family: "Noto Sans KR", "NanumBarunGothic", "맑은 고딕", "Malgun Gothic",
+    sans-serif;
+  outline: none;
+  text-indent: 13px;
+  border: 0 none;
+  text-align: center;
+}
+
+.artist-form-label {
+  font-size: 15px;
+  color: #ff564c;
+  padding-left: 15px;
+  font-weight: bold;
+}
+
+.artist-join-form-box {
+  margin-top: 0px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #000;
+}
+
+.artist-join-image-box,
+.artist-join-info-box {
+  display: inline-block;
+}
+
+.form-inline div {
+  display: inline-block;
+}
+
+.artist-join-image-box {
+  float: left;
+  width: 430px;
+  height: 600px;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 10px;
+  /* margin-left: 10px; */
+  margin-left: 37px;
+}
+
+.artist-join-profile {
+  width: 300px;
+  opacity: 0.1;
+  position: absolute;
+}
+
+.artist-join-profile:hover {
+  opacity: 0.3;
+}
+
+.artist-join-info-box {
+  float: right;
+  width: 701px;
+  height: 600px;
+  position: relative;
+}
+
+.artist-form-category {
+  margin-left: 20px;
+}
+
+.input-artist-info-content {
+  outline: none;
+  border: 0;
+  border-top: 1px solid #333;
+  width: 95%;
+  font-size: 20px;
+  color: #333;
+  font-weight: bold;
+  letter-spacing: -0.003em;
+  font-family: "Noto Sans KR", "NanumBarunGothic", "맑은 고딕", "Malgun Gothic",
+    sans-serif;
+  text-indent: 13px;
+  height: 500px;
+  resize: none;
+  margin-top: 15px;
+}
+
+/* 셀렉트 css */
+
+select {
+  margin-left: 0 !important;
+  font-family: "Noto Sansf KR", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: #444;
+  background-color: #fff;
+
+  padding: 0.6em 1.4em 0.5em 0.8em;
+  margin: 0;
+
+  border: 1px solid #aaa;
+  border-radius: 0.5em;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+}
+
+select:hover {
+  border-color: #888;
+}
+
+select:focus {
+  border-color: #aaa;
+  box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
+  box-shadow: 0 0 0 3px -moz-mac-focusring;
+  color: #222;
+  outline: none;
+}
+
+select:disabled {
+  opacity: 0.5;
+}
+
+.artist-form-submit {
+  width: 88px;
+    margin: 0 4px;
+    line-height: 38px;
+    height: 40px;
+    cursor: pointer;
+    outline: none;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+}
+
+.artist-form-submit:hover {
+  border-color: #f54;
+  color: #fff;
+  background-color: #f54;
+}
+
+.form-button {
+  display: flex;
+  justify-content: space-evenly;
+}
