@@ -107,8 +107,18 @@
   cursor: pointer;
 }
 
-.id-find:hover,
-.pw-find:hover {
+.id-find a,
+.pw-find a {
+  text-decoration: none;
+  font-size: 0.875rem;
+  color: #929292;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+
+.id-find a:hover,
+.pw-find a:hover {
   color: #ff564c;
 }
 
