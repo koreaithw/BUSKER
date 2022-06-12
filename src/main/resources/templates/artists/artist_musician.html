@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>
-        아티스트 뮤지션 목록
+        아티스트 목록
     </title>
     <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
     <script type="text/javascript" id="www-widgetapi-script" src="https://www.youtube.com/s/player/02208bb4/www-widgetapi.vflset/www-widgetapi.js" async=""></script>
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jry_home_jdefault.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jry_home_jdialog.js"></script>
     <script type="text/javascript" src="/inc/js/jry_default_new.js?v=580"></script>
 
-    <link rel="stylesheet" href="artist_list.css">
+    <link rel="stylesheet" href="../../static/assets/css/artist/artist_list.css">
 
     <style type="text/css">
         .perform-top{overflow:visible !important;}
@@ -42,13 +42,10 @@
 
 			<span class="li-sec-select">
 
-                <a href="#" onclick="location.href='artist_list.html'">전체</a>
-                <a href="#" onclick="location.href='artist_list_musician.html'">뮤지션</a>
-                <a href="#" onclick="location.href='artist_list_performance.html'">퍼포먼스</a>
 
-                <!-- <a style="cursor:pointer;" onclick="jsf_base_GoToUrl('artist_list')">전체</a>
-                <a style="cursor:pointer;" onclick="jsf_base_GoToUrl('artist_musician')">뮤지션</a>
-                <a style="cursor:pointer;" onclick="jsf_base_GoToUrl('artist_performance')">퍼포먼스</a> -->
+				<a style="cursor:pointer;" onclick="go_to_url('artist_list.html')">전체</a>
+				<a style="cursor:pointer;" onclick="go_to_url('artist_musician.html')">뮤지션</a>
+				<a style="cursor:pointer;" onclick="go_to_url('artist_performance.html')">퍼포먼스</a>
 			</span>
 		</span>
         </p>
@@ -75,10 +72,11 @@
     </p>
 
     <div class="ms-list-imgs">
-        <a style="cursor:pointer;" onclick="jsf_base_GoToPerfDetail(42357);"
+        <a style="cursor:pointer;" onclick="go_to_artist_info('artist_info.html');"
+
            title="아티스트 이름">
             <div class="list-bigger-wrap"><img class="lazyload" alt="아티스트 이름"
-                                               src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220531/20220531-42357.jpg/dims/quality/70/"
+                                               src="../../static/images/artist/buskerbukser.jpg"
                                                style="">
                 <div class="list-bigger-txt">
                     <p class="list-b-tit1 v2 v2">아티스트 이름</p>
@@ -151,8 +149,7 @@
     </script></section>
 <script type="text/javascript">
     $(function () {
-        /*장르리스트*/
-        //2뎁스 메뉴 보여주는 가짜 셀렉트박스 & 다른데 클릭해도 셀렉트박스 닫히도록
+
         $(".li-sec-tit2").on('click', function (e) {
             if ($(this).is(".on")) {
                 e.preventDefault();
@@ -229,11 +226,18 @@
         lastScrollTop = scrollT
     }
 
-    var ua = window.navigator.userAgent.toLowerCase();
-    if (/iphone/.test(ua) || /android/.test(ua) || /opera/.test(ua) || /bada/.test(ua)) {
-        if (confirm('모바일 웹서비스 이용이 가능합니다.\r\n모바일웹으로 이동하시겠습니까? ')) {
-            location.href = 'http://m.ticket.yes24.com';
-        }
+
+
+
+</script>
+<script>
+    function go_to_url(url) {
+        location.href=url;
+    }
+</script>
+<script>
+    function go_to_artist_info(artist_no) {
+        location.href=artist_no;
     }
 </script>
 </body>
