@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="workRead.css"/>
+    <!-- 제이쿼리 불러오기 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <title>작품 상세보기</title>
+</head>
+<body>
+    <div class="work_detail_wrap">
+        <div class="work_detail">
+            <div class="detail">
+                <p>상세보기</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="work_info_wrap">
+        <div class="work_info_content">
+            <div class="work_info">
+                <div class="info_left">
+                    <div class="img_box"><img src="20473078.jpg" alt=""></div>
+                    <div class="like_box">
+                        <a href="javascript:changeLike()" class="like">
+                            <img src="unlike.png" alt="" class="img1">
+                            <img src="like.png" alt="" class="img2" style="display: none;">
+                            <span class="like_txt1">123</span>
+                            <span class="like_txt2">Likes</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="info_right">
+                    <div class="info_area1">
+                        <dl>
+                            <dt>앨범명</dt>
+                            <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Proof</dd>
+                            <dt>아티스트</dt>
+                            <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;방탄소년단</dd>
+                            <dt>발매일</dt>
+                            <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022.06.10</dd>
+                            <dt>장르</dt>
+                            <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;랩/힙합,댄스/R&B/Soul</dd>
+                            <dt>기획사</dt>
+                            <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BIGHT MUSIC</dd> <!--이거 없앨지도? -->
+                        </dl>
+                    </div>
+                    <div class="info_area2">
+                        <dl>
+                            <dt>앨범 설명</dt>
+                            <dd>
+                                아미와 함께한 역사…방탄소년단의 과거-현재-미래가 공존하는 연대기적 앨범
+                                <br>
+                                방탄소년단의 다짐과 아미 향한 진심이 담긴 특별한 앨범
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="info_area2">
+                        <div class="purchase_link_wrap">
+                        <a href="#" class="purchase_link">구매링크</a>
+                        </div>
+                    </div>
+                </div>              
+            </div>
+            <div class="vid_wrap">
+                <iframe width="1200" height="600" src="https://www.youtube.com/embed/kXpOEzNZ8hQ?start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // 좋아요 버튼 누르면 좋아요 표시 하기
+    let check = false;
+    let changeLike = function(){
+        console.log("들어옴");
+        if(check){
+            alert("이미 좋아요를 눌렀습니다.");
+            return;
+        }
+
+        $(".img1").css('display', 'none');
+        $(".img2").css('display', 'inline-block');
+
+        check = true;
+    }
+</script>
+</html>
