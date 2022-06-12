@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>아이디찾기</title>
+    <link rel="stylesheet" href="../../../static/assets/css/login/login.css" />
+    <link
+      rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="loginWrap">
+        <form name="loginForm">
+            <div class="loginBox idFindBox">
+            <h1>아이디 찾기</h1>
+
+
+          <div class="id-inputBox">
+            <div class="id-flex">
+              <input
+                class="login-input email-input"
+                name="userId"
+                type="text"
+                placeholder="이메일"
+              />
+              <span>@</span>
+            <input type="text" class="login-input emailDomain-input" id="userEmailDomain" value="" />
+                      <select class="login-input"
+                        style="width: 100px; margin-right: 10px"
+                        name="selectEmail"
+                        id="selectEmail"
+                      >
+                        <option value="1">직접입력</option>
+                        <option value="naver.com" selected>naver.com</option>
+                        <option value="hanmail.net">hanmail.net</option>
+                        <option value="hotmail.com">hotmail.com</option>
+                        <option value="nate.com">nate.com</option>
+                        <option value="yahoo.co.kr">yahoo.co.kr</option>
+                        <option value="empas.com">empas.com</option>
+                        <option value="dreamwiz.com">dreamwiz.com</option>
+                        <option value="freechal.com">freechal.com</option>
+                        <option value="lycos.co.kr">lycos.co.kr</option>
+                        <option value="korea.com">korea.com</option>
+                        <option value="gmail.com">gmail.com</option>
+                        <option value="hanmir.com">hanmir.com</option>
+                        <option value="paran.com">paran.com</option>
+                      </select>
+              <div class="delete-div delete-id-div" style="display: none">
+                <button
+                  type="button"
+                  tabindex="-1"
+                  class="delete-text id-text-delete"
+                ></button>
+              </div>
+            </div>
+            <span id="checkId"></span>
+          </div>
+
+          <div class="pw-inputBox">
+            <div class="pw-flex">
+              <input
+                class="login-input pw-input"
+                name="userPhoneNumber"
+                type="text"
+                placeholder="휴대폰 번호"
+              />
+              <div class="delete-div delete-pw-div idFind-div" style="display: none">
+                <button
+                  type="button"
+                  tabindex="-1"
+                  class="delete-text pw-text-delete"
+                ></button>
+              </div>
+              <button id="btnSubmitSendSMS" type="button" class="btn-send" onclick="send();"> 인증번호전송 </button>
+            </div>
+            <span id="checkPw"></span>
+          </div>
+ 
+          <div class="id-inputBox">
+            <div class="checkNumber-flex">
+              <input
+                class="login-input checkNumber-input"
+                name="checkNumber"
+                type="text"
+                placeholder="인증번호"
+              />
+              <div class="time-div">
+                <span>03:00</span>
+              </div>
+            </div>
+            <span id="checkSMSNumber"></span>
+          </div>
+
+
+          <div class="findNext-button">
+            <input
+              type="button"
+              id="login-button"
+              class="login-click login-button"
+              value="다음"
+              onclick="send();"
+            />
+          </div>
+ 
+        </div>
+      </form>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../../../static/assets/js/login/idFind.js"></script>
+</html>
