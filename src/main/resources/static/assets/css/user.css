@@ -254,22 +254,12 @@ input[type=checkbox] {
     color: red;
     font-size: 9px;
 }
-/* 
-.header-change {
-    width: 200px;
-    background-color: #484848;
-    border-right: 1px solid #ddd;
-    position: fixed;
-    height: 100%;
-    left: 0;
-    top: 0;
-} */
 
 .header-change{
     background-color: #484848;
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 30vw;
     height: 100%;
     line-height: 600px;
     float: left;
@@ -318,8 +308,6 @@ input[type=checkbox] {
 
 .admin-name {
     display: flex;
-    width: 100vw;
-    flex: 1 1 auto;
     text-align: left;
     float: left;
     padding: 0 0 0 15px;
@@ -333,7 +321,7 @@ input[type=checkbox] {
 
 .today {
     box-sizing: border-box;
-    width: 800px;
+    width: 60vw;
     padding: 20px;
     padding-left: 25px;
     background-color: #fff;
@@ -344,13 +332,18 @@ input[type=checkbox] {
 
 .artist-list {
     box-sizing: border-box;
-    width: 800px;
-    padding: 20px;
-    padding-left: 25px;
+    width: 29.5vw;
+    padding: 10px;
     background-color: #fff;
     border: 1px solid #d9d9d9;
     float: left;
     margin: 5px;
+    text-align: center;
+}
+
+.artist-list td {
+    margin-left: 20px;
+    font-size: 0.75rem;
 }
 
 .today h5 {
@@ -372,6 +365,8 @@ input[type=checkbox] {
     display: flex;
 }
 .field-display {
+    display: flex;
+    flex-direction: column;
     background-color: #ebebeb;
 }
 .btn-main {
@@ -401,10 +396,3 @@ input[type=checkbox] {
     text-decoration: none;
 }
 
-.artist-list {
-    text-align: center;
-}
-
-.artist-list td {
-    margin-left: 20px;
-}
