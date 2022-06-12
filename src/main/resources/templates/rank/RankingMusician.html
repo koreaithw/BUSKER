@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/assets/css/Ranking.css">
+</head>
+
+<body>
+    <div class="content_name">
+        <p class="big_title">랭킹</p>
+
+        <!-- rank_genre 전체, 뮤지션, 퍼포먼스 div -->
+        <div class="rank_genre">
+            <a href="RankingAll.html">전체</a>
+            <a href="RankingMusician.html" class="on">뮤지션</a>
+            <a href="RankingPerformance.html">퍼포먼스</a>
+        </div>
+
+        <!-- rank_big_category 주간, 월간, 연간 div-->
+        <div class="rank_big_category">
+            <div class="rank_category">
+                <div class="rank_category_tiny category" selectedcategoryid="1">
+                    <a href="#" style="cursor: pointer;" categoryId="1" class="on">주간</a>
+                    <a href="#" style="cursor: pointer;" categoryId="2">월간</a>
+                    <a href="#" style="cursor: pointer;" categoryId="3">연간</a>
+                </div>
+            </div>
+            <p class="rank_category_date on" style>2022.06.05 (일) ~ 2022.06.11 (토)
+                <span>12:30</span>
+            </p>
+        </div>
+
+        <!-- rank_calendar 주간, 월간, 연간에 따른 calendar -->
+
+        <div class="rank_category_calendar">
+            <div class="rank_calendar_ver1" style="display:none;">
+            <div class="rank_calendar hasDatepicker" id="rank_calendar1">
+                <div class="ui_datepicker_inline ui_datepicker ui_widget ui_widget_content ui_helper_clearfix ui_corner_all" style="display: block;">
+                <div class="ui_datepicker_header ui_widget_header ui_hepler_clearfix ui_corner_all" style="display:block">
+                    <a class="ui_datepicker_prev ui_corner_all"></a>
+                    <span class="ui_icon ui_icon_circle_triangle_w">이전 달</span>
+                </a>
+                <div class="ui_datepicker_title">
+                    <span class="ui_datepicker_month">06</span>
+                    </div>
+                </div>
+                <table class="ui_datepicker_calender">
+                    <thead>
+                        <tr>
+                        <th calss="ui_datepicker_week_end">
+                            <span title="일">일</span>
+                        </th>
+                        <th calss="ui_datepicker_week_end">
+                            <span title="일">월</span>
+                        </th>
+                        <th calss="ui_datepicker_week_end">
+                            <span title="일">화</span>
+                        </th>
+                        <th calss="ui_datepicker_week_end">
+                            <span title="일">수</span>
+                        </th>
+                        <th calss="ui_datepicker_week_end">
+                            <span title="일">목</span>
+                        </th>
+                        <th calss="ui_datepicker_week_end">
+                            <span title="일">금</span>
+                        </th>
+                        <th calss="ui_datepicker_week_end">
+                            <span title="일">토</span>
+                        </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <td class="ui_datepicker_week_end ui_datepicker_other_month ui_datepicker_unselectable ui_state_disabled">&nbsp;</td>
+                        <td class="ui_datepicker_other_month ui_datepicker_unselectable ui_state_disalbled">&nbsp;</td>
+                        <td class=" " onclick="DP_jQuery_1654920791711.datepicker._selectDay"
+                    </tbody>
+                </table>
+                </div>
+                </div>
+            </div>
+            </div>
+            </div>
+
+        <!-- rank_best 랭킹 top3 공간-->
+        <div class="rank_best">
+            <div>
+                <a href="#" title="악동뮤지션">
+                    <span class="artist_image">
+                        <img src="artist_1.jpg" alt="악동뮤지션" class="rank_best_img">
+                    </span>
+                    <p class="artist_title">악동뮤지션</p>
+                    <p class="artist_detail">친남매로 이루어진 남매 혼성 듀오
+                        <br>
+                        포크, 어쿠스틱, 댄스, 발라드, EDM, 락, 힙합
+                    </p>
+                    <p class="rank_best_point">
+                        <strong>D-2</strong>
+                        <span class="like_point">1204</span>
+                    </p>
+                    <p class="rank_best_number">
+                        <span>
+                            1위
+                        </span>
+                        <span class="rank_best_number_new">new</span>
+                        ">"
+                    </p>
+                    <p class="rank_best_tag">최고</p>
+                </a>
+            </div>
+            <div>
+            <a href="#" title="악동뮤지션">
+                <span class="artist_image">
+                    <img src="artist_1.jpg" alt="악동뮤지션" class="rank_best_img">
+                </span>
+                <p class="artist_title">악동뮤지션</p>
+                <p class="artist_detail">친남매로 이루어진 남매 혼성 듀오
+                    <br>
+                    포크, 어쿠스틱, 댄스, 발라드, EDM, 락, 힙합
+                </p>
+                <p class="rank_best_point">
+                    <strong>D-2</strong>
+                    <span class="like_point">1204</span>
+                </p>
+                <p class="rank_best_number">
+                    <span>
+                        1위
+                    </span>
+                    <span class="rank_best_number_new">new</span>
+                    ">"
+                </p>
+                <p class="rank_best_tag">최고</p>
+            </a>
+        </div>
+        <div>
+        <a href="#" title="악동뮤지션">
+            <span class="artist_image">
+                <img src="artist_1.jpg" alt="악동뮤지션" class="rank_best_img">
+            </span>
+            <p class="artist_title">악동뮤지션</p>
+            <p class="artist_detail">친남매로 이루어진 남매 혼성 듀오
+                <br>
+                포크, 어쿠스틱, 댄스, 발라드, EDM, 락, 힙합
+            </p>
+            <p class="rank_best_point">
+                <strong>D-2</strong>
+                <span class="like_point">1204</span>
+            </p>
+            <p class="rank_best_number">
+                <span>
+                    1위
+                </span>
+                <span class="rank_best_number_new">new</span>
+                ">"
+            </p>
+            <p class="rank_best_tag">최고</p>
+        </a>
+    </div>
+        </div>
+
+        <!-- rank_list 랭킹 top4 아래 공간 -->
+        <div class="rank_list">
+            <div>
+                <div class="fluctuation">
+                    <p>
+                        <span>
+                            4위
+                        </span>
+                    </p>
+                    <p class="rank_list_number">
+                        5
+                    </p>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                    </a>
+                </div>
+                <div>
+                    <p class="rank_list_title">
+                        <a href="#">페퍼톤스</a>
+                    </p>
+                    <p class="rank_list_grade">
+                        <span class="like_point">177</span>
+                    </p>
+                </div>
+                <div>
+                    <p>2022.06.09
+                        <br>
+                        남성그룹
+                    </p>
+                </div>
+                <div>D-2</div>
+            </div>
+            <div>
+                <div class="fluctuation">
+                    <p>
+                        <span>
+                            5위
+                        </span>
+                    </p>
+                    <p class="rank_list_number">
+                        5
+                    </p>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                    </a>
+                </div>
+                <div>
+                    <p class="rank_list_title">
+                        <a href="#">페퍼톤스</a>
+                    </p>
+                    <p class="rank_list_grade">
+                        <span class="like_point">177</span>
+                    </p>
+                </div>
+                <div>
+                    <p>2022.06.09
+                        <br>
+                        남성그룹
+                    </p>
+                </div>
+                <div>D-2</div>
+            </div>
+            <div>
+                <div class="fluctuation">
+                    <p>
+                        <span>
+                            6위
+                        </span>
+                    </p>
+                    <p class="rank_list_number">
+                        5
+                    </p>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                    </a>
+                </div>
+                <div>
+                    <p class="rank_list_title">
+                        <a href="#">페퍼톤스</a>
+                    </p>
+                    <p class="rank_list_grade">
+                        <span class="like_point">177</span>
+                    </p>
+                </div>
+                <div>
+                    <p>2022.06.09
+                        <br>
+                        남성그룹
+                    </p>
+                </div>
+                <div>D-2</div>
+            </div>
+            <div>
+                <div class="fluctuation">
+                    <p>
+                        <span>
+                            4위
+                        </span>
+                    </p>
+                    <p class="rank_list_number">
+                        5
+                    </p>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                    </a>
+                </div>
+                <div>
+                    <p class="rank_list_title">
+                        <a href="#">페퍼톤스</a>
+                    </p>
+                    <p class="rank_list_grade">
+                        <span class="like_point">177</span>
+                    </p>
+                </div>
+                <div>
+                    <p>2022.06.09
+                        <br>
+                        남성그룹
+                    </p>
+                </div>
+                <div>D-2</div>
+            </div>
+            <div>
+                <div class="fluctuation">
+                    <p>
+                        <span>
+                            7위
+                        </span>
+                    </p>
+                    <p class="rank_list_number">
+                        5
+                    </p>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                    </a>
+                </div>
+                <div>
+                    <p class="rank_list_title">
+                        <a href="#">페퍼톤스</a>
+                    </p>
+                    <p class="rank_list_grade">
+                        <span class="like_point">177</span>
+                    </p>
+                </div>
+                <div>
+                    <p>2022.06.09
+                        <br>
+                        남성그룹
+                    </p>
+                </div>
+                <div>D-2</div>
+            </div>
+            <div>
+                <div class="fluctuation">
+                    <p>
+                        <span>
+                            8위
+                        </span>
+                    </p>
+                    <p class="rank_list_number">
+                        5
+                    </p>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                    </a>
+                </div>
+                <div>
+                    <p class="rank_list_title">
+                        <a href="#">페퍼톤스</a>
+                    </p>
+                    <p class="rank_list_grade">
+                        <span class="like_point">177</span>
+                    </p>
+                </div>
+                <div>
+                    <p>2022.06.09
+                        <br>
+                        남성그룹
+                    </p>
+                </div>
+                <div>D-2</div>
+            </div>
+            <div>
+                <div class="fluctuation">
+                    <p>
+                        <span>
+                            9위
+                        </span>
+                    </p>
+                    <p class="rank_list_number">
+                        5
+                    </p>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                    </a>
+                </div>
+                <div>
+                    <p class="rank_list_title">
+                        <a href="#">페퍼톤스</a>
+                    </p>
+                    <p class="rank_list_grade">
+                        <span class="like_point">177</span>
+                    </p>
+                </div>
+                <div>
+                    <p>2022.06.09
+                        <br>
+                        남성그룹
+                    </p>
+                </div>
+                <div>D-2</div>
+            </div>
+            <div>
+                <div class="fluctuation">
+                    <p>
+                        <span>
+                            10위
+                        </span>
+                    </p>
+                    <p class="rank_list_number">
+                        5
+                    </p>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                    </a>
+                </div>
+                <div>
+                    <p class="rank_list_title">
+                        <a href="#">페퍼톤스</a>
+                    </p>
+                    <p class="rank_list_grade">
+                        <span class="like_point">177</span>
+                    </p>
+                </div>
+                <div>
+                    <p>2022.06.09
+                        <br>
+                        남성그룹
+                    </p>
+                </div>
+                <div>D-2</div>
+            </div>
+            <div>
+                <div class="fluctuation">
+                    <p>
+                        <span>
+                            11위
+                        </span>
+                    </p>
+                    <p class="rank_list_number">
+                        5
+                    </p>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                    </a>
+                </div>
+                <div>
+                    <p class="rank_list_title">
+                        <a href="#">페퍼톤스</a>
+                    </p>
+                    <p class="rank_list_grade">
+                        <span class="like_point">177</span>
+                    </p>
+                </div>
+                <div>
+                    <p>2022.06.09
+                        <br>
+                        남성그룹
+                    </p>
+                </div>
+                <div>D-2</div>
+            </div>
+            <div>
+                <div class="fluctuation">
+                    <p>
+                        <span>
+                            12위
+                        </span>
+                    </p>
+                    <p class="rank_list_number">
+                        5
+                    </p>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                    </a>
+                </div>
+                <div>
+                    <p class="rank_list_title">
+                        <a href="#">페퍼톤스</a>
+                    </p>
+                    <p class="rank_list_grade">
+                        <span class="like_point">177</span>
+                    </p>
+                </div>
+                <div>
+                    <p>2022.06.09
+                        <br>
+                        남성그룹
+                    </p>
+                </div>
+                <div>D-2</div>
+            </div>
+            <div>
+                <div class="fluctuation">
+                    <p>
+                        <span>
+                            13위
+                        </span>
+                    </p>
+                    <p class="rank_list_number">
+                        5
+                    </p>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                    </a>
+                </div>
+                <div>
+                    <p class="rank_list_title">
+                        <a href="#">페퍼톤스</a>
+                    </p>
+                    <p class="rank_list_grade">
+                        <span class="like_point">177</span>
+                    </p>
+                </div>
+                <div>
+                    <p>2022.06.09
+                        <br>
+                        남성그룹
+                    </p>
+                </div>
+                <div>D-2</div>
+            </div>
+            <div>
+                <div class="fluctuation">
+                    <p>
+                        <span>
+                            14위
+                        </span>
+                    </p>
+                    <p class="rank_list_number">
+                        5
+                    </p>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                    </a>
+                </div>
+                <div>
+                    <p class="rank_list_title">
+                        <a href="#">페퍼톤스</a>
+                    </p>
+                    <p class="rank_list_grade">
+                        <span class="like_point">177</span>
+                    </p>
+                </div>
+                <div>
+                    <p>2022.06.09
+                        <br>
+                        남성그룹
+                    </p>
+                </div>
+                <div>D-2</div>
+            </div>
+            <div>
+                <div class="fluctuation">
+                    <p>
+                        <span>
+                            15위
+                        </span>
+                    </p>
+                    <p class="rank_list_number">
+                        5
+                    </p>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                    </a>
+                </div>
+                <div>
+                    <p class="rank_list_title">
+                        <a href="#">페퍼톤스</a>
+                    </p>
+                    <p class="rank_list_grade">
+                        <span class="like_point">177</span>
+                    </p>
+                </div>
+                <div>
+                    <p>2022.06.09
+                        <br>
+                        남성그룹
+                    </p>
+                </div>
+                <div>D-2</div>
+            </div>
+            <div>
+                <div class="fluctuation">
+                    <p>
+                        <span>
+                            16위
+                        </span>
+                    </p>
+                    <p class="rank_list_number">
+                        5
+                    </p>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                    </a>
+                </div>
+                <div>
+                    <p class="rank_list_title">
+                        <a href="#">페퍼톤스</a>
+                    </p>
+                    <p class="rank_list_grade">
+                        <span class="like_point">177</span>
+                    </p>
+                </div>
+                <div>
+                    <p>2022.06.09
+                        <br>
+                        남성그룹
+                    </p>
+                </div>
+                <div>D-2</div>
+            </div>
+            <div>
+                <div class="fluctuation">
+                    <p>
+                        <span>
+                            17위
+                        </span>
+                    </p>
+                    <p class="rank_list_number">
+                        5
+                    </p>
+                </div>
+                <div>
+                    <a href="#">
+                        <img src="artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                    </a>
+                </div>
+                <div>
+                    <p class="rank_list_title">
+                        <a href="#">페퍼톤스</a>
+                    </p>
+                    <p class="rank_list_grade">
+                        <span class="like_point">177</span>
+                    </p>
+                </div>
+                <div>
+                    <p>2022.06.09
+                        <br>
+                        남성그룹
+                    </p>
+                </div>
+                <div>D-2</div>
+                <div>
+                    <div class="fluctuation">
+                        <p>
+                            <span>
+                                18위
+                            </span>
+                        </p>
+                        <p class="rank_list_number">
+                            5
+                        </p>
+                    </div>
+                    <div>
+                        <a href="#">
+                            <img src="artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                        </a>
+                    </div>
+                    <div>
+                        <p class="rank_list_title">
+                            <a href="#">페퍼톤스</a>
+                        </p>
+                        <p class="rank_list_grade">
+                            <span class="like_point">177</span>
+                        </p>
+                    </div>
+                    <div>
+                        <p>2022.06.09
+                            <br>
+                            남성그룹
+                        </p>
+                    </div>
+                    <div>D-2</div>
+                </div>
+                <div>
+                    <div class="fluctuation">
+                        <p>
+                            <span>
+                                19위
+                            </span>
+                        </p>
+                        <p class="rank_list_number">
+                            5
+                        </p>
+                    </div>
+                    <div>
+                        <a href="#">
+                            <img src="artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                        </a>
+                    </div>
+                    <div>
+                        <p class="rank_list_title">
+                            <a href="#">페퍼톤스</a>
+                        </p>
+                        <p class="rank_list_grade">
+                            <span class="like_point">177</span>
+                        </p>
+                    </div>
+                    <div>
+                        <p>2022.06.09
+                            <br>
+                            남성그룹
+                        </p>
+                    </div>
+                    <div>D-2</div>
+                </div>
+                <div>
+                    <div class="fluctuation">
+                        <p>
+                            <span>
+                                20위
+                            </span>
+                        </p>
+                        <p class="rank_list_number">
+                            5
+                        </p>
+                    </div>
+                    <div>
+                        <a href="#">
+                            <img src="artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                        </a>
+                    </div>
+                    <div>
+                        <p class="rank_list_title">
+                            <a href="#">페퍼톤스</a>
+                        </p>
+                        <p class="rank_list_grade">
+                            <span class="like_point">177</span>
+                        </p>
+                    </div>
+                    <div>
+                        <p>2022.06.09
+                            <br>
+                            남성그룹
+                        </p>
+                    </div>
+                    <div>D-2</div>
+                </div>
+
+            </div>
+        </div>
+
+            <!--notify-->
+            <div class="info">
+                오전의 경우 이용자가 적어 오전 10시 30분 이전까지는 전일 24시간의 집계 현황을 알려드립니다.
+                <br>
+                일간/주간은 1시간 단위로 업데이트 되며, 월간/연간은 일 단위로 업데이트 됩니다.
+            </div>
+        </div>
+
+        </body>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script text="text/javascript">
+            // 전체, 뮤지션, 퍼포먼스 색깔 바꾸는 js
+            $(".rank_genre a").on('click', function (e) {
+                $(".rank_genre a").removeClass('on'); // 기존 a태그에 있던 on 클래스를 지우고
+                $(this).addClass('on'); // 클릭 이벤트가 실행된 a태그에 클래스 on을 넣어주자
+            })
+        
+            // $(".rank_category_tiny a").on('click', function(e) {
+            //     e.preventDefault();
+            //     $(".rank_category_tiny a").removeClass('on');
+            //     $(this).addClass('on');
+            //     $(".rank_category_")
+            // })
+            
+            $(".rank_category_date").on('click', function(){
+                if($(".rank_category_calendar").is(".on")){
+                    $(this).removeClass("on");
+                    $(".rank_category_calendar").css("display", "none");
+                    $(".rank_category_calendar").removeClass("on");
+                } else {
+                    $(this).addClass("on");
+                    $(".rank_category_calendar").css("display", "block");
+                    $(".rank_category_calendar").addClass("on");
+                }
+                })
+
+            </script>
+            
+        </html>
