@@ -1,0 +1,364 @@
+.loginWrap {
+  min-width: 955px;
+  padding: 95px 80px 40px;
+  margin: 0;
+}
+
+.loginBox {
+  border: 1px solid #d9d9d9;
+  margin-top: 100px;
+  padding: 100px 120px 58px 120px;
+  width: 452px;
+  margin: 70px auto 0 auto;
+}
+
+.id-inputBox {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.pw-inputBox {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.login-input {
+  border: 0;
+  height: 50px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.login-input::placeholder {
+  font-weight: bold;
+  font-size: 14px;
+  color: #bdbbbbce;
+}
+
+.login-input:focus {
+}
+
+.id-save {
+  padding: 0 0 0 15px;
+  line-height: 25px;
+  font-size: 14px;
+}
+
+.idSave-check {
+  width: 20px;
+  height: 20px;
+  accent-color: #ff564c;
+}
+
+.idSave-box {
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.login-click {
+  width: 100%;
+  background-color: #f8c1bf;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  height: 62px;
+  line-height: 62px;
+  font-size: 18px;
+  text-decoration: none;
+  border: 0;
+}
+
+.login-click:hover {
+  background-color: #ffa3a0;
+}
+
+#login-button {
+  text-decoration: none;
+  color: white;
+}
+
+.loginFind-box {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.9375rem;
+}
+
+.find-button {
+  display: flex;
+}
+
+.id-find,
+.bound {
+  padding: 0 0.5625rem;
+  padding-left: 0;
+}
+
+.bound {
+  padding-left: 0;
+  align-items: center;
+  border-left: 1px solid #d9d9d9;
+}
+
+.id-find,
+.pw-find {
+  font-size: 0.875rem;
+  color: #929292;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.id-find:hover,
+.pw-find:hover {
+  color: #ff564c;
+}
+
+.user-join-button {
+  font-size: 0.875rem;
+  color: #5f5e5e;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.phoneLogin-box {
+  padding-top: 50px;
+}
+
+.phoneLogin {
+  border: 1px solid #d9d9d9;
+  height: 53px;
+  line-height: 53px;
+  font-size: 15px;
+  color: #484848;
+  font-weight: 600;
+  background-color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+.loginType-box {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.loginType-select {
+  padding-top: 30px;
+}
+
+.loginType {
+  margin: 0 6px;
+}
+
+.loginType-img {
+  border-radius: 70%;
+}
+
+div#pwImg {
+  width: 40px;
+  height: 40px;
+  background-image: url("templates/artists/login/eye_hide.png");
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  opacity: 0.3;
+  margin: 0;
+  position: absolute;
+  right: 0;
+}
+
+div#pwImg:hover {
+  opacity: 0.8;
+}
+
+span#checkId,
+span#checkPw {
+  margin: 0;
+  font-size: 10px;
+  color: #ff4d78;
+  position: absolute;
+  display: block;
+  position: absolute;
+  top: 37px;
+}
+
+.id-flex,
+.pw-flex {
+  display: flex;
+  border-bottom: 1px solid #ebebeb;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.delete-text {
+  background-image: url("templates/artists/login/delete-icon.png");
+  background-color: white;
+  background-position: center;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  background-size: 100%;
+  border: 0;
+  opacity: 0.3;
+  align-items: center;
+  padding: 0;
+}
+
+.delete-text:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.delete-div {
+  background-image: url("templates/artists/login/delete-icon.png");
+  background-color: white;
+  background-position: center;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  background-size: 100%;
+  border: 0;
+  opacity: 0.3;
+  align-items: center;
+  position: absolute;
+  right: 40px;
+}
+
+.delete-div:hover {
+  opacity: 0.8;
+}
+
+.delete-id-div {
+  margin-right: 10px;
+  right: 0;
+  position: absolute;
+}
+
+/* 아이디 찾기 */
+.loginBox > h1 {
+  display: block;
+  height: auto;
+  position: static;
+  width: auto;
+  color: #181818;
+  text-align: center;
+  padding-bottom: 30px;
+  font-size: 30px;
+  margin: 0;
+}
+
+.loginBox > p {
+  margin-top: -20px;
+  padding: 0 0 0 0;
+  color: #484848;
+  font-size: 16px;
+  text-align: center;
+  margin: 0;
+}
+
+.idFindBox {
+  padding: 100px 120px 100px 120px;
+}
+
+.findNext-button {
+  margin-top: 47px;
+}
+
+#btnSubmitSendSMS {
+  position: absolute;
+  right: 0;
+  width: auto;
+  height: 1.75rem;
+  padding: 0 0.9375rem;
+  border-radius: 0.875rem;
+  background-color: #ccc;
+  color: #fff;
+  font-size: 0.75rem;
+  border: 0;
+  cursor: pointer;
+}
+
+#btnSubmitSendSMS:hover {
+  background-color: #ffa3a0;
+}
+
+.idFind-div {
+  right: 110px !important;
+}
+
+.time-div {
+  opacity: 0.3;
+  right: 5px;
+  top: 32px;
+  position: absolute;
+  font-size: 13px;
+}
+
+.checkNumber-flex {
+  border-bottom: 1px solid #ebebeb;
+}
+
+.checkNumber-input {
+  margin-top: 15px;
+}
+
+span#checkSMSNumber {
+  margin: 0;
+  font-size: 10px;
+  color: #ff4d78;
+  position: absolute;
+  display: block;
+  position: absolute;
+  top: 51px;
+}
+
+.idResult {
+  box-sizing: border-box;
+  height: 5.3125rem;
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  padding: 10px;
+  margin-top: 25px;
+}
+
+.idResultId {
+  font-size: 25px;
+  color: #302f2f;
+  position: relative;
+}
+
+.idResultDate {
+  position: relative;
+}
+
+/* 비밀번호 찾기 */
+.email-input {
+  width: 50%;
+  margin-right: 3px;
+  margin-left: 3px;
+}
+.emailDomain-input {
+  width: 30%;
+  margin-right: 3px;
+  margin-left: 3px;
+}
+
+.pwResult {
+  box-sizing: border-box;
+  height: 5.3125rem;
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 10px;
+  margin-top: 25px;
+}
