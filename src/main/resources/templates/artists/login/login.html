@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인</title>
+    <link rel="stylesheet" href="../../../static/assets/css/login/login.css" />
+    <link
+      rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="loginWrap">
+      <form name="loginForm">
+        <div class="loginBox">
+          <div class="id-inputBox">
+            <div class="id-flex">
+              <input
+                class="login-input id-input"
+                name="userId"
+                type="text"
+                placeholder="아이디"
+              />
+              <div class="delete-div delete-id-div" style="display: none">
+                <button
+                  type="button"
+                  tabindex="-1"
+                  class="delete-text id-text-delete"
+                ></button>
+              </div>
+            </div>
+            <span id="checkId"></span>
+          </div>
+          <div class="pw-inputBox">
+            <div class="pw-flex">
+              <input
+                class="login-input pw-input"
+                name="userPw"
+                type="password"
+                placeholder="비밀번호"
+              />
+              <div class="delete-div delete-pw-div" style="display: none">
+                <button
+                  type="button"
+                  tabindex="-1"
+                  class="delete-text pw-text-delete"
+                ></button>
+              </div>
+              <div id="pwImg"></div>
+            </div>
+            <span id="checkPw"></span>
+          </div>
+          <div class="idSave-box">
+            <input class="idSave-check" type="checkbox" />
+            <label class="id-save">아이디 저장</label>
+          </div>
+          <div class="">
+            <input
+              type="button"
+              id="login-button"
+              class="login-click login-button"
+              onclick="send();"
+              value="로그인"
+            />
+          </div>
+          <div class="loginFind-box">
+            <div class="find-button">
+              <div class="id-find"><a>아이디 찾기</a></div>
+              <div class="bound"></div>
+              <div class="pw-find"><a>비밀번호 찾기</a></div>
+            </div>
+            <div class="join-button">
+              <div class="user-join-button"><a>회원가입</a></div>
+            </div>
+          </div>
+          <div class="phoneLogin-box">
+            <div class="phoneLogin"><a>휴대폰 번호로 로그인</a></div>
+          </div>
+
+          <div class="loginType-box">
+            <div class="loginType">
+              <a
+                ><img
+                  class="loginType-img"
+                  src="https://static.nid.naver.com/oauth/button_g.PNG?version=js-2.0.1"
+                  width="44px"
+              /></a>
+            </div>
+            <div class="loginType">
+              <a><img class="loginType-img" src="kakao.png" width="44px" /></a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../../../static/assets/js/login/login.js"></script>
+</html>

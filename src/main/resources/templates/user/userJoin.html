@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="/src/main/resources/templates/static/assets/css/user.css" />
+</head>
+
+<body>
+    <!-- 회원가입 첫 페이지 -->
+    <div class="sign-logo">
+        <h1>Buskers</h1>
+    </div>
+    <div class="select-container">
+        <div class="text-signup">다음 가입방법 중 하나를 선택하세요.</div>
+
+        <div class="container sign-container">
+            <div class="btn-signup">
+                <a href="" class="btn-signupemail">이메일 아이디로 가입하기</a>
+                <a href="" class="btn-signupkakao">카카오 아이디로 로그인</a>
+                <a href="" class="btn-signupnaver">네이버 아이디로 로그인</a>
+            </div>
+        </div>
+    </div>
+    <!-- 이메일 회원가입 이용약관 페이지  -->
+    <div class="select-email" style="display: none;">
+        <div class="service">
+            <h1>이용약관</h1>
+        </div>
+        <div class="service-checkbox">
+            <ul class="service-list">
+                <li><label for="ckb-service"><input type="checkbox" name="checkbox" id="ckb-service"
+                            class="cb-service"><span><em>(필수)</em> 이용약관</span></label></li>
+                <li><label for="ckb-privacy"><input type="checkbox" name="checkbox" id="ckb-privacy"
+                            class="cb-privacy"><span><em>(필수)</em> 개인정보 수집 및 이용 안내</span></label></li>
+                <li><label for="ckb-personal"><input type="checkbox" name="checkbox" id="ckb-personal"
+                            class="cb-personal"><span><em>(필수)</em> 제 3자 제공 동의</span></label></li>
+                <li><label for="ckb-personal-select"><input type="checkbox" name="checkbox" id="ckb-personal-select"
+                            class="cb-personal-select"><span> 제 3자 제공 동의(선택)</span></label></li>
+                <li class="ckb-event"><label for="ckb-event"><input type="checkbox" name="checkbox" id="ckb-event"
+                            class="cb-event"><span>
+                            이벤트/혜택 알림 동의</span></label></li>
+            </ul>
+        </div>
+        <div class="select-all">
+            <div class="ckb-all">
+                <div><label for="ckb-all"></label><input type="checkbox" name="cb-all" id="ckb-all"
+                        class="cb-all"><span>전체동의</span></label></div>
+                <small>(선택) 이벤트/혜택 알림을 포함하여 모두 동의합니다.</small>
+            </div>
+        </div>
+        <div class="btn-signup">
+            <a href="" class="btn-signupnext">다음</a>
+        </div>
+    </div>
+    <!-- 본인 인증 페이지 -->
+    <div class="self-authentication" style="display: none;">
+        <div>
+            <h1>본인인증</h1>
+        </div>
+        <div class="authentication-form">
+            <input type="text" name="userName" class="inputText" placeholder="이름">
+            <div class="send">
+                <input type="text" name="userPhoneNumber" class="inputText" placeholder="휴대폰 번호 (- 제외)">
+                <button>인증번호전송</button>
+            </div>
+        </div>
+        <div class="btn-signup">
+            <a href="" class="btn-selfnext">인증 완료</a>
+        </div>
+    </div>
+    <!-- 회원가입 페이지 -->
+    <div class="signin-container" style="display: none;">
+        <div class="signin-form">
+            <h1>회원가입</h1>
+            <p>이름: 타임리프 / 휴대폰 번호: 타임리프</p>
+            <div class="select-id">
+                <input type="text" class="inputText" placeholder="아이디(이메일)"> @
+                <select class="inputText">
+                    <option value="">선택</option>
+                    <option value="naver.com">naver.com</option>
+                    <option value="gmail.com">gmail.com</option>
+                </select>
+            </div>
+            <div>
+                <input type="password" id="password" class="inputText" placeholder="비밀번호">
+                <p class="signin-password"></p>
+                <input type="password" id="pw-check" class="inputText" placeholder="비밀번호 확인">
+                <p class="check-password"></p>
+            </div>
+            <div class="btn-signup">
+                <a href="" onclick="chkPW()" class="btn-selfnext">가입 완료</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(".btn-signupemail").on("click", function (e) {
+        e.preventDefault();
+        $(".select-container").hide();
+        $(".select-email").show();
+    });
+    $(".btn-signupnext").on("click", function (e) {
+        e.preventDefault();
+        $(".select-email").hide();
+        $(".self-authentication").show();
+    });
+    $(".btn-selfnext").on("click", function (e) {
+        e.preventDefault();
+        $(".self-authentication").hide();
+        $(".signin-container").show();
+    });
+
+    function chkPW() {
+        var pw = $("#password").val();
+        var check = $("#pw-check").val();
+        var num = pw.search(/[0-9]/g);
+        var eng = pw.search(/[a-z]/ig);
+        if (pw.length < 8 || pw.length > 20) {
+            $(".signin-password").text("8자리 ~ 20자리 이내로 입력해주세요.");
+            return false;
+        } else if (pw.search(/\s/) != -1) {
+            $(".signin-password").text("비밀번호는 공백 없이 입력해주세요.");
+            return false;
+        } else if (num < 0 || eng < 0) {
+            $(".signin-password").text("영문,숫자를 혼합하여 입력해주세요.");
+            return false;
+        } else {
+            console.log("통과");
+            return true;
+        }
+    }
+
+    $(document).ready(function () {
+        $("#ckb-all").click(function () {
+            if ($("#ckb-all").is(":checked")) $("input[name=checkbox]").prop("checked", true);
+            else $("input[name=checkbox]").prop("checked", false);
+        });
+
+        $("input[name=checkbox]").click(function () {
+            var total = $("input[name=checkbox]").length;
+            var checked = $("input[name=checkbox]:checked").length;
+
+            if (total != checked) $("#ckb-all").prop("checked", false);
+            else $("#ckb-all").prop("checked", true);
+        });
+    });
+</script>
+
+</html>
