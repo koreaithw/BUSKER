@@ -254,22 +254,12 @@ input[type=checkbox] {
     color: red;
     font-size: 9px;
 }
-/* 
-.header-change {
-    width: 200px;
-    background-color: #484848;
-    border-right: 1px solid #ddd;
-    position: fixed;
-    height: 100%;
-    left: 0;
-    top: 0;
-} */
 
 .header-change{
     background-color: #484848;
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 20vw;
     height: 100%;
     line-height: 600px;
     float: left;
@@ -301,6 +291,15 @@ input[type=checkbox] {
     color: #fff;
 }
 
+.header-change h1 a {
+    height: 35px;
+    line-height: 35px;
+    display: block;
+    font-size: 15px;
+    color: #fff;
+    text-decoration: none;
+}
+
 .header-change p {
     height: 35px;
     line-height: 35px;
@@ -318,8 +317,6 @@ input[type=checkbox] {
 
 .admin-name {
     display: flex;
-    width: 100vw;
-    flex: 1 1 auto;
     text-align: left;
     float: left;
     padding: 0 0 0 15px;
@@ -333,27 +330,45 @@ input[type=checkbox] {
 
 .today {
     box-sizing: border-box;
-    width: 800px;
-    padding: 20px;
+    width: 60vw;
+    padding: 10px;
     padding-left: 25px;
     background-color: #fff;
     border: 1px solid #d9d9d9;
     float: left;
     margin: 5px;
+    margin-top: 10px;
 }
 
 .artist-list {
     box-sizing: border-box;
-    width: 800px;
-    padding: 20px;
-    padding-left: 25px;
+    width: 29.5vw;
+    padding: 10px;
     background-color: #fff;
     border: 1px solid #d9d9d9;
     float: left;
     margin: 5px;
+    text-align: center;
 }
 
-.today h5 {
+.artist-list td {
+    margin-left: 20px;
+    font-size: 0.75rem;
+}
+
+.artist-list-field, .notice-list-field, .work-list-field, .user-list-field, .inquiry-list-field {
+    display: flex;
+    text-align: left;
+    float: left;
+    padding: 15px;
+    margin: 5px;
+    align-items: baseline;
+    justify-content: space-between;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+}
+
+.today h5, admin-name h1 {
     font-size: 15px;
     padding-bottom: 15px;
     border-bottom: 1px solid #d9d9d9;
@@ -362,6 +377,7 @@ input[type=checkbox] {
 .today ul {
     list-style: none;
     padding: 0;
+    font-size: 15px;
     margin: 0;
     display: flex;
     justify-content: space-between;
@@ -372,7 +388,16 @@ input[type=checkbox] {
     display: flex;
 }
 .field-display {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
     background-color: #ebebeb;
+}
+
+.field-display h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
 }
 .btn-main {
     display: flex;
@@ -382,7 +407,7 @@ input[type=checkbox] {
     font-size: .9375rem;
     font-weight: 600;
     width: 220px;
-    height: 62px;
+    height: 45px;
     margin-bottom: 15px;
     background-size: 100%;
     background-color: plum;
@@ -401,10 +426,15 @@ input[type=checkbox] {
     text-decoration: none;
 }
 
-.artist-list {
-    text-align: center;
-}
-
-.artist-list td {
-    margin-left: 20px;
+.right-field {
+    box-sizing: border-box;
+    width: 20vw;
+    padding: 10px;
+    padding-left: 25px;
+    background-color: #484848;
+    border: 1px solid #d9d9d9;
+    float: left;
+    color: #fff;
+    margin: 5px;
+    margin-top: 10px;
 }
