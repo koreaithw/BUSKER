@@ -41,14 +41,26 @@
                     <div class="info_right">
                         <div class="info_area1">
                             <dl>
-                                <dt>앨범명*</dt>
-                                <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="albumName" class="input_text"></dd>
+                                <dt>작품명*</dt>
+                                <dd>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="workName" class="input_text">
+                                    <span><p class="warning_msg"></p></span>
+                                </dd>
                                 <dt>아티스트*</dt>
-                                <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="artistName" class="input_text"></dd>
+                                <dd>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="artistName" class="input_text">
+                                    <span><p class="warning_msg"></p></span>
+                                </dd>
                                 <dt>발매일*</dt>
-                                <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="releaseDate" class="input_text"></dd>
+                                <dd>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="releaseDate" class="input_text">
+                                    <span><p class="warning_msg"></p></span>
+                                </dd>
                                 <dt>장르*</dt>
-                                <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="genre" class="input_text"></dd>
+                                <dd>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="genre" class="input_text">
+                                    <span><p class="warning_msg"></p></span>
+                                </dd>
                                 <dt>뮤비 링크</dt>
                                 <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="youtube_link" class="input_text" placeholder="유튜브 링크로 올려주세요."></dd>
                             </dl>
@@ -64,7 +76,7 @@
                         <div class="info_area2">
                             <div class="purchase_link_wrap">
                                 <a href="workList.html" class="purchase_link">뒤로가기</a>
-                                <a href="javascript:check" class="purchase_link">작품 등록 신청</a>
+                                <a href="javascript:check();" class="purchase_link">작품 등록 신청</a>
                             </div>
                         </div>
                     </div>
@@ -138,6 +150,21 @@
             });
         });
     });
+</script>
+
+<script>
+    // 유효성 검사
+    function check() {
+        if($("input[name=workName]").val().length == 0){
+            $(".warning_msg").text("반드시 입력해야 하는 칸입니다.");
+            $(".info_area2").css("min-height", "120px");
+            return;
+        } else{
+            $(".warning_msg").text("");
+            $(this).closest("form").submit();
+            console.log("등록됨");
+        }
+    }
 </script>
 
 </html>
