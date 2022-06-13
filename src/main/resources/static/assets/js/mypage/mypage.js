@@ -22,8 +22,8 @@ function formReset() {
   $("#pwCheckForm")[0].reset();
   $("#myInfoForm")[0].reset();
   $("#newPwForm")[0].reset();
-  $("div#pwImgNew").css("background-image", "url('eye_hide.png')");
-  $("div#pwImgNewCheck").css("background-image", "url('eye_hide.png')");
+  $("div#pwImgNew").css("background-image", "url('/static/images/mypage/eye_hide.png')");
+  $("div#pwImgNewCheck").css("background-image", "url('/static/images/mypage/eye_hide.png')");
   $("input[name='newPassword']").attr("type", "password");
   $("input[name='newPasswordEqual']").attr("type", "password");
 }
@@ -221,8 +221,10 @@ window.addEventListener("keyup", (e) => {
 
 // 프로필 사진 기본이미지로 변경
 $("#sample-profile-image").click(function () {
-  $("#img-sample").attr("src", "user-icon.png");
+  $("#img-sample").attr("src", "/static/images/mypage/user-icon.png");
 });
+
+
 
 //이메일 입력방식 선택
 $("#selectEmail").change(function () {
@@ -252,10 +254,10 @@ $("div#pwImgNew").click(function () {
   const $input = $("input[name='newPassword']");
   if ($input.attr("type") == "password") {
     $input.attr("type", "text");
-    $(this).css("background-image", "url('eye_visible.png')");
+    $(this).css("background-image", "url('/static/images/mypage/eye_visible.png')");
   } else {
     $input.attr("type", "password");
-    $(this).css("background-image", "url('eye_hide.png')");
+    $(this).css("background-image", "url('/static/images/mypage/eye_hide.png')");
   }
 });
 
@@ -263,10 +265,10 @@ $("div#pwImgNewCheck").click(function () {
   const $input = $("input[name='newPasswordEqual']");
   if ($input.attr("type") == "password") {
     $input.attr("type", "text");
-    $(this).css("background-image", "url('eye_visible.png')");
+    $(this).css("background-image", "url('/static/images/mypage/eye_visible.png')");
   } else {
     $input.attr("type", "password");
-    $(this).css("background-image", "url('eye_hide.png')");
+    $(this).css("background-image", "url('/static/images/mypage/eye_hide.png')");
   }
 });
 
@@ -442,8 +444,8 @@ $(".work-Performance-button").click(function (e) {
 
 // 하트 클릭
 function heartClick(e) {}
-
 $("#myArtist-1").click(function (e) {
+  console.log('d2')
   if ($("#heart-icon-1").css("display") == "none") {
     $("#heartNon-icon-1").hide();
     $("#heart-icon-1").show();
@@ -467,20 +469,20 @@ $(".ArtistInfo-tab").click(function (e) {
   header(".ArtistInfo-tab");
   artistUserSmallMenu(".artistUserList-tab");
   $(divCurrentName).hide();
-  informationTabChange(".artistUser-List");
+  informationTabChange(".artistUser-Info");
 });
 
 // 소메뉴 클릭
 //  아티스트 계정 목록 탭
-$(".artistUserList-tab").click(function (e) {
-  console.log("dd");
-  e.preventDefault();
-  artistUserSmallMenu(".artistUserList-tab");
-  informationTabChange(".artistUser-List");
-});
+// $(".artistUserList-tab").click(function (e) {
+//   console.log("dd");
+//   e.preventDefault();
+//   artistUserSmallMenu(".artistUserList-tab");
+//   informationTabChange(".artistUser-List");
+// });
 
 // 아티스트 정보 수정 탭
-$(".artistUserInfo-tab").click(function (e) {
+$(".artistUserList-tab").click(function (e) {
   e.preventDefault();
   console.log("dddd");
   artistUserSmallMenu(".artistUserInfo-tab");
