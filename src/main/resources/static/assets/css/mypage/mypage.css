@@ -238,7 +238,7 @@ img.profile-image {
 #btn-modal {
   width: 40px;
   height: 40px;
-  background-image: url("templates/artists/myInfo/camera-icon.png");
+  background-image: url("/static/images/mypage/camera-icon.png");
   background-size: 70%;
   background-position: center;
   background-repeat: no-repeat;
@@ -314,7 +314,7 @@ img.profile-image {
   opacity: 0.3;
   right: 0;
   cursor: pointer;
-  background-image: url("templates/artists/myInfo/close-icon.png");
+  background-image: url("/static/images/mypage/close-icon.png");
 }
 
 #modal .close-area:hover {
@@ -474,7 +474,7 @@ span#newPasswordNotEqual {
 div#pwImgNew {
   width: 33px;
   height: 33px;
-  background-image: url("templates/artists/myInfo/eye_hide.png");
+  background-image: url("/static/images/mypage/eye_hide.png");
   background-size: 70%;
   background-position: center;
   background-repeat: no-repeat;
@@ -490,7 +490,7 @@ div#pwImgNew {
 div#pwImgNewCheck {
   width: 33px;
   height: 33px;
-  background-image: url("templates/artists/myInfo/eye_hide.png");
+  background-image: url("/static/images/mypage/eye_hide.png");
   background-size: 70%;
   background-position: center;
   background-repeat: no-repeat;
