@@ -1,0 +1,293 @@
+
+.title-text{
+    font-size: 45px;
+    text-align: center;
+    color: #333;
+    padding: 90px 0 60px 0;
+    font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+}
+
+.detail-title{
+    border-top: 2px solid #333;
+    border-bottom: 2px solid #333;
+    min-height: 22px;
+    padding: 24px 0 21px 0;
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.big-box{
+    padding-bottom: 100px;
+}
+.orange-box{
+    color: #ec7d2c;
+    border: 1px solid #ec7d2c
+}
+.detail-title > span {
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 9px;
+    font-size: 12px;
+    vertical-align: top;
+    margin-right: 20px;
+}
+
+.detail-title > p {
+    display: inline-block;
+    font-size: 17px;
+    color: #333;
+    width: 1050px;
+    line-height: 22px;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.detail-date {
+    height: 60px;
+    line-height: 60px;
+    text-align: right;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.detail-date span {
+    font-size: 13px;
+    color: #999;
+    margin-left: 24px;
+    position: relative;
+}
+.datail-date span:after {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 4px;
+    background: #999;
+    border-radius: 50%;
+    position: absolute;
+    right: -15px;
+    top: 5px;
+}
+.detail-view{
+    width: 1200px;
+    margin: 0 auto 60px auto;
+    background: #f6f6f6;
+    position: relative;
+}
+
+.view-layout{
+    overflow: hidden;
+    padding: 62px 0 62px 60px;
+}
+
+.view-title{
+    font-size: 17px;
+    color: #333;
+    padding-top: 6px;
+    height: 28px;
+    margin-bottom: 22px;
+}
+
+.view-box {
+    display: table;
+    width: 100%;
+    padding-top: 1px;
+    height: 119px;
+    margin-bottom: 28px;
+}
+.view-box > div {
+    display: table-cell;
+    vertical-align: middle;
+}
+.view-long-box > div div{
+    border: 1px solid #999;
+    margin-top: -1px;
+    height: 58px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.view-long-box{
+    background: #fbe5d5;
+}
+
+#title1{
+    font-weight: 700;
+}
+
+
+.view-box > div div {
+    font-weight: 700;
+}
+
+
+.view-box > div div {
+    border: 1px solid #999;
+    margin-top: -1px;
+    height: 58px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.view-box > div div span{
+    display: inline-block;
+    width: 175px;
+    height: 58px;
+    line-height: 58px;
+    text-align: center;
+    position: relative;
+    font-size: 15px;
+    margin-right: 44px;
+    font-weight: normal;
+    font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+}
+.view-box > div div span em {
+    display: inline-block;
+    height: 22px;
+    line-height: 22px;
+    padding-left: 32px;
+    color: #ec7d2c;
+    background: url(http://tkfile.yes24.com/imgNew/sub/ico-rp-tko1.png)no-repeat;
+    background-size: auto 100%;
+    font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+}
+
+.view-box > div div span:nth-child(1):after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 14px;
+    background: #ccc;
+    position: absolute;
+    right: -1px;
+    top: 23px;
+}
+
+.view-btns{
+    font-size: 0;
+}
+
+.view-btns a {
+    display: inline-block;
+    width: 236px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    font-size: 16px;
+    margin-right: 10px;
+    border: 2px solid #333;
+    color: #333;
+    background: #fff;
+    font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+}
+
+.view-right {
+    float: left;
+    width: 840px;
+}
+
+.view-left {
+    float: left;
+    width: 180px;
+    height: 252px;
+    margin-right: 60px;
+}
+
+
+
+
+
+
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+.small-right-box {
+    border: 2px solid #ec7d2c;
+}
+
+.view-content{
+    border-bottom: 1px solid #999;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.noti-view-coment {
+    border-top: 1px solid #ddd;
+    padding: 60px 0;
+}
+
+.noti-view-comen-tit {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 35px;
+    font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+}
+
+.noti-view-comen-txt {
+    font-size: 13px;
+    color: #666;
+    line-height: 26px;
+}
+
+
+
+
+
+.last-btn {
+    width: 1200px;
+    margin: 100px 0 0 824px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.noti-list{
+    display: inline-block;
+}
+
+
+
+
+
+
+
+.last-btn{
+    width: 220px;
+    height: 48px;
+    line-height: 48px;
+    border: 1px solid #ddd;
+    display: inline-block;
+    font-size: 15px;
+    color: #000;
+    text-align: center;
+}
+.noti-view-control {
+    width: 1200px;
+    
+    text-align: center;
+    margin: 73px 0 0 842px;
+    
+}
+
+
+
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: inherit;
+    /* font: inherit; */
+    font-style: normal;
+    vertical-align: baseline;
+    font-family: 'NanumBarunGothic', '���� ����', 'Malgun Gothic', sans-serif;
+}
+
