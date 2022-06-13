@@ -224,6 +224,8 @@ $("#sample-profile-image").click(function () {
   $("#img-sample").attr("src", "/static/images/mypage/user-icon.png");
 });
 
+
+
 //이메일 입력방식 선택
 $("#selectEmail").change(function () {
   $("#selectEmail option:selected").each(function () {
