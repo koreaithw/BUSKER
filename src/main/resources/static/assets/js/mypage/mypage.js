@@ -22,8 +22,8 @@ function formReset() {
   $("#pwCheckForm")[0].reset();
   $("#myInfoForm")[0].reset();
   $("#newPwForm")[0].reset();
-  $("div#pwImgNew").css("background-image", "url('eye_hide.png')");
-  $("div#pwImgNewCheck").css("background-image", "url('eye_hide.png')");
+  $("div#pwImgNew").css("background-image", "url('/static/images/mypage/eye_hide.png')");
+  $("div#pwImgNewCheck").css("background-image", "url('/static/images/mypage/eye_hide.png')");
   $("input[name='newPassword']").attr("type", "password");
   $("input[name='newPasswordEqual']").attr("type", "password");
 }
@@ -221,7 +221,7 @@ window.addEventListener("keyup", (e) => {
 
 // 프로필 사진 기본이미지로 변경
 $("#sample-profile-image").click(function () {
-  $("#img-sample").attr("src", "user-icon.png");
+  $("#img-sample").attr("src", "/static/images/mypage/user-icon.png");
 });
 
 //이메일 입력방식 선택
@@ -252,10 +252,10 @@ $("div#pwImgNew").click(function () {
   const $input = $("input[name='newPassword']");
   if ($input.attr("type") == "password") {
     $input.attr("type", "text");
-    $(this).css("background-image", "url('eye_visible.png')");
+    $(this).css("background-image", "url('/static/images/mypage/eye_visible.png')");
   } else {
     $input.attr("type", "password");
-    $(this).css("background-image", "url('eye_hide.png')");
+    $(this).css("background-image", "url('/static/images/mypage/eye_hide.png')");
   }
 });
 
@@ -263,10 +263,10 @@ $("div#pwImgNewCheck").click(function () {
   const $input = $("input[name='newPasswordEqual']");
   if ($input.attr("type") == "password") {
     $input.attr("type", "text");
-    $(this).css("background-image", "url('eye_visible.png')");
+    $(this).css("background-image", "url('/static/images/mypage/eye_visible.png')");
   } else {
     $input.attr("type", "password");
-    $(this).css("background-image", "url('eye_hide.png')");
+    $(this).css("background-image", "url('/static/images/mypage/eye_hide.png')");
   }
 });
 
