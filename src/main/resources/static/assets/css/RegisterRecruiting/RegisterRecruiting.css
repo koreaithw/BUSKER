@@ -1,4 +1,6 @@
-
+body {
+    font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+}
 .title-text{
     font-size: 45px;
     text-align: center;
@@ -9,7 +11,7 @@
 
 .detail-title{
     border-top: 2px solid #333;
-    border-bottom: 2px solid #333;
+    border-bottom: 1px solid #a5a5a5;
     min-height: 22px;
     padding: 24px 0 21px 0;
     position: relative;
@@ -18,7 +20,7 @@
 }
 
 .big-box{
-    padding-bottom: 100px;
+    
 }
 .orange-box{
     color: #ec7d2c;
@@ -190,6 +192,8 @@ p {
 .view-right {
     float: left;
     width: 840px;
+    position: relative;
+    margin-left: 47px;
 }
 
 .view-left {
@@ -197,6 +201,13 @@ p {
     width: 180px;
     height: 252px;
     margin-right: 60px;
+    border: 1px solid #999;
+    border-radius: 3px;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* margin-left: 10px; */
 }
 
 
@@ -239,36 +250,22 @@ a {
 }
 
 
-
-
-
-.last-btn {
+ 
+.noti-view-control {
     width: 1200px;
-    margin: 100px 0 0 824px;
+    
     text-align: center;
-    overflow: hidden;
+    margin: 73px 0 0 842px;
+    
+}
+.btn-box {
+    padding-top: 20;
+    width: 100%;
+    border-top: 1px solid #999; 
+    display: flex;
+    justify-content: space-around;
 }
 
-.noti-list{
-    display: inline-block;
-}
-
-
-
-
-
-
-
-.last-btn{
-    width: 220px;
-    height: 48px;
-    line-height: 48px;
-    border: 1px solid #ddd;
-    display: inline-block;
-    font-size: 15px;
-    color: #000;
-    text-align: center;
-}
 .noti-view-control {
     width: 1200px;
     
@@ -291,3 +288,136 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-family: 'NanumBarunGothic', '���� ����', 'Malgun Gothic', sans-serif;
 }
 
+
+
+/* 등록 폼  */
+.recruiting-register-title {
+    font-size: 30px;
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
+    width: 100%;
+}
+
+.big-box .form-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+}
+
+.recru-image {
+    opacity: 0.1;
+    align-items: center;
+}
+
+.recru-image:hover {
+    opacity: 0.4;
+}
+
+
+.recru-image-box {
+    width:  150px;
+}
+
+.input-image-desc {
+    position: absolute;
+    text-align: center;
+    left: 65px;
+    bottom: 168px;
+
+
+    color: #333;
+    font-weight: bold;
+    letter-spacing: -0.003em;
+    font-family: "Noto Sans KR", "NanumBarunGothic", "맑은 고딕", "Malgun Gothic", sans-serif;
+    outline: none;
+    border: 0 none;
+    text-align: center;
+
+}
+
+.recru-table {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+}
+
+.recru-table input {
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
+    width: 567px;
+}
+
+.recru-table input:focus,
+.recru-table textarea:focus {
+  outline: 1px solid #ff9326 !important;
+}
+
+.recru-table .label {
+    width: 100px;
+    padding-top: 22px;
+}
+
+.recru-table input[type=date],
+.recru-table input[type=time] {
+    width: 250px !important;
+}
+
+.recru-table .top {
+    padding: 0 !important;
+}
+
+.view-content textarea {
+    resize: none;
+    height: 500px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
+    width: 1173px;
+}
+
+.noti-view-coment textarea {
+    height: 250px !important;
+}
+
+.form-button {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.recru-form-submit {
+    width: 88px;
+    margin: 0 4px;
+    line-height: 38px;
+    height: 40px;
+    cursor: pointer;
+    outline: none;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
+}
+
+.recru-form-submit:hover {
+    border-color: #f54;
+    color: #fff;
+    background-color: #f54;
+  }
+  
