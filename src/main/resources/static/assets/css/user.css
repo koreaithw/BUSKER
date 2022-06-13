@@ -1,3 +1,77 @@
+
+.header-change h1 a {
+    height: 35px;
+    line-height: 35px;
+    display: block;
+    font-size: 15px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.field-display {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vw;
+    background-color: #ebebeb;
+}
+
+.field-display h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+}
+
+.btn-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: .9375rem;
+    font-weight: 600;
+    width: 220px;
+    height: 45px;
+    margin-bottom: 15px;
+    background-size: 100%;
+    background-color: plum;
+    color: #fff;
+    vertical-align: middle;
+    line-height: 3.75rem;
+    margin-top: 20px;
+}
+
+.btn-main-border {
+    padding-right: 15px;
+}
+
+
+.right-field {
+    box-sizing: border-box;
+    width: 20.5vw;
+    padding: 10px;
+    padding-top: 30px;
+    text-align: center;
+    background-color: #484848;
+    border: 1px solid #d9d9d9;
+    float: left;
+    color: #fff;
+    margin: 5px;
+    height: 30vw;
+}
+
+.right-field h4 {
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+    font-size: 15px;
+}
+
+.right-field p {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}
+
 * {
     box-sizing: border-box;
   }
@@ -254,23 +328,13 @@ input[type=checkbox] {
     color: red;
     font-size: 9px;
 }
-/* 
-.header-change {
-    width: 200px;
-    background-color: #484848;
-    border-right: 1px solid #ddd;
-    position: fixed;
-    height: 100%;
-    left: 0;
-    top: 0;
-} */
 
 .header-change{
     background-color: #484848;
     display: flex;
     flex-direction: column;
-    width: 300px;
-    height: 100%;
+    width: 20vw;
+    height: 100vw;
     line-height: 600px;
     float: left;
 }
@@ -318,8 +382,6 @@ input[type=checkbox] {
 
 .admin-name {
     display: flex;
-    width: 100vw;
-    flex: 1 1 auto;
     text-align: left;
     float: left;
     padding: 0 0 0 15px;
@@ -330,21 +392,14 @@ input[type=checkbox] {
     border: 1px solid #d9d9d9;
 }
 
+.artist-list td {
+    margin-left: 20px;
+    font-size: 0.75rem;
+}
 
 .today {
     box-sizing: border-box;
-    width: 800px;
-    padding: 20px;
-    padding-left: 25px;
-    background-color: #fff;
-    border: 1px solid #d9d9d9;
-    float: left;
-    margin: 5px;
-}
-
-.artist-list {
-    box-sizing: border-box;
-    width: 800px;
+    width: 60vw;
     padding: 20px;
     padding-left: 25px;
     background-color: #fff;
@@ -354,6 +409,8 @@ input[type=checkbox] {
 }
 
 .today h5 {
+    margin: 0;
+    padding: 0;
     font-size: 15px;
     padding-bottom: 15px;
     border-bottom: 1px solid #d9d9d9;
@@ -365,46 +422,200 @@ input[type=checkbox] {
     margin: 0;
     display: flex;
     justify-content: space-between;
+    padding-right: 10px;
 }
+
+.today li {
+    margin-top: 10px;
+}
+
+.today a {
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.today p {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    color: red;
+}
+
+.audit {
+    display: flex;
+}
+
+p.circle {
+    width: 30px;
+    height: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    text-align: center;
+    object-fit: cover;
+    color: #fff;
+    background-color: rgb(255, 106, 0);
+}
+
 .all-change {
     width: 100%;
     height: 100%;
     display: flex;
 }
-.field-display {
-    background-color: #ebebeb;
+
+.home-display {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5px;
+    margin-top: 5px;
 }
-.btn-main {
+
+.left-today {
+    overflow: hidden;
+    width: 60.5vw;
+}
+
+.manager-set {
+    height: 10vw;
+    width: 20.5vw;
+    margin: 5px;
+    display: flex;
+    padding: 0 10px 0 10px;
+    background-color: white;
+    border: 1px solid #d9d9d9;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.artist-list {
+    box-sizing: border-box;
+    width: 29.5vw;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    float: left;
+    margin: 5px;
+    text-align: center;
+}
+
+.artist-list h4 {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.artist-list a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.artist-list a:hover {
+    color: #fff;
+}
+
+.artist-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.artist-list tr:hover {
+    background-color: plum;
+    color: #fff;
+}
+
+.artist-list th {
+    margin-left: 20px;
+    font-size: 0.75rem;
+    padding: 10px;
+}
+
+.artist-list td {
+    margin-left: 20px;
+    font-size: 0.75rem;
+    padding: 10px;
+}
+
+.artist-list-field, .notice-list-field, .work-list-field, .user-list-field, .inquiry-list-field {
+    text-align: center;
+    float: left;
+    padding: 15px;
+    margin: 5px;
+    margin-left: 10px;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+}
+
+.artist-list-field a, .notice-list-field a, .work-list-field a, .user-list-field a, .inquiry-list-field a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.artist-list-field a:hover, .notice-list-field a:hover, .work-list-field a:hover, .user-list-field a:hover, .inquiry-list-field a:hover {
+    color: #fff;
+}
+
+.artist-list-field tr:hover, .notice-list-field tr:hover, .work-list-field tr:hover, .user-list-field tr:hover, .inquiry-list-field tr:hover {
+    background-color: plum;
+    color: #fff;
+}
+
+.artist-list-field table, .notice-list-field table, .work-list-field table, .user-list-field table, .inquiry-list-field table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.artist-list-field th, .notice-list-field th, .work-list-field th, .user-list-field th, .inquiry-list-field th, .artist-list-field td, .notice-list-field td, .work-list-field td, .user-list-field td, .inquiry-list-field td {
+    border-bottom: 1px solid #ebebeb;
+    padding: 10px;
+}
+
+.artist-list-field h4, .notice-list-field h4, .work-list-field h4, .user-list-field h4, .inquiry-list-field h4{
+    padding-left: 20px;
+    text-align: left;
+}
+
+.icon {
+    border-radius: 70%;
+    overflow: hidden;
+    object-fit: cover;
+    background-color: #fff;
+}
+
+.page-field {
+    text-align: center;
+    float: left;
+    padding: 15px;
+    margin: 5px;
+    margin-left: 10px;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+}
+
+.notice-name {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.btn-notice-write {
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
     font-size: .9375rem;
     font-weight: 600;
-    width: 220px;
-    height: 62px;
-    margin-bottom: 15px;
+    width: 150px;
+    height: 45px;
     background-size: 100%;
     background-color: plum;
     color: #fff;
     vertical-align: middle;
     line-height: 3.75rem;
-    margin-top: 20px;
 }
 
-.btn-main-border {
-    padding-right: 15px;
-}
-
-.today a {
-    
-    text-decoration: none;
-}
-
-.artist-list {
-    text-align: center;
-}
-
-.artist-list td {
-    margin-left: 20px;
+.right-set {
+    display: flex;
+    flex-direction: column;
 }

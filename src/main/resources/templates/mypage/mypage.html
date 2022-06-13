@@ -13,7 +13,7 @@
 
   <style></style>
 
-  <body>
+  <body class="modal_background">
     <div class="myPage-wrap">
       <header class="sectionPadding">
         <div class="innerContainer"></div>
@@ -60,8 +60,8 @@
           </div>
           <div class="artistUser-smallMenu" style="display: none">
             <nav class="segmented">
-              <a class="artistUserList-tab first">아티스트 계정 목록</a>
-              <a class="artistUserInfo-tab second">아티스트 정보 수정</a>
+              <a class="artistUserList-tab first">아티스트 정보 수정</a>
+              <!-- <a class="artistUserInfo-tab second">아티스트 정보 수정</a> -->
               <a class="artistUserDelete-tab last">아티스트 계정 삭제</a>
             </nav>
           </div>
@@ -440,7 +440,10 @@
                   <div class="sectionPadding myArtistList top myArtistList-All">
                     <div class="artistList">
                       <a href="" class="myArtist">
-                        <img class="myArtist-image" src="pptnz.jpg" />
+                        <img
+                          class="myArtist-image"
+                          src="/static/images/mypage/pptnz.jpg"
+                        />
                         <span class="myArtistName">페퍼톤스</span>
                         <span class="myArtistType">그룹 (남성) | 뮤지션</span>
                       </a>
@@ -453,7 +456,7 @@
                             width="30px" /><img
                             id="heartNon-icon-1"
                             class="heart-nonSelected"
-                            src="/static/images/mypage/heart-icon.png"
+                            src="/static/images/mypage/non-heart-icon.png"
                             width="30px"
                             style="display: none"
                         /></a>
@@ -607,7 +610,10 @@
                   >
                     <div class="artistList">
                       <a href="" class="myArtist">
-                        <img class="myArtist-image" src="pptnz.jpg" />
+                        <img
+                          class="myArtist-image"
+                          src="/static/images/mypage/pptnz.jpg"
+                        />
                         <span class="myArtistName">페퍼톤스</span>
                         <span class="myArtistType">그룹 (남성) | 뮤지션</span>
                       </a>
@@ -739,77 +745,231 @@
               </div>
             </div>
 
-            <!-- 나의 후원 -->
-            <!-- 소메뉴 아티스트 계정 후원 회원 목록  -->
+            <!-- 관심 아티스트 나의 후원 탭-->
             <div class="myArtistDonation-List" style="display: none">
-              <div class="myArtistDonation">
-                <div class="donation-title">
-                  <p class="donation-p">나의 후원</p>
+
+
+              <div class="artist-join-title-box">
+                <div class="work_detail">
+                  <div class="detail-donation">
+                    <p>나의 후원 기록</p>
+                    <div class="announcement">
+                      <p
+                        style="
+                          font-size: 13px;
+                          margin-top: 0;
+                          margin-bottom: 0px;
+                          color: #ff9326;
+                        "
+                      >
+                        <span class="announce"
+                          >*결제 문의는 1:1 문의 페이지를 이용해주세요.</span
+                        >
+                      </p>
+                      
+
+                      <div class="donation-soring">
+                        <span class="sorting"><a>최신순</a></span>
+                        <span class="sorting"><a>오래된순</a></span>
+                        <span class="sorting"><a>금액높은순</a></span>
+                        <span class="sorting"><a>금액낮은순</a></span>
+                      </div>
+
+                    </div>
+                  </div>
                 </div>
+              </div>
 
-                <div class="donation-tbl">
-                  <table>
-                    <colgroup></colgroup>
 
-                    <tbody>
-                      <tr>
-                        <th scope="col">아티스트명</th>
-                        <th scope="col">회원 닉네임</th>
-                        <th scope="col">후원 시작일</th>
-                        <th scope="col">후원 금액</th>
+
+
+
+              <!-- <div class="myArtist-Category-flex">
+                <p class="sorting">
+                  <span class="sorting artist-All-Dot">·</span
+                  ><a href="" class="myArtist artist-All-button">전체</a>
+                  <span class="sorting artist-Musician-Dot">·</span
+                  ><a href="" class="myArtist artist-Musician-button"
+                    >뮤지션</a
+                  >
+                  <span class="sorting artist-Performance-Dot">·</span
+                  ><a href="" class="myArtist artist-Performance-button"
+                    >퍼포먼스</a
+                  >
+                </p>
+                <p class="myDonation-user">
+                  <a class="">나의 후원</a>
+                </p>
+              </div> -->
+
+
+
+
+              <div class="donation-wrap">
+
+
+                <div class="donationTable-wrap">
+                  <table class="donation-table">
+                    <thead class="donation-header">
+                      <tr class="">
+                        <th class="row-1">
+                          <div class="">
+                            <p class="">날짜</p>
+                          </div>
+                        </th>
+                        <th class="row-2">
+                          <div class="">
+                            <p class="">아티스트명</p>
+                          </div>
+                        </th>
+                        <th class="row-3">
+                          <div class="">
+                            <p class="">금액</p>
+                          </div>
+                        </th>
+                        <th class="row-4">
+                          <div class="">
+                            <p class="">결제수단</p>
+                          </div>
+                        </th>
                       </tr>
-                      <tr>
-                        <td>페퍼톤스</td>
-                        <td>
-                          <a href="#id=11869"><em>왕고냐</em></a>
+                    </thead>
+
+                    <tbody class="donation-body">
+                      <tr class="row">
+                        <td class="cell">
+                          <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
                         </td>
-                        <td>2022.06.17</td>
-                        <td>100,000</td>
+                        <td class="cell">
+                          <div class="table-artist-flex">
+                            <a class="" href=""
+                              ><div
+                                aria-label="채널 아이콘"
+                                class="donation-icon"
+                              >
+                                <img
+                                  class="donation-icon"
+                                  alt=""
+                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
+                                /></div
+                            ></a>
+                            <div class="">
+                              <p class="table-p">
+                                <a class="" href="">페퍼톤스</a>
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="cell">
+                          <p class="">100,000</p>
+                        </td>
+                        <td class="cell">
+                          <div class="">
+                            <p class="">휴대폰 간편결제</p>
+                          </div>
+                        </td>
                       </tr>
 
-                      <tr>
-                        <td>이승윤</td>
-                        <td>
-                          <a href="#id=11868"><em>왕고냐</em></a>
+                      <tr class="row">
+                        <td class="cell">
+                          <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
                         </td>
-                        <td>2022.04.17</td>
-                        <td>100,000</td>
+                        <td class="cell">
+                          <div class="table-artist-flex">
+                            <a class="" href=""
+                              ><div
+                                aria-label="채널 아이콘"
+                                class="donation-icon"
+                              >
+                                <img
+                                  class="donation-icon"
+                                  alt=""
+                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
+                                /></div
+                            ></a>
+                            <div class="">
+                              <p class="table-p">
+                                <a class="" href="">페퍼톤스</a>
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="cell">
+                          <p class="">100,000</p>
+                        </td>
+                        <td class="cell">
+                          <div class="">
+                            <p class="">휴대폰 간편결제</p>
+                          </div>
+                        </td>
                       </tr>
 
-                      <tr>
-                        <td>벤</td>
-                        <td>
-                          <a href="#id=11867"><em>왕고냐</em></a>
+                      <tr class="row">
+                        <td class="cell">
+                          <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
                         </td>
-                        <td>2022.02.19</td>
-                        <td>100,000</td>
+                        <td class="cell">
+                          <div class="table-artist-flex">
+                            <a class="" href=""
+                              ><div
+                                aria-label="채널 아이콘"
+                                class="donation-icon"
+                              >
+                                <img
+                                  class="donation-icon"
+                                  alt=""
+                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
+                                /></div
+                            ></a>
+                            <div class="">
+                              <p class="table-p">
+                                <a class="" href="">페퍼톤스</a>
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="cell">
+                          <p class="">100,000</p>
+                        </td>
+                        <td class="cell">
+                          <div class="">
+                            <p class="">휴대폰 간편결제</p>
+                          </div>
+                        </td>
                       </tr>
 
-                      <tr>
-                        <td>이수현</td>
-                        <td>
-                          <a href="#id=11866"><em>왕고냐</em></a>
+                      <tr class="row">
+                        <td class="cell">
+                          <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
                         </td>
-                        <td>2022.01.28</td>
-                        <td>100,000</td>
-                      </tr>
-
-                      <tr>
-                        <td>아이유</td>
-                        <td>
-                          <a href="#id=11865"><em>왕고냐</em></a>
+                        <td class="cell">
+                          <div class="table-artist-flex">
+                            <a class="" href=""
+                              ><div
+                                aria-label="채널 아이콘"
+                                class="donation-icon"
+                              >
+                                <img
+                                  class="donation-icon"
+                                  alt=""
+                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
+                                /></div
+                            ></a>
+                            <div class="">
+                              <p class="table-p">
+                                <a class="" href="">페퍼톤스</a>
+                              </p>
+                            </div>
+                          </div>
                         </td>
-                        <td>2022.01.15</td>
-                        <td>100,000</td>
-                      </tr>
-
-                      <tr>
-                        <td>딕펑스</td>
-                        <td>
-                          <a href="#id=11864"><em>왕고냐</em></a>
+                        <td class="cell">
+                          <p class="">100,000</p>
                         </td>
-                        <td>2022.01.12</td>
-                        <td>100,000</td>
+                        <td class="cell">
+                          <div class="">
+                            <p class="">휴대폰 간편결제</p>
+                          </div>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -1474,56 +1634,194 @@
             <!-- 아티스트 계정 -->
 
             <div class="ArtistInfo-div mypage-div">
-              <!-- 소메뉴 아티스트 계정 목록  -->
-              <div class="artistUser-List" style="display: none">
-                <div class="artistUser-listBox">
-                  <div class="reartistUser-list-right">
-                    <div class="artistUser-listArtist">
-                      <div class="artistUser-list-artistBox">
-                        <div class="artistUser-list-artist">
-                          <img
-                            class="artistUser-list-img-artist"
-                            src="https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG"
-                            alt=""
-                          />
-                        </div>
-
-                        <div
-                          class="artistUser-list-content-box artistUser-list-artist-content"
-                        >
-                          <div class="artistUser-list-nickname">페퍼톤스</div>
-                          <div class="artistUser-listContent artist">
-                            뮤지션
+                          <!-- 소메뉴 아티스트 나의 아티스트 계정  -->
+                          <div class="artistUser-List" style="display: none">
+                            <div class="artistUser-listBox">
+                              <div class="reartistUser-list-right">
+                                <div class="artistUser-listArtist">
+                                  <div class="artistUser-list-artistBox">
+                                    <div class="artistUser-list-artist">
+                                      <img
+                                        class="artistUser-list-img-artist"
+                                        src="https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG"
+                                        alt=""
+                                      />
+                                    </div>
+            
+                                    <div
+                                      class="artistUser-list-content-box artistUser-list-artist-content"
+                                    >
+                                      <div class="artistUser-list-nickname">페퍼톤스</div>
+                                      <div class="artistUser-listContent artist">
+                                        뮤지션
+                                      </div>
+                                    </div>
+                                    <button class="artistUser-list-button list-button">
+                                      수정
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+            
+            
+                            <div class=""></div>
                           </div>
-                        </div>
-                        <button class="artistUser-list-button list-button">
-                          수정
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                          <!-- 소메뉴 나의 아티스트 계정 끝 -->
+ <!-- 소메뉴 아티스트 계정 수정  -->
+ <div class="artistUser-Info" style="display: none">
+  <div class="artist-join-title-box">
+    <div class="work_detail">
+      <div class="detail">
+        <p>아티스트 정보 수정</p>
+        <div class="announcement">
+          <p
+            style="
+              font-size: 13px;
+              margin-top: 0;
+              margin-bottom: 0px;
+              color: #ff9326;
+            "
+          >
+            <span class="announce"
+              >*수정 신청시 빠른시일내로 등록심사를
+              진행하겠습니다.</span
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-                <!-- 페이징 -->
-                <div class="mypage-paging">
-                  <div class="mypage-pageStyle">
-                    <a class="mypage-page-first"><<</a>
-                    <a class="mypage-page-prev"><</a>
-                    <div>
-                      <a class="">1</a>
-                    </div>
-                    <a class="mypage-page-next">></a>
-                    <a class="mypage-page-last">>></a>
-                  </div>
-                </div>
+  <div class="artist-join-title">
+    <div>아티스트명*</div>
+    <p class="input-name-p">
+      <input
+        id="artist-join-name"
+        class="input_text_name"
+        placeholder="아티스트 이름을 입력하세요"
+        value="페퍼톤스"
+      />
+    </p>
+  </div>
 
-                <div class=""></div>
-              </div>
+  <div class="artist-join-form-box">
+    <div class="artist-join-image-box">
+      <!-- <span class="input-artist-image-desc"
+        >아티스트 대표 사진을 <br />등록해주세요.</span
+      >
+      <img
+        id="artist-join-profile"
+        class="artist-join-profile"
+        src="/static/images/mypage/photo-plus-icon.png"
+        alt=""
+      /> -->
+      <!-- <span class="input-artist-image-desc"
+      >아티스트 대표 사진을 <br />등록해주세요.</span
+    > -->
+    <img
+      id="artist-profile"
+      class="artist-profile"
+      src="http://tkfile.yes24.com/upload2/PerfBlog/202206/20220609/20220609-42492.jpg"
+      alt=""
+    />
+    </div>
+    <input
+      type="file"
+      id="artist-file-input"
+      style="visibility: hidden; display:none;"
+    />
 
-              <!-- 소메뉴 아티스트 계정 수정  -->
-              <div class="artistUser-Info" style="display: none">
-                아티스트 계정 수정
-              </div>
+    <div class="artist-join-info-box">
+      <div class="info_area1">
+        <dl>
+          <dt>종류</dt>
+          <dd>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+              class="form-inline"
+            >
+              <select
+                name="artist-form-category"
+                class="artist-form-category"
+              >
+                <option value="뮤지션">
+                  아티스트 종류를 선택해주세요.
+                </option>
+                <option value="뮤지션">뮤지션</option>
+                <option value="퍼포먼스">퍼포먼스</option>
+              </select>
+            </span>
+          </dd>
+          <dt>앨범명</dt>
+          <dd>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+              type="text"
+              name="albumName"
+              class="input_text"
+            />
+          </dd>
+          <dt>아티스트</dt>
+          <dd>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+              type="text"
+              name="artistName"
+              class="input_text"
+            />
+          </dd>
+          <dt>발매일</dt>
+          <dd>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+              type="date"
+              name="releaseDate"
+              class="input_text"
+            />
+          </dd>
+          <dt>장르</dt>
+          <dd>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+              type="text"
+              name="genre"
+              class="input_text"
+            />
+          </dd>
+          <dt>대표 음원</dt>
+          <dd>
+            &nbsp;&nbsp;&nbsp;&nbsp;<input
+              type="text"
+              name="youtube_link"
+              class="input_text"
+              placeholder="유튜브 링크로 올려주세요."
+            />
+          </dd>
+        </dl>
+      </div>
+      <div class="form-inline">
+        <div class="info_area2">
+          <dl>
+            <dt>아티스트 소개</dt>
+            <dd class="textarea-dd">
+              <textarea
+                name="workDescription"
+                id=""
+                cols="82"
+                rows="5"
+                placeholder="아티스트를 간단히 소개해주세요."
+              ></textarea>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-button">
+    <button id="artist-form-submit" class="artist-form-submit">
+      수정
+    </button>
+  </div>
+</div>
+<!-- 소메뉴 아티스트 계정 수정 끝 -->
+
 
               <!-- 소메뉴 아티스트 계정 삭제  -->
               <div class="artistUser-Delete" style="display: none">
@@ -1584,55 +1882,135 @@
 
             <!-- 소메뉴 아티스트 계정 등록  -->
             <div class="artistJoic-desc" style="display: none">
-              <!-- 아티스트 계정이 없습니다. 새로 등록하시겠습니까? -->
+              <div class="artist-join-title-box">
+                <div class="work_detail">
+                  <div class="detail">
+                    <p>아티스트 등록 신청</p>
+                    <div class="announcement">
+                      <p
+                        style="
+                          font-size: 13px;
+                          margin-top: 0;
+                          margin-bottom: 0px;
+                          color: #ff9326;
+                        "
+                      >
+                        <span class="announce"
+                          >*작품등록시 빠른시일내로 등록심사를
+                          진행하겠습니다.</span
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div class="artist-join-title">
+                <div>아티스트명*</div>
                 <p class="input-name-p">
                   <input
                     id="artist-join-name"
-                    class="input-artist-join-name"
+                    class="input_text_name"
                     placeholder="아티스트 이름을 입력하세요"
                   />
                 </p>
               </div>
-              <div>
-                <div class="artist-join-form-box">
-                  <div class="artist-join-image-box">
-                    <span class="input-artist-image-desc"
-                      >아티스트 대표 사진을 <br />등록해주세요.</span
-                    >
-                    <img
-                      id="artist-join-profile"
-                      class="artist-join-profile"
-                      src="/static/images/mypage/photo-plus-icon.png"
-                      alt=""
-                    />
-                  </div>
-                  <input
-                    type="file"
-                    id="artist-file-input"
-                    style="visibility: hidden"
-                  />
 
-                  <div class="artist-join-info-box">
-                    <!--등급, 관람시간, 출연, 가격, 혜택-->
-                    <div class="form-inline">
-                      <select
-                        name="artist-form-category"
-                        class="artist-form-category"
-                      >
-                        <option value="뮤지션">
-                          아티스트 종류를 선택해주세요.
-                        </option>
-                        <option value="뮤지션">뮤지션</option>
-                        <option value="퍼포먼스">퍼포먼스</option>
-                      </select>
-                    </div>
-                    <div class="form-inline">
-                      <textarea
-                        id="artist-info-content"
-                        class="input-artist-info-content"
-                        placeholder="아티스트를 소개해 주세요."
-                      ></textarea>
+              <div class="artist-join-form-box">
+                <div class="artist-join-image-box">
+                  <span class="input-artist-image-desc"
+                    >아티스트 대표 사진을 <br />등록해주세요.</span
+                  >
+                  <img
+                    id="artist-join-profile"
+                    class="artist-join-profile"
+                    src="/static/images/mypage/photo-plus-icon.png"
+                    alt=""
+                  />
+                </div>
+                <input
+                  type="file"
+                  id="artist-file-input"
+                  style="visibility: hidden; display: none"
+                />
+
+                <div class="artist-join-info-box">
+                  <div class="info_area1">
+                    <dl>
+                      <dt>종류</dt>
+                      <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                          class="form-inline"
+                        >
+                          <select
+                            name="artist-form-category"
+                            class="artist-form-category"
+                          >
+                            <option value="뮤지션">
+                              아티스트 종류를 선택해주세요.
+                            </option>
+                            <option value="뮤지션">뮤지션</option>
+                            <option value="퍼포먼스">퍼포먼스</option>
+                          </select>
+                        </span>
+                      </dd>
+                      <dt>앨범명</dt>
+                      <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+                          type="text"
+                          name="albumName"
+                          class="input_text"
+                        />
+                      </dd>
+                      <dt>아티스트</dt>
+                      <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+                          type="text"
+                          name="artistName"
+                          class="input_text"
+                        />
+                      </dd>
+                      <dt>발매일</dt>
+                      <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+                          type="date"
+                          name="releaseDate"
+                          class="input_text"
+                        />
+                      </dd>
+                      <dt>장르</dt>
+                      <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+                          type="text"
+                          name="genre"
+                          class="input_text"
+                        />
+                      </dd>
+                      <dt>뮤비 링크</dt>
+                      <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+                          type="text"
+                          name="youtube_link"
+                          class="input_text"
+                          placeholder="유튜브 링크로 올려주세요."
+                        />
+                      </dd>
+                    </dl>
+                  </div>
+                  <div class="form-inline">
+                    <div class="info_area2">
+                      <dl>
+                        <dt>아티스트 소개</dt>
+                        <dd class="textarea-dd">
+                          <textarea
+                            name="workDescription"
+                            id=""
+                            cols="82"
+                            rows="5"
+                            placeholder="아티스트를 간단히 소개해주세요."
+                          ></textarea>
+                        </dd>
+                      </dl>
                     </div>
                   </div>
                 </div>
@@ -1648,72 +2026,205 @@
 
             <!-- 소메뉴 아티스트 계정 후원 회원 목록  -->
             <div class="artistUserDonation-List" style="display: none">
-              <div class="artistUserDonation">
-                <div class="donation-title">
-                  <p class="donation-p">후원 중인 회원</p>
+
+              <div class="artist-join-title-box">
+                <div class="work_detail">
+                  <div class="detail-donation">
+                    <p>후원 회원 목록</p>
+                    <div class="announcement">
+                      <p
+                        style="
+                          font-size: 13px;
+                          margin-top: 0;
+                          margin-bottom: 0px;
+                          color: #ff9326;
+                        "
+                      >
+                        <span class="announce"
+                          >*후원 관련 문의는 1:1 문의 페이지를 이용해주세요.</span
+                        >
+                      </p>
+                      
+
+                      <div class="donation-soring">
+                        <span class="sorting"><a>최신순</a></span>
+                        <span class="sorting"><a>오래된순</a></span>
+                        <span class="sorting"><a>금액높은순</a></span>
+                        <span class="sorting"><a>금액낮은순</a></span>
+                      </div>
+
+
+                    </div>
+                  </div>
                 </div>
+              </div>
 
-                <div class="donation-tbl">
-                  <table>
-                    <tbody>
-                      <tr>
-                        <th scope="col">아티스트명</th>
-                        <th scope="col">회원 닉네임</th>
-                        <th scope="col">후원 시작일</th>
-                        <th scope="col">후원 금액</th>
+
+
+
+              <div class="donation-wrap">
+                <div class="donationTable-wrap">
+                  <table class="donation-table">
+                    <thead class="donation-header">
+                      <tr class="">
+                        <th class="row-1">
+                          <div class="">
+                            <p class="">날짜</p>
+                          </div>
+                        </th>
+                        <th class="row-2">
+                          <div class="">
+                            <p class="">후원자 닉네임</p>
+                          </div>
+                        </th>
+                        <th class="row-3">
+                          <div class="">
+                            <p class="">후원 금액</p>
+                          </div>
+                        </th>
+                        <th class="row-4">
+                          <div class="">
+                            <p class="">메시지</p>
+                          </div>
+                        </th>
                       </tr>
-                      <tr>
-                        <td>페퍼톤스</td>
-                        <td>
-                          <a href="#id=11869"><em>왕고냐</em></a>
+                    </thead>
+
+                    <tbody class="donation-body">
+                      <tr class="row">
+                        <td class="cell">
+                          <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
                         </td>
-                        <td>2022.06.17</td>
-                        <td>100,000</td>
+                        <td class="cell">
+                          <div class="table-artist-flex">
+                            <a class="" href=""
+                              ><div
+                                aria-label="채널 아이콘"
+                                class="donation-icon"
+                              >
+                                <img
+                                  class="donation-icon"
+                                  alt=""
+                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
+                                /></div
+                            ></a>
+                            <div class="">
+                              <p class="table-p">
+                                <a class="" >왕고냐</a>
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="cell">
+                          <p class="">100,000</p>
+                        </td>
+                        <td class="cell">
+                          <div class="">
+                            <p class="">노래 개좋아</p>
+                          </div>
+                        </td>
                       </tr>
 
-                      <tr>
-                        <td>페퍼톤스</td>
-                        <td>
-                          <a href="#id=11868"><em>수띵</em></a>
+                      <tr class="row">
+                        <td class="cell">
+                          <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
                         </td>
-                        <td>2022.04.17</td>
-                        <td>100,000</td>
+                        <td class="cell">
+                          <div class="table-artist-flex">
+                            <a class="" href=""
+                              ><div
+                                aria-label="채널 아이콘"
+                                class="donation-icon"
+                              >
+                                <img
+                                  class="donation-icon"
+                                  alt=""
+                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
+                                /></div
+                            ></a>
+                            <div class="">
+                              <p class="table-p">
+                                <a class="">왕고냐</a>
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="cell">
+                          <p class="">100,000</p>
+                        </td>
+                        <td class="cell">
+                          <div class="">
+                            <p class="">노래 개좋아</p>
+                          </div>
+                        </td>
                       </tr>
 
-                      <tr>
-                        <td>페퍼톤스</td>
-                        <td>
-                          <a href="#id=11867"><em>쟝평</em></a>
+                      <tr class="row">
+                        <td class="cell">
+                          <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
                         </td>
-                        <td>2022.02.19</td>
-                        <td>100,000</td>
+                        <td class="cell">
+                          <div class="table-artist-flex">
+                            <a class="" href=""
+                              ><div
+                                aria-label="채널 아이콘"
+                                class="donation-icon"
+                              >
+                                <img
+                                  class="donation-icon"
+                                  alt=""
+                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
+                                /></div
+                            ></a>
+                            <div class="">
+                              <p class="table-p">
+                                <a class="">왕고냐</a>
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="cell">
+                          <p class="">100,000</p>
+                        </td>
+                        <td class="cell">
+                          <div class="">
+                            <p class="">노래 개좋아</p>
+                          </div>
+                        </td>
                       </tr>
 
-                      <tr>
-                        <td>페퍼톤스</td>
-                        <td>
-                          <a href="#id=11866"><em>알라리깡숑</em></a>
+                      <tr class="row">
+                        <td class="cell">
+                          <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
                         </td>
-                        <td>2022.01.28</td>
-                        <td>100,000</td>
-                      </tr>
-
-                      <tr>
-                        <td>페퍼톤스</td>
-                        <td>
-                          <a href="#id=11865"><em>우주like갤럭시</em></a>
+                        <td class="cell">
+                          <div class="table-artist-flex">
+                            <a class="" href=""
+                              ><div
+                                aria-label="채널 아이콘"
+                                class="donation-icon"
+                              >
+                                <img
+                                  class="donation-icon"
+                                  alt=""
+                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
+                                /></div
+                            ></a>
+                            <div class="">
+                              <p class="table-p">
+                                <a class="">왕고냐</a>
+                              </p>
+                            </div>
+                          </div>
                         </td>
-                        <td>2022.01.15</td>
-                        <td>100,000</td>
-                      </tr>
-
-                      <tr>
-                        <td>페퍼톤스</td>
-                        <td>
-                          <a href="#id=11864"><em>허튼소리</em></a>
+                        <td class="cell">
+                          <p class="">100,000</p>
                         </td>
-                        <td>2022.01.12</td>
-                        <td>100,000</td>
+                        <td class="cell">
+                          <div class="">
+                            <p class="">노래 개좋아</p>
+                          </div>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -1741,5 +2252,8 @@
     </div>
   </body>
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-  <script src="/static/assets/js/mypage/mypage.js"></script>
+  <script
+    type="text/javascript"
+    src="../../static/assets/js/mypage/mypage.js?ver=1"
+  ></script>
 </html>
