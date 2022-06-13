@@ -98,6 +98,7 @@
 .list-more .lm2{background:#f2caad;animation-delay: 0.3s;}
 .list-more .lm3{background:#edb78f;animation-delay: 0.6s;}
 .list-more .lm4{background:#ec7d2c;animation-delay: 0.9s;}
+
 @keyframes dotdot {
   0%   {opacity:0.1;}
   20%  {opacity:1;}
@@ -113,6 +114,8 @@
 .pf-right-menu a{display:inline-block;font-size:14px;font-weight:300;line-height:22px;color:#000;position:relative;padding-left:10px;margin-right:10px;}
 .pf-right-menu a:before{content:"";display:block;width:3px;height:3px;background:#ec7d2c;position:absolute;top:10px;left:0;}
 .perform-top.fixed .pf-right-menu a{color:#000;}
+
+
 
 
 
