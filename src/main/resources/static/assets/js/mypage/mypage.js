@@ -444,8 +444,8 @@ $(".work-Performance-button").click(function (e) {
 
 // 하트 클릭
 function heartClick(e) {}
-
 $("#myArtist-1").click(function (e) {
+  console.log('d2')
   if ($("#heart-icon-1").css("display") == "none") {
     $("#heartNon-icon-1").hide();
     $("#heart-icon-1").show();
@@ -469,20 +469,20 @@ $(".ArtistInfo-tab").click(function (e) {
   header(".ArtistInfo-tab");
   artistUserSmallMenu(".artistUserList-tab");
   $(divCurrentName).hide();
-  informationTabChange(".artistUser-List");
+  informationTabChange(".artistUser-Info");
 });
 
 // 소메뉴 클릭
 //  아티스트 계정 목록 탭
-$(".artistUserList-tab").click(function (e) {
-  console.log("dd");
-  e.preventDefault();
-  artistUserSmallMenu(".artistUserList-tab");
-  informationTabChange(".artistUser-List");
-});
+// $(".artistUserList-tab").click(function (e) {
+//   console.log("dd");
+//   e.preventDefault();
+//   artistUserSmallMenu(".artistUserList-tab");
+//   informationTabChange(".artistUser-List");
+// });
 
 // 아티스트 정보 수정 탭
-$(".artistUserInfo-tab").click(function (e) {
+$(".artistUserList-tab").click(function (e) {
   e.preventDefault();
   console.log("dddd");
   artistUserSmallMenu(".artistUserInfo-tab");
