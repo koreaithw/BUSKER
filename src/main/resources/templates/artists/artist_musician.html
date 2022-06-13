@@ -8,6 +8,7 @@
     <title>
         아티스트 목록
     </title>
+    
     <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
     <script type="text/javascript" id="www-widgetapi-script" src="https://www.youtube.com/s/player/02208bb4/www-widgetapi.vflset/www-widgetapi.js" async=""></script>
     <script src="https://connect.facebook.net/signals/config/233729201256635?v=2.9.61&amp;r=stable" async=""></script>
@@ -16,11 +17,24 @@
     <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PVHFWWM"></script>
     <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery-3.4.1_min.js"></script><!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PVHFWWM');</script><!-- End Google Tag Manager -->
-    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/swiper_min.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/Chart.bundle_min.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/utils.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.mCustomScrollbar_min.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/common.js?v=580"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.lazy.min.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.cookie.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.url.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/base64.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/babel.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/polyfill.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/swiper_min.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/Chart.bundle_min.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/utils.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.mCustomScrollbar_min.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/common.js?v=580"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.lazy.min.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.url.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/base64.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/babel.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/polyfill.js"></script>
     <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/Main.js?v=580"></script>
     <script type="text/javascript" src="/inc/js/custom-1.8.21/ui/jquery-ui-1.8.21.custom.min.js"></script>
-    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jry_home_jdefault.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jry_home_jdialog.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jry_home_jdefault.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jry_home_jdialog.js"></script>
     <script type="text/javascript" src="/inc/js/jry_default_new.js?v=580"></script>
+
+    <script type="text/javascript" src="../../static/assets/js/artists/artists.js"></script>
 
     <link rel="stylesheet" href="../../static/assets/css/artist/artist_list.css">
 
@@ -58,13 +72,19 @@
         <input type="hidden" name="" id="searchType" value="" autocomplete="off">
 
 
-        <a href="#" onclick="jsf_mm_Search();"><img src="http://tkfile.yes24.com/imgNew/common/pf-srch.png" alt="" class="trans"><img src="http://tkfile.yes24.com/imgNew/common/pf-srch-w.png" alt="" class="fixed"></a>
+        <a href="#" onclick="jsf_mm_Search();"><img src="http://tkfile.yes24.com/imgNew/common/pf-srch.png" alt="" class="trans"><img src="../../static/images/artist/search.png" alt="" class="searchbtn"></a>
 
 
     </div>
 
-    <p class="li-sec-tag">
+    
 
+    <p class="li-sec-tag">
+        <span><a style="cursor:pointer;" onclick="artistSort1();" token="3" class="on">최신 등록 기준</a></span>
+        <span><a style="cursor:pointer;" onclick="artistSort2();" token="0">좋아요 기준</a></span>
+
+      
+        
 
     </p>
     <p class="li-sec-result">
@@ -226,6 +246,8 @@
         lastScrollTop = scrollT
     }
 
+  
+
 
 
 
@@ -240,5 +262,28 @@
         location.href=artist_no;
     }
 </script>
+<script>
+
+function artistSort1() {
+
+$('.li-sec-tag a').removeClass("on");
+$('.li-sec-tag').find("a[token='3']").addClass("on")
+}
+
+</script>
+<script>
+
+function artistSort2() {
+    
+$('.li-sec-tag a').removeClass("on");
+$('.li-sec-tag').find("a[token='0']").addClass("on")
+}
+    
+</script>
+ 
+
+
+
+
 </body>
 </html>
