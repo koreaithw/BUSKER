@@ -13,13 +13,13 @@
 
     <!-- 제이쿼리 불러오기 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <title>공연일정 변경</title>
+    <title>공연 등록</title>
 </head>
 <body>
     <div class="show_detail_wrap">
         <div class="show_detail">
             <div class="detail">
-                <p>공연일정 변경</p>
+                <p>공연 등록</p>
             </div>
         </div>
     </div>
@@ -42,7 +42,6 @@
                                     <option value="performance">퍼포먼스</option>
                                     <option value="musician">뮤지션</option>
                                 </select>
-                                    
                                 <dt>팀명*</dt>
                                 <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="artistName" class="input_text"></dd>
                                 <dt>공연일자*</dt>
@@ -55,16 +54,15 @@
                         </div>
                         <div class="info_area2">
                             <dl>
-                                <dt>기타 사항</dt>
+                                <dt>공연 상세내용</dt>
                                 <dd>
-                                    <textarea name="ect" id="" cols="82" rows="5"></textarea>
+                                    <textarea name="show" id="" cols="82" rows="5"></textarea>
                                 </dd>
                             </dl>
                         </div>
                         <div class="info_area2">
                             <div class="purchase_link_wrap">
-                                <a href="javascript:delete" class="purchase_link">삭제</a>
-                                <a href="javascript:update" class="purchase_link">수정완료</a>
+                                <a href="javascript:click" class="purchase_link">등록</a>
                             </div>
                         </div>
                     </div>
@@ -108,8 +106,31 @@
             $(this).css("background-color", "#FFF");
         });
 
-        //수정
-        //삭제
+        //저장
+        $(document).on("click", "#save", function(){
+            var formData = new FormData($("#fileForm")[0]);
+            if(fileList.length > 0){
+                fileList.forEach(function(f){
+                    formData.append("fileList", f);
+                });
+            }         
+
+            $.ajax({
+                url : "서버 맵핑 URL",
+                data : formData,
+                type:'POST',
+                enctype:'multipart/form-data',
+                processData:false,
+                contentType:false,
+                dataType:'json',
+                cache:false,
+                success:function(res){
+                    alert("등록에 성공하셨습니다.");
+                },error:function(res){
+                    alert("오류 발생.\n관리자에게 문의해주세요.");
+                }
+            });
+        });
     });
 </script>
 

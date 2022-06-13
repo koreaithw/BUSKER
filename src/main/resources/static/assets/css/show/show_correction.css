@@ -42,14 +42,14 @@ dl {
     margin-inline-end: 0px;
 }
 
-.work_detail_wrap {
+.show_detail_wrap {
     width: 1300px;
     margin: 0 auto;
     padding-top: 55px;
     position: relative;
 }
 
-.work_detail {
+.show_detail {
     width: 1200px;
     margin: 0 auto;
     position: relative;
@@ -73,7 +73,7 @@ dl {
     font-family: 'Noto Sans KR','NanumBarunGothic','맑은 고딕','Malgun Gothic',sans-serif;
 }
 
-.work_info_wrap {
+.show_info_wrap {
     padding-top: 0;
     margin-top: -655px;
     width: 1300px;
@@ -81,14 +81,14 @@ dl {
     position: relative;
 }
 
-.work_info_content {
+.show_info_content {
     width: 1200px;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
 }
 
-.work_info {
+.show_info {
     margin-top: 40px;
     overflow: hidden;
     padding-bottom: 50px;
