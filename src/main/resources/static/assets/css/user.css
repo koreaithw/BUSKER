@@ -1,3 +1,10 @@
+.authentication-form p , .id-check{
+    margin: 0;
+    padding: 0;
+    color: red;
+    font-size: 10px;
+}
+
 
 .header-change h1 a {
     height: 35px;
@@ -224,7 +231,7 @@ body {
     text-align: center;
 }
 
-.btn-signupnext , .btn-selfnext {
+.btn-signupnext , .btn-selfnext, .btn-submitnest {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -259,7 +266,7 @@ body {
 .authentication-form button{
     top: 1.125rem;
     right: 0;
-    width: auto;
+    width: 150px;
     height: 1.75rem;
     padding: 0 0.9375rem;
     border-radius: 0.875rem;
