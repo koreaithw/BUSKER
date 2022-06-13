@@ -260,7 +260,7 @@ input[type=checkbox] {
     display: flex;
     flex-direction: column;
     width: 20vw;
-    height: 100%;
+    height: 100vw;
     line-height: 600px;
     float: left;
 }
@@ -355,6 +355,11 @@ input[type=checkbox] {
     margin-left: 20px;
     font-size: 0.75rem;
 }
+.artist-list table {
+    width: 100%;
+    border-collapse: seperate;
+    border-spacing: 20px 30px;
+}
 
 .artist-list-field, .notice-list-field, .work-list-field, .user-list-field, .inquiry-list-field {
     display: flex;
@@ -366,6 +371,12 @@ input[type=checkbox] {
     justify-content: space-between;
     background-color: #fff;
     border: 1px solid #d9d9d9;
+}
+
+.artist-list-field table, .notice-list-field table, .work-list-field table, .user-list-field table, .inquiry-list-field table{
+    width: 100%;
+    border-collapse: seperate;
+    border-spacing: 20px 30px;
 }
 
 .today h5, admin-name h1 {
@@ -391,6 +402,7 @@ input[type=checkbox] {
     display: flex;
     flex-direction: column;
     width: 100vw;
+    height: 100vw;
     background-color: #ebebeb;
 }
 
