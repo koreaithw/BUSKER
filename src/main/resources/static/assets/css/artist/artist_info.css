@@ -691,3 +691,284 @@ a {
     outline: none;
     color: inherit;
 }
+
+.rn-05 button.rn-bb03 {
+    font-size: 20px;
+    color: #fff;
+    background: #f43142;
+    border: 2px solid #f43142;
+}
+.rn-05 button {
+    display: inline-block;
+    width: 236px;
+    height: 46px;
+    padding : 0px;
+    line-height: 46px;
+    margin: 5px;
+    vertical-align: top;
+    font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+}
+button:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+}
+button {
+    font-size: 0;
+    text-decoration: none;
+    outline: none;
+    color: inherit;
+}
+
+.modal {
+    position: fixed;
+    width: 50%;
+    height: 20%;
+    background: rgba(255,255,255,0.9);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0%;
+    border-color: #ff9f40;
+    border-width: 5px;
+    border-style: solid;
+    display:none;
+}
+
+.main-content-pane section {
+    background: #fff;
+    padding: 0.75rem;
+}
+
+.section-donation-name {
+    display: flex;
+    flex-wrap: wrap;
+}
+* {
+    box-sizing: border-box;
+}
+user agent stylesheet
+section {
+    display: block;
+}
+.section-donation-name .donation-name {
+    flex: 1;
+}
+
+.section-donation-name>label {
+    margin-top: 0.75rem;
+    flex-grow: 1;
+    font-size: 1.2rem;
+}
+.input-label-common, .input-label-horizontal {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    display: inline-block;
+}
+* {
+    box-sizing: border-box;
+}
+user agent stylesheet
+label {
+    cursor: default;
+}
+element.style {
+}
+.input-label-common>span {
+    display: block;
+    font-size: 0.875rem;
+    padding-left: 0.25rem;
+}
+* {
+    box-sizing: border-box;
+}
+
+.input-label-common>input {
+    width: 100%;
+}
+
+.generic-text, .media-card > .media-card-info .media-text-wrap input[type=text], .input-label-common>input, .input-label-horizontal>input {
+    border-bottom-color: rgba(136, 136, 136, 0.25);
+    margin: 0 0 0.25rem 0;
+    padding: 0.375rem 0.25rem 0.25rem 0.5rem;
+    border-bottom-width: 0.125rem;
+    border-bottom-style: solid;
+    line-height: 1.5rem;
+    transition: color 166ms ease, background-color 166ms ease, border-bottom-color 166ms ease;
+    outline: none;
+}
+input, button, textarea {
+    font: inherit;
+    font-size: 1em;
+    background: none;
+    margin: 0;
+    border: none;
+    padding: 0;
+    outline: none;
+}
+* {
+    box-sizing: border-box;
+}
+user agent stylesheet
+input[type="text" i] {
+    padding: 1px 2px;
+}
+user agent stylesheet
+input {
+    writing-mode: horizontal-tb !important;
+    font-style: ;
+    font-variant-ligatures: ;
+    font-variant-caps: ;
+    font-variant-numeric: ;
+    font-variant-east-asian: ;
+    font-weight: ;
+    font-stretch: ;
+    font-size: ;
+    font-family: 'NanumBarunGothic', '���� ����', 'Malgun Gothic', sans-serif;
+    text-rendering: auto;
+    color: fieldtext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    background-color: field;
+    margin: 0em;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
+
+.section-donation-name .donation-amount {
+    flex: 1;
+    position: relative;
+}
+
+.section-donation-name>label+label {
+    margin-left: 1.5rem;
+}
+.section-donation-name>label {
+    margin-top: 0.75rem;
+    flex-grow: 1;
+    font-size: 1.2rem;
+}
+.input-label-common, .input-label-horizontal {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    display: inline-block;
+}
+* {
+    box-sizing: border-box;
+}
+user agent stylesheet
+label {
+    cursor: default;
+}
+
+.input-label-common>span {
+    display: block;
+    font-size: 0.875rem;
+    padding-left: 0.25rem;
+    font-family: 'NanumBarunGothic', '���� ����', 'Malgun Gothic', sans-serif;
+    font-weight: bold;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.input-label-common>input {
+    width: 100%;
+}
+
+.generic-text, .media-card > .media-card-info .media-text-wrap input[type=text], .input-label-common>input, .input-label-horizontal>input {
+    border-bottom-color: rgba(136, 136, 136, 0.25);
+    margin: 0 0 0.25rem 0;
+    padding: 0.375rem 0.25rem 0.25rem 0.5rem;
+    border-bottom-width: 0.125rem;
+    border-bottom-style: solid;
+    line-height: 1.5rem;
+    transition: color 166ms ease, background-color 166ms ease, border-bottom-color 166ms ease;
+    outline: none;
+}
+input, button, textarea {
+    font: inherit;
+    font-size: 1em;
+    background: none;
+    margin: 0;
+    border: none;
+    padding: 0;
+    outline: none;
+}
+* {
+    box-sizing: border-box;
+}
+user agent stylesheet
+input[type="number" i] {
+    padding: 1px 2px;
+}
+user agent stylesheet
+input {
+    writing-mode: horizontal-tb !important;
+    font-style: ;
+    font-variant-ligatures: ;
+    font-variant-caps: ;
+    font-variant-numeric: ;
+    font-variant-east-asian: ;
+    font-weight: ;
+    font-stretch: ;
+    font-size: ;
+    font-family: 'NanumBarunGothic', '���� ����', 'Malgun Gothic', sans-serif;
+    text-rendering: auto;
+    color: fieldtext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    background-color: field;
+    margin: 0em;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
+
+.modal a.rn-bb03-2 {
+    font-size: 20px;
+    color: #fff;
+    background: #f43142;
+    border: 2px solid #f43142;
+    
+}
+.modal a {
+    display: inline-block;
+    width: 236px;
+    height: 46px;
+    line-height: 46px;
+    margin: 5px;
+    vertical-align: top;
+    font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+}
+
+.modal-content-down {
+    padding-top: 20px;
+    text-align: center;
+    font-size: 0;
+}

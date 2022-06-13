@@ -286,9 +286,9 @@ div.pf-top-srch {
     float: right;
 }
 
-img.fixed {
+div.searchbtn {
     display: inline-block;
-    top: -3px;
+    top: -75%;
 }
 
 #searchWord {
