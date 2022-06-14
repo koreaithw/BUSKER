@@ -278,3 +278,14 @@ textarea:focus {
     overflow: hidden;
     margin-bottom: 50px;
 }
+
+.warning_msg {
+    color: red;
+    font-size: 13px;
+    margin: 0;
+    padding-left: 55px;
+}
+
+dd span {
+    line-height: 20px;
+}

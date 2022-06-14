@@ -3,8 +3,9 @@
     width: 216px;
     height: 303px;
 }
+.show_m {font-size:15px; margin-top:10px; height:70px; text-align:center; font-family:'Noto Sans KR','NanumBarunGothic','맑은 고딕','Malgun Gothic',sans-serif;font-weight:500;position:relative;}
 
-.m2-tit{font-size:30px; margin-top:80px; height:70px; text-align:center; font-family:'Noto Sans KR','NanumBarunGothic','맑은 고딕','Malgun Gothic',sans-serif;font-weight:500;position:relative;}
+.m2-tit{font-size:30px; margin-top:40px; height:70px; text-align:center; font-family:'Noto Sans KR','NanumBarunGothic','맑은 고딕','Malgun Gothic',sans-serif;font-weight:500;position:relative;}
 .m2-tit img{padding-top:82px;}
 
 .ms-focus-imgs{width:100%; min-width:1300px; text-align:center; font-size:0;padding-left:1px;}
@@ -98,6 +99,7 @@
 .list-more .lm2{background:#f2caad;animation-delay: 0.3s;}
 .list-more .lm3{background:#edb78f;animation-delay: 0.6s;}
 .list-more .lm4{background:#ec7d2c;animation-delay: 0.9s;}
+
 @keyframes dotdot {
   0%   {opacity:0.1;}
   20%  {opacity:1;}
@@ -113,6 +115,8 @@
 .pf-right-menu a{display:inline-block;font-size:14px;font-weight:300;line-height:22px;color:#000;position:relative;padding-left:10px;margin-right:10px;}
 .pf-right-menu a:before{content:"";display:block;width:3px;height:3px;background:#ec7d2c;position:absolute;top:10px;left:0;}
 .perform-top.fixed .pf-right-menu a{color:#000;}
+
+
 
 
 

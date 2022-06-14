@@ -20,8 +20,11 @@
         <div class="container sign-container">
             <div class="btn-signup">
                 <a href="" class="btn-signupemail">이메일 아이디로 가입하기</a>
-                <a href="" class="btn-signupkakao">카카오 아이디로 로그인</a>
-                <a href="" class="btn-signupnaver">네이버 아이디로 로그인</a>
+                <a href="" class="btn-signupkakao"><img src="/static/images/admin/free-icon-kakao-talk-2111466.png"
+                        width="20px;" height="20px;" alt="">&nbsp; 카카오 아이디로 로그인</a>
+                <!-- <a href="https://www.flaticon.com/kr/free-icons/-" title="카카오 톡 아이콘">카카오 톡 아이콘  제작자: Pixel perfect - Flaticon</a> -->
+                <a href="" class="btn-signupnaver"><img src="/static/images/admin/naver_icon.svg" width="20px;"
+                        height="20px;" alt="">&nbsp; 네이버 아이디로 로그인</a>
             </div>
         </div>
     </div>
@@ -47,8 +50,8 @@
         </div>
         <div class="select-all">
             <div class="ckb-all">
-                <div><label for="ckb-all"></label><input type="checkbox" name="cb-all" id="ckb-all"
-                        class="cb-all"><span>전체동의</span></label></div>
+                <div><label for="ckb-all"><input type="checkbox" name="cb-all" id="ckb-all"
+                            class="cb-all"><span>전체동의</span></label></div>
                 <small>(선택) 이벤트/혜택 알림을 포함하여 모두 동의합니다.</small>
             </div>
         </div>
@@ -62,11 +65,17 @@
             <h1>본인인증</h1>
         </div>
         <div class="authentication-form">
-            <input type="text" name="userName" class="inputText" placeholder="이름">
+            <input type="text" name="userName" class="inputText" id="Name" placeholder="이름">
+            <p class="user-name"></p>
             <div class="send">
-                <input type="text" name="userPhoneNumber" class="inputText" placeholder="휴대폰 번호 (- 제외)">
+                <input type="text" name="userPhoneNumber" id="Phone" class="inputText" placeholder="휴대폰 번호 (- 제외)">
                 <button>인증번호전송</button>
             </div>
+            <p class="user-phone"></p>
+            <div class="send-number" style="display: none;">
+                <input type="text" class="inputText" id="number" placeholder="인증번호 입력">
+            </div>
+            <p class="user-number"></p>
         </div>
         <div class="btn-signup">
             <a href="" class="btn-selfnext">인증 완료</a>
@@ -79,13 +88,14 @@
             <form action="">
                 <p>이름: 타임리프 / 휴대폰 번호: 타임리프</p>
                 <div class="select-id">
-                    <input type="text" class="inputText" placeholder="아이디(이메일)"> @
+                    <input type="text" class="inputText" placeholder="아이디(이메일)" id="email"> @
                     <select class="inputText">
                         <option value="">선택</option>
                         <option value="naver.com">naver.com</option>
                         <option value="gmail.com">gmail.com</option>
                     </select>
                 </div>
+                <p class="id-check"></p>
                 <div>
                     <input type="password" id="password" class="inputText" placeholder="비밀번호">
                     <p class="signin-password"></p>
@@ -93,7 +103,7 @@
                     <p class="check-password"></p>
                 </div>
                 <div class="btn-signup">
-                    <a href="/templates/main/main.html" onclick="chkPW()" class="btn-selfnext">가입 완료</a>
+                    <a href="/templates/main/main.html" class="btn-submitnest">가입 완료</a>
                 </div>
             </form>
         </div>
@@ -109,20 +119,62 @@
     });
     $(".btn-signupnext").on("click", function (e) {
         e.preventDefault();
+        if (!$("#ckb-service").is(":checked")) {
+            alert("필수 부분을 체크해주세요.");
+            return false;
+        }
+        if (!$("#ckb-privacy").is(":checked")) {
+            alert("필수 부분을 체크해주세요.");
+            return false;
+        }
+        if (!$("#ckb-personal").is(":checked")) {
+            alert("필수 부분을 체크해주세요.");
+            return false;
+        }
         $(".select-email").hide();
         $(".self-authentication").show();
     });
-    $(".btn-selfnext").on("click", function (e) {
-        e.preventDefault();
-        $(".self-authentication").hide();
-        $(".signin-container").show();
+    $(document).ready(function () {
+        $(".btn-selfnext").on("click", function (e) {
+            e.preventDefault();
+            if ($("#Name").val().length == 0) {
+                $(".user-name").text("이름을 입력하세요.");
+                $("#Name").focus();
+                return false;
+            }else {
+                $(".user-name").text("");
+            }
+            if ($("#Phone").val().length == 0) {
+                $(".user-phone").text("휴대폰번호를 입력하세요.");
+                $("#Phone").focus();
+                return false;
+            }else {
+                $(".user-phone").text("");
+            }
+            if($("#number").val() != 1234) {
+                $(".user-number").text("인증 번호를 제대로 입력해주세요.");
+                $("#number").focus();
+                return false;
+            }else {
+                $(".user-number").text("");
+            }
+            $(".self-authentication").hide();
+            $(".signin-container").show();
+        });
     });
-
-    function chkPW() {
+    $(".btn-submitnest").on("click",function(e){
+        e.preventDefault();
         var pw = $("#password").val();
         var check = $("#pw-check").val();
         var num = pw.search(/[0-9]/g);
         var eng = pw.search(/[a-z]/ig);
+        if($("#email").val().length == 0) {
+            $(".id-check").text("이메일을 입력하세요.");
+            $("#email").focus();
+            return false;
+        }else{
+            $(".id-check").text("");
+        }
         if (pw.length < 8 || pw.length > 20) {
             $(".signin-password").text("8자리 ~ 20자리 이내로 입력해주세요.");
             return false;
@@ -136,17 +188,17 @@
             $(".signin-password").text("");
         }
 
-        if (pw != check) { 
+        if (pw != check) {
             $(".check-password").text("두 비밀번호가 맞지 않습니다.");
-            pw = ""; 
+            pw = "";
             check = "";
-            return false; 
-        }else {
+            return false;
+        } else {
             $(".check-password").text("");
         }
-
+        console.log("통과");
         return true;
-    }
+    });
 
     $(document).ready(function () {
         $("#ckb-all").click(function () {
@@ -161,6 +213,11 @@
             if (total != checked) $("#ckb-all").prop("checked", false);
             else $("#ckb-all").prop("checked", true);
         });
+    });
+
+    $(".send button").on("click", function(e) {
+        e.preventDefault();
+        $(".send-number").show();
     });
 </script>
 
