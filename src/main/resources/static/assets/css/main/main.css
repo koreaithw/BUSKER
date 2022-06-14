@@ -164,12 +164,14 @@ li{
     text-align: center;
     height: 100px;
 }
+.tags a:hover{color:orange}
 
 .tags a{
     display: inline-block;
     font-size: 18px;
     margin: 0 20px;
     color: #555;
+    
 
 }
 
@@ -202,12 +204,15 @@ li{
 .poster-3-text{
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
-.flexing{
+.flexing-musician, .flexing-dance, .flexing-magic, .flexing-performance{
     display: flex;
     justify-content: center;
+
 }
+
 
 .poster-3-text{
     border-bottom: 1px solid #000;
@@ -239,9 +244,10 @@ li{
     position: absolute;
     width: 981px;
     height: 560px;
-    top: 0;
+    right: 0;
+    
     /* 유튜브영상 이동 */
-    left: 380;
+    
 }
 
 .youtube-text-box{
@@ -257,6 +263,7 @@ li{
     line-height: 60px;
     margin-bottom: 25px;
 }
+
 
 /* .youtube-box .youtube-text-video-box .youtube-text-box .youtube-text-top span:after{
     content: "";
@@ -482,11 +489,32 @@ img {vertical-align: middle;}
 
 
 
+.rank-num1 {
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    background: #ec7d2c;
+    bottom: 73px;
+    left: 14px;
+}
+
+.rank-num1 {
+    position: absolute;
+    left: 160px;
+    top: 298px;
+    bottom: 73px;
+    left: 14px;
+}
 
 
 
-
-
+.youtube-video-box iframe {
+    width: 900px;
+    height: 550px;
+}
 
 
 
