@@ -7,6 +7,15 @@
     <title>진행중인 콘서트</title>
     <link rel="stylesheet" href="/static/assets/css/concerting/concerting.css"/>
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script>
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // 해야할 일
+        // 1. 슬라이드 반응형 조절 (브라우저 크기가 너무 작을때 망가지는건 상관없는데 적당한 크기에서 잘 나와야 함)
+        // 2. 지도에서 마커의 인포윈도우 레이아웃 수정, a태그로 버튼 만들었는데 눌렀을 때 길찾기나 지도보기가 나와야 함 (밑에 카카오지도 api사용한부분에 어디 수정하면 되는지 주석 달아놨음 참고 할 것)
+        // 3. 지금 메인배너 슬라이드가 미묘하게 센터가 안맞는데 조절해야 함
+        // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    </script>
+
     <!-- 제이쿼리 불러오기 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     
@@ -143,22 +152,22 @@
           
             responsive: [ // 반응형 웹 구현 옵션
                 { 
-                    breakpoint: 2050, //화면 사이즈 768px
+                    breakpoint: 2400, //화면 사이즈 2400px
                     settings: {    
                     //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
-                    slidesToShow:1,
-                    centerPadding: '700px'
+                    slidesToShow:1, // 이거 건들 ㄴㄴ
+                    centerPadding: '700px' // 이거 수치 조정하면 슬라이드 사이 간격이 늘었다 줄었다 함
                     } 
                 },
                 {  
-                    breakpoint: 1910, //화면 사이즈 960px
+                    breakpoint: 1910, //화면 사이즈 1910px
                     settings: {
                     //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
                     centerPadding: '610px' 
                     } 
                 },
                 { 
-                    breakpoint: 1500, //화면 사이즈 768px
+                    breakpoint: 1500, //화면 사이즈 1500px
                     settings: {    
                     //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
                     slidesToShow:1,
@@ -218,6 +227,7 @@
 
             // 마커가 지도 위에 표시되도록 설정합니다
             marker.setMap(map);
+            // iwContent 여기서 태그들 수정하면 인포윈도우에 출력되는 레이아웃 수정 가능!
             var iwContent = '<div style="padding:8px 5px 5px 18px; width:100px; height:100px;" class="iw"><p class="info_txt">공연 위치</p><br><p class="info_txt2">' + item.loc + '</p><a href="https://map.kakao.com/link/map/공연위치' + ',' + item.lng + ',' + item.loc + '"' + 'target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
             iwPosition = new kakao.maps.LatLng(item.lng, item.lon); //인포윈도우 표시 위치입니다
             iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다

@@ -10,7 +10,13 @@
         .fileList .fileName{padding-left: 20px;}
         .fileList .fileSize{padding-right: 20px; float:right;}
     </style>
-
+    <script>
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // 현재 수정해야 할 사항!!!!!!!!!!!!!!!!!!!!
+        // 1. input태그 배경색 회색 => 주황계열로 바꾸기
+        // 2. 유효성검사 버그 수정 (밑에 스크립트 태그에 설명 있음)
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    </script>
     <!-- 제이쿼리 불러오기 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <title>작품 등록 신청</title>
@@ -30,7 +36,7 @@
     </div>
 
     <div class="work_info_wrap">
-        <form action="workList.html" method="post" enctype="multipart/form-data">
+        <form action="workList.html" method="post" name="registForm" enctype="multipart/form-data">
             <div class="work_info_content">
                 <div class="work_info">
                     <div class="info_left">
@@ -62,12 +68,14 @@
                                     <span><p class="warning_msg"></p></span>
                                 </dd>
                                 <dt>뮤비 링크</dt>
-                                <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="youtube_link" class="input_text" placeholder="유튜브 링크로 올려주세요."></dd>
+                                <dd>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="youtube_link" class="input_text" placeholder="유튜브 링크로 올려주세요.">
+                                </dd>
                             </dl>
                         </div>
                         <div class="info_area2">
                             <dl>
-                                <dt>앨범 설명</dt>
+                                <dt>작품 설명</dt>
                                 <dd>
                                     <textarea name="workDescription" id="" cols="82" rows="5" placeholder="작품설명을 입력해주세요"></textarea>
                                 </dd>
@@ -110,6 +118,7 @@
             $(e.target).closest("div").html(
                 "<img src='"+ window.URL.createObjectURL(files[0]) + "'>"
             );
+            // 파일 여러개 등록하려고 할때..
 //            if(files != null && files != undefined){
 //              var tag = "";
 //              for(i = 0; i < files.length; i++){
@@ -124,7 +133,7 @@
 //          $(this).css("background-color", "#FFF");
         });
 
-        //저장
+        //저장 (프론트에서 쓰는거 아님!!)
         $(document).on("click", "#save", function(){
             var formData = new FormData($("#fileForm")[0]);
             if(fileList.length > 0){
@@ -154,14 +163,17 @@
 
 <script>
     // 유효성 검사
+    // 작품명을 비웠을 때 까지는 처리했음
+    // 작품명이 비어있으면 다른칸도 경고문구가 뜨는 현상 처리해야함
+    // if문으로 분기처리 해주면 될듯?
     function check() {
         if($("input[name=workName]").val().length == 0){
             $(".warning_msg").text("반드시 입력해야 하는 칸입니다.");
-            $(".info_area2").css("min-height", "120px");
+            $(".info_area2").css("min-height", "120px"); // 경고문구 출력으로 인해 구분선이 아래로 내려오는 부분을 맞춰주기위한 코드, 필요시 수정 할 것
             return;
         } else{
             $(".warning_msg").text("");
-            $(this).closest("form").submit();
+            $("form[name=registForm]").submit();
             console.log("등록됨");
         }
     }
