@@ -10,4 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/file/*")
 @Controller
 public class FileController {
+    // 필드 생성
+
+
+
 }
