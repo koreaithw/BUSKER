@@ -425,7 +425,7 @@ div {
 }
 
 .rn-03-right .rn-product-area1 {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #d9d9d9;
     position: relative;
 }
 .rn-03-right > div {
@@ -517,7 +517,7 @@ dd {
 
 .rn-03-right .rn-product-area3 {
     min-height: 174px;
-    border-bottom: 1px solid rgb(0, 0, 0);
+    border-bottom: 1px solid #000;
 }
 .rn-03-right > div {
     padding-left: 1px;
@@ -680,7 +680,7 @@ div {
     display: inline-block;
     width: 236px;
     height: 46px;
-    line-height: 46px;
+    line-height: 39px;
     margin: 5px;
     vertical-align: top;
     font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
@@ -961,7 +961,7 @@ input {
     display: inline-block;
     width: 236px;
     height: 46px;
-    line-height: 46px;
+    line-height: 36px;
     margin: 5px;
     vertical-align: top;
     font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
@@ -971,4 +971,26 @@ input {
     padding-top: 20px;
     text-align: center;
     font-size: 0;
+}
+
+.modal_close {
+    text-align: right;
+    font-size: 13px;
+}
+
+.modal-close-btn {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+    object-fit: cover;
+    color: #fff;
+    background-color: #f43142;
+}
+
+.modal-content-down p {
+    font-size: 10px;
+    color: red;
 }
