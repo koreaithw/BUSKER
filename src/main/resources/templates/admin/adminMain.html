@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지</title>
+    <link rel="stylesheet" href="/assets/css/admin/admin.css" />
+</head>
+
+<body>
+    <div class="all-change">
+        <div class="header-change">
+            <p class="h-change">Buskers</p>
+            <h1 class="h-change"><a href="" class="btn-home"><img src="/images/admin/home.png" width="15px;" height="15px;" alt=""> 관리자 이름</a></h1>
+            <ul class="h-change">
+                <li><a href="" class="btn-artist"><img src="/images/admin/art-studies.png" width="15px;" height="15px;" alt="">&nbsp;&nbsp;아티스트 관리</a></li>
+                <!-- <a href="https://www.flaticon.com/free-icons/art" title="art icons">Art icons created by Hilmy Abiyyu A. - Flaticon</a> -->
+                <li><a href="" class="btn-notice"><img src="/images/admin/recruitment.png" width="15px;" height="15px;" alt="">&nbsp;&nbsp;모집 공고 관리</a></li>
+                <!-- <a href="https://www.flaticon.com/free-icons/recruitment" title="recruitment icons">Recruitment icons created by Icon home - Flaticon</a> -->
+                <li><a href="" class="btn-work"><img src="/images/admin/premium-icon-page-3151429.png" width="15px;" height="15px;" alt="">&nbsp;&nbsp;작품 관리</a></li>
+                <!-- <a href="https://www.flaticon.com/kr/free-icons/-" title="직업과 직업 아이콘">직업과 직업 아이콘  제작자: verry purnomo - Flaticon</a> -->
+                <li><a href="" class="btn-user"><img src="/images/admin/free-icon-user-456212.png" width="15px;" height="15px;" alt="">&nbsp;&nbsp;회원 관리</a></li>
+                <!-- <a href="https://www.flaticon.com/kr/free-icons/" title=" 아이콘"> 아이콘  제작자: Freepik - Flaticon</a> -->
+                <!-- <li><a href="" class="btn-inquiry">문의 관리</a></li> -->
+            </ul>
+        </div>
+        <div class="field-display">
+            <div class="admin-name">
+                <h1>관리자 이름</h1>
+                <div class="btn-main-border">
+                    <a href="/main/main.html" class="btn-main">메인으로 돌아가기</a>
+                </div>
+            </div>
+            <div class="home-display">
+                <div class="left-today">
+                    <div class="today">
+                        <h5 class="audit">오늘의 할일&nbsp;<p class="circle">11</p>
+                        </h5>
+                        <ul>
+                            <li class="audit"><a href="" class="btn-artist">아티스트심사</a>&nbsp;<p>10</p>
+                            </li>
+                            <li class="audit"><a href="" class="btn-notice">모집공고관리</a>&nbsp;<p>0</p>
+                            </li>
+                            <li class="audit"><a href="" class="btn-work">작품심사</a>&nbsp;<p>1</p>
+                            </li>
+                            <li class="audit"><a href="" class="btn-user">회원관리</a>&nbsp;<p>0</p>
+                            </li>
+                            <!-- <li><a href="" class="btn-inquiry">문의관리<p></p></a>
+                            </li> -->
+                        </ul>
+                    </div>
+                    <div class="artist-list" style="height: 397px;">
+                        <table>
+                            <h4>일자별 요약</h4>
+                            <tr>
+                                <th>일자</th>
+                                <th>이름</th>
+                                <th>설명</th>
+                                <th>카테고리</th>
+                            </tr>
+                            <tr>
+                                <td>2022-06-10</td>
+                                <td>누룽지</td>
+                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                                <td>아티스트 신청</td>
+                            </tr>
+                            <tr>
+                                <td>2022-06-10</td>
+                                <td>안갈래</td>
+                                <td><a href="/work/workInfo.html">내용 보기</a></td>
+                                <td>작품 신청</td>
+                            </tr>
+                            <tr>
+                                <td>2022-06-10</td>
+                                <td>랄랄랜드</td>
+                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                                <td>아티스트 신청</td>
+                            </tr>
+                            <tr>
+                                <td>2022-06-10</td>
+                                <td>최진홍</td>
+                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                                <td>아티스트 신청</td>
+                            </tr>
+                            <tr>
+                                <td>2022-06-10</td>
+                                <td>임히어로</td>
+                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                                <td>아티스트 신청</td>
+                            </tr>
+                            <tr>
+                                <td>2022-06-10</td>
+                                <td>김가방</td>
+                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                                <td>아티스트 신청</td>
+                            </tr>
+                            <tr>
+                                <td>2022-06-10</td>
+                                <td>강와퍼</td>
+                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                                <td>아티스트 신청</td>
+                            </tr>
+                            <tr>
+                                <td>2022-06-10</td>
+                                <td>아리안</td>
+                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                                <td>아티스트 신청</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="artist-list">
+                        <table>
+                            <h4>최신 아티스트 신청</h4>
+                            <tr>
+                                <th>일자</th>
+                                <th>이름</th>
+                                <th>설명</th>
+                                <th>후원 여부</th>
+                                <th>신청 일자</th>
+                            </tr>
+                            <tr>
+                                <td><img src="/images/admin/propill-1.png" class="icon" width="20px;"
+                                        height="20px;" alt=""></td>
+                                <td>청하</td>
+                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                                <td>O</td>
+                                <td>2022-06-10</td>
+                            </tr>
+                            <tr>
+                                <td><img src="/images/admin/propill-2.png" class="icon" width="20px;"
+                                        height="20px;" alt=""></td>
+                                <td>보아</td>
+                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                                <td>O</td>
+                                <td>2022-06-10</td>
+                            </tr>
+                            <tr>
+                                <td><img src="/images/admin/propill-3.png" class="icon" width="20px;"
+                                        height="20px;" alt=""></td>
+                                <td>아이유</td>
+                                <td><a href="/templates/artist/artistInfo.html">내용 보기</a></td>
+                                <td>O</td>
+                                <td>2022-06-10</td>
+                            </tr>
+                            <tr>
+                                <td><img src="/images/admin/propill-1.png" class="icon" width="20px;"
+                                        height="20px;" alt=""></td>
+                                <td>청하</td>
+                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                                <td>O</td>
+                                <td>2022-06-10</td>
+                            </tr>
+                            <tr>
+                                <td><img src="/images/admin/propill-2.png" class="icon" width="20px;"
+                                        height="20px;" alt=""></td>
+                                <td>보아</td>
+                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                                <td>O</td>
+                                <td>2022-06-10</td>
+                            </tr>
+                            <tr>
+                                <td><img src="/images/admin/propill-3.png" class="icon" width="20px;"
+                                        height="20px;" alt=""></td>
+                                <td>아이유</td>
+                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                                <td>O</td>
+                                <td>2022-06-10</td>
+                            </tr>
+                            <tr>
+                                <td><img src="/images/admin/propill-3.png" class="icon" width="20px;"
+                                        height="20px;" alt=""></td>
+                                <td>아이유</td>
+                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                                <td>O</td>
+                                <td>2022-06-10</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="artist-list">
+                        <table>
+                            <h4>최신 모집 공고</h4>
+                            <tr>
+                                <th>제목</th>
+                                <th>설명</th>
+                                <th>실행일자</th>
+                            </tr>
+                            <tr>
+                                <td>아마추어 힙합댄스...</td>
+                                <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
+                                <td>2022-06-10</td>
+                            </tr>
+                            <tr>
+                                <td>아마추어 힙합댄스...</td>
+                                <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
+                                <td>2022-06-10</td>
+                            </tr>
+                            <tr>
+                                <td>아마추어 힙합댄스...</td>
+                                <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
+                                <td>2022-06-10</td>
+                            </tr>
+                            <tr>
+                                <td>아마추어 힙합댄스...</td>
+                                <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
+                                <td>2022-06-10</td>
+                            </tr>
+                            <tr>
+                                <td>아마추어 힙합댄스...</td>
+                                <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
+                                <td>2022-06-10</td>
+                            </tr>
+                            <tr>
+                                <td>아마추어 힙합댄스...</td>
+                                <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
+                                <td>2022-06-10</td>
+                            </tr>
+                            <tr>
+                                <td>아마추어 힙합댄스...</td>
+                                <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
+                                <td>2022-06-10</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="artist-list">
+                        <table>
+                            <h4>최신 회원</h4>
+                            <tr>
+                                <th>아이디</th>
+                                <th>이름</th>
+                                <th>핸드폰 번호</th>
+                                <th>등록 일자</th>
+                            </tr>
+                            <tr>
+                                <td>asdf222</td>
+                                <td>김가방</td>
+                                <td>000-0000-0000</td>
+                                <td>2022-06-10</td>
+                            </tr>
+                            <tr>
+                                <td>asdsad00</td>
+                                <td>배수영</td>
+                                <td>000-0000-0000</td>
+                                <td>2022-06-10</td>
+                            </tr>
+                            <tr>
+                                <td>asdf222</td>
+                                <td>김가방</td>
+                                <td>000-0000-0000</td>
+                                <td>2022-06-10</td>
+                            </tr>
+                            <tr>
+                                <td>asdsad00</td>
+                                <td>배수영</td>
+                                <td>000-0000-0000</td>
+                                <td>2022-06-10</td>
+                            </tr>
+                            <tr>
+                                <td>asdf222</td>
+                                <td>김가방</td>
+                                <td>000-0000-0000</td>
+                                <td>2022-06-10</td>
+                            </tr>
+                            <tr>
+                                <td>asdsad00</td>
+                                <td>배수영</td>
+                                <td>000-0000-0000</td>
+                                <td>2022-06-10</td>
+                            </tr>
+                            <tr>
+                                <td>asdf222</td>
+                                <td>김가방</td>
+                                <td>000-0000-0000</td>
+                                <td>2022-06-10</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="right-set">
+                    <div class="right-field">
+                        <img src="/images/admin/free-icon-unknown-3088765.png" class="icon" width="40px;"
+                            height="40px;" alt="">
+                        <!-- <a href="https://www.flaticon.com/kr/free-icons/-" title="알 수 없는 아이콘">알 수 없는 아이콘  제작자: Freepik - Flaticon</a> -->
+                        <div class="admin-field">
+                            <h4>관리자 이름</h4>
+                            <p>admin@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="manager-set">
+                        <div>
+                            <h4>운영진 설정</h4>
+                            <img src="/images/admin/free-icon-unknown-3088765.png" class="icon" width="40px;"
+                                height="40px;" alt="">
+                        </div>
+                        <div>
+                            <a href=""><img src="/images/admin/premium-icon-gear-484613.png" width="20px;" height="20px;" alt=""></a>
+                            <!-- <a href="https://www.flaticon.com/kr/free-icons/" title="기어 아이콘">기어 아이콘  제작자: Freepik - Flaticon</a> -->
+                        </div>
+                    </div>
+                    <div class="manager-set">
+                        <div>
+                            <h4>관리자</h4>
+                            <img src="/images/admin/free-icon-unknown-3088765.png" class="icon" width="40px;"
+                                height="40px;" alt="">
+                        </div>
+                        <div>
+                            <a href=""><img src="/images/admin/premium-icon-gear-484613.png" width="20px;" height="20px;" alt=""></a>
+                            <!-- <a href="https://www.flaticon.com/kr/free-icons/" title="기어 아이콘">기어 아이콘  제작자: Freepik - Flaticon</a> -->
+                        </div>
+                    </div>
+                    <div class="manager-set">
+                        <div>
+                            <h4>관리자 이름</h4>
+                            <img src="/images/admin/free-icon-unknown-3088765.png" class="icon" width="40px;"
+                                height="40px;" alt="">
+                        </div>
+                        <div>
+                            <a href=""><img src="/images/admin/premium-icon-gear-484613.png" width="20px;" height="20px;" alt=""></a>
+                            <!-- <a href="https://www.flaticon.com/kr/free-icons/" title="기어 아이콘">기어 아이콘  제작자: Freepik - Flaticon</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="artist-list-field" style="display: none;">
+                <div class="page-change">
+                    <table>
+                        <h4>아티스트 심사 및 관리</h4>
+                        <tr>
+                            <th>번호</th>
+                            <th>일자</th>
+                            <th>이름</th>
+                            <th>설명</th>
+                            <th>후원 여부</th>
+                            <th>신청 일자</th>
+                            <th>심사</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td><img src="/images/admin/propill-1.png" class="icon" width="40px;" height="40px;"
+                                    alt=""></td>
+                            <td>청하</td>
+                            <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                            <td>O</td>
+                            <td>2022-06-10</td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><img src="/images/admin/propill-2.png" class="icon" width="40px;" height="40px;"
+                                    alt=""></td>
+                            <td>보아</td>
+                            <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                            <td>O</td>
+                            <td>2022-06-10</td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><img src="/images/admin/propill-3.png" class="icon" width="40px;" height="40px;"
+                                    alt=""></td>
+                            <td>아이유</td>
+                            <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                            <td>O</td>
+                            <td>2022-06-10</td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td><img src="/images/admin/propill-1.png" class="icon" width="40px;" height="40px;"
+                                    alt=""></td>
+                            <td>청하</td>
+                            <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                            <td>O</td>
+                            <td>2022-06-10</td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><img src="/images/admin/propill-2.png" class="icon" width="40px;" height="40px;"
+                                    alt=""></td>
+                            <td>보아</td>
+                            <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                            <td>O</td>
+                            <td>2022-06-10</td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><img src="/images/admin/propill-3.png" class="icon" width="40px;" height="40px;"
+                                    alt=""></td>
+                            <td>아이유</td>
+                            <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                            <td>O</td>
+                            <td>2022-06-10</td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td><img src="/images/admin/propill-1.png" class="icon" width="40px;" height="40px;"
+                                    alt=""></td>
+                            <td>청하</td>
+                            <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                            <td>O</td>
+                            <td>2022-06-10</td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><img src="/images/admin/propill-2.png" class="icon" width="40px;" height="40px;"
+                                    alt=""></td>
+                            <td>보아</td>
+                            <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                            <td>O</td>
+                            <td>2022-06-10</td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><img src="/images/admin/propill-3.png" class="icon" width="40px;" height="40px;"
+                                    alt=""></td>
+                            <td>아이유</td>
+                            <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                            <td>O</td>
+                            <td>2022-06-10</td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><img src="/images/admin/propill-3.png" class="icon" width="40px;" height="40px;"
+                                    alt=""></td>
+                            <td>아이유</td>
+                            <td><a href="/artist/artistInfo.html">내용 보기</a></td>
+                            <td>O</td>
+                            <td>2022-06-10</td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+            <div class="notice-list-field" style="display: none;">
+                <div class="page-change">
+                    <table>
+                        <div class="notice-name">
+                            <h4>모집 공고 작성 및 관리</h4>
+                            <a href="/RegisterRecruiting/RegisterRecruiting.html" class="btn-notice-write">작성</a>
+                        </div>
+                        <tr>
+                            <th>일자</th>
+                            <th>제목</th>
+                            <th>설명</th>
+                            <th>외부 링크</th>
+                            <th>실행 일자</th>
+                            <th>수정</th>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>아마추어 힙합댄스 경연 페스티벌</td>
+                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td>2023-07-11</td>
+                            <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>아마추어 힙합댄스 경연 페스티벌</td>
+                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td>2023-07-11</td>
+                            <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>아마추어 힙합댄스 경연 페스티벌</td>
+                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td>2023-07-11</td>
+                            <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>아마추어 힙합댄스 경연 페스티벌</td>
+                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td>2023-07-11</td>
+                            <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>아마추어 힙합댄스 경연 페스티벌</td>
+                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td>2023-07-11</td>
+                            <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>아마추어 힙합댄스 경연 페스티벌</td>
+                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td>2023-07-11</td>
+                            <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>아마추어 힙합댄스 경연 페스티벌</td>
+                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td>2023-07-11</td>
+                            <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>아마추어 힙합댄스 경연 페스티벌</td>
+                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td>2023-07-11</td>
+                            <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>아마추어 힙합댄스 경연 페스티벌</td>
+                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td>2023-07-11</td>
+                            <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>아마추어 힙합댄스 경연 페스티벌</td>
+                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td>2023-07-11</td>
+                            <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+            <div class="work-list-field" style="display: none;">
+                <div class="page-change">
+                    <table>
+                        <h4>작품 심사 및 관리</h4>
+                        <tr>
+                            <th>일자</th>
+                            <th>제목</th>
+                            <th>이름</th>
+                            <th>설명</th>
+                            <th>작품 링크</th>
+                            <th>심사</th>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>CD폼</td>
+                            <td>김가방</td>
+                            <td><a href="/work/workInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>CD폼</td>
+                            <td>김가방</td>
+                            <td><a href="/work/workInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>CD폼</td>
+                            <td>김가방</td>
+                            <td><a href="/work/workInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>CD폼</td>
+                            <td>김가방</td>
+                            <td><a href="/work/workInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>CD폼</td>
+                            <td>김가방</td>
+                            <td><a href="/work/workInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>CD폼</td>
+                            <td>김가방</td>
+                            <td><a href="/work/workInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>CD폼</td>
+                            <td>김가방</td>
+                            <td><a href="/work/workInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>CD폼</td>
+                            <td>김가방</td>
+                            <td><a href="/work/workInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>CD폼</td>
+                            <td>김가방</td>
+                            <td><a href="/work/workInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>CD폼</td>
+                            <td>김가방</td>
+                            <td><a href="/work/workInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td><a href="">수락</a> | <a href="">거부</a></td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+            <div class="user-list-field" style="display: none;">
+                <div class="page-change">
+                    <table>
+                        <h4>회원 관리</h4>
+                        <tr>
+                            <th>번호</th>
+                            <th>아이디</th>
+                            <th>아티스트 등록 여부</th>
+                            <th>좋아요 수</th>
+                            <th>이름</th>
+                            <th>핸드폰 번호</th>
+                            <th>등록 일자</th>
+                            <th>수정</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>asdf222</td>
+                            <td>N</td>
+                            <td>0</td>
+                            <td>김가방</td>
+                            <td>000-0000-0000</td>
+                            <td>2022-06-10</td>
+                            <td><a href="">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>asdsad00</td>
+                            <td>Y</td>
+                            <td>2</td>
+                            <td>배수영</td>
+                            <td>000-0000-0000</td>
+                            <td>2022-06-05</td>
+                            <td><a href="">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>asdf222</td>
+                            <td>N</td>
+                            <td>0</td>
+                            <td>김가방</td>
+                            <td>000-0000-0000</td>
+                            <td>2022-06-10</td>
+                            <td><a href="">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>asdsad00</td>
+                            <td>Y</td>
+                            <td>2</td>
+                            <td>배수영</td>
+                            <td>000-0000-0000</td>
+                            <td>2022-06-05</td>
+                            <td><a href="">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>asdf222</td>
+                            <td>N</td>
+                            <td>0</td>
+                            <td>김가방</td>
+                            <td>000-0000-0000</td>
+                            <td>2022-06-10</td>
+                            <td><a href="">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>asdsad00</td>
+                            <td>Y</td>
+                            <td>2</td>
+                            <td>배수영</td>
+                            <td>000-0000-0000</td>
+                            <td>2022-06-05</td>
+                            <td><a href="">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>asdf222</td>
+                            <td>N</td>
+                            <td>0</td>
+                            <td>김가방</td>
+                            <td>000-0000-0000</td>
+                            <td>2022-06-10</td>
+                            <td><a href="">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>asdsad00</td>
+                            <td>Y</td>
+                            <td>2</td>
+                            <td>배수영</td>
+                            <td>000-0000-0000</td>
+                            <td>2022-06-05</td>
+                            <td><a href="">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>asdf222</td>
+                            <td>N</td>
+                            <td>0</td>
+                            <td>김가방</td>
+                            <td>000-0000-0000</td>
+                            <td>2022-06-10</td>
+                            <td><a href="">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>asdsad00</td>
+                            <td>Y</td>
+                            <td>2</td>
+                            <td>배수영</td>
+                            <td>000-0000-0000</td>
+                            <td>2022-06-05</td>
+                            <td><a href="">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!-- <div class="inquiry-list-field" style="display: none;">
+                <div class="page-change">
+                    <table>
+                        <h4>문의 관리 및 답변</h4>
+                        <thead>
+                            <tr>
+                                <th>제목</th>
+                                <th>이름</th>
+                                <th>설명</th>
+                                <th>후원 여부</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2022-06-10</td>
+                                <td>김가방</td>
+                                <td><a href="">내용 보기</a></td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>2022-06-10</td>
+                                <td>김가방</td>
+                                <td><a href="">내용 보기</a></td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>2022-06-10</td>
+                                <td>김가방</td>
+                                <td><a href="">내용 보기</a></td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>2022-06-10</td>
+                                <td>김가방</td>
+                                <td><a href="">내용 보기</a></td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>2022-06-10</td>
+                                <td>김가방</td>
+                                <td><a href="">내용 보기</a></td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>2022-06-10</td>
+                                <td>김가방</td>
+                                <td><a href="">내용 보기</a></td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>2022-06-10</td>
+                                <td>김가방</td>
+                                <td><a href="">내용 보기</a></td>
+                                <td>O</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div> -->
+        </div>
+
+
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(".btn-artist").on("click", function (e) {
+        e.preventDefault();
+        $(".right-field").hide();
+        $(".left-today").hide();
+        $(".manager-set").hide();
+        $(".notice-list-field").hide();
+        $(".work-list-field").hide();
+        $(".user-list-field").hide();
+        $(".artist-list-field").show();
+    });
+    $(".btn-notice").on("click", function (e) {
+        e.preventDefault();
+        $(".left-today").hide();
+        $(".right-field").hide();
+        $(".manager-set").hide();
+        $(".artist-list-field").hide();
+        $(".work-list-field").hide();
+        $(".user-list-field").hide();
+        $(".notice-list-field").show();
+    });
+    $(".btn-work").on("click", function (e) {
+        e.preventDefault();
+        $(".left-today").hide();
+        $(".right-field").hide();
+        $(".manager-set").hide();
+        $(".artist-list-field").hide();
+        $(".notice-list-field").hide();
+        $(".user-list-field").hide();
+        $(".work-list-field").show();
+    });
+    $(".btn-user").on("click", function (e) {
+        e.preventDefault();
+        $(".left-today").hide();
+        $(".right-field").hide();
+        $(".manager-set").hide();
+        $(".artist-list-field").hide();
+        $(".notice-list-field").hide();
+        $(".work-list-field").hide();
+        $(".user-list-field").show();
+    });
+    $(".btn-home").on("click", function (e) {
+        e.preventDefault();
+        $(".artist-list-field").hide();
+        $(".notice-list-field").hide();
+        $(".work-list-field").hide();
+        $(".user-list-field").hide();
+        $(".left-today").show();
+        $(".right-field").show();
+        $(".manager-set").show();
+    });
+</script>
+
+</html>
