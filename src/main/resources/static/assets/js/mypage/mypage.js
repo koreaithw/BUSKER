@@ -465,11 +465,17 @@ function artistUserSmallMenu(e) {
 
 // 아티스트 계정 탭
 $(".ArtistInfo-tab").click(function (e) {
+  $(selectedArtistUserMenu).attr("id", "non-selected-artistUser");
   e.preventDefault();
   header(".ArtistInfo-tab");
-  artistUserSmallMenu(".artistUserList-tab");
-  $(divCurrentName).hide();
-  informationTabChange(".artistUser-Info");
+  if(confirm("아티스트 계정이 존재하지 않습니다. 새로 등록하시겠습니까?") == true){
+    tabChange(".artistJoin-desc");
+  } else {
+    $(divCurrentName).hide();
+    artistUserSmallMenu(".artistUserList-tab");
+    informationTabChange(".artistUser-Info");
+  }
+
 });
 
 // 소메뉴 클릭
@@ -484,8 +490,7 @@ $(".ArtistInfo-tab").click(function (e) {
 // 아티스트 정보 수정 탭
 $(".artistUserList-tab").click(function (e) {
   e.preventDefault();
-  console.log("dddd");
-  artistUserSmallMenu(".artistUserInfo-tab");
+  artistUserSmallMenu(".artistUserList-tab");
   informationTabChange(".artistUser-Info");
 });
 
@@ -538,3 +543,14 @@ $("button[name='reply-delete-button']").click(function () {
     alert("댓글이 삭제되었습니다.");
   }
 });
+
+
+
+// 아티스트 등록, 수정 유효성 검사
+$(".artist-join-submit").click(function(){
+  
+})
+
+$(".artist-update-submit").click(function(){
+  
+})
