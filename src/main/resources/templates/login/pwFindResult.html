@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>비밀번호 찾기</title>
+    <link rel="stylesheet" href="../../static/assets/css/login/login.css" />
+    <link
+      rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="loginWrap">
+      <div class="loginBox idFindBox">
+        <h1>비밀번호 찾기</h1>
+<p>아래 이메일로 임시 비밀번호가 전송되었습니다.</p>
+<p>해당 비밀번호로 다시 로그인해주세요.</p>
+<p>로그인 후에는 비밀번호를 변경해 주시기 바랍니다.</p>
+
+<div class="pwResult">
+    <span class="idResultId">so***123 @ naver.com</span>
+    <div>
+        <span class="idResultDate">가입일</span>
+    <span class="idResultDate">2022.06.10</span>
+    </div>
+</div>
+        <div class="findNext-button">
+          <input
+            type="button"
+            id="login-button"
+            class="login-click login-button"
+            value="로그인"
+            onclick="next();"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript"  src="../../static/assets/js/login/idpwFind.js?ver=1"></script>
+</html>

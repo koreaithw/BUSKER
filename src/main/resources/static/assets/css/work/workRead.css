@@ -1,0 +1,237 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: inherit;
+    /* font: inherit; */
+    font-style: normal;
+    vertical-align: baseline;
+    font-family: 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+}
+
+body {
+    line-height: 1;
+    font-weight: 400;
+}
+
+div {
+    outline: none;
+    display: block;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+a {
+    font-size: 0;
+    text-decoration: none;
+    outline: none;
+    color: inherit;
+}
+
+dl {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.work_detail_wrap {
+    width: 1300px;
+    margin: 0 auto;
+    padding-top: 55px;
+    position: relative;
+}
+
+.work_detail {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.detail {
+    margin-top: 16px;
+    position: relative;
+    border-bottom: 2px solid #333;
+}
+
+.detail p {
+    word-break: break-all;
+    font-size: 35px;
+    color: #333;
+    line-height: 40px;
+    font-weight: bold;
+    letter-spacing: -0.003em;
+    font-family: 'Noto Sans KR','NanumBarunGothic','맑은 고딕','Malgun Gothic',sans-serif;
+}
+
+.work_info_wrap {
+    padding-top: 0;
+    margin-top: -655px;
+    width: 1300px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.work_info_content {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.work_info {
+    margin-top: 40px;
+    overflow: hidden;
+    padding-bottom: 50px;
+    position: relative;
+}
+
+.info_left {
+    float: left;
+    width: 430px;
+}
+
+.img_box {
+    width: 430px;
+    height: 600px;
+    position: relative;
+}
+
+.img_box img {
+    width: 430px;
+    height: 602px;
+}
+
+.like_box {
+    width: 100%;
+    height: 75px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+
+.like {
+    display: block;
+    position: absolute;
+    left: 10px;
+    top: 24px;
+    cursor: pointer;
+}
+
+.like img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+}
+
+.like_txt1 {
+    font-size: 16px;
+    color: #a0a0a0;
+    margin-left: 12px;
+}
+
+.like_txt2 {
+    margin-bottom: 14px;
+    font-size: 14px;
+    color: #333;
+    margin-left: 13px;
+    display: inline-block;
+    vertical-align: middle;
+    outline: none;
+}
+
+.info_right {
+    float: right;
+    width: 701px;
+}
+
+.info_area1 {
+    border-bottom: 1px solid #000;
+    position: relative;
+    padding-left: 1px;
+}
+
+.info_area1 dl {
+    overflow: hidden;
+}
+
+.info_area1 dt{
+    font-size: 15px;
+    color: #333;
+    font-weight: bold;
+    float: left;
+    line-height: 35px;
+}
+
+.info_area1 dd {
+    font-size: 15px;
+    color: #333;
+    clear: right;
+    margin: 0 0 5px 86px;
+    line-height: 35px;
+    position: relative;
+    display: block;
+    margin-inline-start: 40px;
+}
+
+
+.info_area2 {
+    min-height: 174px;
+    border-bottom: 1px solid #000;
+    padding-left: 1px;
+}
+
+.info_area2 dl {
+    padding: 14px 0;
+    overflow: hidden;
+} 
+
+.info_area2 dt {
+    width: 100%;
+    float: none;
+    margin: 6px 0 -3px 0;
+    font-size: 15px;
+    color: #333;
+    font-weight: bold;
+    float: left;
+    line-height: 35px;
+    display: block;
+}
+
+.info_area2 dd {
+    margin-left: 2px;
+    color: #666;
+    line-height: 23px;
+    font-size: 14px;
+    display: block;
+}
+
+.purchase_link_wrap {
+    padding: 40px 0;
+}
+
+.purchase_link {
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #f43142;
+    padding: 10px 20px 10px 20px;
+    border: #f43142 solid 2px;
+    width: 236px;
+    height: 46px;
+    line-height: 46px;
+}
+
+.vid_wrap {
+    margin-bottom: 50px;
+}

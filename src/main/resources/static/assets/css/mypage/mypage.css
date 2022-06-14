@@ -1,3 +1,6 @@
+body {
+}
+
 .myPage-wrap {
   width: 1300px;
   margin: 0 auto;
@@ -238,7 +241,7 @@ img.profile-image {
 #btn-modal {
   width: 40px;
   height: 40px;
-  background-image: url("templates/artists/myInfo/camera-icon.png");
+  background-image: url("/static/images/mypage/camera-icon.png");
   background-size: 70%;
   background-position: center;
   background-repeat: no-repeat;
@@ -264,20 +267,25 @@ img.profile-image {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(100, 100, 100, 0.25);
   display: none;
+  z-index: 1;
 }
 
 .modal-back {
+  width: 100%;
+}
+
+/* .modal-back {
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-}
+} */
 
 #modal .modal-window {
   background-color: white;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: 0 4px 7px 0 rgb(0 0 0 / 20%);
   backdrop-filter: blur(13.5px);
   -webkit-backdrop-filter: blur(13.5px);
   border-radius: 10px;
@@ -314,7 +322,7 @@ img.profile-image {
   opacity: 0.3;
   right: 0;
   cursor: pointer;
-  background-image: url("templates/artists/myInfo/close-icon.png");
+  background-image: url("/static/images/mypage/close-icon.png");
 }
 
 #modal .close-area:hover {
@@ -474,7 +482,7 @@ span#newPasswordNotEqual {
 div#pwImgNew {
   width: 33px;
   height: 33px;
-  background-image: url("templates/artists/myInfo/eye_hide.png");
+  background-image: url("/static/images/mypage/eye_hide.png");
   background-size: 70%;
   background-position: center;
   background-repeat: no-repeat;
@@ -490,7 +498,7 @@ div#pwImgNew {
 div#pwImgNewCheck {
   width: 33px;
   height: 33px;
-  background-image: url("templates/artists/myInfo/eye_hide.png");
+  background-image: url("/static/images/mypage/eye_hide.png");
   background-size: 70%;
   background-position: center;
   background-repeat: no-repeat;
@@ -600,6 +608,18 @@ div.pwChange {
   text-decoration: none;
 }
 
+.detail-donation p {
+  margin-bottom: 0;
+  word-break: break-all;
+  font-size: 35px;
+  color: #333;
+  line-height: 40px;
+  font-weight: bold;
+  letter-spacing: -0.003em;
+  font-family: "Noto Sans KR", "NanumBarunGothic", "맑은 고딕", "Malgun Gothic",
+    sans-serif;
+}
+
 .sorting > a#selected,
 .sorting > a#selected-artistUser {
   color: #3a3635;
@@ -612,13 +632,14 @@ div.pwChange {
   font-size: 13px;
   color: #757271;
   vertical-align: middle;
+  cursor: pointer;
 }
 
 a.myArtist {
   text-decoration: none;
 }
 
-.sorting > a.myArtist:hover {
+.sorting > a:hover {
   text-decoration: underline;
 }
 
@@ -820,6 +841,7 @@ a.myWork {
 
 .segmented > a.second {
   border: 0;
+  border-left: 0.5px solid #b3b2b2 !important;
 }
 
 .segmented > a.last {
@@ -903,102 +925,18 @@ a.myWork {
   height: 30px;
 }
 
-.artistJoic-desc {
+.artistJoin-desc {
 }
 
-/* 아티스트 후원회원 목록 */
-.artistUserDonation,
-.myArtistDonation {
-  background: #fdf2ea;
-  padding: 30px 52px 40px 52px;
-}
-
-.donation-p {
-  display: inline-block;
-  font-size: 30px;
-  color: #333;
-  font-weight: bold;
-  border-bottom: 3px solid #ec7d2c;
-  padding-bottom: 10px;
-  margin-bottom: 22px;
-  letter-spacing: -0.03em;
-  font-family: "Noto Sans KR", "NanumBarunGothic", "맑은 고딕", "Malgun Gothic",
-    sans-serif;
-}
-
-.donation-tbl {
-  width: 1000px;
-  margin: 0 auto 37px auto;
-  border-bottom: 1px solid #999;
-}
-
-.donation-tbl table {
-  border-spacing: 0;
-  width: 100%;
-}
-
-.donation-title {
-  margin: 0 auto 37px auto;
-  width: 1000px;
-}
 /* 표 라인 */
-
-.donation-tbl {
-  border-bottom: 1px solid #999;
-}
-.donation-tbl th {
-  line-height: 49px;
-  text-align: center;
-  font-size: 14px;
-  color: #333;
-  background: #f6f6f6;
-  border-top: 2px solid #333;
-  text-align: center;
-}
-.donation-tbl td {
-  font-size: 14px;
-  color: #333;
-  border-top: 1px solid #ddd;
-  min-height: 22px;
-  padding: 19px 0 17px 0;
-  vertical-align: middle;
-  text-align: center;
-}
-
-/* th {
-  display: table-cell;
-  vertical-align: inherit;
-  font-weight: bold;
-  text-align: -internal-center;
-} */
-
-table {
-  border-collapse: separate;
-  text-indent: initial;
-  border-spacing: 2px;
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin: 0;
-}
 
 a {
   text-decoration: none;
   outline: none;
 }
 
-em {
-  font-style: italic;
-}
-
 a:-webkit-any-link {
   cursor: pointer;
-}
-
-a em {
-  display: table-cell;
-  vertical-align: middle;
-  color: #000;
-  font-style: normal;
 }
 
 /* 내가 쓴 댓글 */
@@ -1236,14 +1174,20 @@ a em {
 
 /* 아티스트 계정 등록 폼 */
 .artist-join-title {
-  margin-top: 16px;
+  margin-top: 10px;
   position: relative;
-  border-bottom: 2px solid #333;
+  margin-left: 37px;
+}
+
+.artist-join-title-box {
+  margin-top: 10px;
+  position: relative;
+  border-bottom: 2px solid #d6d6d6;
 }
 
 .input-artist-join-name {
   width: 100%;
-  font-size: 35px;
+  font-size: 20px !important;
   color: #333;
   font-weight: bold;
   letter-spacing: -0.003em;
@@ -1252,6 +1196,7 @@ a em {
   outline: none;
   text-indent: 13px;
   border: 0 none;
+  margin-left: 30px;
 }
 .input-artist-join-name::placeholder {
   color: rgb(173, 173, 173);
@@ -1284,6 +1229,7 @@ a em {
   position: relative;
   margin-bottom: 30px;
   border-bottom: 1px solid #000;
+  padding-bottom: 36px;
 }
 
 .artist-join-image-box,
@@ -1306,6 +1252,11 @@ a em {
   margin-top: 10px;
   /* margin-left: 10px; */
   margin-left: 37px;
+
+  border: 1px solid #000;
+  overflow: auto;
+  border-color: #d6d6d6;
+  border-radius: 10px;
 }
 
 .artist-join-profile {
@@ -1313,6 +1264,13 @@ a em {
   opacity: 0.1;
   position: absolute;
 }
+
+.artist-join-profile {
+  width: 300px;
+  opacity: 0.1;
+  position: absolute;
+}
+
 
 .artist-join-profile:hover {
   opacity: 0.3;
@@ -1327,6 +1285,7 @@ a em {
 
 .artist-form-category {
   margin-left: 20px;
+  font-size: 15px !important;
 }
 
 .input-artist-info-content {
@@ -1384,16 +1343,16 @@ select:disabled {
 
 .artist-form-submit {
   width: 88px;
-    margin: 0 4px;
-    line-height: 38px;
-    height: 40px;
-    cursor: pointer;
-    outline: none;
-    height: 40px;
-    border-radius: 20px;
-    background-color: #000;
-    color: #fff;
-    border: 1px solid #000;
+  margin: 0 4px;
+  line-height: 38px;
+  height: 40px;
+  cursor: pointer;
+  outline: none;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
 }
 
 .artist-form-submit:hover {
@@ -1405,4 +1364,198 @@ select:disabled {
 .form-button {
   display: flex;
   justify-content: space-evenly;
+}
+
+/* 나의 후원, 후원 회원 목록 ver02 */
+.announcement {
+  display: flex;
+  justify-content: space-between;
+}
+
+.donation-soring {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.donation-soring span {
+  margin-left: 22px;
+}
+
+.donation-wrap {
+  width: 100%;
+}
+
+.donationTable-wrap {
+  margin-top: 1rem !important;
+  margin-bottom: 2rem !important;
+}
+
+.donation-table {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.donation-table p {
+  margin: 0;
+}
+
+.donation-header > tr {
+  background-color: #7e7d7d;
+}
+
+.donation-table > thead {
+  text-align: left;
+}
+.donation-table .row-1 {
+  width: 380px;
+}
+
+.donation-table .row-2 {
+  width: 280px;
+}
+.donation-table .row-3,
+.donation-table .row-4 {
+  width: 200px;
+}
+
+.table-artist-flex {
+  display: flex;
+  align-items: center;
+}
+
+.donation-icon {
+  border-radius: 50% !important;
+  width: 50px;
+}
+
+.donation-table td,
+.donation-table th {
+  padding: 17px !important;
+  border-bottom: 1px solid #e2e1e1;
+}
+
+.donation-table .table-p {
+  padding: 17px !important;
+}
+
+.donation-table a {
+  text-decoration: none;
+  color: black;
+}
+
+.donationTable-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.donationTable-wrap th {
+  background-color: #f0efef;
+}
+.donationTable-wrap td {
+}
+
+.detail p {
+  margin-bottom: 0;
+  word-break: break-all;
+  font-size: 35px;
+  color: #333;
+  line-height: 40px;
+  font-weight: bold;
+  letter-spacing: -0.003em;
+  font-family: "Noto Sans KR", "NanumBarunGothic", "맑은 고딕", "Malgun Gothic",
+    sans-serif;
+  margin-left: 37px;
+}
+
+.info_area1 dt {
+  font-size: 15px;
+  color: #333;
+  font-weight: bold;
+  float: left;
+  line-height: 35px;
+}
+
+.info_area1 dd {
+  font-size: 15px;
+  color: #333;
+  clear: right;
+  margin: 0 0 5px 86px;
+  line-height: 35px;
+  position: relative;
+  display: block;
+  margin-inline-start: 40px;
+}
+
+.input_text {
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 10px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(233, 233, 233);
+  width: 567px;
+}
+
+.input-name-p {
+  margin: 0px;
+}
+
+.artist-join-title div {
+  font-size: 15px;
+  color: #333;
+  font-weight: bold;
+  line-height: 35px;
+  margin-bottom: 5px;
+}
+
+.input_text_name {
+  height: 56px;
+  font-size: 30px;
+  border: 0;
+  border-radius: 10px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(233, 233, 233);
+  width: 1141px;
+}
+
+.input_text:focus {
+  outline: 1px solid #ff9326 !important;
+}
+
+.textarea-dd textarea {
+  height: 248px;
+  resize: none;
+  border: 0;
+  border-radius: 10px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(233, 233, 233);
+  padding: 8px 8px 8px 8px;
+  font-size: 15px;
+}
+
+textarea:focus,
+.artist-join-name:focus {
+  outline: 1px solid #ff9326 !important;
+}
+
+.info_area2 dt {
+  width: 100%;
+  float: none;
+  margin: 6px 0 -3px 0;
+  font-size: 15px;
+  color: #333;
+  font-weight: bold;
+  float: left;
+  line-height: 35px;
+  display: block;
+}
+
+.textarea-dd {
+  margin: 0 !important;
 }

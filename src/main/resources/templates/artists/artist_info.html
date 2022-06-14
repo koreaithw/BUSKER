@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>아티스트 정보</title>
 
-    <link rel="stylesheet" href="artist_info.css">
+    <link rel="stylesheet" href="../../static/assets/css/artist/artist_info.css">
 </head>
 <body style = >
 <form name = "mainForm" method = "post" action = "" id = "mainForm">
@@ -31,7 +31,7 @@
         <div class="rn-03">
             <div class="rn-03-left">
                 <div class="rn-product-imgbox">
-                    <img src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220531/20220531-42357.jpg">
+                    <img src="../../static/images/artist/buskerbukser.jpg">
                 </div>
             </div>
             <div class="rn-03-right">
@@ -57,11 +57,27 @@
 
 
 
-                <a href="javascript:;" onclick="click_donate();" class="rn-bb03">후원하기</a>
+                <button class="rn-bb03" id="btn-modal">후원하기</button>
+            
                 <a href="javascript:;" onclick="click_like();" class="rn-bb03">좋아요</a>
 
 
             </div>
+
+            <div class="modal">
+                <div class="modal_content"
+                title="테스트">
+                
+                
+                <section class="section-donation-name"><!----> <label class="input-label-common donation-name"><span> 응원 한마디 </span> <input id="donation-name" tabindex="1" type="text" maxlength="30"></label> <label class="input-label-common donation-amount"><span> 후원 금액 </span> <input id="donation-amount" tabindex="2" type="number" autofocus="autofocus" min="1000" step="100" placeholder="1000" maxlength="7" pattern="\d*"> <!----> <!----></label></section>
+              
+                <div class="modal-content-down">
+              <a href="javascript:;" onclick="click_donate_api();" class="rn-bb03-2">후원</a>
+            </div>
+            </div>
+            </div>
+
+            
 
 
 
@@ -81,4 +97,19 @@
 
 
 </body>
+<script>
+ 
+ $(function(){ 
+
+$("#btn-modal").click(function(){
+    e.preventdefault();
+  $(".modal").fadeIn();
+});
+
+$(".modal_content").click(function(){
+  $(".modal").fadeOut();
+});
+
+});
+</script>
 </html>

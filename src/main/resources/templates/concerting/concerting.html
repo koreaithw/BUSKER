@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>진행중인 콘서트</title>
-    <link rel="stylesheet" href="concerting.css"/>
+    <link rel="stylesheet" href="/static/assets/css/concerting/concerting.css"/>
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     <!-- 제이쿼리 불러오기 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -17,24 +17,9 @@
 
 </head>
 <body>
-    <!-- stlye 은 slick 영역 확인용 -->
-    <section class="main_carousel">
+    <!-- style 은 slick 영역 확인용 -->
+    <section class="main_banner">
         <div id="slider-div">
-          <div class="slider_item">
-            <a href="">
-                <img src="http://tkfile.yes24.com/Upload2/Display/202205/20220518/gmain_top_42246.jpg/dims/quality/70/" alt="시드 내한공연">
-            </a>
-          </div>
-          <div class="slider_item">
-            <a href="">
-                <img src="http://tkfile.yes24.com/Upload2/Display/202205/20220518/gmain_top_42246.jpg/dims/quality/70/" alt="시드 내한공연">
-            </a>
-          </div>
-          <div class="slider_item">
-            <a href="">
-                <img src="http://tkfile.yes24.com/Upload2/Display/202205/20220518/gmain_top_42246.jpg/dims/quality/70/" alt="시드 내한공연">
-            </a>
-          </div>
           <div class="slider_item">
             <a href="">
                 <img src="http://tkfile.yes24.com/Upload2/Display/202205/20220518/gmain_top_42246.jpg/dims/quality/70/" alt="시드 내한공연">
@@ -139,16 +124,16 @@
     $(function(){
         $('#slider-div').slick({
             centerMode: true,
-            centerPadding: '60px',
+            centerPadding: '680px',
             slide: 'div',        //슬라이드 되어야 할 태그 ex) div, li 
             infinite : true,     //무한 반복 옵션     
-            slidesToShow : 4,        // 한 화면에 보여질 컨텐츠 개수
+            slidesToShow : 1,        // 한 화면에 보여질 컨텐츠 개수
             slidesToScroll : 1,        //스크롤 한번에 움직일 컨텐츠 개수
             speed : 100,     // 다음 버튼 누르고 다음 화면 뜨는데까지 걸리는 시간(ms)
             arrows : true,         // 옆으로 이동하는 화살표 표시 여부
             dots : true,         // 스크롤바 아래 점으로 페이지네이션 여부
             autoplay : true,            // 자동 스크롤 사용 여부
-            autoplaySpeed : 3000,         // 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
+            autoplaySpeed : 2000,         // 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
             pauseOnHover : true,        // 슬라이드 이동    시 마우스 호버하면 슬라이더 멈추게 설정
             vertical : false,        // 세로 방향 슬라이드 옵션
             prevArrow : "<button type='button' class='slick-prev'>Previous</button>",        // 이전 화살표 모양 설정
@@ -157,23 +142,33 @@
             draggable : true,     //드래그 가능 여부 
           
             responsive: [ // 반응형 웹 구현 옵션
-                {  
-                    breakpoint: 960, //화면 사이즈 960px
-                    settings: {
-                    //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
-                    slidesToShow:3 
-                } 
-                },
-                    { 
-                    breakpoint: 768, //화면 사이즈 768px
+                { 
+                    breakpoint: 2050, //화면 사이즈 768px
                     settings: {    
                     //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
-                    slidesToShow:2 
+                    slidesToShow:1,
+                    centerPadding: '700px'
+                    } 
+                },
+                {  
+                    breakpoint: 1910, //화면 사이즈 960px
+                    settings: {
+                    //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+                    centerPadding: '610px' 
+                    } 
+                },
+                { 
+                    breakpoint: 1500, //화면 사이즈 768px
+                    settings: {    
+                    //위에 옵션이 디폴트 , 여기에 추가하면 그걸로 변경
+                    slidesToShow:1,
+                    centerPadding: '450px'
                     } 
                 }
             ]
-      });
+        });
     })
+
 </script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=93d00d73e716ffe509d42f4b31df9dfd"></script>
 <script>

@@ -36,10 +36,10 @@ $("div#pwImg").click(function () {
   const $input = $("input[name='userPw']");
   if ($input.attr("type") == "password") {
     $input.attr("type", "text");
-    $(this).css("background-image", "url('eye_visible.png')");
+    $(this).css("background-image", "url('/static/images/login/eye_visible.png')");
   } else {
     $input.attr("type", "password");
-    $(this).css("background-image", "url('eye_hide.png')");
+    $(this).css("background-image", "url('/static/images/login/eye_hide.png')");
   }
 });
 

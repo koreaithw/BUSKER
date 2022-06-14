@@ -1,0 +1,480 @@
+input, select, textarea, div, p, span{
+    outline: none;
+}
+
+span {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: inherit;
+    /* font: inherit; */
+    font-style: normal;
+    vertical-align: baseline;
+    font-family: 'NanumBarunGothic', 'Malgun Gothic', sans-serif;
+    outline: none;
+}
+
+body {
+    line-height: 1;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    
+}
+
+dl, dt, dd{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: inherit;
+    /* font: inherit; */
+    font-style: normal;
+    vertical-align: baseline;
+    font-family: 'NanumBarunGothic', 'Malgun Gothic', sans-serif;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+section {
+    width: 100%;
+    min-width: 1300px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: inherit;
+    font-style: normal;
+    vertical-align: baseline;
+    font-family: 'NanumBarunGothic', 'Malgun Gothic', sans-serif;
+}
+
+div {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: inherit;
+    font-style: normal;
+    vertical-align: baseline;
+    display: block;
+    font-size: inherit;
+    font-family: 'NanumBarunGothic', 'Malgun Gothic', sans-serif;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: inherit;
+    font-style: normal;
+    vertical-align: baseline;
+    font-family: 'NanumBarunGothic', 'Malgun Gothic', sans-serif;
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.main_banner{
+    width: 100%;
+    max-width: 1920px;
+    min-width: 1300px;
+    overflow: hidden;
+    margin: 0 auto;
+    height: 500px;
+    position: relative;
+    padding: 0;
+    border: 0;
+    font-size: inherit;
+    font-style: normal;
+    display: block;
+}
+
+.slick-slide {
+    transition: all 0.15s;
+    -webkit-transform:scale(0.9);
+}
+
+.slick-current {
+    transition: all 0.15s;
+    -webkit-transform:scale(1.1) !important;
+}
+
+.slider-div {
+    position: absolute;
+}
+
+.slick_item img {
+    width: 450px;
+    height: 450px;
+}
+
+.con_tit {
+    height: 60px;
+    text-align: center;
+    padding: 0;
+    border: 0;
+    font-weight: 500;
+    font-size: 30px;
+    font-style: normal;
+    vertical-align: baseline;
+    font-family: 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+}
+
+.concerting_list {
+    width: 1200px;
+    margin: 0 auto;
+    font-size: 0;
+    text-align: center;
+    height: 800px;
+}
+
+.list_item {
+    width: 216px;
+    height: 500px;
+    display: block;
+    text-align: center;
+}
+
+
+.list_item div{
+    width: 216px;
+    height: 700px;
+    display: block;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.concerting_list a{
+    display: block;
+    margin: 0 15px;
+    vertical-align: top;
+    color:blue; 
+    font-size: 10px;
+}
+
+.list_item_txt {
+    width: 100%;
+    height: 108px;
+    text-align: center;
+    position: relative;
+}
+
+.txt_tit1 {
+    font-size: 16px;
+    color: #888;
+    padding: 7px 0 3px 0;
+    text-align: center;
+    cursor: pointer;
+}
+
+.txt_tit2 {
+    font-size: 16px;
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    cursor: pointer;
+}
+
+.rankNrecommend {
+    background: #f6f6f6;
+    padding: 80px 0;
+    display: block;
+}
+
+.rr_wrapper{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.rank_list {
+    float: left;
+    width: 478px;
+    height: 486px;
+    border: 1px solid #ddd;
+    background: #fff;
+    position: relative;
+}
+
+.rank_tit {
+    font-size: 26px;
+    width: 370px;
+    color: #333;
+    position: absolute;
+    left: 38px;
+    top: 23px;
+    font-weight: bold;
+    font-family: 'Noto Sans KR','NanumBarunGothic','맑은 고딕','Malgun Gothic',sans-serif;
+}
+
+.rank_tit a{
+    display: block;
+    position: absolute;
+    right: -20px;
+    top: -4px;
+    font-size: 0;
+    text-decoration: none;
+    outline: none;
+    color: inherit;
+}
+
+.rank_list ul {
+    position: absolute;
+    left: 33px;
+    top: 105px;
+    width: 370px;
+    border-top: 2px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+.rank_list li {
+    border-bottom: 1px solid #ddd;
+    font-size: 0;
+    padding: 14px 0;
+    height: 16px;
+    list-style: none;
+}
+
+.rank_list ul li a{
+    font-size: 0;
+    text-decoration: none;
+    outline: none;
+    color: inherit;
+}
+
+.rank_list li a dl{
+    overflow: hidden;
+    height: 112px;
+}
+
+.rank_list li a dl dt{
+    float: left;
+    font-size: 15px;
+    color: #333;
+    width: 41px;
+    text-align: center;
+    position: relative;
+    padding-top: 3px;
+    margin-right: 9px;
+    display: block;
+}
+
+.rank_list ul li a dl dd img {
+    display: block;
+    width: 80px;
+    height: 112px;
+    margin-right: 15px;
+}
+
+.rtxt1 {
+    margin: 1px 0 12px 0;
+    white-space: normal;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    outline: none;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    color: #333;
+    line-height: 22px;
+}
+
+.rtxt2 {
+    font-size: 13px;
+    color: #999;
+    line-height: 18px;
+    outline: none;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.reco_list {
+    float: left;
+    width: 688px;
+    height: 486px;
+    border: 1px solid #ddd;
+    background: #fff;
+    position: relative;
+    margin-left: 30px;
+    outline: none;
+    display: block;
+}
+
+.reco_tit {
+    text-align: center;
+    height: 87px;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.reco_tit span {
+    display: inline-block;
+    padding-right: 30px;
+    margin-top: 33px;
+    background: url(http://tkfile.yes24.com/imgNew/genre/ico-ms5-r-tit.png)no-repeat right center;
+    font-size: 26px;
+    color: #333;
+    font-family: 'Noto Sans KR','NanumBarunGothic','맑은 고딕','Malgun Gothic',sans-serif;
+    font-weight: 700;
+    outline: none;
+}
+
+.reco_item {
+    display: inline-block;
+    position: static;
+    margin-right: 25px;
+    width: 160px;
+    height: 327px;
+    
+}
+
+.reco_item a {
+    font-size: 0;
+    display: block;
+    width: 160px;
+    height: 327px;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    color: inherit;
+}
+
+.reco_item a span {
+    display: block;
+    width: 160px;
+    height: 224px;
+    overflow: hidden;
+    background: #000;
+}
+
+.reco_item a span img {
+    display: block;
+    width: calc(100% + 1px);
+    height: calc(100% + 1px);
+    transition: all 0.3s;
+    will-change: transform, opacity;
+}
+
+.reco_item a span img:hover {
+    -webkit-transform:scale(1.1);
+}
+
+.reco_item a div {
+    position: absolute;
+    width: 100%;
+    height: 103px;
+    background: #fff;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}
+
+.reco_txt1 {
+    font-size: 15px;
+    color: #333;
+    line-height: 22px;
+    height: 44px;
+    overflow: hidden;
+    margin: 14px 0 13px 0;
+    text-align: center;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.reco_txt2 {
+    width: 140px;
+    margin: 0 auto;
+    font-size: 13px;
+    color: #999;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.location_division {
+    width: 1200px;
+    margin: 0 auto;
+    font-size: 0;
+    margin-bottom: 60px;
+}
+
+.location_division a {
+    display: inline-block;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-right: 0 none;
+    width: 14.2857%;
+    height: 68px;
+    line-height: 68px;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+}
+
+.location_division a:hover {
+    background: #ffbf8b;
+}
+
+.on {
+    background: orange;
+}
+
+.marker_info {
+    padding:5px !important; 
+    width:100px !important; 
+    height:100px !important;
+}
+
+.info_txt {
+    font-size:15px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.info_txt2 {
+    font-size:10px;
+    color: #888;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.iw a{
+    
+}
+

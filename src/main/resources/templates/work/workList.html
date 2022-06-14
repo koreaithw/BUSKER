@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>작품 리스트</title>
-    <link rel="stylesheet" href="workList.css"/>
+    <link rel="stylesheet" href="/static/assets/css/work/workList.css"/>
+    <!-- 제이쿼리 불러오기 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
 <body>
     <div class="work_wrap">
@@ -13,11 +15,53 @@
 
         <div class="work_layout">
             <div class="search_division">
-                <div class="input_wrap">
-                    <input type="text" id="search_word" placeholder="작품명으로 검색해주세요.">
-                    <a href=""><img src="http://tkfile.yes24.com/imgNew/common/pf-srch-w.png" alt="" class="fixed"></a>
-                    
+                <!-- <div class="regist_btn">
+                    <a href="workRegist.html">작품 등록 신청</a>
+                </div> -->
+                <div class="hash_txtwrap">
+                    <ul class="hash_txt">
+                        <li>
+                            아래 해시태그를 클릭해주세요.
+                            <a href="javascript:location.reload();" class="hash_on" alt="해시태그 새로고침"></a>
+                        </li>
+                    </ul>
                 </div>
+            </div>
+            <div class="hash_division" style="padding-top: 105px;">
+                <div class="hash_tag_wrap">
+                    <div class="hash_tag">
+                        <a href="#" tag="트로트" class="tag" style="padding-bottom: 3px;">#트로트</a>
+                    </div>
+                </div>
+                <div class="hash_tag_wrap">
+                    <div class="hash_tag"><a href="#" tag="팝" style="padding-bottom: 3px;">#팝</a></div>
+                </div>
+                <div class="hash_tag_wrap">
+                    <div class="hash_tag"><a href="#" tag="발라드" style="padding-bottom: 3px;">#발라드</a></div>
+                </div>
+                <div class="hash_tag_wrap">
+                    <div class="hash_tag"><a href="#" tag="R&B" style="padding-bottom: 3px;">#R&B</a></div>
+                </div>
+                <div class="hash_tag_wrap">
+                    <div class="hash_tag"><a href="#" tag="랩/힙합" style="padding-bottom: 3px;">#랩/힙합</a></div>
+                </div>
+                <div class="hash_tag_wrap">
+                    <div class="hash_tag"><a href="#" tag="EDM" style="padding-bottom: 3px;">#EDM</a></div>
+                </div>
+                <div class="hash_tag_wrap">
+                    <div class="hash_tag"><a href="#" tag="댄스" style="padding-bottom: 3px;">#댄스</a></div>
+                </div>
+                <div class="hash_tag_wrap">
+                    <div class="hash_tag"><a href="#" tag="재즈" style="padding-bottom: 3px;">#재즈</a></div>
+                </div>
+                <div class="hash_tag_wrap">
+                    <div class="hash_tag"><a href="#" tag="인디" style="padding-bottom: 3px;">#인디</a></div>
+                </div>
+                <div class="hash_tag_wrap">
+                    <div class="hash_tag"><a href="#" tag="무용" style="padding-bottom: 3px;">#무용</a></div>
+                </div>
+            </div>
+            <div class="regist_division">
                 <div class="regist_btn">
                     <a href="workRegist.html">작품 등록 신청</a>
                 </div>
@@ -27,56 +71,83 @@
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="workRead.html" class="works_img"><img src="20473078.jpg" alt=""></a>
+                        <a href="workRead.html" class="works_img"><img src="/static/images/work/20473078.jpg" alt=""></a>
+                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="" class="works_img"><img src="20473078.jpg" alt=""></a>
+                        <a href="workRead.html" class="works_img"><img src="/static/images/work/20473078.jpg" alt=""></a>
+                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="" class="works_img"><img src="20473078.jpg" alt=""></a>
+                        <a href="workRead.html" class="works_img"><img src="/static/images/work/20473078.jpg" alt=""></a>
+                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="" class="works_img"><img src="20473078.jpg" alt=""></a>
+                        <a href="workRead.html" class="works_img"><img src="/static/images/work/20473078.jpg" alt=""></a>
+                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="" class="works_img"><img src="20473078.jpg" alt=""></a>
+                        <a href="workRead.html" class="works_img"><img src="/static/images/work/20473078.jpg" alt=""></a>
+                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="" class="works_img"><img src="20473078.jpg" alt=""></a>
+                        <a href="workRead.html" class="works_img"><img src="/static/images/work/20473078.jpg" alt=""></a>
+                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="" class="works_img"><img src="20473078.jpg" alt=""></a>
+                        <a href="workRead.html" class="works_img"><img src="/static/images/work/20473078.jpg" alt=""></a>
+                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="" class="works_img"><img src="20473078.jpg" alt=""></a>
+                        <a href="workRead.html" class="works_img"><img src="/static/images/work/20473078.jpg" alt=""></a>
+                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="" class="works_img"><img src="20473078.jpg" alt=""></a>
+                        <a href="workRead.html" class="works_img"><img src="/static/images/work/20473078.jpg" alt=""></a>
+                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="" class="works_img"><img src="20473078.jpg" alt=""></a>
+                        <a href="workRead.html" class="works_img"><img src="/static/images/work/20473078.jpg" alt=""></a>
+                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
+                    </li>
+                    <li>
+                        <p class="works_tit">Proof</p>
+                        <p class="worker">방탄소년단</p>
+                        <a href="workRead.html" class="works_img"><img src="/static/images/work/20473078.jpg" alt=""></a>
+                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
 </body>
+<script>
+    // 해시태그 클릭시 색상변경
+    $(".hash_tag a").on("click", function(e){
+        if($(e.target).hasClass('on')){
+            $(e.target).removeClass('on');
+        } else {
+            $(e.target).addClass('on');
+        }
+    })
+    
+</script>
 </html>

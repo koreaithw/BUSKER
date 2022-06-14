@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>
-        아티스트 피포먼스 목록
+        아티스트 목록
     </title>
+    
     <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
     <script type="text/javascript" id="www-widgetapi-script" src="https://www.youtube.com/s/player/02208bb4/www-widgetapi.vflset/www-widgetapi.js" async=""></script>
     <script src="https://connect.facebook.net/signals/config/233729201256635?v=2.9.61&amp;r=stable" async=""></script>
@@ -16,13 +17,26 @@
     <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PVHFWWM"></script>
     <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery-3.4.1_min.js"></script><!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PVHFWWM');</script><!-- End Google Tag Manager -->
-    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/swiper_min.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/Chart.bundle_min.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/utils.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.mCustomScrollbar_min.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/common.js?v=580"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.lazy.min.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.cookie.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.url.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/base64.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/babel.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/polyfill.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/swiper_min.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/Chart.bundle_min.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/utils.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.mCustomScrollbar_min.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/common.js?v=580"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.lazy.min.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.url.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/base64.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/babel.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/polyfill.js"></script>
     <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/Main.js?v=580"></script>
     <script type="text/javascript" src="/inc/js/custom-1.8.21/ui/jquery-ui-1.8.21.custom.min.js"></script>
-    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jry_home_jdefault.js"></script><script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jry_home_jdialog.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jry_home_jdefault.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jry_home_jdialog.js"></script>
     <script type="text/javascript" src="/inc/js/jry_default_new.js?v=580"></script>
 
-    <link rel="stylesheet" href="/css/artist_list.css">
+    <script type="text/javascript" src="../../static/assets/js/artists/artists.js"></script>
+
+    <link rel="stylesheet" href="../../static/assets/css/artist/artist_list.css">
 
     <style type="text/css">
         .perform-top{overflow:visible !important;}
@@ -42,13 +56,10 @@
 
 			<span class="li-sec-select">
 
-                <a href="#" onclick="location.href='artist_list.html'">전체</a>
-                <a href="#" onclick="location.href='artist_list_musician.html'">뮤지션</a>
-                <a href="#" onclick="location.href='artist_list_performance.html'">퍼포먼스</a>
 
-                <!-- <a style="cursor:pointer;" onclick="go_to_artist_list()">전체</a>
-                <a style="cursor:pointer;" onclick="go_to_artist_musician()">뮤지션</a>
-                <a style="cursor:pointer;" onclick="go_to_artist_performance()">퍼포먼스</a> -->
+				<a style="cursor:pointer;" onclick="go_to_url('artist_list.html')">전체</a>
+				<a style="cursor:pointer;" onclick="go_to_url('artist_musician.html')">뮤지션</a>
+				<a style="cursor:pointer;" onclick="go_to_url('artist_performance.html')">퍼포먼스</a>
 			</span>
 		</span>
         </p>
@@ -61,13 +72,19 @@
         <input type="hidden" name="" id="searchType" value="" autocomplete="off">
 
 
-        <a href="#" onclick="jsf_mm_Search();"><img src="http://tkfile.yes24.com/imgNew/common/pf-srch.png" alt="" class="trans"><img src="http://tkfile.yes24.com/imgNew/common/pf-srch-w.png" alt="" class="fixed"></a>
+        <a href="#" onclick="jsf_mm_Search();"><img src="http://tkfile.yes24.com/imgNew/common/pf-srch.png" alt="" class="trans"><img src="../../static/images/artist/search.png" alt="" class="searchbtn"></a>
 
 
     </div>
 
-    <p class="li-sec-tag">
+    
 
+    <p class="li-sec-tag">
+        <span><a style="cursor:pointer;" onclick="artistSort1();" token="3" class="on">최신 등록 기준</a></span>
+        <span><a style="cursor:pointer;" onclick="artistSort2();" token="0">좋아요 기준</a></span>
+
+      
+        
 
     </p>
     <p class="li-sec-result">
@@ -75,10 +92,11 @@
     </p>
 
     <div class="ms-list-imgs">
-        <a style="cursor:pointer;" onclick="jsf_base_GoToPerfDetail(42357);"
+        <a style="cursor:pointer;" onclick="go_to_artist_info('artist_info.html');"
+
            title="아티스트 이름">
             <div class="list-bigger-wrap"><img class="lazyload" alt="아티스트 이름"
-                                               src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220531/20220531-42357.jpg/dims/quality/70/"
+                                               src="../../static/images/artist/buskerbukser.jpg"
                                                style="">
                 <div class="list-bigger-txt">
                     <p class="list-b-tit1 v2 v2">아티스트 이름</p>
@@ -151,8 +169,7 @@
     </script></section>
 <script type="text/javascript">
     $(function () {
-        /*장르리스트*/
-        //2뎁스 메뉴 보여주는 가짜 셀렉트박스 & 다른데 클릭해도 셀렉트박스 닫히도록
+
         $(".li-sec-tit2").on('click', function (e) {
             if ($(this).is(".on")) {
                 e.preventDefault();
@@ -229,24 +246,44 @@
         lastScrollTop = scrollT
     }
 
-    var ua = window.navigator.userAgent.toLowerCase();
-    if (/iphone/.test(ua) || /android/.test(ua) || /opera/.test(ua) || /bada/.test(ua)) {
-        if (confirm('모바일 웹서비스 이용이 가능합니다.\r\n모바일웹으로 이동하시겠습니까? ')) {
-            location.href = 'http://m.ticket.yes24.com';
-        }
-    }
+  
 
-    function go_to_artist_list() {
-        window.open(artist_list.html)
-    }
 
-    function go_to_artist_musican() {
-        window.open(artist_list_musican.html)
-    }
 
-    function go_to_artist_performance() {
-        window.open(artist_list_performance.html)
+
+</script>
+<script>
+    function go_to_url(url) {
+        location.href=url;
     }
 </script>
+<script>
+    function go_to_artist_info(artist_no) {
+        location.href=artist_no;
+    }
+</script>
+<script>
+
+function artistSort1() {
+
+$('.li-sec-tag a').removeClass("on");
+$('.li-sec-tag').find("a[token='3']").addClass("on")
+}
+
+</script>
+<script>
+
+function artistSort2() {
+    
+$('.li-sec-tag a').removeClass("on");
+$('.li-sec-tag').find("a[token='0']").addClass("on")
+}
+    
+</script>
+ 
+
+
+
+
 </body>
 </html>
