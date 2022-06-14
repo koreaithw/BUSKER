@@ -1232,6 +1232,10 @@ a:-webkit-any-link {
   padding-bottom: 36px;
 }
 
+#artist-update-image-box{
+  background-image: url("http://tkfile.yes24.com/upload2/PerfBlog/202205/20220512/20220512-42193_1.jpg");
+}
+
 .artist-join-image-box,
 .artist-join-info-box {
   display: inline-block;
@@ -1509,7 +1513,6 @@ select:disabled {
   color: #333;
   font-weight: bold;
   line-height: 35px;
-  margin-bottom: 5px;
 }
 
 .input_text_name {
@@ -1528,7 +1531,7 @@ select:disabled {
 }
 
 .textarea-dd textarea {
-  height: 248px;
+  height: 487px;
   resize: none;
   border: 0;
   border-radius: 10px;
@@ -1540,14 +1543,13 @@ select:disabled {
 }
 
 textarea:focus,
-.artist-join-name:focus {
+.input_text_name:focus {
   outline: 1px solid #ff9326 !important;
 }
 
 .info_area2 dt {
   width: 100%;
   float: none;
-  margin: 6px 0 -3px 0;
   font-size: 15px;
   color: #333;
   font-weight: bold;

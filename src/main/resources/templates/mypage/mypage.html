@@ -69,7 +69,7 @@
           <!-- 부모 div -->
           <div class="mypage-body">
             <!-- 비밀번호 인증 -->
-            <div class="myInfo-pwCheck mypage-div">
+            <div class="myInfo-pwCheck mypage-div" style="display: none">
               <div class="desc-pw">
                 회원님의 개인정보보호를 위해 현재 사용중인
                 <span class="pwRed">비밀번호를 한번 더 입력</span>해 주시기
@@ -747,8 +747,6 @@
 
             <!-- 관심 아티스트 나의 후원 탭-->
             <div class="myArtistDonation-List" style="display: none">
-
-
               <div class="artist-join-title-box">
                 <div class="work_detail">
                   <div class="detail-donation">
@@ -766,7 +764,6 @@
                           >*결제 문의는 1:1 문의 페이지를 이용해주세요.</span
                         >
                       </p>
-                      
 
                       <div class="donation-soring">
                         <span class="sorting"><a>최신순</a></span>
@@ -774,15 +771,10 @@
                         <span class="sorting"><a>금액높은순</a></span>
                         <span class="sorting"><a>금액낮은순</a></span>
                       </div>
-
                     </div>
                   </div>
                 </div>
               </div>
-
-
-
-
 
               <!-- <div class="myArtist-Category-flex">
                 <p class="sorting">
@@ -802,12 +794,7 @@
                 </p>
               </div> -->
 
-
-
-
               <div class="donation-wrap">
-
-
                 <div class="donationTable-wrap">
                   <table class="donation-table">
                     <thead class="donation-header">
@@ -1634,194 +1621,142 @@
             <!-- 아티스트 계정 -->
 
             <div class="ArtistInfo-div mypage-div">
-                          <!-- 소메뉴 아티스트 나의 아티스트 계정  -->
-                          <div class="artistUser-List" style="display: none">
-                            <div class="artistUser-listBox">
-                              <div class="reartistUser-list-right">
-                                <div class="artistUser-listArtist">
-                                  <div class="artistUser-list-artistBox">
-                                    <div class="artistUser-list-artist">
-                                      <img
-                                        class="artistUser-list-img-artist"
-                                        src="https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG"
-                                        alt=""
-                                      />
-                                    </div>
-            
-                                    <div
-                                      class="artistUser-list-content-box artistUser-list-artist-content"
-                                    >
-                                      <div class="artistUser-list-nickname">페퍼톤스</div>
-                                      <div class="artistUser-listContent artist">
-                                        뮤지션
-                                      </div>
-                                    </div>
-                                    <button class="artistUser-list-button list-button">
-                                      수정
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-            
-            
-                            <div class=""></div>
+              <!-- 소메뉴 아티스트 나의 아티스트 계정  -->
+              <div class="artistUser-List" style="display: none">
+                <div class="artistUser-listBox">
+                  <div class="reartistUser-list-right">
+                    <div class="artistUser-listArtist">
+                      <div class="artistUser-list-artistBox">
+                        <div class="artistUser-list-artist">
+                          <img
+                            class="artistUser-list-img-artist"
+                            src="https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG"
+                            alt=""
+                          />
+                        </div>
+
+                        <div
+                          class="artistUser-list-content-box artistUser-list-artist-content"
+                        >
+                          <div class="artistUser-list-nickname">페퍼톤스</div>
+                          <div class="artistUser-listContent artist">
+                            뮤지션
                           </div>
-                          <!-- 소메뉴 나의 아티스트 계정 끝 -->
- <!-- 소메뉴 아티스트 계정 수정  -->
- <div class="artistUser-Info" style="display: none">
-  <div class="artist-join-title-box">
-    <div class="work_detail">
-      <div class="detail">
-        <p>아티스트 정보 수정</p>
-        <div class="announcement">
-          <p
-            style="
-              font-size: 13px;
-              margin-top: 0;
-              margin-bottom: 0px;
-              color: #ff9326;
-            "
-          >
-            <span class="announce"
-              >*수정 신청시 빠른시일내로 등록심사를
-              진행하겠습니다.</span
-            >
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
+                        </div>
+                        <button class="artistUser-list-button list-button">
+                          수정
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-  <div class="artist-join-title">
-    <div>아티스트명*</div>
-    <p class="input-name-p">
-      <input
-        id="artist-join-name"
-        class="input_text_name"
-        placeholder="아티스트 이름을 입력하세요"
-        value="페퍼톤스"
-      />
-    </p>
-  </div>
+                <div class=""></div>
+              </div>
+              <!-- 소메뉴 나의 아티스트 계정 끝 -->
+              <!-- 소메뉴 아티스트 계정 수정  -->
+              <div class="artistUser-Info">
+                <div class="artist-join-title-box">
+                  <div class="work_detail">
+                    <div class="detail">
+                      <p>아티스트 정보 수정</p>
+                      <div class="announcement">
+                        <p
+                          style="
+                            font-size: 13px;
+                            margin-top: 0;
+                            margin-bottom: 0px;
+                            color: #ff9326;
+                          "
+                        >
+                          <span class="announce"
+                            >*수정 신청시 빠른시일내로 등록심사를
+                            진행하겠습니다.</span
+                          >
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-  <div class="artist-join-form-box">
-    <div class="artist-join-image-box">
-      <!-- <span class="input-artist-image-desc"
-        >아티스트 대표 사진을 <br />등록해주세요.</span
-      >
-      <img
-        id="artist-join-profile"
-        class="artist-join-profile"
-        src="/static/images/mypage/photo-plus-icon.png"
-        alt=""
-      /> -->
-      <!-- <span class="input-artist-image-desc"
-      >아티스트 대표 사진을 <br />등록해주세요.</span
-    > -->
-    <img
-      id="artist-profile"
-      class="artist-profile"
-      src="http://tkfile.yes24.com/upload2/PerfBlog/202206/20220609/20220609-42492.jpg"
-      alt=""
-    />
-    </div>
-    <input
-      type="file"
-      id="artist-file-input"
-      style="visibility: hidden; display:none;"
-    />
+                <div class="artist-join-title">
+                  <div>아티스트명</div>
+                  <p class="input-name-p">
+                    <input
+                      id="artist-update-name"
+                      class="input_text_name"
+                      placeholder="아티스트 이름을 입력하세요"
+                      value="페퍼톤스"
+                    />
+                  </p>
+                </div>
 
-    <div class="artist-join-info-box">
-      <div class="info_area1">
-        <dl>
-          <dt>종류</dt>
-          <dd>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-              class="form-inline"
-            >
-              <select
-                name="artist-form-category"
-                class="artist-form-category"
-              >
-                <option value="뮤지션">
-                  아티스트 종류를 선택해주세요.
-                </option>
-                <option value="뮤지션">뮤지션</option>
-                <option value="퍼포먼스">퍼포먼스</option>
-              </select>
-            </span>
-          </dd>
-          <dt>앨범명</dt>
-          <dd>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-              type="text"
-              name="albumName"
-              class="input_text"
-            />
-          </dd>
-          <dt>아티스트</dt>
-          <dd>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-              type="text"
-              name="artistName"
-              class="input_text"
-            />
-          </dd>
-          <dt>발매일</dt>
-          <dd>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-              type="date"
-              name="releaseDate"
-              class="input_text"
-            />
-          </dd>
-          <dt>장르</dt>
-          <dd>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-              type="text"
-              name="genre"
-              class="input_text"
-            />
-          </dd>
-          <dt>대표 음원</dt>
-          <dd>
-            &nbsp;&nbsp;&nbsp;&nbsp;<input
-              type="text"
-              name="youtube_link"
-              class="input_text"
-              placeholder="유튜브 링크로 올려주세요."
-            />
-          </dd>
-        </dl>
-      </div>
-      <div class="form-inline">
-        <div class="info_area2">
-          <dl>
-            <dt>아티스트 소개</dt>
-            <dd class="textarea-dd">
-              <textarea
-                name="workDescription"
-                id=""
-                cols="82"
-                rows="5"
-                placeholder="아티스트를 간단히 소개해주세요."
-              ></textarea>
-            </dd>
-          </dl>
-        </div>
-      </div>
-    </div>
-  </div>
+                <div class="artist-join-form-box">
+                  <div class="artist-join-image-box" id="artist-update-image-box">
+                    <span class="input-artist-image-desc"
+                      >아티스트 대표 사진을 <br />등록해주세요.</span
+                    >
+                    <img
+                      id="artist-join-profile"
+                      class="artist-join-profile"
+                      src="/static/images/mypage/photo-plus-icon.png"
+                      alt=""
+                    />
+                  </div>
+                  <input
+                    type="file"
+                    id="artist-update-file"
+                    style="visibility: hidden; display: none"
+                  />
+  
 
-  <div class="form-button">
-    <button id="artist-form-submit" class="artist-form-submit">
-      수정
-    </button>
-  </div>
-</div>
-<!-- 소메뉴 아티스트 계정 수정 끝 -->
+                  <div class="artist-join-info-box">
+                    <div class="info_area1">
+                      <dl style="margin-bottom: 0">
+                        <dt>종류</dt>
+                        <dd>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            class="form-inline"
+                          >
+                            <select
+                            id="artist-update-category"
+                              name="artist-form-category"
+                              class="artist-form-category"
+                            >
+                              <option value="뮤지션">
+                                아티스트 종류를 선택해주세요.
+                              </option>
+                              <option value="뮤지션">뮤지션</option>
+                              <option value="퍼포먼스">퍼포먼스</option>
+                            </select>
+                          </span>
+                        </dd>
+                      </dl>
+                    </div>
+                    <div class="form-inline">
+                      <div class="info_area2">
+                        <dt>아티스트 소개</dt>
+                        <dd class="textarea-dd">
+                          <textarea
+                            name=""
+                            id="artist-update-description" 
+                            cols="79"
+                            rows="5"
+                            placeholder="아티스트를 간단히 소개해주세요."
+                          ></textarea>
+                        </dd>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
+                <div class="form-button">
+                  <button id="artist-update-submit" class="artist-form-submit">
+                    수정
+                  </button>
+                </div>
+              </div>
+              <!-- 소메뉴 아티스트 계정 수정 끝 -->
 
               <!-- 소메뉴 아티스트 계정 삭제  -->
               <div class="artistUser-Delete" style="display: none">
@@ -1881,7 +1816,7 @@
             </div>
 
             <!-- 소메뉴 아티스트 계정 등록  -->
-            <div class="artistJoic-desc" style="display: none;">
+            <div class="artistJoin-desc">
               <div class="artist-join-title-box">
                 <div class="work_detail">
                   <div class="detail">
@@ -1906,7 +1841,7 @@
               </div>
 
               <div class="artist-join-title">
-                <div>아티스트명*</div>
+                <div>아티스트명</div>
                 <p class="input-name-p">
                   <input
                     id="artist-join-name"
@@ -1930,19 +1865,20 @@
                 </div>
                 <input
                   type="file"
-                  id="artist-file-input"
+                  id="artist-join-file"
                   style="visibility: hidden; display: none"
                 />
 
                 <div class="artist-join-info-box">
                   <div class="info_area1">
-                    <dl>
+                    <dl style="margin-bottom: 0">
                       <dt>종류</dt>
                       <dd>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
                           class="form-inline"
                         >
                           <select
+                          id="artist-join-category"
                             name="artist-form-category"
                             class="artist-form-category"
                           >
@@ -1954,70 +1890,27 @@
                           </select>
                         </span>
                       </dd>
-                      <dt>앨범명</dt>
-                      <dd>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-                          type="text"
-                          name="albumName"
-                          class="input_text"
-                        />
-                      </dd>
-                      <dt>아티스트</dt>
-                      <dd>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-                          type="text"
-                          name="artistName"
-                          class="input_text"
-                        />
-                      </dd>
-                      <dt>발매일</dt>
-                      <dd>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-                          type="date"
-                          name="releaseDate"
-                          class="input_text"
-                        />
-                      </dd>
-                      <dt>장르</dt>
-                      <dd>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-                          type="text"
-                          name="genre"
-                          class="input_text"
-                        />
-                      </dd>
-                      <dt>뮤비 링크</dt>
-                      <dd>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-                          type="text"
-                          name="youtube_link"
-                          class="input_text"
-                          placeholder="유튜브 링크로 올려주세요."
-                        />
-                      </dd>
                     </dl>
                   </div>
                   <div class="form-inline">
                     <div class="info_area2">
-                      <dl>
-                        <dt>아티스트 소개</dt>
-                        <dd class="textarea-dd">
-                          <textarea
-                            name="workDescription"
-                            id=""
-                            cols="82"
-                            rows="5"
-                            placeholder="아티스트를 간단히 소개해주세요."
-                          ></textarea>
-                        </dd>
-                      </dl>
+                      <dt>아티스트 소개</dt>
+                      <dd class="textarea-dd">
+                        <textarea
+                          name="workDescription"
+                          id="artist-join-description"
+                          cols="79"
+                          rows="5"
+                          placeholder="아티스트를 간단히 소개해주세요."
+                        ></textarea>
+                      </dd>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div class="form-button">
-                <button id="artist-form-submit" class="artist-form-submit">
+                <button id="artist-join-submit" class="artist-form-submit">
                   완료
                 </button>
               </div>
@@ -2026,7 +1919,6 @@
 
             <!-- 소메뉴 아티스트 계정 후원 회원 목록  -->
             <div class="artistUserDonation-List" style="display: none">
-
               <div class="artist-join-title-box">
                 <div class="work_detail">
                   <div class="detail-donation">
@@ -2041,10 +1933,10 @@
                         "
                       >
                         <span class="announce"
-                          >*후원 관련 문의는 1:1 문의 페이지를 이용해주세요.</span
+                          >*후원 관련 문의는 1:1 문의 페이지를
+                          이용해주세요.</span
                         >
                       </p>
-                      
 
                       <div class="donation-soring">
                         <span class="sorting"><a>최신순</a></span>
@@ -2052,15 +1944,10 @@
                         <span class="sorting"><a>금액높은순</a></span>
                         <span class="sorting"><a>금액낮은순</a></span>
                       </div>
-
-
                     </div>
                   </div>
                 </div>
               </div>
-
-
-
 
               <div class="donation-wrap">
                 <div class="donationTable-wrap">
@@ -2110,7 +1997,7 @@
                             ></a>
                             <div class="">
                               <p class="table-p">
-                                <a class="" >왕고냐</a>
+                                <a class="">왕고냐</a>
                               </p>
                             </div>
                           </div>
