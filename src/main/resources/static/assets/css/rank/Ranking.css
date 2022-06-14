@@ -46,6 +46,7 @@ html, body, div, span{
 }
 
 .rank_best{
+    position: relative;
     width: 1200px;
     margin: 0 auto;
     text-align: center;
@@ -129,7 +130,6 @@ html, body, div, span{
 .content_name{
     min-width: 1300px;
     overflow: hidden;
-    padding-bottom: 100px;
 }
 
 .info{
@@ -265,24 +265,13 @@ p.big_title{
     display: none;
     width: 100%;
     position: absolute;
-    top: 63px;
+    top: 400px;
+    left: 1271px;
     z-index: 10;
 }
 
-.rank_category_calendar div{
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, 0);
-    padding: 0 35px;
-    background: #fff;
-    border: 1px solid #333;
-    border-top: 0 none;
-    display: none;
-}
-
 .rank_category_calendar div .rank_calendar{
-    margin: 35px;
+    margin: 0px;
 }
 
 
@@ -311,6 +300,10 @@ a{
     border-right: 1px solid #ddd;
 }
 
+.category{
+    width: 1200px;
+}
+
 .category a{
     display: inline-block;
     font-size: 14px;
@@ -329,7 +322,7 @@ a{
 }
 
 .rank_best div:last-child{
-    border-right: 0 none;
+    border-right: 1px solid #ddd;
 }
 
 .rank_best div a{
@@ -411,6 +404,11 @@ a{
     position: relative;
 }
 
+/* input태그 관련 */
+#salesRankDateWeek{
+    margin-left: 1800px;
+}
+
 /* img 관련 */
 .rank_list div div:nth-child(2) img{
     width: 80px;
@@ -455,6 +453,12 @@ a{
     font-size: 10px;
     font-weight: 400;
     margin-left: 50px;
+}
+
+.ui-helper-clearfix::before{
+    content: "";
+    display: table;
+    border-collapse: collapse;
 }
 
 /* ::after element */
@@ -507,6 +511,40 @@ span::after{
     transition: 0.3s;
 }
 
+.ui-helper-clearfix::after{
+    content: "";
+    display: table;
+    border-collapse: collapse;
+}
+
+/* 캘린더 ui 관련 */
+#rank_calendar_ver1 .ui-datepicker table{
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.ui-datepicker table{
+    width: 100%;
+    font-size: .9em;
+    border-collapse: collapse;
+    height: 300px;
+}
+
+.ui-widget.ui-widget-content{
+    border: 1px solid #000 !important;
+}
+
+.ui-widget-content{
+    width: 497px !important;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active{
+    border: none !important;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight{
+    background: #fbe6d5 !important;
+}
 /* 마우스 오버 */
 .rank_best div a:hover .artist_image img{
     transform: scale(1.12);
@@ -546,46 +584,12 @@ span::after{
 }
 
 /* id 관련 */
-#rank_calendar1 .ui_widget_content{
-    border: 0 none;
-}
-
-#rank_calendar1 .ui_datepicker{
-    width: 258px;
-    padding: 0;
-    margin: 0;
-}
-
-#rank_calendar1 .ui_datepicker .ui_datepicker_header{
-    padding: 0;
-}
-
-#rank_calendar1 .ui_widget_header{
-    border: 0 none;
-    background: none;
-    font-size: 24px;
-    color: #333;
-    font-weight: normal;
-    height: 19px;
-    margin-bottom: 20px;
-}
-
-#rank_calender1 .ui_datepicker .ui_datepicker_prev{
-    background: url(http://tkfile.yes24.com/imgNew/common/ico-arrow-calendar1.png)no-repeat;
-    left: 52px;
-}
-
-#rank_calendar1 .ui_datepicker .ui_datepicker_prev, .ui_datepicker .ui_datepicker_next{
-    bordeR: 0none;
-    text-shadow: none;
-    box-shadow: none;
-    width: 10px;
-    height: 19px;
-    border-radius: unset;
-    margin: 0;
-    padding: 0;
+#rank_calendar{
     position: absolute;
-    top: 2px;
+}
+
+#ui-datepicker-div{
+    top: 399px !important;
 }
 
 /*keyframe*/
