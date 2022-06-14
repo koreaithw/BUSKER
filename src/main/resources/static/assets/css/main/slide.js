@@ -63,3 +63,4 @@ function currentSlide(num){
     dots[slideIndex - 1 ].className += ' on';
 
 }
+
