@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>아티스트 정보</title>
+    <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+    
 
     <link rel="stylesheet" href="../../static/assets/css/artist/artist_info.css">
 </head>
@@ -97,12 +99,13 @@
 
 
 </body>
+
 <script>
  
- $(function(){ 
+
 
 $("#btn-modal").click(function(){
-    e.preventdefault();
+    console.log("fdd")
   $(".modal").fadeIn();
 });
 
@@ -110,6 +113,6 @@ $(".modal_content").click(function(){
   $(".modal").fadeOut();
 });
 
-});
 </script>
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
 </html>
