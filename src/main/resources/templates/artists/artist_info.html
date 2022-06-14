@@ -5,6 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>아티스트 정보</title>
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    
 
     <link rel="stylesheet" href="../../static/assets/css/artist/artist_info.css">
 </head>
@@ -57,11 +66,30 @@
 
 
 
-                <a href="javascript:;" onclick="click_donate();" class="rn-bb03">후원하기</a>
+                
+                <a href="javascript:;" onclick="click_like();" class="rn-bb03" id="btn-modal" >후원하기</a>
                 <a href="javascript:;" onclick="click_like();" class="rn-bb03">좋아요</a>
 
 
             </div>
+
+            <div class="modal">
+                <div class="modal_content"
+                title="테스트">
+                <div class="modal_close">
+                    <span class="modal-close-btn"> 닫기 X </span>
+                </div>
+                
+                
+                <section class="section-donation-name"><!----> <label class="input-label-common donation-name"><span> 응원 한마디 </span> <input id="donation-name" tabindex="1" type="text" maxlength="30"></label> <label class="input-label-common donation-amount"><span> 후원 금액 </span> <input id="donation-amount" tabindex="2" type="number" autofocus="autofocus" min="1000" step="100" placeholder="1000" maxlength="7" pattern="\d*"> <!----> <!----></label></section>
+              
+                <div class="modal-content-down">
+              <a href="javascript:;" onclick="click_donate_api();" class="rn-bb03-2">후원</a>
+            </div>
+            </div>
+            </div>
+
+            
 
 
 
@@ -81,4 +109,20 @@
 
 
 </body>
+
+<script>
+ 
+
+//후원버튼 클릭시 모달창 열기
+$("#btn-modal").click(function(){
+    console.log("fdd")
+  $(".modal").fadeIn();
+});
+//닫기 누를시 모달창 닫기
+$(".modal-close-btn").click(function(){
+  $(".modal").fadeOut();
+});
+
+</script>
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
 </html>
