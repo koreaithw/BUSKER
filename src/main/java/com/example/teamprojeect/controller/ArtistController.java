@@ -34,7 +34,7 @@ public class ArtistController {
     }
 
     // 퍼포먼스 아티스트 목록 페이지
-    @GetMapping("/artistListMusician")
+    @GetMapping("/artistListPerformance")
     public String goArListPerformance() {
         return "/artist/artistListPerformance";
     }
