@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/like/*")
-public class LikeController {
+public class WorkLikeController {
 }

@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("/payment/*")
-public class PaymentController {
+public class ArtistPaymentController {
 }

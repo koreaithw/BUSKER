@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/like/*")
-public class LikeController {
+@RequestMapping("/reply/*")
+public class ArtistReplyController {
+    // 필드 생성
 }
