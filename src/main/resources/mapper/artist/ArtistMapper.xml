@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.teamprojeect.mapper.artist.ArtistMapper">
+    <!-- // 아티스트 등록 신청 및 관리자 등록 승인 (매개변수로 usreNumber를 받아서 사용자라면 등록신청을, 관리자라면 바로 등록을 실행) -->
+    <insert id="insert"></insert>
+
+
+
+
+
+</mapper>
