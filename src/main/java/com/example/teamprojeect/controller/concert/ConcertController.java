@@ -1,4 +1,4 @@
-package com.example.teamprojeect.controller;
+package com.example.teamprojeect.controller.concert;
 
 
 import lombok.RequiredArgsConstructor;
@@ -8,11 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@Controller
+@RequestMapping("/concertLive/*")
 @Slf4j
 @RequiredArgsConstructor
-@Controller
-@RequestMapping("/concertPlan/*")
-public class ConcertPlanController {
+public class ConcertController {
     // 필드 생성
 
 
@@ -38,5 +38,11 @@ public class ConcertPlanController {
     @GetMapping("/concertPlanRegister")
     public String goConcertPlanRegister() {
         return "/concertPlan/concertPlanRegister";
+    }
+
+    // 진행중인 콘서트 페이지
+    @GetMapping("/concertLive")
+    public String goConcertLive() {
+        return "/concertLive/concertLive";
     }
 }

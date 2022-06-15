@@ -1,5 +1,4 @@
-package com.example.teamprojeect.controller;
-
+package com.example.teamprojeect.controller.main;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,17 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 @RequiredArgsConstructor
 @Controller
-@RequestMapping("/myPage/*")
-public class MypageController {
+@RequestMapping("/main/*")
+public class MainController {
     // 필드 생성
 
 
-    // 마이페이지 이동
-    @GetMapping("/myPage")
-    public String goMypage() {
-        return "/myPage/myPage";
+    // 메인페이지 이동
+    @GetMapping("/")
+    public String goMain() {
+        return "/main/main";
     }
-
-
-
 }

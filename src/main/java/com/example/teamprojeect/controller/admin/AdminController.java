@@ -1,4 +1,4 @@
-package com.example.teamprojeect.controller;
+package com.example.teamprojeect.controller.admin;
 
 
 import lombok.RequiredArgsConstructor;
@@ -7,17 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
-@RequestMapping("/concertLive/*")
 @Slf4j
 @RequiredArgsConstructor
-public class ConcertLiveController {
+@Controller
+@RequestMapping("/admin/*")
+public class AdminController {
     // 필드 생성
 
 
-    // 진행중인 콘서트 페이지
-    @GetMapping("/concertLive")
-    public String goConcertLive() {
-        return "/concertLive/concertLive";
+    // 관리자 페이지 이동
+    @GetMapping("/adminMain")
+    public String goAdmin() {
+        return "/admin/adminMain";
     }
+
 }
