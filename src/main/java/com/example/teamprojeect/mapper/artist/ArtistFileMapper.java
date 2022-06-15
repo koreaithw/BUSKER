@@ -1,4 +1,4 @@
-package com.example.teamprojeect.mapper;
+package com.example.teamprojeect.mapper.artist;
 
 import com.example.teamprojeect.domain.vo.artist.ArtistFileVO;
 import org.apache.ibatis.annotations.Mapper;

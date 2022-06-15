@@ -6,13 +6,11 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
 
-//@ContextConfiguration(locations = "classpath: config/config.xml")
 @WebAppConfiguration
 @SpringBootTest
 @Slf4j

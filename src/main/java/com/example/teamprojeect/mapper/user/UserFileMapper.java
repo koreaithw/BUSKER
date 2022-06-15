@@ -1,4 +1,4 @@
-package com.example.teamprojeect.mapper;
+package com.example.teamprojeect.mapper.user;
 
 import com.example.teamprojeect.domain.vo.user.UserFileVO;
 import org.apache.ibatis.annotations.Mapper;
