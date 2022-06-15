@@ -10,7 +10,8 @@ public class ArtistVO {
     private Long userNumber;
     private String artistName;
     private String artistDescription;
-    private Long artistStatus;
+    private Long artistType;
     private Long artistDonation;
     private String artistAccount;
+    private String artistStatus;
 }

@@ -1,5 +1,6 @@
 package com.example.teamprojeect.mapper.user;
 
+import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.user.UserVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -26,5 +27,9 @@ public interface UserMapper {
     public int delete(UserVO userVO);
 
     // ID, PW 찾기
-    public List<UserVO> find(UserVO userVO);
+    public UserVO find(@Param("text") String text, @Param("findWay") String findWay);
+
+    // 아티스트 계정 등록삭제 (
+    public int updateArtist(@Param("userNumber") Long userNumber, @Param("listDTO") ListDTO listDTO);
+
 }
