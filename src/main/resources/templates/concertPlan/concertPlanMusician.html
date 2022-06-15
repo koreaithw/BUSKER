@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -55,6 +55,11 @@
   </style>
 
 </head>
+
+<header th:include="~{/header/header3 :: head}">
+
+</header>
+
 <body>
     <section class='m2-sec02'>
     <div class='m2-tit'>뮤지션 공연예정</div>
