@@ -1,4 +1,4 @@
-package com.example.teamprojeect.domain.vo;
+package com.example.teamprojeect.domain.vo.paging;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

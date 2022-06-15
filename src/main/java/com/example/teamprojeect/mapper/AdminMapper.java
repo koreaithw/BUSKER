@@ -1,6 +1,5 @@
 package com.example.teamprojeect.mapper;
 
-import com.example.teamprojeect.domain.vo.ArtistVO;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

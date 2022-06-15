@@ -1,6 +1,6 @@
 package com.example.teamprojeect.mapper;
 
-import com.example.teamprojeect.domain.vo.*;
+import com.example.teamprojeect.domain.vo.show.ShowFileVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

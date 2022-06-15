@@ -1,6 +1,6 @@
 package com.example.teamprojeect.mapper;
 
-import com.example.teamprojeect.domain.vo.UserVO;
+import com.example.teamprojeect.domain.vo.user.UserVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -9,9 +9,8 @@ import java.util.List;
 public interface UserMapper {
     // 회원가입
     public void join(UserVO userVO);
-    // 회원가입시 휴대폰 번호 조회 -> 있으면 ID 찾기
+    // 회원가입시 휴대폰 번호 조회 -> 있으면 ID 찾기 // count 하거나 string  boolean 안함
     public boolean searchPhoneNumber(String userPhoneNumber);
-    // boolean 리턴값은 try catch문으로 잡아야 하는건가?
 
     // 로그인
     public int login(String userId, String userPw);

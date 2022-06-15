@@ -1,6 +1,6 @@
-package com.example.teamprojeect.domain.vo;
+package com.example.teamprojeect.domain.vo.paging;
 
-public class PageDTO {
+public class ShowPageDTO {
     private Criteria criteria;
 
     private int startPage;
@@ -11,11 +11,11 @@ public class PageDTO {
 
     private int total;
 
-    public PageDTO(Criteria criteria, int total) {
+    public ShowPageDTO(Criteria criteria, int total) {
         this(criteria, 10, total);
     }
 
-    public PageDTO(Criteria criteria, int pageCount, int total) {
+    public ShowPageDTO(Criteria criteria, int pageCount, int total) {
         this.criteria = criteria; // pageNum 과 amount 불러옴
         this.total = total;
         this.endPage = (int)Math.ceil(criteria.getPageNum() / (double)pageCount) * pageCount;

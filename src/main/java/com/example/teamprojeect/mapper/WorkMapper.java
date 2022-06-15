@@ -1,10 +1,9 @@
 package com.example.teamprojeect.mapper;
 
-import com.example.teamprojeect.domain.vo.Criteria;
-import com.example.teamprojeect.domain.vo.WorkVO;
+import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.work.WorkVO;
 import org.apache.ibatis.annotations.Mapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Mapper

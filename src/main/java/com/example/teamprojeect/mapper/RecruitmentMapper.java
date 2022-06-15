@@ -1,7 +1,7 @@
 package com.example.teamprojeect.mapper;
 
-import com.example.teamprojeect.domain.vo.Criteria;
-import com.example.teamprojeect.domain.vo.RecruitmentVO;
+import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.recruitment.RecruitmentVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.example.teamprojeect.mapper;
 
-import com.example.teamprojeect.domain.vo.Criteria;
-import com.example.teamprojeect.domain.vo.ShowReplyVO;
+import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.show.ShowReplyVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

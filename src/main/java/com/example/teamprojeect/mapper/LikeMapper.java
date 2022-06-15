@@ -1,8 +1,8 @@
 package com.example.teamprojeect.mapper;
 
-import com.example.teamprojeect.domain.vo.ArtistVO;
-import com.example.teamprojeect.domain.vo.LikeVO;
-import com.example.teamprojeect.domain.vo.WorkVO;
+import com.example.teamprojeect.domain.vo.artist.ArtistVO;
+import com.example.teamprojeect.domain.vo.user.LikeVO;
+import com.example.teamprojeect.domain.vo.work.WorkVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

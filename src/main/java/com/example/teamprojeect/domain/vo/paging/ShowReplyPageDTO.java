@@ -1,5 +1,6 @@
-package com.example.teamprojeect.domain.vo;
+package com.example.teamprojeect.domain.vo.paging;
 
+import com.example.teamprojeect.domain.vo.show.ShowReplyVO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

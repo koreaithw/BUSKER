@@ -1,4 +1,4 @@
-package com.example.teamprojeect.domain.vo;
+package com.example.teamprojeect.domain.vo.user;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;

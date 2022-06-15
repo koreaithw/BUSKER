@@ -1,8 +1,7 @@
 package com.example.teamprojeect.mapper;
 
-import com.example.teamprojeect.domain.vo.ArtistVO;
-import com.example.teamprojeect.domain.vo.Criteria;
-import com.example.teamprojeect.domain.vo.ShowVO;
+import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.show.ShowVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
