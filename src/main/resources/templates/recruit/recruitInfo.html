@@ -2,6 +2,8 @@
 <!-- <html lang="en"> -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout">
     
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,6 +32,9 @@
     <!-- Content Page의 script fragment 삽입 -->
     <th:block layout:fragment="script"></th:block>
 </th:block>
+<header th:include="~{/header/header3 :: head}">
+
+</header>
 <body>
     <div class="content">
         <p class="title-text">아티스트 모집 공고</p>
@@ -174,7 +179,7 @@
             </div>
             <div class="btn-box">
                 <div class="last-btn">
-                    <a href="/recruit/recruitList.html" class="noti-list">목록보기</a>
+                    <a href="/recruit/recruitList" class="noti-list">목록보기</a>
                 </div>
             </div>
  

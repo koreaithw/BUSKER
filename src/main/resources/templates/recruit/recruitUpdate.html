@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,6 +10,10 @@
       href="/assets/css/recruit/recruitRegister.css"
     />
   </head>
+
+  <header th:include="~{/header/header3 :: head}">
+
+  </header>
   <body>
     <div class="content">
       <p class="title-text">아티스트 모집 공고</p>
