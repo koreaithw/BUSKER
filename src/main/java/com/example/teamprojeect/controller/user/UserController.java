@@ -14,6 +14,6 @@ public class UserController {
     // 회원가입 페이지 이동
     @GetMapping("/userJoin")
     public String goUserJoin(){
-        return "/login/login";
+        return "/user/userJoin";
     }
 }

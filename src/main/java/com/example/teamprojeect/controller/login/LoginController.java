@@ -1,5 +1,6 @@
 package com.example.teamprojeect.controller.login;
 
+import com.example.teamprojeect.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/login/*")
 public class LoginController {
     // 필드 생성
-
+    private LoginService loginService;
 
     // 로그인 페이지 이동
     @GetMapping("/login")

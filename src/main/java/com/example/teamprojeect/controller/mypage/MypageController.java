@@ -21,6 +21,11 @@ public class MypageController {
         return "/myPage/myPage";
     }
 
+    // 유저 정보 수정
 
 
+    // 비밀 번호 수정
+
+
+    // 회원 탈퇴
 }

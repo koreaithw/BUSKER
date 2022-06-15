@@ -1,6 +1,7 @@
 package com.example.teamprojeect.controller.artist;
 
 
+import com.example.teamprojeect.service.ArtistService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/artist/*")
 public class ArtistController {
     // 필드생성
-
+    private ArtistService artistService;
 
     // 아티스트 전체 목록 페이지
     @GetMapping("/artistList")

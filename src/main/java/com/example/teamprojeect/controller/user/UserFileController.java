@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/file/*")
+@RequestMapping("/file/user/*")
 @Controller
 public class UserFileController {
     // 필드 생성
