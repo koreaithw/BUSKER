@@ -1,11 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.teamprojeect.mapper.artist.ArtistMapper">
-    <!-- // 아티스트 등록 신청 및 관리자 등록 승인 (매개변수로 usreNumber를 받아서 사용자라면 등록신청을, 관리자라면 바로 등록을 실행) -->
-    <insert id="insert"></insert>
 
+    <!-- 아티스트 등록 신청 (status 1) -->
+    <insert id="insertApply">
+        INSERT INTO TBL_ARTIST
+        (ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE, ARTIST_DONATION, ARTIST_ACCOUNT, ARTIST_STATUS)
+        VALUES(SEQ_ARTIST, #{userNumber}, #{artistName}, #{artistDescription}, #{artistType}, #{artistDonation}, #{artistAccount}, 1)
+    </insert>
 
+    <!--관리자 등록 승인 (status -> 3)-->
+    <update id="insertAdmin">
+        UPDATE TBL_ARTIST
+        SET ARITST_STATUS = 3
+        WHERE ARTIST_NUMBER = #{artistNumber}
+    </update>
 
+    <!--아티스트 정보 수정 신청 (status 2)-->
+    <update id="updateApply">
+        UPDATE TBL_ARTIST
+        SET ARTIST_NAME = #{artistName}, ARTIST_DESCRIPTION = #{artistDescription}, ARTIST_TYPE = #{artistType}, ARTIST_DONATION = #{artistDonation},
+         ARTIST_ACCOUNT = #{artistAccount}, ARITST_STATUS = 2
+        WHERE ARTIST_NUMBER = #{artistNumber}
+    </update>
 
+    <!--관리자 수정 승인 (status -> 3)--> <!---->
+    <update id="updateAdmin">
+        UPDATE TBL_ARTIST
+        SET ARITST_STATUS = 3
+        WHERE ARTIST_NUMBER = #{artistNumber}
+    </update>
+
+    <!--아티스트 삭제--> <!---->
+    <update id="delete">
+        UPDATE TBL_ARTIST SET ARITST_STATUS = 4 WHERE ARTIST_NUMBER = #{artistNumber}
+    </update>
+
+    <!--아티스트 목록--> <!---->
+    <select id="getList">
+        <![CDATA[
+        SELECT ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE, ARTIST_DONATION, ARTIST_ACCOUNT, ARTIST_STATUS
+        FROM
+        (
+            SELECT /*+ INDEX_DESC(TBL_ARTIST SYS_C007026) */
+            ROWNUM RN, ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE, ARTIST_DONATION, ARTIST_ACCOUNT, ARTIST_STATUS
+            FROM TBL_ARTIST
+            WHERE
+        ]]>
+
+        <![CDATA[
+            ROWNUM <= #{pageNum} * #{amount}
+        )
+        WHERE RN > (#{pageNum} - 1) * #{amount}
+        ]]>
+    </select>
+
+    <!--아티스트 목록 개수-->
+    <select id="getList" resultType="artistVO">
+
+    </select>
+
+    <!--랭킹 목록-->
+    <select id="rankingList" resultType="artistVO">
+
+    </select>
+
+    <!--랭킹 목록 개수-->
+    <select id="getTotal" resultType="_int">
+
+    </select>
+
+    <!--아티스트 상세 정보-->
+    <select id="getDetail" resultType="artistFileVO">
+        SELECT ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE, ARTIST_DONATION, ARTIST_ACCOUNT, ARTIST_STATUS
+        FROM TBL_ARTIST
+        WHERE ARTIST_NUMBER = #{artistNumber}
+    </select>
 
 </mapper>

@@ -11,11 +11,17 @@ import java.util.List;
 @Mapper
 public interface ArtistMapper {
     // 아티스트 정보 //
-    // 아티스트 등록 신청 및 관리자 등록 승인 (매개변수로 usreNumber를 받아서 사용자라면 등록신청을, 관리자라면 바로 등록을 실행)
-    public void insertApply(@Param("artistVO") ArtistVO artistVO, @Param("userNumber") Long userNumber);
+    // 아티스트 등록 신청 (status 1)
+    public void insertApply(ArtistVO artistVO);
 
-    // 아티스트 정보 수정 신청 및 관리자 등록 승인 (매개변수로 usreNumber를 받아서 사용자라면 수정 신청을, 관리자라면 바로 수정을 실행)
-    public int updateApply(@Param("artistVO") ArtistVO artistVO, @Param("userNumber") Long userNumber);
+    // 관리자 등록 승인 (status -> 3)
+    public void insertAdmin(Long artistNumber);
+
+    // 아티스트 정보 수정 신청 (status 2)
+    public int updateApply(ArtistVO artistVO);
+
+    // 관리자 수정 승인 (status -> 3)
+    public void updateAdmin(Long artistNumber);
 
     // 아티스트 삭제
     public int delete(Long artistNumber);
@@ -24,7 +30,9 @@ public interface ArtistMapper {
     // (매개변수로 artistType을 전달해서 'A'(전체)인지 'M'(아티스트) 인지 'P'(퍼포먼스)인지 구분)
     // (매개변수로 sortingType을 전달해서 '최신순'과 '좋아요순' 구분)
     public List<ArtistVO> getList(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO);
-
+/*
+artistType likeType (최신, 좋아요 순)
+* * */
     // 아티스트 목록 개수
     // 랭킹 목록 개수
     public int getTotal(ListDTO listDTO);
