@@ -130,6 +130,8 @@ html, body, div, span{
 .content_name{
     min-width: 1300px;
     overflow: hidden;
+    font-weight: bold;
+    font-family: 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
 }
 
 .info{
@@ -273,6 +275,11 @@ p.big_title{
     margin: 0px;
 }
 
+.rank_calendar_ver1, .rank_calendar_ver2, .rank_calendar_ver3{
+    float: right;
+    padding-top: 17px;
+}
+
 
 /* a태그 관련 */
 
@@ -300,7 +307,7 @@ a{
 }
 
 .category{
-    width: 1200px;
+    width: 400px;
 }
 
 .category a{
@@ -406,6 +413,14 @@ a{
 /* input태그 관련 */
 #salesRankDateWeek{
     margin-left: 1800px;
+}
+
+/* select 요소 관련 */
+select{
+    width: 150px;
+    height: 35px;
+    border-radius: 4px;
+    border-color: #ec7d2c;
 }
 
 /* img 관련 */
