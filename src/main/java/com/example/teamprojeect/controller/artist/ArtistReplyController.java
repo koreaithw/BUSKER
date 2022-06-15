@@ -1,4 +1,4 @@
-package com.example.teamprojeect.controller.recruit;
+package com.example.teamprojeect.controller.artist;
 
 
 import lombok.RequiredArgsConstructor;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RequiredArgsConstructor
-@RestController("recruit.ReplyController")
+@RestController
 @RequestMapping("/reply/*")
-public class ReplyController {
+public class ArtistReplyController {
     // 필드 생성
 }
