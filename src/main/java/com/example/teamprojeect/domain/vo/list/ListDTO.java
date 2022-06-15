@@ -17,4 +17,6 @@ public class ListDTO {
     private String likeType;
     private String tag;
     private String recruitmentType;
+    private String artistUserStatusType;
+    private String findWay;
 }

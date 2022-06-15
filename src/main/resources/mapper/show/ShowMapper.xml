@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.teamprojeect.mapper.show.ShowMapper">
+    <!--공연 등록-->
+    <!--공연 수정-->
+    <!--공연 삭제-->
+    <!--진행 예정 공연 목록-->
+    <!--진행 예정/ 진행 중 공연 개수-->
+    <!--공연 상세 페이지-->
+</mapper>

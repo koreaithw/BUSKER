@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.teamprojeect.mapper.user.UserFileMapper">
+
+    <!--회원 사진 추가-->
+    <insert id="insert">
+        INSERT INTO TBL_USER_FILE
+        (UUID, USER_NUMBER, UPLOAD_PATH, FILE_NAME)
+        VALUES (#{uuid}, #{userNumber}, #{uploadPath}, #{fileName})
+    </insert>
+
+    <!--회원 사진 삭제-->
+    <delete id="delete">
+        DELETE FROM TBL_USER_FILE WHERE UUID = #{uuid}
+    </delete>
+
+    <!--회원 사진 변경-->
+    <update id="update">
+        UPDATE TBL_USER_FILE
+        SET UUID = #{uuid}, USER_NUMBER = #{userNumber}, UPLOAD_PATH = #{uploadPath}, FILE_NAME = #{fileName}
+        WHERE USER_NUMBER = #{userNumber}
+    </update>
+
+    <!--회원 사진 선택-->
+    <select id="find" resultType="userFileVO">
+        SELECT UUID, USER_NUMBER, UPLOAD_PATH, FILE_NAME
+        FROM TBL_USER_FILE
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+</mapper>
