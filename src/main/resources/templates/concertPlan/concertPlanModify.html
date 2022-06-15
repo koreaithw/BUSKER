@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/assets/css/concertPlan/show_correction.css"/>
+   
+
+    <style>
+        .clear{clear:both;}
+        .fileList .fileName{padding-left: 20px;}
+        .fileList .fileSize{padding-right: 20px; float:right;}
+    </style>
+
+    <!-- 제이쿼리 불러오기 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <title>공연일정 등록</title>
+</head>
+<body>
+
+    <form name="showform" action="" method="post"></form>
+    <div class="show_detail_wrap">
+        <div class="show_detail">
+            <div class="detail">
+                <p>공연일정 등록</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="show_info_wrap">
+        <form action="" method="post" name = "registForm" enctype="multipart/form-data">
+            <div class="show_info_content">
+                <div class="show_info">
+                    <div class="info_left">
+                        <div class="img_box">
+                            <input id="file_drop" class="file_drop" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공연 포스터를 드래그 앤 드롭으로 등록해주세요.">
+                        </div>
+                    </div>
+                    <div class="info_right">
+                        <div class="info_area1">
+                            <dl>
+                                <dt>분류*</dt>
+                                <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="classification" class="classification">
+                                    <option style="background: white;" value="">선택</option>
+                                    <option style="background: white;" value="performance">퍼포먼스</option>
+                                    <option style="background: white;" value="musician">뮤지션</option>
+                                </select></dd>
+                                <span><p class="warning_msg1">반드시 입력해야 하는 칸입니다.</p></span>
+
+                                <dt>아티스트명*</dt>
+                                <dd>&nbsp;&nbsp;&nbsp;<input type="text" name="artistName" class="input_text"></dd>
+                                <span><p class="warning_msg2">반드시 입력해야 하는 칸입니다.</p></span>
+
+                                <dt>공연일자*</dt>
+                                <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="releaseDate" class="input_text"></dd>
+                                <span><p class="warning_msg3">반드시 입력해야 하는 칸입니다.</p></span>
+
+                                <dt>공연시간*</dt>
+                                <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="time" name="showtime" class="input_text"></dd>
+                                <span><p class="warning_msg4">반드시 입력해야 하는 칸입니다.</p></span>
+
+                                <dt>공연장소*</dt>
+                                <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="input_text" id="address_kakao" name="address"></dd>
+                                <span><p class="warning_msg5">반드시 입력해야 하는 칸입니다.</p></span>
+
+                                <dt>상세주소</dt>
+                                <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" class="input_text" name="address_detail"></dd>
+
+                            </dl>
+                        </div>
+                        <div class="info_area2">
+                            <dl>
+                                <dt>상세내용</dt>
+                                <dd>
+                                    <textarea name="ect" id="" cols="82" rows="12"></textarea>
+                                </dd>
+
+                            </dl>
+                        </div>
+                        <div class="info_area2" style="float: right;">
+                            <div class="purchase_link_wrap">
+                                <a href="" class="purchase_link">등록완료</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</form>
+</body>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+    <script>
+    // 주소
+    window.onload = function(){
+        document.getElementById("address_kakao").addEventListener("click", function(){ //주소입력칸을 클릭하면
+        //카카오 지도 발생
+            new daum.Postcode({
+                oncomplete: function(data) { //선택시 입력값 세팅
+                    document.getElementById("address_kakao").value = data.address; // 주소 넣기
+                    document.querySelector("input[name=address_detail]").focus(); //상세입력 포커싱
+            }
+        }).open();
+    });
+    }
+    </script>
+
+    <script>
+    var fileList = []; //파일 정보를 담아 둘 배열
+    $(function(){
+
+        //드래그앤드랍
+        $("#file_drop").on("dragenter", function(e){
+            e.preventDefault();
+            e.stopPropagation();
+        }).on("dragover", function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).css("background-color", "#FFF2E5");
+        }).on("dragleave", function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).css("background-color", "#FFF");
+        }).on("drop", function(e){
+            e.preventDefault();
+
+            var files = e.originalEvent.dataTransfer.files;
+            console.log(files);
+            $(e.target).closest("div").html(
+                "<img src='"+ window.URL.createObjectURL(files[0]) + "'>"
+            );
+        });
+    
+       // 등록
+        $(document).on("click", "#save", function(){
+            var formData = new FormData($("#fileForm")[0]);
+            if(fileList.length > 0){
+                fileList.forEach(function(f){
+                    formData.append("fileList", f);
+                });
+            }         
+
+            $.ajax({
+                url : "서버 맵핑 URL",
+                data : formData,
+                type:'POST',
+                enctype:'multipart/form-data',
+                processData:false,
+                contentType:false,
+                dataType:'json',
+                cache:false,
+                success:function(res){
+                    alert("등록에 성공하셨습니다.");
+                },error:function(res){
+                    alert("오류 발생.\n관리자에게 문의해주세요.");
+                }
+            });
+        });
+    });
+
+</script>
+
+<!-- 유효성 검사 -->
+<script>
+    $("a.purchase_link").on("click", function(e){
+        if(!$("select[name=classification]").val()){
+           // console.log("length");
+            $(".warning_msg1").show();
+            $(".info_area2").css("min-height", "120px"); 
+            return false;
+        }else{
+            $(".warning_msg1").hide();
+        }
+
+        if(!$("input[name=artistName]").val()){
+           // console.log("length1");
+            $(".warning_msg2").show();
+            $(".info_area2").css("min-height", "120px"); 
+            return false;
+        }else{
+            $(".warning_msg2").hide();
+        }
+
+        if(!$("input[name=releaseDate]").val()){
+           // console.log("length2");
+            $(".warning_msg3").show();
+            $(".info_area2").css("min-height", "120px"); 
+            return false;
+        }else{
+            $(".warning_msg3").hide();
+        }
+
+        if(!$("input[name=showtime]").val()){
+           // console.log("length3");
+            $(".warning_msg4").show();
+            $(".info_area2").css("min-height", "120px"); 
+            return false;
+        }else{
+            $(".warning_msg4").hide();
+        }
+        
+        if(!$("input[name=address]").val()){
+           // console.log("length4");
+            $(".warning_msg5").show();
+            $(".info_area2").css("min-height", "120px"); 
+            return false;
+        }else{
+            $(".warning_msg5").hide();
+        }
+        
+    //console.log("aaa");
+    return true;
+    })
+        
+</script>
+
+</html>

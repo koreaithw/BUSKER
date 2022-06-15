@@ -292,3 +292,15 @@ textarea:focus {
     overflow: hidden;
     margin-bottom: 50px;
 }
+
+.warning_msg1,.warning_msg2,.warning_msg3,.warning_msg4,.warning_msg5{
+    color: red;
+    font-size: 13px;
+    margin: 0;
+    padding-left: 100px;
+    display: none;
+}
+
+dd span {
+    line-height: 20px;
+}
