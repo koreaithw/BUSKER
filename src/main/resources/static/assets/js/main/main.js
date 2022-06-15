@@ -18,20 +18,20 @@ function showSlides() {
 
 
 
-  let divCurrentName = ".flexing-musician";
+  let divCurrentName = ".flexing-all";
 
   function formReset() {
     $("#ranking-musician")[0].reset();
     $("#myInfoForm")[0].reset();
     $("#newPwForm")[0].reset();
-    
+
   }
 
 
 
   // 페이지 첫 설정
 $(document).ready(function () {
-  divCurrentName = ".flexing-musician";
+  divCurrentName = ".flexing-all";
   $(divCurrentName).show();
 });
 
@@ -42,6 +42,13 @@ function tabChange(e) {
   $(divCurrentName).show();
 }
 
+// 전체 헤더 클릭
+// 전체 관리 탭
+$(".all").click(function (e) {
+  e.preventDefault();
+  tabChange(".flexing-all")
+});
+
 // 뮤지션 헤더 클릭
 // 뮤지션 관리 탭
 $(".musician").click(function (e) {
@@ -49,22 +56,8 @@ $(".musician").click(function (e) {
   tabChange(".flexing-musician")
 });
 
-// 댄스팀 헤더 클릭
-// 댄스팀 관리 탭
-$(".dance").click(function (e) {
-  e.preventDefault();
-  tabChange(".flexing-dance")
-});
-
-// 마술사 헤더 클릭
-// 마술사 관리 탭
-$(".magic").click(function (e) {
-  e.preventDefault();
-  tabChange(".flexing-magic")
-});
-
-// 행위예술 헤더 클릭
-// 행위예술 관리 탭
+// 퍼포먼스 헤더 클릭
+// 퍼포먼스 관리 탭
 $(".performance").click(function (e) {
   e.preventDefault();
   tabChange(".flexing-performance")
