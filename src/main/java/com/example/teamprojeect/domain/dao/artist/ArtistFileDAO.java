@@ -1,6 +1,6 @@
-package com.example.teamprojeect.domain.dao;
+package com.example.teamprojeect.domain.dao.artist;
 
-import com.example.teamprojeect.mapper.ArtistFileMapper;
+import com.example.teamprojeect.mapper.artist.ArtistFileMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

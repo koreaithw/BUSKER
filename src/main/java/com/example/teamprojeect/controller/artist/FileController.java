@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/file/*")
-@Controller
+@Controller("artist.FileController")
 public class FileController {
     // 필드 생성
 

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RequiredArgsConstructor
-@RestController
+@RestController("concert.ReplyController")
 @RequestMapping("/reply/*")
 public class ReplyController {
     // 필드 생성

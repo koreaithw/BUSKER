@@ -1,9 +1,9 @@
-package com.example.teamprojeect.domain.dao;
+package com.example.teamprojeect.domain.dao.recruitment;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class ArtistDAO {
+public class RecruitmentFileDAO {
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RequiredArgsConstructor
-@RestController
+@RestController("concert.LikeController")
 @RequestMapping("/like/*")
 public class LikeController {
 }
