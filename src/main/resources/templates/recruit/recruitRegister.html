@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>아티스트 모집 공고</title>
     <link
       rel="stylesheet"
       href="/assets/css/recruit/recruitRegister.css"
@@ -19,9 +19,10 @@
         <div class="form-label">모집공고명</div>
         <input
           class="recruiting-register-title"
-          type="text"
+          type="text"  id="recru-title"
           placeholder="모집 주최자의 이름을 입력하세요."
         />
+        <p>모집공고명은 비워둘 수 없습니다.</p>
       </div>
       <div class="detail-view">
         <div class="view-layout">
@@ -53,30 +54,33 @@
 
                 <tr>
                   <td class="label top">장소</td>
-                  <td><input type="text"></td>
-
+                  <td><input type="text" id="recru-location"><p class="recru-location">장소는 비워둘 수 없습니다.</p></td>
                 </tr>
-
+                
                 <tr>
                     <td class="label">날짜</td>
-                    <td class="date"><input type="date"></td>
+                    <td class="date"><input type="date" id="recru-day"><p class="recru-day">날짜는 비워둘 수 없습니다.</p></td>
  
                   </tr>
                   
                 <tr>
                     <td class="label">시간</td>
  
-                    <td class="time"><input type="time"></td>
+                    <td class="time"><input type="time" id="recru-time"><p class="recru-time">시간은 비워둘 수 없습니다.</p></td>
                   </tr>
                   
                 <tr>
                   <td class="label">주최정보</td>
-                  <td><input type="text"></td>
+                  <td><input type="text" id="recru-notice"><p class="recru-notice">정보는 비워둘 수 없습니다.</p></td>
 
                 </tr>
                 <tr>
                   <td class="label">모집대상</td>
-                  <td><input type="text"></td>
+                  <td><select name="" id="recru-target">
+                    <option value="A">퍼포먼스, 뮤지션 모두 모집</option>
+                    <option value="P">퍼포먼스 모집</option>
+                    <option value="M">뮤지션 모집</option>
+                  </select></td>
 
                 </tr>
               </tbody>
@@ -91,25 +95,29 @@
         <div class="noti-view-coment">
           <p class="noti-view-comen-tit">공연 개요</p>
           <div class="noti-view-comen-txt">
-            <textarea rows="" cols="100" name="" id=""></textarea>
+            <textarea rows="" cols="100" name="" id="recru-summary"></textarea>
+            <p class="recru-summary">개요는 비워둘 수 없습니다.</p>
           </div>
         </div>
         <div class="noti-view-coment">
           <p class="noti-view-comen-tit">공연 소개</p>
           <div class="noti-view-comen-txt">
-            <textarea rows="" cols="100" name="" id=""></textarea>
+            <textarea rows="" cols="100" name="" id="recru-introduce"></textarea>
+            <p class="recru-introduce">소개는 비워둘 수 없습니다.</p>
           </div>
         </div>
         <div class="noti-view-coment">
           <p class="noti-view-comen-tit">모집 조건</p>
           <div class="noti-view-comen-txt">
-            <textarea rows="" cols="100" name="" id=""></textarea>
+            <textarea rows="" cols="100" name="" id="recru-requirement"></textarea>
+            <p class="recru-requirement">조건은 비워둘 수 없습니다.</p>
           </div>
         </div>
         <div class="noti-view-coment">
           <p class="noti-view-comen-tit">기획사 정보</p>
           <div class="noti-view-comen-txt">
-            <textarea rows="" cols="100" name="" id=""></textarea>
+            <textarea rows="" cols="100" name="" id="recru-information"></textarea>
+            <p class="recru-information">정보는 비워둘 수 없습니다.</p>
           </div>
         </div>
       </div>

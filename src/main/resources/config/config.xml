@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0/EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="com.example.teamprojeect.domain.vo.artist.ArtistVO" alias="artistVO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.artist.ArtistReplyVO" alias="artistReplyVO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.artist.ArtistFileVO" alias="artistFileVO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.artist.PaymentVO" alias="paymentVO"/>
+
+
+        <typeAlias type="com.example.teamprojeect.domain.vo.paging.artist.ArtistPageDTO" alias="artistPageDTO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.paging.artist.ArtistReplyPageDTO" alias="artistReplyPageDTO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.paging.Criteria" alias="criteria"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.paging.recruitment.RecruitmentPageDTO" alias="recruitmentPageDTO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.paging.show.ShowPageDTO" alias="showPageDTO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.paging.show.ShowReplyPageDTO" alias="showReplyPageDTO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.paging.work.WorkPageDTO" alias="workPageDTO"/>
+
+        <typeAlias type="com.example.teamprojeect.domain.vo.recruitment.RecruitmentFileVO" alias="recruitmentFileVO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.recruitment.RecruitmentVO" alias="recruitmentVO"/>
+
+        <typeAlias type="com.example.teamprojeect.domain.vo.user.UserVO" alias="userVO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.user.UserFileVO" alias="userFileVO"/>
+
+        <typeAlias type="com.example.teamprojeect.domain.vo.show.ShowVO" alias="showVO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.show.ShowFileVO" alias="showFileVO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.show.ShowReplyVO" alias="showReplyVO"/>
+
+
+        <typeAlias type="com.example.teamprojeect.domain.vo.work.WorkFileVO" alias="workFileVO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.work.WorkVO" alias="workVO"/>
+
+    </typeAliases>
+</configuration>

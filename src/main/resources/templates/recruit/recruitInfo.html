@@ -1,14 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- <html lang="en"> -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout">
+    
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <link rel="stylesheet" href="/assets/css/recruit/recruitInfo.css">
+
 </head>
 
+<!-- <th:block th:replace="/templates/header/header3.html :: fragment-header"></th:block> -->
+
+<!--configFragment 선언-->
+<th:block th:fragment="fragment-header">
+    <!-- 이 영역에 공통으로 사용할 css, js library를 선언한다. -->
+    <link rel="stylesheet" th:href="@{/static/assets/css/header/header3.css}" >
+        
+    <!-- <script th:src="@{/js/common/common.js}"></script> -->
+
+    <!-- Content Page의 CSS fragment 삽입 -->
+    <th:block layout:fragment="css"></th:block>
+
+    <!-- Content Page의 script fragment 삽입 -->
+    <th:block layout:fragment="script"></th:block>
+</th:block>
+<header th:include="~{/header/header3 :: head}">
+
+</header>
 <body>
     <div class="content">
         <p class="title-text">아티스트 모집 공고</p>
@@ -45,7 +68,7 @@
                     <div class="view-btns">
                         <!-- <a>신청하기</a> -->
                         <!-- <a class="small-right-box"><span id="title1">신청하기</span></a> -->
-                        <a class="small-right-box"><span id="title1">신청하기</span></a>
+                        <a href="/templates/RegisterRecruiting/RegisterRecruiting.html" class="small-right-box"><span id="title1">신청하기</span></a>
                     </div>
                 </div>
             </div>
@@ -153,17 +176,23 @@
             </div>
             <div class="btn-box">
                 <div class="last-btn">
-                    <a href="/recruit/recruitList.html" class="noti-list">목록보기</a>
+                    <a href="/recruit/recruitList" class="noti-list">목록보기</a>
                 </div>
             </div>
  
         </div>
 
     </div>
-
-
+    <!-- 맨위로 가기 이미지 버튼 시작 -->
+    <a href="#" class="jcm-top hidden-xs hidden-sm">
+        <i class="icon icon-angle-up"></i>
+        <!-- <img src="return-top2.jpg" alt=""> -->
+    </a>
 
 
 </body>
+    <script>
+            $( document ).ready( function() {$( window ).scroll( function() {if ( $( this ).scrollTop() > 200 ) {$( '.jcm-top' ).fadeIn();} else {$( '.jcm-top' ).fadeOut();}} );$( '.jcm-top' ).click( function() {$( 'html, body' ).animate( { scrollTop : 0 }, 400 );return false;} );} )
+    </script>
 
 </html>

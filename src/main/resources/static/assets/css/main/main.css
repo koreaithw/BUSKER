@@ -168,7 +168,7 @@ li{
 
 .tags a{
     display: inline-block;
-    font-size: 18px;
+    font-size: 15px;
     margin: 0 20px;
     color: #555;
     
@@ -207,7 +207,7 @@ li{
     position: relative;
 }
 
-.flexing-musician, .flexing-dance, .flexing-magic, .flexing-performance{
+.flexing-musician, .flexing-all, .flexing-performance{
     display: flex;
     justify-content: center;
 
@@ -375,7 +375,7 @@ p{
 
 .poster-list-text{
     padding-top: 15px;
-    padding-left: 32px;
+
 }
 
 @media screen and (max-width: 1919px) {
@@ -518,3 +518,22 @@ img {vertical-align: middle;}
 
 
 
+/* 맨위로가기 버튼 */
+a.jcm-top {
+    position: fixed;
+    right: 15px;
+     bottom: 15px;
+     border-radius: 5px;
+     color: #ffffff;
+     text-align: center;
+     width: 45px;
+     height: 45px;
+     font-size: 40px;
+     /*background-color: rgba(50,50,50,0.5);*/
+     background-color:#323232;
+     opacity:0.5;
+     filter:alpha(opacity=50);
+     /*ie8 호환을 위한코드 위와 동일한 것임 호환필요없으면 한줄로 rgba적으면됨*/
+     z-index: 999;
+     display: none;}
+     a.jcm-top:hover{background-color:#000}

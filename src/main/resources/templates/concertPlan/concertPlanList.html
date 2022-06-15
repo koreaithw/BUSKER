@@ -37,12 +37,13 @@
     <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/babel.js'></script>
     <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/polyfill.js'></script>
     <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/Main.js?v=505'></script>
-    
-   
-  <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/reset.css' />
-  <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/swiper.css' />
-  <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/common.css' />
-  <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/show.css' />
+  
+
+    <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/reset.css' />
+    <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/swiper.css' />
+    <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/common.css' /> 
+    <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/show.css' />
+
 
   <style type="text/css">
     .perform-top{
@@ -56,14 +57,21 @@
 
 </head>
 <body>
-
+    <div class='sm-tit'>공연예정</div>
+    <div class = 'sm-tit1'>
+    <a class='sm-tit2'  href="/templates/concertPlan/concertPlan_performance.html">퍼포먼스</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class='sm-tit2'  href="/templates/concertPlan/concertPlan_musician.html">뮤지션</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class='sm-tit2' href="/templates/concertPlan/concertPlanModify.html">공연등록</a>
+</div>
     <section class="m2-sec05">
         <div class="ms5-wrap">
             <div class="ms5-l">
                 <p class="ms5-l-tit">
                     WEEKLY RANKING
                     <a href='#'>
+
                         <img src='/images/concertPlan/view.png' alt='' />
+
+                        <img src='/static/images/concertPlan/view.png' alt='' />
+
                     </a>
                 </p>
                 <ul>
@@ -73,7 +81,10 @@
                             <dl>
                                 <dt>1위</dt>
                                 <dd>
-                                    <img src='/images/concertPlan/img3.jpg' alt='' />
+
+
+                                    <img src='/static/images/concertPlan/img3.jpg' alt='' />
+
                                 </dd>
                                 <dd class='ms5-l-txt'>
                                     <p class='ms5-l-txt1'>랄랄랜드1</p>
@@ -88,7 +99,9 @@
                         <dl>
                             <dt>2위</dt>
                             <dd>
-                                <img src='/images/concertPlan/img3.jpg' alt='' />
+
+                                <img src='/static/images/concertPlan/img3.jpg' alt='' />
+
                             </dd>
                             <dd class='ms5-l-txt'>
                                 <p class='ms5-l-txt1'>랄랄랜드2</p>
@@ -103,7 +116,8 @@
                     <dl>
                         <dt>3위</dt>
                         <dd>
-                            <img src='/images/concertPlan/img3.jpg' alt='' />
+
+                            <img src='/static/images/concertPlan/img3.jpg' alt='' />
                         </dd>
                         <dd class='ms5-l-txt'>
                             <p class='ms5-l-txt1'>랄랄랜드3</p>
@@ -131,7 +145,9 @@
                         <dl>
                             <dt>5위</dt>
                             <dd>
-                                <img src='/images/concertPlan/img3.jpg' alt='' />
+
+                                <img src='/static/images/concertPlan/img3.jpg' alt='' />
+
                                 </dd>
                                 <dd class='ms5-l-txt'>
                                     <p class='ms5-l-txt1'>랄랄랜드5</p>
@@ -153,7 +169,9 @@
                             <div class='swiper-slide'>
                                 <a href='#' target='_self' title='버스킹버스커1'>
                                     <span>
-                                        <img src='/images/concertPlan/img1.jpg' alt='버스킹버스커1' />
+
+                                        <img src='/static/images/concertPlan/img1.jpg' alt='버스킹버스커1' />
+
                                     </span>
                                     <div>
                                         <p class='ms5-r-txt1'>버스킹버스커1</p>
@@ -165,7 +183,9 @@
                             <div class='swiper-slide'>
                                 <a href='#' target='_self' title='버스킹버스커2'>
                                     <span>
-                                        <img src='/images/concertPlan/img3.jpg' alt='버스킹버스커2' />
+
+                                        <img src='/static/images/concertPlan/img3.jpg' alt='버스킹버스커2' />
+
                                     </span>
                                     <div>
                                         <p class='ms5-r-txt1'>버스킹버스커2</p>
@@ -177,7 +197,9 @@
                             <div class='swiper-slide'>
                                 <a href='#' target='_self' title='버스킹버스커3'>
                                     <span>
-                                        <img src='/images/concertPlan/img1.jpg' alt='버스킹버스커3' />
+
+                                        <img src='/static/images/concertPlan/img1.jpg' alt='버스킹버스커3' />
+
                                     </span>
                                     <div>
                                         <p class='ms5-r-txt1'>버스킹버스커3</p>
@@ -190,22 +212,20 @@
                     </div>
     
                     <div class="swiper-button-next ms5-rs"></div>
-                    <div class="swiper-button-prev ms5-rs"></div>
                 </div>
             </div>
         </div>
     </section>
 
 <section class='m2-sec02'>
-    <h1 class='m2-tit'>공연 예정</h1>
 
-        <div class="show_m" onclick="location.href='/show_registration.html'">공연 등록</div>
-
+    <div class='m2-tit'>공연예정 버스킹</div>
 
     <div class='ms-list-imgs'>
-        <a href='/concertPlan/concertPlanInfo.html' target='_self' title='버스커1'>
+        <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커1'>
             <div class='list-bigger-wrap'>
-                <img class='lazyload' src='/images/concertPlan/img3.jpg' alt='/concertPlan/concertPlanInfo' />
+                <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='/show_view' />
+
                 <div class='list-bigger-txt'>
                     <p class='list-b-tit1'>버스커1</p>
                     <p class='list-b-tit2'>[홍대] 홍대 걷고싶은 거리</p>
@@ -213,9 +233,11 @@
                 </div>
             </div>
         </a>
-        <a href='/concertPlan/concertPlanInfo.html' target='_self' title='버스커2'>
+
+        <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커2'>
             <div class='list-bigger-wrap'>
-                <img class='lazyload' src='/images/concertPlan/img3.jpg' alt='' />
+                <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
+
                 <div class='list-bigger-txt'>
                     <p class='list-b-tit1'>버스커2</p>
                     <p class='list-b-tit2'>[홍대] 홍대 걷고싶은 거리 광장무대/여행무대</p>
@@ -223,9 +245,11 @@
                 </div>
             </div>
         </a>
-        <a href='/concertPlan/concertPlanInfo.html' target='_self' title='버스커3'>
+
+        <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커3'>
             <div class='list-bigger-wrap'>
-                <img class='lazyload' src='/images/concertPlan/img3.jpg' alt='' />
+                <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
+
                 <div class='list-bigger-txt'>
                     <p class='list-b-tit1'>버스커3</p>
                     <p class='list-b-tit2'>[홍대] 경의선 숲길(연남동 구간)</p>
@@ -233,9 +257,11 @@
                 </div>
             </div>
         </a>
-        <a href='/concertPlan/concertPlanInfo.html' target='_self' title='버스커4'>
+
+        <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커4'>
             <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/images/concertPlan/img3.jpg' alt='' />
+            <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
+
             <div class='list-bigger-txt'>
                 <p class='list-b-tit1'>버스커4</p>
                 <p class='list-b-tit2'>[홍대] 홍대 애경타워 버스킹존</p>
@@ -243,9 +269,12 @@
             </div>
         </div>
     </a>
-    <a href='/concertPlan/concertPlanInfo.html' target='_self' title='버스커5'>
+
+
+    <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커5'>
         <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/images/concertPlan/img3.jpg' alt='' />
+            <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
+
             <div class='list-bigger-txt'>
                 <p class='list-b-tit1'>버스커5</p>
                 <p class='list-b-tit2'>[신촌] 연세로 뮤직스트리트</p>
@@ -255,9 +284,12 @@
     </a>
 </div>
 <div class='ms-list-imgs'>
-    <a href='/concertPlan/concertPlanInfo.html' target='_self' title='버스커6'>
+
+
+    <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커6'>
         <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/images/concertPlan/img3.jpg' alt='' />
+            <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
+
             <div class='list-bigger-txt'>
                 <p class='list-b-tit1'>버스커6</p>
                 <p class='list-b-tit2'>[송파] 잠실종합운동장 시민참여관</p>
@@ -265,9 +297,11 @@
             </div>
         </div>
     </a>
-    <a href='/concertPlan/concertPlanInfo.html' target='_self' title='버스커7'>
+
+    <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커7'>
         <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/images/concertPlan/img3.jpg' alt='' />
+            <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
+
             <div class='list-bigger-txt'>
                 <p class='list-b-tit1'>버스커7</p>
                 <p class='list-b-tit2'>[송파] 잠실종합운동장 쉼터 및 거리공연</p>
@@ -275,9 +309,12 @@
             </div>
         </div>
     </a>
-    <a href='/concertPlan/concertPlanInfo.html' target='_self' title='버스커8'>
+   
+
+    <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커8'>
         <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/images/concertPlan/img3.jpg' alt='' />
+            <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
+
             <div class='list-bigger-txt'>
                 <p class='list-b-tit1'>버스커8</p>
                 <p class='list-b-tit2'>[선유도] 선유도 공원(원형광장)</p>
@@ -285,9 +322,11 @@
             </div>
         </div>
     </a>
-    <a href='/concertPlan/concertPlanInfo.html' target='_self' title='버스커9'>
+
+     <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커9'>
         <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/images/concertPlan/img3.jpg' alt='' />
+            <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
+
             <div class='list-bigger-txt'>
                 <p class='list-b-tit1'>버스커9</p>
                 <p class='list-b-tit2'>[구로] 고척스카이돔 야외 공연장</p>
@@ -295,9 +334,11 @@
             </div>
         </div>
     </a>
-    <a href='/concertPlan/concertPlanInfo.html' target='_self' title='버스커10'>
+
+    <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커10'>
         <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/images/concertPlan/img3.jpg' alt='' />
+            <img class='lazyload'src='/static/images/concertPlan/img3.jpg' alt='' />
+
             <div class='list-bigger-txt'>
                 <p class='list-b-tit1'>버스커10</p>
                 <p class='list-b-tit2'>[마포] 서울월드컵경기장 월드컵광장</p>
@@ -308,8 +349,5 @@
 </div>
 
 </section>
-    
-<input type="hidden" name="machine" value="YTK7" />
-
 </body>
 </html>

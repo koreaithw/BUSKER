@@ -225,7 +225,7 @@ a.ms3-player-close img{width:26px; height:26px;}
 .li-sec-tag span{display:inline-block; padding:0 41px;position:relative;}
 .li-sec-tag span:after{content:""; display:block; width:1px;height:15px;background:#ddd;position:absolute;right:0;top:22px; }
 .li-sec-tag span:last-child:after{display:none;}
-.li-sec-tag span a{display:inline-block;font-size:16px; color:#888; height:61px;line-height:62px;padding:0 5px;position:relative;}
+.li-sec-tag span a{display:inline-block;font-size:16px; color:#888; height:61px;line-height:62px;padding:0 5px;position:relative;left: 89px;}
 .li-sec-tag span a:before{content:""; display:block; width:0;height:3px;background:#ec7d2c;position:absolute; top:0;left:0;transition:all 0.3;}
 .li-sec-tag span a.on{color:#333;font-weight:bold;margin:0 -5px;}
 .li-sec-tag span a.on:before{width:100%;}
