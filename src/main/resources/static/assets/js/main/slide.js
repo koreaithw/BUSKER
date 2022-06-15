@@ -25,7 +25,7 @@ function showSlides(){
     document.getElementById('thisSlide').innerHTML = slideIndex;
     slides[slideIndex-1].style.display = 'block';
     dots[slideIndex-1].className += ' on';
-    
+    // 밀리초 시간인것 같은데 바꾸면 좀 이상해짐(시간이 일정하지 않아짐)
     myVar = setTimeout(showSlides, 2000);
 }//showSlides
 
@@ -63,3 +63,4 @@ function currentSlide(num){
     dots[slideIndex - 1 ].className += ' on';
 
 }
+

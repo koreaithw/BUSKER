@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout"></html> -->
+    <!-- thymeleaf사용한다는 선언 -->
+    
+    <!-- <th:block th:fragment="fragment-header"></th:block> -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/css/header/header3.css">
+</head>
+<body>
+    <div class="cp-top-wrap" th:fragment="fragment-header">
+
+
+        <div class="consice" id="consice" style="position: relative;">
+           <div class="consice-right">
+               <a href="/login/login" id="consiceLogin">로그인</a>
+               <a href="/myPage/myPage" target="_blank">마이페이지</a>
+               <a href="/user/userJoin" target="_blank">회원가입</a>
+           </div>
+        </div>
+       
+        
+               <header class="perform-top" id="perform-top" style="height: 100px;">
+                    
+       
+       
+       
+       
+       
+            <div class="pf-left">
+               <a href="#" class="pf-ham">
+                   <span class="pf-ham1"></span>
+                   <span class="pf-ham2"></span>
+                   <span class="pf-ham3"></span>
+               </a>
+               <h1><a href="/main/main" class="pf-logo" id="logo"><img src="/images/header/buskers-logo.png" alt="" class="fixed"></a></h1>
+           </div>
+
+           
+           <div class="pf-center" style="left: 50%; transform: translate(-50%, 0px);">
+               <h2 style="height: auto;"><a href="/artist/artistList" class="">아티스트 정보<span></span></a>
+       
+               
+                   <div style="display: none;">
+                       <a href="/New/Genre/GenreList.aspx?genretype=1&amp;genre=15456" class="">싱어송라이터</a>
+                       <a href="/New/Genre/GenreList.aspx?genretype=2&amp;genre=15462" class="">댄스팀</a>
+                       <a href="/New/Genre/GenreList.aspx?genretype=2&amp;genre=15463" class="">행위예술</a>
+                   </div>
+               
+               </h2>
+               <h2 style="height: auto;"><a href="/ranking/rankingAll" class="current">아티스트 랭킹<span></span></a>
+       
+               
+                   <div style="display: none;">
+                       <a href="/New/Genre/GenreList.aspx?genretype=1&amp;genre=15457" class="">랭킹</a>
+                       <a href="/New/Genre/GenreList.aspx?genretype=2&amp;genre=15465" class="">지역별 랭킹</a>
+                   </div>
+               
+               </h2>
+               <h2 style="height: auto;"><a href="/work/workList" class="">작품목록<span></span></a>
+       
+               
+                   <!-- <div style="display: none;">
+                       <a href="/New/Genre/GenreList.aspx?genretype=1&amp;genre=15458" class="">전체보기</a>
+                   </div> -->
+               
+               </h2>
+               <h2 style="height: auto;"><a href="/recruit/recruitList" class="">모집공고<span></span></a>
+       
+               
+                   <!-- <div style="display: none;">
+                       <a href="/New/Genre/GenreList.aspx?genretype=1&amp;genre=15459" class="">전체보기</a>
+                       <a href="/New/Genre/GenreList.aspx?genretype=2&amp;genre=15471" class="">지역별공연</a>
+                   </div> -->
+               
+               </h2>
+               <h2 style="height: auto;"><a href="/cocertPlan/concertPlanList" class="">공연예정<span></span></a>
+       
+               
+                   <!-- <div style="display: none;">
+                       <a href="/New/Genre/GenreList.aspx?genretype=1&amp;genre=15460" class="">공연위치</a>
+                   </div> -->
+               
+               </h2>
+               <h2 style="height: auto;"><a href="/concertLive/concertLive" class="">실시간공연<span></span></a>
+       
+               
+                   <!-- <div style="display: none;">
+                       <a href="/New/Genre/GenreList.aspx?genretype=1&amp;genre=999" class="">전체보기</a>
+                   </div> -->
+               
+               </h2>
+
+               <!-- <div id="search">
+                   <input type="text">
+                   <button>검색</button>
+               </div> -->
+
+               <!-- <div class="search">
+                <input type="text" placeholder="검색어 입력">
+                <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+              </div> -->
+              <div class="pf-right" id="search-right">
+              <div class="pf-top-srch" autocomplete="off">
+                <input type="text" id="searchWord" autocomplete="off">
+                <input type="hidden" name="" id="searchType" value="" autocomplete="off">
+                <a href="#" onclick="jsf_mm_Search();"><img src="http://tkfile.yes24.com/imgNew/common/pf-srch.png" alt="" class="trans"><img src="http://tkfile.yes24.com/imgNew/common/pf-srch-w.png" alt="" class="fixed"></a>
+            </div>
+            </div>
+
+           </div>
+
+               </header>
+           </div>
+
+</body>
+</html>

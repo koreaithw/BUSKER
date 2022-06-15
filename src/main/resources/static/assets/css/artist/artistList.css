@@ -343,3 +343,13 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     vertical-align: baseline;
     font-family: 'NanumBarunGothic', '���� ����', 'Malgun Gothic', sans-serif;
 }
+
+.pf-top-srch {
+    position: relative;
+    right: 55px;
+}
+
+.pf-top-srch input {
+    border: 0;
+    border-bottom: 2px solid #000;
+}

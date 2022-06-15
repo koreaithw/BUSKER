@@ -63,7 +63,6 @@ dl {
 }
 
 .detail p {
-    margin-bottom: 0;
     word-break: break-all;
     font-size: 35px;
     color: #333;
@@ -71,6 +70,7 @@ dl {
     font-weight: bold;
     letter-spacing: -0.003em;
     font-family: 'Noto Sans KR','NanumBarunGothic','맑은 고딕','Malgun Gothic',sans-serif;
+    
 }
 
 .show_info_wrap {
@@ -79,6 +79,7 @@ dl {
     width: 1300px;
     margin: 0 auto;
     position: relative;
+    
 }
 
 .show_info_content {
@@ -86,6 +87,7 @@ dl {
     margin: 0 auto;
     position: relative;
     overflow: hidden;
+    
 }
 
 .show_info {
@@ -93,6 +95,7 @@ dl {
     overflow: hidden;
     padding-bottom: 50px;
     position: relative;
+    
 }
 
 .info_left {
@@ -165,8 +168,8 @@ dl {
 }
 
 .info_area1 {
-    border-bottom: 1px solid #000;
     position: relative;
+    border-bottom: 1px solid rgb(147, 147, 147);
     padding-left: 1px;
     padding-top: 5px;
 }
@@ -202,18 +205,18 @@ dl {
     border-radius: 10px;
     outline: none;
     padding-left: 10px;
-    background-color: rgb(233, 233, 233);
+    background-color: rgb(253, 236, 221);
 }
 
 .classification {
-    width: 500px;
+    width: 510px;
     height: 32px;
     font-size: 15px;
     border: 0;
     border-radius: 10px;
     outline: none;
     padding-left: 10px;
-    background-color: rgb(233, 233, 233);
+    background-color: rgb(253, 236, 221);
 }
 
 .input_text:focus {
@@ -227,7 +230,7 @@ textarea {
     border-radius: 10px;
     outline: none;
     padding-left: 10px;
-    background-color: rgb(233, 233, 233);
+    background-color: rgb(253, 236, 221);
     padding: 8px 8px 8px 8px;
 }
 
@@ -237,7 +240,6 @@ textarea:focus {
 
 .info_area2 {
     min-height: 174px;
-    border-bottom: 1px solid #000;
     padding-left: 1px;
 }
 
@@ -276,9 +278,9 @@ textarea:focus {
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: #f43142;
+    background-color: #ff9326;
     padding: 10px 20px 10px 20px;
-    border: #f43142 solid 2px;
+    border: #ff9326 solid 2px;
     width: 236px;
     height: 46px;
     line-height: 46px;
