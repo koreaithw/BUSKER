@@ -14,11 +14,11 @@
 <body>
     <div class="cp-top-wrap" th:fragment="fragment-header">
 <body th:fragment="head">
-    <div class="cp-top-wrap">
+    <div class="header-box">
 
 
-        <div class="consice" id="consice" style="position: relative;">
-           <div class="consice-right">
+        <div class="black-box" id="black-box" style="position: relative;">
+           <div class="black-box-right">
                <a href="/login/login" id="consiceLogin">로그인</a>
                <a href="/myPage/myPage" target="_blank">마이페이지</a>
                <a href="/user/userJoin" target="_blank">회원가입</a>
@@ -26,7 +26,7 @@
         </div>
        
         
-               <header class="perform-top" id="perform-top" style="height: 100px;">
+        <header class="white-box" id="white-box" style="height: 100px;">
 
 
                     
@@ -35,17 +35,17 @@
        
        
        
-            <div class="pf-left">
-               <a href="#" class="pf-ham">
-                   <span class="pf-ham1"></span>
-                   <span class="pf-ham2"></span>
-                   <span class="pf-ham3"></span>
-               </a>
+            <div class="white-box-left">
+<!--               <a href="#" class="pf-ham">-->
+<!--                   <span class="pf-ham1"></span>-->
+<!--                   <span class="pf-ham2"></span>-->
+<!--                   <span class="pf-ham3"></span>-->
+<!--               </a>-->
                <h1><a href="/main" class="pf-logo" id="logo"><img src="/images/header/buskers-logo.png" alt="" class="fixed"></a></h1>
            </div>
 
            
-           <div class="pf-center" style="left: 50%; transform: translate(-50%, 0px);">
+           <div class="white-box-center" style="left: 50%; transform: translate(-50%, 0px);">
                <h2 style="height: auto;"><a href="/artist/artistList" class="">아티스트 정보<span></span></a>
        
                
@@ -56,7 +56,7 @@
                    </div>
                
                </h2>
-               <h2 style="height: auto;"><a href="/ranking/rankingAll" class="current">아티스트 랭킹<span></span></a>
+               <h2 style="height: auto;"><a href="/ranking/rankingAll" class="">아티스트 랭킹<span></span></a>
        
                
                    <div style="display: none;">
@@ -108,8 +108,8 @@
                 <input type="text" placeholder="검색어 입력">
                 <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
               </div> -->
-              <div class="pf-right" id="search-right">
-              <div class="pf-top-srch" autocomplete="off">
+              <div class="white-box-right" id="search-right">
+              <div class="srch-box" autocomplete="off">
                 <input type="text" id="searchWord" autocomplete="off">
                 <input type="hidden" name="" id="searchType" value="" autocomplete="off">
                 <a href="#" onclick="jsf_mm_Search();"><img src="http://tkfile.yes24.com/imgNew/common/pf-srch.png" alt="" class="trans"><img src="http://tkfile.yes24.com/imgNew/common/pf-srch-w.png" alt="" class="fixed"></a>

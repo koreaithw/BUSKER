@@ -168,7 +168,7 @@ li{
 
 .tags a{
     display: inline-block;
-    font-size: 18px;
+    font-size: 15px;
     margin: 0 20px;
     color: #555;
     
@@ -207,7 +207,7 @@ li{
     position: relative;
 }
 
-.flexing-musician, .flexing-dance, .flexing-magic, .flexing-performance{
+.flexing-musician, .flexing-all, .flexing-performance{
     display: flex;
     justify-content: center;
 
@@ -375,7 +375,7 @@ p{
 
 .poster-list-text{
     padding-top: 15px;
-    padding-left: 32px;
+
 }
 
 @media screen and (max-width: 1919px) {
