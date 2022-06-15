@@ -42,7 +42,7 @@ body{padding-top:0 !important;}
 .rn-02 .rn-product-short-data .ps-date:after{content:""; display:block; width:1px;height:14px;background:#d6d6d6;position:absolute; top:0;right:0;}
 .rn-02 .rn-product-short-data .ps-location{padding:0 22px 0 13px;background:url('http://tkfile.yes24.com/imgNew/common/rn-ico-location.png')no-repeat right top;}
 .rn-02 .rn-product-short-data .ps-location2{padding:0 22px 0 13px;}
-.rn-02 .rn-product-short-data .ps-social{display:block;position:absolute;right:2px;bottom:8px;border:1px solid #fff;width:47px;height:51px;background:url('http://tkfile.yes24.com/imgNew/common/rn-social.png')no-repeat center center;}
+.rn-02 .rn-product-short-data .ps-social{display:block;position:absolute;right:2px;bottom:8px;border:1px solid #fff;width:47px;height:51px;}
 .rn-02 .rn-product-short-data .ps-social-box{display:none;position:absolute;right:2px;bottom:8px;border:1px solid #fff;width:220px;height:51px;font-size:0;}
 .rn-02 .rn-product-short-data .ps-social-box a{display:inline-block;height:51px;line-height:56px;min-width:47px;text-align:center;font-size:15px;color:#333;vertical-align:top;}
 .rn-02 .rn-product-short-data .ps-social-box a.ps-social-btn4{width:59px;}
@@ -88,8 +88,6 @@ body{padding-top:0 !important;}
 .rn-03-left .rn-product-social .rn-product-star .rnp-bg p{position:absolute;top:0;left:0;max-width:91px;height:14px;background:url('http://tkfile.yes24.com/imgNew/sub/rn-product-star_on.png')no-repeat;}
 .rn-03-left .rn-product-social .rn-product-star > span{position:absolute;top:2px;left:105px;font-size:14px; color:#ff7d1e;width:130px;}
 .rn-03-left .rn-product-social .rn-product-star > span > span{font-size:13px; color:#333;padding-left:7px;}
-
-.btn{font-size:40px;margin-left:12px;margin-top:12px;}
 
 .rn-03-right{float:right;width:701px;}
 .rn-03-right > div{padding-left:1px;}
@@ -221,6 +219,25 @@ body{padding-top:0 !important;}
 .rn-08 div .rn-0803-tbl table td{text-align:left;padding:10px 0 10px 30px;font-size:14px;color:#333;line-height:25px;}
 .rn-08 div .rn-0803-tbl table td p span{display:inline-block;font-weight:bold;margin-right:20px;}
 .rn-08 div .rn-0803-tbl table td a{font-size:15px;color:#333;line-height:25px;}
+
+.purchase_link_wrap {
+    padding: 40px 0;
+}
+
+.purchase_link {
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #ff9326;
+    padding: 10px 20px 10px 20px;
+    border: #ff9326 solid 2px;
+    width: 236px;
+    height: 46px;
+    line-height: 46px;
+    border-radius: 10px;
+}
 
 
 
