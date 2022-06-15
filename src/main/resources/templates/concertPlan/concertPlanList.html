@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -39,10 +39,10 @@
     <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/Main.js?v=505'></script>
   
 
-    <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/reset.css' />
-    <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/swiper.css' />
-    <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/common.css' /> 
-    <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/show.css' />
+    <link rel='stylesheet' type='text/css' href=/assets/css/concertPlan/reset.css' />
+    <link rel='stylesheet' type='text/css' href=/assets/css/concertPlan/swiper.css' />
+    <link rel='stylesheet' type='text/css' href=/assets/css/concertPlan/common.css' /> 
+    <link rel='stylesheet' type='text/css' href=/assets/css/concertPlan/show.css' />
 
 
   <style type="text/css">
@@ -56,6 +56,11 @@
   </style>
 
 </head>
+
+<header th:include="~{/header/header3 :: head}">
+
+</header>
+
 <body>
     <div class='sm-tit'>공연예정</div>
     <div class = 'sm-tit1'>
@@ -70,7 +75,7 @@
 
                         <img src='/images/concertPlan/view.png' alt='' />
 
-                        <img src='/static/images/concertPlan/view.png' alt='' />
+                        <img src='/images/concertPlan/view.png' alt='' />
 
                     </a>
                 </p>
@@ -83,7 +88,7 @@
                                 <dd>
 
 
-                                    <img src='/static/images/concertPlan/img3.jpg' alt='' />
+                                    <img src='/images/concertPlan/img3.jpg' alt='' />
 
                                 </dd>
                                 <dd class='ms5-l-txt'>
@@ -100,7 +105,7 @@
                             <dt>2위</dt>
                             <dd>
 
-                                <img src='/static/images/concertPlan/img3.jpg' alt='' />
+                                <img src='/images/concertPlan/img3.jpg' alt='' />
 
                             </dd>
                             <dd class='ms5-l-txt'>
@@ -117,7 +122,7 @@
                         <dt>3위</dt>
                         <dd>
 
-                            <img src='/static/images/concertPlan/img3.jpg' alt='' />
+                            <img src=/images/concertPlan/img3.jpg' alt='' />
                         </dd>
                         <dd class='ms5-l-txt'>
                             <p class='ms5-l-txt1'>랄랄랜드3</p>
@@ -146,7 +151,7 @@
                             <dt>5위</dt>
                             <dd>
 
-                                <img src='/static/images/concertPlan/img3.jpg' alt='' />
+                                <img src=/images/concertPlan/img3.jpg' alt='' />
 
                                 </dd>
                                 <dd class='ms5-l-txt'>
@@ -170,7 +175,7 @@
                                 <a href='#' target='_self' title='버스킹버스커1'>
                                     <span>
 
-                                        <img src='/static/images/concertPlan/img1.jpg' alt='버스킹버스커1' />
+                                        <img src=/images/concertPlan/img1.jpg' alt='버스킹버스커1' />
 
                                     </span>
                                     <div>
@@ -184,7 +189,7 @@
                                 <a href='#' target='_self' title='버스킹버스커2'>
                                     <span>
 
-                                        <img src='/static/images/concertPlan/img3.jpg' alt='버스킹버스커2' />
+                                        <img src=/images/concertPlan/img3.jpg' alt='버스킹버스커2' />
 
                                     </span>
                                     <div>
@@ -198,7 +203,7 @@
                                 <a href='#' target='_self' title='버스킹버스커3'>
                                     <span>
 
-                                        <img src='/static/images/concertPlan/img1.jpg' alt='버스킹버스커3' />
+                                        <img src=/images/concertPlan/img1.jpg' alt='버스킹버스커3' />
 
                                     </span>
                                     <div>
@@ -224,7 +229,7 @@
     <div class='ms-list-imgs'>
         <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커1'>
             <div class='list-bigger-wrap'>
-                <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='/show_view' />
+                <img class='lazyload' src=/images/concertPlan/img3.jpg' alt='/show_view' />
 
                 <div class='list-bigger-txt'>
                     <p class='list-b-tit1'>버스커1</p>
@@ -236,7 +241,7 @@
 
         <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커2'>
             <div class='list-bigger-wrap'>
-                <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
+                <img class='lazyload' src=/images/concertPlan/img3.jpg' alt='' />
 
                 <div class='list-bigger-txt'>
                     <p class='list-b-tit1'>버스커2</p>
@@ -248,7 +253,7 @@
 
         <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커3'>
             <div class='list-bigger-wrap'>
-                <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
+                <img class='lazyload' src=/images/concertPlan/img3.jpg' alt='' />
 
                 <div class='list-bigger-txt'>
                     <p class='list-b-tit1'>버스커3</p>
@@ -260,7 +265,7 @@
 
         <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커4'>
             <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
+            <img class='lazyload' src=/images/concertPlan/img3.jpg' alt='' />
 
             <div class='list-bigger-txt'>
                 <p class='list-b-tit1'>버스커4</p>
@@ -273,7 +278,7 @@
 
     <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커5'>
         <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
+            <img class='lazyload' src=/images/concertPlan/img3.jpg' alt='' />
 
             <div class='list-bigger-txt'>
                 <p class='list-b-tit1'>버스커5</p>
@@ -288,7 +293,7 @@
 
     <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커6'>
         <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
+            <img class='lazyload' src=/images/concertPlan/img3.jpg' alt='' />
 
             <div class='list-bigger-txt'>
                 <p class='list-b-tit1'>버스커6</p>
@@ -300,7 +305,7 @@
 
     <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커7'>
         <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
+            <img class='lazyload' src=/images/concertPlan/img3.jpg' alt='' />
 
             <div class='list-bigger-txt'>
                 <p class='list-b-tit1'>버스커7</p>
@@ -313,7 +318,7 @@
 
     <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커8'>
         <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
+            <img class='lazyload' src=/images/concertPlan/img3.jpg' alt='' />
 
             <div class='list-bigger-txt'>
                 <p class='list-b-tit1'>버스커8</p>
@@ -325,7 +330,7 @@
 
      <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커9'>
         <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
+            <img class='lazyload' src=/images/concertPlan/img3.jpg' alt='' />
 
             <div class='list-bigger-txt'>
                 <p class='list-b-tit1'>버스커9</p>
@@ -337,7 +342,7 @@
 
     <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커10'>
         <div class='list-bigger-wrap'>
-            <img class='lazyload'src='/static/images/concertPlan/img3.jpg' alt='' />
+            <img class='lazyload'src=/images/concertPlan/img3.jpg' alt='' />
 
             <div class='list-bigger-txt'>
                 <p class='list-b-tit1'>버스커10</p>

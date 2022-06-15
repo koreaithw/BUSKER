@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/assets/css/work/workRegister.css"/>
+    <link rel="stylesheet" href="/assets/css/work/workRegister.css"/>
     <style>
         .clear{clear:both;}
         .fileList .fileName{padding-left: 20px;}
@@ -21,6 +21,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <title>작품 등록 신청</title>
 </head>
+
+<header th:include="~{/header/header3 :: head}">
+
+</header>
 <body>
     <div class="work_detail_wrap">
         <div class="work_detail">
