@@ -263,10 +263,9 @@ p.big_title{
 
 .rank_category_calendar {
     display: none;
-    width: 100%;
     position: absolute;
-    top: 400px;
-    left: 1271px;
+    top: 61px;
+    left: 347px;
     z-index: 10;
 }
 
@@ -590,6 +589,14 @@ span::after{
 
 #ui-datepicker-div{
     top: 399px !important;
+}
+
+#rank_calendar_ver2 table.ui-datepicker-calendar{
+    display: none;
+}
+
+#rank_calendar_ver3 table.ui-datepicker-calendar, #rank_calendar_ver3 span.ui-datepicker-month{
+    display: none;
 }
 
 /*keyframe*/
