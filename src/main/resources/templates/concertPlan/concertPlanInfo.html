@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
  <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -38,6 +38,10 @@
   </style>
 
  </head>
+
+ <header th:include="~{/header/header3 :: head}">
+
+ </header>
  <body>
  
 <div class="rnew-top-wrap">
@@ -98,7 +102,7 @@
                </a>      
             </div>
                 <div class = "btn" >
-                    <button type="button" onclick="location.href='/concertPlan/concertPlanModify.html'">수정</button>
+                    <button type="button" onclick="location.href='/concertPlan/concertPlanModify'">수정</button>
                 </div>            
          </div>
 

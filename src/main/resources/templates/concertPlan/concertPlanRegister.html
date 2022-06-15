@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/static/assets/css/concertPlan/show_correction.css"/>
+    <link rel="stylesheet" href="/assets/css/concertPlan/show_correction.css"/>
 
     <style>
         .clear{clear:both;}
@@ -17,6 +17,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <title>공연일정 변경</title>
 </head>
+
+<header th:include="~{/header/header3 :: head}">
+
+</header>
 <body>
     <div class="show_detail_wrap">
         <div class="show_detail">

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="/assets/css/rank/Ranking.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/ranking/ranking.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
         integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -16,15 +16,19 @@
 
 </head>
 
+<header th:include="~{/header/header3 :: head}">
+
+</header>
+
 <body>
     <div class="content_name">
         <p class="big_title">랭킹</p>
 
         <!-- rank_genre 전체, 뮤지션, 퍼포먼스 div -->
         <div class="rank_genre">
-            <a href="/ranking/rankingAll.html" class="on">전체</a>
-            <a href="/ranking/rankingMusician.html">뮤지션</a>
-            <a href="/ranking/rankingPerformance.html">퍼포먼스</a>
+            <a href="/ranking/rankingAll" class="on">전체</a>
+            <a href="/ranking/rankingMusician">뮤지션</a>
+            <a href="/ranking/rankingPerformance">퍼포먼스</a>
         </div>
 
                 <!-- rank_big_category 주간, 월간, 연간 div-->
@@ -78,7 +82,7 @@
                     <div>
                         <a href="#" title="악동뮤지션">
                             <span class="artist_image">
-                                <img src="artist_1.jpg" alt="악동뮤지션" class="rank_best_img">
+                                <img src="/images/ranking/artist_1.jpg" alt="악동뮤지션" class="rank_best_img">
                             </span>
                             <p class="artist_title">악동뮤지션</p>
                             <p class="artist_detail">친남매로 이루어진 남매 혼성 듀오
@@ -102,7 +106,7 @@
                     <div>
                         <a href="#" title="악동뮤지션">
                             <span class="artist_image">
-                                <img src="artist_1.jpg" alt="악동뮤지션" class="rank_best_img">
+                                <img src="/images/ranking/artist_1.jpg" alt="악동뮤지션" class="rank_best_img">
                             </span>
                             <p class="artist_title">악동뮤지션</p>
                             <p class="artist_detail">친남매로 이루어진 남매 혼성 듀오
@@ -126,7 +130,7 @@
                     <div>
                         <a href="#" title="악동뮤지션">
                             <span class="artist_image">
-                                <img src="artist_1.jpg" alt="악동뮤지션" class="rank_best_img">
+                                <img src="/images/ranking/artist_1.jpg" alt="악동뮤지션" class="rank_best_img">
                             </span>
                             <p class="artist_title">악동뮤지션</p>
                             <p class="artist_detail">친남매로 이루어진 남매 혼성 듀오
@@ -164,7 +168,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <img src="/static/images/rank/artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                                <img src="/images/ranking/artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
                             </a>
                         </div>
                         <div>

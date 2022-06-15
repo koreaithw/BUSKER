@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!-- <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout"></html> -->
     <!-- thymeleaf사용한다는 선언 -->
     
-    <!-- <th:block th:fragment="fragment-header"></th:block> -->
-<head>
+<head th:fragment="head">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +10,6 @@
     <link rel="stylesheet" href="/assets/css/header/header3.css">
 </head>
 <body>
-    <div class="cp-top-wrap" th:fragment="fragment-header">
-<body th:fragment="head">
     <div class="cp-top-wrap">
 
 
@@ -27,8 +23,6 @@
        
         
                <header class="perform-top" id="perform-top" style="height: 100px;">
-
-
                     
        
        
@@ -41,7 +35,7 @@
                    <span class="pf-ham2"></span>
                    <span class="pf-ham3"></span>
                </a>
-               <h1><a href="/main" class="pf-logo" id="logo"><img src="/images/header/buskers-logo.png" alt="" class="fixed"></a></h1>
+               <h1><a href="/main/main" class="pf-logo" id="logo"><img src="/images/header/buskers-logo.png" alt="" class="fixed"></a></h1>
            </div>
 
            
@@ -82,7 +76,7 @@
                    </div> -->
                
                </h2>
-               <h2 style="height: auto;"><a href="/concertPlan/concertPlanList" class="">공연예정<span></span></a>
+               <h2 style="height: auto;"><a href="/cocertPlan/concertPlanList" class="">공연예정<span></span></a>
        
                
                    <!-- <div style="display: none;">
@@ -116,8 +110,10 @@
             </div>
             </div>
 
-           </div>
 
+
+
+           </div>
 
                </header>
            </div>
@@ -200,7 +196,7 @@
 		var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
 
 		//console.log(sPage);
-		if(sctop>=34){
+		if(sctop>=600){
 			$("#perform-top").addClass("fixed");
 			$("#pf-gnb-wrap").addClass("re-top");
 			$("#pf-gnb-wrap").removeClass("sub-top");

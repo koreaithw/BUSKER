@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,6 +12,10 @@
   </head>
 
   <style></style>
+
+  <header th:include="~{/header/header3 :: head}">
+
+  </header>
 
   <body class="modal_background">
     <div class="myPage-wrap">
