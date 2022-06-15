@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -8,6 +8,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="/assets/css/recruit/recruitInfo.css">
 </head>
+
+<header th:include="~{/header/header3 :: head}">
+
+</header>
 
 <body>
     <div class="content">
@@ -153,7 +157,7 @@
             </div>
             <div class="btn-box">
                 <div class="last-btn">
-                    <a href="/recruit/recruitList.html" class="noti-list">목록보기</a>
+                    <a href="/recruit/recruitList" class="noti-list">목록보기</a>
                 </div>
             </div>
  

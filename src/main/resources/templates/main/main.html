@@ -1,7 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!--<head th:replace="~{/header/header3 :: head}">-->
+
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Document</title>-->
+<!--    <link rel="stylesheet" href="/assets/css/main/main.css">-->
+<!--    <link rel="stylesheet" type="text/css" href="/assets/css/main/style.css">-->
+<!--    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+
+<!--</head>-->
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +26,9 @@
 </head>
 
 <body>
+<header th:include="~{/header/header3 :: head}">
+
+</header>
     
 <!-- -->
 

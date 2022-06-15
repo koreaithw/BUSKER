@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +9,10 @@
     <!-- 제이쿼리 불러오기 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 </head>
+
+<header th:include="~{/header/header3 :: head}">
+
+</header>
 <body>
     <div class="work_wrap">
         <p class="work_tit">작품 목록</p>
@@ -63,7 +67,7 @@
             </div>
             <div class="regist_division">
                 <div class="regist_btn">
-                    <a href="workRegister.html">작품 등록 신청</a>
+                    <a href="/work/workRegister">작품 등록 신청</a>
                 </div>
             </div>
             <div class="work_list">
@@ -71,67 +75,67 @@
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="workInfo.html" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
+                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
                         <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="workInfo.html" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
+                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
                         <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="workInfo.html" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
+                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
                         <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="workInfo.html" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
+                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
                         <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="workInfo.html" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
+                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
                         <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="workInfo.html" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
+                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
                         <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="workInfo.html" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
+                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
                         <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="workInfo.html" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
+                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
                         <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="workInfo.html" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
+                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
                         <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="workInfo.html" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
+                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
                         <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                     <li>
                         <p class="works_tit">Proof</p>
                         <p class="worker">방탄소년단</p>
-                        <a href="workInfo.html" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
+                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
                         <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
                     </li>
                 </ul>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -18,6 +18,10 @@
 
     <link rel="stylesheet" href="/assets/css/artist/artistInfo.css">
 </head>
+
+<header th:include="~{/header/header3 :: head}">
+
+</header>
 
 <body style=>
     <form name="mainForm" method="post" action="" id="mainForm">
