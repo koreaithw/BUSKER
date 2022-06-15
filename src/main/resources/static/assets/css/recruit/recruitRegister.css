@@ -79,7 +79,7 @@ p {
 .detail-view{
     width: 1200px;
     margin: 0 auto 60px auto;
-    background: #f6f6f6;
+    /* background: #f6f6f6; */
     position: relative;
 }
 
@@ -292,12 +292,13 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 /* 등록 폼  */
 .recruiting-register-title {
-    font-size: 30px;
+    font-size: 18px;
+    height: 34px;
     border: 0;
     border-radius: 10px;
     outline: none;
     padding-left: 10px;
-    background-color: rgb(233, 233, 233);
+    background-color: #ec7d2c1a;
     width: 100%;
 }
 
@@ -348,20 +349,36 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
 }
 
-.recru-table input {
+.recru-table input, .recru-table select {
     height: 32px;
     font-size: 15px;
     border: 0;
     border-radius: 10px;
     outline: none;
     padding-left: 10px;
-    background-color: rgb(233, 233, 233);
+    background-color: #ec7d2c1a;
     width: 567px;
+}
+
+.recru-table select{
+    width: 579px;
+    height: 34px;
 }
 
 .recru-table input:focus,
 .recru-table textarea:focus {
   outline: 1px solid #ff9326 !important;
+}
+
+.recru-table p {
+    margin: 0;
+    padding: 0;
+    color: #f54;
+    display: none;
+    margin-top: 5px;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 100;
 }
 
 .recru-table .label {
@@ -386,7 +403,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     border-radius: 10px;
     outline: none;
     padding-left: 10px;
-    background-color: rgb(233, 233, 233);
+    background-color: #ec7d2c1a;
     width: 1173px;
 }
 
@@ -402,17 +419,19 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 .recru-form-submit {
-    width: 88px;
+    width: 150px;
     margin: 0 4px;
     line-height: 38px;
     height: 40px;
     cursor: pointer;
     outline: none;
-    height: 40px;
-    border-radius: 20px;
-    background-color: #000;
+    height: 45px;
+    border-radius: 10px;
+    background-color: #ec7d2c;
     color: #fff;
-    border: 1px solid #000;
+    border: 1px solid #ec7d2c;
+    font-size: 17px;
+    font-weight: bold;
 }
 
 .recru-form-submit:hover {
@@ -421,3 +440,19 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     background-color: #f54;
   }
   
+.detail-title p {
+    display: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+    margin-left: 10px;
+    font-size: 14px;
+    color: #f54;
+}
+
+.noti-view-comen-txt p {
+    margin: 0;
+    padding: 0;
+    display: none;
+    color: #f54;
+}
