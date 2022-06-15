@@ -1,4 +1,4 @@
-package com.example.teamprojeect.controller;
+package com.example.teamprojeect.controller.artist;
 
 
 import lombok.RequiredArgsConstructor;

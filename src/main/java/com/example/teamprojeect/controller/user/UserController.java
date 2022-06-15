@@ -1,4 +1,4 @@
-package com.example.teamprojeect.controller;
+package com.example.teamprojeect.controller.user;
 
 
 import org.springframework.stereotype.Controller;
