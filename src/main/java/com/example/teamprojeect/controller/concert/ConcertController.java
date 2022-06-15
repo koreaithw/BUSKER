@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/concertLive/*")
+@RequestMapping("/concert/*")
 @Slf4j
 @RequiredArgsConstructor
 public class ConcertController {
