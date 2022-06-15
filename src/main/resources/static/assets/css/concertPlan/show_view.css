@@ -71,7 +71,7 @@ body{padding-top:0 !important;}
 .rn-03-left .rn-product-maps a{display:inline-block;width:138px;height:38px;line-height:40px;text-align:center;margin:0 0 6px 5px;border:1px solid #ddd;font-size:15px;color:#333;}
 .rn-03-left .rn-product-maps a.on span{color:#ff7d1e;position:relative;}
 .rn-03-left .rn-product-maps a.on span:before{content:"";display:block;width:16px;height:12px;background:url('http://tkfile.yes24.com/imgNew/common/rn-ico-check.png')no-repeat left center;position:absolute; top:3px;left:-21px;}
-.rn-03-left .rn-product-social{width:100%;height:75px;border-bottom:1px solid #ddd;position:relative;}
+.rn-03-left .rn-product-social{width:100%;height:75px;position:relative;}
 .rn-03-left .rn-product-social .rn-product-good{display:block;position:absolute;left:10px;top:24px;}
 .rn-03-left .rn-product-social .rn-product-good img{display:none;vertical-align:middle;}
 .rn-03-left .rn-product-social .rn-product-good img:first-child{display:inline-block;}
