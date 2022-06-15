@@ -1,4 +1,4 @@
-package com.example.teamprojeect.mapper;
+package com.example.teamprojeect.mapper.show;
 
 import com.example.teamprojeect.domain.vo.show.ShowFileVO;
 import org.apache.ibatis.annotations.Mapper;

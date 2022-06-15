@@ -1,4 +1,4 @@
-package com.example.teamprojeect.mapper;
+package com.example.teamprojeect.mapper.show;
 
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.show.ShowReplyVO;

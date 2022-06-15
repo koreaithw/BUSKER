@@ -1,4 +1,4 @@
-package com.example.teamprojeect.mapper;
+package com.example.teamprojeect.mapper.recruitment;
 
 import com.example.teamprojeect.domain.vo.recruitment.RecruitmentFileVO;
 import org.apache.ibatis.annotations.Mapper;

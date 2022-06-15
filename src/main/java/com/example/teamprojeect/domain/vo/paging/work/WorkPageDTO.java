@@ -1,4 +1,6 @@
-package com.example.teamprojeect.domain.vo.paging;
+package com.example.teamprojeect.domain.vo.paging.work;
+
+import com.example.teamprojeect.domain.vo.paging.Criteria;
 
 public class WorkPageDTO {
     private Criteria criteria;

@@ -1,4 +1,4 @@
-package com.example.teamprojeect.domain.vo.paging;
+package com.example.teamprojeect.domain.vo.paging.artist;
 
 import com.example.teamprojeect.domain.vo.artist.ArtistReplyVO;
 import lombok.AllArgsConstructor;

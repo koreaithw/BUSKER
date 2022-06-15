@@ -9,7 +9,6 @@ public class LikeVO {
     private Long userNumber;
     private Long artistNumber;
     private Long workNumber;
-    private Long showNumber;
     private String likeDate;
     private String likeCategory;
 }
