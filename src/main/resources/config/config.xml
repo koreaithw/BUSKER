@@ -8,13 +8,13 @@
         <typeAlias type="com.example.teamprojeect.domain.vo.artist.PaymentVO" alias="paymentVO"/>
 
 
-        <typeAlias type="com.example.teamprojeect.domain.vo.paging.ArtistPageDTO" alias="artistPageDTO"/>
-        <typeAlias type="com.example.teamprojeect.domain.vo.paging.ArtistReplyPageDTO" alias="artistReplyPageDTO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.paging.artist.ArtistPageDTO" alias="artistPageDTO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.paging.artist.ArtistReplyPageDTO" alias="artistReplyPageDTO"/>
         <typeAlias type="com.example.teamprojeect.domain.vo.paging.Criteria" alias="criteria"/>
-        <typeAlias type="com.example.teamprojeect.domain.vo.paging.RecruitmentPageDTO" alias="recruitmentPageDTO"/>
-        <typeAlias type="com.example.teamprojeect.domain.vo.paging.ShowPageDTO" alias="showPageDTO"/>
-        <typeAlias type="com.example.teamprojeect.domain.vo.paging.ShowReplyPageDTO" alias="showReplyPageDTO"/>
-        <typeAlias type="com.example.teamprojeect.domain.vo.paging.WorkPageDTO" alias="workPageDTO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.paging.recruitment.RecruitmentPageDTO" alias="recruitmentPageDTO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.paging.show.ShowPageDTO" alias="showPageDTO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.paging.show.ShowReplyPageDTO" alias="showReplyPageDTO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.paging.work.WorkPageDTO" alias="workPageDTO"/>
 
         <typeAlias type="com.example.teamprojeect.domain.vo.recruitment.RecruitmentFileVO" alias="recruitmentFileVO"/>
         <typeAlias type="com.example.teamprojeect.domain.vo.recruitment.RecruitmentVO" alias="recruitmentVO"/>

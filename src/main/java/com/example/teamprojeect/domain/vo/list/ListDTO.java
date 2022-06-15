@@ -16,5 +16,5 @@ public class ListDTO {
     private String donationType;
     private String likeType;
     private String tag;
-
+    private String recruitmentType;
 }
