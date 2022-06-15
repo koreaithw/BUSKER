@@ -3,9 +3,11 @@
     width: 216px;
     height: 303px;
 }
-.show_m {font-size:15px; margin-top:10px; height:70px; text-align:center; font-family:'Noto Sans KR','NanumBarunGothic','맑은 고딕','Malgun Gothic',sans-serif;font-weight:500;position:relative;}
+.sm-tit{font-size:30px; margin-top:30px; margin-left: 2px; height:70px; text-align:center; font-weight:bold;font-family:'Noto Sans KR','NanumBarunGothic','맑은 고딕','Malgun Gothic',sans-serif;}
+.sm-tit1{font-size:30px; margin-top:20px; margin-left: 2px; color: rgb(55, 55, 55); height:70px; text-align:center; font-weight:bold;font-family:'Noto Sans KR','NanumBarunGothic','맑은 고딕','Malgun Gothic',sans-serif;}
+.sm-tit2{font-size:20px; margin-top:20px; height:70px; text-align:center; font-weight:bold;font-family:'Noto Sans KR','NanumBarunGothic','맑은 고딕','Malgun Gothic',sans-serif;}
 
-.m2-tit{font-size:30px; margin-top:40px; height:70px; text-align:center; font-family:'Noto Sans KR','NanumBarunGothic','맑은 고딕','Malgun Gothic',sans-serif;font-weight:500;position:relative;}
+.m2-tit{font-size:30px; margin-top:40px; height:70px; text-align:center; font-weight:bold;font-family:'Noto Sans KR','NanumBarunGothic','맑은 고딕','Malgun Gothic',sans-serif;}
 .m2-tit img{padding-top:82px;}
 
 .ms-focus-imgs{width:100%; min-width:1300px; text-align:center; font-size:0;padding-left:1px;}
