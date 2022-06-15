@@ -961,7 +961,7 @@ input {
     display: inline-block;
     width: 236px;
     height: 46px;
-    line-height: 36px;
+    line-height: 38px;
     margin: 5px;
     vertical-align: top;
     font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
@@ -988,6 +988,8 @@ input {
     object-fit: cover;
     color: #fff;
     background-color: #f43142;
+    position: relative;
+    left: 15px;
 }
 
 .modal-content-down p {
