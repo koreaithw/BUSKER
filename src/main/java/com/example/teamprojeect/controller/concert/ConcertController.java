@@ -22,9 +22,21 @@ public class ConcertController {
         return "/concertPlan/concertPlanList";
     }
 
+    @GetMapping("/concertPlanMusician")
+    public String goConcertPlanM(){
+        return "/concertPlan/concertPlanMusician";
+    }
+
+
+    @GetMapping("/concertPlanPerformance")
+    public String goConcertPlanP(){
+        return "/concertPlan/concertPlanPerformance";
+    }
+
+
     // 진행 예정 공연 상세보기 페이지 이동
     @GetMapping("/concertPlanInfo/")
-    public String goConcertInfo(Model model) {
+    public String goConcertInfo() {
         return "/concertPlan/concertPlanInfo";
     }
 
