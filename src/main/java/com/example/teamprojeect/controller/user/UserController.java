@@ -21,4 +21,23 @@ public class UserController {
     public String goUserJoin(){
         return "/user/userJoin";
     }
+
+    // 로그인 페이지 이동
+    @GetMapping("/login")
+    public String goLogin() {
+        return "/login/login";
+    }
+
+    // 아이디 찾기 페이지 이동
+    @GetMapping("/idFind")
+    public String goIdFind() {
+        return "/login/idFind";
+    }
+
+    // 비밀번호 찾기 페이지 이동
+    @GetMapping("/pwFind")
+    public String goPwFind() {
+        return "/login/pwFind";
+    }
+
 }
