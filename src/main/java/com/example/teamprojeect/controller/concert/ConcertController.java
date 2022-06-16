@@ -47,11 +47,15 @@ public class ConcertController {
         return "/concert/concertPlanModify";
     }
 
+    // 진행 예정 공연 수정 완료
+
     // 진행 예정 공연 등록 페이지 이동
     @GetMapping("/concertPlanRegister")
     public String goConcertPlanRegister() {
         return "/concert/concertPlanRegister";
     }
+
+    // 진행 예정 공연 등록 완료
 
     // 진행중인 콘서트 페이지
     @GetMapping("/concertLive")

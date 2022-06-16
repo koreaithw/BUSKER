@@ -1,6 +1,7 @@
 package com.example.teamprojeect.controller.recruit;
 
 
+import com.example.teamprojeect.service.RecruitService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/recruit/*")
 public class RecruitmentController {
     // 필드 생성
-
+    private final RecruitService recruitService;
 
     // 모집공고 페이지 이동
     @GetMapping("/recruitList")

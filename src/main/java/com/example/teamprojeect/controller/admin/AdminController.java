@@ -21,4 +21,15 @@ public class AdminController {
         return "/admin/adminMain";
     }
 
+    // 아티스트 등록 신청 승인
+
+
+    // 아티스트 등록 신청 반려
+
+
+    // 작품 등록 신청 승인
+
+
+    // 작품 등록 신청 반려
+
 }
