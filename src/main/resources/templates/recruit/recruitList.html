@@ -67,6 +67,22 @@
 
     <!-- 표 -->
     <div class="search-line">
+<!--        가져온거-->
+
+        <!-- rank_big_category 주간, 월간, 연간 div -->
+        <div class="rank_big_category">
+            <div class="rank_category">
+
+                <!-- rank_calendar 주간, 월간, 연간에 따른 calendar -->
+                <div class="rank_category_tiny category" selectedcategoryid="1">
+                    <a id="week-rank" style="cursor: pointer;" categoryId="1" class="on">주간</a>
+                    <a id="month-rank" style="cursor: pointer;" categoryId="2">월간</a>
+                    <a id="year-rank" style="cursor: pointer;" categoryId="3">연간</a>
+                </div>
+            </div>
+        </div>
+
+<!--        가져온거-->
         <div class="search-box">
             <input class="search-outline" type="text" placeholder="궁금하신 내용을 입력해주세요" autocomplete="off">
             <a onclick="jsf_notice_Search();" style="cursor: pointer"></a>
@@ -84,7 +100,7 @@
                                     티켓오픈
                                 </td>
                                 <td>
-                                    <a href="#id=11869"><em>뮤지컬 데스노트 (The Musical Death Note) 2차 티켓오픈 안내</em></a>
+                                    <a href="/recruit/recruitInfo"><em>뮤지컬 데스노트 (The Musical Death Note) 2차 티켓오픈 안내</em></a>
                                 </td>
                                 <td>
                                     2022.06.17(금) 14:00</td>
@@ -412,7 +428,9 @@
     <!-- <img src="return-top2.jpg" alt=""> -->
 </a>
 
-    
+    <footer th:include="~{/footer/footer :: foot}">
+
+    </footer>
 </body>
 
 <!-- 맨위로 올리는 버튼 -->
