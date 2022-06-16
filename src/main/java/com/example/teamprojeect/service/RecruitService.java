@@ -10,4 +10,5 @@ import org.springframework.stereotype.Service;
 public class RecruitService {
     private final RecruitmentDAO recruitmentDAO;
     private final RecruitmentFileDAO recruitmentFileDAO;
+
 }

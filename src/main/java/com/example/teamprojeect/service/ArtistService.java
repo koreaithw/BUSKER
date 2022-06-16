@@ -17,4 +17,6 @@ public class ArtistService {
     private final ArtistReplyDAO artistReplyDAO;
     private final LikeDAO likeDAO;
     private final PaymentDAO paymentDAO;
+
+
 }
