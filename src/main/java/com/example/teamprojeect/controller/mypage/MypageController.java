@@ -25,7 +25,7 @@ public class MypageController {
     // 유저 정보 수정
 
 
-    // 비밀 번호 수정
+    // 비밀번호 수정
 
 
     // 회원 탈퇴

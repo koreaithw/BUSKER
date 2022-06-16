@@ -12,4 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/payment/artist/*")
 public class ArtistPaymentController {
     private ArtistService artistService;
+
+    // 아티스트 받은 후원 목록
+
+
+
 }

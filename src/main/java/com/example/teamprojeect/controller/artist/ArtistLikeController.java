@@ -19,4 +19,7 @@ public class ArtistLikeController {
 
 
     // 좋아요 취소
+
+
+    // 받은 좋아요 개수
 }
