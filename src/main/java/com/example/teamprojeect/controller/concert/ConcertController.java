@@ -36,7 +36,7 @@ public class ConcertController {
 
 
     // 진행 예정 공연 상세보기 페이지 이동
-    @GetMapping("/concertPlanInfo/")
+    @GetMapping("/concertPlanInfo")
     public String goConcertInfo() {
         return "/concert/concertPlanInfo";
     }

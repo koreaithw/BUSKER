@@ -3,9 +3,9 @@
 <mapper namespace="com.example.teamprojeect.mapper.user.UserMapper">
     <!--회원가입-->
     <insert id="join">
-        INSERT INTO TLB_USER
-        (USER_NUMBER, USER_ID, USER_PW, USER_NAME, USER_PHONE_NUMBER, USER_EMAIL, USER_ARTIST_STATUS, USER_STATUS)
-        VALUES (SEQ_USER, #{userId}, #{userPw}, #{userName}, #{userPhoneNumber}, #{userEmail}, 3, 1)
+        INSERT INTO TBL_USER
+        (USER_NUMBER, USER_ID, USER_PW, USER_NAME, USER_PHONE_NUMBER, USER_EMAIL)
+        VALUES (SEQ_USER.NEXTVAL, #{userId}, #{userPw}, #{userName}, #{userPhoneNumber}, #{userEmail})
     </insert>
 
     <!--회원가입시 휴대폰 번호 조회 -> 있으면 ID 찾기 실행-->
@@ -13,6 +13,13 @@
         SELECT USER_PHONE_NUMBER
         FROM TBL_USER
         WHERE USER_PHONE_NUMBER = #{userPhoneNumber}
+    </select>
+
+    <!--회원가입시 아이디 조회 -> 있으면 ID 찾기 실행-->
+    <select id="searchId" resultType="string">
+        SELECT USER_ID
+        FROM TBL_USER
+        WHERE USER_ID = #{userId}
     </select>
 
     <!--로그인-->
@@ -51,7 +58,7 @@
     </update>
 
     <!--ID, PW 찾기-->
-    <select id="find" resultType="usrVO">
+    <select id="find" resultType="userVO">
 
     </select>
 
