@@ -36,10 +36,25 @@
         UPDATE TBL_ARTIST SET ARITST_STATUS = 4 WHERE ARTIST_NUMBER = #{artistNumber}
     </update>
 
-    <!--아티스트 목록--> <!---->
-    <select id="getList">
 
-    </select>
+<!--    아티스트 목록-->
+<!--        <select id="getList">-->
+<!--            SELECT * FROM TBL_ARTIST-->
+<!--            <trim prefix="WHERE">-->
+<!--                <if test="artistType == 1">-->
+<!--                    <if test="artistSort == 1">-->
+<!--                        WHERE ARTIST_NUMBER ORDER BY DESC-->
+<!--                    </if>-->
+<!--                    <if test="artistSort == 2">-->
+<!--                        WHERE GROUP BY l.ARTIST_NUMBER COUNT ORDER BY DESC-->
+
+<!--                    </if>-->
+
+<!--                    </if>-->
+<!--                </if>-->
+<!--            </trim>-->
+
+<!--        </select>-->
 
     <!--아티스트 목록 개수-->
 
