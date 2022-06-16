@@ -66,7 +66,16 @@ p {
     position: relative;
     margin-top: 50px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+}
+
+.rank_big_category{
+    width:825px;
+}
+.rank_category a.on {
+    color: #333;
+    border-top: 3px solid #ec7d2c;
+    padding-right: 12px;
 }
 
 
