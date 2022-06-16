@@ -2,6 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.teamprojeect.mapper.show.ShowMapper">
     <!--공연 등록-->
+    <insert id="insert">
+        INSERT INTO TBL_SHOW
+        (SHOW_NUMBER, ARTIST_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE)
+        VALUES(SEQ_SHOW.NEXTVAL, 0, '', '', '', '', '', '', 0);
+    </insert>
     <!--공연 수정-->
     <!--공연 삭제-->
     <!--진행 예정 공연 목록-->
