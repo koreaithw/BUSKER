@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ArtistService {
     //필드
-    private ArtistDAO artistDAO;
-    private ArtistFileDAO artistFileDAO;
-    private ArtistReplyDAO artistReplyDAO;
-    private LikeDAO likeDAO;
-    private PaymentDAO paymentDAO;
+    private final ArtistDAO artistDAO;
+    private final ArtistFileDAO artistFileDAO;
+    private final ArtistReplyDAO artistReplyDAO;
+    private final LikeDAO likeDAO;
+    private final PaymentDAO paymentDAO;
 }

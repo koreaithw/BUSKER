@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class ShowDAO {
-    private ShowMapper showMapper;
+    private final ShowMapper showMapper;
 
     // 공연 등록
     public void register(ShowVO showVO) {

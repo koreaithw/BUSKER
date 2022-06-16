@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class ArtistFileDAO {
-    private ArtistFileMapper artistFileMapper;
+    private final ArtistFileMapper artistFileMapper;
 
     // 아티스트 사진 추가
     public void insert(ArtistFileVO artistFileVO) {

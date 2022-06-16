@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class PaymentDAO {
-    private PaymentMapper paymentMapper;
+    private final PaymentMapper paymentMapper;
 
     // 후원 결제
     public void donation(PaymentVO paymentVO) {
