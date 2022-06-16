@@ -1,9 +1,9 @@
-package com.example.teamprojeect.mapper.user;
+package com.example.teamprojeect.mapper.work;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @Slf4j
-public class LikeMapperTests {
+public class WorkMapperTests {
 }

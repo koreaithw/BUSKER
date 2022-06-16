@@ -5,5 +5,5 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @Slf4j
-public class ShowMapperTests {
+public class ShowReplyMapperTests {
 }
