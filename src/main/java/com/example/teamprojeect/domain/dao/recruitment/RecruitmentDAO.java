@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class RecruitmentDAO {
-    private RecruitmentMapper recruitmentMapper;
+    private final RecruitmentMapper recruitmentMapper;
 
     // 모집공고 등록
     public void register(RecruitmentVO recruitmentVO) {

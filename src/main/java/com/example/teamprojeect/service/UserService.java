@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class UserService {
-    private UserDAO userDAO;
-    private UserFileDAO userFileDAO;
-    private LikeDAO likeDAO;
+    private final UserDAO userDAO;
+    private final UserFileDAO userFileDAO;
+    private final LikeDAO likeDAO;
 }

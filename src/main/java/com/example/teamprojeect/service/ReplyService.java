@@ -8,6 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ReplyService {
-    private ArtistReplyDAO artistReplyDAO;
-    private ShowReplyDAO showReplyDAO;
+    private final ArtistReplyDAO artistReplyDAO;
+    private final ShowReplyDAO showReplyDAO;
 }

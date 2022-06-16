@@ -8,6 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class RecruitService {
-    private RecruitmentDAO recruitmentDAO;
-    private RecruitmentFileDAO recruitmentFileDAO;
+    private final RecruitmentDAO recruitmentDAO;
+    private final RecruitmentFileDAO recruitmentFileDAO;
 }

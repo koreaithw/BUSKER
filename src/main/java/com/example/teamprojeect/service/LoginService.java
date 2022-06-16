@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class LoginService {
-    private UserDAO userDAO;
+    private final UserDAO userDAO;
 }

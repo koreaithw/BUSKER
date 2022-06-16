@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @RequiredArgsConstructor
 public class WorkDAO {
-    private WorkMapper workMapper;
+    private final WorkMapper workMapper;
 }

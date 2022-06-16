@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class RecruitmentFileDAO {
-    private RecruitmentFileMapper recruitmentFileMapper;
+    private final RecruitmentFileMapper recruitmentFileMapper;
 
     // 모집공고 사진 추가
     public void register(RecruitmentFileVO recruitmentFileVO) {

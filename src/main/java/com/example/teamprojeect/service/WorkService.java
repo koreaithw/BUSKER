@@ -8,6 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class WorkService {
-    private WorkDAO workDAO;
-    private WorkFileDAO workFileDAO;
+    private final WorkDAO workDAO;
+    private final WorkFileDAO workFileDAO;
 }
