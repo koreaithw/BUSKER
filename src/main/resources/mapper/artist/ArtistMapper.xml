@@ -38,22 +38,23 @@
 
 
 <!--    아티스트 목록-->
-        <select id="getList">
-            SELECT * FROM TBL_ARTIST
-            <trim prefix="WHERE">
-                <if test="artistType == 1">
-                    <if test="artistSort == 1">
-                        WHERE ARTIST_NUMBER ORDER BY DESC
-                    </if>
-                    <if test="artistSort == 2">
+<!--        <select id="getList">-->
+<!--            SELECT * FROM TBL_ARTIST-->
+<!--            <trim prefix="WHERE">-->
+<!--                <if test="artistType == 1">-->
+<!--                    <if test="artistSort == 1">-->
+<!--                        WHERE ARTIST_NUMBER ORDER BY DESC-->
+<!--                    </if>-->
+<!--                    <if test="artistSort == 2">-->
+<!--                        WHERE GROUP BY l.ARTIST_NUMBER COUNT ORDER BY DESC-->
 
-                    </if>
+<!--                    </if>-->
 
-                    </if>
-                </if>
-            </trim>
+<!--                    </if>-->
+<!--                </if>-->
+<!--            </trim>-->
 
-        </select>
+<!--        </select>-->
 
     <!--아티스트 목록 개수-->
 
