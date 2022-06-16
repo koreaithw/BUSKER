@@ -14,5 +14,5 @@ public class ShowVO {
     private String showTime;
     private String showAddress;
     private String showLocation;
-    private String showType;
+    private Long showType;
 }
