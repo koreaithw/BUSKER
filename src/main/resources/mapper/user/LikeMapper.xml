@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.teamprojeect.mapper.user.LikeMapper">
+    <!--좋아요 등록-->
+
+    <!--좋아요 취소-->
+
+    <!--좋아요 목록-->
+
+    <!--아티스트, 작품의 좋아요 개수-->
+</mapper>

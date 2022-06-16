@@ -52,14 +52,16 @@ html, body, div, span{
     text-align: center;
     font-size: 0;
     background-color: #f6f6f6;
+    height: 665px;
 }
 
 .rank_best div{
     display: inline-block;
     box-sizing: border-box;
     width: 400px;
-    height: 675px;
+    height: 666px;
     border-right: 1px solid #ddd;
+    float: left;
 }
 
 .rank_best div a .artist_title{
@@ -99,14 +101,16 @@ html, body, div, span{
 }
 
 .rank_list{
+    height: 180px;
     width: 1200px;
     margin: 0 auto;
     border-bottom: 2px solid #333;
 }
 
 .rank_list>div{
+    position: absolute;
     overflow: hidden;
-    height: 152px;
+    height: 180px;
     border-top: 1px solid #ddd;
 }
 
@@ -152,7 +156,7 @@ html, body, div, span{
     font-weight: 700;
     color: #333;
     text-align: center;
-    padding-top: 60px;
+    padding-top: 70px;
 }
 
 .ui_corner_all, .ui_corner_bottom, .ui_corner_right, .ui_corner_br{
@@ -254,7 +258,7 @@ p.big_title{
     line-height: 24px;
     color: #999;
     text-align: center;
-    padding-top: 38px;
+    padding-top: 55px;
 }
 
 .rank_category_date span{
@@ -277,7 +281,8 @@ p.big_title{
 
 .rank_calendar_ver1, .rank_calendar_ver2, .rank_calendar_ver3{
     float: right;
-    padding-top: 17px;
+    top: -41px;
+    position: relative;
 }
 
 
@@ -286,7 +291,7 @@ p.big_title{
 a{
     text-decoration: none;
     outline: none;
-    
+
 }
 
 .rank_genre a{
@@ -322,13 +327,15 @@ a{
 }
 
 .rank_best div:nth-child(1) a{
-    animation:bg 10s ease infinite; 
+    animation:bg 10s ease infinite;
     background: linear-gradient(45deg, #d6f2c9, #d7cbe0, #fadae1, #eed1af, #cbf0f3);
     background-size: 600% 600%;
 }
 
 .rank_best div:last-child{
-    border-right: 1px solid #ddd;
+    border-right: 0px;
+    position: absolute;
+    right: 0px;
 }
 
 .rank_best div a{
@@ -444,18 +451,18 @@ select{
 
 /* ::before element */
 .category a:nth-child(3)::before{
-    display: none;
+    display: block;
 }
 
-.category a::before{
+.category > a::before{
     content: "";
     display: block;
     width: 1px;
-    height: 21px;
+    height: 15px;
     background-color: #ddd;
     position: absolute;
-    top: 22px;
-    left: 50px;
+    top: 20px;
+    left: -15px;
 }
 
 .rank_list .fluctuation p.rank_list_number::before{

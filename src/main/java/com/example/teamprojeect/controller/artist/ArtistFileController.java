@@ -14,5 +14,13 @@ public class ArtistFileController {
     // 필드 생성
     private ArtistService artistService;
 
+    // 아티스트 프로필 사진 등록
+
+
+    // 아티스트 프로필 사진 변경
+
+
+    // 아티스트 프로필 사진 삭제
+
 
 }

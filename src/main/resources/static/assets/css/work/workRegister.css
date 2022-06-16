@@ -165,7 +165,7 @@ dl {
 }
 
 .info_area1 {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid rgb(147, 147, 147);
     position: relative;
     padding-left: 1px;
     padding-top: 5px;
@@ -202,7 +202,7 @@ dl {
     border-radius: 10px;
     outline: none;
     padding-left: 10px;
-    background-color: rgb(233, 233, 233);
+    background-color: rgb(253, 236, 221);
 }
 
 .input_text:focus {
@@ -215,7 +215,7 @@ textarea {
     border-radius: 10px;
     outline: none;
     padding-left: 10px;
-    background-color: rgb(233, 233, 233);
+    background-color: rgb(253, 236, 221);
     padding: 8px 8px 8px 8px;
 }
 
@@ -225,7 +225,6 @@ textarea:focus {
 
 .info_area2 {
     min-height: 174px;
-    border-bottom: 1px solid #000;
     padding-left: 1px;
 }
 
@@ -264,9 +263,9 @@ textarea:focus {
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: #f43142;
+    background-color: #ff9326;
     padding: 10px 20px 10px 20px;
-    border: #f43142 solid 2px;
+    border: #ff9326 solid 2px;
     width: 236px;
     height: 46px;
     line-height: 46px;
@@ -274,16 +273,18 @@ textarea:focus {
 }
 
 
+
 .vid_wrap {
     overflow: hidden;
     margin-bottom: 50px;
 }
 
-.warning_msg {
+.warning_msg1,.warning_msg2,.warning_msg3,.warning_msg4{
     color: red;
     font-size: 13px;
     margin: 0;
-    padding-left: 55px;
+    padding-left: 50px;
+    display: none;
 }
 
 dd span {

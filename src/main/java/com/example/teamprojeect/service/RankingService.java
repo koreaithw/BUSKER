@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class RankingService {
-    private ArtistDAO artistDAO;
+    private final ArtistDAO artistDAO;
 }

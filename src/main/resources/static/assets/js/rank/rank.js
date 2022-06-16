@@ -1,6 +1,3 @@
-
-
-
 $(document).ready(function(){
     $(".rank_category_date").text(weekDay);
 })

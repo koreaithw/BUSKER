@@ -1,7 +1,6 @@
 package com.example.teamprojeect.domain.dao.user;
 
 import com.example.teamprojeect.domain.vo.user.UserVO;
-import com.example.teamprojeect.mapper.user.UserFileMapper;
 import com.example.teamprojeect.mapper.user.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Param;
@@ -12,7 +11,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class UserDAO {
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
 
     // 회원가입
     public void join(UserVO userVO) {
@@ -45,7 +44,7 @@ public class UserDAO {
     }
 
     // ID, PW 찾기
-    public List<UserVO> find(UserVO userVO) {
-        return userMapper.find(userVO);
+    public UserVO find(@Param("text") String text, @Param("findWay") String findWay) {
+        return userMapper.find(text,findWay);
     }
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.teamprojeect.mapper.artist.ArtistReplyMapper">
+
+    <!--댓글 등록-->
+    <insert id="insert">
+        INSERT INTO TBL_ARTIST_REPLY
+        (REPLY_NUMBER, USER_NUMBER, ARTIST_NUMBER, REPLY_CONTENT, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE)
+        VALUES (SEQ_ARTIST_REPLY_NUMBER.NEXTVAL, #{userNumber}, #{artistNumber}, #{replyContent}, #{replyRegisterDate}, #{replyUpdateDate})
+    </insert>
+
+    <!--댓글 수정-->
+    <update id="update">
+        UPDATE TBL_ARTIST_REPLY
+        SET REPLY_CONTENT = #{replyContent}, REPLY_UPDATE_DATE = #{replyUpdateDate}, REPLY_REGISTER_DATE = #{replyRegisterDate}
+        WHERE REPLY_NUMBER = #{replyNumber}
+    </update>
+
+    <!--댓글 삭제-->
+    <delete id="delete">
+        DELETE FROM TBL_ARTIST_REPLY WHERE REPLY_NUMBER = #{replyNumber}
+    </delete>
+
+    <!--댓글 개수-->
+    <select id="getTotal" resultType="_int">
+        SELECT COUNT(REPLY_NUMBER) FROM TBL_ARTIST_REPLY /*집계함수는 결과가 한 개 나옴*/
+        WHERE ARTIST_NUMBER = #{artistNumber}
+    </select>
+
+    <!--댓글 목록-->
+    <select id="getList" resultType="artistReplyVO">
+
+    </select>
+
+</mapper>

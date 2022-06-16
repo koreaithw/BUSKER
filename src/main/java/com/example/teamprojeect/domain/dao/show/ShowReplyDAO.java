@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class ShowReplyDAO {
-    private ShowReplyMapper showReplyMapper;
+    private final ShowReplyMapper showReplyMapper;
 
     // 공연 댓글 등록
     public void register(ShowReplyVO artistReplyVO) {

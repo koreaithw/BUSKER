@@ -14,4 +14,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class ArtistReplyController {
     // 필드 생성
     private ArtistService artistService;
+
+
+    // 아티스트에게 달린 댓글 목록
+
+
+    // 아티스트에게 댓글 달기
+
+
+    // 댓글 삭제
+
+
+    // 댓글 수정
+
+
+
+
 }

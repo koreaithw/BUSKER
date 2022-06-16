@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ConcertService {
-    private ShowDAO showDAO;
-    private ShowFileDAO showFileDAO;
-    private ShowReplyDAO showReplyDAO;
+    private final ShowDAO showDAO;
+    private final ShowFileDAO showFileDAO;
+    private final ShowReplyDAO showReplyDAO;
 }

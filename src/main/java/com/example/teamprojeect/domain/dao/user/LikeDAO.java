@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class LikeDAO {
-    private LikeMapper likeMapper;
+    private final LikeMapper likeMapper;
 
     // 좋아요 등록
     public void register(LikeVO likeVO) {

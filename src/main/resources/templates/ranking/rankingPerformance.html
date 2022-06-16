@@ -19,9 +19,9 @@
 
         <!-- rank_genre 전체, 뮤지션, 퍼포먼스 div -->
         <div class="rank_genre">
-            <a href="rankingAll.html">전체</a>
-            <a href="rankingMusician.html">뮤지션</a>
-            <a href="rankingPerformance.html" class="on">퍼포먼스</a>
+            <a href="/ranking/rankingAll">전체</a>
+            <a href="/ranking/rankingMusician">뮤지션</a>
+            <a href="/ranking/rankingPerformance" class="on">퍼포먼스</a>
         </div>
 
         <!-- rank_big_category 주간, 월간, 연간 div -->
@@ -226,11 +226,15 @@
 </div>
 </div>
 
+
+    <footer th:include="~{/footer/footer :: foot}">
+
+    </footer>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
     integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="/static/assets/js/rank/rank.js"></script>
+<script src="/assets/js/rank/rank.js"></script>
             
 </html>

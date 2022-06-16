@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class UserFileDAO {
-    private UserFileMapper userFileMapper;
+    private final UserFileMapper userFileMapper;
 
     // 프로필 사진 추가
     public void register(UserFileVO userFileVO) {

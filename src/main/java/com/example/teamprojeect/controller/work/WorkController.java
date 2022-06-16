@@ -1,5 +1,6 @@
 package com.example.teamprojeect.controller.work;
 
+import com.example.teamprojeect.service.WorkService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/work/*")
 public class WorkController {
     // 필드 생성
-
+    private final WorkService workService;
 
     // 작품리스트 페이지 이동
     @GetMapping("/workList")

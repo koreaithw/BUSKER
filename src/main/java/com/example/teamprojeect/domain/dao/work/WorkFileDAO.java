@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class WorkFileDAO {
-    private WorkFileMapper workFileMapper;
+    private final WorkFileMapper workFileMapper;
 
     // 작품 사진 추가
     public void register(WorkFileVO workFileVO) {

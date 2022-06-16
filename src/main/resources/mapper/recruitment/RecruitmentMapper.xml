@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.teamprojeect.mapper.recruitment.RecruitmentMapper">
+    <!--모집공고 등록-->
+    <insert id="insert">
+    INSERT INTO TBL_RECRUITMENT
+    (RECRUITMENT_NUMBER, RECRUITMENT_NAME, RECRUITMENT_NAME, RECRUITMENT_DAY, RECRUITMENT_TIME, RECRUITMENT_URL
+     ,RECRUITMENT_TYPE, RECRUITMENT_SUMMARY, RECRUITMENT_CONDITION, RECRUITMENT_INTRODUCE,RECRUITMENT_HOST)
+    VALUES (SEQ_RECRUITMENT.NEXTVAL, #{recruitmentName}, #{recruitmentLocation}, #{recruitmentDay}, #{recruitmentTime}
+    , #{recruitmentUrl}, #{recruitmentType}, #{recruitmentSummary}, #{recruitmentCondition}, #{recruitmentIntroduce}
+    , #{recruitmentHost})
+    </insert>
+
+    <!--모집공고 수정-->
+    <update id="update">
+
+    </update>
+
+    <!--모집공고 삭제-->
+    <delete id="delete">
+        DELETE FROM TBL_RECRUITMENT WHERE RECRUITMENT_NUMBER = #{recruitmentNumber}
+    </delete>
+
+    <!--모집공고 목록-->
+    <select id="getList" resultType="recruitmentVO">
+
+    </select>
+
+    <!--모집공고 개수-->
+    <select id="getTotal" resultType="recruitmentVO">
+
+    </select>
+</mapper>
