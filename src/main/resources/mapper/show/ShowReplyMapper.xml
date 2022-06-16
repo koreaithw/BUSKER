@@ -6,7 +6,7 @@
     <insert id="insert">
         INSERT INTO TBL_SHOW_REPLY
         (REPLY_NUMBER, USER_NUMBER, SHOW_NUMBER, REPLY_CONTENT, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE)
-        VALUES (SEQ_USER_SHOW_REPLY_NUMBER, #{userNumber}, #{showNumber}, #{replyContent}, #{replyRegisterDate}, #{replyUpdateDate})
+        VALUES (SEQ_USER_SHOW_REPLY_NUMBER.NEXTVAL, #{userNumber}, #{showNumber}, #{replyContent}, #{replyRegisterDate}, #{replyUpdateDate})
     </insert>
 
     <!--댓글 수정-->
@@ -29,20 +29,7 @@
 
     <!--댓글 목록-->
     <select id="getList" resultType="artistReplyVO">
-        <![CDATA[
-    SELECT REPLY_NUMBER, USER_NUMBER, SHOW_NUMBER, REPLY_CONTENT, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE FROM
-    (
-      SELECT ROWNUM RN, REPLY_NUMBER, USER_NUMBER, SHOW_NUMBER, REPLY_CONTENT, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE
-      FROM (
-      SELECT REPLY_NUMBER, USER_NUMBER, SHOW_NUMBER, REPLY_CONTENT, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE
-      FROM TBL_SHOW_REPLY
-      ORDER BY REPLY_UPDATE_DATE DESC
-      )
-      WHERE SHOW_NUMBER = #{showNumber} AND ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
-        )
-        WHERE RN > (#{criteria.pageNum} - 1 ) * #{criteria.amount}
 
-        ]]>
     </select>
 
 </mapper>

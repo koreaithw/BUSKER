@@ -13,6 +13,8 @@ public interface UserMapper {
     public void join(UserVO userVO);
     // 회원가입시 휴대폰 번호 조회 -> 있으면 ID 찾기 실행
     public String searchPhoneNumber(String userPhoneNumber); // null 이면 없는 거
+    // 회원가입시 아이디 조회 -> 있으면 ID 찾기 실행
+    public String searchId(String userId); // null 이면 없는 거
 
     // 로그인
     public int login(@Param("userId") String userId, @Param("userPw") String userPw);
