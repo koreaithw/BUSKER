@@ -6,7 +6,7 @@
     <insert id="insertApply">
         INSERT INTO TBL_ARTIST
         (ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE, ARTIST_DONATION, ARTIST_ACCOUNT, ARTIST_STATUS)
-        VALUES(SEQ_ARTIST, #{userNumber}, #{artistName}, #{artistDescription}, #{artistType}, #{artistDonation}, #{artistAccount}, 1)
+        VALUES(SEQ_ARTIST.NEXTVAL, #{userNumber}, #{artistName}, #{artistDescription}, #{artistType}, #{artistDonation}, #{artistAccount}, 1)
     </insert>
 
     <!--관리자 등록 승인 (status -> 3)-->
@@ -38,27 +38,11 @@
 
     <!--아티스트 목록--> <!---->
     <select id="getList">
-        <![CDATA[
-        SELECT ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE, ARTIST_DONATION, ARTIST_ACCOUNT, ARTIST_STATUS
-        FROM
-        (
-            SELECT /*+ INDEX_DESC(TBL_ARTIST SYS_C007026) */
-            ROWNUM RN, ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE, ARTIST_DONATION, ARTIST_ACCOUNT, ARTIST_STATUS
-            FROM TBL_ARTIST
-            WHERE
-        ]]>
 
-        <![CDATA[
-            ROWNUM <= #{pageNum} * #{amount}
-        )
-        WHERE RN > (#{pageNum} - 1) * #{amount}
-        ]]>
     </select>
 
     <!--아티스트 목록 개수-->
-    <select id="getList" resultType="artistVO">
 
-    </select>
 
     <!--랭킹 목록-->
     <select id="rankingList" resultType="artistVO">
