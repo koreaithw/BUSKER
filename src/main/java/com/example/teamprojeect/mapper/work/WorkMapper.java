@@ -11,10 +11,16 @@ import java.util.List;
 @Mapper
 public interface WorkMapper {
     // 작품 등록 신청 및 관리자 등록 승인 (매개변수로 usreNumber를 받아서 사용자라면 등록신청을, 관리자라면 바로 등록을 실행)
-    public void insertApply(@Param("workVO") WorkVO workVO, @Param("userNumber") Long userNumber);
+    public void insertApply(WorkVO workVO);
 
     // 작품 수정 신청 및 관리자 수정 승인 (매개변수로 usreNumber를 받아서 사용자라면 수정신청을, 관리자라면 바로 수정을 실행)
-    public int updateApply(@Param("workVO") WorkVO workVO,  @Param("userNumber") Long userNumber);
+    public int updateApply(WorkVO workVO);
+
+    // 작품 신청 승인
+    public void insertAdmin(Long workNumber);
+
+    // 작품 수정 승인
+    public void updateAdmin(Long workNumber);
 
     // 작품 삭제
     public int delete(Long workNumber);

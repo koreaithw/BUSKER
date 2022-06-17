@@ -19,7 +19,7 @@ public class WorkMapperTests {
 //    }
 
     // 작품 등록 신청
-//    @Test
+//    @Test //잘됨
 //    public void insertApplyTest() {
 //        WorkVO workVO = new WorkVO();
 //        workVO.setArtistNumber(3L);
@@ -30,20 +30,40 @@ public class WorkMapperTests {
 //        workVO.setWorkReleaseDate("2022-06-16");
 //        workVO.setWorkYoutubeUrl("testYoutubeUrl");
 //        workVO.setWorkTag("발라드");
-//        workMapper.insertApply(workVO, 3L);
+//        workMapper.insertApply(workVO);
 //    }
 
     // 작품 수정 신청
-    @Test
-    public void updateApplyTest() {
-        WorkVO workVO = new WorkVO();
-        workVO.setWorkName("updatetest");
-        workVO.setWorkDescription("updatedesc");
-        workVO.setWorkYoutubeUrl("updateurl");
-        workVO.setWorkPurchaseUrl("updatePurl");
-        workVO.setArtistNumber(3L);
-        workMapper.updateApply(workVO, 3L);
-    }
+//    @Test //잘됨
+//    public void updateApplyTest() {
+//        WorkVO workVO = new WorkVO();
+//        workVO.setWorkName("updatetest");
+//        workVO.setWorkDescription("updatedesc");
+//        workVO.setWorkYoutubeUrl("updateurl");
+//        workVO.setWorkPurchaseUrl("updatePurl");
+//        workVO.setArtistNumber(3L);
+//        workMapper.updateApply(workVO);
+//    }
 
+    // 작품 등록 신청 승인
+//    @Test // 잘됨
+//    public void insertAdminTest() {
+//        Long workNumber = 2L;
+//        workMapper.insertAdmin(workNumber);
+//    }
+
+    // 작품 수정 신청 승인
+//    @Test //잘됨
+//    public void updateAdminTest() {
+//        Long workNumber = 1L;
+//        workMapper.updateAdmin(workNumber);
+//    }
+
+    // 작품 삭제
+    @Test
+    public void deleteTest() {
+        Long workNumber = 2L;
+        workMapper.delete(workNumber);
+    }
 
 }
