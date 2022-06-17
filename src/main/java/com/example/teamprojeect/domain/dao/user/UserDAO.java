@@ -39,8 +39,8 @@ public class UserDAO {
     }
 
     // 회원 탈퇴
-    public boolean remove(UserVO userVO) {
-        return userMapper.delete(userVO) == 1;
+    public boolean remove(Long userNumber) {
+        return userMapper.delete(userNumber) == 1;
     }
 
     // ID, PW 찾기
