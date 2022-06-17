@@ -3,36 +3,46 @@
 <mapper namespace="com.example.teamprojeect.mapper.work.WorkMapper">
     <!-- 작품 등록 신청 (status 1) -->
     <insert id="insertApply">
+        <![CDATA[
         INSERT INTO TBL_WORK
         (WORK_NUMBER,ARTIST_NUMBER, WORK_NAME, WORK_GENRE, WORK_DESCRIPTION, WORK_YOUTUBE_URL, WORK_PURCHASE_URL, WORK_TAG, WORK_RELEASE_DATE, WORK_REGISTER_DATE, WORK_UPDATE_DATE, WORK_STATUS)
         VALUES(SEQ_WORK.NEXTVAL, #{artistNumber}, #{workName}, #{workGenre},#{workDescription}, #{workYoutubeUrl}, #{workPurchaseUrl}, #{workTag}, #{workReleaseDate}, SYSDATE, SYSDATE, 1)
+        ]]>
     </insert>
 
     <!--관리자 등록 승인 (status -> 3)-->
     <update id="insertAdmin">
+        <![CDATA[
         UPDATE TBL_WORK
         SET WORK_STATUS = 3
         WHERE WORK_NUMBER = #{workNumber}
+        ]]>
     </update>
 
     <!--아티스트 정보 수정 신청 (status 2)-->
     <update id="updateApply">
+        <![CDATA[
         UPDATE TBL_WORK
         SET WORK_NAME = #{workName}, WORK_DESCRIPTION = #{workDescription}, WORK_YOUTUBE_URL = #{workYoutubeUrl}, WORK_PURCHASE_URL = #{workPurchaseUrl},
          WORK_UPDATE_DATE = SYSDATE, WORK_STATUS = 2
-        WHERE ARTIST_NUMBER = #{artistNumber}
+        WHERE WORK_NUMBER = #{workNumber}
+        ]]>
     </update>
 
     <!--관리자 수정 승인 (status -> 3)--> <!---->
     <update id="updateAdmin">
+        <![CDATA[
         UPDATE TBL_WORK
         SET WORK_STATUS = 3
         WHERE WORK_NUMBER = #{workNumber}
+        ]]>
     </update>
 
     <!--작품 삭제--> <!---->
     <update id="delete">
+        <![CDATA[
         UPDATE TBL_WORK SET WORK_STATUS = 4 WHERE WORK_NUMBER = #{workNumber}
+        ]]>
     </update>
 
 
