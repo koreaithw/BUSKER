@@ -17,12 +17,12 @@ public class WorkDAO {
 
     // 작품 등록 신청 및 관리자 등록 승인 (매개변수로 usreNumber를 받아서 사용자라면 등록신청을, 관리자라면 바로 등록을 실행)
     public void registerApply(@Param("workVO") WorkVO workVO, @Param("userNumber") Long userNumber) {
-        workMapper.insertApply(workVO, userNumber);
+        workMapper.insertApply(workVO);
     };
 
     // 작품 수정 신청 및 관리자 수정 승인 (매개변수로 usreNumber를 받아서 사용자라면 수정신청을, 관리자라면 바로 수정을 실행)
     public boolean modifyApply(@Param("workVO") WorkVO workVO,  @Param("userNumber") Long userNumber) {
-        return workMapper.updateApply(workVO, userNumber) == 1;
+        return workMapper.updateApply(workVO) == 1;
     }
 
     // 작품 삭제
