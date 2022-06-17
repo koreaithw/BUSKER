@@ -11,18 +11,18 @@ import java.util.List;
 public interface ShowReplyMapper {
 
     // 공연 댓글 등록
-    public void insert(ShowReplyVO artistReplyVO);
+    public void insert(ShowReplyVO showReplyVO);
 
     // 공연 댓글 수정
-    public int update(ShowReplyVO artistReplyVO);
+    public int update(ShowReplyVO showReplyVO);
 
     // 공연 댓글 삭제
     public int delete(Long replyNumber);
 
     // 공연 댓글 개수
-    public int getTotal(Long artistNumber);
+    public int getTotal(Long showNumber);
 
     // 공연 댓글 목록
-    public List<ShowReplyVO> getList(@Param("criteria") Criteria criteria, @Param("artistNumber")Long artistNumber);
+    public List<ShowReplyVO> getList(@Param("criteria") Criteria criteria, @Param("showNumber")Long showNumber);
 
 }
