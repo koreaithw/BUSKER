@@ -11,10 +11,10 @@
 
     <!--마이페이지 : 회원 사진 삭제-->
     <delete id="delete">
-        DELETE FROM TBL_USER_FILE WHERE UUID = #{uuid}
+        DELETE FROM TBL_USER_FILE WHERE USER_NUMBER = #{userNumber}
     </delete>
 
-    <!--마이페이지 : 회원 사진 변경-->
+    <!--마이페이지 : 회원 사진 변경 (삭제 고려)-->
     <update id="update">
         UPDATE TBL_USER_FILE
         SET UUID = #{uuid}, USER_NUMBER = #{userNumber}, UPLOAD_PATH = #{uploadPath}, FILE_NAME = #{fileName}

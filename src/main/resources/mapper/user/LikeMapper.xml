@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.teamprojeect.mapper.user.LikeMapper">
-    <!--좋아요 등록-->
+    <!--좋아요 등록 (아티스트)-->
+    <insert id="insertArtistLike">
+        INSERT INTO TBL_LIKE
+        (USER_NUMBER, ARTIST_NUMBER, LIKE_CATEGORY)
+        VALUES (#{userNumber}, #{artistNumber}, 'A')
+    </insert>
+
+    <!--좋아요 등록 (뮤지션)-->
+    <insert id="insertWorkLike">
+        INSERT INTO TBL_LIKE
+        (USER_NUMBER, WORK_NUMBER, LIKE_CATEGORY)
+        VALUES (#{userNumber}, #{workNumber}, 'W')
+    </insert>
 
     <!--좋아요 취소-->
+    <!--매개변수로 likeType을 전달해서 'A'인지 'W'인지를 구분)
+    <!--매개변수로 typeNumber을 전달해서 해당 type의 number를 입력)
+
 
     <!--좋아요 목록-->
 

@@ -33,7 +33,7 @@ public interface UserMapper {
     // 마이페이지 : 비밀번호 수정 > 완료
     public int updatePw(@Param("userNumber") Long userNumber, @Param("password") String password);
 
-    // 마이페이지 : 회원 탈퇴
+    // 마이페이지 : 회원 탈퇴 > 완료
     public int delete(Long userNumber);
 
     // 마이페이지 : 아티스트 계정 등록삭제 (
