@@ -19,31 +19,31 @@ public class WorkMapperTests {
 //    }
 
     // 작품 등록 신청
-    @Test //잘됨
-    public void insertApplyTest() {
-        WorkVO workVO = new WorkVO();
-        workVO.setArtistNumber(3L);
-        workVO.setWorkDescription("testDescription");
-        workVO.setWorkGenre("발라드");
-        workVO.setWorkName("testWork");
-        workVO.setWorkPurchaseUrl("testurl");
-        workVO.setWorkReleaseDate("2022-06-16");
-        workVO.setWorkYoutubeUrl("testYoutubeUrl");
-        workVO.setWorkTag("발라드");
-        workMapper.insertApply(workVO);
-    }
+//    @Test //잘됨
+//    public void insertApplyTest() {
+//        WorkVO workVO = new WorkVO();
+//        workVO.setArtistNumber(3L);
+//        workVO.setWorkDescription("testDescription1");
+//        workVO.setWorkGenre("힙합/랩");
+//        workVO.setWorkName("testWork1");
+//        workVO.setWorkPurchaseUrl("testurl1");
+//        workVO.setWorkReleaseDate("2022-06-17");
+//        workVO.setWorkYoutubeUrl("testYoutubeUrl1");
+//        workVO.setWorkTag("힙합/랩");
+//        workMapper.insertApply(workVO);
+//    }
 
     // 작품 수정 신청
-//    @Test //잘됨
-//    public void updateWorkApplyTest() {
-//        WorkVO workVO = new WorkVO();
-//        workVO.setWorkName("updatetest");
-//        workVO.setWorkDescription("updatedesc");
-//        workVO.setWorkYoutubeUrl("updateurl");
-//        workVO.setWorkPurchaseUrl("updatePurl");
-//        workVO.setArtistNumber(3L);
-//        workMapper.updateApply(workVO);
-//    }
+    @Test //잘됨
+    public void updateWorkApplyTest() {
+        WorkVO workVO = new WorkVO();
+        workVO.setWorkName("updatetest1");
+        workVO.setWorkDescription("updatedesc1");
+        workVO.setWorkYoutubeUrl("updateurl1");
+        workVO.setWorkPurchaseUrl("updatePurl1");
+        workVO.setWorkNumber(1L);
+        workMapper.updateApply(workVO);
+    }
 
     // 작품 등록 신청 승인
 //    @Test // 잘됨
@@ -60,10 +60,10 @@ public class WorkMapperTests {
 //    }
 
     // 작품 삭제
-    @Test
-    public void deleteTest() {
-        Long workNumber = 2L;
-        workMapper.delete(workNumber);
-    }
+//    @Test
+//    public void deleteTest() {
+//        Long workNumber = 2L;
+//        workMapper.delete(workNumber);
+//    }
 
 }

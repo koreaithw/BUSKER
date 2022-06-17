@@ -22,9 +22,19 @@ public class WorkDAO {
         workMapper.insertApply(workVO);
     };
 
+    // 작품 등록 신청 승인
+    public void registerAdmin(Long workNumber) {
+        workMapper.insertAdmin(workNumber);
+    }
+
     // 작품 수정 신청 및 관리자 수정 승인 (매개변수로 usreNumber를 받아서 사용자라면 수정신청을, 관리자라면 바로 수정을 실행)
     public boolean modifyApply(WorkVO workVO) {
         return workMapper.updateApply(workVO) == 1;
+    }
+
+    // 작품 수정 신청 승인
+    public void modifyAdmin(Long workNumber) {
+        workMapper.updateAdmin(workNumber);
     }
 
     // 작품 삭제
