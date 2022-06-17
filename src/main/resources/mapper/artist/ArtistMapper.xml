@@ -37,30 +37,61 @@
     </update>
 
 
-    아티스트 목록
-        <select id="getList">
-            SELECT * FROM TBL_ARTIST
-            <trim prefix="WHERE">
-                <if test="artistType == 1">
-                    <if test="artistSort == 1">
-                        WHERE ARTIST_NUMBER ORDER BY DESC
-                    </if>
-                    <if test="artistSort == 2">
-                        SELECT a.ART
-                        FROM TBL_LIKE l, TBL_ARTIST a
-                        WHERE l.ARTIST_NUMBER = a.ARTIST_NUMBER
-                        AND a.ARTIST_NUMBER IN (SELECT a.ARTIST_NUMBER FROM TBL_LIKES l, TBL_ARTIST a WHERE a.ARTIST_NUMBER = l.ARTIST_NUMBER)
-                        GROUP BY l.ARTIST_NUMBER
-                        ORDER BY likescount DESC, a.ARTIST_NUMBER
+    <select id="getList" resultType="artistVO">
+        SELECT
+        <trim prefix="a.*">
+            <choose>
+                <when test="listDTO.artistSortingType == 'NEW'.toString()">
+                    FROM TBL_ARTIST a ORDER BY a.ARTIST_NUMBER DESC
+                </when>
+                <when test="listDTO.artistSortingType == 'LIKE'.toString()">
+                    , likescount
+                    FROM (SELECT ARTIST_NUMBER, COUNT(ARTIST_NUMBER) as likescount
+                    FROM TBL_LIKE GROUP BY ARTIST_NUMBER ORDER BY likescount DESC) l JOIN TBL_ARTIST a
+                    ON a.ARTIST_NUMBER = l.ARTIST_NUMBER
+                    ORDER BY LIKESCOUNT DESC
+                </when>
+            </choose>
+        </trim>
+    </select>
 
+    <select id="getListMusician" resultType="artistVO">
+        SELECT
+        <trim prefix="a.*">
+            <choose>
+                <when test="listDTO.artistSortingType == 'NEW'.toString()">
+                    FROM TBL_ARTIST a WHERE a.ARTIST_TYPE = 1 ORDER BY a.ARTIST_NUMBER DESC
+                </when>
+                <when test="listDTO.artistSortingType == 'LIKE'.toString()">
+                    , likescount
+                    FROM (SELECT ARTIST_NUMBER, COUNT(ARTIST_NUMBER) as likescount
+                    FROM TBL_LIKE GROUP BY ARTIST_NUMBER ORDER BY likescount DESC) l JOIN TBL_ARTIST a
+                    ON a.ARTIST_NUMBER = l.ARTIST_NUMBER
+                    WHERE a.ARTIST_TYPE = 1
+                    ORDER BY LIKESCOUNT DESC
+                </when>
+            </choose>
+        </trim>
+    </select>
 
-                    </if>
-
-                    </if>
-                </if>
-            </trim>
-
-        </select>
+    <select id="getListPerformance" resultType="artistVO">
+        SELECT
+        <trim prefix="a.*">
+            <choose>
+                <when test="listDTO.artistSortingType == 'NEW'.toString()">
+                    FROM TBL_ARTIST a WHERE a.ARTIST_TYPE = 2 ORDER BY a.ARTIST_NUMBER DESC
+                </when>
+                <when test="listDTO.artistSortingType == 'LIKE'.toString()">
+                    , likescount
+                    FROM (SELECT ARTIST_NUMBER, COUNT(ARTIST_NUMBER) as likescount
+                    FROM TBL_LIKE GROUP BY ARTIST_NUMBER ORDER BY likescount DESC) l JOIN TBL_ARTIST a
+                    ON a.ARTIST_NUMBER = l.ARTIST_NUMBER
+                    WHERE a.ARTIST_TYPE = 2
+                    ORDER BY LIKESCOUNT DESC
+                </when>
+            </choose>
+        </trim>
+    </select>
 
     <!--아티스트 목록 개수-->
 
