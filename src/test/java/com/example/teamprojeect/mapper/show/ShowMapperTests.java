@@ -1,10 +1,15 @@
 package com.example.teamprojeect.mapper.show;
 
+import com.example.teamprojeect.domain.vo.list.ListDTO;
+import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.show.ShowVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestExecutionListeners;
+
+import javax.script.ScriptContext;
 
 @SpringBootTest
 @Slf4j
@@ -70,5 +75,10 @@ public class ShowMapperTests {
         Long showNumber = 217L;
         log.info("DELETE COUNT : " + showMapper.detail(showNumber));
         log.info(showMapper.detail(showNumber).toString());
+    }
+
+    @Test
+    public void getListTest(Criteria criteria, ListDTO listDTO) {
+        showMapper.getList(criteria, listDTO).stream().map(ShowVO::toString).forEach(log::info);
     }
 }

@@ -40,8 +40,18 @@ public class ShowDAO {
         return showMapper.getList(criteria, listDTO);
     }
 
-    // 진행 예정/ 진행 중 공연 개수
+    // 진행 중 공연 목록
+    public List<ShowVO> getListIng(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO) {
+        return showMapper.getList(criteria, listDTO);
+    }
+
+    // 진행 예정 공연 개수
     public int getTotalToday(ListDTO listDTO) {
+        return getTotalToday(listDTO);
+    }
+
+    // 진행 중 공연 개수
+    public int getTotalTodayIng(ListDTO listDTO) {
         return getTotalToday(listDTO);
     }
 

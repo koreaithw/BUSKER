@@ -33,5 +33,4 @@ public interface UserMapper {
 
     // 아티스트 계정 등록삭제 (
     public int updateArtist(@Param("userNumber") Long userNumber, @Param("listDTO") ListDTO listDTO);
-
 }
