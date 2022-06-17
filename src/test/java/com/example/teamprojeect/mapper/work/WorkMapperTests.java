@@ -19,23 +19,23 @@ public class WorkMapperTests {
 //    }
 
     // 작품 등록 신청
-//    @Test //잘됨
-//    public void insertApplyTest() {
-//        WorkVO workVO = new WorkVO();
-//        workVO.setArtistNumber(3L);
-//        workVO.setWorkDescription("testDescription");
-//        workVO.setWorkGenre("발라드");
-//        workVO.setWorkName("testWork");
-//        workVO.setWorkPurchaseUrl("testurl");
-//        workVO.setWorkReleaseDate("2022-06-16");
-//        workVO.setWorkYoutubeUrl("testYoutubeUrl");
-//        workVO.setWorkTag("발라드");
-//        workMapper.insertApply(workVO);
-//    }
+    @Test //잘됨
+    public void insertApplyTest() {
+        WorkVO workVO = new WorkVO();
+        workVO.setArtistNumber(3L);
+        workVO.setWorkDescription("testDescription");
+        workVO.setWorkGenre("발라드");
+        workVO.setWorkName("testWork");
+        workVO.setWorkPurchaseUrl("testurl");
+        workVO.setWorkReleaseDate("2022-06-16");
+        workVO.setWorkYoutubeUrl("testYoutubeUrl");
+        workVO.setWorkTag("발라드");
+        workMapper.insertApply(workVO);
+    }
 
     // 작품 수정 신청
 //    @Test //잘됨
-//    public void updateApplyTest() {
+//    public void updateWorkApplyTest() {
 //        WorkVO workVO = new WorkVO();
 //        workVO.setWorkName("updatetest");
 //        workVO.setWorkDescription("updatedesc");
