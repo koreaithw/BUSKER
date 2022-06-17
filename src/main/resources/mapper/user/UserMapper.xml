@@ -22,6 +22,11 @@
         WHERE USER_ID = #{userId}
     </select>
 
+    <!-- 회원가입 : ID, PW 찾기-->
+    <select id="find" resultType="userVO">
+
+    </select>
+
     <!--로그인-->
     <select id="login">
         SELECT COUNT(*)
@@ -29,37 +34,42 @@
         WHERE USER_ID = #{userId} AND USER_PW = #{userPw}
     </select>
 
-    <!--정보 수정-->
+    <!-- 마이페이지 : 정보 조회-->
+    <select id="getUserDetail" resultType="userVO">
+        SELECT USER_NUMBER, USER_ID, USER_PW, USER_NAME, USER_PHONE_NUMBER, USER_EMAIL, USER_ARTIST_STATUS, USER_REGISTER_DATE, USER_STATUS
+        FROM TBL_USER
+        WHERE USER_NUMBER= #{userNumber}
+    </select>
+
+    <!-- 마이페이지 : 정보 수정-->
     <update id="update">
         UPDATE TBL_USER
-        SET USER_PW = #{userPw}, USER_NAME = #{userName}, USER_PHONE_NUMBER = #{userPhoneNumber}, USER_EMAIL = #{userEmail}, USER_ARTIST_STATUS = #{artistName}
+        SET USER_NAME = #{userName}, USER_PHONE_NUMBER = #{userPhoneNumber}, USER_EMAIL = #{userEmail}, USER_ARTIST_STATUS = #{userArtistStatus}
         WHERE USER_NUMBER = #{userNumber}
     </update>
 
-    <!--관리자에 의한 아티스트 계정 등록시 status값 변경-->
+    <!-- 마이페이지 : 관리자에 의한 아티스트 계정 등록시 status값 변경-->
         <update id="updateArtist">
         UPDATE TBL_USER
         SET USER_ARTIST_STATUS = 4
         WHERE USER_NUMBER = #{userNumber}
     </update>
 
-    <!--비밀번호 수정-->
+    <!-- 마이페이지 : 비밀번호 수정-->
     <update id="updatePw">
         UPDATE TBL_USER
         SET USER_PW = #{password}
         WHERE USER_NUMBER = #{userNumber}
     </update>
 
-    <!--회원 탈퇴-->
+    <!-- 마이페이지 : 회원 탈퇴-->
     <update id="delete">
         UPDATE TBL_USER
         SET USER_STATUS = 0
         WHERE USER_NUMBER = #{userNumber}
     </update>
 
-    <!--ID, PW 찾기-->
-    <select id="find" resultType="userVO">
 
-    </select>
+
 
 </mapper>
