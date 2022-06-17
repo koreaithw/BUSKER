@@ -4,6 +4,7 @@ import com.example.teamprojeect.domain.vo.artist.ArtistFileVO;
 import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.paging.artist.ArtistPageDTO;
 import com.example.teamprojeect.mapper.artist.ArtistMapper;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Param;
@@ -45,9 +46,22 @@ public class ArtistDAO {
     // 아티스트 목록
     // (매개변수로 artistType을 전달해서 'A'(전체)인지 'M'(아티스트) 인지 'P'(퍼포먼스)인지 구분)
     // (매개변수로 sortingType을 전달해서 '최신순'과 '좋아요순' 구분)
-    public List<ArtistVO> getList(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO) {
-        return artistMapper.getList(criteria, listDTO);
+//    public List<ArtistVO> getList(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO) {
+//        return artistMapper.getList(criteria, listDTO);
+//    }
+    //아티스트 전체목록
+    public List<ArtistVO> getList(@Param("listDTO") ListDTO listDTO) {
+        return artistMapper.getList(listDTO);
     }
+    //아티스트 뮤지션 목록
+    public List<ArtistVO> getListMusician(@Param("listDTO") ListDTO listDTO) {
+        return artistMapper.getListMusician(listDTO);
+    }
+    //아티스트 퍼포먼스 목록
+    public List<ArtistVO> getListPeformance(@Param("listDTO") ListDTO listDTO) {
+        return artistMapper.getListPerformance(listDTO);
+    }
+
     /*
     artistType likeType (최신, 좋아요 순)
     * * */
