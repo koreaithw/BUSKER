@@ -37,6 +37,7 @@
     </update>
 
 
+
     <select id="getList" resultType="artistVO">
         SELECT
         <trim prefix="a.*">
