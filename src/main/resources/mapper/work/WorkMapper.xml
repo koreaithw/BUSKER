@@ -45,5 +45,26 @@
         ]]>
     </update>
 
+    <!-- 작품 등록 신청 상세보기 -->
+    <select id="getDetail" resultType="workVO">
+        SELECT WORK_NAME, WORK_GENRE, WORK_DESCRIPTION, WORK_YOUTUBE_URL, WORK_PURCHASE_URL, WORK_TAG, WORK_RELEASE_DATE, WORK_REGISTER_DATE,
+                WORK_UPDATE_DATE
+        FROM TBL_WORK
+        WHERE WORK_NUMBER = #{workNumber}
+    </select>
+
+    <!-- 작품 등록 신청 전체 목록 -->
+    <select id="getList" resultType="workVO">
+        <![CDATA[
+            SELECT WORK_NUMBER, WORK_NAME, WORK_GENRE, WORK_DESCRIPTION, WORK_YOUTUBE_URL, WORK_PURCHASE_URL, WORK_TAG, WORK_RELEASE_DATE, WORK_REGISTER_DATE, WORK_UPDATE_DATE
+            FROM (
+                SELECT /*+ INDEX_DESC(TBL_WORK SYS_C007147) */
+                ROWNUM RN, WORK_NUMBER, WORK_NAME, WORK_GENRE, WORK_DESCRIPTION, WORK_YOUTUBE_URL, WORK_PURCHASE_URL, WORK_TAG, WORK_RELEASE_DATE, WORK_REGISTER_DATE, WORK_UPDATE_DATE
+                FROM TBL_WORK
+                WHERE WORK_STATUS = 1 AND ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
+                )
+            WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
+        ]]>
+    </select>
 
 </mapper>
