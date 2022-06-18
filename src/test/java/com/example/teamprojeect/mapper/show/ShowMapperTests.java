@@ -78,7 +78,12 @@ public class ShowMapperTests {
     }
 
     @Test
-    public void getListTest(Criteria criteria, ListDTO listDTO) {
-        showMapper.getList(criteria, listDTO).stream().map(ShowVO::toString).forEach(log::info);
+    public void getListTest() {
+        showMapper.getList(new Criteria(1, 30), new ListDTO("", "new", "week", "new", "1")).stream().map(ShowVO::toString).forEach(log::info);
+    }
+
+    @Test
+    public void getListIngTest() {
+        showMapper.getListIng(new Criteria(1, 30), new ListDTO("M", "new", "week", "new", "1")).stream().map(ShowVO::toString).forEach(log::info);
     }
 }
