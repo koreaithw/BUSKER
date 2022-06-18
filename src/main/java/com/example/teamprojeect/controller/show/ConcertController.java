@@ -1,11 +1,10 @@
-package com.example.teamprojeect.controller.concert;
+package com.example.teamprojeect.controller.show;
 
 
-import com.example.teamprojeect.service.ConcertService;
+import com.example.teamprojeect.service.ShowService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class ConcertController {
     // 필드 생성
-    private ConcertService concertService;
+    private ShowService concertService;
 
     // 진행 예정 공연 리스트 페이지 이동
     @GetMapping("/concertPlanList")

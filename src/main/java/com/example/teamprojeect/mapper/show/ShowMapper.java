@@ -27,8 +27,14 @@ public interface ShowMapper {
     // (진행 중 공연 목록은 dateToday를 이용해 오늘 날짜만 SELECT)
     public List<ShowVO> getList(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO);
 
-    // 진행 예정/ 진행 중 공연 개수
-    public int getTotalToday(ListDTO listDTO);
+    // 진행 중 공연 목록
+    public List<ShowVO> getListIng(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO);
+
+    // 진행 예정 공연 개수
+    public int getTotal(ListDTO listDTO);
+
+    // 진행 중 공연 개수
+    public int getTotalIng(ListDTO listDTO);
 
     // 공연 상세 페이지
     public ShowVO detail(Long showNumber);
