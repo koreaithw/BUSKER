@@ -1,5 +1,6 @@
 package com.example.teamprojeect.mapper.work;
 
+import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.work.WorkVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -21,29 +22,31 @@ public class WorkMapperTests {
     // 작품 등록 신청
 //    @Test //잘됨
 //    public void insertApplyTest() {
-//        WorkVO workVO = new WorkVO();
-//        workVO.setArtistNumber(3L);
-//        workVO.setWorkDescription("testDescription1");
-//        workVO.setWorkGenre("힙합/랩");
-//        workVO.setWorkName("testWork1");
-//        workVO.setWorkPurchaseUrl("testurl1");
-//        workVO.setWorkReleaseDate("2022-06-17");
-//        workVO.setWorkYoutubeUrl("testYoutubeUrl1");
-//        workVO.setWorkTag("힙합/랩");
-//        workMapper.insertApply(workVO);
+//        for (int i = 0; i < 15; i++){
+//            WorkVO workVO = new WorkVO();
+//            workVO.setArtistNumber(3L);
+//            workVO.setWorkDescription("testDescription" + i);
+//            workVO.setWorkGenre("힙합/랩");
+//            workVO.setWorkName("testWork" + i);
+//            workVO.setWorkPurchaseUrl("testurl" + i);
+//            workVO.setWorkReleaseDate("2022-06-" + (i + 1));
+//            workVO.setWorkYoutubeUrl("testYoutubeUrl" + i);
+//            workVO.setWorkTag("힙합/랩");
+//            workMapper.insertApply(workVO);
+//        }
 //    }
 
     // 작품 수정 신청
-    @Test //잘됨
-    public void updateWorkApplyTest() {
-        WorkVO workVO = new WorkVO();
-        workVO.setWorkName("updatetest1");
-        workVO.setWorkDescription("updatedesc1");
-        workVO.setWorkYoutubeUrl("updateurl1");
-        workVO.setWorkPurchaseUrl("updatePurl1");
-        workVO.setWorkNumber(1L);
-        workMapper.updateApply(workVO);
-    }
+//    @Test //잘됨
+//    public void updateWorkApplyTest() {
+//        WorkVO workVO = new WorkVO();
+//        workVO.setWorkName("updatetest1");
+//        workVO.setWorkDescription("updatedesc1");
+//        workVO.setWorkYoutubeUrl("updateurl1");
+//        workVO.setWorkPurchaseUrl("updatePurl1");
+//        workVO.setWorkNumber(1L);
+//        workMapper.updateApply(workVO);
+//    }
 
     // 작품 등록 신청 승인
 //    @Test // 잘됨
@@ -66,4 +69,16 @@ public class WorkMapperTests {
 //        workMapper.delete(workNumber);
 //    }
 
+    // 작품신청 상세보기
+//    @Test // 잘됨
+//    public void getDetailTest() {
+//        Long workNumber = 1L;
+//        log.info(workMapper.getDetail(workNumber).toString());
+//    }
+
+    // 작품 신청 전체 목록
+    @Test
+    public void getListTest() {
+        workMapper.getList(new Criteria(2,10)).stream().map(WorkVO::toString).forEach(log::info);
+    }
 }
