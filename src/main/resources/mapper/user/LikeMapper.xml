@@ -16,9 +16,20 @@
     </insert>
 
     <!--좋아요 취소-->
-    <!--매개변수로 likeType을 전달해서 'A'인지 'W'인지를 구분)
-    <!--매개변수로 typeNumber을 전달해서 해당 type의 number를 입력)
-
+    <!--매개변수로 likeType을 전달해서 'A'인지 'W'인지를 구분)-->
+    <!--매개변수로 typeNumber을 전달해서 해당 type의 number를 입력)-->
+    <delete id="delete">
+        DELETE FROM TBL_LIKE
+        WHERE
+        <choose>
+            <when test='listDTO.likeCategory == "A"'>
+                USER_NUMBER= #{userNumber} AND ARTIST_NUMBER = #{number}
+            </when>
+            <when test='listDTO.likeCategory == "W"'>
+                USER_NUMBER= #{userNumber} AND WORK_NUMBER = #{number}
+            </when>
+        </choose>
+    </delete>
 
     <!--좋아요 목록-->
 
