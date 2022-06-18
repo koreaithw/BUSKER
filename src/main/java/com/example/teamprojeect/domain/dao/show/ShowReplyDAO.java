@@ -15,13 +15,13 @@ public class ShowReplyDAO {
     private final ShowReplyMapper showReplyMapper;
 
     // 공연 댓글 등록
-    public void register(ShowReplyVO artistReplyVO) {
-        showReplyMapper.insert(artistReplyVO);
+    public void register(ShowReplyVO showReplyVO) {
+        showReplyMapper.insert(showReplyVO);
     }
 
     // 공연 댓글 수정
-    public boolean modify(ShowReplyVO artistReplyVO) {
-        return showReplyMapper.update(artistReplyVO) == 1;
+    public boolean modify(ShowReplyVO showReplyVO) {
+        return showReplyMapper.update(showReplyVO) == 1;
     }
 
     // 공연 댓글 삭제
@@ -30,12 +30,12 @@ public class ShowReplyDAO {
     }
 
     // 공연 댓글 개수
-    public int getTotal(Long artistNumber) {
-        return showReplyMapper.getTotal(artistNumber);
+    public int getTotal(Long showNumber) {
+        return showReplyMapper.getTotal(showNumber);
     }
 
     // 공연 댓글 목록
-    public List<ShowReplyVO> getList(@Param("criteria") Criteria criteria, @Param("artistNumber")Long artistNumber) {
-        return showReplyMapper.getList(criteria, artistNumber);
+    public List<ShowReplyVO> getList(@Param("criteria") Criteria criteria, @Param("showNumber")Long showNumber) {
+        return showReplyMapper.getList(criteria, showNumber);
     }
 }

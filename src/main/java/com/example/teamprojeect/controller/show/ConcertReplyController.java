@@ -1,7 +1,7 @@
-package com.example.teamprojeect.controller.concert;
+package com.example.teamprojeect.controller.show;
 
 
-import com.example.teamprojeect.service.ConcertService;
+import com.example.teamprojeect.service.ShowService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,5 +13,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/reply/concert/*")
 public class ConcertReplyController {
     // 필드 생성
-    private ConcertService concertService;
+    private ShowService concertService;
 }
