@@ -25,8 +25,8 @@ public interface WorkMapper {
     // 작품 삭제
     public int delete(Long workNumber);
 
-    // 작품 목록
-    public List<WorkVO> getList(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO); //리스트????
+    // 작품 신청 목록
+    public List<WorkVO> getList(Criteria criteria); //리스트????
     // 작품 태그 검색  (태그를 선택할때마다 리스트에 추가하고, 쿼리문에서 리스트 하나씩뽑아서 if문 돌리기)
 
     // 작품 개수
@@ -35,4 +35,5 @@ public interface WorkMapper {
 
     // 작품 상세페이지
     public WorkVO getDetail(Long workNumber);
+
 }

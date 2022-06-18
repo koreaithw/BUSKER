@@ -42,9 +42,9 @@ public class WorkDAO {
         return workMapper.delete(workNumber) == 1;
     }
 
-    // 작품 목록
-    public List<WorkVO> getList(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO){
-        return workMapper.getList(criteria, listDTO);
+    // 작품 신청 전체 목록
+    public List<WorkVO> getList(@Param("criteria") Criteria criteria){
+        return workMapper.getList(criteria);
     } //리스트????
     // 작품 태그 검색  (태그를 선택할때마다 리스트에 추가하고, 쿼리문에서 리스트 하나씩뽑아서 if문 돌리기)
 
