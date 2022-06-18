@@ -17,14 +17,11 @@ public class ShowReplyMapperTests {
     public void insertTest() {
         ShowReplyVO showReplyVO = new ShowReplyVO();
 
-        showReplyVO.setShowNumber(218L);
+        showReplyVO.setShowNumber(472L);
         showReplyVO.setUserNumber(21L);
-        showReplyVO.setReplyContent("이승윤 공연 진짜 개재밌음 추천행");
+        showReplyVO.setReplyContent("이승윤 공연 진짜 개재밌음 추천행1");
 
         showReplyMapper.insert(showReplyVO);
-        log.info("shpw 댓글 ++  " + showReplyVO.getReplyNumber());
-        log.info("shpw 댓글 ++  " + showReplyVO.getReplyNumber());
-        log.info("shpw 댓글 ++  " + showReplyVO.getReplyNumber());
         log.info("shpw 댓글 ++  " + showReplyVO.getReplyNumber());
     }
 
@@ -32,26 +29,28 @@ public class ShowReplyMapperTests {
     public void updateTest(){
         ShowReplyVO showReplyVO = new ShowReplyVO();
 
-        showReplyVO.setReplyNumber(1L);
+        showReplyVO.setReplyNumber(522L);
         showReplyVO.setReplyContent("업데이트 된 댓글 : 이승윤 공연 진짜 개재밌음 추천행");
 
         showReplyMapper.update(showReplyVO);
         log.info("shpw update 댓글 ++  " + showReplyVO.getReplyNumber());
-        log.info("shpw update 댓글 ++  " + showReplyVO.getReplyNumber());
-        log.info("shpw update 댓글 ++  " + showReplyVO.getReplyNumber());
-        log.info("shpw update 댓글 ++  " + showReplyVO.getReplyNumber());
-    }
-
-    @Test
-    public void getListTest() {
-        showReplyMapper.getList(new Criteria(1, 10), 218L)
-                .stream().map(ShowReplyVO::toString).forEach(log::info);
     }
 
     @Test
     public void deleteTest() {
-        Long showReplyNumber = 237L;
-        showReplyMapper.delete(237L);
+        Long showReplyNumber = 522L;
+        showReplyMapper.delete(showReplyNumber);
         log.info("DELETE : " + showReplyMapper.delete(showReplyNumber));
+    }
+
+    @Test
+    public void getTotalTest() {
+        Long showNumber =  1315L;
+        showReplyMapper.getTotal(showNumber);
+    }
+    @Test
+    public void getListTest() {
+        showReplyMapper.getList(new Criteria(4, 10), 472L)
+                .stream().map(ShowReplyVO::toString).forEach(log::info);
     }
 }

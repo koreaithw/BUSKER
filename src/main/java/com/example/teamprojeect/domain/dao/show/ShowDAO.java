@@ -34,8 +34,8 @@ public class ShowDAO {
     // (매개변수 기본 : Date가 작은것부터 정렬 (D-day순 정렬))
     // (매개변수 artistType를 받아 전체/뮤지션/퍼포먼스 구분)
     // (매개변수 ingWhether를 받아 진행예정 공연인지 진행중 공연인지 분류, => 오늘 날짜 전달
-    // (매개변수 dateToday를 받아 현재 날짜 전송 후 쿼리에서 계산)
-    // (진행 중 공연 목록은 dateToday를 이용해 오늘 날짜만 SELECT)
+    // (매개변수 date를 받아 현재 날짜 전송 후 쿼리에서 계산)
+    // (진행 중 공연 목록은 date를 이용해 오늘 날짜만 SELECT)
     public List<ShowVO> getList(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO) {
         return showMapper.getList(criteria, listDTO);
     }
@@ -46,17 +46,17 @@ public class ShowDAO {
     }
 
     // 진행 예정 공연 개수
-    public int getTotalToday(ListDTO listDTO) {
-        return getTotalToday(listDTO);
+    public int getTotal(ListDTO listDTO) {
+        return showMapper.getTotal(listDTO);
     }
 
     // 진행 중 공연 개수
-    public int getTotalTodayIng(ListDTO listDTO) {
-        return getTotalToday(listDTO);
+    public int getTotalIng(ListDTO listDTO) {
+        return showMapper.getTotalIng(listDTO);
     }
 
     // 공연 상세 페이지
-    public ShowVO detail(Long showNumber) {
+    public ShowVO read(Long showNumber) {
         return showMapper.detail(showNumber);
     }
 }

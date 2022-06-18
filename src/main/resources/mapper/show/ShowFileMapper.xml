@@ -11,7 +11,7 @@
 
     <!--공연 사진 삭제-->
     <delete id="delete">
-        DELETE FROM TBL_SHOW_FILE WHERE SHOW_NUMBER = #{showNumber}f
+        DELETE FROM TBL_SHOW_FILE WHERE SHOW_NUMBER = #{showNumber}
     </delete>
 
     <!--공연 사진 변경-->

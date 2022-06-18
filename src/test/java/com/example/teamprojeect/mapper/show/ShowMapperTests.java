@@ -25,7 +25,7 @@ public class ShowMapperTests {
         showVO.setShowName("페퍼톤스");
         showVO.setShowContent("이승윤 무대 초대 컴컴");
         showVO.setShowDay("2022-06-06");
-        showVO.setShowTime("오후 03:24");
+        showVO.setShowTime("오후 10:24");
         showVO.setShowAddress("충북 청주시 흥덕구 1순환로 384");
         showVO.setShowLocation("푸른길 공원 앞");
         showVO.setShowType(1L);
@@ -33,34 +33,24 @@ public class ShowMapperTests {
         showMapper.insert(showVO);
 
         log.info("공연 번호 :" +  showVO.getShowNumber());
-        log.info("공연 번호 :" +  showVO.getShowNumber());
-        log.info("공연 번호 :" +  showVO.getShowNumber());
-        log.info("공연 번호 :" +  showVO.getShowNumber());
-        log.info("공연 번호 :" +  showVO.getShowNumber());
-        log.info("공연 번호 :" +  showVO.getShowNumber());
     }
 
     @Test
     public void updateTest(){
         ShowVO showVO = new ShowVO();
 
-        showVO.setShowNumber(64L);
+        showVO.setShowNumber(1315L);
         showVO.setArtistNumber(54L);
         showVO.setShowName("슈가볼로 업데이트");
         showVO.setShowContent("슈가볼 무대 초대 컴컴");
         showVO.setShowDay("2022-06-31");
-        showVO.setShowTime("오후 09:24");
+        showVO.setShowTime("오후 10:24");
         showVO.setShowAddress("충북 청주시 흥덕구 1순환로 384");
         showVO.setShowLocation("보라매 공원 앞");
         showVO.setShowType(2L);
 
         showMapper.update(showVO);
 
-        log.info("공연 번호 :" +  showVO.getShowNumber());
-        log.info("공연 번호 :" +  showVO.getShowNumber());
-        log.info("공연 번호 :" +  showVO.getShowNumber());
-        log.info("공연 번호 :" +  showVO.getShowNumber());
-        log.info("공연 번호 :" +  showVO.getShowNumber());
         log.info("공연 번호 :" +  showVO.getShowNumber());
     }
 
@@ -79,25 +69,21 @@ public class ShowMapperTests {
 
     @Test
     public void getListTest() {
-        showMapper.getList(new Criteria(1, 30), new ListDTO("", "new", "week", "new", "1")).stream().map(ShowVO::toString).forEach(log::info);
+        showMapper.getList(new Criteria(1, 10), new ListDTO("", "new", "week", "new", "1")).stream().map(ShowVO::toString).forEach(log::info);
     }
 
     @Test
     public void getListIngTest() {
-        showMapper.getListIng(new Criteria(1, 30), new ListDTO("M", "new", "week", "new", "6")).stream().map(ShowVO::toString).forEach(log::info);
+        showMapper.getListIng(new Criteria(2, 5), new ListDTO("M", "new", "week", "new", "7")).stream().map(ShowVO::toString).forEach(log::info);
     }
 
     @Test
-    public void getTotalTodayTest() {
-        log.info(" 진행 예정 공연 개수 : " +  showMapper.getTotalToday(new ListDTO("M", "new", "week", "new", "6")));
-        log.info(" 진행 예정 공연 개수 : " +  showMapper.getTotalToday(new ListDTO("M", "new", "week", "new", "6")));
-        log.info(" 진행 예정 공연 개수 : " +  showMapper.getTotalToday(new ListDTO("M", "new", "week", "new", "6")));
+    public void getTotalTest() {
+        log.info(" 진행 예정 공연 개수 : " +  showMapper.getTotal(new ListDTO("M", "new", "week", "new", "6")));
     }
 
     @Test
-    public void getTotalTodayIngTest() {
-        log.info("진행 중 공연 개수 : " +  showMapper.getTotalTodayIng(new ListDTO("M", "new", "week", "new", "6")));
-        log.info("진행 중 공연 개수 : " +  showMapper.getTotalTodayIng(new ListDTO("M", "new", "week", "new", "6")));
-        log.info("진행 중 공연 개수 : " +  showMapper.getTotalTodayIng(new ListDTO("M", "new", "week", "new", "6")));
+    public void getTotalIngTest() {
+        log.info("진행 중 공연 개수 : " +  showMapper.getTotalIng(new ListDTO("M", "new", "week", "new", "6")));
     }
 }
