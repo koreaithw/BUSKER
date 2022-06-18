@@ -84,6 +84,20 @@ public class ShowMapperTests {
 
     @Test
     public void getListIngTest() {
-        showMapper.getListIng(new Criteria(1, 30), new ListDTO("M", "new", "week", "new", "1")).stream().map(ShowVO::toString).forEach(log::info);
+        showMapper.getListIng(new Criteria(1, 30), new ListDTO("M", "new", "week", "new", "6")).stream().map(ShowVO::toString).forEach(log::info);
+    }
+
+    @Test
+    public void getTotalTodayTest() {
+        log.info(" 진행 예정 공연 개수 : " +  showMapper.getTotalToday(new ListDTO("M", "new", "week", "new", "6")));
+        log.info(" 진행 예정 공연 개수 : " +  showMapper.getTotalToday(new ListDTO("M", "new", "week", "new", "6")));
+        log.info(" 진행 예정 공연 개수 : " +  showMapper.getTotalToday(new ListDTO("M", "new", "week", "new", "6")));
+    }
+
+    @Test
+    public void getTotalTodayIngTest() {
+        log.info("진행 중 공연 개수 : " +  showMapper.getTotalTodayIng(new ListDTO("M", "new", "week", "new", "6")));
+        log.info("진행 중 공연 개수 : " +  showMapper.getTotalTodayIng(new ListDTO("M", "new", "week", "new", "6")));
+        log.info("진행 중 공연 개수 : " +  showMapper.getTotalTodayIng(new ListDTO("M", "new", "week", "new", "6")));
     }
 }
