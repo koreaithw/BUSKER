@@ -3,6 +3,7 @@ package com.example.teamprojeect.controller.admin;
 
 import com.example.teamprojeect.service.ArtistService;
 import com.example.teamprojeect.service.RecruitService;
+import com.example.teamprojeect.service.UserService;
 import com.example.teamprojeect.service.WorkService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +20,7 @@ public class AdminController {
     private final ArtistService artistService;
     private final WorkService workService;
     private final RecruitService recruitService;
+    private final UserService userService;
 
     // 관리자 페이지 이동
     @GetMapping("/adminMain")

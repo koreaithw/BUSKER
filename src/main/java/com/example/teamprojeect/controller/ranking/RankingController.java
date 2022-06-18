@@ -5,8 +5,11 @@ import com.example.teamprojeect.service.RankingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Calendar;
 
 @Slf4j
 @RequestMapping("/ranking/*")
@@ -33,4 +36,13 @@ public class RankingController {
     public String GoRankingPer() {
         return "/ranking/rankingPerformance";
     }
+
+    // 전체 랭킹 페이지 이동
+//    @GetMapping("/rankingAll")
+//    public String goRankingAll(Model model) {
+//        Calendar calendar = Calendar.getInstance();
+//        model.addAttribute("week", calendar.get(Calendar.WEEK_OF_MONTH));
+//        dao.selectAll();
+//        return "/ranking/rankingAll";
+//    }
 }
