@@ -11,11 +11,14 @@ import java.util.List;
 
 @Mapper
 public interface LikeMapper {
-    // 좋아요 등록
-    public void insert(LikeVO likeVO);
+    // 좋아요 (아티스트) 등록
+    public void insertArtistLike(LikeVO likeVO);
+
+    // 좋아요 (작품) 등록
+    public void insertWorkLike(LikeVO likeVO);
 
     // 좋아요 취소
-    // (매개변수로 likeType를 전달해서 'A'(아티스트) 인지 'W'(작품)인지 구분)
+    // (매개변수로 likeCategory를 전달해서 'A'(아티스트) 인지 'W'(작품)인지 구분)
     // (매개변수로 typeNumber를 전달해서 해당 type의 number를 입력)
     public int delete(@Param("userNumber") Long userNumber, @Param("listDTO") ListDTO listDTO, @Param("number") Long number);
 

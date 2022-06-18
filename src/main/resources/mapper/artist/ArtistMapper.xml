@@ -94,6 +94,29 @@
         </trim>
     </select>
 
+
+<!--    <select id="getList" resultType="ArtistVO">-->
+<!--        <![CDATA[-->
+<!--        SELECT ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION FROM TBL_ARTIST-->
+<!--&#45;&#45;         USER_NUMBER 필요한가?-->
+<!--&#45;&#45;             (-->
+<!--&#45;&#45;                 SELECT ROWNUM RN, REPLY_NUMBER, BOARD_BNO, REPLY_CONTENT, REPLY_WRITER, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE-->
+<!--&#45;&#45;                 FROM (-->
+<!--&#45;&#45;                         SELECT REPLY_NUMBER, BOARD_BNO, REPLY_CONTENT, REPLY_WRITER, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE FROM TBL_REPLY-->
+<!--&#45;&#45;                         ORDER BY REPLY_UPDATE_DATE DESC-->
+<!--&#45;&#45;                      )-->
+<!--&#45;&#45;                 WHERE BOARD_BNO = #{boardBno} AND ROWNUM <= #{criteria.pageNum} * #{criteria.amount}-->
+<!--&#45;&#45;             )-->
+<!--        WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}-->
+<!--        ]]>-->
+<!--    </select>-->
+
+
+
+
+
+
+
     <!--아티스트 목록 개수-->
 
 

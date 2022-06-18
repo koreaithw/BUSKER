@@ -15,9 +15,14 @@ import java.util.List;
 public class LikeDAO {
     private final LikeMapper likeMapper;
 
-    // 좋아요 등록
-    public void register(LikeVO likeVO) {
-        likeMapper.insert(likeVO);
+    // 좋아요 등록 (아티스트)
+    public void registerArtistLike(LikeVO likeVO) {
+        likeMapper.insertArtistLike(likeVO);
+    }
+
+    // 좋아요 등록 (작품)
+    public void registerWorkLike(LikeVO likeVO){
+        likeMapper.insertWorkLike(likeVO);
     }
 
     // 좋아요 취소
