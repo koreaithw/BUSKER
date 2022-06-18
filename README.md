@@ -24,12 +24,12 @@
 
 | DAY      | 팀 보고  | 파트      | 진행 세부사항         |
 | :------: | :------: | :------: |------------------------- |
-| 6/14 | ⭕ | <b>설계 - Persistance 파트</b> |  |
-| 6/15 | ⭕ | <b>설계 - Persistance 파트</b> |  |
-| 6/16 | ⭕ | <b>설계 - Persistance 파트</b><br><b>공연예정, 실시간공연 파트</b> |  |
-| 6/17 | ⭕ |  |  |
-| 6/18 | ⭕ |  |  |
-| 6/19 |  |  |  |
+| 6/14 | ⭕ | <b>3-tier 설계(Persistance 파트)</b> | RDB 생성 <br> mapper Interface 메서드 작성 시작 |
+| 6/15 | ⭕ | <b>3-tier 설계(Persistance 파트)</b> | mapper Interface 메서드 작성 완료 <br> mapper.xml (쿼리문) 작성 시작 |
+| 6/16 | ⭕ | <b>3-tier 설계(Persistance 파트)</b><br><b>공연예정, 실시간공연</b> | mapper Interface 메서드 수정, mapper.xml 작성 <br> 공연 파트 sql문 작성, mapper 단위 테스트 진행 |
+| 6/17 | ⭕ | <b>공연예정, 실시간공연</b> | mapper.xml 동적쿼리 작성, mapper 단위 테스트 진행 |
+| 6/18 | ⭕ | <b>공연예정, 실시간공연</b> | mapper.xml 동적쿼리 작성, <br> mapper 단위 테스트 완료, <br> dao, service 작성 및 단위 테스트 진행 |
+| 6/19 | ⭕ | <b>공연예정, 실시간공연</b> | mapper.xml 동적쿼리 등 작성 완료, <br> mapper, dao, service 작성 및 단위 테스트 완료 |
 | 6/20 |  |  |  |
 | 6/21 |  |  |  |
 | 6/22 |  |  |  |
