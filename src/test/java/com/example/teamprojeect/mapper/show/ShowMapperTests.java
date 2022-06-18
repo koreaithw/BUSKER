@@ -1,10 +1,15 @@
 package com.example.teamprojeect.mapper.show;
 
+import com.example.teamprojeect.domain.vo.list.ListDTO;
+import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.show.ShowVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestExecutionListeners;
+
+import javax.script.ScriptContext;
 
 @SpringBootTest
 @Slf4j
@@ -70,5 +75,29 @@ public class ShowMapperTests {
         Long showNumber = 217L;
         log.info("DELETE COUNT : " + showMapper.detail(showNumber));
         log.info(showMapper.detail(showNumber).toString());
+    }
+
+    @Test
+    public void getListTest() {
+        showMapper.getList(new Criteria(1, 30), new ListDTO("", "new", "week", "new", "1")).stream().map(ShowVO::toString).forEach(log::info);
+    }
+
+    @Test
+    public void getListIngTest() {
+        showMapper.getListIng(new Criteria(1, 30), new ListDTO("M", "new", "week", "new", "6")).stream().map(ShowVO::toString).forEach(log::info);
+    }
+
+    @Test
+    public void getTotalTodayTest() {
+        log.info(" 진행 예정 공연 개수 : " +  showMapper.getTotalToday(new ListDTO("M", "new", "week", "new", "6")));
+        log.info(" 진행 예정 공연 개수 : " +  showMapper.getTotalToday(new ListDTO("M", "new", "week", "new", "6")));
+        log.info(" 진행 예정 공연 개수 : " +  showMapper.getTotalToday(new ListDTO("M", "new", "week", "new", "6")));
+    }
+
+    @Test
+    public void getTotalTodayIngTest() {
+        log.info("진행 중 공연 개수 : " +  showMapper.getTotalTodayIng(new ListDTO("M", "new", "week", "new", "6")));
+        log.info("진행 중 공연 개수 : " +  showMapper.getTotalTodayIng(new ListDTO("M", "new", "week", "new", "6")));
+        log.info("진행 중 공연 개수 : " +  showMapper.getTotalTodayIng(new ListDTO("M", "new", "week", "new", "6")));
     }
 }
