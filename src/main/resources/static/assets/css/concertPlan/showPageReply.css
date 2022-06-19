@@ -4,13 +4,12 @@
 }
 .mypage-pageStyle {
     text-align: center;
-    padding-top: 35px;
-    padding-bottom: 35px;
+    padding-bottom: 70px;
     display: flex;
     justify-content: center;
 }
 
-.mypage-pageStyle a {
+.mypage-pageStyle code, .mypage-page-first, .mypage-page-last {
     display: inline-block;
     width: 32px;
     height: 32px;
@@ -21,8 +20,9 @@
     margin: 0 3px;
     border: 1px solid #ddd;
     cursor: pointer;
+    border-bottom: 3px solid #c6c5c5;
 }
 
-.mypage-pageStyle a:hover {
+.mypage-pageStyle code:hover, .mypage-page-first:hover, .mypage-page-last:hover {
     border-bottom: 3px solid #ff564c;
 }

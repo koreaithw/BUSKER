@@ -26,8 +26,8 @@ public class ShowService {
     @Transactional(rollbackFor = Exception.class)
     public void register(ShowVO showVO) {
         showDAO.register(showVO);
-        showFileVO.setShowNumber(showVO.getShowNumber());
-        showFileDAO.register(showFileVO);
+//        showFileVO.setShowNumber(showVO.getShowNumber());
+//        showFileDAO.register(showFileVO);
     }
 
     public boolean modify(ShowVO showVO) {

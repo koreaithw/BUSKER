@@ -70,8 +70,9 @@
 <body>
 <div class='sm-tit'>공연예정</div>
 <div class='sm-tit1'>
-    <a class='sm-tit2' href="/concert/concertPlanMusician">퍼포먼스</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a class='sm-tit2' href="/concert/concertPlanMusician">전체</a>&nbsp;&nbsp;&nbsp;&nbsp;
     <a class='sm-tit2' href="/concert/concertPlanMusician">뮤지션</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a class='sm-tit2' href="/concert/concertPlanMusician">퍼포먼스</a>&nbsp;&nbsp;&nbsp;&nbsp;
     <a class='sm-tit2' href="/concert/concertPlanRegister">공연등록</a>
 </div>
 <section class="m2-sec05">
@@ -80,8 +81,6 @@
             <p class="ms5-l-tit">
                 WEEKLY RANKING
                 <a href='#'>
-
-                    <img src='/images/concertPlan/view.png' alt=''/>
 
                     <img src='/images/concertPlan/view.png' alt=''/>
 
@@ -174,7 +173,7 @@
 
         <div class="ms5-r">
             <p class="ms5-r-tit">
-                <span>지역별 추천</span>
+                <span>신인 아티스트</span>
             </p>
             <div class="ms5-rs-wrap">
                 <div class="swiper-container ms5-rs">
@@ -231,25 +230,42 @@
 </section>
 
 <section class='m2-sec02'>
-    <div class='m2-tit'>공연예정 버스킹</div>
-    <th:block th:each="show:${showList}">
-    <div class='ms-list-imgs'>
-            <a th:object="${show}" href='/concert/concertPlanInfo' target='_self'>
+    <div class='show-title'>BUSKER's COMING SOON</div>
+    <div class='show-wrap'>
+        <th:block th:each="show:${showList}">
+            <a th:object="${show}" class="goRead" th:href="*{showNumber}" target='_self'>
                 <div class='list-bigger-wrap'>
                     <img class='lazyload' src='/images/concertPlan/img3.jpg' alt='/show_view'/>
                     <div class='list-bigger-txt'>
                         <p class='list-b-tit1' th:text="*{showName}"></p>
-                        <p class='list-b-tit1' th:text="*{artistName}"></p>
                         <p class='list-b-tit2' th:text="*{showLocation}"></p>
                         <p class='list-b-circle' th:text="|D-*{dDay}|"></p>
                     </div>
                 </div>
             </a>
+        </th:block>
     </div>
-    </th:block>
 
 
+    <div th:object="${showPageDTO}">
+        <div class="big-width mypage-pageStyle" style="text-align: center">
+            <a class="mypage-page-first"><<</a>
+            <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code>&lt;</code></a>
+            <th:block th:each="num:${#numbers.sequence(showPageDTO.startPage, showPageDTO.endPage)}">
+                <code th:if="${num == showPageDTO.criteria.pageNum}" th:text="${num}"></code>
+                <a class="changePage mypage-page-next" th:href="${num}" th:unless="${num == showPageDTO.criteria.pageNum}"><code
+                        th:text="${num}"></code></a>
+            </th:block>
+            <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>&gt;</code></a>
+            <a class="mypage-page-last">>></a>
+        </div>
+    </div>
+    <form action="/concert/concertPlanList" name="pageForm" th:object="${criteria}">
+        <input type="hidden" th:field="*{pageNum}">
+        <input type="hidden" th:field="*{amount}">
+    </form>
 </section>
+
 
 <footer th:include="~{/footer/footer :: foot}">
 
@@ -257,5 +273,27 @@
 
 </body>
 
+<script src="/assets/js/concert/jquery.min.js"></script>
+<script src="/assets/js/concert/jquery.dropotron.min.js"></script>
+<script src="/assets/js/concert/browser.min.js"></script>
+<script src="/assets/js/concert/breakpoints.min.js"></script>
+<script src="/assets/js/concert/util.js"></script>
+<script src="/assets/js/concert/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script th:inline="javascript">
+    // 게시글 추가 후 list.html에 도착한다면, 추가된 게시글의 번호를 alert으로 출력
+    let paging = [[${criteria.listLink}]];
 
+    $("a.changePage").click(function (e) {
+        e.preventDefault();
+        $(pageForm).find("input[name='pageNum']").val($(this).attr("href"));
+        $(pageForm).submit();
+    });
+
+    $("a.goRead").click(function (e) {
+        e.preventDefault();
+        location.href = "/concert/concertPlanInfo" + paging + "&showNumber=" + $(this).attr('href');
+    });
+
+</script>
 </html>

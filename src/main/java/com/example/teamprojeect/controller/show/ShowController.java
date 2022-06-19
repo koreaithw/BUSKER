@@ -21,11 +21,9 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 @RequestMapping("/concert/*")
@@ -42,13 +40,11 @@ public class ShowController {
         List<ShowVO> showList = showService.getList(criteria, listDTO);
 
         SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar cal = Calendar.getInstance();
-        Date today = new Date();
 
         showList.forEach(showVO -> {
             // 지역만 선택
             String showAddress = showVO.getShowAddress();
-            showAddress = showAddress.substring(0, 3);
+            showAddress = showAddress.substring(0, 2);
 
             String showLocation = showVO.getShowLocation();
             showLocation = "[" + showAddress + "] " + showLocation;
@@ -56,24 +52,14 @@ public class ShowController {
 
             // dday 계산
             String showDay = showVO.getShowDay();
+            String todayDay = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis())); // 오늘날짜
 
             try {
-                Date showDate = dayFormat.parse(showDay);
-                cal.setTime(showDate);
-                cal.setTime(today);
-                Long Dday = (showDate.getTime() - today.getTime())  / 1000;
-                Dday =  Dday / (24*60*60);
-                int showDday = Dday.intValue();
-                if(Dday > 0 && Dday < 1 ) {
-                    showDday = 1;
-                    showVO.setDDay(showDday);
-                }
-                showVO.setDDay(showDday);
-                log.info(Dday + "오늘날짜 dday");
-                log.info(Dday + "오늘날짜 dday");
-                log.info(Dday + "오늘날짜 dday");
-                log.info(Dday + "오늘날짜 dday");
-                log.info(Dday + "오늘날짜 dday");
+                Date date = new Date(dayFormat.parse(showDay).getTime());
+                Date today = new Date(dayFormat.parse(todayDay).getTime());
+                long calculate = date.getTime() - today.getTime();
+                int Ddays = (int) (calculate / ( 24*60*60*1000));
+                showVO.setDDay(Ddays);
             } catch (ParseException e) {
                 System.err.println("dateStr : " + showDay + ", datePattern:" + dayFormat);
                 e.printStackTrace();
@@ -110,7 +96,33 @@ public class ShowController {
     public String goConcertInfo(Long showNumber, Criteria criteria, HttpServletRequest request, Model model) {
         String requestURL = request.getRequestURI();
         log.info(requestURL.substring(requestURL.lastIndexOf("/")));
-        model.addAttribute("concert", showService.read(showNumber));
+        ShowVO showVO = showService.read(showNumber);
+        if(showVO.getShowType() == 1) {
+            showVO.setShowCategory("뮤지션");
+        } else if (showVO.getShowType() == 2) {
+            showVO.setShowCategory("퍼포먼스");
+        }
+
+        try {
+
+            SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String showDay = showVO.getShowDay();
+            Date day = dayFormat.parse(showDay);
+            showDay = dayFormat.format(day);
+            showVO.setShowDay(showDay);
+
+            SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm");
+            String showTime = showVO.getShowTime();
+            Date time = timeFormat.parse(showTime);
+            showTime = timeFormat.format(time);
+            showVO.setShowTime(showTime);
+        } catch (ParseException e) {
+            System.err.println("dateStr : "  + ", datePattern:");
+            e.printStackTrace();
+        }
+
+
+        model.addAttribute("concert", showVO);
         return "concertPlan/concertPlanInfo";
     }
 
@@ -125,14 +137,16 @@ public class ShowController {
     // 진행 예정 공연 등록 페이지 이동
     @PostMapping("/concertPlanRegister")
     public RedirectView goConcertPlanRegister(ShowVO showVO, RedirectAttributes rttr) {
+        showVO.setArtistNumber(54L);
         showService.register(showVO);
-        rttr.addAttribute("showNumber", showVO.getShowNumber());
         rttr.addFlashAttribute("showNumber", showVO.getShowNumber());
-        return new RedirectView("concertPlan/concertPlanList");
+        return new RedirectView("/concert/concertPlanList");
     }
 
     @GetMapping("/concertPlanRegister")
-    public void goConcertPlanRegister() {}
+    public String goConcertPlanRegister() {
+        return "concertPlan/concertPlanRegister";
+    }
 
     // 진행 예정 공연 등록 완료
 
