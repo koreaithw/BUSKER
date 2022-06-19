@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -551,88 +551,35 @@
                             <th>작품 링크</th>
                             <th>심사</th>
                         </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-
+                        <th:block th:each="works:${workList}">
+                            <tr th:object="${works}">
+                                <td th:text="*{workRegisterDate}"></td>
+                                <td th:text="*{workName}"></td>
+                                <td th:text="*{artistName}"></td>
+                                <td><a th:href="@{/registerApplyRead(workNumber=*{workNumber})}">내용 보기</a></td>
+                                <td><a th:href="*{workPurchaseUrl}">구매링크</a></td>
+                                <td><a class="approve" th:text="수락" href=""></a> | <a class="reject" th:text="거부" href=""></a></td>
+                            </tr>
+                        </th:block>
                     </table>
+                </div>
+                <div class="mypage-paging">
+                    <div class="mypage-pageStyle" th:object="${workPageDTO}">
+                        <a class="mypage-page-first changePage" th:href="*{1}">&lt;&lt;</a>
+                        <a class="mypage-page-prev changePage" href="*{startPage - 1}" th:if="*{prev}">&lt;</a>
+                        <div>
+                            <th:block th:each="num:${#numbers.sequence(workPageDTO.startPage, workPageDTO.endPage)}">
+                                <p th:if="${num == workPageDTO.criteria.pageNum}" th:text="${num}"></p>
+                                <a class="changePage" th:href="${num}" th:unless="${num == workPageDTO.criteria.pageNum}" th:text="${num}"></a>
+                            </th:block>
+                        </div>
+                        <a class="mypage-page-next changePage" th:href="*{endPage + 1}" th:if="*{next}">&gt;</a>
+                        <a class="mypage-page-last changePage" th:href="*{realEnd}">&gt;&gt;</a>
+                    </div>
+                    <form action="/admin/adminMain" name="pageForm" th:object="${criteria}">
+                        <input type="hidden" th:field="*{pageNum}">
+                        <input type="hidden" th:field="*{amount}">
+                    </form>
                 </div>
             </div>
             <div class="user-list-field" style="display: none;">
@@ -816,7 +763,7 @@
 
     </div>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(".btn-artist").on("click", function (e) {
         e.preventDefault();
@@ -838,6 +785,7 @@
         $(".user-list-field").hide();
         $(".notice-list-field").show();
     });
+
     $(".btn-work").on("click", function (e) {
         e.preventDefault();
         $(".left-today").hide();
@@ -868,6 +816,61 @@
         $(".right-field").show();
         $(".manager-set").show();
     });
+</script>
+
+<script src="/assets/js/admin/admin.js"></script>
+<script th:inline="javascript">
+    let pageNum = 1;
+    $("a.changePage").on("click", function (e) {
+        e.preventDefault();
+        $(pageForm).find("input[name='pageNum']").val($(this).attr("href"));
+        $(pageForm).submit();
+    })
+
+    $(".approve").on("click", function (e) {
+        e.preventDefault();
+        adminService.approve(35, function (result) {
+            alert(result);
+        })
+    })
+
+    $(".reject").on("click", function (e) {
+        e.preventDefault();
+        adminService.reject(34, function (result) {
+            alert(result);
+        })
+    })
+    // <div>
+    //      <a class="">1</a>
+    // </div>
+
+
+    // 작품 신청 목록 페이징 처리
+    // function showWorkPage(total) {
+    //     let endPage = Math.ceil(pageNum / 10.0) * 10;
+    //     let startPage = endPage - 9;
+    //     let readEnd = Math.ceil(total / 10.0);
+    //     const paging = $(".mypage-pageStyle");
+    //
+    //     if(endPage > readEnd){
+    //         endPage = realEnd;
+    //     }
+    //
+    //     let prev = startPage > 1;
+    //     let next = endPage * 10 < total;
+    //     let str = "";
+    //
+    //     if(prev) {
+    //         str += "<a class='mypage-page-prev' href='" + (startPage - 1) + "'><code>&lt;</code></a>"
+    //     }
+    //     for(let i = startPage; i <= endPage; i++){
+    //         str += pageNum == i ? i : "<a class='changePage' href='" + i + "'>" + i + "</a>";
+    //     }
+    //     if(next){
+    //         str += "<a class='mypage-page-next' href='" + (endPage + 1) + "'>&gt;</a>"
+    //     }
+    //     paging.html(str);
+    // }
 </script>
 
 </html>

@@ -1,7 +1,13 @@
 package com.example.teamprojeect.domain.vo.paging.work;
 
 import com.example.teamprojeect.domain.vo.paging.Criteria;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
+@Data
+@NoArgsConstructor
 public class WorkPageDTO {
     private Criteria criteria;
 

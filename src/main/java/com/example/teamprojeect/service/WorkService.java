@@ -49,4 +49,9 @@ public class WorkService {
     public List<WorkVO> getList(Criteria criteria) {
         return workDAO.getList(criteria);
     }
+
+    // 작품 신청 개수
+    public int getTotalApply() {
+        return workDAO.getTotalApply();
+    }
 }
