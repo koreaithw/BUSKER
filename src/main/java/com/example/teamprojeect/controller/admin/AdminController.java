@@ -2,6 +2,7 @@ package com.example.teamprojeect.controller.admin;
 
 
 import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.paging.work.WorkPageDTO;
 import com.example.teamprojeect.service.ArtistService;
 import com.example.teamprojeect.service.RecruitService;
 import com.example.teamprojeect.service.UserService;
@@ -30,8 +31,8 @@ public class AdminController {
         log.info("***********************");
         log.info("들어옴");
         int total = workService.getTotalApply();
-        model.addAttribute("total", total);
         model.addAttribute("workList", workService.getList(criteria));
+        model.addAttribute("workPageDTO", new WorkPageDTO(criteria, total));
         log.info(model.toString());
         log.info("********************");
         return "/admin/adminMain";
