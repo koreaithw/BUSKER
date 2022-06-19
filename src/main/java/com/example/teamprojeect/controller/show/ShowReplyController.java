@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/reply/concert/*")
-public class ConcertReplyController {
+public class ShowReplyController {
     // 필드 생성
     private ShowService concertService;
 }

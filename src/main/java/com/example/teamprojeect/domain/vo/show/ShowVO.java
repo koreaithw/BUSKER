@@ -15,4 +15,7 @@ public class ShowVO {
     private String showAddress;
     private String showLocation;
     private Long showType;
+    private String showCategory;
+    private String artistName;
+    private int dDay;
 }
