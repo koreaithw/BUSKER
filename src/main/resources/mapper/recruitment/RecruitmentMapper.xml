@@ -3,17 +3,20 @@
 <mapper namespace="com.example.teamprojeect.mapper.recruitment.RecruitmentMapper">
     <!--모집공고 등록-->
     <insert id="insert">
-    INSERT INTO TBL_RECRUITMENT
-    (RECRUITMENT_NUMBER, RECRUITMENT_NAME, RECRUITMENT_NAME, RECRUITMENT_DAY, RECRUITMENT_TIME, RECRUITMENT_URL
-     ,RECRUITMENT_TYPE, RECRUITMENT_SUMMARY, RECRUITMENT_CONDITION, RECRUITMENT_INTRODUCE,RECRUITMENT_HOST)
-    VALUES (SEQ_RECRUITMENT.NEXTVAL, #{recruitmentName}, #{recruitmentLocation}, #{recruitmentDay}, #{recruitmentTime}
-    , #{recruitmentUrl}, #{recruitmentType}, #{recruitmentSummary}, #{recruitmentCondition}, #{recruitmentIntroduce}
-    , #{recruitmentHost})
+        INSERT INTO TBL_RECRUITMENT
+        (RECRUITMENT_NUMBER, RECRUITMENT_NAME, RECRUITMENT_LOCATION, RECRUITMENT_DAY, RECRUITMENT_TIME, RECRUITMENT_URL
+         ,RECRUITMENT_TYPE, RECRUITMENT_SUMMARY, RECRUITMENT_CONDITION, RECRUITMENT_INTRODUCE,RECRUITMENT_HOST)
+        VALUES (SEQ_RECRUITMENT.NEXTVAL, #{recruitmentName}, #{recruitmentLocation}, #{recruitmentDay}, #{recruitmentTime}
+        , #{recruitmentUrl}, #{recruitmentType}, #{recruitmentSummary}, #{recruitmentCondition}, #{recruitmentIntroduce}
+        , #{recruitmentHost})
     </insert>
 
     <!--모집공고 수정-->
     <update id="update">
-
+        UPDATE TBL_RECRUITMENT
+        SET RECRUITMENT_NAME = #{recruitmentName}, RECRUITMENT_LOCATION = #{recruitmentLocation}, RECRUITMENT_DAY = #{recruitmentDay}, RECRUITMENT_TIME = #{recruitmentTime}, RECRUITMENT_URL = #{recruitmentUrl}
+         ,RECRUITMENT_TYPE = #{recruitmentType}, RECRUITMENT_SUMMARY = #{recruitmentSummary}, RECRUITMENT_CONDITION = #{recruitmentCondition}, RECRUITMENT_INTRODUCE = #{recruitmentIntroduce}, RECRUITMENT_HOST = #{recruitmentHost}, RECRUITMENT_UPDATE_DATE = SYSDATE
+        WHERE RECRUITMENT_NUMBER = #{recruitmentNumber}
     </update>
 
     <!--모집공고 삭제-->
@@ -23,11 +26,54 @@
 
     <!--모집공고 목록-->
     <select id="getList" resultType="recruitmentVO">
-
+        <![CDATA[
+        SELECT RECRUITMENT_NUMBER, RECRUITMENT_NAME, RECRUITMENT_LOCATION, RECRUITMENT_DAY, RECRUITMENT_TIME, RECRUITMENT_URL, RECRUITMENT_TYPE, RECRUITMENT_SUMMARY, RECRUITMENT_CONDITION, RECRUITMENT_INTRODUCE, RECRUITMENT_HOST, RECRUITMENT_REGISTER_DATE, RECRUITMENT_UPDATE_DATE
+        FROM
+        (
+            SELECT
+            ROWNUM RN, RECRUITMENT_NUMBER, RECRUITMENT_NAME, RECRUITMENT_LOCATION, RECRUITMENT_DAY, RECRUITMENT_TIME, RECRUITMENT_URL, RECRUITMENT_TYPE, RECRUITMENT_SUMMARY, RECRUITMENT_CONDITION, RECRUITMENT_INTRODUCE, RECRUITMENT_HOST, RECRUITMENT_REGISTER_DATE, RECRUITMENT_UPDATE_DATE
+            FROM TBL_RECRUITMENT
+            WHERE RECRUITMENT_DAY - SYSDATE > 0
+        ]]>
+        <choose>
+            <when test='listDTO.artistType == "M"'>
+                AND RECRUITMENT_TYPE = 'M'
+            </when>
+            <when test='listDTO.artistType == "P"'>
+                AND RECRUITMENT_TYPE = 'P'
+            </when>
+        </choose>
+        <choose>
+            <when test='criteria.keyword != null'>
+                AND (RECRUITMENT_NAME LIKE '%'||#{criteria.keyword}||'%' OR RECRUITMENT_LOCATION LIKE '%'||#{criteria.keyword}||'%' OR RECRUITMENT_SUMMARY LIKE '%'||#{criteria.keyword}||'%' OR RECRUITMENT_CONDITION LIKE '%'||#{criteria.keyword}||'%' OR RECRUITMENT_INTRODUCE LIKE '%'||#{criteria.keyword}||'%' OR RECRUITMENT_HOST LIKE '%'||#{criteria.keyword}||'%')
+            </when>
+        </choose>
+        <![CDATA[
+            AND ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
+        )
+        WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
+        ]]>
     </select>
 
     <!--모집공고 개수-->
-    <select id="getTotal" resultType="recruitmentVO">
+    <select id="getTotal" resultType="_int">
+        <![CDATA[
+        SELECT  COUNT(*) FROM TBL_RECRUITMENT
+        WHERE RECRUITMENT_DAY - SYSDATE > 0
+        ]]>
+        <choose>
+            <when test='artistType == "M"'>
+                AND RECRUITMENT_TYPE = 'M'
+            </when>
+            <when test='artistType == "P"'>
+                AND RECRUITMENT_TYPE = 'P'
+            </when>
+        </choose>
+    </select>
 
+    <!--모집공고 상세보기-->
+    <select id="getDetail" resultType="recruitmentVO">
+        SELECT RECRUITMENT_NUMBER, RECRUITMENT_NAME, RECRUITMENT_LOCATION, RECRUITMENT_DAY, RECRUITMENT_TIME, RECRUITMENT_URL, RECRUITMENT_TYPE, RECRUITMENT_SUMMARY, RECRUITMENT_CONDITION, RECRUITMENT_INTRODUCE, RECRUITMENT_HOST, RECRUITMENT_REGISTER_DATE, RECRUITMENT_UPDATE_DATE
+        FROM TBL_RECRUITMENT WHERE RECRUITMENT_NUMBER = #{recruitmentNumber}
     </select>
 </mapper>
