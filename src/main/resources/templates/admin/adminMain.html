@@ -561,8 +561,25 @@
                                 <td><a class="approve" th:text="수락" href=""></a> | <a class="reject" th:text="거부" href=""></a></td>
                             </tr>
                         </th:block>
-
                     </table>
+                </div>
+                <div class="mypage-paging">
+                    <div class="mypage-pageStyle" th:object="${workPageDTO}">
+                        <a class="mypage-page-first changePage" th:href="*{1}">&lt;&lt;</a>
+                        <a class="mypage-page-prev changePage" href="*{startPage - 1}" th:if="*{prev}">&lt;</a>
+                        <div>
+                            <th:block th:each="num:${#numbers.sequence(workPageDTO.startPage, workPageDTO.endPage)}">
+                                <p th:if="${num == workPageDTO.criteria.pageNum}" th:text="${num}"></p>
+                                <a class="changePage" th:href="${num}" th:unless="${num == workPageDTO.criteria.pageNum}" th:text="${num}"></a>
+                            </th:block>
+                        </div>
+                        <a class="mypage-page-next changePage" th:href="*{endPage + 1}" th:if="*{next}">&gt;</a>
+                        <a class="mypage-page-last changePage" th:href="*{realEnd}">&gt;&gt;</a>
+                    </div>
+                    <form action="/admin/adminMain" name="pageForm" th:object="${criteria}">
+                        <input type="hidden" th:field="*{pageNum}">
+                        <input type="hidden" th:field="*{amount}">
+                    </form>
                 </div>
             </div>
             <div class="user-list-field" style="display: none;">
@@ -768,6 +785,7 @@
         $(".user-list-field").hide();
         $(".notice-list-field").show();
     });
+
     $(".btn-work").on("click", function (e) {
         e.preventDefault();
         $(".left-today").hide();
@@ -801,7 +819,14 @@
 </script>
 
 <script src="/assets/js/admin/admin.js"></script>
-<script>
+<script th:inline="javascript">
+    let pageNum = 1;
+    $("a.changePage").on("click", function (e) {
+        e.preventDefault();
+        $(pageForm).find("input[name='pageNum']").val($(this).attr("href"));
+        $(pageForm).submit();
+    })
+
     $(".approve").on("click", function (e) {
         e.preventDefault();
         adminService.approve(35, function (result) {
@@ -815,6 +840,37 @@
             alert(result);
         })
     })
+    // <div>
+    //      <a class="">1</a>
+    // </div>
+
+
+    // 작품 신청 목록 페이징 처리
+    // function showWorkPage(total) {
+    //     let endPage = Math.ceil(pageNum / 10.0) * 10;
+    //     let startPage = endPage - 9;
+    //     let readEnd = Math.ceil(total / 10.0);
+    //     const paging = $(".mypage-pageStyle");
+    //
+    //     if(endPage > readEnd){
+    //         endPage = realEnd;
+    //     }
+    //
+    //     let prev = startPage > 1;
+    //     let next = endPage * 10 < total;
+    //     let str = "";
+    //
+    //     if(prev) {
+    //         str += "<a class='mypage-page-prev' href='" + (startPage - 1) + "'><code>&lt;</code></a>"
+    //     }
+    //     for(let i = startPage; i <= endPage; i++){
+    //         str += pageNum == i ? i : "<a class='changePage' href='" + i + "'>" + i + "</a>";
+    //     }
+    //     if(next){
+    //         str += "<a class='mypage-page-next' href='" + (endPage + 1) + "'>&gt;</a>"
+    //     }
+    //     paging.html(str);
+    // }
 </script>
 
 </html>
