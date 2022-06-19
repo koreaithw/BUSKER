@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping("/file/concert/*")
 @Controller
-public class ConcertFileController {
+public class ShowFileController {
     // 필드 생성
     private ShowService concertService;
 

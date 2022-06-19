@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/assets/css/concertPlan/show_correction.css"/>
+    <link rel="stylesheet" href="/assets/css/concertPlan/show_correction.css"/>
    
 
     <style>
@@ -15,15 +16,19 @@
 
     <!-- 제이쿼리 불러오기 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <title>공연일정 변경</title>
+    <title>공연일정 등록</title>
 </head>
+<header th:include="~{/header/header3 :: head}">
+
+</header>
+
 <body>
 
     <form name="showform" action="" method="post"></form>
     <div class="show_detail_wrap">
         <div class="show_detail">
             <div class="detail">
-                <p>공연일정 변경</p>
+                <p>공연일정 등록</p>
             </div>
         </div>
     </div>
@@ -80,8 +85,7 @@
                         </div>
                         <div class="info_area2" style="float: right;">
                             <div class="purchase_link_wrap">
-                                <a href="" class="purchase_link" id="del">삭제</a>&nbsp;&nbsp;
-                                <a href="" class="purchase_link">변경완료</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="" class="purchase_link">등록완료</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </div>
                         </div>
                     </div>
@@ -89,6 +93,12 @@
             </div>
         </form>
     </div>
+</form>
+
+    <footer th:include="~{/footer/footer :: foot}">
+
+    </footer>
+
 </body>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -134,7 +144,7 @@
             );
         });
     
-       // 수정
+       // 등록
         $(document).on("click", "#save", function(){
             var formData = new FormData($("#fileForm")[0]);
             if(fileList.length > 0){
@@ -153,18 +163,12 @@
                 dataType:'json',
                 cache:false,
                 success:function(res){
-                    alert("수정 하였습니다.");
+                    alert("등록에 성공하셨습니다.");
                 },error:function(res){
                     alert("오류 발생.\n관리자에게 문의해주세요.");
                 }
             });
         });
-
-        // 삭제
-        $("#del").click(function(){
-            $("#info_area1").remove();
-        });
-
     });
 
 </script>

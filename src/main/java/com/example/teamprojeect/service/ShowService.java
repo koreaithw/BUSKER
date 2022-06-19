@@ -9,6 +9,7 @@ import com.example.teamprojeect.domain.vo.show.ShowFileVO;
 import com.example.teamprojeect.domain.vo.show.ShowReplyVO;
 import com.example.teamprojeect.domain.vo.show.ShowVO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

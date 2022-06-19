@@ -1,4 +1,6 @@
 <!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <html lang="ko">
  <head>
     <meta charset="UTF-8"/>
@@ -10,11 +12,12 @@
     <meta property="fb:app_id" />
     <title>상세보기</title>
 
-  <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/reset.css' />
-  <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/swiper.css' />
-  <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/common.css' />
-  <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/show.css' />
-  <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/show_view.css' />
+  <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/reset.css' />
+  <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/swiper.css' />
+  <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/common.css' />
+  <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/show.css' />
+  <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/show_view.css' />
+  <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/showReply.css' />
 
   <!-- Google Tag Manager -->
   <script>
@@ -39,13 +42,17 @@
   </style>
 
  </head>
+ <header th:include="~{/header/header3 :: head}">
+
+ </header>
+
  <body>
- 
+ <div class="concertWrap" th:object="${}">
 <div class="rnew-top-wrap">
    <div class="rnew-top">
       <div class="rntop-img">
 
-            <img src='/static/images/concertPlan/img3.jpg' />
+            <img src='/images/concertPlan/img3.jpg' />
 
       </div>
    </div>
@@ -54,18 +61,20 @@
 <div class="renew-wrap">
    <div class="renew-content">
       <div class="rn-01">
-         <p class="rn-location"><a href='#'>버스킹<a href='#'>뮤지션</a></p>
+         <p class="rn-location"><a href='#'>버스킹<a href='#'>뮤지션</a>
       </div>
       <div class="rn-02">
          <p class="rn-big-title">버스커1 버스킹</p>
          <div class="rn-product-short-data">
             <p><span class="ps-date">2022.08.06</span><a href="#" id="ps-location"><span class="ps-location">[홍대] 홍대 걷고싶은 거리</span></a>
             </p>
-            <a href="/templates/concertPlan/concertPlanRegister.html" class="ps-social">
-               <img src="/static/images/concertPlan/c.png" style="float: right; width:35px;" >
+            <a href="/concert/concertPlanModify" class="ps-social modify">
+               <img src="/images/concertPlan/c.png" style="float: right; width:35px;" >
             </a>
-            
-         </div>         
+             <a href="/concert/concertDelete" class="ps-social delete">
+                 <img src="/images/concertPlan/delete_icon.png" style="float: right; width:67px; height: 59px;" >
+             </a>
+         </div>
       </div>
    </div>   
 </div>
@@ -95,7 +104,7 @@
          <div class="rn-03-left">
             <div class="rn-product-imgbox">
 
-               <img src='/static/images/concertPlan/img3.jpg' />
+               <img src='/images/concertPlan/img3.jpg' />
 
             </div>
             <div class="rn-product-maps" id="divPerfRelation" style="display:none;"></div>
@@ -184,6 +193,10 @@
                   </div>
                </div>               
             </div>
+         </div>
+             <footer th:include="~{/footer/footer :: foot}">
+
+             </footer>
 
 </body>
 </html>
