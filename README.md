@@ -29,7 +29,7 @@
 | 6/16 (목) | ⭕ | <b>3-tier 설계(Persistance 파트)</b><br><b>공연예정, 실시간공연</b> | mapper Interface 메서드 수정, mapper.xml 작성 <br> 공연 파트 sql문 작성, mapper 단위 테스트 진행 |
 | 6/17 (금) | ⭕ | <b>공연예정, 실시간공연</b> | mapper.xml 동적쿼리 작성, mapper 단위 테스트 진행 |
 | 6/18 (토) | ⭕ | <b>공연예정, 실시간공연</b> | mapper.xml 동적쿼리 작성, <br> mapper 단위 테스트 완료, <br> dao, service 작성 및 단위 테스트 진행 |
-| 6/19 (일) | ⭕ | <b>공연예정, 실시간공연</b> | mapper.xml 동적쿼리 등 작성 완료, <br> mapper, dao, service 작성 및 단위 테스트 완료 |
+| 6/19 (일) | ⭕ | <b>공연예정, 실시간공연</b> | mapper.xml 동적쿼리 등 작성 완료, <br> mapper, dao, service 작성 및 단위 테스트 완료 <br> 공연예정 목록 3-tier연결,  <br> 페이징 처리, simpledateformat으로 d-day 표시 완료 <br> 공연 등록 controller 진행 중 |
 | 6/20 |  |  |  |
 | 6/21 |  |  |  |
 | 6/22 |  |  |  |
