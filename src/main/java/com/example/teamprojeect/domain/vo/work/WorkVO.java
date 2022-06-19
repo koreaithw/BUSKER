@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class WorkVO {
     private Long workNumber;
     private Long artistNumber;
+    private String artistName;
     private String workName;
     private String workGenre;
     private String workDescription;

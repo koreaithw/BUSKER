@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -551,86 +551,16 @@
                             <th>작품 링크</th>
                             <th>심사</th>
                         </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>CD폼</td>
-                            <td>김가방</td>
-                            <td><a href="/work/workInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td><a href="">수락</a> | <a href="">거부</a></td>
-                        </tr>
+                        <th:block th:each="works:${workList}">
+                            <tr th:object="${works}">
+                                <td th:text="*{workRegisterDate}"></td>
+                                <td th:text="*{workName}"></td>
+                                <td th:text="*{artistName}"></td>
+                                <td><a th:href="@{/registerApplyRead(workNumber=*{workNumber})}">내용 보기</a></td>
+                                <td><a th:href="*{workPurchaseUrl}">구매링크</a></td>
+                                <td><a class="approve" th:text="수락" href=""></a> | <a class="reject" th:text="거부" href=""></a></td>
+                            </tr>
+                        </th:block>
 
                     </table>
                 </div>
@@ -816,7 +746,7 @@
 
     </div>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(".btn-artist").on("click", function (e) {
         e.preventDefault();
@@ -868,6 +798,23 @@
         $(".right-field").show();
         $(".manager-set").show();
     });
+</script>
+
+<script src="/assets/js/admin/admin.js"></script>
+<script>
+    $(".approve").on("click", function (e) {
+        e.preventDefault();
+        adminService.approve(35, function (result) {
+            alert(result);
+        })
+    })
+
+    $(".reject").on("click", function (e) {
+        e.preventDefault();
+        adminService.reject(34, function (result) {
+            alert(result);
+        })
+    })
 </script>
 
 </html>

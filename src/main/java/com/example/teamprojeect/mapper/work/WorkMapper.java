@@ -36,4 +36,7 @@ public interface WorkMapper {
     // 작품 상세페이지
     public WorkVO getDetail(Long workNumber);
 
+    // 작품 신청 개수
+    public int getTotalApply();
+
 }

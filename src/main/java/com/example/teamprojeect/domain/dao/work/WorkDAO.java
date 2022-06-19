@@ -43,7 +43,7 @@ public class WorkDAO {
     }
 
     // 작품 신청 전체 목록
-    public List<WorkVO> getList(@Param("criteria") Criteria criteria){
+    public List<WorkVO> getList(Criteria criteria){
         return workMapper.getList(criteria);
     } //리스트????
     // 작품 태그 검색  (태그를 선택할때마다 리스트에 추가하고, 쿼리문에서 리스트 하나씩뽑아서 if문 돌리기)
@@ -58,4 +58,10 @@ public class WorkDAO {
     public WorkVO getDetail(Long workNumber) {
         return workMapper.getDetail(workNumber);
     }
+
+    // 작품 신청 개수
+    public int getTotalApply() {
+        return workMapper.getTotalApply();
+    }
+
 }
