@@ -38,12 +38,12 @@ public class LikeMapperTests {
 //    }
 
     // 좋아요 취소 테스트 - 성공
-    @Test
-    public void deleteTest(){
-        ListDTO listDTO = new ListDTO();
-        listDTO.setLikeCategory("A");
-
-        likeMapper.delete(1L, listDTO, 1L);
-        log.info("좋아요 취소 성공");
-    }
+//    @Test
+//    public void deleteTest(){
+//        ListDTO listDTO = new ListDTO();
+//        listDTO.setLikeCategory("A");
+//
+//        likeMapper.delete(1L, listDTO, 1L);
+//        log.info("좋아요 취소 성공");
+//    }
 }
