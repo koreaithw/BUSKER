@@ -32,7 +32,7 @@ public class RecruitmentDAO {
 
     // 모집공고 목록 (전체)
     // 모집공고 목록 (뮤지션, 퍼포먼스 구분)
-    public List<RecruitmentVO> getList(@Param("param") Criteria criteria, @Param("listDTO") ListDTO listDTO) {
+    public List<RecruitmentVO> getList(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO) {
         return recruitmentMapper.getList(criteria, listDTO);
     } // 전체 목록은 모든 경우의 status를 출력하는 방식으로?
 
@@ -46,5 +46,4 @@ public class RecruitmentDAO {
         return recruitmentMapper.getDetail(recruitmentNumber);
     }
 
-    // 모집공고 검색
 }
