@@ -5,13 +5,13 @@
     <insert id="insert">
         INSERT INTO TBL_SHOW
         (SHOW_NUMBER, ARTIST_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME , SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE)
-        VALUES(SEQ_SHOW.NEXTVAL, #{artistNumber}, #{showName}, #{showContent}, #{showDay}, #{showTime}, #{showAddress}, #{showLocation}, #{showType})
+        VALUES(SEQ_SHOW.NEXTVAL, #{artistNumber}, #{showName}, #{showContent}, TO_DATE(#{showDay},'YYYY-MM-DD'), TO_DATE(#{showTime}, 'PM HH:MI', 'NLS_DATE_LANGUAGE = Korean'), #{showAddress}, #{showLocation}, #{showType})
     </insert>
 
     <!--공연 수정-->
     <update id="update">
         UPDATE TBL_SHOW
-        SET ARTIST_NUMBER = #{artistNumber}, SHOW_NAME = #{showName}, SHOW_CONTENT = #{showContent}, SHOW_DAY = #{showDay}, SHOW_TIME = #{showTime}, SHOW_ADDRESS = #{showAddress}, SHOW_LOCATION = #{showLocation}, SHOW_TYPE = #{showType}
+        SET ARTIST_NUMBER = #{artistNumber}, SHOW_NAME = #{showName}, SHOW_CONTENT = #{showContent}, SHOW_DAY = TO_DATE(#{showDay},'YYYY-MM-DD'), SHOW_TIME = TO_DATE(#{showTime}, 'PM HH:MI', 'NLS_DATE_LANGUAGE = Korean'), SHOW_ADDRESS = #{showAddress}, SHOW_LOCATION = #{showLocation}, SHOW_TYPE = #{showType}
         WHERE SHOW_NUMBER= #{showNumber}
 
     </update>
@@ -23,10 +23,119 @@
     </delete>
     
     <!--진행 예정 공연 // 진행 중 공연 목록-->
+    <select id="getList" resultType="showVO">
+        <![CDATA[
+        SELECT SHOW_NUMBER, ARTIST_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE
+        FROM (
+        SELECT ROWNUM RN, SHOW_NUMBER, ARTIST_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE
+        FROM (
+                SELECT SHOW_NUMBER, ARTIST_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE
+                FROM TBL_SHOW
+                ORDER BY SHOW_DAY ASC
+            )
+        WHERE SHOW_DAY - SYSDATE > 0
+        ]]>
+        <choose>
+            <when test='listDTO.artistType == "M"'>
+                AND SHOW_TYPE = 1
+            </when>
+            <when test='listDTO.artistType == "P"'>
+                AND SHOW_TYPE = 2
+            </when>
+        </choose>
+        <![CDATA[
+         AND ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
+        )
+        WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
+        ]]>
+    </select>
 
+    <!-- 진행 중 공연 목록-->
+    <select id="getListIng" resultType="showVO">
+        <![CDATA[
+        SELECT SHOW_NUMBER, ARTIST_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE
+        FROM (
+            SELECT ROWNUM RN, SHOW_NUMBER, ARTIST_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE
+            FROM  (
+                SELECT SHOW_NUMBER, ARTIST_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE
+                FROM TBL_SHOW
+                ORDER BY SHOW_TIME ASC
+            )
+            WHERE 0 = TO_DATE(SHOW_DAY,'YY-MM-DD') - TO_DATE(SYSDATE,'YY-MM-DD')
 
-    <!--진행 예정/ 진행 중 공연 개수-->
+            ]]>
+            <choose>
+                <when test=' listDTO.showLocation == "1"'>
+                    AND SHOW_ADDRESS LIKE '서울%'
+                </when>
+                <when test=' listDTO.showLocation == "2"'>
+                    AND SHOW_ADDRESS  LIKE '경기%' OR SHOW_ADDRESS  LIKE '인천%'
+                </when>
+                <when test=' listDTO.showLocation == "3"'>
+                    AND SHOW_ADDRESS  LIKE '충남%' OR SHOW_ADDRESS  LIKE '충북%' OR SHOW_ADDRESS  LIKE '세종%' OR SHOW_ADDRESS  LIKE '대전%'
+                </when>
+                <when test=' listDTO.showLocation == "4"'>
+                    AND SHOW_ADDRESS  LIKE '강원%'
+                </when>
+                <when test=' listDTO.showLocation == "5"'>
+                    AND SHOW_ADDRESS  LIKE '전남%' OR SHOW_ADDRESS  LIKE '전북%' OR SHOW_ADDRESS  LIKE '광주%' OR SHOW_ADDRESS  LIKE '경북%'
+                </when>
+                <when test=' listDTO.showLocation == "6"'>
+                    AND (SHOW_ADDRESS  LIKE '경남%' OR SHOW_ADDRESS  LIKE '경북%' OR SHOW_ADDRESS  LIKE '울산%' OR SHOW_ADDRESS  LIKE '대구%' OR SHOW_ADDRESS  LIKE '부산%')
+                </when>
+                <when test=' listDTO.showLocation == "7"'>
+                    AND SHOW_ADDRESS  LIKE '제주%'
+                </when>
+            </choose>
+        <![CDATA[
+            AND ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
+            )
+            WHERE RN > (#{criteria.pageNum} - 1 ) * #{criteria.amount}
+            ]]>
+    </select>
 
+    <!--진행 예정 공연 개수-->
+    <select id="getTotal" resultType="_int">
+        SELECT COUNT(*) FROM TBL_SHOW
+        WHERE SHOW_DAY - SYSDATE > 0 AND
+        <choose>
+            <when test='artistType == "M"'>
+                SHOW_TYPE = 1
+            </when>
+            <when test='artistType == "P"'>
+                SHOW_TYPE = 2
+            </when>
+        </choose>
+    </select>
+
+    <!--진행 중 공연 개수-->
+    <select id="getTotalIng" resultType="_int">
+        SELECT COUNT(*) FROM TBL_SHOW
+        WHERE 0 = TO_DATE(SHOW_DAY,'YY-MM-DD') - TO_DATE(SYSDATE,'YY-MM-DD') AND
+        <choose>
+            <when test='showLocation == "1"'>
+                SHOW_ADDRESS  LIKE '서울%'
+            </when>
+            <when test='showLocation == "2"'>
+                SHOW_ADDRESS  LIKE '경기%' OR SHOW_ADDRESS  LIKE '인천%'
+            </when>
+            <when test='showLocation == "3"'>
+                SHOW_ADDRESS  LIKE '충남%' OR SHOW_ADDRESS  LIKE '충북%' OR SHOW_ADDRESS  LIKE '세종%' OR SHOW_ADDRESS  LIKE '대전%'
+            </when>
+            <when test='showLocation == "4"'>
+                SHOW_ADDRESS  LIKE '강원%'
+            </when>
+            <when test='showLocation == "5"'>
+                SHOW_ADDRESS  LIKE '전남%' OR SHOW_ADDRESS  LIKE '전북%' OR SHOW_ADDRESS  LIKE '광주주' OR SHOW_ADDRESS  LIKE '경북%'
+            </when>
+            <when test='showLocation == "6"'>
+                (SHOW_ADDRESS  LIKE '경남%' OR SHOW_ADDRESS  LIKE '경북%' OR SHOW_ADDRESS  LIKE '울산%' OR SHOW_ADDRESS  LIKE '대구%' OR SHOW_ADDRESS  LIKE '부산%')
+            </when>
+            <when test='showLocation == "7"'>
+                SHOW_ADDRESS  LIKE '제주%'
+            </when>
+        </choose>
+    </select>
 
     <!--공연 상세 페이지-->
     <select id="detail" resultType="showVO">

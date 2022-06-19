@@ -77,6 +77,7 @@ public class ListDTO {
 
 
     public ListDTO() { this("A", "new", "week", "new", "1");}
+
     public ListDTO(String artistType, String donationType, String rankingSortingDate, String artistSortingType, String showLocation) {
         this.artistType = artistType;
         this.donationType = donationType;

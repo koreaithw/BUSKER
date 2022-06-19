@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.stream.IntStream;
+
 @SpringBootTest
 @Slf4j
 public class UserFileMapperTests {
@@ -16,13 +18,16 @@ public class UserFileMapperTests {
 //    마이페이지 회원사진 추가 - 성공
 //    @Test
 //    public void insertTest(){
+//        IntStream.rangeClosed(3,32).forEach(i -> {
 //        UserFileVO userFileVO = new UserFileVO();
-//        userFileVO.setUserNumber(1L);
-//        userFileVO.setUuid("1");
+//
+//        userFileVO.setUserNumber(Long.valueOf(i));
+//        userFileVO.setUuid("fileUuid" + i);
 //        userFileVO.setUploadPath("2022/06/17");
-//        userFileVO.setFileName("performancer_1.jpeg");
+//        userFileVO.setFileName("file" + i + "jpeg");
 //
 //        userFileMapper.insert(userFileVO);
+//    });
 //    }
 
     // 마이페이지 회원사진 삭제 - 성공

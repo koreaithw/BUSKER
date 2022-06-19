@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.stream.IntStream;
+
 @SpringBootTest
 @Slf4j
 public class UserMapperTests {
@@ -15,20 +17,18 @@ public class UserMapperTests {
 //    회원가입 : 회원가입 매퍼테스트 - 성공
 //    @Test
 //    public void joinTest() {
+//        IntStream.rangeClosed(1,30).forEach(i -> {
 //        UserVO userVO = new UserVO();
 //
-//        userVO.setUserId("tndus");
-//        userVO.setUserPw("1234");
-//        userVO.setUserName("왕고옹");
-//        userVO.setUserPhoneNumber("01011111111");
-//        userVO.setUserEmail("수연@naver.com");
+//        userVO.setUserId("새로 추가한 유저 "  + i);
+//        userVO.setUserPw("새로 추가한 유저 비밀번호 " + i);
+//        userVO.setUserName("추가 유저 이름 " + i);
+//        userVO.setUserPhoneNumber("추가 유저 폰넘버 " + i);
+//        userVO.setUserEmail("user" + i + "@gmail.com");
 //
 //        userMapper.join(userVO);
+//        });
 //
-//        log.info("회원 가입 성공 " + userVO.getUserNumber());
-//        log.info("회원 가입 성공 " + userVO.getUserNumber());
-//        log.info("회원 가입 성공 " + userVO.getUserNumber());
-//        log.info("회원 가입 성공 " + userVO.getUserNumber());
 //    }
 
 //    회원가입 : 아이디 찾기

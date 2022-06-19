@@ -28,23 +28,23 @@ public class UserDAO {
         return userMapper.login(userId, userPw) == 1;
     }
 
-    // 정보 수정
+    // ID, PW 찾기
+    public UserVO find(@Param("text") String text, @Param("findWay") String findWay) {
+        return userMapper.find(text,findWay);
+    }
+
+    // 마이페이지 : 정보 수정
     public boolean modify(UserVO userVO) {
         return userMapper.update(userVO) == 1;
     }
 
-    // 비밀번호 수정
+    // 마이페이지 : 비밀번호 수정
     public boolean modifyPw(@Param("userNumber") Long userNumber, @Param("password") String password) {
         return userMapper.updatePw(userNumber, password) == 1;
     }
 
-    // 회원 탈퇴
+    // 마이페이지 : 회원 탈퇴
     public boolean remove(Long userNumber) {
         return userMapper.delete(userNumber) == 1;
-    }
-
-    // ID, PW 찾기
-    public UserVO find(@Param("text") String text, @Param("findWay") String findWay) {
-        return userMapper.find(text,findWay);
     }
 }
