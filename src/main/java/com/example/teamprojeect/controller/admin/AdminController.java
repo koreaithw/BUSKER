@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -25,7 +26,14 @@ public class AdminController {
 
     // 관리자 페이지 이동
     @GetMapping("/adminMain")
-    public String goAdmin() {
+    public String goAdmin(Model model, Criteria criteria) {
+        log.info("***********************");
+        log.info("들어옴");
+        int total = workService.getTotalApply();
+        model.addAttribute("total", total);
+        model.addAttribute("workList", workService.getList(criteria));
+        log.info(model.toString());
+        log.info("********************");
         return "/admin/adminMain";
     }
 
@@ -44,8 +52,10 @@ public class AdminController {
     // 작품 신청자 목록
     @ResponseBody
     @PostMapping("/workApplyList")
-    public String workApplyList(Criteria criteria) {
-
+    public String workApplyList(Criteria criteria, RedirectAttributes rttr) {
+        int total = workService.getTotalApply();
+        rttr.addAttribute("total", total);
+        rttr.addAttribute("workList", workService.getList(criteria));
         return "작품 신청 목록 전체 입니다.";
     }
 
@@ -69,6 +79,7 @@ public class AdminController {
     @GetMapping("/registerApplyRead")
     public String getApplyInfo(Long workNumber, Model model) {
         model.addAttribute("work",workService.getDetail(workNumber));
+
         return "/work/workInfo";
     }
 

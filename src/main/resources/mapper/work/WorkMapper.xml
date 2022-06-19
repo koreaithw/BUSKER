@@ -38,7 +38,7 @@
         ]]>
     </update>
 
-    <!--작품 삭제--> <!---->
+    <!--작품 삭제 및 신청 반려--> <!---->
     <update id="delete">
         <![CDATA[
         UPDATE TBL_WORK SET WORK_STATUS = 4 WHERE WORK_NUMBER = #{workNumber}
@@ -56,15 +56,24 @@
     <!-- 작품 등록 신청 전체 목록 -->
     <select id="getList" resultType="workVO">
         <![CDATA[
-            SELECT WORK_NUMBER, WORK_NAME, WORK_GENRE, WORK_DESCRIPTION, WORK_YOUTUBE_URL, WORK_PURCHASE_URL, WORK_TAG, WORK_RELEASE_DATE, WORK_REGISTER_DATE, WORK_UPDATE_DATE
+            SELECT WORK_NUMBER, WORK_NAME, ARTIST_NAME, WORK_GENRE, WORK_DESCRIPTION, WORK_YOUTUBE_URL, WORK_PURCHASE_URL, WORK_TAG, WORK_RELEASE_DATE, WORK_REGISTER_DATE, WORK_UPDATE_DATE
             FROM (
                 SELECT /*+ INDEX_DESC(TBL_WORK SYS_C007147) */
-                ROWNUM RN, WORK_NUMBER, WORK_NAME, WORK_GENRE, WORK_DESCRIPTION, WORK_YOUTUBE_URL, WORK_PURCHASE_URL, WORK_TAG, WORK_RELEASE_DATE, WORK_REGISTER_DATE, WORK_UPDATE_DATE
-                FROM TBL_WORK
-                WHERE WORK_STATUS = 1 AND ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
+                ROWNUM RN, WORK_NUMBER, WORK_NAME, ARTIST_NAME, WORK_GENRE, WORK_DESCRIPTION, WORK_YOUTUBE_URL, WORK_PURCHASE_URL, WORK_TAG, WORK_RELEASE_DATE, WORK_REGISTER_DATE, WORK_UPDATE_DATE
+                FROM (
+                    SELECT *
+                    FROM TBL_ARTIST ta, TBL_WORK tw
+                    WHERE ta.ARTIST_NUMBER  = tw.ARTIST_NUMBER
                 )
-            WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
+                WHERE WORK_STATUS = 1 AND ROWNUM <= #{pageNum} * #{amount}
+                )
+            WHERE RN > (#{pageNum} - 1) * #{amount}
         ]]>
     </select>
 
+    <select id="getTotalApply" resultType="_int">
+        SELECT COUNT(WORK_NUMBER)
+        FROM TBL_WORK
+        WHERE WORK_STATUS = 1
+    </select>
 </mapper>
