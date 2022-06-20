@@ -2,6 +2,20 @@ console.log("myPage Module....");
 
 let myPageService = (function(){
 
+    // 유저 정보 조회
+    function read(userNumber, callback){
+        $.ajax({
+            url: "/myPage" + userNumber,
+            type: "get",
+            dataType: "json",
+            success: function(user){
+                if(callback) {
+                    callback(user);
+                }
+            }
+        })
+    }
+
     // 유저 정보 수정
     function modify(userNumber, callback){
         $.ajax({
@@ -43,5 +57,5 @@ let myPageService = (function(){
         });
     }
 
-    return {modify:modify, modifyPw:modifyPw, remove:remove}
+    return {modify:modify, read:read, modifyPw:modifyPw, remove:remove}
     })();

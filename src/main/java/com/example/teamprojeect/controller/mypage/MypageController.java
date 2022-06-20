@@ -23,6 +23,14 @@ public class MypageController {
         return "/myPage/myPage";
     }
 
+    // 유저 정보 조회 - Talend API Tester 통과
+    @GetMapping("/{userNumber}")
+    @ResponseBody
+    public UserVO read(@PathVariable("userNumber") Long userNumber){
+        log.info("read..." + userNumber);
+        return userService.read(userNumber);
+    }
+
     // 유저 정보 수정 - Talend API Tester 통과
     @PatchMapping(value={"/{userNumber}"}, consumes="application/json")
     @ResponseBody

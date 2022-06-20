@@ -12,6 +12,13 @@ public class UserDaoTests {
     @Autowired
     private UserDAO userDAO;
 
+//    마이페이지 정보 조회 테스트
+//    @Test
+//    public void readTest(){
+//        Long userNumber = 3L;
+//        log.info(userDAO.read(userNumber).toString());
+//    }
+
 //    마이페이지 정보 수정 테스트 - 성공
 //    @Test
 //    public void modifyTest(){
