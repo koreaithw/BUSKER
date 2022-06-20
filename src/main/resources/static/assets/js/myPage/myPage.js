@@ -147,6 +147,8 @@ $(".smallMenu-info").click(function (e) {
   informationTabChange(".myInfo-update");
   resetText();
   formReset();
+
+
 });
 
 // 개인정보 변경
