@@ -70,9 +70,9 @@
 <body>
 <div class='sm-tit'>공연예정</div>
 <div class='sm-tit1'>
-    <a class='sm-tit2' href="/concert/concertPlanMusician">전체</a>&nbsp;&nbsp;&nbsp;&nbsp;
-    <a class='sm-tit2' href="/concert/concertPlanMusician">뮤지션</a>&nbsp;&nbsp;&nbsp;&nbsp;
-    <a class='sm-tit2' href="/concert/concertPlanMusician">퍼포먼스</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a class='sm-tit2 all' href="/concert/concertPlanMusician">전체</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a class='sm-tit2 musician' href="/concert/concertPlanMusician">뮤지션</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a class='sm-tit2 performance' href="/concert/concertPlanMusician">퍼포먼스</a>&nbsp;&nbsp;&nbsp;&nbsp;
     <a class='sm-tit2' href="/concert/concertPlanRegister">공연등록</a>
 </div>
 <section class="m2-sec05">
@@ -279,6 +279,7 @@
 <script src="/assets/js/concert/breakpoints.min.js"></script>
 <script src="/assets/js/concert/util.js"></script>
 <script src="/assets/js/concert/main.js"></script>
+<script src="/assets/js/concert/concertAjax.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script th:inline="javascript">
     // 게시글 추가 후 list.html에 도착한다면, 추가된 게시글의 번호를 alert으로 출력
@@ -292,7 +293,7 @@
 
     $("a.goRead").click(function (e) {
         e.preventDefault();
-        location.href = "/concert/concertPlan/concertPlanInfo" + paging + "&showNumber=" + $(this).attr('href');
+        location.href = "/concert/concertPlanInfo" + paging + "&showNumber=" + $(this).attr('href');
     });
 
 </script>

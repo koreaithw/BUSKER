@@ -116,6 +116,10 @@
     padding-bottom: 60px;
 }
 
+.concertWrap a:hover {
+    text-decoration: underline;
+}
+
 .show-wrap a .list-bigger-wrap {
     width: 216px;
     height: 410px;

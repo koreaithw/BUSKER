@@ -21,6 +21,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -95,8 +96,19 @@ public class ShowController {
     @GetMapping("/concertPlanInfo")
     public String goConcertInfo(Long showNumber, Criteria criteria, HttpServletRequest request, Model model) {
         String requestURL = request.getRequestURI();
+
+        log.info("----------------------------");
         log.info(requestURL.substring(requestURL.lastIndexOf("/")));
+        log.info("----------------------------");
+        log.info(criteria.toString());
+        log.info("----------------------------");
+
         ShowVO showVO = showService.read(showNumber);
+
+        String showRegion = showVO.getShowAddress();
+        showRegion = showRegion.substring(0, 2);
+        showVO.setShowRegion(showRegion);
+
         if(showVO.getShowType() == 1) {
             showVO.setShowCategory("뮤지션");
         } else if (showVO.getShowType() == 2) {
@@ -109,13 +121,52 @@ public class ShowController {
             String showDay = showVO.getShowDay();
             Date day = dayFormat.parse(showDay);
             showDay = dayFormat.format(day);
+
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(day);
+            int dayNum = cal.get(Calendar.DAY_OF_WEEK);
+            String dayth = "" ;
+
+            switch(dayNum){
+                case 1:
+                    dayth = "일";
+                    break ;
+                case 2:
+                    dayth = "월";
+                    break ;
+                case 3:
+                    dayth = "화";
+                    break ;
+                case 4:
+                    dayth = "수";
+                    break ;
+                case 5:
+                    dayth = "목";
+                    break ;
+                case 6:
+                    dayth = "금";
+                    break ;
+                case 7:
+                    dayth = "토";
+                    break ;
+
+            }
+
+            showDay = showDay + " (" + dayth + ")";
             showVO.setShowDay(showDay);
 
-            SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm");
-            String showTime = showVO.getShowTime();
-            Date time = timeFormat.parse(showTime);
-            showTime = timeFormat.format(time);
-            showVO.setShowTime(showTime);
+            SimpleDateFormat timeParse = new SimpleDateFormat("hh:mm:ss");
+            SimpleDateFormat timeFormat = new SimpleDateFormat("a hh:mm", Locale.KOREAN);
+
+            String showDate = showVO.getShowTime();
+            String[] showTimeList = showDate.split("\\s+");
+
+            Date date1 = timeParse.parse(showTimeList[1]);
+            showDate = timeFormat.format(date1);
+
+            showVO.setShowTime(showDate);
+
         } catch (ParseException e) {
             System.err.println("dateStr : "  + ", datePattern:");
             e.printStackTrace();
@@ -126,10 +177,47 @@ public class ShowController {
         return "concertPlan/concertPlanInfo";
     }
 
-    // 진행 예정 공연 수정 페이지 이동
+
+
+
+
+    // 진행 예정 공연 상세보기 페이지 이동
     @GetMapping("/concertPlanModify")
-    public String goConcertPlanModify() {
+    public String goConcertPlanModifyPage(Long showNumber, Criteria criteria, HttpServletRequest request, Model model) {
+        String requestURL = request.getRequestURI();
+        log.info("----------------------------");
+        log.info(requestURL.substring(requestURL.lastIndexOf("/")));
+        log.info("----------------------------");
+        log.info(criteria.toString());
+        log.info("----------------------------");
+        ShowVO showVO = showService.read(showNumber);
+        if(showVO.getShowType() == 1) {
+            showVO.setShowCategory("뮤지션");
+        } else if (showVO.getShowType() == 2) {
+            showVO.setShowCategory("퍼포먼스");
+        }
+        model.addAttribute("concert", showVO);
         return "concertPlan/concertPlanModify";
+    }
+
+
+
+    // 진행 예정 공연 수정 페이지 이동
+    @PostMapping("/concertPlanModify")
+    public RedirectView goConcertPlanModify(ShowVO showVO, Criteria criteria, RedirectAttributes rttr) {
+        log.info("*************");
+        log.info("/modify");
+        log.info("*************");
+        log.info("================================");
+        log.info(criteria.toString());
+        log.info("================================");
+        showVO.setArtistNumber(54L);
+        if(showService.modify(showVO)) {
+            rttr.addAttribute("showNumber", showVO.getShowNumber());
+            rttr.addAttribute("pageNum", criteria.getPageNum());
+            rttr.addAttribute("amount", criteria.getAmount());
+        }
+        return new RedirectView("/concert/concertPlanInfo");
     }
 
     // 진행 예정 공연 수정 완료
@@ -156,7 +244,7 @@ public class ShowController {
         return "concert/concertLive";
     }
 
-    @PostMapping("/concertDelete")
+    @GetMapping("/concertPlanDelete")
     public String remove(Long showNumber, Criteria criteria, ListDTO listDTO, Model model) {
         showService.remove(showNumber);
         return goConcertPlan(criteria, listDTO, model, showNumber);

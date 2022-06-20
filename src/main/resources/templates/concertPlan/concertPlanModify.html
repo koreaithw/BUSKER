@@ -43,6 +43,7 @@
 <div th:object="${concert}">
     <div class="show_info_wrap">
         <form action="/concert/concertPlanModify" method="post" id="modifyForm" name="modifyForm">
+            <input type="hidden" th:field="*{showNumber}">
             <input type="hidden" th:field="${criteria.pageNum}">
             <input type="hidden" th:field="${criteria.amount}">
             <!-- enctype="multipart/form-data"-->
@@ -266,6 +267,7 @@
             $(".warning_msg7").hide();
         }
         //console.log("aaa");
+        alert("수정이 완료되었습니다.")
         $("form#modifyForm");
         return true;
     })
