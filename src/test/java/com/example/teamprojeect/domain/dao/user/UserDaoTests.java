@@ -41,4 +41,15 @@ public class UserDaoTests {
 //        userDAO.remove(2L);
 //        log.info("회원 탈퇴 완료");
 //    }
+
+// 로그인
+//    @Test
+//    public void loginTest(){
+//        UserVO userVO = new UserVO();
+//        userVO.setUserId("ii");
+//        userVO.setUserPw("12345");
+//
+//        userDAO.login("ii", "12345");
+//        log.info("로그인 성공");
+//    }
 }

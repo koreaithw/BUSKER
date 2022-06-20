@@ -65,14 +65,14 @@ public class UserMapperTests {
 //    }
 
 // 로그인 - 성공
-    @Test
-    public void loginTest(){
-         UserVO userVO = new UserVO();
-         userVO.setUserId("i");
-         userVO.setUserPw("12345");
-
-         userMapper.login("i", "12345");
-
-    }
+//    @Test
+//    public void loginTest(){
+//         UserVO userVO = new UserVO();
+//         userVO.setUserId("i");
+//         userVO.setUserPw("12345");
+//
+//         userMapper.login("i", "12345");
+//
+//    }
 }
 
