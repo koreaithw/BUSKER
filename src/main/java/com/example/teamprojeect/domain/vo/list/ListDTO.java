@@ -56,6 +56,8 @@ public class ListDTO {
     // 월간 : 'month'
     // 연간 : 'year'
 
+    private String detailDate;
+
     /////////    공연 서울 경기 충청 강원 전라 경상 제주
     private String ingWhether;
     // 진행 예정 : 'yet'
@@ -76,6 +78,14 @@ public class ListDTO {
     /////////    모집공고 : 공용 artistType 사용
 
 
+//    public ListDTO() { this("A", "new", "week", "new", "1");}
+//    public ListDTO(String artistType, String donationType, String rankingSortingDate, String artistSortingType, String showLocation) {
+//        this.artistType = artistType;
+//        this.donationType = donationType;
+//        this.artistSortingType = artistSortingType;
+//        this.rankingSortingDate = rankingSortingDate;
+//        this.showLocation = showLocation;
+//    }
     public ListDTO() { this("A", "new", "week", "new", "1");}
     public ListDTO(String artistType, String donationType, String rankingSortingDate, String artistSortingType, String showLocation) {
         this.artistType = artistType;
@@ -84,4 +94,5 @@ public class ListDTO {
         this.rankingSortingDate = rankingSortingDate;
         this.showLocation = showLocation;
     }
+
 }

@@ -2,6 +2,7 @@ package com.example.teamprojeect.mapper.artist;
 
 import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
+import com.example.teamprojeect.domain.vo.paging.Criteria;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,24 +23,33 @@ public class ArtistMapperTests {
 //                .stream().map(ArtistVO::toString).forEach(log::info);
 //    }
 
-    @Test
-    public void getListTest(){
-        artistMapper.getList(new ListDTO("A","1","2","NEW","3"))
+//    @Test
+//    public void getListTest(){
+//        artistMapper.getList(new ListDTO("A","1","2","NEW","3"))
+//
+//                .stream().map(ArtistVO::toString).forEach(log::info);
+//    }
+//
+//    @Test
+//    public void getListMusicianTest(){
+//        artistMapper.getListMusician(new ListDTO("A","1","2","NEW","3"))
+//
+//                .stream().map(ArtistVO::toString).forEach(log::info);
+//    }
+//
+//    @Test
+//    public void getListPerformanceTest(){
+//        artistMapper.getListPerformance(new ListDTO("A","1","2","NEW","3"))
+//
+//                .stream().map(ArtistVO::toString).forEach(log::info);
+//    }
 
-                .stream().map(ArtistVO::toString).forEach(log::info);
+    @Test
+    public void rankingListTest(){
+        Criteria criteria = new Criteria();
+        ListDTO listDTO = new ListDTO();
+        listDTO.setRankingSortingDate("year");
+        artistMapper.rankingList(criteria, listDTO).stream().map(ArtistVO::toString).forEach(log::info);
     }
 
-    @Test
-    public void getListMusicianTest(){
-        artistMapper.getListMusician(new ListDTO("A","1","2","NEW","3"))
-
-                .stream().map(ArtistVO::toString).forEach(log::info);
-    }
-
-    @Test
-    public void getListPerformanceTest(){
-        artistMapper.getListPerformance(new ListDTO("A","1","2","NEW","3"))
-
-                .stream().map(ArtistVO::toString).forEach(log::info);
-    }
 }
