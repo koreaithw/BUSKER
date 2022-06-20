@@ -7,6 +7,7 @@ import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.paging.artist.ArtistPageDTO;
 import com.example.teamprojeect.mapper.artist.ArtistMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -14,8 +15,10 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
+@Slf4j
 public class ArtistDAO {
     private final ArtistMapper artistMapper;
+
 
     // 아티스트 정보 //
     // 아티스트 등록 신청 (status 1)
@@ -46,13 +49,13 @@ public class ArtistDAO {
     // 아티스트 목록
     // (매개변수로 artistType을 전달해서 'A'(전체)인지 'M'(아티스트) 인지 'P'(퍼포먼스)인지 구분)
     // (매개변수로 sortingType을 전달해서 '최신순'과 '좋아요순' 구분)
-//    public List<ArtistVO> getList(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO) {
-//        return artistMapper.getList(criteria, listDTO);
-//    }
-    //아티스트 전체목록
-    public List<ArtistVO> getList(@Param("listDTO") ListDTO listDTO) {
-        return artistMapper.getList(listDTO);
+    public List<ArtistVO> getList(Criteria criteria, ListDTO listDTO) {
+        return artistMapper.getList(criteria, listDTO);
     }
+    //아티스트 전체목록
+//    public List<ArtistVO> getList(Criteria criteria ListDTO list) {
+//        return artistMapper.getList(criteria);
+//    }
     //아티스트 뮤지션 목록
     public List<ArtistVO> getListMusician(@Param("listDTO") ListDTO listDTO) {
         return artistMapper.getListMusician(listDTO);

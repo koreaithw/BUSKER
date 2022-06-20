@@ -19,22 +19,22 @@ public class WorkMapperTests {
 //        log.info(workMapper+"");
 //    }
 
-    // 작품 등록 신청
-//    @Test //잘됨
-//    public void insertApplyTest() {
-//        for (int i = 0; i < 15; i++){
-//            WorkVO workVO = new WorkVO();
-//            workVO.setArtistNumber(3L);
-//            workVO.setWorkDescription("testDescription" + i);
-//            workVO.setWorkGenre("힙합/랩");
-//            workVO.setWorkName("testWork" + i);
-//            workVO.setWorkPurchaseUrl("testurl" + i);
-//            workVO.setWorkReleaseDate("2022-06-" + (i + 1));
-//            workVO.setWorkYoutubeUrl("testYoutubeUrl" + i);
-//            workVO.setWorkTag("힙합/랩");
-//            workMapper.insertApply(workVO);
-//        }
-//    }
+//     작품 등록 신청
+    @Test //잘됨
+    public void insertApplyTest() {
+        for (int i = 0; i < 15; i++){
+            WorkVO workVO = new WorkVO();
+            workVO.setArtistNumber(3L);
+            workVO.setWorkDescription("testDescription" + i);
+            workVO.setWorkGenre("힙합/랩");
+            workVO.setWorkName("testWork" + i);
+            workVO.setWorkPurchaseUrl("testurl" + i);
+            workVO.setWorkReleaseDate("2022-06-" + (i + 1));
+            workVO.setWorkYoutubeUrl("testYoutubeUrl" + i);
+            workVO.setWorkTag("힙합/랩");
+            workMapper.insertApply(workVO);
+        }
+    }
 
     // 작품 수정 신청
 //    @Test //잘됨
@@ -79,6 +79,6 @@ public class WorkMapperTests {
     // 작품 신청 전체 목록
     @Test
     public void getListTest() {
-        workMapper.getList(new Criteria(2,10)).stream().map(WorkVO::toString).forEach(log::info);
+        workMapper.getList(new Criteria(1,10)).stream().map(WorkVO::toString).forEach(log::info);
     }
 }

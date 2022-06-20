@@ -137,7 +137,7 @@ public class ShowController {
     // 진행 예정 공연 등록 페이지 이동
     @PostMapping("/concertPlanRegister")
     public RedirectView goConcertPlanRegister(ShowVO showVO, RedirectAttributes rttr) {
-        showVO.setArtistNumber(54L);
+        showVO.setArtistNumber(1L);
         showService.register(showVO);
         rttr.addFlashAttribute("showNumber", showVO.getShowNumber());
         return new RedirectView("/concert/concertPlanList");
