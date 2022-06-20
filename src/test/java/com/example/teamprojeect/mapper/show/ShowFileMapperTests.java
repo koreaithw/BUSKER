@@ -18,7 +18,7 @@ public class ShowFileMapperTests {
     public void insertTest() {
 
         ShowFileVO showFileVO = new ShowFileVO();
-        Long showNumber = 212L;
+        Long showNumber = 1315L;
         showFileVO.setShowNumber(showNumber);
         showFileVO.setUuid("파일테스트123");
         showFileVO.setUploadPath("123123");

@@ -9,6 +9,7 @@ import com.example.teamprojeect.domain.vo.show.ShowFileVO;
 import com.example.teamprojeect.domain.vo.show.ShowReplyVO;
 import com.example.teamprojeect.domain.vo.show.ShowVO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,8 +26,8 @@ public class ShowService {
     @Transactional(rollbackFor = Exception.class)
     public void register(ShowVO showVO) {
         showDAO.register(showVO);
-        showFileVO.setShowNumber(showVO.getShowNumber());
-        showFileDAO.register(showFileVO);
+//        showFileVO.setShowNumber(showVO.getShowNumber());
+//        showFileDAO.register(showFileVO);
     }
 
     public boolean modify(ShowVO showVO) {

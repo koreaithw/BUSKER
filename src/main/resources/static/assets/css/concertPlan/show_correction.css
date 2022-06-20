@@ -169,7 +169,6 @@ dl {
 
 .info_area1 {
     position: relative;
-    border-bottom: 1px solid rgb(147, 147, 147);
     padding-left: 1px;
     padding-top: 5px;
 }
@@ -251,7 +250,7 @@ textarea:focus {
 .info_area2 dt {
     width: 100%;
     float: none;
-    margin: 6px 0 -3px 0;
+    margin: 0px 0 -3px 0;
     font-size: 15px;
     color: #333;
     font-weight: bold;
@@ -281,19 +280,23 @@ textarea:focus {
     background-color: #ff9326;
     padding: 10px 20px 10px 20px;
     border: #ff9326 solid 2px;
-    width: 236px;
-    height: 46px;
-    line-height: 46px;
+    width: 166px;
+    margin-right: 10px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
+.purchase_link:hover {
+    background-color: #ffae5d;
+    border: #ffae5d solid 2px;
+}
 
 .vid_wrap {
     overflow: hidden;
     margin-bottom: 50px;
 }
 
-.warning_msg1,.warning_msg2,.warning_msg3,.warning_msg4,.warning_msg5{
+.warning_msg1,.warning_msg2,.warning_msg3,.warning_msg4,.warning_msg5,.warning_msg6,.warning_msg7 {
     color: red;
     font-size: 13px;
     margin: 0;
