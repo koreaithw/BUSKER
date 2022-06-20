@@ -11,7 +11,7 @@ public class UserServiceTests {
     @Autowired
     private UserService userService;
 
-    // 마이페이지 : 유저 정보 수정 테스트 - 성공
+//    마이페이지 : 유저 정보 수정 테스트 - 성공
 //    @Test
 //    public void modifyTest(){
 //        UserVO userVO = new UserVO();
@@ -27,7 +27,7 @@ public class UserServiceTests {
 //        log.info("유저 번호 : " + userVO.getUserNumber());
 //    }
 
-    // 마이페이지 : 유저 비밀번호 수정 테스트 - 성공
+//    마이페이지 : 유저 비밀번호 수정 테스트 - 성공
 //    @Test
 //    public void modifyPwTest(){
 //        Long userNumber=3L;
@@ -36,10 +36,17 @@ public class UserServiceTests {
 //        userService.modifyPw(userNumber, password);
 //    }
 
-    // 마이페이지 : 유저 탈퇴 - 성공
+//    마이페이지 : 유저 탈퇴 - 성공
+//    @Test
+//    public void removeTest(){
+//        Long userNumber = 3L;
+//        log.info("IF DELETE : " + userService.remove(userNumber));
+//    }
+
+//    마이페이지 : 유저 정보 조회
     @Test
-    public void removeTest(){
+    public void readTest(){
         Long userNumber = 3L;
-        log.info("IF DELETE : " + userService.remove(userNumber));
+        log.info(userService.read(userNumber).toString());
     }
 }
