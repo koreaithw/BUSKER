@@ -44,6 +44,11 @@
         body {
             font-family: 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
         }
+         .customoverlay {position:relative;bottom:85px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left;}
+        .customoverlay:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}
+        .customoverlay a {display:block;text-decoration:none;color:#000;text-align:center;border-radius:6px;font-size:14px;font-weight:bold;overflow:hidden;background: #d95050;background: #ec7d2c url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
+        .customoverlay .title {display:block;text-align:center;background:#fff;margin-right:35px;padding:10px 15px;font-size:14px;font-weight:bold;}
+        .customoverlay:after {content:'';position:absolute;margin-left:-12px;left:50%;bottom:-12px;width:22px;height:12px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
     </style>
 
 </head>
@@ -66,17 +71,19 @@
     <div class="renew-wrap">
         <div class="renew-content">
             <div class="rn-01">
-                <p class="rn-location"><p href='#'>버스킹<a href='#' th:text="*{showCategory}"></a></p>
+                <p class="rn-location">
+                <p><a id="goList" href="/concert/concertPlanList">버스킹 ></a><a href='#' th:text="| *{showCategory}|"></a></p>
             </div>
             <div class="rn-02">
                 <p class="rn-big-title" th:text="*{showName}"></p>
                 <div class="rn-product-short-data">
-                    <p><span class="ps-date" th:text="*{showDay}"></span><a href="#" id="ps-location"><span class="ps-location">[홍대] 홍대 걷고싶은 거리</span></a>
+                    <p><span class="ps-date" th:text="*{showDay}"></span><a href="#" id="ps-location"><span
+                            class="ps-location" th:text="|[*{showRegion}] *{showLocation}|"></span></a>
                     </p>
-                    <a href="/concert/concertPlanModify" class="ps-social modify">
+                    <a th:href="*{showNumber}" class="ps-social modify">
                         <img src="/images/concertPlan/c.png" style="float: right; width:35px;">
                     </a>
-                    <a href="/concert/concertDelete" class="ps-social delete">
+                    <a th:href="*{showNumber}" class="ps-social delete">
                         <img src="/images/concertPlan/delete_icon.png" style="float: right; width:67px; height: 59px;">
                     </a>
                 </div>
@@ -123,7 +130,7 @@
                     <div class="rn-product-area1">
                         <dl>
                             <dt>버스커</dt>
-                            <dd th:text="*{artistName}">&nbsp</dd>
+                            <dd><a href="" th:text="*{artistName}"></a>&nbsp</dd>
                             <dt>공연일자</dt>
                             <dd th:text="*{showDay}">&nbsp;</dd>
                             <dt>공연시간</dt>
@@ -136,9 +143,11 @@
                     </div>
                     <dt>찾아오는 길</dt>
                 </div>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.980690669747!2d126.91928172782173!3d37.55551871519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c98c3106ebb65%3A0x227598a416b2090!2z7ZmN64yAIOqxt-qzoOyLtuydgOqxsOumrA!5e0!3m2!1sko!2skr!4v1655124481098!5m2!1sko!2skr"
-                        width="600" height="400" style="position: absolute; top:200px;left:500px;" allowfullscreen=""
-                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <!--                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.980690669747!2d126.91928172782173!3d37.55551871519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c98c3106ebb65%3A0x227598a416b2090!2z7ZmN64yAIOqxt-qzoOyLtuydgOqxsOumrA!5e0!3m2!1sko!2skr!4v1655124481098!5m2!1sko!2skr"-->
+                <!--                        width="600" height="400" style="position: absolute; top:200px;left:500px;" allowfullscreen=""-->
+                <!--                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>-->
+                <div id="map" style="width:600px; height:400px; position: absolute; top:200px;left:500px;"></div>
+
 
             </div>
 
@@ -176,15 +185,17 @@
                                 </tr>
                                 <tr>
                                     <th scope="row" class="rn08-tbl-tit2">버스커</th>
-                                    <td th:text="*{showName}"></td>
-                                    <th scope="row" class="rn08-tbl-tit2" >카테고리</th>
+                                    <td th:text="*{artistName}"></td>
+                                    <th scope="row" class="rn08-tbl-tit2">카테고리</th>
                                     <td th:text="*{showCategory}"></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" class="rn08-tbl-tit2">공연일자</th>
-                                    <td th:text="*{showDay}"></td>
+                                    <th scope="row" class="rn08-tbl-tit2">공연일시</th>
+                                    <td><span th:text="*{showDay}"></span><br>
+                                        <span th:text="*{showTime}"></span></td>
                                     <th scope="row" class="rn08-tbl-tit2">공연장소</th>
-                                    <td th:text="*{showLocation}"></td>
+                                    <td><span th:text="*{showAddress}"></span><br>
+                                        <span th:text="*{showLocation}"></span></td>
                                 </tr>
                                 <tr>
                                     <th scope="row" class="rn08-tbl-tit2">관람시 주의사항</th>
@@ -206,6 +217,16 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="rn-0801">
+                    <div class="rn08-tbl rn-0801-tbl">
+                        <table>
+                            <caption></caption>
+                        </table>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -215,5 +236,107 @@
 </footer>
 >>
 </body>
+<script src="/assets/js/concert/jquery.min.js"></script>
+<script src="/assets/js/concert/jquery.dropotron.min.js"></script>
+<script src="/assets/js/concert/browser.min.js"></script>
+<script src="/assets/js/concert/breakpoints.min.js"></script>
+<script src="/assets/js/concert/util.js"></script>
+<script src="/assets/js/concert/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=82047bdd8e65a83db82f7ecba662d0c3&libraries=services"></script>
+<script th:inline="javascript">
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            level: 1 // 지도의 확대 레벨
+        };
+
+    // 지도를 생성합니다
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+
+    // 주소-좌표 변환 객체를 생성합니다
+    var geocoder = new kakao.maps.services.Geocoder();
+    let address = [[${concert.showAddress}]];
+    console.log(address);
+    // 주소로 좌표를 검색합니다
+    geocoder.addressSearch(address, function (result, status) {
+
+        // 정상적으로 검색이 완료됐으면
+        if (status === kakao.maps.services.Status.OK) {
+
+            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+            // 결과값으로 받은 위치를 마커로 표시합니다
+            // var marker = new kakao.maps.Marker({
+            //     map: map,
+            //     position: coords
+            // });
+
+
+            /**/
+//             var imageSrc = 'https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png', // 마커이미지의 주소입니다
+//                 imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+//                 imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+// // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+//             var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+//                 markerPosition = coords; // 마커가 표시될 위치입니다
+// // 마커를 생성합니다
+//             var marker = new kakao.maps.Marker({
+//                 position: markerPosition,
+//                 image: markerImage // 마커이미지 설정
+//             });
+// // 마커가 지도 위에 표시되도록 설정합니다
+//             marker.setMap(map);
+            /**/
+
+            // // 인포윈도우로 장소에 대한 설명을 표시합니다
+            // var infowindow = new kakao.maps.InfoWindow({
+            //     content: '<div style="width:150px;text-align:center;padding:6px 0;"></div>'
+            // });
+            // infowindow.open(map, marker);
+
+            // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            var content = '<div class="customoverlay" >' +
+                '  <a href="https://map.kakao.com/link/map/11394059" target="_blank">' +
+                '    <span class="title">' +
+                '<img style="border-radius: 50% !important;" src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"></span>' +
+                '  </a>' +
+                '</div>';
+
+
+            // 커스텀 오버레이를 생성합니다
+            var customOverlay = new kakao.maps.CustomOverlay({
+                map: map,
+                position: coords,
+                content: content,
+                yAnchor: 1
+            });
+
+            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+            map.setCenter(coords);
+        }
+    });
+
+    let paging = [[${criteria.listLink}]];
+    let showNumber = [[${concert.showNumber}]];
+
+    $("a.modify").click(function (e) {
+        e.preventDefault();
+        location.href = "/concert/concertPlan/concertPlanModify" + paging + "&showNumber=" + $(this).attr('href');
+    });
+
+    $("a.delete").click(function (e) {
+        e.preventDefault();
+        location.href = "/concert/concertPlan/concertPlanDelete" + paging + "&showNumber=" + $(this).attr('href');
+    });
+
+    $("a#goList").click(function(e){
+        e.preventDefault();
+        location.href = "/concert/concertPlanList" + paging;
+    });
+</script>
+</body>
+</html>
 </html>
 
