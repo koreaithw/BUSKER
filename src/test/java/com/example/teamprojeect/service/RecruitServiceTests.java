@@ -15,31 +15,31 @@ public class RecruitServiceTests {
     @Autowired
     private RecruitService recruitService;
 
-//    @Test
-//    public void registerTest() {
-//        RecruitmentVO recruitmentVO = new RecruitmentVO();
-//        recruitmentVO.setRecruitmentName("service 테스트");
-//        recruitmentVO.setRecruitmentLocation("예술의 전당");
-//        recruitmentVO.setRecruitmentDay("2022-07-19");
-//        recruitmentVO.setRecruitmentTime("오후 05:39");
-//        recruitmentVO.setRecruitmentType("P");
-//        recruitmentVO.setRecruitmentUrl("https://www.youtube.com/");
-//        recruitmentVO.setRecruitmentSummary("몇몇 일에 어디에서 개최");
-//        recruitmentVO.setRecruitmentCondition("초대합니다 어쩌구");
-//        recruitmentVO.setRecruitmentIntroduce("모두가 같이 즐기는");
-//        recruitmentVO.setRecruitmentHost("정부 개최");
-//
-//        RecruitmentFileVO recruitmentFileVO = new RecruitmentFileVO();
-//        Long recruitmentNumber = recruitmentVO.getRecruitmentNumber();
-//        recruitmentFileVO.setRecruitmentNumber(recruitmentNumber);
-//        recruitmentFileVO.setUuid("파일테스스스스트");
-//        recruitmentFileVO.setUploadPath("asdsdaff5522");
-//        recruitmentFileVO.setFileName("파일이름테스트");
-//
-//        recruitService.register(recruitmentVO);
-//
-//        log.info("공고 번호 : "+recruitmentVO.getRecruitmentNumber());
-//    }
+    @Test
+    public void registerTest() {
+        RecruitmentVO recruitmentVO = new RecruitmentVO();
+        recruitmentVO.setRecruitmentName("service 테스트");
+        recruitmentVO.setRecruitmentLocation("예술의 전당");
+        recruitmentVO.setRecruitmentDay("2022-07-19");
+        recruitmentVO.setRecruitmentTime("오후 05:39");
+        recruitmentVO.setRecruitmentType("P");
+        recruitmentVO.setRecruitmentUrl("https://www.youtube.com/");
+        recruitmentVO.setRecruitmentSummary("몇몇 일에 어디에서 개최");
+        recruitmentVO.setRecruitmentCondition("초대합니다 어쩌구");
+        recruitmentVO.setRecruitmentIntroduce("모두가 같이 즐기는");
+        recruitmentVO.setRecruitmentHost("정부 개최");
+
+        RecruitmentFileVO recruitmentFileVO = new RecruitmentFileVO();
+        Long recruitmentNumber = recruitmentVO.getRecruitmentNumber();
+        recruitmentFileVO.setRecruitmentNumber(recruitmentNumber);
+        recruitmentFileVO.setUuid("파일테스스스스트");
+        recruitmentFileVO.setUploadPath("asdsdaff5522");
+        recruitmentFileVO.setFileName("파일이름테스트");
+
+        recruitService.register(recruitmentVO, recruitmentFileVO);
+
+        log.info("공고 번호 : "+recruitmentVO.getRecruitmentNumber());
+    }
 
 //    @Test
 //    public void getListTest() {

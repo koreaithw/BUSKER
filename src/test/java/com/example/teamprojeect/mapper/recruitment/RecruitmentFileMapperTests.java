@@ -13,20 +13,27 @@ public class RecruitmentFileMapperTests {
     @Autowired
     private RecruitmentFileMapper recruitmentFileMapper;
 
-    @Test
-    public void insertTest() {
-        RecruitmentFileVO recruitmentFileVO = new RecruitmentFileVO();
-        Long RecruitmentNumber = 128L;
-        recruitmentFileVO.setFileName("FILE");
-        recruitmentFileVO.setUploadPath("test");
-        recruitmentFileVO.setRecruitmentNumber(RecruitmentNumber);
-        recruitmentFileVO.setUuid("file00dd");
-        recruitmentFileMapper.insert(recruitmentFileVO);
-    }
+//    @Test
+//    public void insertTest() {
+//        RecruitmentFileVO recruitmentFileVO = new RecruitmentFileVO();
+//        Long RecruitmentNumber = 97L;
+//        recruitmentFileVO.setFileName("FILE");
+//        recruitmentFileVO.setUploadPath("test");
+//        recruitmentFileVO.setRecruitmentNumber(RecruitmentNumber);
+//        recruitmentFileVO.setUuid("rmfaks");
+//        recruitmentFileMapper.insert(recruitmentFileVO);
+//    }
 
 //    @Test
 //    public void deleteTest() {
 //        Long recruitmentNumber = 128L;
 //        recruitmentFileMapper.delete(recruitmentNumber);
 //    }
+
+//    @Test
+//    public void findTest() {
+//        Long recruitmentNumber = 97L;
+//        log.info(recruitmentFileMapper.find(recruitmentNumber).toString());
+//    }
+
 }

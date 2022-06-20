@@ -4,6 +4,7 @@ package com.example.teamprojeect.controller.recruit;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.paging.recruitment.RecruitmentPageDTO;
+import com.example.teamprojeect.domain.vo.recruitment.RecruitmentFileVO;
 import com.example.teamprojeect.domain.vo.recruitment.RecruitmentVO;
 import com.example.teamprojeect.service.RecruitService;
 import lombok.RequiredArgsConstructor;
@@ -55,11 +56,11 @@ public class RecruitmentController {
 
     // 모집공고 등록 페이지 이동
     @PostMapping("/recruitRegister")
-    public RedirectView goRecruitRegister(RecruitmentVO recruitmentVO, RedirectAttributes rttr) {
+    public RedirectView goRecruitRegister(RecruitmentVO recruitmentVO, RecruitmentFileVO recruitmentFileVO, RedirectAttributes rttr) {
         log.info("*************");
         log.info("/register");
         log.info("*************");
-        recruitService.register(recruitmentVO);
+        recruitService.register(recruitmentVO, recruitmentFileVO);
         rttr.addFlashAttribute("recruitmentNumber",recruitmentVO.getRecruitmentNumber());
         return new RedirectView("/recruit/recruitList");
     }
