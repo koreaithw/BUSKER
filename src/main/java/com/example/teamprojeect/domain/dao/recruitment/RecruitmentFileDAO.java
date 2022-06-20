@@ -22,11 +22,6 @@ public class RecruitmentFileDAO {
         recruitmentFileMapper.delete(recruitmentNumber);
     }
 
-    // 모집공고 사진 변경
-    public void modify(RecruitmentFileVO recruitmentFileVO) {
-        recruitmentFileMapper.update(recruitmentFileVO);
-    }
-
     // 모집공고 사진 선택
     public List<RecruitmentFileVO> find(Long recruitmentNumber) {
         return recruitmentFileMapper.find(recruitmentNumber);

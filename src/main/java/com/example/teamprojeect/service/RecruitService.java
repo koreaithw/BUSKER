@@ -17,9 +17,8 @@ import java.util.List;
 public class RecruitService {
     private final RecruitmentDAO recruitmentDAO;
     private final RecruitmentFileDAO recruitmentFileDAO;
-    private final RecruitmentFileVO recruitmentFileVO;
 
-    public void register(RecruitmentVO recruitmentVO){
+    public void register(RecruitmentVO recruitmentVO, RecruitmentFileVO recruitmentFileVO){
         recruitmentDAO.register(recruitmentVO);
         recruitmentFileVO.setRecruitmentNumber(recruitmentVO.getRecruitmentNumber());
         recruitmentFileDAO.register(recruitmentFileVO);
