@@ -2,6 +2,7 @@ package com.example.teamprojeect.controller.admin;
 
 
 import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.paging.work.WorkApplyPageDTO;
 import com.example.teamprojeect.domain.vo.paging.work.WorkPageDTO;
 import com.example.teamprojeect.service.ArtistService;
 import com.example.teamprojeect.service.RecruitService;
@@ -28,14 +29,47 @@ public class AdminController {
     // 관리자 페이지 이동
     @GetMapping("/adminMain")
     public String goAdmin(Model model, Criteria criteria) {
-        log.info("***********************");
-        log.info("들어옴");
         int total = workService.getTotalApply();
+        // 작품 신청 전체 목록
         model.addAttribute("workList", workService.getList(criteria));
+        // 관리자 페이지 메인에서 8개만 띄우는 목록
+        model.addAttribute("workListSmall", workService.getList(new Criteria(1,8)));
+        // 페이징
         model.addAttribute("workPageDTO", new WorkPageDTO(criteria, total));
-        log.info(model.toString());
-        log.info("********************");
+
         return "/admin/adminMain";
+    }
+
+    // 작품 신청자 목록
+    @PostMapping("/workApplyList/{page}")
+    @ResponseBody
+    public WorkApplyPageDTO getWorkApplyList(@PathVariable("page") int pageNum) {
+        int total = workService.getTotalApply();
+        return new WorkApplyPageDTO(workService.getList(new Criteria(pageNum, 10)), total);
+    }
+
+    // 작품 등록 신청 승인
+    @PostMapping("/workApprove/{wno}")
+    @ResponseBody
+    public String approveWork(@PathVariable("wno") Long workNumber) {
+        workService.registerAdmin(workNumber);
+        return "작품 등록 신청 승인";
+    }
+
+    // 작품 등록 신청 반려
+    @PostMapping("/workReject/{wno}")
+    @ResponseBody
+    public String rejectWork(@PathVariable("wno") Long workNumber) {
+        workService.remove(workNumber);
+        return "작품 등록 신청 반려";
+    }
+
+    // 작품 신청 상세보기
+    @GetMapping("/registerApplyRead")
+    public String getApplyInfo(Long workNumber, Model model) {
+        model.addAttribute("work",workService.getDetail(workNumber));
+
+        return "/work/workInfo";
     }
 
     // 아티스트 신청자 목록
@@ -49,40 +83,6 @@ public class AdminController {
 
     // 아티스트 신청 상세보기
 
-
-    // 작품 신청자 목록
-    @ResponseBody
-    @PostMapping("/workApplyList")
-    public String workApplyList(Criteria criteria, RedirectAttributes rttr) {
-        int total = workService.getTotalApply();
-        rttr.addAttribute("total", total);
-        rttr.addAttribute("workList", workService.getList(criteria));
-        return "작품 신청 목록 전체 입니다.";
-    }
-
-    // 작품 등록 신청 승인
-    @ResponseBody
-    @PostMapping("/workApprove/{wno}")
-    public String approveWork(@PathVariable("wno") Long workNumber) {
-        workService.registerAdmin(workNumber);
-        return "작품 등록 신청 승인";
-    }
-
-    // 작품 등록 신청 반려
-    @ResponseBody
-    @PostMapping("/workReject/{wno}")
-    public String rejectWork(@PathVariable("wno") Long workNumber) {
-        workService.remove(workNumber);
-        return "작품 등록 신청 반려";
-    }
-
-    // 작품 신청 상세보기
-    @GetMapping("/registerApplyRead")
-    public String getApplyInfo(Long workNumber, Model model) {
-        model.addAttribute("work",workService.getDetail(workNumber));
-
-        return "/work/workInfo";
-    }
 
     // 모집 공고 작성
 
