@@ -104,7 +104,7 @@ html, body, div, span{
     height: 180px;
     width: 1200px;
     margin: 0 auto;
-    border-bottom: 2px solid #333;
+    border-bottom: 1px solid #ddd;
 }
 
 .rank_list>div{
@@ -417,6 +417,16 @@ a{
     position: relative;
 }
 
+
+#heartCount{
+    font-size: 12px;
+    color: #ff7d1e;
+    height: 12px;
+    line-height: 12px;
+    position: relative;
+
+}
+
 /* input태그 관련 */
 #salesRankDateWeek{
     margin-left: 1800px;
@@ -500,6 +510,7 @@ span::after{
     opacity: 0.5;
     position: absolute;
     bottom: 0px;
+    left: 20px;
 }
 
 .rank_list div div:nth-child(3)::after{

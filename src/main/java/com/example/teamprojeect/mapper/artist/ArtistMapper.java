@@ -5,6 +5,7 @@ import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.PropertyValues;
 
 import java.util.List;
 
@@ -54,4 +55,5 @@ artistType likeType (최신, 좋아요 순)
 
     // 아티스트 상세 정보
     public ArtistVO getDetail(Long artistNumber);
+
 }

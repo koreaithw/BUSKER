@@ -16,12 +16,11 @@ public class ArtistMapperTests {
     private ArtistMapper artistMapper;
 
     //최신순 정렬 테스트
-//    @Test
-//    public void getListTest(){
-//        artistMapper.getList(new ListDTO("A","1","2","new","3"))
-//
-//                .stream().map(ArtistVO::toString).forEach(log::info);
-//    }
+    @Test
+    public void getListTest(){
+        artistMapper.getList(new Criteria(1, 10), new ListDTO("A","1","2","like","3"))
+                .stream().map(ArtistVO::toString).forEach(log::info);
+    }
 
 //    @Test
 //    public void getListTest(){
@@ -50,7 +49,12 @@ public class ArtistMapperTests {
     public void rankingListTest(){
         Criteria criteria = new Criteria();
         ListDTO listDTO = new ListDTO();
-        listDTO.setRankingSortingDate("year");
+//        listDTO.setDetailDate("2022");
+//        listDTO.setRankingSortingDate("year");
+//        listDTO.setDetailDate("2022-05");
+//        listDTO.setRankingSortingDate("month");
+        listDTO.setDetailDate("06-01");
+        listDTO.setRankingSortingDate("week");
         artistMapper.rankingList(criteria, listDTO).stream().map(ArtistVO::toString).forEach(log::info);
     }
 
