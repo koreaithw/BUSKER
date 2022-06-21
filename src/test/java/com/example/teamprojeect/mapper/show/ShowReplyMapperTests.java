@@ -50,7 +50,7 @@ public class ShowReplyMapperTests {
     }
     @Test
     public void getListTest() {
-        showReplyMapper.getList(new Criteria(4, 10), 472L)
+        showReplyMapper.getList(new Criteria(1, 10), 1315L)
                 .stream().map(ShowReplyVO::toString).forEach(log::info);
     }
 }

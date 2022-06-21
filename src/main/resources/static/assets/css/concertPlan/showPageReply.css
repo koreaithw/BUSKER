@@ -31,11 +31,10 @@
 /* 댓글 창 */
 
 #reply-wrap {
-    border-bottom: 1px solid #333;
     width: 960px;
     margin: 0 auto;
     font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
-    
+    margin-bottom: 132px;
     font-family: 'Spoqa Han Sans', sans-serif;
 }
 
@@ -171,7 +170,7 @@
 
 .reply-button input {
     width: 71px;
-    
+    cursor: pointer;
     height: 36px;
     border: 0 none;
     border-radius: 18px;
@@ -181,16 +180,8 @@
     color: #fff;
 }
 
-.reply-button input {
-    width: 71px;
-
-    height: 36px;
-    border: 0 none;
-    border-radius: 18px;
-    font-size: 13px;
-    line-height: 38px;
-    background-color: #f39690;
-    color: #fff;
+.reply-button input:hover {
+    background-color: #fdaea5;
 }
 
 
@@ -228,4 +219,12 @@
 
 .all, .musician, .performance {
     cursor: pointer;
+}
+
+div.sm-tit1 #current {
+    border-bottom: 4px solid #fc8334;
+}
+
+div.sm-tit1 .showCategory:hover {
+    border-bottom: 4px solid #fd975f;
 }

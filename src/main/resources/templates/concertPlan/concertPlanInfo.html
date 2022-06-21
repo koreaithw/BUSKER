@@ -17,7 +17,7 @@
     <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/common.css'/>
     <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/show.css'/>
     <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/show_view.css'/>
-    <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/showPageReply.css'/> 
+    <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/showPageReply.css'/>
 
     <!-- Google Tag Manager -->
     <script>
@@ -44,11 +44,84 @@
         body {
             font-family: 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
         }
-         .customoverlay {position:relative;bottom:85px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left;}
-        .customoverlay:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}
-        .customoverlay a {display:block;text-decoration:none;color:#000;text-align:center;border-radius:6px;font-size:14px;font-weight:bold;overflow:hidden;background: #d95050;background: #ec7d2c url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
-        .customoverlay .title {display:block;text-align:center;background:#fff;margin-right:35px;padding:10px 15px;font-size:14px;font-weight:bold;}
-        .customoverlay:after {content:'';position:absolute;margin-left:-12px;left:50%;bottom:-12px;width:22px;height:12px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+
+        .customoverlay {
+            position: relative;
+            bottom: 85px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            border-bottom: 2px solid #ddd;
+            float: left;
+        }
+
+        .customoverlay:nth-of-type(n) {
+            border: 0;
+            box-shadow: 0px 1px 2px #888;
+        }
+
+        .customoverlay a {
+            display: block;
+            text-decoration: none;
+            color: #000;
+            text-align: center;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            overflow: hidden;
+            background: #d95050;
+            background: #ec7d2c url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;
+        }
+
+        .customoverlay .title {
+            display: block;
+            text-align: center;
+            background: #fff;
+            margin-right: 35px;
+            padding: 10px 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .customoverlay:after {
+            content: '';
+            position: absolute;
+            margin-left: -12px;
+            left: 50%;
+            bottom: -12px;
+            width: 22px;
+            height: 12px;
+            background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+        }
+
+
+
+        .reply-paging a.page-button {
+            border-radius: 30px;
+            background-color: #f39690;
+            color: #fff;
+            min-width: 10px;
+            height: 30px;
+            margin: 0 4px;
+            padding: 5px 10px;
+            line-height: 30px;
+        }
+
+        .reply-paging a {
+            font-size: 14px;
+        }
+
+        .reply-paging a.page-button-prev {
+            color: #a7a7a7;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .reply-paging a.page-button-next {
+            color: #a7a7a7;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
     </style>
 
 </head>
@@ -72,7 +145,8 @@
         <div class="renew-content">
             <div class="rn-01">
                 <p class="rn-location">
-                <p><a id="goList" href="/concert/concertPlanList">버스킹 ></a><a href='#' th:text="| *{showCategory}|"></a></p>
+                <p><a id="goList" href="/concert/concertPlanList">버스킹 ></a><a href='#' th:text="| *{showCategory}|"></a>
+                </p>
             </div>
             <div class="rn-02">
                 <p class="rn-big-title" th:text="*{showName}"></p>
@@ -233,95 +307,27 @@
 
         <!-- 댓글창 시작 -->
         <div id="reply-wrap">
-            <strong id="reply-count">1 Comments</strong>
-            <div class="reply-content-wrap">
-                <div class="reply-content-flex">
-                    <div class="user-profile">
-                        <img class="user-image" src="https://i1.daumcdn.net/thumb/C96x96/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F5172542%2Fattach%2F5b16521bdfb848a69f47ddb5b5d064ac" alt="" width="48" height="48">
-                    </div>
-                    <div class="reply-text-box">
-                    <div class="reply-content-box">
-                        <div class="reply-name">
-                            <span class="reply-user"><a id="user-name" href="">왕고냐</a></span>
-                            <span class="reply-date">2022.06.20 19:34</span>
-                        </div>
-                        <div class="reply-status">
-                        <span class="reply-modify">수정</span>
-                        <span class="reply-delete">삭제</span>
-                    </div>
-                    </div>
-                    <div class="reply-content">하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗
-                        하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗
-                    </div>
-                </div>
-                </div>
+            <div class="concert-reply-div">
+
             </div>
 
-
-            <div class="reply-content-wrap">
-                <div class="reply-content-flex">
-                    <div class="user-profile">
-                        <img class="user-image" src="https://i1.daumcdn.net/thumb/C96x96/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F5172542%2Fattach%2F5b16521bdfb848a69f47ddb5b5d064ac" alt="" width="48" height="48">
-                    </div>
-                    <div class="reply-text-box">
-                    <div class="reply-content-box">
-                        <div class="reply-name">
-                            <span class="reply-user"><a id="user-name" href="">왕고냐</a></span>
-                            <span class="reply-date">2022.06.20 19:34</span>
-                        </div>
-                        <div class="reply-status">
-                        <span class="reply-modify">수정</span>
-                        <span class="reply-delete">삭제</span>
-                    </div>
-                    </div>
-                    <div class="reply-content">하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗
-                        하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗
-                    </div>
-                </div>
-                </div>
-            </div>
-
-
-
-            <div class="reply-content-wrap">
-                <div class="reply-content-flex">
-                    <div class="user-profile">
-                        <img class="user-image" src="https://i1.daumcdn.net/thumb/C96x96/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F5172542%2Fattach%2F5b16521bdfb848a69f47ddb5b5d064ac" alt="" width="48" height="48">
-                    </div>
-                    <div class="reply-text-box">
-                    <div class="reply-content-box">
-                        <div class="reply-name">
-                            <span class="reply-user"><a id="user-name" href="">왕고냐</a></span>
-                            <span class="reply-date">2022.06.20 19:34</span>
-                        </div>
-                        <div class="reply-status">
-                        <span class="reply-modify">수정</span>
-                        <span class="reply-delete">삭제</span>
-                    </div>
-                    </div>
-                    <div class="reply-content">하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗
-                        하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗
-                    </div>
-                </div>
-                </div>
-            </div>
-
-
-
-
+            <!--입력-->
             <div class="reply-form">
-            <div class="reply-input">
-                <textarea name="replyShow" id="replyShow" placeholder="여러분의 소중한 댓글을 입력해주세요."></textarea>
+                <div class="reply-input">
+                    <textarea name="replyShow" id="replyShow" placeholder="여러분의 소중한 댓글을 입력해주세요."></textarea>
+                </div>
+                <div class="reply-button">
+                    <input class="finish" type="submit" value="등록">
+                </div>
             </div>
-            <div class="reply-button">
-                <input type="submit" value="등록">
-            </div>
-        </div>
+
+            <!--페이징-->
             <div class="reply-paging">
-                <a id="page-button-prev" href="">< Prev</a>
-                <a id="page-button" href="">1</a>
-                <a id="page-button-next" href="">Next ></a>
-                 </div>
+                <!--                <a id="page-button-prev" href="">< Prev</a>-->
+                <!--                <a id="page-button" href="">1</a>-->
+                <!--                <a id="page-button-next" href="">Next ></a>-->
+            </div>
+
         </div>
         <!-- 댓글창 끝 -->
     </div>
@@ -338,6 +344,7 @@
 <script src="/assets/js/concert/util.js"></script>
 <script src="/assets/js/concert/main.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script th:inline="javascript" src="/assets/js/concert/concertInfo.js"></script>
 <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=82047bdd8e65a83db82f7ecba662d0c3&libraries=services"></script>
 <script th:inline="javascript">
@@ -395,7 +402,7 @@
             var content = '<div class="customoverlay" >' +
                 '  <a href="https://map.kakao.com/link/map/11394059" target="_blank">' +
                 '    <span class="title">' +
-                '<img style="border-radius: 50% !important;" src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"></span>' +
+                '<img style="border-radius: 50% !important;" src="https://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040004/21/05/0400042105_47574_02.407.gif" width="50" height="50&quot;"></span>' +
                 '  </a>' +
                 '</div>';
 
@@ -413,26 +420,267 @@
         }
     });
 
-    let paging = [[${criteria.listLink}]];
-    let showNumber = [[${concert.showNumber}]];
 
+    //
+    // let paging = [[${criteria.listLink}]];
+    // let showNumber = [[${concert.showNumber}]];
+
+    // 수정 버튼
     $("a.modify").click(function (e) {
         e.preventDefault();
         location.href = "/concert/concertPlanModify" + paging + "&showNumber=" + $(this).attr('href');
     });
 
+    // 삭제 버튼
     $("a.delete").click(function (e) {
         e.preventDefault();
-        if(confirm("글을 삭제하시겠습니까?")) {
+        if (confirm("글을 삭제하시겠습니까?")) {
             location.href = "/concert/concertPlanDelete" + paging + "&showNumber=" + $(this).attr('href');
         }
-
     });
 
-    $("a#goList").click(function(e){
+    // 공연예정 목록
+    $("a#goList").click(function (e) {
         e.preventDefault();
-            location.href = "/concert/concertPlanList" + paging;
+        location.href = "/concert/concertPlanList" + paging;
     });
+
+
+    // ajax 선언
+    let showReplyService = (function () {
+        function getListReply(showNumber, pageNum, callback, error) {
+            $.ajax({
+                url: "/reply/concert/replyList/" + showNumber + "/" + pageNum,
+                type: "get",
+                dataType: "json",
+                contentType: "application/json",
+
+                success: function (ShowReplyPageDTO) {
+                    if (callback) {
+                        callback(ShowReplyPageDTO.total, ShowReplyPageDTO.list);
+                    }
+                },
+                error: function (xhr, status, er) {
+                    if (error) {
+                        error(xhr, status, er);
+                    }
+                }
+            })
+        }
+
+        function createReply(showReplyVO, callback, error) {
+            $.ajax({
+                url: "/reply/concert/replyNew",
+                type: "post",
+                data: JSON.stringify(showReplyVO),
+                contentType: "application/json",
+                success: function (result) {
+                    if (callback) {
+                        callback(result);
+                    }
+                },
+                error: function (xhr, status, er) {
+                    if (error) {
+                        error(xhr, status, er);
+                    }
+                }
+            })
+        }
+
+        function modifyReply(replyNumber, showReplyVO, callback, error) {
+            $.ajax({
+                url: "/reply/concert/" + replyNumber,
+                type: "post",
+                data: JSON.stringify(showReplyVO),
+                contentType: "application/json",
+                success: function (result) {
+                    if (callback) {
+                        callback(result);
+                    }
+                },
+                error: function (xhr, status, er) {
+                    if (error) {
+                        error(xhr, status, er);
+                    }
+                }
+
+            })
+        }
+
+        function removeReply(replyNumber, callback, error) {
+            $.ajax({
+                url: "/reply/concert/" + replyNumber,
+                type: "delete",
+                success: function (result) {
+                    if (callback) {
+                        callback(result);
+                    }
+                },
+                error: function (xhr, status, er) {
+                    if (error) {
+                        error(xhr, status, er);
+                    }
+                }
+
+            })
+        }
+
+        return {
+            getListReply: getListReply,
+            createReply: createReply,
+            modifyReply: modifyReply,
+            removeReply: removeReply
+        }
+    })();
+
+    // 댓글 연결
+    // 기본 전역변수
+    let pageNum = 1;
+    let replyDiv = $(".concert-reply-div");
+    let showNumber = [[${concert.showNumber}]];
+
+
+    $(document).ready(function () {
+        // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
+        replyList(pageNum);
+    })
+
+    function replyList(page) {
+        showReplyService.getListReply(showNumber, page, function (total, list) {
+            let str = "";
+            if (list == null || list.length == 0) {
+                replyDiv.html("");
+                return;
+            }
+            str += "<strong id='reply-count'>" + total + ' Comments' + "</strong>";
+            replyDiv.html(str);
+            $.each(list, function (i, reply) {
+                str += "<div class='reply-content-wrap'><div class='reply-content-flex'><div class='user-profile'>";
+                str += "<img class='user-image' src='https://i1.daumcdn.net/thumb/C96x96/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F5172542%2Fattach%2F5b16521bdfb848a69f47ddb5b5d064ac' alt='' width='48' height='48'></div>";
+                str += '<div class="reply-text-box"><div class="reply-content-box"><div class="reply-name"><span class="reply-user">';
+                str += '<a id="user-name" href="">' + reply.userName + '</a></span>';
+                str += '<span class="reply-date">' + reply.replyUpdateDate + '</span></div>';
+                str += '<div class="reply-status">';
+                str += '<span class="reply-modify modify' + reply.replyNumber + '" style="cursor:pointer;">수정</span>';
+                str += '<span class="reply-modify reply-finish" style="display: none;cursor:pointer;">수정완료</span>';
+                str += '<span class="reply-delete">삭제</span></div></div>';
+                str += '<div class="reply-content content' + reply.replyNumber + '">' + reply.replyContent + '</div></div></div></div>';
+            });
+            ;
+
+            replyDiv.html(str);
+            showReplyPage(total);
+        });
+    }
+
+    //댓글 삭제
+    $(".concert-reply-div").on("click", ".reply-delete", function (e) {
+        e.preventDefault();
+        console.log("삭제는두개두개");
+        console.log(this);
+        console.log(this.classList);
+        if (updateCheck) {
+            alert("이미 수정중인 댓글이 있습니다.");
+            return;
+        }
+        showReplyService.removeReply(this.classList[1], function (result) {
+            alert(result);
+            replyList(pageNum);
+        });
+    });
+
+    let updateCheck = false;
+
+    //댓글 수정
+    $(".concert-reply-div").on("click", ".reply-modify", function (e) {
+        e.preventDefault();
+        if (updateCheck) {
+            alert("이미 수정중인 댓글이 있습니다.");
+            return;
+        }
+        console.log("수정");
+        console.log(this);
+        let replyNumber = this.classList[1];
+        let str = "";
+
+        $(".reply-finish").show();
+        $(this).hide();
+
+        str += '<div class="reply-input">';
+        str += '<textarea class="' + replyNumber + '" name="replyShow" style="width: 100%;height: 70px;border: 1px solid #fff;font-size: 13px;resize: none;box-sizing: border-box;resize: none;margin-top: 10px;">'
+        str += $("div.content" + replyNumber).text();
+        str += '</textarea></div>';
+
+        $("div.content" + replyNumber).replaceWith(str);
+        updateCheck = true;
+    });
+
+    //수정 완료
+    $(".concert-reply-div").on("click", ".reply-finish", function (e) {
+        e.preventDefault();
+        console.log("수정dfdf");
+        console.log(this);
+        let replyNumber = this.classList[1];
+        showReplyService.modifyReply({
+            replyNumber: replyNumber,
+            replyContent: $("textarea." + replyNumber).val()
+        }, function (result) {
+            alert(result);
+            replyList(pageNum);
+            updateCheck = false;
+        })
+    });
+
+    function showReplyPage(total) {
+        let endPage = Math.ceil(pageNum / 10.0) * 10;
+        let startPage = endPage - 9;
+        let realEnd = Math.ceil(total / 10.0);
+        const $paging = $(".reply-paging");
+
+        if (endPage > realEnd) {
+            endPage = realEnd;
+        }
+
+        let prev = startPage > 1;
+        let next = endPage * 10 < total;
+        let str = "";
+
+        if (prev) {        }
+
+        str += '<a class="page-button-prev changePage-reply" href=""><code>&lt;</code>< Prev</a>'
+        for (let i = startPage; i <= endPage; i++) {
+            str += pageNum == i ? "<a class='page-button changePage-reply'><code>" + i + "</code></a>" : '<a class="page-button changePage-reply" href="' + i + '"><code>' + i + '</code></a>';
+        }
+        if (next) {        }
+
+        str += '<a class="page-button-next changePage-reply" href="' + (endPage + 1) + '"><code>&gt;</code>Next ></a>'
+        $paging.html(str);
+    }
+
+
+    $(".reply-paging").on("click", "a.changePage-reply", function (e) {
+        e.preventDefault();
+        pageNum = $(this).attr("href");
+        replyList(pageNum);
+    });
+
+
+    $(".finish").click(function (e) {
+        e.preventDefault();
+        const $replyContent = $("textarea[name='replyShow']").val();
+
+        if (!$replyContent) {
+            alert("내용을 입력해주세요.");
+            return;
+        }
+
+        showReplyService.createReply({userNumber: 21, showNumber: showNumber, replyContent: $replyContent},
+            function (result) {
+                $("textarea[name='replyShow']").val("");
+                replyList(1);
+            });
+    })
+
 </script>
 </body>
 </html>
