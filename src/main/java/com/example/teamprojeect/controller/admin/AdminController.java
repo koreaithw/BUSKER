@@ -41,7 +41,7 @@ public class AdminController {
     }
 
     // 작품 신청자 목록
-    @PostMapping("/workApplyList/{page}")
+    @GetMapping("/workApplyList/{page}")
     @ResponseBody
     public WorkApplyPageDTO getWorkApplyList(@PathVariable("page") int pageNum) {
         int total = workService.getTotalApply();
@@ -49,7 +49,7 @@ public class AdminController {
     }
 
     // 작품 등록 신청 승인
-    @PostMapping("/workApprove/{wno}")
+    @GetMapping("/workApprove/{wno}")
     @ResponseBody
     public String approveWork(@PathVariable("wno") Long workNumber) {
         workService.registerAdmin(workNumber);
@@ -57,7 +57,7 @@ public class AdminController {
     }
 
     // 작품 등록 신청 반려
-    @PostMapping("/workReject/{wno}")
+    @GetMapping("/workReject/{wno}")
     @ResponseBody
     public String rejectWork(@PathVariable("wno") Long workNumber) {
         workService.remove(workNumber);

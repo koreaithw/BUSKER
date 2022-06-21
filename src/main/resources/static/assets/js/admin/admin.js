@@ -7,7 +7,7 @@ let adminService = (function () {
     function getWorkApplyList(page, callback, error) {
         $.ajax({
             url: "/admin/workApplyList/" + page,
-            type: "post",
+            type: "get",
             dataType: "json",
             contentType: "application/json",
             success: function (result) {
@@ -27,7 +27,7 @@ let adminService = (function () {
         console.log("approve work..");
         $.ajax({
             url: "/admin/workApprove/" + wno,
-            type: "post",
+            type: "get",
             success: function (result) {
                 if(callback){
                     callback(result);
@@ -45,7 +45,7 @@ let adminService = (function () {
         console.log("reject work....");
         $.ajax({
             url: "/admin/workReject/" + wno,
-            type: "post",
+            type: "get",
             success: function (result) {
                 if(callback){
                     callback(result);
