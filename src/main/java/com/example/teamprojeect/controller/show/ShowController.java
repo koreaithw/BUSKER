@@ -227,7 +227,7 @@ public class ShowController {
         log.info("================================");
         log.info(criteria.toString());
         log.info("================================");
-        showVO.setArtistNumber(54L);
+        showVO.setArtistNumber(1L);
         if(showService.modify(showVO)) {
             rttr.addAttribute("showNumber", showVO.getShowNumber());
             rttr.addAttribute("pageNum", criteria.getPageNum());

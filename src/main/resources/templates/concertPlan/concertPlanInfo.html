@@ -307,6 +307,8 @@
 
         <!-- 댓글창 시작 -->
         <div id="reply-wrap">
+
+            <strong id='reply-count'></strong>
             <div class="concert-reply-div">
 
             </div>
@@ -549,11 +551,16 @@
         showReplyService.getListReply(showNumber, page, function (total, list) {
             let str = "";
             if (list == null || list.length == 0) {
+                $("#reply-count").text("");
+                $("#reply-count").text(total + ' Comments');
+
                 replyDiv.html("");
                 return;
             }
-            str += "<strong id='reply-count'>" + total + ' Comments' + "</strong>";
-            replyDiv.html(str);
+            // str += "<strong id='reply-count'>" + total + ' Comments' + "</strong>";
+            $("#reply-count").text("");
+            $("#reply-count").text(total + ' Comments');
+
             $.each(list, function (i, reply) {
                 str += "<div class='reply-content-wrap'><div class='reply-content-flex'><div class='user-profile'>";
                 str += "<img class='user-image' src='https://i1.daumcdn.net/thumb/C96x96/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F5172542%2Fattach%2F5b16521bdfb848a69f47ddb5b5d064ac' alt='' width='48' height='48'></div>";
@@ -674,7 +681,7 @@
             return;
         }
 
-        showReplyService.createReply({userNumber: 21, showNumber: showNumber, replyContent: $replyContent},
+        showReplyService.createReply({userNumber: 1, showNumber: showNumber, replyContent: $replyContent},
             function (result) {
                 $("textarea[name='replyShow']").val("");
                 replyList(1);
