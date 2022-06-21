@@ -2,6 +2,7 @@ package com.example.teamprojeect.service;
 
 import com.example.teamprojeect.domain.dao.work.WorkDAO;
 import com.example.teamprojeect.domain.dao.work.WorkFileDAO;
+import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.work.WorkVO;
 import lombok.RequiredArgsConstructor;
@@ -49,6 +50,12 @@ public class WorkService {
     public List<WorkVO> getList(Criteria criteria) {
         return workDAO.getList(criteria);
     }
+
+    // 작품 태그 검색  (태그를 선택할때마다 리스트에 추가하고, 쿼리문에서 리스트 하나씩뽑아서 if문 돌리기)
+    public List<WorkVO> getKeyword(Criteria criteria, ListDTO listDTO) {return workDAO.getKeyword(criteria,listDTO);}
+
+    // 작품 태그
+    public List<String> getTag() { return workDAO.getTag();}
 
     // 작품 신청 개수
     public int getTotalApply() {
