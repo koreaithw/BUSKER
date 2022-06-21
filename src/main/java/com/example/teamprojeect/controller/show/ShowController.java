@@ -63,7 +63,7 @@ public class ShowController {
 //                e.printStackTrace();
 //            }
 //        });
-//
+
 //
 //        model.addAttribute("showList", showList);
 //        model.addAttribute("showPageDTO", new ShowPageDTO(criteria, showService.getTotal(listDTO)));
@@ -75,7 +75,7 @@ public class ShowController {
     public ShowPageDTO goConcertPlanType(@PathVariable("type") String showType, @PathVariable("page") int pageNum){
         ListDTO listDTO = new ListDTO();
         listDTO.setArtistType(showType);
-        List<ShowVO> showList = showService.getList(new Criteria(pageNum, 15), listDTO);
+        List<ShowVO> showList = showService.getList(new Criteria(pageNum, 10), listDTO);
 
         SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -227,7 +227,7 @@ public class ShowController {
         log.info("================================");
         log.info(criteria.toString());
         log.info("================================");
-        showVO.setArtistNumber(54L);
+        showVO.setArtistNumber(1L);
         if(showService.modify(showVO)) {
             rttr.addAttribute("showNumber", showVO.getShowNumber());
             rttr.addAttribute("pageNum", criteria.getPageNum());

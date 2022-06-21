@@ -16,18 +16,18 @@ public class ArtistMapperTests {
     private ArtistMapper artistMapper;
 
     //최신순 정렬 테스트
-    @Test
-    public void getListTest(){
-        artistMapper.getList(new Criteria(1, 10), new ListDTO("A","1","2","like","3"))
-                .stream().map(ArtistVO::toString).forEach(log::info);
-    }
-
-    @Test
-    public void getListTest(){
-        artistMapper.getList(new Criteria(1,5), new ListDTO("A","1","2","LIKE","3"))
-
-                .stream().map(ArtistVO::toString).forEach(log::info);
-    }
+//    @Test
+//    public void getListTest(){
+//        artistMapper.getList(new Criteria(1, 10), new ListDTO("A","1","2","like","3"))
+//                .stream().map(ArtistVO::toString).forEach(log::info);
+//    }
+//
+//    @Test
+//    public void getListTest(){
+//        artistMapper.getList(new Criteria(1,5), new ListDTO("A","1","2","LIKE","3"))
+//
+//                .stream().map(ArtistVO::toString).forEach(log::info);
+//    }
 
 //
 //    @Test
