@@ -257,7 +257,7 @@ public class ShowController {
     // 진행중인 콘서트 페이지
     @GetMapping("/concertLive")
     public String goConcertLive() {
-        return "concert/concertLive";
+        return "concertPlan/concertLive";
     }
 
     @GetMapping("/concertPlanDelete")
