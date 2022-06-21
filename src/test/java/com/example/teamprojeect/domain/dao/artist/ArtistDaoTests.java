@@ -17,7 +17,7 @@ public class ArtistDaoTests {
 
     @Test
     public void getListTest(){
-        artistDAO.getList(new Criteria(1,20), listDTO)
+        artistDAO.getList(new Criteria(1,5), new ListDTO("A","B","C","LIKE","1"))
                 .stream().map(ArtistVO::toString).forEach(log::info);
     }
 }
