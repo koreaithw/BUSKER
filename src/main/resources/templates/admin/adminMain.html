@@ -41,7 +41,10 @@
                     <ul>
                         <li class="audit"><a href="" class="btn-artist">아티스트심사</a>&nbsp;<p>10</p>
                         </li>
-                        <li class="audit"><a href="" class="btn-notice">모집공고관리</a>&nbsp;<p>0</p>
+                        <li class="audit"><a href="" class="btn-notice">모집공고관리</a>&nbsp;
+                            <th:block th:object="${recruitPageDTO}">
+                                <p th:text="*{total}"></p>
+                            </th:block>
                         </li>
                         <li class="audit"><a href="" class="btn-work">작품심사</a>&nbsp;
                             <th:block th:object="${workPageDTO}">
@@ -149,41 +152,14 @@
                             <th>설명</th>
                             <th>실행일자</th>
                         </tr>
-                        <tr>
-                            <td>아마추어 힙합댄스...</td>
-                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
-                            <td>2022-06-10</td>
-                        </tr>
-                        <tr>
-                            <td>아마추어 힙합댄스...</td>
-                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
-                            <td>2022-06-10</td>
-                        </tr>
-                        <tr>
-                            <td>아마추어 힙합댄스...</td>
-                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
-                            <td>2022-06-10</td>
-                        </tr>
-                        <tr>
-                            <td>아마추어 힙합댄스...</td>
-                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
-                            <td>2022-06-10</td>
-                        </tr>
-                        <tr>
-                            <td>아마추어 힙합댄스...</td>
-                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
-                            <td>2022-06-10</td>
-                        </tr>
-                        <tr>
-                            <td>아마추어 힙합댄스...</td>
-                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
-                            <td>2022-06-10</td>
-                        </tr>
-                        <tr>
-                            <td>아마추어 힙합댄스...</td>
-                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
-                            <td>2022-06-10</td>
-                        </tr>
+                        <th:block th:each="recruits:${recruitListSmall}">
+                            <tr th:object="${recruits}">
+                                <td th:text="*{recruitmentName}"></td>
+                                <td><a th:href="@{/recruit/recruitInfo(recruitmentNumber=*{recruitmentNumber})}">내용 보기</a></td>
+                                <td th:text="*{recruitmentDay}"></td>
+                            </tr>
+                        </th:block>
+
                     </table>
                 </div>
                 <div class="artist-list">
@@ -410,95 +386,24 @@
                         <h4>모집 공고 작성 및 관리</h4>
                         <a href="/RegisterRecruiting/RegisterRecruiting.html" class="btn-notice-write">작성</a>
                     </div>
-                    <tr>
+                    <thead>
                         <th>일자</th>
                         <th>제목</th>
                         <th>설명</th>
                         <th>외부 링크</th>
                         <th>실행 일자</th>
                         <th>수정</th>
-                    </tr>
-                    <tr>
-                        <td>2022-06-10</td>
-                        <td>아마추어 힙합댄스 경연 페스티벌</td>
-                        <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
-                        <td><a href="">링크</a></td>
-                        <td>2023-07-11</td>
-                        <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
-                    </tr>
-                    <tr>
-                        <td>2022-06-10</td>
-                        <td>아마추어 힙합댄스 경연 페스티벌</td>
-                        <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
-                        <td><a href="">링크</a></td>
-                        <td>2023-07-11</td>
-                        <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
-                    </tr>
-                    <tr>
-                        <td>2022-06-10</td>
-                        <td>아마추어 힙합댄스 경연 페스티벌</td>
-                        <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
-                        <td><a href="">링크</a></td>
-                        <td>2023-07-11</td>
-                        <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
-                    </tr>
-                    <tr>
-                        <td>2022-06-10</td>
-                        <td>아마추어 힙합댄스 경연 페스티벌</td>
-                        <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
-                        <td><a href="">링크</a></td>
-                        <td>2023-07-11</td>
-                        <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
-                    </tr>
-                    <tr>
-                        <td>2022-06-10</td>
-                        <td>아마추어 힙합댄스 경연 페스티벌</td>
-                        <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
-                        <td><a href="">링크</a></td>
-                        <td>2023-07-11</td>
-                        <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
-                    </tr>
-                    <tr>
-                        <td>2022-06-10</td>
-                        <td>아마추어 힙합댄스 경연 페스티벌</td>
-                        <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
-                        <td><a href="">링크</a></td>
-                        <td>2023-07-11</td>
-                        <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
-                    </tr>
-                    <tr>
-                        <td>2022-06-10</td>
-                        <td>아마추어 힙합댄스 경연 페스티벌</td>
-                        <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
-                        <td><a href="">링크</a></td>
-                        <td>2023-07-11</td>
-                        <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
-                    </tr>
-                    <tr>
-                        <td>2022-06-10</td>
-                        <td>아마추어 힙합댄스 경연 페스티벌</td>
-                        <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
-                        <td><a href="">링크</a></td>
-                        <td>2023-07-11</td>
-                        <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
-                    </tr>
-                    <tr>
-                        <td>2022-06-10</td>
-                        <td>아마추어 힙합댄스 경연 페스티벌</td>
-                        <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
-                        <td><a href="">링크</a></td>
-                        <td>2023-07-11</td>
-                        <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
-                    </tr>
-                    <tr>
-                        <td>2022-06-10</td>
-                        <td>아마추어 힙합댄스 경연 페스티벌</td>
-                        <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
-                        <td><a href="">링크</a></td>
-                        <td>2023-07-11</td>
-                        <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
-                    </tr>
-
+                    </thead>
+                    <tbody class="recruitments">
+                        <tr>
+                            <td>2022-06-10</td>
+                            <td>아마추어 힙합댄스 경연 페스티벌</td>
+                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
+                            <td><a href="">링크</a></td>
+                            <td>2023-07-11</td>
+                            <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -764,6 +669,7 @@
 <script th:inline="javascript">
     let pageNum = 1;
     let $workTr = $(".works");
+    let $recruitTr = $(".recruitments");
     const $paging = $(".mypage-pageStyle");
 
     showWorkApplyList(pageNum);
@@ -842,6 +748,8 @@
 
         $paging.append(str);
     }
+
+
 
 </script>
 

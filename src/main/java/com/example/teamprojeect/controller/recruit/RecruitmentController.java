@@ -4,6 +4,7 @@ package com.example.teamprojeect.controller.recruit;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.paging.recruitment.RecruitmentPageDTO;
+import com.example.teamprojeect.domain.vo.paging.work.WorkApplyPageDTO;
 import com.example.teamprojeect.domain.vo.recruitment.RecruitmentFileVO;
 import com.example.teamprojeect.domain.vo.recruitment.RecruitmentVO;
 import com.example.teamprojeect.service.RecruitService;
@@ -11,9 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -37,6 +36,11 @@ public class RecruitmentController {
         model.addAttribute("pageDTO", new RecruitmentPageDTO(criteria, recruitService.getTotal(new ListDTO())));
         return "/recruit/recruitList";
     }
+
+    // 관리자 페이지에 모집 공고 리스트 가져오기 (만들 예정) by REST
+//    @ResponseBody
+//    @GetMapping("/recruitmentList")
+
 
     // 모집공고 상세페이지 이동
     @GetMapping("/recruitInfo")

@@ -23,6 +23,10 @@ let adminService = (function () {
         })
     }
 
+    function getRecruitmentList(page, callback, error) {
+
+    }
+
     function approve(wno, callback, error) {
         console.log("approve work..");
         $.ajax({
@@ -65,3 +69,4 @@ let adminService = (function () {
         reject: reject,
     }
 })();
+
