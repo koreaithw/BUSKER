@@ -43,71 +43,34 @@
                             </li>
                             <li class="audit"><a href="" class="btn-notice">모집공고관리</a>&nbsp;<p>0</p>
                             </li>
-                            <li class="audit"><a href="" class="btn-work">작품심사</a>&nbsp;<p>1</p>
+                            <li class="audit"><a href="" class="btn-work">작품심사</a>&nbsp;
+                                <th:block th:object="${workPageDTO}">
+                                <p th:text="*{total}"></p>
+                                </th:block>
                             </li>
                             <li class="audit"><a href="" class="btn-user">회원관리</a>&nbsp;<p>0</p>
                             </li>
-                            <!-- <li><a href="" class="btn-inquiry">문의관리<p></p></a>
-                            </li> -->
+<!--                             <li><a href="" class="btn-inquiry">작품 수정 신청<p></p></a>-->
+<!--                            </li> -->
                         </ul>
                     </div>
                     <div class="artist-list" style="height: 397px;">
                         <table>
-                            <h4>일자별 요약</h4>
+                            <h4>최신 작품 신청</h4>
                             <tr>
                                 <th>일자</th>
-                                <th>이름</th>
-                                <th>설명</th>
-                                <th>카테고리</th>
+                                <th>작품명</th>
+                                <th>신청자 이름</th>
+                                <th>상세 보기</th>
                             </tr>
-                            <tr>
-                                <td>2022-06-10</td>
-                                <td>누룽지</td>
-                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                                <td>아티스트 신청</td>
-                            </tr>
-                            <tr>
-                                <td>2022-06-10</td>
-                                <td>안갈래</td>
-                                <td><a href="/work/workInfo.html">내용 보기</a></td>
-                                <td>작품 신청</td>
-                            </tr>
-                            <tr>
-                                <td>2022-06-10</td>
-                                <td>랄랄랜드</td>
-                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                                <td>아티스트 신청</td>
-                            </tr>
-                            <tr>
-                                <td>2022-06-10</td>
-                                <td>최진홍</td>
-                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                                <td>아티스트 신청</td>
-                            </tr>
-                            <tr>
-                                <td>2022-06-10</td>
-                                <td>임히어로</td>
-                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                                <td>아티스트 신청</td>
-                            </tr>
-                            <tr>
-                                <td>2022-06-10</td>
-                                <td>김가방</td>
-                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                                <td>아티스트 신청</td>
-                            </tr>
-                            <tr>
-                                <td>2022-06-10</td>
-                                <td>강와퍼</td>
-                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                                <td>아티스트 신청</td>
-                            </tr>
-                            <tr>
-                                <td>2022-06-10</td>
-                                <td>아리안</td>
-                                <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                                <td>아티스트 신청</td>
-                            </tr>
+                            <th:block th:each="works:${workListSmall}">
+                                <tr th:object="${works}">
+                                    <td th:text="*{workRegisterDate}"></td>
+                                    <td th:text="*{workName}"></td>
+                                    <td th:text="*{artistName}"></td>
+                                    <td><a th:href="@{/registerApplyRead(workNumber=*{workNumber})}">내용 보기</a></td>
+                                </tr>
+                            </th:block>
                         </table>
                     </div>
                     <div class="artist-list">
@@ -541,7 +504,7 @@
             </div>
             <div class="work-list-field" style="display: none;">
                 <div class="page-change">
-                    <table>
+                    <table class="works">
                         <h4>작품 심사 및 관리</h4>
                         <tr>
                             <th>일자</th>
@@ -551,35 +514,12 @@
                             <th>작품 링크</th>
                             <th>심사</th>
                         </tr>
-                        <th:block th:each="works:${workList}">
-                            <tr th:object="${works}">
-                                <td th:text="*{workRegisterDate}"></td>
-                                <td th:text="*{workName}"></td>
-                                <td th:text="*{artistName}"></td>
-                                <td><a th:href="@{/registerApplyRead(workNumber=*{workNumber})}">내용 보기</a></td>
-                                <td><a th:href="*{workPurchaseUrl}">구매링크</a></td>
-                                <td><a class="approve" th:text="수락" href=""></a> | <a class="reject" th:text="거부" href=""></a></td>
-                            </tr>
-                        </th:block>
                     </table>
                 </div>
                 <div class="mypage-paging">
-                    <div class="mypage-pageStyle" th:object="${workPageDTO}">
-                        <a class="mypage-page-first changePage" th:href="*{1}">&lt;&lt;</a>
-                        <a class="mypage-page-prev changePage" href="*{startPage - 1}" th:if="*{prev}">&lt;</a>
-                        <div>
-                            <th:block th:each="num:${#numbers.sequence(workPageDTO.startPage, workPageDTO.endPage)}">
-                                <p th:if="${num == workPageDTO.criteria.pageNum}" th:text="${num}"></p>
-                                <a class="changePage" th:href="${num}" th:unless="${num == workPageDTO.criteria.pageNum}" th:text="${num}"></a>
-                            </th:block>
-                        </div>
-                        <a class="mypage-page-next changePage" th:href="*{endPage + 1}" th:if="*{next}">&gt;</a>
-                        <a class="mypage-page-last changePage" th:href="*{realEnd}">&gt;&gt;</a>
+                    <div class="mypage-pageStyle">
+
                     </div>
-                    <form action="/admin/adminMain" name="pageForm" th:object="${criteria}">
-                        <input type="hidden" th:field="*{pageNum}">
-                        <input type="hidden" th:field="*{amount}">
-                    </form>
                 </div>
             </div>
             <div class="user-list-field" style="display: none;">
@@ -817,27 +757,56 @@
         $(".manager-set").show();
     });
 </script>
-
 <script src="/assets/js/admin/admin.js"></script>
 <script th:inline="javascript">
     let pageNum = 1;
-    $("a.changePage").on("click", function (e) {
-        e.preventDefault();
-        $(pageForm).find("input[name='pageNum']").val($(this).attr("href"));
-        $(pageForm).submit();
-    })
+    let $workTr = $(".works");
+
+    showWorkApplyList(pageNum);
+
+    function showWorkApplyList(page) {
+        adminService.getWorkApplyList(page, function (list) {
+            let str = "";
+            console.log(list.list);
+            if(list == null || list.length == 0) {
+                $workTr.html("");
+                return;
+            }
+
+            $.each(list.list, function (i, works) {
+                console.log("들어옴" + i);
+                str += "<tr>";
+                str += "<td>" + works.workRegisterDate + "</td>";
+                str += "<td>" + works.workName + "</td>";
+                str += "<td>" + works.artistName + "</td>";
+                str += "<td><a href='" + works.workPurchaseUrl + "'>상세 보기</a></td>";
+                str += "<td><a href='" + works.workPurchaseUrl + "'>구매 링크</a></td>";
+                str += "<td><a class='approve' href='" + works.workNumber + "'>승인</a> | <a class='reject' href='" + works.workNumber + "'>반려</a></td>";
+                str += "</tr>";
+            });
+            $workTr.html(str);
+            showWorkPage(list.total);
+        });
+    }
+
 
     $(".approve").on("click", function (e) {
         e.preventDefault();
-        adminService.approve(35, function (result) {
+        let wno = $(this).attr("href");
+        console.log(wno);
+        adminService.approve(wno, function (result) {
             alert(result);
+            showWorkApplyList(pageNum);
         })
     })
 
     $(".reject").on("click", function (e) {
         e.preventDefault();
-        adminService.reject(34, function (result) {
+        let wno = $(this).attr("href");
+        console.log(wno);
+        adminService.reject(wno, function (result) {
             alert(result);
+            showWorkApplyList(pageNum);
         })
     })
     // <div>
@@ -846,31 +815,39 @@
 
 
     // 작품 신청 목록 페이징 처리
-    // function showWorkPage(total) {
-    //     let endPage = Math.ceil(pageNum / 10.0) * 10;
-    //     let startPage = endPage - 9;
-    //     let readEnd = Math.ceil(total / 10.0);
-    //     const paging = $(".mypage-pageStyle");
-    //
-    //     if(endPage > readEnd){
-    //         endPage = realEnd;
-    //     }
-    //
-    //     let prev = startPage > 1;
-    //     let next = endPage * 10 < total;
-    //     let str = "";
-    //
-    //     if(prev) {
-    //         str += "<a class='mypage-page-prev' href='" + (startPage - 1) + "'><code>&lt;</code></a>"
-    //     }
-    //     for(let i = startPage; i <= endPage; i++){
-    //         str += pageNum == i ? i : "<a class='changePage' href='" + i + "'>" + i + "</a>";
-    //     }
-    //     if(next){
-    //         str += "<a class='mypage-page-next' href='" + (endPage + 1) + "'>&gt;</a>"
-    //     }
-    //     paging.html(str);
-    // }
+    function showWorkPage(total) {
+         let endPage = Math.ceil(pageNum / 10.0) * 10;
+         let startPage = endPage - 9;
+         let realEnd = Math.ceil(total / 10.0);
+         const paging = $(".mypage-pageStyle");
+
+         if(endPage > realEnd){
+             endPage = realEnd;
+         }
+
+         let prev = startPage > 1;
+         let next = endPage * 10 < total;
+         let str = "";
+         str += "<a class=\"mypage-page-first changePage\" href='" + 1 + "'>&lt;&lt;</a>";
+         if(prev) {
+             str += "<a class='mypage-page-prev' href='" + (startPage - 1) + "'><code>&lt;</code></a>"
+         }
+         for(let i = startPage; i <= endPage; i++){
+             str += pageNum == i ? "<p>" + i +"</p>": "<a class='changePage' href='" + i + "'>" + i + "</a>";
+         }
+         if(next){
+             str += "<a class='mypage-page-next' href='" + (endPage + 1) + "'>&gt;</a>"
+         }
+         str += "<a class='mypage-page-last changePage' href='" + realEnd + "'>&gt;&gt;</a>";
+         paging.html(str);
+    }
+
+    $(".changePage").on("click", function (e) {
+        e.preventDefault();
+        pageNum = $(this).attr("href");
+        console.log(pageNum);
+        showWorkApplyList(pageNum);
+    })
 </script>
 
 </html>
