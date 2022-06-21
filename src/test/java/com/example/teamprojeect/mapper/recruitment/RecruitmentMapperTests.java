@@ -14,28 +14,30 @@ public class RecruitmentMapperTests {
     @Autowired
     private RecruitmentMapper recruitmentMapper;
 
-    @Test
-    public void insertTest() {
-        RecruitmentVO recruitmentVO = new RecruitmentVO();
-        recruitmentVO.setRecruitmentName("테스트");
-        recruitmentVO.setRecruitmentLocation("예술의 전당");
-        recruitmentVO.setRecruitmentDay("2022-07-09");
-        recruitmentVO.setRecruitmentTime("오후 05:39");
-        recruitmentVO.setRecruitmentType("P");
-        recruitmentVO.setRecruitmentUrl("https://www.youtube.com/");
-        recruitmentVO.setRecruitmentSummary("몇몇 일에 어디에서 개최");
-        recruitmentVO.setRecruitmentCondition("초대합니다 어쩌구");
-        recruitmentVO.setRecruitmentIntroduce("모두가 같이 즐기는");
-        recruitmentVO.setRecruitmentHost("정부 개최");
-        recruitmentMapper.insert(recruitmentVO);
-        log.info("게시글 번호 :: "+recruitmentVO.getRecruitmentNumber());
-    }
-
 //    @Test
-//    public void getListTest() {
-//        Criteria criteria = new Criteria(1,10,null,"수정");
-//        recruitmentMapper.getList(criteria, new ListDTO("A","new", "week", "new", "1")).stream().map(RecruitmentVO::toString).forEach(log::info);
+//    public void insertTest() {
+//        for(int i = 0; i < 130; i++){
+//            RecruitmentVO recruitmentVO = new RecruitmentVO();
+//            recruitmentVO.setRecruitmentName("테스트" + i);
+//            recruitmentVO.setRecruitmentLocation("예술의 전당");
+//            recruitmentVO.setRecruitmentDay("2022-07-09");
+//            recruitmentVO.setRecruitmentTime("오후 05:39");
+//            recruitmentVO.setRecruitmentType("P");
+//            recruitmentVO.setRecruitmentUrl("https://www.youtube.com/");
+//            recruitmentVO.setRecruitmentSummary("몇몇 일에 어디에서 개최");
+//            recruitmentVO.setRecruitmentCondition("초대합니다 어쩌구");
+//            recruitmentVO.setRecruitmentIntroduce("모두가 같이 즐기는");
+//            recruitmentVO.setRecruitmentHost("정부 개최");
+//            recruitmentMapper.insert(recruitmentVO);
+//            log.info("게시글 번호 :: "+recruitmentVO.getRecruitmentNumber());
+//        }
 //    }
+
+    @Test
+    public void getListTest() {
+        Criteria criteria = new Criteria(1,10,null,null);
+        recruitmentMapper.getList(criteria, new ListDTO("A","new", "week", "new", "1")).stream().map(RecruitmentVO::toString).forEach(log::info);
+    }
 
 //    @Test
 //    public void updateTest() {
