@@ -14,21 +14,22 @@ public class RecruitmentMapperTests {
     @Autowired
     private RecruitmentMapper recruitmentMapper;
 
-//    @Test
-//    public void insertTest() {
-//        RecruitmentVO recruitmentVO = new RecruitmentVO();
-//        recruitmentVO.setRecruitmentName("아마추어 경연 페스티벌3");
-//        recruitmentVO.setRecruitmentLocation("예술의 전당");
-//        recruitmentVO.setRecruitmentDay("2022-07-09");
-//        recruitmentVO.setRecruitmentTime("오후 05:39");
-//        recruitmentVO.setRecruitmentType("P");
-//        recruitmentVO.setRecruitmentUrl("https://www.youtube.com/");
-//        recruitmentVO.setRecruitmentSummary("몇몇 일에 어디에서 개최");
-//        recruitmentVO.setRecruitmentCondition("초대합니다 어쩌구");
-//        recruitmentVO.setRecruitmentIntroduce("모두가 같이 즐기는");
-//        recruitmentVO.setRecruitmentHost("정부 개최");
-//        recruitmentMapper.insert(recruitmentVO);
-//    }
+    @Test
+    public void insertTest() {
+        RecruitmentVO recruitmentVO = new RecruitmentVO();
+        recruitmentVO.setRecruitmentName("테스트");
+        recruitmentVO.setRecruitmentLocation("예술의 전당");
+        recruitmentVO.setRecruitmentDay("2022-07-09");
+        recruitmentVO.setRecruitmentTime("오후 05:39");
+        recruitmentVO.setRecruitmentType("P");
+        recruitmentVO.setRecruitmentUrl("https://www.youtube.com/");
+        recruitmentVO.setRecruitmentSummary("몇몇 일에 어디에서 개최");
+        recruitmentVO.setRecruitmentCondition("초대합니다 어쩌구");
+        recruitmentVO.setRecruitmentIntroduce("모두가 같이 즐기는");
+        recruitmentVO.setRecruitmentHost("정부 개최");
+        recruitmentMapper.insert(recruitmentVO);
+        log.info("게시글 번호 :: "+recruitmentVO.getRecruitmentNumber());
+    }
 
 //    @Test
 //    public void getListTest() {

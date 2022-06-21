@@ -1,29 +1,35 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta property="og:title" content="BUSKERS - 공연예정" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description" />
-    <meta property="fb:app_id" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta property="og:title" content="BUSKERS - 공연예정"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:description"/>
+    <meta property="fb:app_id"/>
     <title>BUSKERS</title>
     <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/jquery-3.4.1_min.js'>
 
     </script>
-  <!-- Google Tag Manager 연결-->
+    <!-- Google Tag Manager 연결-->
     <script>
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l]
-    .push({
-        'gtm.start': new Date().getTime(),event:'gtm.js'
-        });
-        var f=d.getElementsByTagName(s)[0],j=d
-        .createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode
-        .insertBefore(j,f);})
-        (window,document,'script','dataLayer','GTM-PVHFWWM');
-        </script>
-        
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l]
+                .push({
+                    'gtm.start': new Date().getTime(), event: 'gtm.js'
+                });
+            var f = d.getElementsByTagName(s)[0], j = d
+                .createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode
+                .insertBefore(j, f);
+        })
+        (window, document, 'script', 'dataLayer', 'GTM-PVHFWWM');
+    </script>
+
     <!-- Google Tag Manager -->
     <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/swiper_min.js'></script>
     <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/Chart.bundle_min.js'></script>
@@ -37,317 +43,258 @@
     <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/babel.js'></script>
     <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/polyfill.js'></script>
     <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/Main.js?v=505'></script>
-  
-
-    <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/reset.css' />
-    <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/swiper.css' />
-    <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/common.css' /> 
-    <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/show.css' />
 
 
-  <style type="text/css">
-    .perform-top{
-        overflow:visible 
-        !important;
-    }
-    .body{
-        font-family: 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
-    }
-  </style>
+    <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/reset.css'/>
+    <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/swiper.css'/>
+    <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/common.css'/>
+    <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/show.css'/>
+    <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/showPageReply.css'/>
+
+
+    <style type="text/css">
+        .perform-top {
+            overflow: visible !important;
+        }
+
+        .body {
+            font-family: 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+        }
+    </style>
 
 </head>
+<header th:include="~{/header/header3 :: head}">
+
+</header>
+
 <body>
-    <div class='sm-tit'>공연예정</div>
-    <div class = 'sm-tit1'>
-    <a class='sm-tit2'  href="/templates/concertPlan/concertPlan_performance.html">퍼포먼스</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class='sm-tit2'  href="/templates/concertPlan/concertPlan_musician.html">뮤지션</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class='sm-tit2' href="/templates/concertPlan/concertPlanModify.html">공연등록</a>
+<div class='sm-tit'>공연예정</div>
+<div class='sm-tit1'>
+    <a class='sm-tit2 all' href="/concert/concertPlanMusician">전체</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a class='sm-tit2 musician' href="/concert/concertPlanMusician">뮤지션</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a class='sm-tit2 performance' href="/concert/concertPlanMusician">퍼포먼스</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a class='sm-tit2' href="/concert/concertPlanRegister">공연등록</a>
 </div>
-    <section class="m2-sec05">
-        <div class="ms5-wrap">
-            <div class="ms5-l">
-                <p class="ms5-l-tit">
-                    WEEKLY RANKING
-                    <a href='#'>
+<section class="m2-sec05">
+    <div class="ms5-wrap">
+        <div class="ms5-l">
+            <p class="ms5-l-tit">
+                WEEKLY RANKING
+                <a href='#'>
 
-                        <img src='/images/concertPlan/view.png' alt='' />
+                    <img src='/images/concertPlan/view.png' alt=''/>
 
-                        <img src='/static/images/concertPlan/view.png' alt='' />
+                </a>
+            </p>
+            <ul>
 
-                    </a>
-                </p>
-                <ul>
-    
-                    <li class='on'>
-                        <a href='#' title=''>
-                            <dl>
-                                <dt>1위</dt>
-                                <dd>
+                <li class='on'>
+                    <a href='#' title=''>
+                        <dl>
+                            <dt>1위</dt>
+                            <dd>
 
 
-                                    <img src='/static/images/concertPlan/img3.jpg' alt='' />
+                                <img src='/images/concertPlan/img3.jpg' alt=''/>
 
-                                </dd>
-                                <dd class='ms5-l-txt'>
-                                    <p class='ms5-l-txt1'>랄랄랜드1</p>
-                                    <p class='ms5-l-txt2'>2022.8.1</br>[홍대] 홍대 걷고싶은 거리</p>
+                            </dd>
+                            <dd class='ms5-l-txt'>
+                                <p class='ms5-l-txt1'>랄랄랜드1</p>
+                                <p class='ms5-l-txt2'>2022.8.1</br>[홍대] 홍대 걷고싶은 거리</p>
                             </dd>
                         </dl>
                     </a>
                 </li>
-    
-                <li >
+
+                <li>
                     <a href='#' title=''>
                         <dl>
                             <dt>2위</dt>
                             <dd>
 
-                                <img src='/static/images/concertPlan/img3.jpg' alt='' />
+                                <img src='/images/concertPlan/img3.jpg' alt=''/>
 
                             </dd>
                             <dd class='ms5-l-txt'>
                                 <p class='ms5-l-txt1'>랄랄랜드2</p>
                                 <p class='ms5-l-txt2'>2022.8.2</br>[홍대] 홍대 걷고싶은 거리</p>
-                        </dd>
-                    </dl>
-                </a>
-            </li>
-    
-            <li >
-                <a href='#' title=''>
-                    <dl>
-                        <dt>3위</dt>
-                        <dd>
-
-                            <img src='/static/images/concertPlan/img3.jpg' alt='' />
-                        </dd>
-                        <dd class='ms5-l-txt'>
-                            <p class='ms5-l-txt1'>랄랄랜드3</p>
-                            <p class='ms5-l-txt2'>2022.8.3</br>[홍대] 홍대 걷고싶은 거리</p>
-                        </dd>
-                    </dl>
-                </a>
-            </li>
-    
-            <li >
-                <a href='#' title=''>
-                    <dl>
-                        <dt>4위</dt>
-    
-                        <dd class='ms5-l-txt'>
-                            <p class='ms5-l-txt1'>랄랄랜드4</p>
-                            <p class='ms5-l-txt2'>2022.8.4</br>[홍대] 홍대 걷고싶은 거리</p>
                             </dd>
                         </dl>
                     </a>
                 </li>
-    
-                <li >
+
+                <li>
+                    <a href='#' title=''>
+                        <dl>
+                            <dt>3위</dt>
+                            <dd>
+
+                                <img src='/images/concertPlan/img3.jpg' alt=''/>
+                            </dd>
+                            <dd class='ms5-l-txt'>
+                                <p class='ms5-l-txt1'>랄랄랜드3</p>
+                                <p class='ms5-l-txt2'>2022.8.3</br>[홍대] 홍대 걷고싶은 거리</p>
+                            </dd>
+                        </dl>
+                    </a>
+                </li>
+
+                <li>
+                    <a href='#' title=''>
+                        <dl>
+                            <dt>4위</dt>
+
+                            <dd class='ms5-l-txt'>
+                                <p class='ms5-l-txt1'>랄랄랜드4</p>
+                                <p class='ms5-l-txt2'>2022.8.4</br>[홍대] 홍대 걷고싶은 거리</p>
+                            </dd>
+                        </dl>
+                    </a>
+                </li>
+
+                <li>
                     <a href='#' title=''>
                         <dl>
                             <dt>5위</dt>
                             <dd>
 
-                                <img src='/static/images/concertPlan/img3.jpg' alt='' />
+                                <img src='/images/concertPlan/img3.jpg' alt=''/>
 
-                                </dd>
-                                <dd class='ms5-l-txt'>
-                                    <p class='ms5-l-txt1'>랄랄랜드5</p>
-                                    <p class='ms5-l-txt2'>2022.8.5</br>[홍대] 홍대 걷고싶은 거리</p>
-                                </dd>
-                            </dl>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-    
-            <div class="ms5-r">
-                <p class="ms5-r-tit">
-                    <span>지역별 추천</span>
-                </p>
-                <div class="ms5-rs-wrap">
-                    <div class="swiper-container ms5-rs">
-                        <div class="swiper-wrapper">
-                            <div class='swiper-slide'>
-                                <a href='#' target='_self' title='버스킹버스커1'>
+                            </dd>
+                            <dd class='ms5-l-txt'>
+                                <p class='ms5-l-txt1'>랄랄랜드5</p>
+                                <p class='ms5-l-txt2'>2022.8.5</br>[홍대] 홍대 걷고싶은 거리</p>
+                            </dd>
+                        </dl>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="ms5-r">
+            <p class="ms5-r-tit">
+                <span>신인 아티스트</span>
+            </p>
+            <div class="ms5-rs-wrap">
+                <div class="swiper-container ms5-rs">
+                    <div class="swiper-wrapper">
+                        <div class='swiper-slide'>
+                            <a href='#' target='_self' title='버스킹버스커1'>
                                     <span>
 
-                                        <img src='/static/images/concertPlan/img1.jpg' alt='버스킹버스커1' />
+                                        <img src='/images/concertPlan/img1.jpg' alt='버스킹버스커1'/>
 
                                     </span>
-                                    <div>
-                                        <p class='ms5-r-txt1'>버스킹버스커1</p>
-                                        <p class='ms5-r-txt2'>홍대 어딘가</p>
-                                    </div>
-                                    <p>홍대</p>
-                                </a>
-                            </div>
-                            <div class='swiper-slide'>
-                                <a href='#' target='_self' title='버스킹버스커2'>
+                                <div>
+                                    <p class='ms5-r-txt1'>버스킹버스커1</p>
+                                    <p class='ms5-r-txt2'>홍대 어딘가</p>
+                                </div>
+                                <p>홍대</p>
+                            </a>
+                        </div>
+                        <div class='swiper-slide'>
+                            <a href='#' target='_self' title='버스킹버스커2'>
                                     <span>
 
-                                        <img src='/static/images/concertPlan/img3.jpg' alt='버스킹버스커2' />
+                                        <img src='/images/concertPlan/img3.jpg' alt='버스킹버스커2'/>
 
                                     </span>
-                                    <div>
-                                        <p class='ms5-r-txt1'>버스킹버스커2</p>
-                                        <p class='ms5-r-txt2'>신촌 어딘가</p>
-                                    </div>
-                                    <p>신촌</p>
-                                </a>
-                            </div>
-                            <div class='swiper-slide'>
-                                <a href='#' target='_self' title='버스킹버스커3'>
+                                <div>
+                                    <p class='ms5-r-txt1'>버스킹버스커2</p>
+                                    <p class='ms5-r-txt2'>신촌 어딘가</p>
+                                </div>
+                                <p>신촌</p>
+                            </a>
+                        </div>
+                        <div class='swiper-slide'>
+                            <a href='#' target='_self' title='버스킹버스커3'>
                                     <span>
 
-                                        <img src='/static/images/concertPlan/img1.jpg' alt='버스킹버스커3' />
+                                        <img src='/images/concertPlan/img1.jpg' alt='버스킹버스커3'/>
 
                                     </span>
-                                    <div>
-                                        <p class='ms5-r-txt1'>버스킹버스커3</p>
-                                        <p class='ms5-r-txt2'>부천 어딘가</p>
-                                    </div>
-                                    <p>부천</p>
-                                </a>
-                            </div>
+                                <div>
+                                    <p class='ms5-r-txt1'>버스킹버스커3</p>
+                                    <p class='ms5-r-txt2'>부천 어딘가</p>
+                                </div>
+                                <p>부천</p>
+                            </a>
                         </div>
                     </div>
-    
-                    <div class="swiper-button-next ms5-rs"></div>
                 </div>
+
+                <div class="swiper-button-next ms5-rs"></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 <section class='m2-sec02'>
-
-    <div class='m2-tit'>공연예정 버스킹</div>
-
-    <div class='ms-list-imgs'>
-        <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커1'>
-            <div class='list-bigger-wrap'>
-                <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='/show_view' />
-
-                <div class='list-bigger-txt'>
-                    <p class='list-b-tit1'>버스커1</p>
-                    <p class='list-b-tit2'>[홍대] 홍대 걷고싶은 거리</p>
-                    <p class='list-b-circle'>D-1</p>
+    <div class='show-title'>BUSKER's COMING SOON</div>
+    <div class='show-wrap'>
+        <th:block th:each="show:${showList}">
+            <a th:object="${show}" class="goRead" th:href="*{showNumber}" target='_self'>
+                <div class='list-bigger-wrap'>
+                    <img class='lazyload' src='/images/concertPlan/img3.jpg' alt='/show_view'/>
+                    <div class='list-bigger-txt'>
+                        <p class='list-b-tit1' th:text="*{showName}"></p>
+                        <p class='list-b-tit2' th:text="*{showLocation}"></p>
+                        <p class='list-b-circle' th:text="|D-*{dDay}|"></p>
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        </th:block>
+    </div>
 
-        <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커2'>
-            <div class='list-bigger-wrap'>
-                <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
 
-                <div class='list-bigger-txt'>
-                    <p class='list-b-tit1'>버스커2</p>
-                    <p class='list-b-tit2'>[홍대] 홍대 걷고싶은 거리 광장무대/여행무대</p>
-                    <p class='list-b-circle'>D-2</p>
-                </div>
-            </div>
-        </a>
-
-        <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커3'>
-            <div class='list-bigger-wrap'>
-                <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
-
-                <div class='list-bigger-txt'>
-                    <p class='list-b-tit1'>버스커3</p>
-                    <p class='list-b-tit2'>[홍대] 경의선 숲길(연남동 구간)</p>
-                    <p class='list-b-circle'>D-3</p>
-                </div>
-            </div>
-        </a>
-
-        <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커4'>
-            <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
-
-            <div class='list-bigger-txt'>
-                <p class='list-b-tit1'>버스커4</p>
-                <p class='list-b-tit2'>[홍대] 홍대 애경타워 버스킹존</p>
-                <p class='list-b-circle'>D-4</p>
-            </div>
+    <div th:object="${showPageDTO}">
+        <div class="big-width mypage-pageStyle" style="text-align: center">
+            <a class="mypage-page-first"><<</a>
+            <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code>&lt;</code></a>
+            <th:block th:each="num:${#numbers.sequence(showPageDTO.startPage, showPageDTO.endPage)}">
+                <code th:if="${num == showPageDTO.criteria.pageNum}" th:text="${num}"></code>
+                <a class="changePage mypage-page-next" th:href="${num}" th:unless="${num == showPageDTO.criteria.pageNum}"><code
+                        th:text="${num}"></code></a>
+            </th:block>
+            <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>&gt;</code></a>
+            <a class="mypage-page-last">>></a>
         </div>
-    </a>
-
-
-    <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커5'>
-        <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
-
-            <div class='list-bigger-txt'>
-                <p class='list-b-tit1'>버스커5</p>
-                <p class='list-b-tit2'>[신촌] 연세로 뮤직스트리트</p>
-                <p class='list-b-circle'>D-5</p>
-            </div>
-        </div>
-    </a>
-</div>
-<div class='ms-list-imgs'>
-
-
-    <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커6'>
-        <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
-
-            <div class='list-bigger-txt'>
-                <p class='list-b-tit1'>버스커6</p>
-                <p class='list-b-tit2'>[송파] 잠실종합운동장 시민참여관</p>
-                <p class='list-b-circle'>D-6</p>
-            </div>
-        </div>
-    </a>
-
-    <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커7'>
-        <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
-
-            <div class='list-bigger-txt'>
-                <p class='list-b-tit1'>버스커7</p>
-                <p class='list-b-tit2'>[송파] 잠실종합운동장 쉼터 및 거리공연</p>
-                <p class='list-b-circle'>D-7</p>
-            </div>
-        </div>
-    </a>
-   
-
-    <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커8'>
-        <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
-
-            <div class='list-bigger-txt'>
-                <p class='list-b-tit1'>버스커8</p>
-                <p class='list-b-tit2'>[선유도] 선유도 공원(원형광장)</p>
-                <p class='list-b-circle'>D-8</p>
-            </div>
-        </div>
-    </a>
-
-     <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커9'>
-        <div class='list-bigger-wrap'>
-            <img class='lazyload' src='/static/images/concertPlan/img3.jpg' alt='' />
-
-            <div class='list-bigger-txt'>
-                <p class='list-b-tit1'>버스커9</p>
-                <p class='list-b-tit2'>[구로] 고척스카이돔 야외 공연장</p>
-                <p class='list-b-circle'>D-9</p>
-            </div>
-        </div>
-    </a>
-
-    <a href='/templates/concertPlan/concertPlanInfo.html' target='_self' title='버스커10'>
-        <div class='list-bigger-wrap'>
-            <img class='lazyload'src='/static/images/concertPlan/img3.jpg' alt='' />
-
-            <div class='list-bigger-txt'>
-                <p class='list-b-tit1'>버스커10</p>
-                <p class='list-b-tit2'>[마포] 서울월드컵경기장 월드컵광장</p>
-                <p class='list-b-circle'>D-10</p>
-            </div>
-        </div>
-    </a>
-</div>
-
+    </div>
+    <form action="/concert/concertPlanList" name="pageForm" th:object="${criteria}">
+        <input type="hidden" th:field="*{pageNum}">
+        <input type="hidden" th:field="*{amount}">
+    </form>
 </section>
+
+
+<footer th:include="~{/footer/footer :: foot}">
+
+</footer>
+
 </body>
+
+<script src="/assets/js/concert/jquery.min.js"></script>
+<script src="/assets/js/concert/jquery.dropotron.min.js"></script>
+<script src="/assets/js/concert/browser.min.js"></script>
+<script src="/assets/js/concert/breakpoints.min.js"></script>
+<script src="/assets/js/concert/util.js"></script>
+<script src="/assets/js/concert/main.js"></script>
+<script src="/assets/js/concert/concertAjax.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script th:inline="javascript">
+    // 게시글 추가 후 list.html에 도착한다면, 추가된 게시글의 번호를 alert으로 출력
+    let paging = [[${criteria.listLink}]];
+
+    $("a.changePage").click(function (e) {
+        e.preventDefault();
+        $(pageForm).find("input[name='pageNum']").val($(this).attr("href"));
+        $(pageForm).submit();
+    });
+
+    $("a.goRead").click(function (e) {
+        e.preventDefault();
+        location.href = "/concert/concertPlanInfo" + paging + "&showNumber=" + $(this).attr('href');
+    });
+
+</script>
 </html>

@@ -1,190 +1,440 @@
 <!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <html lang="ko">
- <head>
+<head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta property="og:title" content="BUSKERS - 공연예정" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description" />
-    <meta property="fb:app_id" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta property="og:title" content="BUSKERS - 공연예정"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:description"/>
+    <meta property="fb:app_id"/>
     <title>상세보기</title>
 
-  <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/reset.css' />
-  <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/swiper.css' />
-  <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/common.css' />
-  <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/show.css' />
-  <link rel='stylesheet' type='text/css' href='/static/assets/css/concertPlan/show_view.css' />
+    <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/reset.css'/>
+    <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/swiper.css'/>
+    <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/common.css'/>
+    <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/show.css'/>
+    <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/show_view.css'/>
+    <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/showPageReply.css'/> 
 
-  <!-- Google Tag Manager -->
-  <script>
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
-  var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;
-  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})
-  (window,document,'script','dataLayer','GTM-PVHFWWM');
-  </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+            var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })
+        (window, document, 'script', 'dataLayer', 'GTM-PVHFWWM');
+    </script>
 
-  <!-- End Google Tag Manager -->
-  <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/swiper_min.js'></script>
-  <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/Chart.bundle_min.js'></script>
-  <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/jquery-ui.js'></script>
-  <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/jry_home_jdefault.js'></script>
-  <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/jry_home_jdialog.js'></script>
-  <script type='text/javascript' src='/inc/js/jry_default_new.js?v=388'></script>
-  
-  <style type="text/css">
-     body{
-        font-family: 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
-    }
-  </style>
+    <!-- End Google Tag Manager -->
+    <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/swiper_min.js'></script>
+    <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/Chart.bundle_min.js'></script>
+    <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/jquery-ui.js'></script>
+    <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/jry_home_jdefault.js'></script>
+    <script type='text/javascript' src='http://tkfile.yes24.com/New/Js/jry_home_jdialog.js'></script>
+    <script type='text/javascript' src='/inc/js/jry_default_new.js?v=388'></script>
 
- </head>
- <body>
- 
-<div class="rnew-top-wrap">
-   <div class="rnew-top">
-      <div class="rntop-img">
+    <style type="text/css">
+        body {
+            font-family: 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+        }
+         .customoverlay {position:relative;bottom:85px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left;}
+        .customoverlay:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}
+        .customoverlay a {display:block;text-decoration:none;color:#000;text-align:center;border-radius:6px;font-size:14px;font-weight:bold;overflow:hidden;background: #d95050;background: #ec7d2c url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
+        .customoverlay .title {display:block;text-align:center;background:#fff;margin-right:35px;padding:10px 15px;font-size:14px;font-weight:bold;}
+        .customoverlay:after {content:'';position:absolute;margin-left:-12px;left:50%;bottom:-12px;width:22px;height:12px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+    </style>
 
-            <img src='/static/images/concertPlan/img3.jpg' />
+</head>
+<header th:include="~{/header/header3 :: head}">
 
-      </div>
-   </div>
-</div>
+</header>
 
-<div class="renew-wrap">
-   <div class="renew-content">
-      <div class="rn-01">
-         <p class="rn-location"><a href='#'>버스킹<a href='#'>뮤지션</a></p>
-      </div>
-      <div class="rn-02">
-         <p class="rn-big-title">버스커1 버스킹</p>
-         <div class="rn-product-short-data">
-            <p><span class="ps-date">2022.08.06</span><a href="#" id="ps-location"><span class="ps-location">[홍대] 홍대 걷고싶은 거리</span></a>
-            </p>
-            <a href="/templates/concertPlan/concertPlanRegister.html" class="ps-social">
-               <img src="/static/images/concertPlan/c.png" style="float: right; width:35px;" >
-            </a>
-            
-         </div>         
-      </div>
-   </div>   
-</div>
+<body>
+<div class="concertWrap" th:object="${concert}">
+    <div class="rnew-top-wrap">
+        <div class="rnew-top">
+            <div class="rntop-img">
 
-<div class="movie-pop-wrap">
-   <div class="movie-pop-bg">
-      <div class="movie-pop">
-         <div class="movie-list">
-                
-    <div class="swiper-container">
-      <div class="swiper-wrapper"></div>      
+                <img src='/images/concertPlan/img3.jpg'/>
+
+            </div>
+        </div>
     </div>
 
-   <div class="swiper-button-next"></div>
-   <div class="swiper-button-prev"></div>
-         </div>
-         <div class="movie-area" id="playerPerf"></div>
-         <a href="#" class="movie-area-close"><img src="http://tkfile.yes24.com/imgNew/common/movie-list-btn-close.png" alt="" /></a>
-      </div>
-   </div>
-</div>
+    <div class="renew-wrap">
+        <div class="renew-content">
+            <div class="rn-01">
+                <p class="rn-location">
+                <p><a id="goList" href="/concert/concertPlanList">버스킹 ></a><a href='#' th:text="| *{showCategory}|"></a></p>
+            </div>
+            <div class="rn-02">
+                <p class="rn-big-title" th:text="*{showName}"></p>
+                <div class="rn-product-short-data">
+                    <p><span class="ps-date" th:text="*{showDay}"></span><a href="#" id="ps-location"><span
+                            class="ps-location" th:text="|[*{showRegion}] *{showLocation}|"></span></a>
+                    </p>
+                    <a th:href="*{showNumber}" class="ps-social modify">
+                        <img src="/images/concertPlan/c.png" style="float: right; width:35px;">
+                    </a>
+                    <a th:href="*{showNumber}" class="ps-social delete">
+                        <img src="/images/concertPlan/delete_icon.png" style="float: right; width:67px; height: 59px;">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="renew-wrap rw2">
-   <div class="renew-content">
-      <div class="rn-03">
-         
-         <div class="rn-03-left">
-            <div class="rn-product-imgbox">
+    <div class="movie-pop-wrap">
+        <div class="movie-pop-bg">
+            <div class="movie-pop">
+                <div class="movie-list">
 
-               <img src='/static/images/concertPlan/img3.jpg' />
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper"></div>
+                    </div>
+
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                <div class="movie-area" id="playerPerf"></div>
+                <a href="#" class="movie-area-close"><img
+                        src="http://tkfile.yes24.com/imgNew/common/movie-list-btn-close.png" alt=""/></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="renew-wrap rw2">
+        <div class="renew-content">
+            <div class="rn-03">
+
+                <div class="rn-03-left">
+                    <div class="rn-product-imgbox">
+
+                        <img src='/images/concertPlan/img3.jpg'/>
+
+                    </div>
+                    <div class="rn-product-maps" id="divPerfRelation" style="display:none;"></div>
+                    <div class="rn-product-social">
+                        <a href="javascript:;" class="rn-product-good"></a>
+                    </div>
+
+                </div>
+                <div class="rn-03-right">
+                    <div class="rn-product-area1">
+                        <dl>
+                            <dt>버스커</dt>
+                            <dd><a href="" th:text="*{artistName}"></a>&nbsp</dd>
+                            <dt>공연일자</dt>
+                            <dd th:text="*{showDay}">&nbsp;</dd>
+                            <dt>공연시간</dt>
+                            <dd th:text="*{showTime}">&nbsp;</dd>
+                            <dt>공연장소</dt>
+                            <dd th:text="*{showAddress}">&nbsp;</dd>
+                            <dt>상세주소</dt>
+                            <dd th:text="*{showLocation}">&nbsp;</dd>
+                        </dl>
+                    </div>
+                    <dt>찾아오는 길</dt>
+                </div>
+                <!--                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.980690669747!2d126.91928172782173!3d37.55551871519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c98c3106ebb65%3A0x227598a416b2090!2z7ZmN64yAIOqxt-qzoOyLtuydgOqxsOumrA!5e0!3m2!1sko!2skr!4v1655124481098!5m2!1sko!2skr"-->
+                <!--                        width="600" height="400" style="position: absolute; top:200px;left:500px;" allowfullscreen=""-->
+                <!--                        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>-->
+                <div id="map" style="width:600px; height:400px; position: absolute; top:200px;left:500px;"></div>
+
 
             </div>
-            <div class="rn-product-maps" id="divPerfRelation" style="display:none;"></div>
-            <div class="rn-product-social">
-               <a href="javascript:;" class="rn-product-good"></a>   
-            </div>
 
-            </div>
-            <div class="rn-03-right">
-               <div class="rn-product-area1">
-                  <dl>
-                     <dt>버스커</dt>
-                     <dd>&nbsp;버스커1</dd>
-                     <dt>공연알자</dt>
-                     <dd>&nbsp;2022년 08월 06일 (토)</dd>
-                           <dt>공연시간</dt>
-                     <dd>&nbsp;오후 1시 ~ 오후 2시 30분</dd>
-                           <dt>공연장소</dt>
-                     <dd>&nbsp;[홍대] 홍대 걷고싶은 거리</dd> 
-                  </dl>               
-               </div>
-                   <dt>찾아오는 길</dt>
-            </div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.980690669747!2d126.91928172782173!3d37.55551871519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c98c3106ebb65%3A0x227598a416b2090!2z7ZmN64yAIOqxt-qzoOyLtuydgOqxsOumrA!5e0!3m2!1sko!2skr!4v1655124481098!5m2!1sko!2skr" width="600" height="400" style="position: absolute; top:200px;left:500px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            
-         </div>               
-
-         </div>
+        </div>
 
 
-      <div class="rn-tab-boxes">
-         <div class="rn-tab-area rn-08 on" id="rn-tab01" style="display:block;">
-            <div class="rn-0801">
-               <div class="rn08-tbl rn-0801-tbl">
-                  <table>
-                     <caption></caption>
-                  </table>
-               </div>
-            </div>
+        <div class="rn-tab-boxes">
+            <div class="rn-tab-area rn-08 on" id="rn-tab01" style="display:block;">
+                <div class="rn-0801">
+                    <div class="rn08-tbl rn-0801-tbl">
+                        <table>
+                            <caption></caption>
+                        </table>
+                    </div>
+                </div>
 
-            <div class="rn-0802">
-               <p class="rn08-tit">정보제공고시</p>
-               <div class="rn08-txt">
-                  <div class="rn08-tbl rn08-tbl-plus">
-                     <table>
-                        <caption></caption>
-                        <colgroup>
-                           <col width="18.5%" />
-                           <col width="31.5%" />
-                           <col width="18.5%" />
-                           <col width="31.5%" />
-                        </colgroup>
-                        <tbody>
-                           <tr>
-                                        <th scope="row" class="rn08-tbl-tit2">주최/기획</th>
-                                        <td>(주)BUSKERS</td>
-                                        <th scope="row" class="rn08-tbl-tit2">상담</th>
-                                        <td>02-1234-5678</td>
-                                    </tr>
-                           <tr>
-                                        <th scope="row" class="rn08-tbl-tit2">버스커</th>
-                                        <td>버스커1</td>
-                                        <th scope="row" class="rn08-tbl-tit2">카테고리</th>
-                                        <td>뮤지션</td>
-                                    </tr>
-                           <tr>
-                                        <th scope="row" class="rn08-tbl-tit2">공연일자</th>
-                                        <td>2022.08.06 13:00~14:30</td>
-                                        <th scope="row" class="rn08-tbl-tit2">공연장소</th>
-                                        <td>[홍대] 홍대 걷고싶은 거리</td>
-                                    </tr>
-                           <tr><th scope="row"class="rn08-tbl-tit2">관람시 주의사항</th><td colspan="3">
-                              <div class="rn08-detail-box">
-                                            
-                                 <p>
-                                    - 시민 보행로 확보 부탁드립니다.</br>
+                <div class="rn-0802">
+                    <p class="rn08-tit">정보제공고시</p>
+                    <div class="rn08-txt">
+                        <div class="rn08-tbl rn08-tbl-plus">
+                            <table>
+                                <caption></caption>
+                                <colgroup>
+                                    <col width="18.5%"/>
+                                    <col width="31.5%"/>
+                                    <col width="18.5%"/>
+                                    <col width="31.5%"/>
+                                </colgroup>
+                                <tbody>
+                                <tr>
+                                    <th scope="row" class="rn08-tbl-tit2">주최/기획</th>
+                                    <td>(주)BUSKERS</td>
+                                    <th scope="row" class="rn08-tbl-tit2">상담</th>
+                                    <td>02-1234-5678</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="rn08-tbl-tit2">버스커</th>
+                                    <td th:text="*{artistName}"></td>
+                                    <th scope="row" class="rn08-tbl-tit2">카테고리</th>
+                                    <td th:text="*{showCategory}"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="rn08-tbl-tit2">공연일시</th>
+                                    <td><span th:text="*{showDay}"></span><br>
+                                        <span th:text="*{showTime}"></span></td>
+                                    <th scope="row" class="rn08-tbl-tit2">공연장소</th>
+                                    <td><span th:text="*{showAddress}"></span><br>
+                                        <span th:text="*{showLocation}"></span></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="rn08-tbl-tit2">관람시 주의사항</th>
+                                    <td colspan="3">
+                                        <div class="rn08-detail-box">
+
+                                            <p>
+                                                - 시민 보행로 확보 부탁드립니다.</br>
                                                 - 지나친 소음은 삼가 부탁드립니다.</br>
                                                 - 쓰레기는 쓰레기통에 버려주시기 바랍니다.</br>
                                                 - 작품은 손대신 눈과 귀로 즐겨주세요.
-                                 </p>
-                                        
-                              </div>
-                           </td></tr>
-                        </tbody>
-                     </table>
-                  </div>
-               </div>               
+                                            </p>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rn-0801">
+                    <div class="rn08-tbl rn-0801-tbl">
+                        <table>
+                            <caption></caption>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <!-- 댓글창 시작 -->
+        <div id="reply-wrap">
+            <strong id="reply-count">1 Comments</strong>
+            <div class="reply-content-wrap">
+                <div class="reply-content-flex">
+                    <div class="user-profile">
+                        <img class="user-image" src="https://i1.daumcdn.net/thumb/C96x96/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F5172542%2Fattach%2F5b16521bdfb848a69f47ddb5b5d064ac" alt="" width="48" height="48">
+                    </div>
+                    <div class="reply-text-box">
+                    <div class="reply-content-box">
+                        <div class="reply-name">
+                            <span class="reply-user"><a id="user-name" href="">왕고냐</a></span>
+                            <span class="reply-date">2022.06.20 19:34</span>
+                        </div>
+                        <div class="reply-status">
+                        <span class="reply-modify">수정</span>
+                        <span class="reply-delete">삭제</span>
+                    </div>
+                    </div>
+                    <div class="reply-content">하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗
+                        하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗
+                    </div>
+                </div>
+                </div>
             </div>
 
+
+            <div class="reply-content-wrap">
+                <div class="reply-content-flex">
+                    <div class="user-profile">
+                        <img class="user-image" src="https://i1.daumcdn.net/thumb/C96x96/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F5172542%2Fattach%2F5b16521bdfb848a69f47ddb5b5d064ac" alt="" width="48" height="48">
+                    </div>
+                    <div class="reply-text-box">
+                    <div class="reply-content-box">
+                        <div class="reply-name">
+                            <span class="reply-user"><a id="user-name" href="">왕고냐</a></span>
+                            <span class="reply-date">2022.06.20 19:34</span>
+                        </div>
+                        <div class="reply-status">
+                        <span class="reply-modify">수정</span>
+                        <span class="reply-delete">삭제</span>
+                    </div>
+                    </div>
+                    <div class="reply-content">하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗
+                        하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+
+            <div class="reply-content-wrap">
+                <div class="reply-content-flex">
+                    <div class="user-profile">
+                        <img class="user-image" src="https://i1.daumcdn.net/thumb/C96x96/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F5172542%2Fattach%2F5b16521bdfb848a69f47ddb5b5d064ac" alt="" width="48" height="48">
+                    </div>
+                    <div class="reply-text-box">
+                    <div class="reply-content-box">
+                        <div class="reply-name">
+                            <span class="reply-user"><a id="user-name" href="">왕고냐</a></span>
+                            <span class="reply-date">2022.06.20 19:34</span>
+                        </div>
+                        <div class="reply-status">
+                        <span class="reply-modify">수정</span>
+                        <span class="reply-delete">삭제</span>
+                    </div>
+                    </div>
+                    <div class="reply-content">하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗
+                        하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗하이하이후후훗
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="reply-form">
+            <div class="reply-input">
+                <textarea name="replyShow" id="replyShow" placeholder="여러분의 소중한 댓글을 입력해주세요."></textarea>
+            </div>
+            <div class="reply-button">
+                <input type="submit" value="등록">
+            </div>
+        </div>
+            <div class="reply-paging">
+                <a id="page-button-prev" href="">< Prev</a>
+                <a id="page-button" href="">1</a>
+                <a id="page-button-next" href="">Next ></a>
+                 </div>
+        </div>
+        <!-- 댓글창 끝 -->
+    </div>
+</div>
+<footer th:include="~{/footer/footer :: foot}">
+
+</footer>
+>>
 </body>
+<script src="/assets/js/concert/jquery.min.js"></script>
+<script src="/assets/js/concert/jquery.dropotron.min.js"></script>
+<script src="/assets/js/concert/browser.min.js"></script>
+<script src="/assets/js/concert/breakpoints.min.js"></script>
+<script src="/assets/js/concert/util.js"></script>
+<script src="/assets/js/concert/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=82047bdd8e65a83db82f7ecba662d0c3&libraries=services"></script>
+<script th:inline="javascript">
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            level: 1 // 지도의 확대 레벨
+        };
+
+    // 지도를 생성합니다
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+
+    // 주소-좌표 변환 객체를 생성합니다
+    var geocoder = new kakao.maps.services.Geocoder();
+    let address = [[${concert.showAddress}]];
+    console.log(address);
+    // 주소로 좌표를 검색합니다
+    geocoder.addressSearch(address, function (result, status) {
+
+        // 정상적으로 검색이 완료됐으면
+        if (status === kakao.maps.services.Status.OK) {
+
+            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+            // 결과값으로 받은 위치를 마커로 표시합니다
+            // var marker = new kakao.maps.Marker({
+            //     map: map,
+            //     position: coords
+            // });
+
+
+            /**/
+//             var imageSrc = 'https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png', // 마커이미지의 주소입니다
+//                 imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+//                 imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+// // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+//             var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+//                 markerPosition = coords; // 마커가 표시될 위치입니다
+// // 마커를 생성합니다
+//             var marker = new kakao.maps.Marker({
+//                 position: markerPosition,
+//                 image: markerImage // 마커이미지 설정
+//             });
+// // 마커가 지도 위에 표시되도록 설정합니다
+//             marker.setMap(map);
+            /**/
+
+            // // 인포윈도우로 장소에 대한 설명을 표시합니다
+            // var infowindow = new kakao.maps.InfoWindow({
+            //     content: '<div style="width:150px;text-align:center;padding:6px 0;"></div>'
+            // });
+            // infowindow.open(map, marker);
+
+            // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            var content = '<div class="customoverlay" >' +
+                '  <a href="https://map.kakao.com/link/map/11394059" target="_blank">' +
+                '    <span class="title">' +
+                '<img style="border-radius: 50% !important;" src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"></span>' +
+                '  </a>' +
+                '</div>';
+
+
+            // 커스텀 오버레이를 생성합니다
+            var customOverlay = new kakao.maps.CustomOverlay({
+                map: map,
+                position: coords,
+                content: content,
+                yAnchor: 1
+            });
+
+            // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+            map.setCenter(coords);
+        }
+    });
+
+    let paging = [[${criteria.listLink}]];
+    let showNumber = [[${concert.showNumber}]];
+
+    $("a.modify").click(function (e) {
+        e.preventDefault();
+        location.href = "/concert/concertPlanModify" + paging + "&showNumber=" + $(this).attr('href');
+    });
+
+    $("a.delete").click(function (e) {
+        e.preventDefault();
+        if(confirm("글을 삭제하시겠습니까?")) {
+            location.href = "/concert/concertPlanDelete" + paging + "&showNumber=" + $(this).attr('href');
+        }
+
+    });
+
+    $("a#goList").click(function(e){
+        e.preventDefault();
+            location.href = "/concert/concertPlanList" + paging;
+    });
+</script>
+</body>
+</html>
 </html>
 

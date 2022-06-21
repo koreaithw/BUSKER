@@ -1,6 +1,7 @@
-package com.example.teamprojeect.domain.vo.paging.show;
+package com.example.teamprojeect.domain.vo.paging;
 
-import com.example.teamprojeect.domain.vo.paging.Criteria;
+
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 @NoArgsConstructor
-public class ShowPageDTO {
+public class PageDTO {
     private Criteria criteria;
 
     private int startPage;
@@ -19,11 +20,11 @@ public class ShowPageDTO {
 
     private int total;
 
-    public ShowPageDTO(Criteria criteria, int total) {
+    public PageDTO(Criteria criteria, int total) {
         this(criteria, 10, total);
     }
 
-    public ShowPageDTO(Criteria criteria, int pageCount, int total) {
+    public PageDTO(Criteria criteria, int pageCount, int total) {
         this.criteria = criteria;
         this.total = total;
 //        현재 페이지를 기준으로 소수점까지 모두 계산하여 보여질 마지막 페이지 번호를 구한다.
@@ -39,3 +40,6 @@ public class ShowPageDTO {
         this.next = this.endPage < realEnd;
     }
 }
+
+
+

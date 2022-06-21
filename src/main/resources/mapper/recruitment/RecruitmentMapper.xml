@@ -3,10 +3,13 @@
 <mapper namespace="com.example.teamprojeect.mapper.recruitment.RecruitmentMapper">
     <!--모집공고 등록-->
     <insert id="insert">
+        <selectKey keyProperty="recruitmentNumber" resultType="long" order="BEFORE">
+            SELECT SEQ_RECRUITMENT.NEXTVAL FROM DUAL
+        </selectKey>
         INSERT INTO TBL_RECRUITMENT
         (RECRUITMENT_NUMBER, RECRUITMENT_NAME, RECRUITMENT_LOCATION, RECRUITMENT_DAY, RECRUITMENT_TIME, RECRUITMENT_URL
          ,RECRUITMENT_TYPE, RECRUITMENT_SUMMARY, RECRUITMENT_CONDITION, RECRUITMENT_INTRODUCE,RECRUITMENT_HOST)
-        VALUES (SEQ_RECRUITMENT.NEXTVAL, #{recruitmentName}, #{recruitmentLocation}, #{recruitmentDay}, #{recruitmentTime}
+        VALUES (#{recruitmentNumber}, #{recruitmentName}, #{recruitmentLocation}, #{recruitmentDay}, #{recruitmentTime}
         , #{recruitmentUrl}, #{recruitmentType}, #{recruitmentSummary}, #{recruitmentCondition}, #{recruitmentIntroduce}
         , #{recruitmentHost})
     </insert>
@@ -32,7 +35,11 @@
         (
             SELECT
             ROWNUM RN, RECRUITMENT_NUMBER, RECRUITMENT_NAME, RECRUITMENT_LOCATION, RECRUITMENT_DAY, RECRUITMENT_TIME, RECRUITMENT_URL, RECRUITMENT_TYPE, RECRUITMENT_SUMMARY, RECRUITMENT_CONDITION, RECRUITMENT_INTRODUCE, RECRUITMENT_HOST, RECRUITMENT_REGISTER_DATE, RECRUITMENT_UPDATE_DATE
+            FROM (
+            SELECT RECRUITMENT_NUMBER, RECRUITMENT_NAME, RECRUITMENT_LOCATION, RECRUITMENT_DAY, RECRUITMENT_TIME, RECRUITMENT_URL, RECRUITMENT_TYPE, RECRUITMENT_SUMMARY, RECRUITMENT_CONDITION, RECRUITMENT_INTRODUCE, RECRUITMENT_HOST, RECRUITMENT_REGISTER_DATE, RECRUITMENT_UPDATE_DATE
             FROM TBL_RECRUITMENT
+            ORDER BY RECRUITMENT_REGISTER_DATE DESC
+            )
             WHERE RECRUITMENT_DAY - SYSDATE > 0
         ]]>
         <choose>

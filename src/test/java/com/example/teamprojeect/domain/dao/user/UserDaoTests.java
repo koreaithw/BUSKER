@@ -12,6 +12,13 @@ public class UserDaoTests {
     @Autowired
     private UserDAO userDAO;
 
+//    마이페이지 정보 조회 테스트
+//    @Test
+//    public void readTest(){
+//        Long userNumber = 3L;
+//        log.info(userDAO.read(userNumber).toString());
+//    }
+
 //    마이페이지 정보 수정 테스트 - 성공
 //    @Test
 //    public void modifyTest(){
@@ -40,5 +47,16 @@ public class UserDaoTests {
 //    public void removeTest(){
 //        userDAO.remove(2L);
 //        log.info("회원 탈퇴 완료");
+//    }
+
+// 로그인
+//    @Test
+//    public void loginTest(){
+//        UserVO userVO = new UserVO();
+//        userVO.setUserId("ii");
+//        userVO.setUserPw("12345");
+//
+//        userDAO.login("ii", "12345");
+//        log.info("로그인 성공");
 //    }
 }

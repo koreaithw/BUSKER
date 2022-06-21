@@ -31,7 +31,7 @@ public interface ArtistMapper {
     // (매개변수로 sortingType을 전달해서 '최신순'과 '좋아요순' 구분)
 //    public List<ArtistVO> getList(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO);
     //아티스트 전체 목록
-    public List<ArtistVO> getList(@Param("listDTO") ListDTO listDTO);
+    public List<ArtistVO> getList(@Param("criteria") Criteria criteria, @Param("artistSortingType") ListDTO listDTO);
 
     //아티스트 뮤지션 목록
     public List<ArtistVO> getListMusician(@Param("listDTO") ListDTO listDTO);

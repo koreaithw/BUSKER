@@ -1,12 +1,13 @@
 package com.example.teamprojeect.controller.mypage;
 
 
+import com.example.teamprojeect.domain.vo.user.UserVO;
 import com.example.teamprojeect.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -22,11 +23,42 @@ public class MypageController {
         return "/myPage/myPage";
     }
 
-    // 유저 정보 수정
+    // 유저 정보 조회 - Talend API Tester 통과
+    @GetMapping("/{userNumber}")
+    @ResponseBody
+    public UserVO read(@PathVariable("userNumber") Long userNumber){
+        log.info("read..." + userNumber);
+        return userService.read(userNumber);
+    }
 
+    // 유저 정보 수정 - Talend API Tester 통과
+    @PatchMapping(value={"/{userNumber}"}, consumes="application/json")
+    @ResponseBody
+    public String modify(@PathVariable("userNumber")Long userNumber, @RequestBody UserVO userVO){
+        log.info("modify....................." + userVO);
+        log.info("modify....................." + userNumber);
 
-    // 비밀번호 수정
+        userVO.setUserNumber(userNumber);
+        userService.modify(userVO);
+        return "유저 정보 수정 성공";
+    }
 
+    // 비밀번호 수정 - Talend API Tester 통과
+    @PostMapping(value="/{userNumber}", consumes = "text/plain")
+    @ResponseBody
+    public String modifyPw(@PathVariable("userNumber") Long userNumber, @RequestBody String password){
+        log.info("modifyPw.................." + userNumber);
+        log.info("modifyPw.................." + password);
 
-    // 회원 탈퇴
+        userService.modifyPw(userNumber, password);
+        return userNumber + "유저 비밀번호 수정 성공" + ":" + password;
+    }
+
+    // 회원 탈퇴 - Talend API Tester 통과
+    @DeleteMapping("/{userNumber}")
+    @ResponseBody
+    public String remove(@PathVariable("userNumber")Long userNumber){
+        userService.remove(userNumber);
+        return "유저 삭제 성공";
+    }
 }

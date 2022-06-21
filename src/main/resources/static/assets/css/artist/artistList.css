@@ -353,3 +353,32 @@ input, select, textarea, div, p, span {
     border: 0;
     border-bottom: 2px solid #000;
 }
+
+/* 마이페이지 페이징 스타일 */
+.mypage-paging {
+    outline: none;
+}
+.mypage-pageStyle {
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+.mypage-pageStyle a {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 15px;
+    color: #666;
+    margin: 0 3px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.mypage-pageStyle a:hover {
+    border-bottom: 3px solid #ff564c;
+}

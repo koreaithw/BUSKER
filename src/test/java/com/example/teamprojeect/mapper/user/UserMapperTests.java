@@ -37,6 +37,13 @@ public class UserMapperTests {
 //
 //    };
 
+//    마이페이지 : 유저 정보 조회 - 성공
+    @Test
+    public void getUserDetailTest(){
+        Long userNumber = 32L;
+        log.info(userMapper.getUserDetail(userNumber).toString());
+    }
+
 //    마이페이지 : 유저 정보 수정 - 성공
 //    @Test
 //    public void updateTest(){
@@ -64,5 +71,15 @@ public class UserMapperTests {
 //        log.info("DELETE COUNT : " + userMapper.delete(1L));
 //    }
 
+// 로그인 - 성공
+//    @Test
+//    public void loginTest(){
+//         UserVO userVO = new UserVO();
+//         userVO.setUserId("i");
+//         userVO.setUserPw("12345");
+//
+//         userMapper.login("i", "12345");
+//
+//    }
 }
 

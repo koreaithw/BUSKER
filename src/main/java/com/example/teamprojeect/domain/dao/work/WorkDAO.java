@@ -33,8 +33,7 @@ public class WorkDAO {
     }
 
     // 작품 수정 신청 승인
-    public void modifyAdmin(Long workNumber) {
-        workMapper.updateAdmin(workNumber);
+    public void modifyAdmin(Long workNumber) { workMapper.updateAdmin(workNumber);
     }
 
     // 작품 삭제

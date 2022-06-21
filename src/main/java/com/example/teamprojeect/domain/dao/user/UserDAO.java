@@ -33,6 +33,9 @@ public class UserDAO {
         return userMapper.find(text,findWay);
     }
 
+    // 마이페이지 : 정보 조회
+    public UserVO read(Long userNumber) {return userMapper.getUserDetail(userNumber);}
+
     // 마이페이지 : 정보 수정
     public boolean modify(UserVO userVO) {
         return userMapper.update(userVO) == 1;

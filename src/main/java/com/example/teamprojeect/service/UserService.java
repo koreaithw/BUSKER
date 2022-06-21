@@ -16,6 +16,9 @@ public class UserService {
     private final UserFileDAO userFileDAO;
     private final LikeDAO likeDAO;
 
+    // 마이페이지 : 유저 정보 조회
+    public UserVO read(Long userNumber){return userDAO.read(userNumber);}
+
     // 마이페이지 : 유저 정보 수정
     public boolean modify(UserVO userVO){
         return userDAO.modify(userVO);

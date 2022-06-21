@@ -25,7 +25,7 @@ public class ShowMapperTests {
         showVO.setShowName("페퍼톤스");
         showVO.setShowContent("이승윤 무대 초대 컴컴");
         showVO.setShowDay("2022-06-06");
-        showVO.setShowTime("오후 10:24");
+        showVO.setShowTime("22:24");
         showVO.setShowAddress("충북 청주시 흥덕구 1순환로 384");
         showVO.setShowLocation("푸른길 공원 앞");
         showVO.setShowType(1L);
@@ -43,8 +43,8 @@ public class ShowMapperTests {
         showVO.setArtistNumber(54L);
         showVO.setShowName("슈가볼로 업데이트");
         showVO.setShowContent("슈가볼 무대 초대 컴컴");
-        showVO.setShowDay("2022-06-31");
-        showVO.setShowTime("오후 10:24");
+        showVO.setShowDay("2022/06/30");
+        showVO.setShowTime("22:24");
         showVO.setShowAddress("충북 청주시 흥덕구 1순환로 384");
         showVO.setShowLocation("보라매 공원 앞");
         showVO.setShowType(2L);
@@ -62,7 +62,7 @@ public class ShowMapperTests {
 
     @Test
     public void getDetailTest() {
-        Long showNumber = 217L;
+        Long showNumber = 1315L;
         log.info("DELETE COUNT : " + showMapper.detail(showNumber));
         log.info(showMapper.detail(showNumber).toString());
     }
