@@ -225,3 +225,7 @@
     font-size: 14px;
     text-decoration: none;
 }
+
+.all, .musician, .performance {
+    cursor: pointer;
+}
