@@ -1,9 +1,16 @@
 package com.example.teamprojeect.domain.dao.work;
+import com.example.teamprojeect.domain.vo.list.ListDTO;
+import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.work.WorkVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @SpringBootTest
 @Slf4j
@@ -54,9 +61,35 @@ public class WorkDaoTests {
 //    }
 
     // 작품 삭제
-    @Test // 잘됨
-    public void deleteTest() {
-        Long workNumber = 4L;
-        workDAO.remove(workNumber);
+//    @Test // 잘됨
+//    public void deleteTest() {
+//        Long workNumber = 4L;
+//        workDAO.remove(workNumber);
+//    }
+
+    // 작품 태그 검색
+//    @Test
+//    public void getKeywordTest() {
+//        ListDTO listDTO = new ListDTO();
+//        List<String> tag = new ArrayList<>();
+//        tag.add("유튜브");
+//        tag.add("힙합/랩");
+//        listDTO.setTag(tag);
+//        workDAO.getKeyword(new Criteria(1,10),listDTO).stream().map(WorkVO::toString).forEach(log::info);
+//    }
+
+    @Test
+    public void getTagTest() {
+        List<String> tag = workDAO.getTag();
+        List<String> list = new ArrayList<String>();
+        for (int i = 0; i < tag.size() ; i++){
+            String str[] = tag.get(i).split("#");
+            // 힙합/랩 , 유튜브, 영상 (15) / 노래, 유튜브, 영상, CD
+            for(int j = 0; j <str.length; j++) {
+                list.add(str[j]);
+            }
+        }
+        List<String> list2 = list.stream().distinct().collect(Collectors.toList());
+        log.info(list2.toString());
     }
 }

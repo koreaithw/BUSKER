@@ -71,6 +71,35 @@
         ]]>
     </select>
 
+    <!--작품 태그 검색-->
+    <select id="getKeyword" resultType="workVO">
+        <![CDATA[
+            SELECT WORK_NUMBER, WORK_NAME, ARTIST_NAME, WORK_GENRE, WORK_DESCRIPTION, WORK_YOUTUBE_URL, WORK_PURCHASE_URL, WORK_TAG, WORK_RELEASE_DATE, WORK_REGISTER_DATE, WORK_UPDATE_DATE
+            FROM (
+                SELECT /*+ INDEX_DESC(TBL_WORK SYS_C007147) */
+                ROWNUM RN, WORK_NUMBER, WORK_NAME, ARTIST_NAME, WORK_GENRE, WORK_DESCRIPTION, WORK_YOUTUBE_URL, WORK_PURCHASE_URL, WORK_TAG, WORK_RELEASE_DATE, WORK_REGISTER_DATE, WORK_UPDATE_DATE
+                FROM (
+                    SELECT *
+                    FROM TBL_ARTIST ta, TBL_WORK tw
+                    WHERE ta.ARTIST_NUMBER  = tw.ARTIST_NUMBER
+                )
+                WHERE WORK_STATUS = 3 AND ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
+                ]]>
+            <foreach collection="listDTO.tag" item="tag">
+                AND WORK_TAG LIKE '%'||#{tag}||'%'
+            </foreach>
+        <![CDATA[
+            )
+            WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
+        ]]>
+    </select>
+
+    <!--태그 뽑기-->
+    <select id="getTag" resultType="string">
+        SELECT WORK_TAG
+        FROM TBL_WORK
+    </select>
+
     <select id="getTotalApply" resultType="_int">
         SELECT COUNT(WORK_NUMBER)
         FROM TBL_WORK
