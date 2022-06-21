@@ -766,8 +766,9 @@
 
     function showWorkApplyList(page) {
         adminService.getWorkApplyList(page, function (list) {
+            $workTr.empty();
             let str = "";
-            console.log(list.list);
+            console.log(list);
             if(list == null || list.length == 0) {
                 $workTr.html("");
                 return;
@@ -781,10 +782,10 @@
                 str += "<td>" + works.artistName + "</td>";
                 str += "<td><a href='" + works.workPurchaseUrl + "'>상세 보기</a></td>";
                 str += "<td><a href='" + works.workPurchaseUrl + "'>구매 링크</a></td>";
-                str += "<td><a class='approve' href='" + works.workNumber + "'>승인</a> | <a class='reject' href='" + works.workNumber + "'>반려</a></td>";
+                str += "<td><a class='approve' href='" + "workApprove/" + works.workNumber + "'>승인</a> | <a class='reject' href='" + "workReject/" + works.workNumber + "'>반려</a></td>";
                 str += "</tr>";
             });
-            $workTr.html(str);
+            $workTr.append(str);
             showWorkPage(list.total);
         });
     }
@@ -792,7 +793,8 @@
 
     $(".approve").on("click", function (e) {
         e.preventDefault();
-        let wno = $(this).attr("href");
+        let temp = $(this).attr("href");
+        let wno = temp.split('/')[1];
         console.log(wno);
         adminService.approve(wno, function (result) {
             alert(result);
@@ -802,7 +804,8 @@
 
     $(".reject").on("click", function (e) {
         e.preventDefault();
-        let wno = $(this).attr("href");
+        let temp = $(this).attr("href");
+        let wno = temp.split('/')[1];
         console.log(wno);
         adminService.reject(wno, function (result) {
             alert(result);
@@ -819,7 +822,7 @@
          let endPage = Math.ceil(pageNum / 10.0) * 10;
          let startPage = endPage - 9;
          let realEnd = Math.ceil(total / 10.0);
-         const paging = $(".mypage-pageStyle");
+         const $paging = $(".mypage-pageStyle");
 
          if(endPage > realEnd){
              endPage = realEnd;
@@ -828,26 +831,24 @@
          let prev = startPage > 1;
          let next = endPage * 10 < total;
          let str = "";
-         str += "<a class=\"mypage-page-first changePage\" href='" + 1 + "'>&lt;&lt;</a>";
+         // str += "<a class=\"mypage-page-first changePage\" href='" + "workApplyList/" + 1 + "'>&lt;&lt;</a>";
+         str += `<a class="mypage-page-first changePage" href="javascript:showWorkApplyList(${1})">&lt;&lt;</a>`;
          if(prev) {
-             str += "<a class='mypage-page-prev' href='" + (startPage - 1) + "'><code>&lt;</code></a>"
+             // str += "<a class='mypage-page-prev' href='" + "workApplyList/" + (startPage - 1) + "'><code>&lt;</code></a>";
+             str += `<a class="mypage-page-prev" href="javascript:showWorkApplyList(${startPage-1})">&lt;</a>`
          }
          for(let i = startPage; i <= endPage; i++){
-             str += pageNum == i ? "<p>" + i +"</p>": "<a class='changePage' href='" + i + "'>" + i + "</a>";
+             //str += pageNum == i ? "<p>" + i +"</p>": "<a class='changePage' href='" + "workApplyList/" + i + "'>" + i + "</a>";
+             str += pageNum == i ? `<p>${i}</p>` : `<a class="changePage" href="javascript:showWorkApplyList(${i})">${i}</a>`
          }
          if(next){
-             str += "<a class='mypage-page-next' href='" + (endPage + 1) + "'>&gt;</a>"
+             str += "<a class='mypage-page-next' href='" + "workApplyList/" + (endPage + 1) + "'>&gt;</a>"
          }
-         str += "<a class='mypage-page-last changePage' href='" + realEnd + "'>&gt;&gt;</a>";
-         paging.html(str);
+         //str += "<a class='mypage-page-last changePage' href='" + "workApplyList/" + realEnd + "'>&gt;&gt;</a>";
+         str += `<a class="mypage-page-last changePage" href="javascript:showWorkApplyList(${realEnd})">&gt;&gt;</a>`;
+         $paging.html(str);
     }
 
-    $(".changePage").on("click", function (e) {
-        e.preventDefault();
-        pageNum = $(this).attr("href");
-        console.log(pageNum);
-        showWorkApplyList(pageNum);
-    })
 </script>
 
 </html>
