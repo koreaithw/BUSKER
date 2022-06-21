@@ -11,10 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -37,8 +34,48 @@ public class ShowController {
 
     // 진행 예정 공연 리스트 페이지 이동
     @GetMapping("/concertPlanList")
-    public String goConcertPlan(Criteria criteria, ListDTO listDTO, Model model, Long showNumber) {
-        List<ShowVO> showList = showService.getList(criteria, listDTO);
+    public String goConcertPlan() {
+//        List<ShowVO> showList = showService.getList(criteria, listDTO);
+//
+//        SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
+//
+//        showList.forEach(showVO -> {
+//            // 지역만 선택
+//            String showAddress = showVO.getShowAddress();
+//            showAddress = showAddress.substring(0, 2);
+//
+//            String showLocation = showVO.getShowLocation();
+//            showLocation = "[" + showAddress + "] " + showLocation;
+//            showVO.setShowLocation(showLocation);
+//
+//            // dday 계산
+//            String showDay = showVO.getShowDay();
+//            String todayDay = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis())); // 오늘날짜
+//
+//            try {
+//                Date date = new Date(dayFormat.parse(showDay).getTime());
+//                Date today = new Date(dayFormat.parse(todayDay).getTime());
+//                long calculate = date.getTime() - today.getTime();
+//                int Ddays = (int) (calculate / ( 24*60*60*1000));
+//                showVO.setDDay(Ddays);
+//            } catch (ParseException e) {
+//                System.err.println("dateStr : " + showDay + ", datePattern:" + dayFormat);
+//                e.printStackTrace();
+//            }
+//        });
+//
+//
+//        model.addAttribute("showList", showList);
+//        model.addAttribute("showPageDTO", new ShowPageDTO(criteria, showService.getTotal(listDTO)));
+        return "concertPlan/concertPlanList";
+    }
+
+    @GetMapping("/concertPlanList/{type}/{page}")
+    @ResponseBody
+    public ShowPageDTO goConcertPlanType(@PathVariable("type") String showType, @PathVariable("page") int pageNum){
+        ListDTO listDTO = new ListDTO();
+        listDTO.setArtistType(showType);
+        List<ShowVO> showList = showService.getList(new Criteria(pageNum, 15), listDTO);
 
         SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -60,37 +97,16 @@ public class ShowController {
                 Date today = new Date(dayFormat.parse(todayDay).getTime());
                 long calculate = date.getTime() - today.getTime();
                 int Ddays = (int) (calculate / ( 24*60*60*1000));
-                showVO.setDDay(Ddays);
+                showVO.setDDay(Integer.toString(Ddays));
             } catch (ParseException e) {
                 System.err.println("dateStr : " + showDay + ", datePattern:" + dayFormat);
                 e.printStackTrace();
             }
         });
 
-
-        model.addAttribute("showList", showList);
-        model.addAttribute("showPageDTO", new ShowPageDTO(criteria, showService.getTotal(listDTO)));
-        return "concertPlan/concertPlanList";
+        return new ShowPageDTO(showList, showService.getTotal(listDTO));
     }
 
-    @GetMapping("/concertPlanArtistType")
-    @ResponseBody
-    public String goConcertPlanA(){
-
-        return "showService.getList()";
-    }
-
-    @GetMapping("/concertPlanMusician")
-    @ResponseBody
-    public String goConcertPlanM(){
-        return "concertPlan/concertPlanMusician";
-    }
-
-    @GetMapping("/concertPlanPerformance")
-    @ResponseBody
-    public String goConcertPlanP(){
-        return "concertPlan/concertPlanPerformance";
-    }
 
     // 진행 예정 공연 상세보기 페이지 이동
     @GetMapping("/concertPlanInfo")
@@ -241,12 +257,12 @@ public class ShowController {
     // 진행중인 콘서트 페이지
     @GetMapping("/concertLive")
     public String goConcertLive() {
-        return "concert/concertLive";
+        return "concertPlan/concertLive";
     }
 
     @GetMapping("/concertPlanDelete")
     public String remove(Long showNumber, Criteria criteria, ListDTO listDTO, Model model) {
         showService.remove(showNumber);
-        return goConcertPlan(criteria, listDTO, model, showNumber);
+        return goConcertPlan();
     }
 }
