@@ -26,7 +26,6 @@ let showService = (function () {
 
 // 기본 전역변수
 let pageNum = 1;
-// let paging = [[${criteria.listLink}]]; // 페이지 기억할 수 있도록 하는 메서드
 let type = "A"
 let showDiv = $(".show-wrap");
 
@@ -44,7 +43,8 @@ function concertPlanList(type, page){
         }
 
         $.each(list, function(i, show){
-            str += "<a class='goRead' href='" + show.showNumber +"' target='_self'>"
+            let infoNumber = Number(show.showNumber);
+            str += "<a class='goRead' href='/concert/concertPlanInfo?pageNum=" + page + "&amount=15&type&keyword&showNumber=" + infoNumber +"' target='_self'>"
             str += "<div class='list-bigger-wrap'>"
             str += "<img class='lazyload' src='/images/concertPlan/img3.jpg' alt='/show_view'/>"
             str += "<div class='list-bigger-txt'>"
@@ -72,20 +72,22 @@ $(document).ready(function () {
 $(".all").click(function (e) {
     e.preventDefault();
     console.log("all 됐슈")
-    type = "A";
-    concertPlanList(type, pageNum);
+    pageNum = 1;
+    concertPlanList("A", pageNum);
 })
 
 $(".musician").click(function (e) {
     e.preventDefault();
-    type = "M";
-    concertPlanList(type, pageNum);
+    console.log("musician 됐슈")
+    pageNum = 1;
+    concertPlanList("M", pageNum);
 })
 
 $(".performance").click(function (e) {
     e.preventDefault();
-    type = "P";
-    concertPlanList(type, pageNum);
+    console.log("performance 됐슈")
+    pageNum = 1;
+    concertPlanList("P", pageNum);
 })
 
 
