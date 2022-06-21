@@ -30,7 +30,7 @@ public class ArtistController {
 
     @GetMapping("/artistList/{page}/{artistSortingType}")
     public ArtistPageDTO getList(@PathVariable("page") int pageNum, @PathVariable("artistSortingType") ListDTO listDTO){
-        return new ArtistPageDTO(artistService.getList(new Criteria(pageNum, 20), listDTO), artistService.getTotal(listDTO));
+        return new ArtistPageDTO(artistService.getList(new Criteria(pageNum, 5), listDTO), artistService.getTotal(listDTO));
     }
 
     // 아티스트 상세보기 페이지

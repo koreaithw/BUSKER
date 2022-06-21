@@ -2,6 +2,7 @@ package com.example.teamprojeect.mapper.artist;
 
 import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
+import com.example.teamprojeect.domain.vo.paging.Criteria;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,12 @@ public class ArtistMapperTests {
 //                .stream().map(ArtistVO::toString).forEach(log::info);
 //    }
 
-//    @Test
-//    public void getListTest(){
-//        artistMapper.getList(new ListDTO("A","1","2","NEW","3"))
-//
-//                .stream().map(ArtistVO::toString).forEach(log::info);
-//    }
+    @Test
+    public void getListTest(){
+        artistMapper.getList(new Criteria(1,5), new ListDTO("A","1","2","LIKE","3"))
+
+                .stream().map(ArtistVO::toString).forEach(log::info);
+    }
 
     @Test
     public void getListMusicianTest(){

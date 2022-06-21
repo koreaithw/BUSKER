@@ -39,21 +39,34 @@
 
 
     <select id="getList" resultType="artistVO">
-        SELECT
-        <trim prefix="a.*">
+        SELECT ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE
             <choose>
                 <when test="listDTO.artistSortingType == 'NEW'.toString()">
-                    FROM TBL_ARTIST a ORDER BY a.ARTIST_NUMBER DESC
+                    FROM (
+                            SELECT ROWNUM RN, ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE
+                    FROM (
+                            SELECT a.ARTIST_NUMBER, a.USER_NUMBER, a.ARTIST_NAME, a.ARTIST_DESCRIPTION , a.ARTIST_TYPE FROM TBL_ARTIST a
+                            ORDER BY a.ARTIST_NUMBER DESC
+                        )
                 </when>
                 <when test="listDTO.artistSortingType == 'LIKE'.toString()">
                     , likescount
-                    FROM (SELECT ARTIST_NUMBER, COUNT(ARTIST_NUMBER) as likescount
-                    FROM TBL_LIKE GROUP BY ARTIST_NUMBER ORDER BY likescount DESC) l JOIN TBL_ARTIST a
-                    ON a.ARTIST_NUMBER = l.ARTIST_NUMBER
-                    ORDER BY LIKESCOUNT DESC
+                    FROM (
+                    SELECT ROWNUM RN, ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE
+
+                    FROM (
+                            (SELECT ARTIST_NUMBER, COUNT(ARTIST_NUMBER) as likescount
+                            FROM TBL_LIKE GROUP BY ARTIST_NUMBER ORDER BY likescount DESC ) l JOIN TBL_ARTIST a
+                            ON a.ARTIST_NUMBER = l.ARTIST_NUMBER
+                            ORDER BY LIKESCOUNT DESC
+                        )
                 </when>
             </choose>
-        </trim>
+            <![CDATA[
+                WHERE ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
+                )
+                WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
+            ]]>
     </select>
 
     <select id="getListMusician" resultType="artistVO">
