@@ -53,7 +53,7 @@ public class AdminController {
     @ResponseBody
     public String approveWork(@PathVariable("wno") Long workNumber) {
         workService.registerAdmin(workNumber);
-        return "작품 등록 신청 승인";
+        return "작품 등록 신청이 승인되었습니다.";
     }
 
     // 작품 등록 신청 반려
@@ -61,7 +61,7 @@ public class AdminController {
     @ResponseBody
     public String rejectWork(@PathVariable("wno") Long workNumber) {
         workService.remove(workNumber);
-        return "작품 등록 신청 반려";
+        return "작품 등록 신청이 반려되었습니다.";
     }
 
     // 작품 신청 상세보기
