@@ -57,7 +57,14 @@ public class ListDTO {
     // 월간 : 'month'
     // 연간 : 'year'
 
+    //랭킹 상세 날짜
     private String detailDate;
+    // YYYY 연도
+    // MM 월
+    // DD 일
+
+    // 주차 목록
+    private String weekly;
 
     /////////    공연 서울 경기 충청 강원 전라 경상 제주
     private String ingWhether;
