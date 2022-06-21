@@ -18,5 +18,5 @@ public class ShowVO {
     private Long showType;
     private String showCategory;
     private String artistName;
-    private int dDay;
+    private String dDay;
 }
