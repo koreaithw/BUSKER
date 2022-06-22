@@ -42,8 +42,8 @@ public class ShowService {
         return showDAO.getList(criteria, listDTO);
     }
 
-    public List<ShowVO> getListIng(Criteria criteria, ListDTO listDTO) {
-        return  showDAO.getListIng(criteria, listDTO);
+    public List<ShowVO> getListIng(ListDTO listDTO) {
+        return  showDAO.getListIng(listDTO);
     }
 
     public int getTotal(ListDTO listDTO) {
