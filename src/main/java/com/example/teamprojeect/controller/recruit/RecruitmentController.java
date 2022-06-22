@@ -3,6 +3,7 @@ package com.example.teamprojeect.controller.recruit;
 
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.paging.recruitment.RecruitListPageDTO;
 import com.example.teamprojeect.domain.vo.paging.recruitment.RecruitmentPageDTO;
 import com.example.teamprojeect.domain.vo.paging.work.WorkApplyPageDTO;
 import com.example.teamprojeect.domain.vo.recruitment.RecruitmentFileVO;
@@ -32,14 +33,26 @@ public class RecruitmentController {
         log.info("*************");
         log.info("/list");
         log.info("*************");
-        model.addAttribute("recruitList", recruitService.getList(criteria,new ListDTO()));
+        model.addAttribute("recruitList", recruitService.getList(criteria, new ListDTO()));
         model.addAttribute("pageDTO", new RecruitmentPageDTO(criteria, recruitService.getTotal(new ListDTO())));
         return "/recruit/recruitList";
     }
 
     // 관리자 페이지에 모집 공고 리스트 가져오기 (만들 예정) by REST
-//    @ResponseBody
-//    @GetMapping("/recruitmentList")
+    @ResponseBody
+    @GetMapping("/recruitmentList/{page}")
+    public RecruitListPageDTO getRecruitList(@PathVariable("page") int pageNum) {
+        int total = recruitService.getTotal(new ListDTO());
+        return new RecruitListPageDTO(recruitService.getList(new Criteria(pageNum, 10), new ListDTO()), total);
+    }
+
+    // 관리자 페이지에서 모집 공고 삭제
+    @ResponseBody
+    @GetMapping("/recruitmentDelete/{rno}")
+    public String deleteRecruitment(@PathVariable("rno") Long recruitementNumber){
+        recruitService.remove(recruitementNumber);
+        return "모집 공고가 삭제되었습니다.";
+    }
 
 
     // 모집공고 상세페이지 이동

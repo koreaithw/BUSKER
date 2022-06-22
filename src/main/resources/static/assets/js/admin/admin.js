@@ -24,7 +24,22 @@ let adminService = (function () {
     }
 
     function getRecruitmentList(page, callback, error) {
-
+        $.ajax({
+            url: "/recruit/recruitmentList/" + page,
+            type: "get",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (result) {
+                if(callback) {
+                    callback(result);
+                }
+            },
+            error: function (xhr, status, er) {
+                if(error){
+                    error(xhr, status, er);
+                }
+            }
+        })
     }
 
     function approve(wno, callback, error) {
@@ -63,10 +78,29 @@ let adminService = (function () {
         });
     }
 
+    function removeRecruitment(rno, callback, error) {
+        $.ajax({
+            url: "/recruit/recruitmentDelete/" + rno,
+            type: "get",
+            success: function (result) {
+                if(callback){
+                    callback(result);
+                }
+            },
+            error: function (xhr, status, er) {
+                if(error){
+                    error(xhr, status, er);
+                }
+            }
+        });
+    }
+
     return {
         getWorkApplyList: getWorkApplyList,
         approve: approve,
         reject: reject,
+        getRecruitmentList: getRecruitmentList,
+        removeRecruitment: removeRecruitment,
     }
 })();
 

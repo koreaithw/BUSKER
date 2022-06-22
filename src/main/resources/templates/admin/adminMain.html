@@ -39,16 +39,16 @@
                     <h5 class="audit">오늘의 할일&nbsp;<p class="circle">11</p>
                     </h5>
                     <ul>
-                        <li class="audit"><a href="" class="btn-artist">아티스트심사</a>&nbsp;<p>10</p>
+                        <li class="audit"><a href="" class="btn-artist">아티스트심사</a>&nbsp;<p class="todayArtistApply">10</p>
                         </li>
                         <li class="audit"><a href="" class="btn-notice">모집공고관리</a>&nbsp;
                             <th:block th:object="${recruitPageDTO}">
-                                <p th:text="*{total}"></p>
+                                <p class="todayRecruit" th:text="*{total}"></p>
                             </th:block>
                         </li>
                         <li class="audit"><a href="" class="btn-work">작품심사</a>&nbsp;
                             <th:block th:object="${workPageDTO}">
-                                <p th:text="*{total}"></p>
+                                <p class="todayWorkApply" th:text="*{total}"></p>
                             </th:block>
                         </li>
                         <li class="audit"><a href="" class="btn-user">회원관리</a>&nbsp;<p>0</p>
@@ -384,7 +384,7 @@
                 <table>
                     <div class="notice-name">
                         <h4>모집 공고 작성 및 관리</h4>
-                        <a href="/RegisterRecruiting/RegisterRecruiting.html" class="btn-notice-write">작성</a>
+                        <a href="/recruit/recruitRegister" class="btn-notice-write">작성</a>
                     </div>
                     <thead>
                         <th>일자</th>
@@ -395,16 +395,14 @@
                         <th>수정</th>
                     </thead>
                     <tbody class="recruitments">
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>아마추어 힙합댄스 경연 페스티벌</td>
-                            <td><a href="/recruit/recruitInfo.html">내용 보기</a></td>
-                            <td><a href="">링크</a></td>
-                            <td>2023-07-11</td>
-                            <td><a href="/recruit/recruitUpdate.html">수정</a> | <a href="">삭제</a></td>
-                        </tr>
+
                     </tbody>
                 </table>
+            </div>
+            <div class="mypage-paging">
+                <div class="mypage-pageStyle">
+
+                </div>
             </div>
         </div>
         <div class="work-list-field" style="display: none;">
@@ -547,65 +545,7 @@
                 </table>
             </div>
         </div>
-        <!-- <div class="inquiry-list-field" style="display: none;">
-            <div class="page-change">
-                <table>
-                    <h4>문의 관리 및 답변</h4>
-                    <thead>
-                        <tr>
-                            <th>제목</th>
-                            <th>이름</th>
-                            <th>설명</th>
-                            <th>후원 여부</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>김가방</td>
-                            <td><a href="">내용 보기</a></td>
-                            <td>O</td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>김가방</td>
-                            <td><a href="">내용 보기</a></td>
-                            <td>O</td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>김가방</td>
-                            <td><a href="">내용 보기</a></td>
-                            <td>O</td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>김가방</td>
-                            <td><a href="">내용 보기</a></td>
-                            <td>O</td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>김가방</td>
-                            <td><a href="">내용 보기</a></td>
-                            <td>O</td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>김가방</td>
-                            <td><a href="">내용 보기</a></td>
-                            <td>O</td>
-                        </tr>
-                        <tr>
-                            <td>2022-06-10</td>
-                            <td>김가방</td>
-                            <td><a href="">내용 보기</a></td>
-                            <td>O</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div> -->
+
     </div>
 
 
@@ -667,13 +607,23 @@
 </script>
 <script src="/assets/js/admin/admin.js"></script>
 <script th:inline="javascript">
-    let pageNum = 1;
+    let pageNumW = 1; // 작품 신청 목록 페이지 넘버
+    let pageNumR = 1; // 모집 공고 목록 페이지 넘버
     let $workTr = $(".works");
+    let remember = [[${criteria.listLink}]]; // 페이지 기억
     let $recruitTr = $(".recruitments");
     const $paging = $(".mypage-pageStyle");
+    let todayWorkApply = parseInt($(".todayWorkApply").text());
+    let todayRecruit = parseInt($(".todayRecruit").text());
+    let todayArtistApply = parseInt($(".todayArtistApply").text());
+    let today = todayWorkApply + todayArtistApply + todayRecruit;
+    $(".circle").html(today);
 
-    showWorkApplyList(pageNum);
 
+    showWorkApplyList(pageNumW);    // 작품 신청 전체 목록 띄우기
+    showRecruitmentList(pageNumR);  // 모집 공고 전체 목록 띄우기
+
+    // 작품 등록 신청 목록
     function showWorkApplyList(page) {
         adminService.getWorkApplyList(page, function (list) {
             $workTr.empty();
@@ -695,7 +645,7 @@
                 str += "</tr>";
             });
             $workTr.append(str);
-            pageNum = page;
+            pageNumW = page;
             showWorkPage(list.total);
         });
     }
@@ -703,21 +653,28 @@
     function approve(wno) {
         adminService.approve(wno, function (result) {
             alert(result);
-            showWorkApplyList(pageNum);
+            showWorkApplyList(pageNumW);
         })
     }
 
     function reject(wno) {
         adminService.reject(wno, function (result) {
             alert(result);
-            showWorkApplyList(pageNum);
+            showWorkApplyList(pageNumW);
+        })
+    }
+
+    function removeRecruitment(rno) {
+        adminService.removeRecruitment(rno, function (result) {
+            alert(result);
+            showRecruitmentList(pageNumR);
         })
     }
 
     // 작품 신청 목록 페이징 처리
     function showWorkPage(total) {
         $paging.empty();
-        let endPage = Math.ceil(pageNum / 10.0) * 10;
+        let endPage = Math.ceil(pageNumW / 10.0) * 10;
         let startPage = endPage - 9;
         let realEnd = Math.ceil(total / 10.0);
 
@@ -737,7 +694,7 @@
         }
         for(let i = startPage; i <= endPage; i++){
             //str += pageNum == i ? "<p>" + i +"</p>": "<a class='changePage' href='" + "workApplyList/" + i + "'>" + i + "</a>";
-            str += pageNum == i ? `<p>${i}</p>` : `<a class="changePage" href="javascript:showWorkApplyList(${i})">${i}</a>`
+            str += pageNumW == i ? `<p>${i}</p>` : `<a class="changePage" href="javascript:showWorkApplyList(${i})">${i}</a>`
         }
         if(next){
             //str += "<a class='mypage-page-next' href='" + "workApplyList/" + (endPage + 1) + "'>&gt;</a>";
@@ -745,6 +702,62 @@
         }
         //str += "<a class='mypage-page-last changePage' href='" + "javascript:showWorkApplyList(" + realEnd + ")" +"'>&gt;&gt;</a>";
         str += `<a class="mypage-page-last changePage" href="javascript:showWorkApplyList(${realEnd})">&gt;&gt;</a>`;
+
+        $paging.append(str);
+    }
+
+    // 모집 공고 리스트
+    function showRecruitmentList(page) {
+        adminService.getRecruitmentList(page, function (list) {
+            $recruitTr.empty();
+            let str = "";
+            console.log(list);
+
+            if(list == null || list.length == 0) {
+                $recruitTr.html("");
+                return;
+            }
+            $.each(list.list, function (i, recruits) {
+                str += `<tr>`;
+                str += `<td>${recruits.recruitmentRegisterDate}</td>`;
+                str += `<td>${recruits.recruitmentName}</td>`;
+                str += `<td><a href="/recruit/recruitInfo?recruitmentNumber=${recruits.recruitmentNumber}">내용 보기</a></td>`
+                str += `<td><a href="${recruits.recruitmentUrl}">본문 링크</a></td>`;
+                str += `<td>${recruits.recruitmentDay}</td>`;
+                str += `<td><a href="/recruit/recruitUpdate${remember}&recruitmentNumber=${recruits.recruitmentNumber}">수정</a> | <a href="javascript:removeRecruitment(${recruits.recruitmentNumber})">삭제</a></td>`
+                str += `</tr>`;
+            });
+            $recruitTr.append(str);
+            pageNumR = page;
+            showRecruitmentPage(list.total);
+        });
+    }
+
+    function showRecruitmentPage(total) {
+        $paging.empty();
+        let endPage = Math.ceil(pageNumR / 10.0) * 10;
+        let startPage = endPage - 9;
+        let realEnd = Math.ceil(total / 10.0);
+
+        if(endPage > realEnd){
+            endPage = realEnd;
+        }
+
+        let prev = startPage > 1;
+        let next = endPage * 10 < total;
+        let str = "";
+
+        str += `<a class="mypage-page-first changePage" href="javascript:showRecruitmentList(${1})">&lt;&lt;</a>`;
+        if(prev) {
+            str += `<a class="mypage-page-prev" href="javascript:showRecruitmentList(${startPage-1})">&lt;</a>`;
+        }
+        for(let i = startPage; i <= endPage; i++){
+            str += pageNumR == i ? `<p>${i}</p>` : `<a class="changePage" href="javascript:showRecruitmentList(${i})">${i}</a>`;
+        }
+        if(next){
+            str += `<a class="mypage-page-next changePage" href="javascript:showRecruitmentList(${endPage+1})">&gt;</a>`;
+        }
+        str += `<a class="mypage-page-last changePage" href="javascript:showRecruitmentList(${realEnd})">&gt;&gt;</a>`;
 
         $paging.append(str);
     }
