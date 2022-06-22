@@ -598,7 +598,8 @@
     let updateCheck = false;
 
     //댓글 수정
-    $(".concert-reply-div").on("click", ".reply-modify", function (e) {
+    // $(".concert-reply-div").on("click", ".reply-modify", function (e) {
+    $(".reply-modify").click(function (e) {
         e.preventDefault();
         if (updateCheck) {
             alert("이미 수정중인 댓글이 있습니다.");
@@ -609,8 +610,8 @@
         let replyNumber = this.classList[1];
         let str = "";
 
+        $("this").hide();
         $(".reply-finish").show();
-        $(this).hide();
 
         str += '<div class="reply-input">';
         str += '<textarea class="' + replyNumber + '" name="replyShow" style="width: 100%;height: 70px;border: 1px solid #fff;font-size: 13px;resize: none;box-sizing: border-box;resize: none;margin-top: 10px;">'
