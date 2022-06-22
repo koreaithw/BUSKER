@@ -1,27 +1,29 @@
 package com.example.teamprojeect.controller.artist;
 
 
+import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.paging.artist.ArtistPageDTO;
 import com.example.teamprojeect.service.ArtistService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 
 @Slf4j
 @RequiredArgsConstructor
-@Controller
+@RestController
 @RequestMapping("/artist/*")
 public class ArtistController {
     // 필드생성
-    private final ArtistService artistService;
+    @Autowired
+    private ArtistService artistService;
 
     // 아티스트 전체 목록 페이지
 //    @GetMapping("/artistList")
@@ -30,10 +32,23 @@ public class ArtistController {
 //    }
 
 
-    @GetMapping("/artistList/{page}/{artistSortingType}")
-    public ArtistPageDTO getList(@PathVariable("page") int pageNum, @PathVariable("artistSortingType") ListDTO listDTO){
-        return new ArtistPageDTO(artistService.getList(new Criteria(pageNum, 5), listDTO), artistService.getTotal(listDTO));
+    @GetMapping("/artistList")
+    public String getArtistList(Model model, @RequestParam("page") int pageNum, @RequestParam("artistSortingType") ListDTO listDTO){
+        List<ArtistVO> artistList = artistService.getList(new Criteria(pageNum, 5), listDTO);
+
+        model.addAttribute("artistList", artistList);
+
+        return "artist/artistList";
+
+
     }
+
+//    @GetMapping("/artistList")
+//    public ArtistPageDTO getList(@RequestParam("page") int pageNum, @RequestParam("artistSortingType") ListDTO listDTO){
+//
+//
+//        return new ArtistPageDTO(artistService.getList(new Criteria(pageNum, 5), listDTO), artistService.getTotal(listDTO));
+//    }
 
 //
 //    // 아티스트 상세보기 페이지

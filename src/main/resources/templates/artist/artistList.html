@@ -98,80 +98,39 @@
     </p>
 
     <div class="ms-list-imgs">
-        <a style="cursor:pointer;" onclick="go_to_artist_info('/artist/artistInfo');"
+        <th:block th:each="artist:${artistList}">
+        <a th:object="${artist}" style="cursor:pointer;" onclick="go_to_artist_info('/artist/artistInfo');"
 
            title="아티스트 이름">
             <div class="list-bigger-wrap"><img class="lazyload" alt="아티스트 이름"
                                                src="/images/artist/buskerbukser.jpg"
                                                style="">
                 <div class="list-bigger-txt">
-                    <p class="list-b-tit1 v2 v2">아티스트 이름</p>
+                    <p class="list-b-tit1 v2 v2" th:text="*{artistName}"></p>
 
                 </div>
             </div>
         </a>
+        </th:block>
 
-        <a style="cursor:pointer;" onclick="jsf_base_GoToPerfDetail(42357);"
-           title="아티스트 이름">
-            <div class="list-bigger-wrap"><img class="lazyload" alt="아티스트 이름"
-                                               src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220531/20220531-42357.jpg/dims/quality/70/"
-                                               style="">
-                <div class="list-bigger-txt">
-                    <p class="list-b-tit1 v2 v2">아티스트 이름</p>
 
-                </div>
-            </div>
-        </a>
-
-        <a style="cursor:pointer;" onclick="jsf_base_GoToPerfDetail(42357);"
-           title="아티스트 이름">
-            <div class="list-bigger-wrap"><img class="lazyload" alt="아티스트 이름"
-                                               src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220531/20220531-42357.jpg/dims/quality/70/"
-                                               style="">
-                <div class="list-bigger-txt">
-                    <p class="list-b-tit1 v2 v2">아티스트 이름</p>
-
-                </div>
-            </div>
-        </a>
-
-        <a style="cursor:pointer;" onclick="jsf_base_GoToPerfDetail(42357);"
-           title="아티스트 이름">
-            <div class="list-bigger-wrap"><img class="lazyload" alt="아티스트 이름"
-                                               src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220531/20220531-42357.jpg/dims/quality/70/"
-                                               style="">
-                <div class="list-bigger-txt">
-                    <p class="list-b-tit1 v2 v2">아티스트 이름</p>
-
-                </div>
-            </div>
-        </a>
-
-        <a style="cursor:pointer;" onclick="jsf_base_GoToPerfDetail(42357);"
-           title="아티스트 이름">
-            <div class="list-bigger-wrap"><img class="lazyload" alt="아티스트 이름"
-                                               src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220531/20220531-42357.jpg/dims/quality/70/"
-                                               style="">
-                <div class="list-bigger-txt">
-                    <p class="list-b-tit1 v2 v2">아티스트 이름</p>
-
-                </div>
-            </div>
-        </a>
-
-    </div>
-
-    <div class="mypage-paging">
-        <div class="mypage-pageStyle">
+    <div th:object="${PageDTO}">
+        <div class="big-width mypage-pageStyle" style="text-align: center">
             <a class="mypage-page-first"><<</a>
-            <a class="mypage-page-prev"><</a>
-            <div>
-                <a class="">1</a>
-            </div>
-            <a class="mypage-page-next">></a>
+            <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code>&lt;</code></a>
+            <th:block th:each="num:${#numbers.sequence(PageDTO.startPage, PageDTO.endPage)}">
+                <code th:if="${num == PageDTO.criteria.pageNum}" th:text="${num}"></code>
+                <a class="changePage mypage-page-next" th:href="${num}" th:unless="${num == PageDTO.criteria.pageNum}"><code
+                        th:text="${num}"></code></a>
+            </th:block>
+            <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>&gt;</code></a>
             <a class="mypage-page-last">>></a>
         </div>
     </div>
+    <form action="/artist/artistList" name="pageForm" th:object="${criteria}">
+        <input type="hidden" th:field="*{pageNum}">
+        <input type="hidden" th:field="*{amount}">
+    </form>
 
 
     <input name="ListTotalCnt" type="hidden" id="ListTotalCnt" value="35">

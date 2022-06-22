@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.teamprojeect.mapper.artist.ArtistMapper">
+
+    <!-- 아티스트 등록 신청 (status 1) -->
+    <insert id="insertApply">
+        INSERT INTO TBL_ARTIST
+        (ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE, ARTIST_DONATION, ARTIST_ACCOUNT, ARTIST_STATUS)
+        VALUES(SEQ_ARTIST.NEXTVAL, #{userNumber}, #{artistName}, #{artistDescription}, #{artistType}, #{artistDonation}, #{artistAccount}, 1)
+    </insert>
+
+    <!--관리자 등록 승인 (status -> 3)-->
+    <update id="insertAdmin">
+        UPDATE TBL_ARTIST
+        SET ARITST_STATUS = 3
+        WHERE ARTIST_NUMBER = #{artistNumber}
+    </update>
+
+    <!--아티스트 정보 수정 신청 (status 2)-->
+    <update id="updateApply">
+        UPDATE TBL_ARTIST
+        SET ARTIST_NAME = #{artistName}, ARTIST_DESCRIPTION = #{artistDescription}, ARTIST_TYPE = #{artistType}, ARTIST_DONATION = #{artistDonation},
+         ARTIST_ACCOUNT = #{artistAccount}, ARITST_STATUS = 2
+        WHERE ARTIST_NUMBER = #{artistNumber}
+    </update>
+
+    <!--관리자 수정 승인 (status -> 3)--> <!---->
+    <update id="updateAdmin">
+        UPDATE TBL_ARTIST
+        SET ARITST_STATUS = 3
+        WHERE ARTIST_NUMBER = #{artistNumber}
+    </update>
+
+    <!--아티스트 삭제--> <!---->
+    <update id="delete">
+        UPDATE TBL_ARTIST SET ARITST_STATUS = 4 WHERE ARTIST_NUMBER = #{artistNumber}
+    </update>
+
+
+
+    <!--    <select id="getList" resultType="artistVO">-->
+    <!--        SELECT-->
+    <!--        <trim prefix="a.*">-->
+    <!--            <choose>-->
+    <!--                <when test="listDTO.artistSortingType == 'NEW'.toString()">-->
+    <!--                    FROM TBL_ARTIST a ORDER BY a.ARTIST_NUMBER DESC-->
+    <!--                </when>-->
+    <!--                <when test="listDTO.artistSortingType == 'LIKE'.toString()">-->
+    <!--                    , likescount-->
+    <!--                    FROM (-->
+    <!--                    SELECT ARTIST_NUMBER, COUNT(ARTIST_NUMBER) as likescount-->
+    <!--                    FROM TBL_LIKE GROUP BY ARTIST_NUMBER ORDER BY likescount DESC-->
+    <!--                    ) l-->
+    <!--                    JOIN TBL_ARTIST a-->
+    <!--                    ON a.ARTIST_NUMBER = l.ARTIST_NUMBER-->
+    <!--                    ORDER BY LIKESCOUNT DESC-->
+    <!--                </when>-->
+    <!--            </choose>-->
+    <!--        </trim>-->
+    <select id="getList" resultType="artistVO">
+        SELECT ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE
+        <choose>
+            <when test="listDTO.artistSortingType == 'NEW'.toString()">
+                FROM (
+                SELECT ROWNUM RN, ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE
+                FROM (
+                SELECT a.ARTIST_NUMBER, a.USER_NUMBER, a.ARTIST_NAME, a.ARTIST_DESCRIPTION , a.ARTIST_TYPE FROM TBL_ARTIST a
+                ORDER BY a.ARTIST_NUMBER DESC
+                )
+            </when>
+            <when test="listDTO.artistSortingType == 'LIKE'.toString()">
+                , likescount
+                FROM (
+                SELECT ROWNUM RN, ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE
+
+                FROM (
+                (SELECT ARTIST_NUMBER, COUNT(ARTIST_NUMBER) as likescount
+                FROM TBL_LIKE GROUP BY ARTIST_NUMBER ORDER BY likescount DESC ) l JOIN TBL_ARTIST a
+                ON a.ARTIST_NUMBER = l.ARTIST_NUMBER
+                ORDER BY LIKESCOUNT DESC
+                )
+            </when>
+        </choose>
+        <![CDATA[
+                WHERE ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
+                )
+                WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
+            ]]>
+    </select>
+
+    <select id="getListMusician" resultType="artistVO">
+        SELECT
+        <trim prefix="a.*">
+            <choose>
+                <when test="listDTO.artistSortingType == 'NEW'.toString()">
+                    FROM TBL_ARTIST a WHERE a.ARTIST_TYPE = 1 ORDER BY a.ARTIST_NUMBER DESC
+                </when>
+                <when test="listDTO.artistSortingType == 'LIKE'.toString()">
+                    , likescount
+                    FROM (SELECT ARTIST_NUMBER, COUNT(ARTIST_NUMBER) as likescount
+                    FROM TBL_LIKE GROUP BY ARTIST_NUMBER ORDER BY likescount DESC) l JOIN TBL_ARTIST a
+                    ON a.ARTIST_NUMBER = l.ARTIST_NUMBER
+                    WHERE a.ARTIST_TYPE = 1
+                    ORDER BY LIKESCOUNT DESC
+                </when>
+            </choose>
+        </trim>
+    </select>
+
+    <select id="getListPerformance" resultType="artistVO">
+        SELECT
+        <trim prefix="a.*">
+            <choose>
+                <when test="listDTO.artistSortingType == 'NEW'.toString()">
+                    FROM TBL_ARTIST a WHERE a.ARTIST_TYPE = 2 ORDER BY a.ARTIST_NUMBER DESC
+                </when>
+                <when test="listDTO.artistSortingType == 'LIKE'.toString()">
+                    , likescount
+                    FROM (SELECT ARTIST_NUMBER, COUNT(ARTIST_NUMBER) as likescount
+                    FROM TBL_LIKE GROUP BY ARTIST_NUMBER ORDER BY likescount DESC) l JOIN TBL_ARTIST a
+                    ON a.ARTIST_NUMBER = l.ARTIST_NUMBER
+                    WHERE a.ARTIST_TYPE = 2
+                    ORDER BY LIKESCOUNT DESC
+                </when>
+            </choose>
+        </trim>
+    </select>
+
+
+    <!--    <select id="getList" resultType="ArtistVO">-->
+    <!--        <![CDATA[-->
+    <!--        SELECT ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION FROM TBL_ARTIST-->
+    <!--&#45;&#45;         USER_NUMBER 필요한가?-->
+    <!--&#45;&#45;             (-->
+    <!--&#45;&#45;                 SELECT ROWNUM RN, REPLY_NUMBER, BOARD_BNO, REPLY_CONTENT, REPLY_WRITER, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE-->
+    <!--&#45;&#45;                 FROM (-->
+    <!--&#45;&#45;                         SELECT REPLY_NUMBER, BOARD_BNO, REPLY_CONTENT, REPLY_WRITER, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE FROM TBL_REPLY-->
+    <!--&#45;&#45;                         ORDER BY REPLY_UPDATE_DATE DESC-->
+    <!--&#45;&#45;                      )-->
+    <!--&#45;&#45;                 WHERE BOARD_BNO = #{boardBno} AND ROWNUM <= #{criteria.pageNum} * #{criteria.amount}-->
+    <!--&#45;&#45;             )-->
+    <!--        WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}-->
+    <!--        ]]>-->
+    >>>>>>> work0620
+    <!--    </select>-->
+
+    <!--    <select id="getListMusician" resultType="artistVO">-->
+    <!--        SELECT-->
+    <!--        <trim prefix="a.*">-->
+    <!--            <choose>-->
+    <!--                <when test="listDTO.artistSortingType == 'NEW'.toString()">-->
+    <!--                    FROM TBL_ARTIST a WHERE a.ARTIST_TYPE = 1 ORDER BY a.ARTIST_NUMBER DESC-->
+    <!--                </when>-->
+    <!--                <when test="listDTO.artistSortingType == 'LIKE'.toString()">-->
+    <!--                    , likescount-->
+    <!--                    FROM (SELECT ARTIST_NUMBER, COUNT(ARTIST_NUMBER) as likescount-->
+    <!--                    FROM TBL_LIKE GROUP BY ARTIST_NUMBER ORDER BY likescount DESC) l JOIN TBL_ARTIST a-->
+    <!--                    ON a.ARTIST_NUMBER = l.ARTIST_NUMBER-->
+    <!--                    WHERE a.ARTIST_TYPE = 1-->
+    <!--                    ORDER BY LIKESCOUNT DESC-->
+    <!--                </when>-->
+    <!--            </choose>-->
+    <!--        </trim>-->
+    <!--    </select>-->
+
+    <!--    <select id="getListPerformance" resultType="artistVO">-->
+    <!--        SELECT-->
+    <!--        <trim prefix="a.*">-->
+    <!--            <choose>-->
+    <!--                <when test="listDTO.artistSortingType == 'NEW'.toString()">-->
+    <!--                    FROM TBL_ARTIST a WHERE a.ARTIST_TYPE = 2 ORDER BY a.ARTIST_NUMBER DESC-->
+    <!--                </when>-->
+    <!--                <when test="listDTO.artistSortingType == 'LIKE'.toString()">-->
+    <!--                    , likescount-->
+    <!--                    FROM (SELECT ARTIST_NUMBER, COUNT(ARTIST_NUMBER) as likescount-->
+    <!--                    FROM TBL_LIKE GROUP BY ARTIST_NUMBER ORDER BY likescount DESC) l JOIN TBL_ARTIST a-->
+    <!--                    ON a.ARTIST_NUMBER = l.ARTIST_NUMBER-->
+    <!--                    WHERE a.ARTIST_TYPE = 2-->
+    <!--                    ORDER BY LIKESCOUNT DESC-->
+    <!--                </when>-->
+    <!--            </choose>-->
+    <!--        </trim>-->
+    <!--    </select>-->
+
+
+
+
+    <!--&lt;!&ndash;강래&ndash;&gt;-->
+
+
+    <select id="rankingList" resultType="artistVO">
+        SELECT a.*, likescount
+        FROM (
+        SELECT ARTIST_NUMBER, COUNT(ARTIST_NUMBER) as likescount
+        FROM TBL_LIKE GROUP BY ARTIST_NUMBER ORDER BY likescount DESC
+        ) l
+        JOIN TBL_ARTIST a
+        ON a.ARTIST_NUMBER = l.ARTIST_NUMBER
+        <choose>
+            <!--                        <when test="listDTO.rankingSortingDate == 'week'.toString()">-->
+            <!--&#45;&#45;                             LIKE_DATE == 현재기준(이번주 범위내)-->
+            <!--                        </when>-->
+            <!--                        <when test="listDTO.rankingSortingDate == 'month'.toString()">-->
+
+            <!--                        </when>-->
+            <when test="listDTO.rankingSortingDate == 'year'.toString()">
+                WHERE LIKE_DATE == #{listDTO.detailDate}
+            </when>
+        </choose>
+        ORDER BY LIKESCOUNT DESC
+    </select>
+
+
+
+
+
+    <!--&lt;!&ndash;전체(A)&ndash;&gt;-->
+    <!--    <select id="getList" resultType="artistVO">-->
+    <!--&#45;&#45;          item="전달받은 인자값을 다른이름으로 대체" collection="전달받은 인자값"-->
+    <!--            <choose>-->
+    <!--                <when test="listDTO.rankingSortingDate == 'week'.toString()">-->
+    <!--                    FROM TBL_ARTIST ORDER BY ARTIST_NUMBER DESC-->
+    <!--                </when>-->
+    <!--                <when test="listDTO.rankingSortingDate == 'month'.toString()">-->
+    <!--                    FROM TBL_ARTIST ORDER BY ARTIST_NUMBER DESC-->
+    <!--                </when>-->
+    <!--                <when test="listDTO.rankingSortingDate == 'year'.toString()">-->
+    <!--                    FROM TBL_ARTIST-->
+    <!--                    JOIN TBL_LIKE-->
+    <!--                    ON  ARTIST_NUMBER = ARTIST_NUMBER-->
+    <!--                </when>-->
+    <!--            </choose>-->
+    <!--    </select>-->
+
+
+    <!--    &lt;!&ndash;전체(A)&ndash;&gt;-->
+    <!--    <select id="getList" resultType="artistVO">-->
+    <!--        <trim prefixOverrides="OR">-->
+    <!--            &#45;&#45;          item="전달받은 인자값을 다른이름으로 대체" collection="전달받은 인자값"-->
+    <!--            <foreach item="listDTO.rankingSortingDate" collection="">-->
+    <!--                <trim prefix="">-->
+    <!--                    <choose>-->
+    <!--                        <when test="listDTO.rankingSortingDate == 'week'.toString()">-->
+    <!--                            (SELECT TO_CHAR(SYSDATE,'W'), TO_CHAR(SYSDATE,'mm') FROM DUAL),-->
+    <!--                        </when>-->
+    <!--                        <when test="listDTO.rankingSortingDate == 'month'.toString()">-->
+    <!--                            (SELECT TO_CHAR(SYSDATE,'mm'), TO_CHAR(SYSDATE,'yyyy') FROM DUAL),-->
+    <!--                        </when>-->
+    <!--                        <when test="listDTO.rankingSortingDate == 'year'.toString()">-->
+    <!--                            (SELECT TO_CHAR(SYSDATE,'yyyy') FROM DUAL)-->
+
+    <!--                        </when>-->
+    <!--                    </choose>-->
+    <!--                </trim>-->
+    <!--            </foreach>-->
+    <!--        </trim>-->
+    <!--    </select>-->
+
+
+
+    <!--&lt;!&ndash;뮤지션(M)&ndash;&gt;-->
+    <!--    <select id="getListMusician" resultType="artistVO">-->
+    <!--        <trim prefix="">-->
+    <!--            <choose>-->
+    <!--                <when test="listDTO.rankingSortingDate == 'week'.toString()">-->
+    <!--                    FROM TBL_ARTIST ORDER BY M.ARTIST_NUMBER DESC-->
+    <!--                </when>-->
+    <!--                <when test="listDTO.rankingSortingDate == 'month'.toString()">-->
+    <!--                    FROM TBL_ARTIST ORDER BY M.ARTIST_NUMBER DESC-->
+    <!--                </when>-->
+    <!--                <when test="listDTO.rankingSortingDate == 'year'.toString()">-->
+    <!--                    FROM TBL_ARTIST ORDER BY M.ARTIST_NUMBER DESC-->
+    <!--                </when>-->
+    <!--            </choose>-->
+    <!--        </trim>-->
+    <!--    </select>-->
+
+    <!--    &lt;!&ndash;뮤지션(M)&ndash;&gt;-->
+    <!--    <select id="getListMusician" resultType="artistVO">-->
+    <!--        <trim prefix="">-->
+    <!--            <choose>-->
+    <!--                <when test="listDTO.rankingSortingDate == 'week'.toString()">-->
+    <!--                    (SELECT TO_CHAR(SYSDATE,'W'), TO_CHAR(SYSDATE,'mm') FROM DUAL),-->
+    <!--                </when>-->
+    <!--                <when test="listDTO.rankingSortingDate == 'month'.toString()">-->
+    <!--                    (SELECT TO_CHAR(SYSDATE,'mm'), TO_CHAR(SYSDATE,'yyyy') FROM DUAL),-->
+    <!--                </when>-->
+    <!--                <when test="listDTO.rankingSortingDate == 'year'.toString()">-->
+    <!--                    (SELECT TO_CHAR(SYSDATE,'yyyy') FROM DUAL)-->
+    <!--                </when>-->
+    <!--            </choose>-->
+    <!--        </trim>-->
+    <!--    </select>-->
+
+    <!--&lt;!&ndash;퍼포먼스(P)&ndash;&gt;-->
+    <!--    <select id="getListPerformance" resultType="artistVO">-->
+    <!--        <trim prefix="">-->
+    <!--            <choose>-->
+    <!--                <when test="listDTO.rankingSortingDate == 'week'.toString()">-->
+    <!--                    FROM TBL_ARTIST ORDER BY P.ARTIST_NUMBER DESC-->
+    <!--                </when>-->
+    <!--                <when test="listDTO.rankingSortingDate == 'month'.toString()">-->
+    <!--                    FROM TBL_ARTIST ORDER BY P.ARTIST_NUMBER DESC-->
+    <!--                </when>-->
+    <!--                <when test="listDTO.rankingSortingDate == 'year'.toString()">-->
+    <!--                    FROM TBL_ARTIST ORDER BY P.ARTIST_NUMBER DESC-->
+    <!--                </when>-->
+    <!--            </choose>-->
+    <!--        </trim>-->
+    <!--    </select>-->
+
+    <!--    &lt;!&ndash;퍼포먼스(P)&ndash;&gt;-->
+    <!--    <select id="getListPerformance" resultType="artistVO">-->
+    <!--        <trim prefix="">-->
+    <!--            <choose>-->
+    <!--                <when test="listDTO.rankingSortingDate == 'week'.toString()">-->
+    <!--                    (SELECT TO_CHAR(SYSDATE,'W'), TO_CHAR(SYSDATE,'mm') FROM DUAL),-->
+    <!--                </when>-->
+    <!--                <when test="listDTO.rankingSortingDate == 'month'.toString()">-->
+    <!--                    (SELECT TO_CHAR(SYSDATE,'mm'), TO_CHAR(SYSDATE,'yyyy') FROM DUAL),-->
+    <!--                </when>-->
+    <!--                <when test="listDTO.rankingSortingDate == 'year'.toString()">-->
+    <!--                    (SELECT TO_CHAR(SYSDATE,'yyyy') FROM DUAL)-->
+    <!--                </when>-->
+    <!--            </choose>-->
+    <!--        </trim>-->
+    <!--    </select>-->
+
+
+
+
+
+
+
+
+
+    <!--아티스트 목록 개수-->
+
+
+    <!--랭킹 목록-->
+    <select id="rankingList" resultType="artistVO">
+
+    </select>
+
+    <!--랭킹 목록 개수-->
+    <select id="getTotal" resultType="_int">
+
+    </select>
+
+    <!--아티스트 상세 정보-->
+    <select id="getDetail" resultType="artistFileVO">
+        SELECT ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE, ARTIST_DONATION, ARTIST_ACCOUNT, ARTIST_STATUS
+        FROM TBL_ARTIST
+        WHERE ARTIST_NUMBER = #{artistNumber}
+    </select>
+
+</mapper>
