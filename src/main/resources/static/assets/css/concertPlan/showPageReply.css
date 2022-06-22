@@ -228,6 +228,10 @@ div.sm-tit1 .showCategory:hover {
     border-bottom: 4px solid #fd975f;
 }
 
+div.sm-tit1 .showCreate:hover {
+    border-bottom: 4px solid #fd975f;
+}
+
 #current-page {
     background-color: #f39690;
 }
