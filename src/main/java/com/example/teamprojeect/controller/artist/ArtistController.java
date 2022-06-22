@@ -5,6 +5,8 @@ import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.paging.artist.ArtistPageDTO;
+import com.example.teamprojeect.domain.vo.paging.show.ShowPageDTO;
+import com.example.teamprojeect.domain.vo.show.ShowVO;
 import com.example.teamprojeect.service.ArtistService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +20,7 @@ import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
-@RestController
+@Controller
 @RequestMapping("/artist/*")
 public class ArtistController {
     // 필드생성
@@ -33,15 +35,29 @@ public class ArtistController {
 
 
     @GetMapping("/artistList")
-    public String getArtistList(Model model, @RequestParam("page") int pageNum, @RequestParam("artistSortingType") ListDTO listDTO){
-        List<ArtistVO> artistList = artistService.getList(new Criteria(pageNum, 5), listDTO);
+    public String getArtistList(){
 
-        model.addAttribute("artistList", artistList);
+
 
         return "artist/artistList";
-
-
     }
+
+
+    @GetMapping("/artistList/{artistSortingType}/{page}")
+    @ResponseBody
+    public ArtistPageDTO getArtistListType( @PathVariable("artistSortingType") String sortingType, @PathVariable("page") int pageNum){
+        ListDTO listDTO = new ListDTO();
+        listDTO.setArtistSortingType(sortingType);
+        log.info("pageNum=================" +pageNum);
+        log.info("p123=================" + sortingType);
+        List<ArtistVO> artistList = artistService.getList(new Criteria(pageNum, 10), listDTO);
+
+
+        return new ArtistPageDTO(artistList, artistService.getTotal(listDTO));
+    }
+
+
+
 
 //    @GetMapping("/artistList")
 //    public ArtistPageDTO getList(@RequestParam("page") int pageNum, @RequestParam("artistSortingType") ListDTO listDTO){

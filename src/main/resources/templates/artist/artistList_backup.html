@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        아티스트 목록
+    </title>
+
+    <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
+    <script type="text/javascript" id="www-widgetapi-script" src="https://www.youtube.com/s/player/02208bb4/www-widgetapi.vflset/www-widgetapi.js" async=""></script>
+    <script src="https://connect.facebook.net/signals/config/233729201256635?v=2.9.61&amp;r=stable" async=""></script>
+    <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PVHFWWM"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery-3.4.1_min.js"></script><!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PVHFWWM');</script><!-- End Google Tag Manager -->
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/swiper_min.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/Chart.bundle_min.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/utils.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.mCustomScrollbar_min.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/common.js?v=580"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.lazy.min.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jquery.url.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/base64.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/babel.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/polyfill.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/Main.js?v=580"></script>
+    <script type="text/javascript" src="/inc/js/custom-1.8.21/ui/jquery-ui-1.8.21.custom.min.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jry_home_jdefault.js"></script>
+    <script type="text/javascript" src="http://tkfile.yes24.com/New/Js/jry_home_jdialog.js"></script>
+    <script type="text/javascript" src="/inc/js/jry_default_new.js?v=580"></script>
+
+    <script type="text/javascript" src="/assets/js/artist/artist.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/artist/artistList.css">
+
+    <!--    <style type="text/css">-->
+    <!--        .perform-top{overflow:visible !important;}-->
+    <!--        body{font-family: 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;}-->
+    <!--    </style>-->
+    <script src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1056776890/?random=1654610228182&amp;cv=9&amp;fst=1654610228182&amp;num=1&amp;label=xS_KCLbd8gMQusX09wM&amp;guid=ON&amp;resp=GooglemKTybQhCsO&amp;eid=375603260&amp;u_h=1067&amp;u_w=1707&amp;u_ah=1019&amp;u_aw=1707&amp;u_cd=24&amp;u_his=4&amp;u_tz=540&amp;u_java=false&amp;u_nplug=5&amp;u_nmime=2&amp;sendb=1&amp;ig=1&amp;frm=0&amp;url=http%3A%2F%2Fticket.yes24.com%2FNew%2FGenre%2FGenreMain.aspx%3Fgenre%3D15456%26Gcode%3D009_202_001&amp;ref=http%3A%2F%2Fticket.yes24.com%2FNew%2FMain.aspx%3FGcode%3D009_201&amp;tiba=YES24%20%ED%8B%B0%EC%BC%93&amp;hn=www.googleadservices.com&amp;rfmt=3&amp;fmt=4"></script>
+</head>
+
+<header th:include="~{/header/header3 :: head}">
+
+</header>
+
+<body style="padding-top: 0px;">
+<div id="dialogAlert" style="display:none;"></div>
+<div id="dialogConfirm" style="display:none;"></div>
+<div id="dialogPopup" style="display:none;"></div>
+<section class="list-sec">
+    <div id="TopGenreList_Panel1">
+
+        <p class="li-sec-tit">
+            <span class="li-sec-tit1">아티스트</span><span class="li-sec-tit2">
+             전체
+
+			<span class="li-sec-select">
+
+
+				<a style="cursor:pointer;" onclick="go_to_url('/artist/artistList')">전체</a>
+				<a style="cursor:pointer;" onclick="go_to_url('/artist/artistListMusician')">뮤지션</a>
+				<a style="cursor:pointer;" onclick="go_to_url('/artist/artistListPerformance')">퍼포먼스</a>
+			</span>
+		</span>
+        </p>
+
+    </div>
+    <!-- 검색 창, 버튼 -->
+    <div class="pf-top-srch" autocomplete="off">
+
+        <input type="text" id="searchWord" autocomplete="off">
+        <input type="hidden" name="" id="searchType" value="" autocomplete="off">
+
+
+        <a href="#" onclick="jsf_mm_Search();"><img src="http://tkfile.yes24.com/imgNew/common/pf-srch.png" alt="" class="trans"><img src="/images/artist/search.png" alt="" class="searchbtn"></a>
+
+
+    </div>
+
+
+    <!-- 정렬 기준 -->
+    <p class="li-sec-tag">
+        <span><a style="cursor:pointer;" onclick="artistSort1();" token="3" class="on">최신 등록 기준</a></span>
+        <span><a style="cursor:pointer;" onclick="artistSort2();" token="0">좋아요 기준</a></span>
+
+
+
+
+    </p>
+    <p class="li-sec-result">
+        현재 등록된 아티스트는 <span id="ListCntText">5명</span> 입니다.
+    </p>
+
+    <div class="ms-list-imgs">
+        <th:block th:each="artist:${artistList}">
+            <a th:object="${artist}" style="cursor:pointer;" onclick="go_to_artist_info('/artist/artistInfo');"
+
+               title="아티스트 이름">
+                <div class="list-bigger-wrap"><img class="lazyload" alt="아티스트 이름"
+                                                   src="/images/artist/buskerbukser.jpg"
+                                                   style="">
+                    <div class="list-bigger-txt">
+                        <p class="list-b-tit1 v2 v2" th:text="*{artistName}"></p>
+
+                    </div>
+                </div>
+            </a>
+        </th:block>
+
+
+        <div th:object="${PageDTO}">
+            <div class="big-width mypage-pageStyle" style="text-align: center">
+                <a class="mypage-page-first"><<</a>
+                <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code>&lt;</code></a>
+                <th:block th:each="num:${#numbers.sequence(PageDTO.startPage, PageDTO.endPage)}">
+                    <code th:if="${num == PageDTO.criteria.pageNum}" th:text="${num}"></code>
+                    <a class="changePage mypage-page-next" th:href="${num}" th:unless="${num == PageDTO.criteria.pageNum}"><code
+                            th:text="${num}"></code></a>
+                </th:block>
+                <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>&gt;</code></a>
+                <a class="mypage-page-last">>></a>
+            </div>
+        </div>
+        <form action="/artist/artistList" name="pageForm" th:object="${criteria}">
+            <input type="hidden" th:field="*{pageNum}">
+            <input type="hidden" th:field="*{amount}">
+        </form>
+
+
+        <input name="ListTotalCnt" type="hidden" id="ListTotalCnt" value="35">
+
+
+</section>
+
+<script type="text/javascript">
+    $(function () {
+        $('.lazyload').Lazy({
+            effect: "fadeIn",
+            effectTime: 200,
+            defaultImage: 'http://tkfile.yes24.com' + '/imgNew/common/noimg.gif'
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+
+        $(".li-sec-tit2").on('click', function (e) {
+            if ($(this).is(".on")) {
+                e.preventDefault();
+                $(this).removeClass("on");
+                $(".li-sec-select").slideUp();
+
+            } else {
+                e.preventDefault();
+                $(this).addClass("on");
+                $(".li-sec-select").slideDown();
+            }
+        });
+        $(document).mouseup(function (e) {
+            var container = $(".li-sec-tit2");
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                $(".li-sec-select").slideUp();
+                $(".li-sec-tit2").removeClass("on");
+            }
+        });
+    });
+
+
+    $(document).ready(function () {
+        jsf_genre_GetGenreList('15456', '1', '3');
+
+        $('.li-sec-tag a').each(function () {
+            $(this).unbind('click.btnGenreListTab').bind('click.btnGenreListTab', function (e) {
+                e.preventDefault();
+                $("#pCurPage").val(1);
+                jsf_genre_GetGenreList('15456', '1', $(this).attr('token'));
+            });
+
+        });
+
+    });
+
+    //Scroll Event
+    var asyncType = false;
+    var didScroll;
+    var lastScrollTop;
+
+    $(window).scroll(function (event) {
+        didScroll = true;
+    });
+
+    setInterval(function () {
+        if (didScroll) {
+            hasScrolled();
+            didScroll = false;
+        }
+    }, 1);
+
+    function hasScrolled() {
+        var scrollT = $(this).scrollTop();
+        var scrollH = $(this).height();
+        var list_secH = $(".list-sec").height();
+
+        if (scrollT > lastScrollTop) {
+            //Scroll Down
+            if (scrollT + scrollH + 150 >= list_secH) {
+                var curPage = parseInt($("#pCurPage").val());
+                var lastPage = Math.ceil($("#ListTotalCnt").val() / $("#pPageSize").val());
+                if (curPage < lastPage) {
+                    if(asyncType){
+                        return;
+                    }
+                    $("#pCurPage").val(curPage + 1);
+                    jsf_genre_GetGenreList('15456', '1', $('.li-sec-tag').find('a[class*="on"]').attr('token') );
+                    asyncType = true;
+                }
+            }
+        }
+
+        lastScrollTop = scrollT
+    }
+
+
+
+
+
+
+</script>
+<script>
+    function go_to_url(url) {
+        location.href=url;
+    }
+</script>
+<script>
+    function go_to_artist_info(artist_no) {
+        location.href=artist_no;
+    }
+</script>
+<script>
+
+    function artistSort1() {
+
+        $('.li-sec-tag a').removeClass("on");
+        $('.li-sec-tag').find("a[token='3']").addClass("on")
+    }
+
+</script>
+<script>
+
+    function artistSort2() {
+
+        $('.li-sec-tag a').removeClass("on");
+        $('.li-sec-tag').find("a[token='0']").addClass("on")
+    }
+
+</script>
+
+
+
+
+<footer th:include="~{/footer/footer :: foot}">
+
+</footer>
+</body>
+<script th:inline="javascript" src="/assets/js/artist/artist.js"></script>
+</html>

@@ -382,3 +382,37 @@ input, select, textarea, div, p, span {
 .mypage-pageStyle a:hover {
     border-bottom: 3px solid #ff564c;
 }
+
+.list-sec .ms-list-imgs {
+    /* height: 471px; */
+    height: 100%;
+}
+
+/* 페이징 */
+.mypage-paging {
+    outline: none;
+}
+.mypage-pageStyle {
+    text-align: center;
+    padding-bottom: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+.mypage-pageStyle code, .mypage-page-first, .mypage-page-last {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 15px;
+    color: #666;
+    margin: 0 3px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    border-bottom: 3px solid #c6c5c5;
+}
+
+.mypage-pageStyle code:hover, .mypage-page-first:hover, .mypage-page-last:hover {
+    border-bottom: 3px solid #ff564c;
+}
