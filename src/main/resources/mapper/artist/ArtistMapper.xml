@@ -89,6 +89,10 @@
             ]]>
     </select>
 
+    <select id="getArtistTotal" resultType="_int">
+        SELECT COUNT(*) FROM TBL_ARTIST
+    </select>
+
     <select id="getListMusician" resultType="artistVO">
         SELECT
         <trim prefix="a.*">
@@ -125,6 +129,26 @@
                 </when>
             </choose>
         </trim>
+    </select>
+
+
+    <select id="getList2" resultType="artistVO">
+        SELECT ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE  , likescount
+
+        FROM (
+                SELECT ROWNUM RN, ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE
+
+                FROM (
+                (SELECT ARTIST_NUMBER, COUNT(ARTIST_NUMBER) as likescount
+                FROM TBL_LIKE GROUP BY ARTIST_NUMBER ORDER BY likescount DESC ) l JOIN TBL_ARTIST a
+                ON a.ARTIST_NUMBER = l.ARTIST_NUMBER
+                ORDER BY LIKESCOUNT DESC
+                )
+        <![CDATA[
+                WHERE ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
+                )
+                WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
+            ]]>
     </select>
 
 
@@ -230,6 +254,7 @@
 
     <!--랭킹 목록 개수-->
     <select id="getTotal" resultType="_int">
+        SELECT COUNT(*) FROM TBL_ARTIST
 
     </select>
 

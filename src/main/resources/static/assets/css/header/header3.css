@@ -719,7 +719,7 @@ a.ms3-player-close img{width:26px; height:26px;}
     20%  {opacity:1;}
     100% {opacity:1;}
 }
-.list-sec .ms-list-imgs{/*height:471px;*/ height:500px}
+.list-sec .ms-list-imgs{/*height:471px;*/ height: 100%}
 .list-sec .ms-list-imgs a:hover{margin:0 15px;}
 .list-sec .ms-list-imgs a:hover .list-bigger-wrap{width:216px;height:410px;}
 .list-sec .ms-list-imgs a .list-bigger-wrap .list-bigger-txt .list-b-circle{top:-46px;}

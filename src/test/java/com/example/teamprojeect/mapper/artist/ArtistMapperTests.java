@@ -22,12 +22,12 @@ public class ArtistMapperTests {
 //                .stream().map(ArtistVO::toString).forEach(log::info);
 //    }
 //
-//    @Test
-//    public void getListTest(){
-//        artistMapper.getList(new Criteria(1,5), new ListDTO("A","1","2","LIKE","3"))
-//
-//                .stream().map(ArtistVO::toString).forEach(log::info);
-//    }
+    @Test
+    public void getListTest(){
+        artistMapper.getList(new Criteria(1,5), new ListDTO("A","1","2","LIKE","3"))
+
+                .stream().map(ArtistVO::toString).forEach(log::info);
+    }
 
 //
 //    @Test
