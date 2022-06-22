@@ -28,7 +28,8 @@ public interface ShowMapper {
     public List<ShowVO> getList(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO);
 
     // 진행 중 공연 목록
-    public List<ShowVO> getListIng(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO);
+//    public List<ShowVO> getListIng(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO);
+    public List<ShowVO> getListIng(ListDTO listDTO);
 
     // 진행 예정 공연 개수
     public int getTotal(ListDTO listDTO);
