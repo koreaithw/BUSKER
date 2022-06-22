@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -54,6 +55,23 @@ public class ArtistController {
 
 
         return new ArtistPageDTO(artistList, artistService.getTotal(listDTO));
+    }
+
+//     아티스트 상세보기 페이지
+    @GetMapping("/artistInfo")
+    public String goArtistInfo(Long artistNumber, Criteria criteria, HttpServletRequest request, Model model) {
+        String requestURL = request.getRequestURI();
+        ArtistVO artistVO = artistService.getDetail(artistNumber);
+
+
+        if(artistVO.getArtistType() == 1) {
+            artistVO.setArtistCategory("뮤지션");
+        } else if (artistVO.getArtistType() == 2) {
+            artistVO.setArtistCategory("퍼포먼스");
+        }
+
+        model.addAttribute("artist", artistVO);
+        return "artist/artistInfo";
     }
 
 
