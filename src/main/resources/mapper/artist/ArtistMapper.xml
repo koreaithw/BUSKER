@@ -259,7 +259,7 @@
     </select>
 
     <!--아티스트 상세 정보-->
-    <select id="getDetail" resultType="artistFileVO">
+    <select id="getDetail" resultType="artistVO">
         SELECT ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE, ARTIST_DONATION, ARTIST_ACCOUNT, ARTIST_STATUS
         FROM TBL_ARTIST
         WHERE ARTIST_NUMBER = #{artistNumber}
