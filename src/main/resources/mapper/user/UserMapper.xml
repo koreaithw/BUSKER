@@ -44,7 +44,7 @@
     <!-- 마이페이지 : 정보 수정-->
     <update id="update">
         UPDATE TBL_USER
-        SET USER_NAME = #{userName}, USER_PHONE_NUMBER = #{userPhoneNumber}, USER_EMAIL = #{userEmail}, USER_ARTIST_STATUS = #{userArtistStatus}
+        SET USER_NAME = #{userName}, USER_PHONE_NUMBER = #{userPhoneNumber}, USER_EMAIL = #{userEmail}
         WHERE USER_NUMBER = #{userNumber}
     </update>
 
