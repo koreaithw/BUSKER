@@ -46,7 +46,7 @@ function concertPlanList(type, page){
             let infoNumber = Number(show.showNumber);
             str += "<a class='goRead' href='/concert/concertPlanInfo?pageNum=" + page + "&amount=15&type&keyword&showNumber=" + infoNumber +"' target='_self'>"
             str += "<div class='list-bigger-wrap'>"
-            str += "<img class='lazyload' src='/images/concertPlan/img3.jpg' alt='/show_view'/>"
+            str += "<img class='lazyload' src='http://tkfile.yes24.com/upload2/perfblog/202205/20220516/20220516-42246.jpg/dims/quality/70/' alt='/show_view'/>"
             str += "<div class='list-bigger-txt'>"
             str += "<p class='list-b-tit1'>" + show.showName + "</p>"
             str += "<p class='list-b-tit2'>" + show.showLocation + "</p>"
@@ -68,8 +68,15 @@ $(document).ready(function () {
     concertPlanList(type, pageNum);
 })
 
+let currentCategory = ".all";
+function categoryChange(e) {
+    $(currentCategory).attr("id", "non-current");
+    currentCategory = e;
+    $(currentCategory).attr("id", "current");
+}
 
 $(".all").click(function (e) {
+    categoryChange(".all");
     e.preventDefault();
     console.log("all 됐슈")
     pageNum = 1;
@@ -77,6 +84,7 @@ $(".all").click(function (e) {
 })
 
 $(".musician").click(function (e) {
+    categoryChange(".musician");
     e.preventDefault();
     console.log("musician 됐슈")
     pageNum = 1;
@@ -84,6 +92,7 @@ $(".musician").click(function (e) {
 })
 
 $(".performance").click(function (e) {
+    categoryChange(".performance");
     e.preventDefault();
     console.log("performance 됐슈")
     pageNum = 1;
@@ -136,3 +145,5 @@ $("a.goRead").click(function (e) {
     e.preventDefault();
     location.href = "/concert/concertPlanInfo" + paging + "&showNumber=" + $(this).attr('href');
 });
+
+

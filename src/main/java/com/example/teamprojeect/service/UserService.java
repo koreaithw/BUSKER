@@ -34,5 +34,8 @@ public class UserService {
         return userDAO.remove(userNumber);
     }
 
+    // 로그인
+    public boolean login(String userId, String userPw) {return userDAO.login(userId,userPw);}
+
 
 }

@@ -44,9 +44,19 @@ public class UserServiceTests {
 //    }
 
 //    마이페이지 : 유저 정보 조회
-    @Test
-    public void readTest(){
-        Long userNumber = 3L;
-        log.info(userService.read(userNumber).toString());
-    }
+//    @Test
+//    public void readTest(){
+//        Long userNumber = 3L;
+//        log.info(userService.read(userNumber).toString());
+//    }
+    //로그인
+//    @Test
+//    public void loginTest(){
+//
+//        String userId = "i";
+//        String userPw = "1234";
+//
+//        log.info("로그인 성공" + userService.login(userId,userPw));
+//
+//    }
 }

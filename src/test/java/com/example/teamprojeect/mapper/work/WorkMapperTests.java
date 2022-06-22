@@ -1,11 +1,15 @@
 package com.example.teamprojeect.mapper.work;
 
+import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.work.WorkVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @SpringBootTest
@@ -20,21 +24,21 @@ public class WorkMapperTests {
 //    }
 
 //     작품 등록 신청
-    @Test //잘됨
-    public void insertApplyTest() {
-        for (int i = 0; i < 15; i++){
-            WorkVO workVO = new WorkVO();
-            workVO.setArtistNumber(3L);
-            workVO.setWorkDescription("testDescription" + i);
-            workVO.setWorkGenre("힙합/랩");
-            workVO.setWorkName("testWork" + i);
-            workVO.setWorkPurchaseUrl("testurl" + i);
-            workVO.setWorkReleaseDate("2022-06-" + (i + 1));
-            workVO.setWorkYoutubeUrl("testYoutubeUrl" + i);
-            workVO.setWorkTag("힙합/랩");
-            workMapper.insertApply(workVO);
-        }
-    }
+//    @Test //잘됨
+//    public void insertApplyTest() {
+//        for (int i = 0; i < 15; i++){
+//            WorkVO workVO = new WorkVO();
+//            workVO.setArtistNumber(3L);
+//            workVO.setWorkDescription("testDescription" + i);
+//            workVO.setWorkGenre("힙합/랩");
+//            workVO.setWorkName("testWork" + i);
+//            workVO.setWorkPurchaseUrl("testurl" + i);
+//            workVO.setWorkReleaseDate("2022-06-" + (i + 1));
+//            workVO.setWorkYoutubeUrl("testYoutubeUrl" + i);
+//            workVO.setWorkTag("힙합/랩");
+//            workMapper.insertApply(workVO);
+//        }
+//    }
 
     // 작품 수정 신청
 //    @Test //잘됨
@@ -77,8 +81,22 @@ public class WorkMapperTests {
 //    }
 
     // 작품 신청 전체 목록
+//    @Test
+//    public void getListTest() {
+//        workMapper.getList(new Criteria(1,10)).stream().map(WorkVO::toString).forEach(log::info);
+//    }
+
     @Test
-    public void getListTest() {
-        workMapper.getList(new Criteria(1,10)).stream().map(WorkVO::toString).forEach(log::info);
+    public void getKeywordTest() {
+        ListDTO listDTO = new ListDTO();
+        List<String> tag = new ArrayList<>();
+        tag.add("힙합/랩");
+        listDTO.setTag(tag);
+        workMapper.getKeyword(new Criteria(1,10),listDTO).stream().map(WorkVO::toString).forEach(log::info);
     }
+
+//    @Test
+//    public void getTagTest() {
+//        workMapper.getTag();
+//    }
 }
