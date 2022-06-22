@@ -13,9 +13,6 @@ public interface WorkFileMapper {
     // 작품 사진 삭제
     public void delete(Long workNumber);
 
-    // 작품 사진 변경
-    public void update(WorkFileVO workFileVO);
-
     // 작품 사진 선택
-    public List<WorkFileVO> find(Long workNumber);
+    public WorkFileVO find(Long workNumber);
 }

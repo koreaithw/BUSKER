@@ -4,6 +4,7 @@ import com.example.teamprojeect.domain.dao.work.WorkDAO;
 import com.example.teamprojeect.domain.dao.work.WorkFileDAO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.work.WorkFileVO;
 import com.example.teamprojeect.domain.vo.work.WorkVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,10 @@ public class WorkService {
     private final WorkFileDAO workFileDAO;
 
     // 작품 등록 신청
-    public void registerApply(WorkVO workVO){
+    public void registerApply(WorkVO workVO, WorkFileVO workFileVO){
         workDAO.registerApply(workVO);
+        workFileVO.setWorkNumber(workVO.getWorkNumber());
+        workFileDAO.register(workFileVO);
     }
 
     // 작품 등록 신청 승인
