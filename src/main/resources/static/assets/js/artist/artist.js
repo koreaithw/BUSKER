@@ -1,11 +1,9 @@
 let artistService = (function () {
     function getArtistList(artistSortingType, page, callback, error) {
-        console.log("getList")
         let pageNum = page || 1;
         $.ajax({
             url: "/artist/artistList/" + artistSortingType + "/" + pageNum,
             type: "get",
-            // data: JSON.stringify(type),
             dataType: "json",
             contentType: "application/json",
             success: function (artistPageDTO) {
@@ -23,15 +21,34 @@ let artistService = (function () {
     return {getArtistList:getArtistList}
 })();
 
-// 기본 전역변수
+
 let pageNum = 1;
 let artistSortingType = "NEW";
+let artistCnt = $(".li-sec-result");
 let artistDiv = $(".ms-list-imgs");
 
 
-// div 변하는 function 선언
+// 아티스트 수 출력
+// function artistCount() {
+//     artistService.getArtistList(artistSortingType, page, function (total, list) {
+//         let str = "";
+//         let artistCnt = 1;
+//        
+//         $.each(list, function(i, artist){
+//             artistCnt += 1;
+//         });
+//         str += "현재 등록된 아티스트는 <span id=\"ListCntText\">" + artistCnt + "</span> 명 입니다."
+//
+//
+//         artistCnt.html(str);
+//         artistPage(artistSortingType, total);
+//     }, function (a, b, c) {
+//         console.log(a, b, c)
+//     });
+// }
+
+
 function artistList(artistSortingType, page){
-    console.log("새로고침 됐슈")
 
     artistService.getArtistList(artistSortingType, page, function (total, list) {
         let str = "";
@@ -43,7 +60,7 @@ function artistList(artistSortingType, page){
 
         $.each(list, function(i, artist){
             let artistInfoNumber = Number(artist.artistNumber);
-            str += "<a style='cursor:pointer;' onclick='go_to_artist_info('/artist/artistInfo');' title='아티스트 이름'>"
+            str += "<a class='getinfo' style='cursor:pointer;' href='/artist/artistInfo?pageNum=" + page + "&amount=15&type&keyword&artistNumber=" + artistInfoNumber +"' target='_self'>"
             str += "<div class='list-bigger-wrap'>"
             str += "<img class='lazyload' alt='아티스트 이름' src='/images/artist/buskerbukser.jpg' style=''>"
             str += "<div class='list-bigger-txt'>"
@@ -61,7 +78,6 @@ function artistList(artistSortingType, page){
 }
 
 $(document).ready(function () {
-    // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
     artistList(artistSortingType, pageNum);
 })
 
@@ -73,9 +89,9 @@ function sortChange(e) {
 }
 
 function artistPage(artistSortingType, total) {
-    let endPage = Math.ceil(pageNum / 10.0) * 10; // 올림
+    let endPage = Math.ceil(pageNum / 10.0) * 10;
     let startPage = endPage - 9;
-    let realEnd = Math.ceil(total / 10.0);  // 올림
+    let realEnd = Math.ceil(total / 10.0);
     const $paging = $(".paging");
 
     if (endPage > realEnd) {
@@ -111,9 +127,9 @@ $(".paging").on("click", "a.changePage", function (e) {
     artistList(artistSortingType, pageNum);
 })
 
-$("a.goRead").click(function (e) {
+$("a.getinfo").click(function (e) {
     e.preventDefault();
-    location.href = "/concert/concertPlanInfo" + paging + "&showNumber=" + $(this).attr('href');
+    location.href = "/artist/artistInfo" + paging + "&artistNumber=" + $(this).attr('href');
 });
 
 

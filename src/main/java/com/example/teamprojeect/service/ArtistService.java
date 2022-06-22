@@ -8,6 +8,7 @@ import com.example.teamprojeect.domain.dao.user.LikeDAO;
 import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.show.ShowVO;
 import com.example.teamprojeect.mapper.artist.ArtistMapper;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Param;
@@ -45,6 +46,11 @@ public class ArtistService {
     //아티스트 갯수
     public int getTotal(ListDTO listDTO) {
         return artistMapper.getTotal(listDTO);
+    }
+
+    //아티스트 상세정보
+    public ArtistVO getDetail(Long artistNumber) {
+        return artistDAO.getDetail(artistNumber);
     }
 
 

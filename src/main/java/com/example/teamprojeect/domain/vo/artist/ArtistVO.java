@@ -16,4 +16,5 @@ public class ArtistVO {
     private String artistStatus;
     private Long likescount;
     private Long likeDate;
+    private String artistCategory;
 }
