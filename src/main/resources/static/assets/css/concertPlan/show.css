@@ -5,8 +5,9 @@
 }
 
 .sm-tit {
-    font-size: 30px;
-    margin-top: 2px;
+    margin-bottom: 19px;
+    font-size: 37px;
+    margin-top: 19px;
     margin-left: 2px;
     height: 111px;
     text-align: center;
@@ -114,6 +115,26 @@
     padding: 75px 0 0 0;
 }
 
+.showIng {
+    /* width: 100%; */
+    width: 100% !important;
+    /* margin: 0 auto; */
+    font-size: 0;
+    text-align: center;
+    background: #f6f6f6 !important;
+    padding: 75px 0 0 0;
+    margin-bottom: 75px;
+}
+
+
+.ing-text {
+    border-bottom: 4px solid #fc8334;
+    padding-bottom: 10px;
+}
+
+.nontext {
+    border: 0 !important;
+}
 .show-wrap a {
     display: inline-block;
     width: 216px;

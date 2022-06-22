@@ -17,7 +17,6 @@
     <link rel='stylesheet' type='text/css' href='/assets/css/concertPlan/showPageReply.css'/>
 
 
-
     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     <script>
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -46,121 +45,97 @@
 <header th:include="~{/header/header3 :: head}">
 
 </header>
-<body>
+<body class="modal_background">
 <!-- style 은 slick 영역 확인용 -->
-<section class="main_banner">
-    <div id="slider-div">
-        <div class="slider_item">
-            <a href="">
-                <img src="http://tkfile.yes24.com/Upload2/Display/202205/20220518/gmain_top_42246.jpg/dims/quality/70/"
-                     alt="시드 내한공연">
-            </a>
-        </div>
-        <div class="slider_item">
-            <a href="">
-                <img src="http://tkfile.yes24.com/Upload2/Display/202205/20220518/gmain_top_42246.jpg/dims/quality/70/"
-                     alt="시드 내한공연">
-            </a>
-        </div>
-        <div class="slider_item">
-            <a href="">
-                <img src="http://tkfile.yes24.com/Upload2/Display/202205/20220518/gmain_top_42246.jpg/dims/quality/70/"
-                     alt="시드 내한공연">
-            </a>
-        </div>
-        <div class="slider_item">
-            <a href="">
-                <img src="http://tkfile.yes24.com/Upload2/Display/202205/20220518/gmain_top_42246.jpg/dims/quality/70/"
-                     alt="시드 내한공연">
-            </a>
-        </div>
-        <div class="slider_item">
-            <a href="">
-                <img src="http://tkfile.yes24.com/Upload2/Display/202205/20220510/gmain_top_42123.jpg/dims/quality/70/"
-                     alt="나훈아 전국투어 DREAM 55">
-            </a>
-        </div>
-    </div>
-</section>
+<!--<section class="main_banner">-->
+<!--    <div id="slider-div">-->
+<!--        <div class="slider_item">-->
+<!--            <a href="">-->
+<!--                <img src="http://tkfile.yes24.com/Upload2/Display/202205/20220518/gmain_top_42246.jpg/dims/quality/70/"-->
+<!--                     alt="시드 내한공연">-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div class="slider_item">-->
+<!--            <a href="">-->
+<!--                <img src="http://tkfile.yes24.com/Upload2/Display/202205/20220518/gmain_top_42246.jpg/dims/quality/70/"-->
+<!--                     alt="시드 내한공연">-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div class="slider_item">-->
+<!--            <a href="">-->
+<!--                <img src="http://tkfile.yes24.com/Upload2/Display/202205/20220518/gmain_top_42246.jpg/dims/quality/70/"-->
+<!--                     alt="시드 내한공연">-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div class="slider_item">-->
+<!--            <a href="">-->
+<!--                <img src="http://tkfile.yes24.com/Upload2/Display/202205/20220518/gmain_top_42246.jpg/dims/quality/70/"-->
+<!--                     alt="시드 내한공연">-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div class="slider_item">-->
+<!--            <a href="">-->
+<!--                <img src="http://tkfile.yes24.com/Upload2/Display/202205/20220510/gmain_top_42123.jpg/dims/quality/70/"-->
+<!--                     alt="나훈아 전국투어 DREAM 55">-->
+<!--            </a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 
-<section class="concerting">
-    <p class="con_tit">진행중인 공연</p>
-    <div class="location_division">
-        <a href="javascript:getList(37.541, 126.986, 8)">서울</a>
-        <a href="javascript:getList(37.437, 127.126, 11)">경기</a>
-        <a href="javascript:getList(36.474340834171, 127.27341647562, 11)">충청</a>
-        <a href="javascript:getList(37.75147, 128.89099, 11)">강원</a>
-        <a href="javascript:getList(35.37131, 127.1286, 11)">전라</a>
-        <a href="javascript:getList(35.85, 128.56, 11)">경상</a>
-        <a href="javascript:getList(33.450701, 126.570667, 8)" style="border-right: 1px solid #ddd;">제주</a>
-    </div>
-    <div class="concerting_list">
-        <div id="map" style="width:100%;height:700px;"></div>
-    </div>
-
-</section>
-
-<section class="rankNrecommend">
-    <div class="rr_wrapper">
-        <div class="rank_list">
-            <p class="rank_tit">
-                WEEKLY RANKING
-                <a href=""><img src="http://tkfile.yes24.com/imgNew/genre/ms5-more.png" alt=""></a>
-            </p>
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+<div class="showIng-flexBox">
+    <section class="concerting">
+        <div class="sm-tit"><p class="ing-text">BUSKER's 실시간공연</p></div>
+        <div class="location_division">
+            <a id="1" class="showIng-location" href="javascript:getList(37.541, 126.986, 8)">서울</a>
+            <a id="2" class="showIng-location" href="javascript:getList(37.437, 127.126, 11)">경기</a>
+            <a id="3" class="showIng-location" href="javascript:getList(36.474340834171, 127.27341647562, 11)">충청</a>
+            <a id="4" class="showIng-location" href="javascript:getList(37.75147, 128.89099, 11)">강원</a>
+            <a id="5" class="showIng-location" href="javascript:getList(35.37131, 127.1286, 11)">전라</a>
+            <a id="6" class="showIng-location" href="javascript:getList(35.85, 128.56, 11)">경상</a>
+            <a id="7" class="showIng-location" href="javascript:getList(33.450701, 126.570667, 8)"
+               style="border-right: 1px solid #ddd;">제주</a>
         </div>
-        <div class="reco_list">
-            <p class="reco_tit">
-                <span>Busker's PICKS</span>
-            </p>
-            <div class="reco_wrap">
-                <div class="reco_item" style="display:inline-block; position:static; margin-left: 72px;">
-                    <a href="#">
-                        <span><img
-                                src="http://tkfile.yes24.com/upload2/perfblog/202205/20220509/20220509-42171.jpg/dims/quality/70/"
-                                alt="2022 ‘3 STAR’ 신유,홍자,양지원"></span>
-                        <div>
-                            <p class="reco_txt1">2022 '3 STAT' 신유,홍자,양지원</p>
-                            <p class="reco_txt2">벡스코 오디토리움</p>
+        <div class="concerting_list">
+            <div id="map" style=" border: 1px solid #ddd;border-radius: 30px; width:100%;height:700px;"></div>
+        </div>
+
+    </section>
+    <div>
+        <div class="sm-tit"><p style="padding-bottom: 10px;">Busking Today in<span class="ing-text showIng-region"
+                                                                                   style="margin-left: 17px;"></span>
+        </p></div>
+        <section class="show-wrap showIng">
+
+
+        </section>
+    </div>
+</div>
+
+<button id="btn-modal">모달</button>
+
+<div class="concertLive-modal">
+
+    <div class="modal-back">
+        <div id="modal" class="modal-overlay" style="display: flex; display: none;">
+            <div class="modal-window">
+                <div class="modal-showInfo">
+                    <div class="modal-title">
+                        <div class="title">
                         </div>
-                    </a>
-                </div>
-                <div class="reco_item" style="display: inline-block; position:static; margin-right: 25px;">
-                    <a href="#">
-                        <span><img
-                                src="http://tkfile.yes24.com/upload2/perfblog/202205/20220509/20220509-42171.jpg/dims/quality/70/"
-                                alt="2022 ‘3 STAR’ 신유,홍자,양지원"></span>
-                        <div>
-                            <p class="reco_txt1">2022 '3 STAT' 신유,홍자,양지원</p>
-                            <p class="reco_txt2">벡스코 오디토리움</p>
+                        <div class="close-area"></div>
+                    </div>
+                    <div class="content">
+                        <div class="modal-infoTitle"></div>
+                        <div class="renew-content-modal">
+                            <div class="modalShowDiv">
+                            </div>
                         </div>
-                    </a>
-                </div>
-                <div class="reco_item" style="display: inline-block; position:static; margin-right: 25px;">
-                    <a href="#">
-                        <span><img
-                                src="http://tkfile.yes24.com/upload2/perfblog/202205/20220509/20220509-42171.jpg/dims/quality/70/"
-                                alt="2022 ‘3 STAR’ 신유,홍자,양지원"></span>
-                        <div>
-                            <p class="reco_txt1">2022 '3 STAT' 신유,홍자,양지원</p>
-                            <p class="reco_txt2">벡스코 오디토리움</p>
-                        </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-
-<div class="concertLive-modal"></div>
+</div>
 
 <footer th:include="~{/footer/footer :: foot}">
 
@@ -259,34 +234,47 @@
             })
         }
 
-        return {regionList: regionList}
+
+        function goShowInfo(showNumber, callback, error) {
+            $.ajax({
+                url: "/concert/concertInfo/" + showNumber,
+                type: "get",
+                dateType: JSON.stringify(callback),
+                contentType: "application/json",
+                success: function (showVO) {
+                    if (callback) {
+                        callback(showVO);
+                    }
+                },
+                error: function (xhr, status, er) {
+                    if (error) {
+                        error(xhr, status, er);
+                    }
+                }
+            })
+        }
+
+
+        return {regionList: regionList, goShowInfo: goShowInfo}
     })();
 
     let region = 0;
 
     function regionListChange(region) {
         showIngService.regionList(region, function (total, ingList) {
-console.log("1")
             $.each(ingList, function (i, ing) {
                 // 지도에 꼽기위해 lng,
                 // 주소로 좌표를 검색합니다
                 geocoder.addressSearch(ing.showAddress, function (result, status) {
-                    console.log("바로 시작?");
                     // 정상적으로 검색이 완료됐으면
                     if (status === kakao.maps.services.Status.OK) {
                         // 좌표로 변환
                         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-                        markerLocation.push({lng: result[0].y, lon: result[0].x, loc: ing.showLocation});
-                        console.log(markerLocation);
+                        markerLocation.push({lng: result[0].y, lon: result[0].x, loc: ing.showLocation, number: ing.showNumber});
+                        getList(36.474340834171, 127.27341647562, 13);
                     }
-
                 });
-
             })
-            console.log("2")
-
-            getList(36.474340834171, 127.27341647562, 13);
-
         }, function (a, b, c) {
             console.log(a, b, c)
         });
@@ -294,8 +282,6 @@ console.log("1")
 
     // 지역별로 좌표와 지도 스케일을 매개변수로 받아서 지도를 출력시킴
     let getList = function (mapX, mapY, scale) {
-        console.log("3")
-
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div
             mapOption = {
                 center: new kakao.maps.LatLng(mapX, mapY), // 지도의 중심좌표
@@ -303,14 +289,9 @@ console.log("1")
             };
         // 지도를 생성합니다
         let map = new kakao.maps.Map(mapContainer, mapOption);
-        console.log("마커 여러개 찍기")
 
         // 마커 여러개 찍기
         $.each(markerLocation, function (i, item) {
-            console.log(item);
-            console.log("마커 여러개 찍기")
-            console.log(item);
-            console.log(i);
             // 마커가 표시될 위치입니다
             var markerPosition = new kakao.maps.LatLng(item.lng, item.lon);
 
@@ -335,18 +316,162 @@ console.log("1")
 
             // 마커에 클릭이벤트를 등록합니다
             kakao.maps.event.addListener(marker, 'click', function () {
-                // 마커 위에 인포윈도우를 표시합니다
-                infowindow.open(map, marker);
+                console.log(markerLocation[i][Object.keys(markerLocation[i])[3]])
+                concertIngInfo(markerLocation[i][Object.keys(markerLocation[i])[3]]);
+                // 마커 위에 인포윈도우를 표시합니다C
+                // infowindow.open(map, marker);
             });
         })
     }
 
+
+    // 기본 전역변수
+    let showDiv = $(".show-wrap");
+    let modalShowTitle = $(".modal-infoTitle");
+    let modalShowInfo = $(".modalShowDiv");
+    let showRegion = $(".showIng-region");
+
+    // div 변하는 function 선언
+    function concertIngList(region) {
+        showIngService.regionList(region, function (total, list) {
+            let str = "";
+            if (list == null || list.length == 0) {
+                showDiv.html("");
+                showRegion.html("");
+                return;
+            }
+
+
+            $.each(list, function (i, show) {
+                let infoNumber = Number(show.showNumber);
+                str += "<a class='goRead' href='/concert/concertPlanInfo?&showNumber=" + infoNumber + "' target='_self'>"
+                str += "<div class='list-bigger-wrap'>"
+                str += "<img class='lazyload' src='http://tkfile.yes24.com/upload2/perfblog/202205/20220516/20220516-42246.jpg/dims/quality/70/' alt='/show_view'/>"
+                str += "<div class='list-bigger-txt'>"
+                str += "<p class='list-b-tit1'>" + show.showName + "</p>"
+                str += "<p class='list-b-tit2'>" + show.showRegion + show.showLocation + "</p>"
+                str += "<p class='list-b-circle concerlive-circle'>" + show.showTime + "</p>"
+                str += "</div>"
+                str += "</div>"
+                str += "</a>"
+            });
+
+            showDiv.html(str);
+        }, function (a, b, c) {
+            console.log(a, b, c)
+        });
+    }
+
+    // 인포창 modal 변하는 function 선언
+    function concertIngInfo(showNumber) {
+        modalShowTitle.html("");
+        modalShowInfo.html("");
+        showIngService.goShowInfo(showNumber, function (showVO) {
+            console.log(showVO);
+            let title = "";
+            title += '<div class="renew-content-modal"><div class="rn-01"><p class="rn-location">'
+            title += '<p><a id="goList" href="/concert/concertPlanList">버스킹 ></a><a href="#">' + " " + showVO.showCategory + '</a>'
+            title += '</p></div><div class="rn-02">'
+            title += '<p class="rn-big-title">' + showVO.showName + '</p>'
+            title += '<div class="rn-product-short-data">'
+            title += '<p><span class="ps-date">' + showVO.showDay + '</span><a href="#" id="ps-location">'
+            title += '<span class="ps-location">' + showVO.showRegion + showVO.showLocation + '</span></a></p>'
+            title += '</div></div></div>';
+
+            let str = "";
+            str += '<div class="modal-left" style="padding-top: 14px; width: 293px; height: 408px;" >';
+            str += "<img src='http://tkfile.yes24.com/upload2/perfblog/202206/20220613/20220613-42494.jpg/dims/quality/70/' width='293px !important' height='408px !important'/>";
+            str += '<div class="rn-product-maps" id="divPerfRelation" style="display:none;"></div>';
+            str += '<a href="javascript:;" class="rn-product-good"></a></div>';
+            str += '<div class="modal-right" style="padding-left: 40px; padding-top: 20px;"><div class="rn-product-area1"><dl>';
+            str += '<dt>버스커</dt><dd><a href="">' + showVO.artistName + '</a>&nbsp</dd>';
+            str += '<dt>공연일자</dt><dd>&nbsp;' + showVO.showDay + '</dd>';
+            str += '<dt>공연시간</dt><dd>&nbsp' + showVO.showTime + '</dd>';
+            str += '<dt>공연장소</dt><dd>&nbsp;' + showVO.showAddress + '</dd>';
+            str += '<dt>상세주소</dt><dd>&nbsp;' + showVO.showLocation + '</dd>';
+            str += '</dl></div><a class=\'goRead-modal\' href=\'/concert/concertPlanInfo?&showNumber=" + showNumber + "\' target=\'_self\'>자세히 보기</a>';
+            str += '<a class="roadGo" href=\'/concert/concertPlanInfo?&showNumber=" + showNumber + "\' target=\'_self\'>길찾기</a></div>';
+
+            modalShowTitle.html(title);
+            modalShowInfo.html(str);
+            modal.style.display = "flex";
+        }, function (a, b, c) {
+            console.log(a, b, c)
+        });
+    }
+
+    let currentCategory = ".all";
+
+    function categoryChange(e) {
+        $(currentCategory).attr("id", "non-current");
+        currentCategory = e;
+        $(currentCategory).attr("id", "current");
+    }
+
+    $("a.goRead").click(function (e) {
+        e.preventDefault();
+        location.href = "/concert/concertPlanInfo&showNumber=" + $(this).attr('href');
+    });
+
+    // 새로고침 기본값
+    let regionText = "전국";
     $(document).ready(function () {
         region = 0
         regionListChange(region);
+        showRegion.text(regionText);
     })
 
-</script>
+    // 지역 text 출력
+    $(".showIng-location").click(function () {
+        regionTextChange($(this).text());
+        concertIngList($(this).attr('id'));
+    })
 
+    // text 바꾸는 function
+    function regionTextChange(e) {
+        showRegion.text("");
+        regionText = e;
+        showRegion.text(e);
+    }
+
+    $(document).ready(function () {
+        // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
+        concertIngList(region);
+    })
+
+    // 모달창
+
+    const modal = document.getElementById("modal");
+    const btnModal = document.getElementById("btn-modal");
+    btnModal.addEventListener("click", (e) => {
+        modal.style.display = "flex";
+        e.preventDefault();
+    });
+
+    const closeBtn = modal.querySelector(".close-area");
+    closeBtn.addEventListener("click", (e) => {
+        modal.style.display = "none";
+    });
+
+    modal.addEventListener("click", (e) => {
+        const evTarget = e.target;
+        if (evTarget.classList.contains("modal-overlay")) {
+            modal.style.display = "none";
+        }
+    });
+
+    window.addEventListener("keyup", (e) => {
+        if (modal.style.display === "flex" && e.key === "Escape") {
+            modal.style.display = "none";
+        }
+    });
+
+    // 프로필 사진 기본이미지로 변경
+    $("#sample-profile-image").click(function () {
+        $("#img-sample").attr("src", "/static/images/mypage/user-icon.png");
+    });
+
+
+</script>
 
 </html>

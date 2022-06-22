@@ -142,7 +142,7 @@ ul {
     margin: 0 auto;
     font-size: 0;
     text-align: center;
-    height: 800px;
+    height: 715px;
 }
 
 .list_item {
@@ -151,7 +151,6 @@ ul {
     display: block;
     text-align: center;
 }
-
 
 .list_item div{
     width: 216px;
@@ -477,5 +476,224 @@ ul {
 
 .iw a{
     
+}
+
+p.concerlive-circle {
+    width: 111px !important;
+    height: 111px !important;
+    line-height: 111px !important;
+    background: rgba(0,0,0,0.44) !important;
+    border-radius: 50% !important;
+    font-size: 20px !important;
+    color: #fff !important;
+    position: absolute !important;
+    top: -207px !important;
+    left: 107px !important;
+    transform: translate(-50%, 0) !important;
+    text-align: center !important;
+    border: 5px solid #ffa15c !important;
+}
+
+.customoverlay {
+    position: relative;
+    bottom: 85px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    border-bottom: 2px solid #ddd;
+    float: left;
+}
+
+.customoverlay:nth-of-type(n) {
+    border: 0;
+    box-shadow: 0px 1px 2px #888;
+}
+
+.customoverlay a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    overflow: hidden;
+    background: #d95050;
+    background: #ec7d2c url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;
+}
+
+.customoverlay .title {
+    display: block;
+    text-align: center;
+    background: #fff;
+    margin-right: 35px;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.customoverlay:after {
+    content: '';
+    position: absolute;
+    margin-left: -12px;
+    left: 50%;
+    bottom: -12px;
+    width: 22px;
+    height: 12px;
+    background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
+}
+
+/* 모달 */
+#modal.modal-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(100, 100, 100, 0.25);
+    display: none;
+    z-index: 1;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-back {
+    width: 100%;
+}
+
+/* .modal-back {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+} */
+
+#modal .modal-window {
+    background-color: white;
+    box-shadow: 0 4px 7px 0 rgb(0 0 0 / 20%);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 1000PX;
+    height: 600PX;
+    top: -100px;
+    z-index: 999;
+}
+
+.modal-box {
+    padding: 30px;
+
+}
+
+#modal .title {
+    padding-left: 10px;
+    display: inline;
+    padding: 0;
+}
+
+.modal-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#modal .close-area {
+    width: 30px;
+    height: 30px;
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    opacity: 0.3;
+    right: 0;
+    cursor: pointer;
+    background-image: url("../../../images/myPage/close-icon.png");
+}
+
+#modal .close-area:hover {
+    opacity: 0.8;
+}
+
+#modal .content {
+    display: flex;
+    flex-direction: column;
+    width: 317px;
+    padding-left: 42px;
+}
+
+.modalShowDiv {
+    display: flex;
+}
+
+.rn-03-right dt, .rn-03-right dd {
+    font-size: 21px;
+}
+
+.goRead-modal {
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #f8a550;
+    padding: 10px 20px 10px 20px;
+    border: #f8a550;
+    width: 109px;
+    margin-right: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    position: absolute;
+    margin-top: 21px;
+    right: -3px;
+}
+
+.goRead-modal:hover, .roadGo:hover {
+    background-color: #ff9326;
+}
+
+.roadGo {
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #f8a550;
+    padding: 10px 20px 10px 20px;
+    border: #f8a550;
+    width: 70px;
+    margin-right: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    position: absolute;
+    margin-top: 21px;
+    right: 160px;
+    text-align: center;
+}
+
+.modal-right dd {
+    font-size: 20px;
+    color: #414141;
+    clear: right;
+    margin: 0 0 32px 86px;
+    line-height: 35px;
+    position: relative;
+}
+
+.modal-right dt {
+    /* font-size: 15px; */
+    /* color: #333; */
+    font-weight: bold;
+    float: left;
+    /* line-height: 35px; */
+    font-size: 20px;
+    color: #414141;
+    clear: right;
+    /* margin: 0 0 32px 86px; */
+    line-height: 35px;
+    position: relative;
 }
 

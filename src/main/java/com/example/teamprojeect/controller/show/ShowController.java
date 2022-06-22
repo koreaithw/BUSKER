@@ -280,6 +280,81 @@ public class ShowController {
     }
 
 
+    @GetMapping("/concertInfo/{showNumber}")
+    @ResponseBody
+    public ShowVO goConcertInfo(@PathVariable("showNumber") Long showNumber) {
+
+        ShowVO showVO = showService.read(showNumber);
+
+        String showRegion = showVO.getShowAddress();
+        showRegion = showRegion.substring(0, 2);
+        showVO.setShowRegion(showRegion);
+
+        if(showVO.getShowType() == 1) {
+            showVO.setShowCategory("뮤지션");
+        } else if (showVO.getShowType() == 2) {
+            showVO.setShowCategory("퍼포먼스");
+        }
+
+        try {
+            SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String showDay = showVO.getShowDay();
+            Date day = dayFormat.parse(showDay);
+            showDay = dayFormat.format(day);
+
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(day);
+            int dayNum = cal.get(Calendar.DAY_OF_WEEK);
+            String dayth = "" ;
+
+            switch(dayNum){
+                case 1:
+                    dayth = "일";
+                    break ;
+                case 2:
+                    dayth = "월";
+                    break ;
+                case 3:
+                    dayth = "화";
+                    break ;
+                case 4:
+                    dayth = "수";
+                    break ;
+                case 5:
+                    dayth = "목";
+                    break ;
+                case 6:
+                    dayth = "금";
+                    break ;
+                case 7:
+                    dayth = "토";
+                    break ;
+
+            }
+
+            showDay = showDay + " (" + dayth + ")";
+            showVO.setShowDay(showDay);
+
+            SimpleDateFormat timeParse = new SimpleDateFormat("hh:mm:ss");
+            SimpleDateFormat timeFormat = new SimpleDateFormat("a hh:mm", Locale.KOREAN);
+
+            String showDate = showVO.getShowTime();
+            String[] showTimeList = showDate.split("\\s+");
+
+            Date date1 = timeParse.parse(showTimeList[1]);
+            showDate = timeFormat.format(date1);
+
+            showVO.setShowTime(showDate);
+
+        } catch (ParseException e) {
+            System.err.println("dateStr : "  + ", datePattern:");
+            e.printStackTrace();
+        }
+
+        return showVO;
+    }
+
 
 
 
