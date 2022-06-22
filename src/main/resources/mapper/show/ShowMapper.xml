@@ -58,14 +58,13 @@
     <!-- 진행 중 공연 목록-->
     <select id="getListIng" resultType="showVO">
         <![CDATA[
-        SELECT SHOW_NUMBER, ARTIST_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE, ARTIST_NAME
-        FROM (
-            SELECT ROWNUM RN, SHOW_NUMBER, ARTIST_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE, ARTIST_NAME
-            FROM  (
-                SELECT SHOW_NUMBER, ARTIST_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE, ARTIST_NAME
+        SELECT SHOW_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE, ARTIST_NAME
+        FROM
+            (
+                SELECT SHOW_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE, ARTIST_NAME
                 FROM
                 (
-                SELECT SHOW_NUMBER, ARTIST_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE, ARTIST_NAME
+                SELECT SHOW_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE, ARTIST_NAME
                 FROM TBL_SHOW ts, TBL_ARTIST ta
                 WHERE ts.ARTIST_NUMBER = ta.ARTIST_NUMBER
                 )
@@ -75,33 +74,28 @@
 
             ]]>
             <choose>
-                <when test=' listDTO.showLocation == "1"'>
+                <when test='showLocation == "1"'>
                     AND SHOW_ADDRESS LIKE '서울%'
                 </when>
-                <when test=' listDTO.showLocation == "2"'>
-                    AND SHOW_ADDRESS  LIKE '경기%' OR SHOW_ADDRESS  LIKE '인천%'
+                <when test='showLocation == "2"'>
+                    AND (SHOW_ADDRESS  LIKE '경기%' OR SHOW_ADDRESS  LIKE '인천%')
                 </when>
-                <when test=' listDTO.showLocation == "3"'>
-                    AND SHOW_ADDRESS  LIKE '충남%' OR SHOW_ADDRESS  LIKE '충북%' OR SHOW_ADDRESS  LIKE '세종%' OR SHOW_ADDRESS  LIKE '대전%'
+                <when test='showLocation == "3"'>
+                    AND (SHOW_ADDRESS  LIKE '충남%' OR SHOW_ADDRESS  LIKE '충북%' OR SHOW_ADDRESS  LIKE '세종%' OR SHOW_ADDRESS  LIKE '대전%')
                 </when>
-                <when test=' listDTO.showLocation == "4"'>
+                <when test='showLocation == "4"'>
                     AND SHOW_ADDRESS  LIKE '강원%'
                 </when>
-                <when test=' listDTO.showLocation == "5"'>
-                    AND SHOW_ADDRESS  LIKE '전남%' OR SHOW_ADDRESS  LIKE '전북%' OR SHOW_ADDRESS  LIKE '광주%' OR SHOW_ADDRESS  LIKE '경북%'
+                <when test='showLocation == "5"'>
+                    AND (SHOW_ADDRESS  LIKE '전남%' OR SHOW_ADDRESS  LIKE '전북%' OR SHOW_ADDRESS  LIKE '광주%' OR SHOW_ADDRESS  LIKE '경북%')
                 </when>
-                <when test=' listDTO.showLocation == "6"'>
+                <when test='showLocation == "6"'>
                     AND (SHOW_ADDRESS  LIKE '경남%' OR SHOW_ADDRESS  LIKE '경북%' OR SHOW_ADDRESS  LIKE '울산%' OR SHOW_ADDRESS  LIKE '대구%' OR SHOW_ADDRESS  LIKE '부산%')
                 </when>
-                <when test=' listDTO.showLocation == "7"'>
+                <when test='showLocation == "7"'>
                     AND SHOW_ADDRESS  LIKE '제주%'
                 </when>
             </choose>
-        <![CDATA[
-            AND ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
-            )
-            WHERE RN > (#{criteria.pageNum} - 1 ) * #{criteria.amount}
-            ]]>
     </select>
 
     <!--진행 예정 공연 개수-->
@@ -121,28 +115,28 @@
     <!--진행 중 공연 개수-->
     <select id="getTotalIng" resultType="_int">
         SELECT COUNT(*) FROM TBL_SHOW
-        WHERE 0 = TO_DATE(SHOW_DAY,'YY-MM-DD') - TO_DATE(SYSDATE,'YY-MM-DD') AND
+        WHERE 0 = TO_DATE(SHOW_DAY,'YY-MM-DD') - TO_DATE(SYSDATE,'YY-MM-DD')
         <choose>
             <when test='showLocation == "1"'>
-                SHOW_ADDRESS  LIKE '서울%'
+                AND SHOW_ADDRESS  LIKE '서울%'
             </when>
             <when test='showLocation == "2"'>
-                SHOW_ADDRESS  LIKE '경기%' OR SHOW_ADDRESS  LIKE '인천%'
+                AND (SHOW_ADDRESS  LIKE '경기%' OR SHOW_ADDRESS  LIKE '인천%')
             </when>
             <when test='showLocation == "3"'>
-                SHOW_ADDRESS  LIKE '충남%' OR SHOW_ADDRESS  LIKE '충북%' OR SHOW_ADDRESS  LIKE '세종%' OR SHOW_ADDRESS  LIKE '대전%'
+                AND (SHOW_ADDRESS  LIKE '충남%' OR SHOW_ADDRESS  LIKE '충북%' OR SHOW_ADDRESS  LIKE '세종%' OR SHOW_ADDRESS  LIKE '대전%')
             </when>
             <when test='showLocation == "4"'>
-                SHOW_ADDRESS  LIKE '강원%'
+                AND SHOW_ADDRESS  LIKE '강원%'
             </when>
             <when test='showLocation == "5"'>
-                SHOW_ADDRESS  LIKE '전남%' OR SHOW_ADDRESS  LIKE '전북%' OR SHOW_ADDRESS  LIKE '광주주' OR SHOW_ADDRESS  LIKE '경북%'
+                AND (SHOW_ADDRESS  LIKE '전남%' OR SHOW_ADDRESS  LIKE '전북%' OR SHOW_ADDRESS  LIKE '광주주' OR SHOW_ADDRESS  LIKE '경북%')
             </when>
             <when test='showLocation == "6"'>
-                (SHOW_ADDRESS  LIKE '경남%' OR SHOW_ADDRESS  LIKE '경북%' OR SHOW_ADDRESS  LIKE '울산%' OR SHOW_ADDRESS  LIKE '대구%' OR SHOW_ADDRESS  LIKE '부산%')
+                AND (SHOW_ADDRESS  LIKE '경남%' OR SHOW_ADDRESS  LIKE '경북%' OR SHOW_ADDRESS  LIKE '울산%' OR SHOW_ADDRESS  LIKE '대구%' OR SHOW_ADDRESS  LIKE '부산%')
             </when>
             <when test='showLocation == "7"'>
-                SHOW_ADDRESS  LIKE '제주%'
+                AND SHOW_ADDRESS  LIKE '제주%'
             </when>
         </choose>
     </select>

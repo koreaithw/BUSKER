@@ -73,7 +73,7 @@ public class ShowServiceTests {
 
     @Test
     public void getListIngTest() {
-        showService.getListIng(new Criteria(1, 10), new ListDTO("M", "new", "week", "new", "6")).stream().map(ShowVO::toString).forEach(log::info);
+        showService.getListIng(new ListDTO("M", "new", "week", "new", "6")).stream().map(ShowVO::toString).forEach(log::info);
     }
 
     @Test
