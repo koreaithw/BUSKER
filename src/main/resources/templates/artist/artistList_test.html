@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
         아티스트 목록
     </title>
-    
+
     <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
     <script type="text/javascript" id="www-widgetapi-script" src="https://www.youtube.com/s/player/02208bb4/www-widgetapi.vflset/www-widgetapi.js" async=""></script>
     <script src="https://connect.facebook.net/signals/config/233729201256635?v=2.9.61&amp;r=stable" async=""></script>
@@ -38,11 +38,17 @@
 
     <link rel="stylesheet" href="/assets/css/artist/artistList.css">
 
-    <style type="text/css">
-        .perform-top{overflow:visible !important;}
-        body{font-family: 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;}
-    </style>
-    <script src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1056776890/?random=1654610228182&amp;cv=9&amp;fst=1654610228182&amp;num=1&amp;label=xS_KCLbd8gMQusX09wM&amp;guid=ON&amp;resp=GooglemKTybQhCsO&amp;eid=375603260&amp;u_h=1067&amp;u_w=1707&amp;u_ah=1019&amp;u_aw=1707&amp;u_cd=24&amp;u_his=4&amp;u_tz=540&amp;u_java=false&amp;u_nplug=5&amp;u_nmime=2&amp;sendb=1&amp;ig=1&amp;frm=0&amp;url=http%3A%2F%2Fticket.yes24.com%2FNew%2FGenre%2FGenreMain.aspx%3Fgenre%3D15456%26Gcode%3D009_202_001&amp;ref=http%3A%2F%2Fticket.yes24.com%2FNew%2FMain.aspx%3FGcode%3D009_201&amp;tiba=YES24%20%ED%8B%B0%EC%BC%93&amp;hn=www.googleadservices.com&amp;rfmt=3&amp;fmt=4"></script></head>
+    <!--    <style type="text/css">-->
+    <!--        .perform-top{overflow:visible !important;}-->
+    <!--        body{font-family: 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;}-->
+    <!--    </style>-->
+    <script src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1056776890/?random=1654610228182&amp;cv=9&amp;fst=1654610228182&amp;num=1&amp;label=xS_KCLbd8gMQusX09wM&amp;guid=ON&amp;resp=GooglemKTybQhCsO&amp;eid=375603260&amp;u_h=1067&amp;u_w=1707&amp;u_ah=1019&amp;u_aw=1707&amp;u_cd=24&amp;u_his=4&amp;u_tz=540&amp;u_java=false&amp;u_nplug=5&amp;u_nmime=2&amp;sendb=1&amp;ig=1&amp;frm=0&amp;url=http%3A%2F%2Fticket.yes24.com%2FNew%2FGenre%2FGenreMain.aspx%3Fgenre%3D15456%26Gcode%3D009_202_001&amp;ref=http%3A%2F%2Fticket.yes24.com%2FNew%2FMain.aspx%3FGcode%3D009_201&amp;tiba=YES24%20%ED%8B%B0%EC%BC%93&amp;hn=www.googleadservices.com&amp;rfmt=3&amp;fmt=4"></script>
+</head>
+
+<header th:include="~{/header/header3 :: head}">
+
+</header>
+
 <body style="padding-top: 0px;">
 <div id="dialogAlert" style="display:none;"></div>
 <div id="dialogConfirm" style="display:none;"></div>
@@ -65,7 +71,7 @@
         </p>
 
     </div>
-<!-- 검색 창, 버튼 -->
+    <!-- 검색 창, 버튼 -->
     <div class="pf-top-srch" autocomplete="off">
 
         <input type="text" id="searchWord" autocomplete="off">
@@ -77,14 +83,14 @@
 
     </div>
 
-    
-<!-- 정렬 기준 -->
+
+    <!-- 정렬 기준 -->
     <p class="li-sec-tag">
         <span><a style="cursor:pointer;" onclick="artistSort1();" token="3" class="on">최신 등록 기준</a></span>
         <span><a style="cursor:pointer;" onclick="artistSort2();" token="0">좋아요 기준</a></span>
 
-      
-        
+
+
 
     </p>
     <p class="li-sec-result">
@@ -92,18 +98,20 @@
     </p>
 
     <div class="ms-list-imgs">
-        <a style="cursor:pointer;" onclick="go_to_artist_info('/artist/artistInfo');"
+        <th:block th:each="artist:${artistList}">
+            <a th:object="${artist}" style="cursor:pointer;" onclick="go_to_artist_info('/artist/artistInfo');"
 
-           title="아티스트 이름">
-            <div class="list-bigger-wrap"><img class="lazyload" alt="아티스트 이름"
-                                               src="/images/artist/buskerbukser.jpg"
-                                               style="">
-                <div class="list-bigger-txt">
-                    <p class="list-b-tit1 v2 v2">아티스트 이름</p>
+               title="아티스트 이름">
+                <div class="list-bigger-wrap"><img class="lazyload" alt="아티스트 이름"
+                                                   src="/images/artist/buskerbukser.jpg"
+                                                   style="">
+                    <div class="list-bigger-txt">
+                        <p class="list-b-tit1 v2 v2" th:text="*{artistName}"></p>
 
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        </th:block>
 
         <a style="cursor:pointer;" onclick="jsf_base_GoToPerfDetail(42357);"
            title="아티스트 이름">
@@ -154,6 +162,24 @@
         </a>
 
     </div>
+
+    <div th:object="${PageDTO}">
+        <div class="big-width mypage-pageStyle" style="text-align: center">
+            <a class="mypage-page-first"><<</a>
+            <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code>&lt;</code></a>
+            <th:block th:each="num:${#numbers.sequence(PageDTO.startPage, PageDTO.endPage)}">
+                <code th:if="${num == PageDTO.criteria.pageNum}" th:text="${num}"></code>
+                <a class="changePage mypage-page-next" th:href="${num}" th:unless="${num == PageDTO.criteria.pageNum}"><code
+                        th:text="${num}"></code></a>
+            </th:block>
+            <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>&gt;</code></a>
+            <a class="mypage-page-last">>></a>
+        </div>
+    </div>
+    <form action="/artist/artistList" name="pageForm" th:object="${criteria}">
+        <input type="hidden" th:field="*{pageNum}">
+        <input type="hidden" th:field="*{amount}">
+    </form>
 
 
     <input name="ListTotalCnt" type="hidden" id="ListTotalCnt" value="35">
@@ -246,7 +272,7 @@
         lastScrollTop = scrollT
     }
 
-  
+
 
 
 
@@ -264,28 +290,28 @@
 </script>
 <script>
 
-function artistSort1() {
+    function artistSort1() {
 
-$('.li-sec-tag a').removeClass("on");
-$('.li-sec-tag').find("a[token='3']").addClass("on")
-}
+        $('.li-sec-tag a').removeClass("on");
+        $('.li-sec-tag').find("a[token='3']").addClass("on")
+    }
 
 </script>
 <script>
 
-function artistSort2() {
-    
-$('.li-sec-tag a').removeClass("on");
-$('.li-sec-tag').find("a[token='0']").addClass("on")
-}
-    
+    function artistSort2() {
+
+        $('.li-sec-tag a').removeClass("on");
+        $('.li-sec-tag').find("a[token='0']").addClass("on")
+    }
+
 </script>
+
+
 
 
 <footer th:include="~{/footer/footer :: foot}">
 
 </footer>
-
-
 </body>
 </html>
