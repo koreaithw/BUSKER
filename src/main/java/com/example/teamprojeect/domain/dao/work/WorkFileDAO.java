@@ -26,13 +26,8 @@ public class WorkFileDAO {
         workFileMapper.delete(workNumber);
     }
 
-    // 작품 사진 변경
-    public void modify(WorkFileVO workFileVO) {
-        workFileMapper.update(workFileVO);
-    }
-
     // 작품 사진 선택
-    public List<WorkFileVO> find(Long workNumber) {
+    public WorkFileVO find(Long workNumber) {
         return workFileMapper.find(workNumber);
     }
 }
