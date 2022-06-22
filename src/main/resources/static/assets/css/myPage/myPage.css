@@ -384,7 +384,7 @@ input:focus {
 }
 
 #profile,
-#userId,
+#userId, #modify-userId, #modify-userId, #modify-input-userId
 #userRegisterDate {
   padding-left: 6px;
 }
