@@ -44,4 +44,5 @@ public interface WorkMapper {
     // 작품 신청 개수
     public int getTotalApply();
 
+    public int getTotalListApply();
 }

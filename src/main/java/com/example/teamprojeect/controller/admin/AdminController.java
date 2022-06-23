@@ -6,6 +6,8 @@ import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.paging.PageDTO;
 import com.example.teamprojeect.domain.vo.paging.work.WorkApplyPageDTO;
 import com.example.teamprojeect.domain.vo.paging.work.WorkPageDTO;
+import com.example.teamprojeect.domain.vo.recruitment.RecruitmentFileVO;
+import com.example.teamprojeect.domain.vo.recruitment.RecruitmentVO;
 import com.example.teamprojeect.service.ArtistService;
 import com.example.teamprojeect.service.RecruitService;
 import com.example.teamprojeect.service.UserService;
@@ -14,8 +16,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -96,10 +103,30 @@ public class AdminController {
 
 
     // 모집 공고 수정
+    @GetMapping("recruitUpdate")
+    public String goRecruitmentUpdate(Criteria criteria, Long recruitmentNumber, Model model) {
+        RecruitmentVO recruitmentVO = recruitService.getDetail(recruitmentNumber);
+        // 파일이 없을 때
+        if(recruitService.getFiles(recruitmentNumber) != null) {
+            model.addAttribute("criteria", criteria);
+            model.addAttribute("recruitmentVO", recruitmentVO);
+            return "/recruit/recruitUpdate";
+        }
 
+        // 파일이 있을 때
+        List<RecruitmentFileVO> fileList = recruitService.getFiles(recruitmentNumber);
+        model.addAttribute("criteria", criteria);
+        model.addAttribute("recruitmentVO", recruitmentVO);
+        model.addAttribute("fileList", fileList);
+        return "/recruit/recruitUpdate";
+    }
 
-    // 모집 공고 삭제
-
+    @GetMapping("display")
+    @ResponseBody
+    public byte[] getFile(String fileName) throws IOException {
+        File file = new File("C:/upload/test/", fileName);
+        return FileCopyUtils.copyToByteArray(file);
+    }
 
     // 유저 목록
 

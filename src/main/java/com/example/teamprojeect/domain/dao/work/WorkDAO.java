@@ -9,7 +9,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 @RequiredArgsConstructor
@@ -50,7 +52,19 @@ public class WorkDAO {
     public List<WorkVO> getKeyword(Criteria criteria, ListDTO listDTO) { return workMapper.getKeyword(criteria,listDTO);}
 
     // 작품 태그
-    public List<String> getTag() { return workMapper.getTag();}
+    public List<String> getTag() {
+        List<String> tag = workMapper.getTag();
+        List<String> arr = new ArrayList<String>();
+        for (int i = 0; i < tag.size() ; i++){ // 태그 #를 기준으로 나눠서 문자열 리스트로 보내주기
+            String str[] = tag.get(i).split("#");
+            for(int j = 0; j <str.length; j++) {
+                arr.add(str[j]);
+            }
+        }
+        List<String> list = arr.stream().distinct().collect(Collectors.toList());
+        log.info(list.toString());
+        return list;
+    }
 
     // 작품 개수
     // (매개변수 tag를 받아 null이면 전체 개수, 아니면 해당하는 인덱스만큼 list 반복을 돌려 검색)
@@ -66,6 +80,10 @@ public class WorkDAO {
     // 작품 신청 개수
     public int getTotalApply() {
         return workMapper.getTotalApply();
+    }
+
+    public int getTotalListApply() {
+        return workMapper.getTotalListApply();
     }
 
 }
