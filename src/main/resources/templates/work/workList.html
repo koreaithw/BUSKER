@@ -32,38 +32,13 @@
                 </div>
             </div>
             <div class="hash_division" style="padding-top: 105px;">
+                <th:block th:each="tag:${tagList}">
                 <div class="hash_tag_wrap">
                     <div class="hash_tag">
-                        <a href="#" tag="트로트" class="tag" style="padding-bottom: 3px;">#트로트</a>
+                        <a href="#" th:tag="*{tag}" th:text="*{tag}" class="tag" style="padding-bottom: 3px;">#</a>
                     </div>
                 </div>
-                <div class="hash_tag_wrap">
-                    <div class="hash_tag"><a href="#" tag="팝" style="padding-bottom: 3px;">#팝</a></div>
-                </div>
-                <div class="hash_tag_wrap">
-                    <div class="hash_tag"><a href="#" tag="발라드" style="padding-bottom: 3px;">#발라드</a></div>
-                </div>
-                <div class="hash_tag_wrap">
-                    <div class="hash_tag"><a href="#" tag="R&B" style="padding-bottom: 3px;">#R&B</a></div>
-                </div>
-                <div class="hash_tag_wrap">
-                    <div class="hash_tag"><a href="#" tag="랩/힙합" style="padding-bottom: 3px;">#랩/힙합</a></div>
-                </div>
-                <div class="hash_tag_wrap">
-                    <div class="hash_tag"><a href="#" tag="EDM" style="padding-bottom: 3px;">#EDM</a></div>
-                </div>
-                <div class="hash_tag_wrap">
-                    <div class="hash_tag"><a href="#" tag="댄스" style="padding-bottom: 3px;">#댄스</a></div>
-                </div>
-                <div class="hash_tag_wrap">
-                    <div class="hash_tag"><a href="#" tag="재즈" style="padding-bottom: 3px;">#재즈</a></div>
-                </div>
-                <div class="hash_tag_wrap">
-                    <div class="hash_tag"><a href="#" tag="인디" style="padding-bottom: 3px;">#인디</a></div>
-                </div>
-                <div class="hash_tag_wrap">
-                    <div class="hash_tag"><a href="#" tag="무용" style="padding-bottom: 3px;">#무용</a></div>
-                </div>
+                </th:block>
             </div>
             <div class="regist_division">
                 <div class="regist_btn">
@@ -73,70 +48,11 @@
             <div class="work_list">
                 <ul class="works">
                     <li>
-                        <p class="works_tit">Proof</p>
-                        <p class="worker">방탄소년단</p>
+                        <p th:field="*{workNumber}" style="display: none;"></p>
+                        <p class="works_tit" th:field="*{workName}"></p>
+                        <p class="worker" th:field="*{artistName}"></p>
                         <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
-                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
-                    </li>
-                    <li>
-                        <p class="works_tit">Proof</p>
-                        <p class="worker">방탄소년단</p>
-                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
-                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
-                    </li>
-                    <li>
-                        <p class="works_tit">Proof</p>
-                        <p class="worker">방탄소년단</p>
-                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
-                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
-                    </li>
-                    <li>
-                        <p class="works_tit">Proof</p>
-                        <p class="worker">방탄소년단</p>
-                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
-                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
-                    </li>
-                    <li>
-                        <p class="works_tit">Proof</p>
-                        <p class="worker">방탄소년단</p>
-                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
-                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
-                    </li>
-                    <li>
-                        <p class="works_tit">Proof</p>
-                        <p class="worker">방탄소년단</p>
-                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
-                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
-                    </li>
-                    <li>
-                        <p class="works_tit">Proof</p>
-                        <p class="worker">방탄소년단</p>
-                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
-                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
-                    </li>
-                    <li>
-                        <p class="works_tit">Proof</p>
-                        <p class="worker">방탄소년단</p>
-                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
-                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
-                    </li>
-                    <li>
-                        <p class="works_tit">Proof</p>
-                        <p class="worker">방탄소년단</p>
-                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
-                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
-                    </li>
-                    <li>
-                        <p class="works_tit">Proof</p>
-                        <p class="worker">방탄소년단</p>
-                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
-                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
-                    </li>
-                    <li>
-                        <p class="works_tit">Proof</p>
-                        <p class="worker">방탄소년단</p>
-                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
-                        <p class="tags">#랩/힙합 &nbsp; #댄스 &nbsp; #R&B &nbsp; #Soul</p>
+                        <p class="tags" th:field="*{workTag}"></p>
                     </li>
                 </ul>
             </div>
@@ -159,4 +75,23 @@
     })
     
 </script>
+<script src="/asset/js/work/work.js"></script>
+<!--<script th:inline="javascript">-->
+<!--    let $work = $(".workList");-->
+<!--    let $tag = $(".hash_division");-->
+
+<!--    function showWorkList(tag) {-->
+<!--        workService.getKeyword(tag, function (list){-->
+<!--            $work.empty();-->
+<!--            let str = "";-->
+<!--            console.log(list);-->
+<!--            if(list == null || list.length == 0) {-->
+<!--                $work.html("");-->
+<!--                return;-->
+<!--            }-->
+
+<!--            $.each()-->
+<!--        })-->
+<!--    }-->
+<!--</script>-->
 </html>

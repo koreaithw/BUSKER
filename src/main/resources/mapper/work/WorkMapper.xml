@@ -88,9 +88,13 @@
                 )
                 WHERE WORK_STATUS = 3 AND ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
                 ]]>
-            <foreach collection="listDTO.tag" item="tag">
-                AND WORK_TAG LIKE '%'||#{tag}||'%'
-            </foreach>
+            <choose>
+                <when test="listDTO.tag != null">
+                    <foreach collection="listDTO.tag" item="tag">
+                        AND WORK_TAG LIKE '%'||#{tag}||'%'
+                    </foreach>
+                </when>
+            </choose>
         <![CDATA[
             )
             WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
@@ -107,5 +111,11 @@
         SELECT COUNT(WORK_NUMBER)
         FROM TBL_WORK
         WHERE WORK_STATUS = 1
+    </select>
+
+    <select id="getTotalListApply" resultType="_int">
+        SELECT COUNT(WORK_NUMBER)
+        FROM TBL_WORK
+        WHERE WORK_STATUS = 3
     </select>
 </mapper>
