@@ -67,32 +67,41 @@ function concertPlanList(type, page){
 
 function concertPage(type, total) {
     let endPage = Math.ceil(pageNum / 10.0) * 10; // 올림
+    console.log("endPage");
+    console.log(endPage);
     let startPage = endPage - 9;
-    let realEnd = Math.ceil(total / 10.0);  // 올림
+    console.log("startPage");
+    console.log(startPage);
+    let realEnd = Math.ceil(total / 15.0);  // 올림
+    console.log("realEnd");
+    console.log(realEnd);
     const $paging = $(".paging");
-
     if (endPage > realEnd) {
         endPage = realEnd;
     }
 
     let prev = startPage > 1;
-    let next = endPage * 10 < total;
+    let next = endPage * 15 < total;
     let str = "";
 
+    console.log("prev");
+    console.log(prev);
+    console.log("next");
+    console.log(next);
     str += "<div class='big-width mypage-pageStyle' style='text-align: center'>"
-    str += "<a class='mypage-page-first'>" + "<<" + "</a>"
+    // str += "<a class='mypage-page-first'>" + "<<" + "</a>"
 
     if (prev) {
-        str += "<a class='changePage' href='" + (startPage - 1) +  "><code>&lt;</code></a>"
+        str += "<a class='changePage prevList' href='" + (startPage - 1) +  "'><code>&lt;</code>Prev</a>"
     }
     for (let i = startPage; i <= endPage; i++) {
         str += pageNum == i ? "<code>" + i + "</code>" : "<a class='changePage mypage-page-next' href='" + i + "'><code>" + i + "</code></a>";
     }
     if (next) {
-        str += "<a class='changePage' href='" + (endPage + 1) + "'><code>&gt;</code></a>"
+        str += "<a class='changePage nextList' href='" + (endPage + 1) + "'>Next<code>&gt;</code></a>"
     }
-
-    str += "<a class='mypage-page-last'>>></a></div>"
+    str += "</div>"
+    // str += "<a class='mypage-page-last'>>></a></div>"
     $paging.html(str);
 
 }
