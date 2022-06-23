@@ -2,18 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.teamprojeect.mapper.user.LikeMapper">
     <!--좋아요 등록 (아티스트)-->
-<!--    <insert id="insertArtistLike">-->
-<!--        INSERT INTO TBL_LIKE-->
-<!--        (USER_NUMBER, ARTIST_NUMBER, LIKE_CATEGORY)-->
-<!--        VALUES (#{userNumber}, #{artistNumber}, 'A')-->
-<!--    </insert>-->
+    <insert id="insertArtistLike">
+        INSERT INTO TBL_LIKE
+        (USER_NUMBER, ARTIST_NUMBER, LIKE_CATEGORY)
+        VALUES (#{userNumber}, #{artistNumber}, 'A')
+    </insert>
 
-<!--    &lt;!&ndash;좋아요 등록 (뮤지션)&ndash;&gt;-->
-<!--    <insert id="insertWorkLike">-->
-<!--        INSERT INTO TBL_LIKE-->
-<!--        (USER_NUMBER, WORK_NUMBER, LIKE_CATEGORY)-->
-<!--        VALUES (#{userNumber}, #{workNumber}, 'W')-->
-<!--    </insert>-->
+    <!--좋아요 등록 (작품)-->
+    <insert id="insertWorkLike">
+        INSERT INTO TBL_LIKE
+        (USER_NUMBER, WORK_NUMBER, LIKE_CATEGORY)
+        VALUES (#{userNumber}, #{workNumber}, 'W')
+    </insert>
 
     <!--좋아요 취소-->
 
@@ -33,7 +33,47 @@
     </delete>
 
 
-    <!--좋아요 목록-->
+<!--    좋아요 아티스트 목록-->
+    <select id="getLikeArtistList" resultType="likeVO">
+        SELECT USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, ARTIST_NAME, ARTIST_TYPE
+        FROM
+        (SELECT ROWNUM RN, USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, ARTIST_NAME, ARTIST_TYPE
+        FROM
+        (SELECT tl.USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, ARTIST_NAME, ARTIST_TYPE
+        FROM TBL_LIKE tl, TBL_ARTIST ta
+        WHERE tl.ARTIST_NUMBER = ta.ARTIST_NUMBER AND tl.USER_NUMBER = #{userNumber}
+        <choose>
+            <when test='listDTO.artistType == "M"'>
+                AND ARTIST_TYPE = 1
+            </when>
+            <when test='listDTO.artistType == "P"'>
+                AND ARTIST_TYPE = 2
+            </when>
+        </choose>
+        ORDER BY LIKE_DATE DESC)
+        <![CDATA[
+         WHERE ROWNUM < #{criteria.pageNum} * #{criteria.amount}
+        )
+        WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
+        ]]>
+    </select>
+
+
+    <!-- 좋아요 작품 목록-->
+    <select id="getLikeWorkList" resultType="likeVO">
+    SELECT USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, WORK_NAME
+    FROM(SELECT ROWNUM RN, USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, WORK_NAME
+    FROM(SELECT tl.USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, WORK_NAME
+        FROM TBL_LIKE tl, TBL_WORK tw
+        WHERE tl.WORK_NUMBER = tw.WORK_NUMBER AND tl.USER_NUMBER = #{userNumber}
+        ORDER BY LIKE_DATE DESC)
+    <![CDATA[
+        WHERE ROWNUM < #{criteria.pageNum} * #{criteria.amount}
+        )
+        WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
+        ]]>
+    </select>
+
 
     <!--아티스트, 작품의 좋아요 개수-->
 </mapper>

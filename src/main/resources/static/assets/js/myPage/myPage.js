@@ -615,8 +615,10 @@ let myPageService = (function(){
     $.ajax({
       url: "/myPage/" + userNumber,
       type: "post",
+      data: {password:password},
       contentType: "text/plain",
       success: function(result){
+        console.log(result);
         if(callback){
           callback(result);
         }
