@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <div class="work_info_wrap">
+    <div class="work_info_wrap" th:object="${work}">
         <div class="work_info_content">
             <div class="work_info">
                 <div class="info_left">
@@ -36,25 +36,25 @@
                         </a>
                     </div>
                 </div>
-                <div class="info_right" th:object="${work}">
+                <div class="info_right">
                     <div class="info_area1">
                         <dl>
                             <dt>앨범명</dt>
-                            <dd th:field="*{workName}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+                            <dd th:text="*{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+workName}"></dd>
                             <dt>아티스트</dt>
-                            <dd th:field="*{artistName}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+                            <dd th:text="*{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+artistName}"></dd>
                             <dt>발매일</dt>
-                            <dd th:field="*{workRegisterDate}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+                            <dd th:text="*{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+workRegisterDate}"></dd>
                             <dt>장르</dt>
-                            <dd th:field="*{workGenre}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dd>
+                            <dd th:text="*{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+workGenre}"></dd>
                             <dt>태그</dt>
-                            <dd th:field="*{workTag}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dd> <!--이거 없앨지도? -->
+                            <dd th:text="*{'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+workTag}"></dd>
                         </dl>
                     </div>
                     <div class="info_area2">
                         <dl>
                             <dt>앨범 설명</dt>
-                            <dd th:field="*{workDescription}">
+                            <dd th:text="*{workDescription}">
                             </dd>
                         </dl>
                     </div>
@@ -66,7 +66,9 @@
                 </div>              
             </div>
             <div class="vid_wrap">
-                <iframe width="1200" height="600" src="https://www.youtube.com/embed/kXpOEzNZ8hQ?start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe th:if="*{#strings.startsWith(workYoutubeUrl,'https://www.youtube.com/embed/')}" width="1200" height="600" th:src="*{workYoutubeUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe th:if="*{#strings.startsWith(workYoutubeUrl,'https://youtu.be/')}" width="1200" height="600" th:src="*{#strings.replace(workYoutubeUrl,'https://youtu.be/','https://www.youtube.com/embed/')}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe th:if="*{#strings.startsWith(workYoutubeUrl,'https://www.youtube.com/watch?v=')}" width="1200" height="600" th:src="*{#strings.replace(workYoutubeUrl,'https://www.youtube.com/watch?v=','https://www.youtube.com/embed/')}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </div>

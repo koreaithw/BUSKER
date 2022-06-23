@@ -214,6 +214,10 @@ p {
     text-align: -webkit-match-parent;
 }
 
+.works li:hover {
+    border: 1px solid #ff9326;
+}
+
 .works_tit {
     font-size: 20px;
     color: #333;
