@@ -15,21 +15,19 @@ public class UserMapperTests {
     private UserMapper userMapper;
 
 //    회원가입 : 회원가입 매퍼테스트 - 성공
-//    @Test
-//    public void joinTest() {
-//        IntStream.rangeClosed(1,30).forEach(i -> {
-//        UserVO userVO = new UserVO();
-//
-//        userVO.setUserId("새로 추가한 유저 "  + i);
-//        userVO.setUserPw("새로 추가한 유저 비밀번호 " + i);
-//        userVO.setUserName("추가 유저 이름 " + i);
-//        userVO.setUserPhoneNumber("추가 유저 폰넘버 " + i);
-//        userVO.setUserEmail("user" + i + "@gmail.com");
-//
-//        userMapper.join(userVO);
-//        });
-//
-//    }
+    @Test
+    public void joinTest() {
+        UserVO userVO = new UserVO();
+
+        userVO.setUserId("test");
+        userVO.setUserPw("1234");
+        userVO.setUserName("추가 유저 이름 ");
+        userVO.setUserPhoneNumber("추가 유저 폰넘버 ");
+        userVO.setUserEmail("test.com");
+
+        userMapper.join(userVO);
+
+    }
 
 //    회원가입 : 아이디 찾기
 //    @Test
@@ -38,11 +36,11 @@ public class UserMapperTests {
 //    };
 
 //    마이페이지 : 유저 정보 조회 - 성공
-    @Test
-    public void getUserDetailTest(){
-        Long userNumber = 32L;
-        log.info(userMapper.getUserDetail(userNumber).toString());
-    }
+//    @Test
+//    public void getUserDetailTest(){
+//        Long userNumber = 32L;
+//        log.info(userMapper.getUserDetail(userNumber).toString());
+//    }
 
 //    마이페이지 : 유저 정보 수정 - 성공
 //    @Test

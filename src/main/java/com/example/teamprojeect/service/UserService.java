@@ -63,4 +63,7 @@ public class UserService {
 
     // 좋아요한 작품 수
     public int getTotalWork(Long userNumber) { return likeDAO.getTotalWork(userNumber); }
+
+    //회원가입
+    public void join(UserVO userVO) {userDAO.join(userVO);}
 }
