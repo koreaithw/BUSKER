@@ -355,6 +355,7 @@
                   <input
                     type="button"
                     class="btnNormal small"
+                    id="pwChange"
                     value="확인"
                     onclick="changePassword();"
                   />
@@ -995,19 +996,14 @@
                 <div class="innerContainer">
                   <nav class="segmented" style="display: none">
                     <a class="first selected" href="mypagePwCheck.html">전체</a>
-                    <a class="second" href="mypagePwChange.html">뮤지션</a>
-                    <a class="last" href="mypageDelete.html">퍼포먼스</a>
+<!--                    <a class="second" href="mypagePwChange.html">뮤지션</a>-->
+<!--                    <a class="last" href="mypageDelete.html">퍼포먼스</a>-->
                   </nav>
 
                   <p class="sorting">
                     <span class="sorting work-All-Dot">·</span
                     ><a href="" class="myArtist work-All-button">전체</a>
-                    <span class="sorting work-Musician-Dot">·</span
-                    ><a href="" class="myArtist work-Musician-button">뮤지션</a>
-                    <span class="sorting work-Performance-Dot">·</span
-                    ><a href="" class="myArtist work-Performance-button"
-                      >퍼포먼스</a
-                    >
+
                   </p>
 
                   <!-- 관심 작품 전체 카테고리 -->
@@ -1235,209 +1231,209 @@
                     </div>
                   </div>
 
-                  <!-- 관심 작품 뮤지션 카테고리 -->
-                  <div
-                    class="sectionPadding myArtistList top myWorkList-Musician"
-                    style="display: none"
-                  >
-                    <div class="artistList">
-                      <a href="" class="myWork myLike">
-                        <img
-                          class="myWork-image"
-                          src="https://image.bugsm.co.kr/album/images/170/40536/4053603.jpg"
-                        />
-                        <div class="info">
-                          <div class="myWork">
-                            <span class="myWorkName">버스커버스커 기타</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myWorkType">기타 (악기)</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myArtistName">장범준 | 뮤지션</span>
-                          </div>
-                        </div>
-                      </a>
-                      <div class="workLike">
-                        <a href=""
-                          ><img
-                            class="myWorkLike heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="myWorkLike heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
+<!--                  &lt;!&ndash; 관심 작품 뮤지션 카테고리 &ndash;&gt;-->
+<!--                  <div-->
+<!--                    class="sectionPadding myArtistList top myWorkList-Musician"-->
+<!--                    style="display: none"-->
+<!--                  >-->
+<!--                    <div class="artistList">-->
+<!--                      <a href="" class="myWork myLike">-->
+<!--                        <img-->
+<!--                          class="myWork-image"-->
+<!--                          src="https://image.bugsm.co.kr/album/images/170/40536/4053603.jpg"-->
+<!--                        />-->
+<!--                        <div class="info">-->
+<!--                          <div class="myWork">-->
+<!--                            <span class="myWorkName">버스커버스커 기타</span>-->
+<!--                          </div>-->
+<!--                          <div class="myWork workInfo-width">-->
+<!--                            <span class="myWorkType">기타 (악기)</span>-->
+<!--                          </div>-->
+<!--                          <div class="myWork workInfo-width">-->
+<!--                            <span class="myArtistName">장범준 | 뮤지션</span>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                      </a>-->
+<!--                      <div class="workLike">-->
+<!--                        <a href=""-->
+<!--                          ><img-->
+<!--                            class="myWorkLike heart-selected"-->
+<!--                            src="/images/myPage/heart-icon.png"-->
+<!--                            width="30px" /><img-->
+<!--                            class="myWorkLike heart-nonSelected"-->
+<!--                            src="/images/myPage/heartNon-Select.png"-->
+<!--                            width="30px"-->
+<!--                            style="display: none"-->
+<!--                        /></a>-->
+<!--                      </div>-->
+<!--                    </div>-->
 
-                    <div class="artistList">
-                      <a href="" class="myWork myLike">
-                        <img
-                          class="myWork-image"
-                          src="https://image.bugsm.co.kr/album/images/170/9996/999668.jpg"
-                        />
-                        <div class="info">
-                          <div class="myWork">
-                            <span class="myWorkName">딕펑스 슬로건</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myWorkType">굿즈 (잡화)</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myArtistName">딕펑스 | 뮤지션</span>
-                          </div>
-                        </div>
-                      </a>
-                      <div class="workLike">
-                        <a href=""
-                          ><img
-                            class="myWorkLike heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="myWorkLike heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-                    <div class="artistList">
-                      <a href="" class="myWork myLike">
-                        <img
-                          class="myWork-image"
-                          src="https://image.bugsm.co.kr/album/images/170/9340/934033.jpg"
-                        />
-                        <div class="info">
-                          <div class="myWork">
-                            <span class="myWorkName">유희열 안테나 티셔츠</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myWorkType">굿즈 (잡화)</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myArtistName">페퍼톤스 | 뮤지션</span>
-                          </div>
-                        </div>
-                      </a>
-                      <div class="workLike">
-                        <a href=""
-                          ><img
-                            class="myWorkLike heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="myWorkLike heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-                  </div>
+<!--                    <div class="artistList">-->
+<!--                      <a href="" class="myWork myLike">-->
+<!--                        <img-->
+<!--                          class="myWork-image"-->
+<!--                          src="https://image.bugsm.co.kr/album/images/170/9996/999668.jpg"-->
+<!--                        />-->
+<!--                        <div class="info">-->
+<!--                          <div class="myWork">-->
+<!--                            <span class="myWorkName">딕펑스 슬로건</span>-->
+<!--                          </div>-->
+<!--                          <div class="myWork workInfo-width">-->
+<!--                            <span class="myWorkType">굿즈 (잡화)</span>-->
+<!--                          </div>-->
+<!--                          <div class="myWork workInfo-width">-->
+<!--                            <span class="myArtistName">딕펑스 | 뮤지션</span>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                      </a>-->
+<!--                      <div class="workLike">-->
+<!--                        <a href=""-->
+<!--                          ><img-->
+<!--                            class="myWorkLike heart-selected"-->
+<!--                            src="/images/myPage/heart-icon.png"-->
+<!--                            width="30px" /><img-->
+<!--                            class="myWorkLike heart-nonSelected"-->
+<!--                            src="/images/myPage/heartNon-Select.png"-->
+<!--                            width="30px"-->
+<!--                            style="display: none"-->
+<!--                        /></a>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    <div class="artistList">-->
+<!--                      <a href="" class="myWork myLike">-->
+<!--                        <img-->
+<!--                          class="myWork-image"-->
+<!--                          src="https://image.bugsm.co.kr/album/images/170/9340/934033.jpg"-->
+<!--                        />-->
+<!--                        <div class="info">-->
+<!--                          <div class="myWork">-->
+<!--                            <span class="myWorkName">유희열 안테나 티셔츠</span>-->
+<!--                          </div>-->
+<!--                          <div class="myWork workInfo-width">-->
+<!--                            <span class="myWorkType">굿즈 (잡화)</span>-->
+<!--                          </div>-->
+<!--                          <div class="myWork workInfo-width">-->
+<!--                            <span class="myArtistName">페퍼톤스 | 뮤지션</span>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                      </a>-->
+<!--                      <div class="workLike">-->
+<!--                        <a href=""-->
+<!--                          ><img-->
+<!--                            class="myWorkLike heart-selected"-->
+<!--                            src="/images/myPage/heart-icon.png"-->
+<!--                            width="30px" /><img-->
+<!--                            class="myWorkLike heart-nonSelected"-->
+<!--                            src="/images/myPage/heartNon-Select.png"-->
+<!--                            width="30px"-->
+<!--                            style="display: none"-->
+<!--                        /></a>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
 
                   <!-- 관심 작품 퍼포먼스 카테고리 -->
-                  <div
-                    class="sectionPadding myArtistList top myWorkList-Performance"
-                    style="display: none"
-                  >
-                    <div class="artistList">
-                      <a href="" class="myWork myLike">
-                        <img
-                          class="myWork-image"
-                          src="https://image.bugsm.co.kr/album/images/170/40389/4038932.jpg"
-                        />
-                        <div class="info">
-                          <div class="myWork">
-                            <span class="myWorkName">스우파 손목 밴드</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myWorkType">굿즈 (잡화)</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myArtistName">아이키 | 퍼포먼스</span>
-                          </div>
-                        </div>
-                      </a>
-                      <div class="workLike">
-                        <a href=""
-                          ><img
-                            class="myWorkLike heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="myWorkLike heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
+<!--                  <div-->
+<!--                    class="sectionPadding myArtistList top myWorkList-Performance"-->
+<!--                    style="display: none"-->
+<!--                  >-->
+<!--                    <div class="artistList">-->
+<!--                      <a href="" class="myWork myLike">-->
+<!--                        <img-->
+<!--                          class="myWork-image"-->
+<!--                          src="https://image.bugsm.co.kr/album/images/170/40389/4038932.jpg"-->
+<!--                        />-->
+<!--                        <div class="info">-->
+<!--                          <div class="myWork">-->
+<!--                            <span class="myWorkName">스우파 손목 밴드</span>-->
+<!--                          </div>-->
+<!--                          <div class="myWork workInfo-width">-->
+<!--                            <span class="myWorkType">굿즈 (잡화)</span>-->
+<!--                          </div>-->
+<!--                          <div class="myWork workInfo-width">-->
+<!--                            <span class="myArtistName">아이키 | 퍼포먼스</span>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                      </a>-->
+<!--                      <div class="workLike">-->
+<!--                        <a href=""-->
+<!--                          ><img-->
+<!--                            class="myWorkLike heart-selected"-->
+<!--                            src="/images/myPage/heart-icon.png"-->
+<!--                            width="30px" /><img-->
+<!--                            class="myWorkLike heart-nonSelected"-->
+<!--                            src="/images/myPage/heartNon-Select.png"-->
+<!--                            width="30px"-->
+<!--                            style="display: none"-->
+<!--                        /></a>-->
+<!--                      </div>-->
+<!--                    </div>-->
 
-                    <div class="artistList">
-                      <a href="" class="myWork myLike">
-                        <img
-                          class="myWork-image"
-                          src="https://image.bugsm.co.kr/album/images/170/204721/20472184.jpg?version=20220608120020.0"
-                        />
-                        <div class="info">
-                          <div class="myWork">
-                            <span class="myWorkName">스우파 손목 밴드</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myWorkType">굿즈 (잡화)</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myArtistName">아이키 | 퍼포먼스</span>
-                          </div>
-                        </div>
-                      </a>
-                      <div class="workLike">
-                        <a href=""
-                          ><img
-                            class="myWorkLike heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="myWorkLike heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
+<!--                    <div class="artistList">-->
+<!--                      <a href="" class="myWork myLike">-->
+<!--                        <img-->
+<!--                          class="myWork-image"-->
+<!--                          src="https://image.bugsm.co.kr/album/images/170/204721/20472184.jpg?version=20220608120020.0"-->
+<!--                        />-->
+<!--                        <div class="info">-->
+<!--                          <div class="myWork">-->
+<!--                            <span class="myWorkName">스우파 손목 밴드</span>-->
+<!--                          </div>-->
+<!--                          <div class="myWork workInfo-width">-->
+<!--                            <span class="myWorkType">굿즈 (잡화)</span>-->
+<!--                          </div>-->
+<!--                          <div class="myWork workInfo-width">-->
+<!--                            <span class="myArtistName">아이키 | 퍼포먼스</span>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                      </a>-->
+<!--                      <div class="workLike">-->
+<!--                        <a href=""-->
+<!--                          ><img-->
+<!--                            class="myWorkLike heart-selected"-->
+<!--                            src="/images/myPage/heart-icon.png"-->
+<!--                            width="30px" /><img-->
+<!--                            class="myWorkLike heart-nonSelected"-->
+<!--                            src="/images/myPage/heartNon-Select.png"-->
+<!--                            width="30px"-->
+<!--                            style="display: none"-->
+<!--                        /></a>-->
+<!--                      </div>-->
+<!--                    </div>-->
 
-                    <div class="artistList">
-                      <a href="" class="myWork myLike">
-                        <img
-                          class="myWorFk-image"
-                          src="https://image.bugsm.co.kr/album/images/170/40687/4068724.jpg"
-                        />
-                        <div class="info">
-                          <div class="myWork">
-                            <span class="myWorkName">스우파 손목 밴드</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myWorkType">굿즈 (잡화)</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myArtistName">아이키 | 퍼포먼스</span>
-                          </div>
-                        </div>
-                      </a>
-                      <div class="workLike">
-                        <a class="" href=""
-                          ><img
-                            class="myWorkLike heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="myWorkLike heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+<!--                    <div class="artistList">-->
+<!--                      <a href="" class="myWork myLike">-->
+<!--                        <img-->
+<!--                          class="myWorFk-image"-->
+<!--                          src="https://image.bugsm.co.kr/album/images/170/40687/4068724.jpg"-->
+<!--                        />-->
+<!--                        <div class="info">-->
+<!--                          <div class="myWork">-->
+<!--                            <span class="myWorkName">스우파 손목 밴드</span>-->
+<!--                          </div>-->
+<!--                          <div class="myWork workInfo-width">-->
+<!--                            <span class="myWorkType">굿즈 (잡화)</span>-->
+<!--                          </div>-->
+<!--                          <div class="myWork workInfo-width">-->
+<!--                            <span class="myArtistName">아이키 | 퍼포먼스</span>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                      </a>-->
+<!--                      <div class="workLike">-->
+<!--                        <a class="" href=""-->
+<!--                          ><img-->
+<!--                            class="myWorkLike heart-selected"-->
+<!--                            src="/images/myPage/heart-icon.png"-->
+<!--                            width="30px" /><img-->
+<!--                            class="myWorkLike heart-nonSelected"-->
+<!--                            src="/images/myPage/heartNon-Select.png"-->
+<!--                            width="30px"-->
+<!--                            style="display: none"-->
+<!--                        /></a>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
                 <!-- 페이징 -->
                 <div class="mypage-paging">
                   <div class="mypage-pageStyle">
@@ -2171,12 +2167,22 @@
     });
   })
 
+  // 유저 개인정보 변경
   $("input#infoChange").on("click", function(){
     myPageService.modify({userNumber: 6, userName: $("input#userName").val(), userPhoneNumber: $("input#userPhoneNumber").val(), userEmailId: $("input#userEmailId").val(), userDomain: $("input#userEmailDomain").val()}, function(result){
       alert(result);
       location.href="/myPage/myPage"
     })
   });
+
+  // 비밀번호 수정
+  $("input#pwChange").on("click", function(){
+    myPageService.modifyPw(4, $("input#newPasswordEqualInput").val(), function(result){
+      console.log($("input#newPasswordEqualInput").val())
+      alert(result);
+      location.href="/myPage/myPage"
+    });
+  })
 
 </script>
 </html>

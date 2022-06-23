@@ -60,7 +60,8 @@ public class MypageController {
         log.info("modifyPw.................." + password);
 
         userService.modifyPw(userNumber, password);
-        return userNumber + "유저 비밀번호 수정 성공" + ":" + password;
+
+        return "비밀번호 수정 성공";
     }
 
     // 회원 탈퇴 - Talend API Tester 통과
