@@ -64,7 +64,7 @@ public class ShowDaoTests {
 
     @Test
     public void getListIngTest() {
-        showDAO.getListIng(new Criteria(1, 10), new ListDTO("M", "new", "week", "new", "6")).stream().map(ShowVO::toString).forEach(log::info);
+        showDAO.getListIng(new ListDTO("M", "new", "week", "new", "6")).stream().map(ShowVO::toString).forEach(log::info);
     }
 
     @Test

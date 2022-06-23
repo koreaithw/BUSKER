@@ -1,6 +1,8 @@
 package com.example.teamprojeect.mapper.user;
 
+import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
+import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.user.LikeVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -46,4 +48,34 @@ public class LikeMapperTests {
 //        likeMapper.delete(1L, listDTO, 1L);
 //        log.info("좋아요 취소 성공");
 //    }
+
+    // 좋아요 아티스트 목록
+    @Test
+    public void getLikeArtistTest(){
+        likeMapper.getLikeArtistList(new Criteria(1, 10), 24L, new ListDTO("M", "new", "week", "new", "0")).stream().map(LikeVO::toString).forEach(log::info);
+    }
+
+    // 좋아요 작품 목록
+//    @Test
+//    public void getWorkListTest(){
+//        likeMapper.getLikeWorkList(new Criteria(1, 10), 24L);
+//    }
+
+    // 좋아요 아티스트 전체 개수
+    @Test
+    public void getTotalArtistTest(){
+        ListDTO listDTO = new ListDTO();
+        Long userNumber = 24L;
+        listDTO.setArtistType("M");
+        likeMapper.getTotalArtist(userNumber, listDTO);
+
+    }
+
+    // 좋아요 작품 개수
+    @Test
+    public void getTotalWorkTest(){
+        Long userNumber = 24L;
+        likeMapper.getTotalWork(userNumber);
+    }
+
 }

@@ -364,14 +364,14 @@ $(".artist-All-button").click(function (e) {
 // 관심 아티스트 카테고리 뮤지션
 $(".artist-Musician-button").click(function (e) {
   e.preventDefault();
-  myArtistTabChange(".myArtistList-Musician");
+  // myArtistTabChange(".myArtistList-Musician");
   smallArtistMenu(".artist-Musician-Dot", ".artist-Musician-button");
 });
 
 // 관심 아티스트 카테고리 퍼포먼스
 $(".artist-Performance-button").click(function (e) {
   e.preventDefault();
-  myArtistTabChange(".myArtistList-Performance");
+  // myArtistTabChange(".myArtistList-Performance");
   smallArtistMenu(".artist-Performance-Dot", ".artist-Performance-button");
 });
 
@@ -615,8 +615,10 @@ let myPageService = (function(){
     $.ajax({
       url: "/myPage/" + userNumber,
       type: "post",
+      data: {password:password},
       contentType: "text/plain",
       success: function(result){
+        console.log(result);
         if(callback){
           callback(result);
         }
@@ -626,3 +628,49 @@ let myPageService = (function(){
 
   return {modify:modify, modifyPw:modifyPw, remove:remove}
 })();
+
+// ajax userService.......
+let userService = (function(){
+  // 관심 아티스트 좋아요 목록 뽑기
+  function getArtist(userNumber, type, page, callback, error){
+    console.log("getArtist.................");
+    let pageNum = page || 1;
+    $.ajax({
+      url: "/myPage/" + userNumber + "/" + type + "/" + pageNum,
+      type: "get",
+      dataType: "json",
+      concentType: "application/json",
+      success: function(LikePageDTO){
+        if(callback){
+          callback(LikePageDTO.total, LikePageDTO.list);
+        }
+      }, error: function(xhr, status, er){
+        if(error){
+          error(xhr, status, er);
+        }
+      }
+    })
+  }
+
+  function getWork(userNumber, page, callback, error){
+    console.log("getWork...............");
+    let pageNum = page || 1;
+    $.ajax({
+      url: "/myPage/" + userNumber + "/" + pageNum,
+      type: "get",
+      dataType: "json",
+      contentType: "application/json",
+      success: function(LikePageDTO){
+        if(callback){
+          callback(LikePageDTO.total, LikePageDTO.list);
+        }
+      }, error: function(xhr, status, er){
+        if(error){
+          error(xhr, status, er);
+        }
+      }
+    })
+  }
+
+  return {getArtist:getArtist, getWork:getWork}
+                            })();

@@ -3,10 +3,13 @@
 <mapper namespace="com.example.teamprojeect.mapper.work.WorkMapper">
     <!-- 작품 등록 신청 (status 1) -->
     <insert id="insertApply">
+        <selectKey keyProperty="workNumber" resultType="long" order="BEFORE">
+            SELECT SEQ_WORK.NEXTVAL FROM DUAL
+        </selectKey>
         <![CDATA[
         INSERT INTO TBL_WORK
         (WORK_NUMBER,ARTIST_NUMBER, WORK_NAME, WORK_GENRE, WORK_DESCRIPTION, WORK_YOUTUBE_URL, WORK_PURCHASE_URL, WORK_TAG, WORK_RELEASE_DATE, WORK_REGISTER_DATE, WORK_UPDATE_DATE, WORK_STATUS)
-        VALUES(SEQ_WORK.NEXTVAL, #{artistNumber}, #{workName}, #{workGenre},#{workDescription}, #{workYoutubeUrl}, #{workPurchaseUrl}, #{workTag}, #{workReleaseDate}, SYSDATE, SYSDATE, 1)
+        VALUES(#{workNumber}, #{artistNumber}, #{workName}, #{workGenre},#{workDescription}, #{workYoutubeUrl}, #{workPurchaseUrl}, #{workTag}, #{workReleaseDate}, SYSDATE, SYSDATE, 1)
         ]]>
     </insert>
 

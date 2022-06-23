@@ -94,34 +94,6 @@
         }
 
 
-
-        .reply-paging a.page-button {
-            border-radius: 30px;
-            background-color: #f39690;
-            color: #fff;
-            min-width: 10px;
-            height: 30px;
-            margin: 0 4px;
-            padding: 5px 10px;
-            line-height: 30px;
-        }
-
-        .reply-paging a {
-            font-size: 14px;
-        }
-
-        .reply-paging a.page-button-prev {
-            color: #a7a7a7;
-            font-size: 14px;
-            text-decoration: none;
-        }
-
-        .reply-paging a.page-button-next {
-            color: #a7a7a7;
-            font-size: 14px;
-            text-decoration: none;
-        }
-
     </style>
 
 </head>
@@ -200,6 +172,7 @@
                     </div>
 
                 </div>
+
                 <div class="rn-03-right">
                     <div class="rn-product-area1">
                         <dl>
@@ -488,7 +461,6 @@
                 }
             })
         }
-
         function modifyReply(replyNumber, showReplyVO, callback, error) {
             $.ajax({
                 url: "/reply/concert/" + replyNumber,
@@ -562,16 +534,17 @@
             $("#reply-count").text(total + ' Comments');
 
             $.each(list, function (i, reply) {
-                str += "<div class='reply-content-wrap'><div class='reply-content-flex'><div class='user-profile'>";
+                str += "<div class='reply-content-wrap' id='"  + reply.replyNumber +  "'><div class='reply-content-flex'><div class='user-profile'>";
                 str += "<img class='user-image' src='https://i1.daumcdn.net/thumb/C96x96/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F5172542%2Fattach%2F5b16521bdfb848a69f47ddb5b5d064ac' alt='' width='48' height='48'></div>";
                 str += '<div class="reply-text-box"><div class="reply-content-box"><div class="reply-name"><span class="reply-user">';
                 str += '<a id="user-name" href="">' + reply.userName + '</a></span>';
                 str += '<span class="reply-date">' + reply.replyUpdateDate + '</span></div>';
                 str += '<div class="reply-status">';
-                str += '<span class="reply-modify modify' + reply.replyNumber + '" style="cursor:pointer;">수정</span>';
-                str += '<span class="reply-modify reply-finish" style="display: none;cursor:pointer;">수정완료</span>';
-                str += '<span class="reply-delete">삭제</span></div></div>';
-                str += '<div class="reply-content content' + reply.replyNumber + '">' + reply.replyContent + '</div></div></div></div>';
+                str += '<span id="modify-' + reply.replyNumber + '" class="reply-modify modify ' + reply.replyNumber + '" style="cursor:pointer;">수정</span>';
+                str += '<span id="finish-' + reply.replyNumber + '" class="reply-finish finish ' + reply.replyNumber + '" style="display: none;cursor:pointer;">수정완료</span>';
+                str += '<span id="delete-' + reply.replyNumber + '" class="reply-delete delete ' + reply.replyNumber + '">삭제</span>'
+                str += '<span id="cancel-' + reply.replyNumber + '" class="reply-cancel cancel ' + reply.replyNumber + '" style="display: none;cursor:pointer;">취소</span></div></div>';
+                str += '<div id="content-' + reply.replyNumber + '"  class="reply-content content ' + reply.replyNumber + '">' + reply.replyContent + '</div></div></div></div>';
             });
             ;
 
@@ -583,59 +556,77 @@
     //댓글 삭제
     $(".concert-reply-div").on("click", ".reply-delete", function (e) {
         e.preventDefault();
-        console.log("삭제는두개두개");
-        console.log(this);
-        console.log(this.classList);
         if (updateCheck) {
             alert("이미 수정중인 댓글이 있습니다.");
             return;
         }
-        showReplyService.removeReply(this.classList[1], function (result) {
-            alert(result);
-            replyList(pageNum);
-        });
+        if(confirm("댓글을 삭제하시겠습니까?")) {
+            showReplyService.removeReply(this.classList[2], function (result) {
+                alert(result);
+                replyList(pageNum);
+            });
+        }
     });
+
 
     let updateCheck = false;
 
     //댓글 수정
     $(".concert-reply-div").on("click", ".reply-modify", function (e) {
-        e.preventDefault();
         if (updateCheck) {
             alert("이미 수정중인 댓글이 있습니다.");
             return;
         }
         console.log("수정");
         console.log(this);
-        let replyNumber = this.classList[1];
-        let str = "";
 
-        $(".reply-finish").show();
-        $(this).hide();
+        if(confirm("댓글을 수정하시겠습니까?")){
+            let replyNumber = this.classList[2];
+            let str = "";
 
-        str += '<div class="reply-input">';
-        str += '<textarea class="' + replyNumber + '" name="replyShow" style="width: 100%;height: 70px;border: 1px solid #fff;font-size: 13px;resize: none;box-sizing: border-box;resize: none;margin-top: 10px;">'
-        str += $("div.content" + replyNumber).text();
-        str += '</textarea></div>';
+            $("#modify-" + replyNumber).hide();
+            $("#delete-" + replyNumber).hide();
+            $("#finish-" + replyNumber).show();
+            $("#cancel-" + replyNumber).show();
 
-        $("div.content" + replyNumber).replaceWith(str);
-        updateCheck = true;
+            str += '<div class="reply-input">';
+            str += '<textarea id="textarea-' + replyNumber + '" class="' + replyNumber + '" name="replyShow" style="width: 100%;height: 70px;border: 1px solid #fff;font-size: 13px;resize: none;box-sizing: border-box;resize: none;margin-top: 10px;">'
+            str += $("#content-" + replyNumber).text();
+            str += '</textarea></div>';
+
+            // str += "<textarea id='textarea-'" + replyNumber + " class='" + replyNumber + "' style='resize: none;'>";
+            // str += $("#content-" + replyNumber).text();
+            // str += "</textarea>";
+
+            $("#content-" + replyNumber).replaceWith(str);
+            updateCheck = true;
+        }
+    });
+
+    // 취소 버튼
+    $(".concert-reply-div").on("click", ".reply-cancel", function (e) {
+        e.preventDefault();
+        let replyNumber = this.classList[2];
+        $("textarea#textarea-" + replyNumber).val("");
+        $("textarea#textarea-" + replyNumber).focus();
     });
 
     //수정 완료
     $(".concert-reply-div").on("click", ".reply-finish", function (e) {
         e.preventDefault();
-        console.log("수정dfdf");
+        console.log("수정완료");
         console.log(this);
-        let replyNumber = this.classList[1];
-        showReplyService.modifyReply({
-            replyNumber: replyNumber,
-            replyContent: $("textarea." + replyNumber).val()
-        }, function (result) {
-            alert(result);
-            replyList(pageNum);
-            updateCheck = false;
-        })
+        let replyNumber = this.classList[2];
+
+        if(confirm("댓글을 수정하시겠습니까?")) {
+            showReplyService.modifyReply(replyNumber, {
+                replyContent: $("textarea#textarea-" + replyNumber).val()
+            }, function (result) {
+                alert(result);
+                replyList(pageNum);
+                updateCheck = false;
+            })
+        }
     });
 
     function showReplyPage(total) {
@@ -652,20 +643,22 @@
         let next = endPage * 10 < total;
         let str = "";
 
-        if (prev) {        }
-
-        str += '<a class="page-button-prev changePage-reply" href=""><code>&lt;</code>< Prev</a>'
-        for (let i = startPage; i <= endPage; i++) {
-            str += pageNum == i ? "<a class='page-button changePage-reply'><code>" + i + "</code></a>" : '<a class="page-button changePage-reply" href="' + i + '"><code>' + i + '</code></a>';
+        if (prev) {
+            str += '<a class="changePage prevList" href="' + (startPage - 1) + '"><code>&lt;</code>Prev</a>'
         }
-        if (next) {        }
+        for (let i = startPage; i <= endPage; i++) {
+            str += pageNum == i ?  "<code>" + i + "</code>" : "<a class='changePage mypage-page-next' href='" + i + "'><code>" + i + "</code></a>";
+        }
+        if (next) {
+            str += '<a class="changePage nextList" href="' + (endPage + 1) + '">Next<code>&gt;</code></a>'
+        }
 
-        str += '<a class="page-button-next changePage-reply" href="' + (endPage + 1) + '"><code>&gt;</code>Next ></a>'
+
         $paging.html(str);
     }
 
 
-    $(".reply-paging").on("click", "a.changePage-reply", function (e) {
+    $(".reply-paging").on("click", "a.changePage", function (e) {
         e.preventDefault();
         pageNum = $(this).attr("href");
         replyList(pageNum);
@@ -674,6 +667,10 @@
 
     $(".finish").click(function (e) {
         e.preventDefault();
+        if (updateCheck) {
+            alert("이미 수정중인 댓글이 있습니다.");
+            return;
+        }
         const $replyContent = $("textarea[name='replyShow']").val();
 
         if (!$replyContent) {
@@ -681,11 +678,14 @@
             return;
         }
 
-        showReplyService.createReply({userNumber: 1, showNumber: showNumber, replyContent: $replyContent},
-            function (result) {
-                $("textarea[name='replyShow']").val("");
-                replyList(1);
-            });
+        if(confirm("댓글을 등록하시겠습니까?")){
+            showReplyService.createReply({userNumber: 1, showNumber: showNumber, replyContent: $replyContent},
+                function (result) {
+                    $("textarea[name='replyShow']").val("");
+                    replyList(pageNum);
+                });
+            alert("댓글이 등록되었습니다.");
+        }
     })
 
 </script>

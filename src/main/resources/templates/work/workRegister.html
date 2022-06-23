@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/assets/css/work/workRegister.css"/>
+    <link rel="stylesheet" href="/assets/css/work/workRegister.css"/>
     <style>
         .clear{clear:both;}
         .fileList .fileName{padding-left: 20px;}
@@ -36,7 +36,7 @@
     </div>
 
     <div class="work_info_wrap">
-        <form action="workList.html" method="post" name="registForm" enctype="multipart/form-data">
+        <form action="/work/workRegister" method="post" name="registerForm" enctype="multipart/form-data">
             <div class="work_info_content">
                 <div class="work_info">
                     <div class="info_left">
@@ -59,17 +59,22 @@
                                 </dd>
                                 <dt>발매일*</dt>
                                 <dd>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="releaseDate" class="input_text">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="workReleaseDate" class="input_text">
                                     <span><p class="warning_msg3">반드시 입력해야 하는 칸입니다.</p></span>
                                 </dd>
                                 <dt>장르*</dt>
                                 <dd>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="genre" class="input_text">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="workGenre" class="input_text">
+                                    <span><p class="warning_msg4">반드시 입력해야 하는 칸입니다.</p></span>
+                                </dd>
+                                <dt>태그*</dt>
+                                <dd>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="workTag" class="input_text" placeholder="#태그 식으로 써주세요">
                                     <span><p class="warning_msg4">반드시 입력해야 하는 칸입니다.</p></span>
                                 </dd>
                                 <dt>뮤비 링크</dt>
                                 <dd>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="youtube_link" class="input_text" placeholder="유튜브 링크로 올려주세요.">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="workYoutubeUrl" class="input_text" placeholder="유튜브 링크로 올려주세요.">
                                 </dd>
                             </dl>
                         </div>
@@ -148,7 +153,7 @@
             }         
 
             $.ajax({
-                url : "서버 맵핑 URL",
+                url : "/work/workRegister",
                 data : formData,
                 type:'POST',
                 enctype:'multipart/form-data',

@@ -69,13 +69,13 @@ public class ShowReplyController {
     public String modifyReply(@PathVariable("replyNumber") Long replyNumber, @RequestBody ShowReplyVO showReplyVO) {
         showReplyVO.setReplyNumber(replyNumber);
         showService.modifyReply(showReplyVO);
-        return "댓글 수정에 성공하였습니다.";
+        return "댓글이 수정되었습니다.";
     }
 
     // 댓글 삭제
     @DeleteMapping("/{replyNumber}")
     public String removeReply(@PathVariable("replyNumber") Long replyNumber) {
         showService.removeReply(replyNumber);
-        return "댓글 삭제에 성공하였습니다.";
+        return "댓글이 삭제되었습니다.";
     }
 }

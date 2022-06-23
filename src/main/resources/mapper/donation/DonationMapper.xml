@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.teamprojeect.mapper.donation.DonationMapper">
+    <!--후원 등록-->
+    <insert id="insert">
+        INSERT INTO TBL_DONATION
+        (DONATION_NUMBER, USER_NUMBER, ARTIST_NUMBER, DONATION_MONEY, DONATION_MESSAGE)
+        VALUES(SEQ_SHOW.NEXTVAL, #{userNumber}, #{artistNumber}, #{donationMoney}, #{donationMessage})
+    </insert>
+
+</mapper>
