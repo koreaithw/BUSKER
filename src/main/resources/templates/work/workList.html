@@ -32,10 +32,10 @@
                 </div>
             </div>
             <div class="hash_division" style="padding-top: 105px;">
-                <th:block th:each="tag:${tagList}">
+                <th:block th:each="tag:${workTag}">
                 <div class="hash_tag_wrap">
                     <div class="hash_tag">
-                        <a href="#" th:tag="*{tag}" th:text="*{tag}" class="tag" style="padding-bottom: 3px;">#</a>
+                        <a href="#" th:tag="${tag}" th:text="${'#'+tag}" class="tag" style="padding-bottom: 3px;"></a>
                     </div>
                 </div>
                 </th:block>
@@ -47,13 +47,14 @@
             </div>
             <div class="work_list">
                 <ul class="works">
-                    <li>
-                        <p th:field="*{workNumber}" style="display: none;"></p>
-                        <p class="works_tit" th:field="*{workName}"></p>
-                        <p class="worker" th:field="*{artistName}"></p>
-                        <a href="/work/workInfo" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
-                        <p class="tags" th:field="*{workTag}"></p>
+                    <th:block th:each="work:${workList}">
+                    <li th:object="${work}">
+                        <p class="works_tit" th:text="*{workName}"></p>
+                        <p class="worker" th:text="*{artistName}"></p>
+                        <a th:href="*{workNumber}" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
+                        <p class="tags" th:text="*{workTag}"></p>
                     </li>
+                    </th:block>
                 </ul>
             </div>
         </div>
@@ -76,22 +77,13 @@
     
 </script>
 <!--<script src="/asset/js/work/work.js"></script>-->
-<!--<script th:inline="javascript">-->
-<!--    let $work = $(".workList");-->
-<!--    let $tag = $(".hash_division");-->
+<script th:inline="javascript">
+    let $work = $(".workList");
+    let paging = [[${criteria.listLink}]];
 
-<!--    function showWorkList(tag) {-->
-<!--        workService.getKeyword(tag, function (list){-->
-<!--            $work.empty();-->
-<!--            let str = "";-->
-<!--            console.log(list);-->
-<!--            if(list == null || list.length == 0) {-->
-<!--                $work.html("");-->
-<!--                return;-->
-<!--            }-->
-
-<!--            $.each()-->
-<!--        })-->
-<!--    }-->
-<!--</script>-->
+    $("a.works_img").click(function (e) {
+        e.preventDefault();
+        location.href = "/work/workInfo"+paging+"&workNumber="+$(this).attr('href');
+    });
+</script>
 </html>

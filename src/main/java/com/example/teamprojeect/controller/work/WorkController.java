@@ -2,6 +2,7 @@ package com.example.teamprojeect.controller.work;
 
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.paging.PageDTO;
 import com.example.teamprojeect.domain.vo.paging.work.WorkApplyPageDTO;
 import com.example.teamprojeect.domain.vo.paging.work.WorkPageDTO;
 import com.example.teamprojeect.domain.vo.work.WorkFileVO;
@@ -29,17 +30,15 @@ public class WorkController {
 
     // 작품리스트 페이지 이동
     @GetMapping("/workList")
-    public void goWorkList() {}
-
-//    public String goWorkList(Criteria criteria, @PathVariable("tag") String tag, Model model) {
-//        model.addAttribute("workList",workService.getKeyword(criteria,new ListDTO()));
-//        model.addAttribute("workTag", workService.getTag());
-//        model.addAttribute("pageDTO", new WorkPageDTO(criteria, workService.getTotalApply()));
-//        return "/work/workList";
-//    }
+    public String goWorkList(Criteria criteria,Model model) {
+        model.addAttribute("workList",workService.getKeyword(new Criteria(1, 50),new ListDTO()));
+        model.addAttribute("pageDTO",new PageDTO(criteria, workService.getTotalListApply()));
+        model.addAttribute("workTag", workService.getTag());
+        return "/work/workList";
+    }
 
     @ResponseBody
-    @GetMapping("/workList/{tag}")
+    @PostMapping("/workList/{tag}")
     public WorkApplyPageDTO goWorkList(@PathVariable("tag") String tag, Model model) {
         ListDTO listDTO = new ListDTO();
         if(tag != null) {
