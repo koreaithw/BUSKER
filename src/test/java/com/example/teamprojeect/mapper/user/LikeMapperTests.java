@@ -50,14 +50,32 @@ public class LikeMapperTests {
 //    }
 
     // 좋아요 아티스트 목록
-//    @Test
-//    public void getLikeArtistTest(){
-//        likeMapper.getLikeArtistList(new Criteria(1, 10), 24L, new ListDTO("M", "new", "week", "new", "0")).stream().map(LikeVO::toString).forEach(log::info);
-//    }
+    @Test
+    public void getLikeArtistTest(){
+        likeMapper.getLikeArtistList(new Criteria(1, 10), 24L, new ListDTO("M", "new", "week", "new", "0")).stream().map(LikeVO::toString).forEach(log::info);
+    }
 
     // 좋아요 작품 목록
+//    @Test
+//    public void getWorkListTest(){
+//        likeMapper.getLikeWorkList(new Criteria(1, 10), 24L);
+//    }
+
+    // 좋아요 아티스트 전체 개수
     @Test
-    public void getWorkListTest(){
-        likeMapper.getLikeWorkList(new Criteria(1, 10), 24L);
+    public void getTotalArtistTest(){
+        ListDTO listDTO = new ListDTO();
+        Long userNumber = 24L;
+        listDTO.setArtistType("M");
+        likeMapper.getTotalArtist(userNumber, listDTO);
+
     }
+
+    // 좋아요 작품 개수
+    @Test
+    public void getTotalWorkTest(){
+        Long userNumber = 24L;
+        likeMapper.getTotalWork(userNumber);
+    }
+
 }

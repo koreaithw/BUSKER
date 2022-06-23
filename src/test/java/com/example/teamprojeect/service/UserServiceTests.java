@@ -4,6 +4,7 @@ import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.user.LikeVO;
 import com.example.teamprojeect.domain.vo.user.UserVO;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Param;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -108,4 +109,15 @@ public class UserServiceTests {
 //    public void getWorkListTest(){
 //        userService.getLikeWorkList(new Criteria(1, 10), 24L);
 //    }
+
+    // 좋아요한 아티스트 수
+    @Test
+    public void getTotalArtistTest(){
+        userService.getTotalArtist(24L, new ListDTO());
+    }
+
+    @Test
+    public void getTotalWorkTest(){
+        userService.getTotalWork(24L);
+    }
 }

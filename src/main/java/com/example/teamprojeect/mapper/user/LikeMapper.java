@@ -28,6 +28,14 @@ public interface LikeMapper {
     public List<LikeVO> getLikeArtistList(@Param ("criteria") Criteria criteria, @Param("userNumber") Long userNumber, @Param("listDTO") ListDTO listDTO);
     public List<LikeVO> getLikeWorkList(@Param ("criteria") Criteria criteria, @Param("userNumber") Long userNumber);
 
+    // 아티스트 좋아요 개수
+    public int getTotalArtist(@Param("userNumber") Long userNumber, @Param("listDTO") ListDTO listDTO);
+
+    // 작품 좋아요 개수
+    public int getTotalWork(Long userNumber);
+
     // 아티스트, 작품의 좋아요 개수 (매개변수로 likeCategory를 전달해서 'A'(아티스트) 인지 'W'(작품)인지 구분)
-    public int getTotal(@Param("number") Long number, @Param("listDTO") ListDTO listDTO);
+//    public int getTotal(@Param("number") Long number, @Param("listDTO") ListDTO listDTO) {
+//        return likeMapper.getTotal(number, listDTO);
+//    }
 }

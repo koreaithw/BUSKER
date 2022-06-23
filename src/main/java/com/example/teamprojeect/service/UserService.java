@@ -57,4 +57,10 @@ public class UserService {
 
     // 좋아요 작품 목록
     public List<LikeVO> getLikeWorkList(Criteria criteria, Long userNumber) { return likeDAO.getLikeWorkList(criteria, userNumber); }
+
+    // 좋아요한 아티스트 수
+    public int getTotalArtist(Long userNumber, ListDTO listDTO) { return likeDAO.getTotalArtist(userNumber, listDTO); }
+
+    // 좋아요한 작품 수
+    public int getTotalWork(Long userNumber) { return likeDAO.getTotalWork(userNumber); }
 }
