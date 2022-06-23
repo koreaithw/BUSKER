@@ -58,4 +58,15 @@ public class LikeDaoTests {
 //    public void getWorkListTest(){
 //        likeDAO.getLikeWorkList(new Criteria(1, 10), 24L);
 //    }
+
+    // 좋아요한 아티스트 수
+    @Test
+    public void getTotalArtistTest(){
+        likeDAO.getTotalArtist(24L, new ListDTO());
+    }
+
+    @Test
+    public void getTotalWorkTest(){
+        likeDAO.getTotalWork(24L);
+    }
 }

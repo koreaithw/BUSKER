@@ -1,6 +1,10 @@
 package com.example.teamprojeect.controller.mypage;
 
 
+import com.example.teamprojeect.domain.vo.list.ListDTO;
+import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.paging.user.LikePageDTO;
+import com.example.teamprojeect.domain.vo.user.LikeVO;
 import com.example.teamprojeect.domain.vo.user.UserVO;
 import com.example.teamprojeect.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +13,8 @@ import org.apache.ibatis.annotations.Delete;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -21,7 +27,7 @@ public class MypageController {
     // 마이페이지 이동
     @GetMapping("/myPage")
     public String goMypage(Model model) {
-        UserVO userVO = userService.read(6L);
+        UserVO userVO = userService.read(24L);
         String userEmail = userVO.getUserEmail();
         String[] str = userEmail.split("@");
         userVO.setUserEmailId(str[0]);
@@ -70,5 +76,22 @@ public class MypageController {
     public String remove(@PathVariable("userNumber")Long userNumber){
         userService.remove(userNumber);
         return "유저 삭제 성공";
+    }
+
+    // 관심 아티스트 좋아요 목록 불러오기
+    @GetMapping("/{userNumber}/{type}/{page}")
+    @ResponseBody
+    public LikePageDTO getArtist(@PathVariable("userNumber") Long userNumber, @PathVariable ("type") String artistType, @PathVariable("page") int pageNum){
+        ListDTO listDTO = new ListDTO();
+        listDTO.setArtistType(artistType);
+
+        return new LikePageDTO(userService.getLikeArtistList(new Criteria(pageNum, 10), userNumber, listDTO), userService.getTotalArtist(userNumber, listDTO));
+    }
+
+    // 관심 작품 좋아요 목록 불러오기
+    @GetMapping("/{userNumber}/{page}")
+    @ResponseBody
+    public LikePageDTO getWork(@PathVariable("userNumber") Long userNumber, @PathVariable("page") int pageNum){
+        return new LikePageDTO(userService.getLikeWorkList(new Criteria(pageNum, 10), userNumber), userService.getTotalWork(userNumber));
     }
 }

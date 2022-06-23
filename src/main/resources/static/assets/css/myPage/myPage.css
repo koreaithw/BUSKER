@@ -576,10 +576,10 @@ div.pwChange {
   text-align: center;
   color: #fff;
   background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(249, 105, 87, 1) 0%,
-    rgba(255, 0, 116, 1) 100%
+          90deg,
+          rgba(2, 0, 36, 1) 0%,
+          rgba(249, 105, 87, 1) 0%,
+          rgba(255, 0, 116, 1) 100%
   );
   border-radius: 50px;
   margin-bottom: 15px;
@@ -594,10 +594,10 @@ div.pwChange {
   text-align: center;
   color: #fff;
   background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(249, 105, 87, 1) 0%,
-    rgba(255, 0, 116, 1) 100%
+          90deg,
+          rgba(2, 0, 36, 1) 0%,
+          rgba(249, 105, 87, 1) 0%,
+          rgba(255, 0, 116, 1) 100%
   );
   border-radius: 50px;
   margin-bottom: 15px;
@@ -618,7 +618,7 @@ div.pwChange {
   font-weight: bold;
   letter-spacing: -0.003em;
   font-family: "Noto Sans KR", "NanumBarunGothic", "맑은 고딕", "Malgun Gothic",
-    sans-serif;
+  sans-serif;
 }
 
 .sorting > a#selected,
@@ -759,8 +759,8 @@ a.myWork {
 
 .workLike {
   position: absolute;
-  top: 7px;
   right: 23px;
+  bottom: 0;
 }
 
 img.myWorkLike {
@@ -771,6 +771,7 @@ img.myWorkLike {
 
 .info {
   padding: 11px 12px 8px 12px;
+  position: relative;
 }
 
 a.myWork {
@@ -885,10 +886,10 @@ a.myWork {
   color: #fff;
   /* background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(249,105,87,1) 0%, rgba(255,0,116,1) 100%); */
   background: linear-gradient(
-    90deg,
-    rgba(53, 0, 202, 112) 0%,
-    rgba(434, 164, 89, 109) 0%,
-    rgba(255, 0, 18, 1) 185%
+          90deg,
+          rgba(53, 0, 202, 112) 0%,
+          rgba(434, 164, 89, 109) 0%,
+          rgba(255, 0, 18, 1) 185%
   );
   border-radius: 50px;
   margin-bottom: 15px;
@@ -1193,7 +1194,7 @@ a:-webkit-any-link {
   font-weight: bold;
   letter-spacing: -0.003em;
   font-family: "Noto Sans KR", "NanumBarunGothic", "맑은 고딕", "Malgun Gothic",
-    sans-serif;
+  sans-serif;
   outline: none;
   text-indent: 13px;
   border: 0 none;
@@ -1210,7 +1211,7 @@ a:-webkit-any-link {
   font-weight: bold;
   letter-spacing: -0.003em;
   font-family: "Noto Sans KR", "NanumBarunGothic", "맑은 고딕", "Malgun Gothic",
-    sans-serif;
+  sans-serif;
   outline: none;
   text-indent: 13px;
   border: 0 none;
@@ -1303,7 +1304,7 @@ a:-webkit-any-link {
   font-weight: bold;
   letter-spacing: -0.003em;
   font-family: "Noto Sans KR", "NanumBarunGothic", "맑은 고딕", "Malgun Gothic",
-    sans-serif;
+  sans-serif;
   text-indent: 13px;
   height: 500px;
   resize: none;
@@ -1471,7 +1472,7 @@ select:disabled {
   font-weight: bold;
   letter-spacing: -0.003em;
   font-family: "Noto Sans KR", "NanumBarunGothic", "맑은 고딕", "Malgun Gothic",
-    sans-serif;
+  sans-serif;
   margin-left: 37px;
 }
 
