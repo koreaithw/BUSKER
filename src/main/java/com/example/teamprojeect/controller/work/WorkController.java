@@ -39,8 +39,8 @@ public class WorkController {
 //    }
 
     @ResponseBody
-    @GetMapping("/workList")
-    public WorkApplyPageDTO goWorkList(String tag, Model model) {
+    @GetMapping("/workList/{tag}")
+    public WorkApplyPageDTO goWorkList(@PathVariable("tag") String tag, Model model) {
         ListDTO listDTO = new ListDTO();
         if(tag != null) {
             List<String> tagList = new ArrayList<String>();
