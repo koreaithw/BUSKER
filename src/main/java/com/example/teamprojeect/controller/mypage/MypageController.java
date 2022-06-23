@@ -77,7 +77,7 @@ public class MypageController {
         return "유저 삭제 성공";
     }
 
-    // 관심 아티스트 좋아요 목록 불러오기
+    // 관심 아티스트 좋아요 목록 불러오기 - Talend API 통과
     @GetMapping("/{userNumber}/{type}/{page}")
     @ResponseBody
     public LikePageDTO getArtist(@PathVariable("userNumber") Long userNumber, @PathVariable ("type") String artistType, @PathVariable("page") int pageNum){
@@ -87,7 +87,7 @@ public class MypageController {
         return new LikePageDTO(userService.getLikeArtistList(new Criteria(pageNum, 10), userNumber, listDTO), userService.getTotalArtist(userNumber, listDTO));
     }
 
-    // 관심 작품 좋아요 목록 불러오기
+    // 관심 작품 좋아요 목록 불러오기 - Talend API 통과
     @GetMapping("/{userNumber}/{page}")
     @ResponseBody
     public LikePageDTO getWork(@PathVariable("userNumber") Long userNumber, @PathVariable("page") int pageNum){
