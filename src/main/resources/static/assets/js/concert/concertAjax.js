@@ -58,10 +58,54 @@ function concertPlanList(type, page){
         });
 
         showDiv.html(str);
+        concertPage(type, total);
     }, function (a, b, c) {
         console.log(a, b, c)
     });
 }
+
+
+function concertPage(type, total) {
+    let endPage = Math.ceil(pageNum / 10.0) * 10; // 올림
+    let startPage = endPage - 9;
+    let realEnd = Math.ceil(total / 10.0);  // 올림
+    const $paging = $(".paging");
+
+    if (endPage > realEnd) {
+        endPage = realEnd;
+    }
+
+    let prev = startPage > 1;
+    let next = endPage * 10 < total;
+    let str = "";
+
+    str += "<div class='big-width mypage-pageStyle' style='text-align: center'>"
+    str += "<a class='mypage-page-first'>" + "<<" + "</a>"
+
+    if (prev) {
+        str += "<a class='changePage' href='" + (startPage - 1) +  "><code>&lt;</code></a>"
+    }
+    for (let i = startPage; i <= endPage; i++) {
+        str += pageNum == i ? "<code>" + i + "</code>" : "<a class='changePage mypage-page-next' href='" + i + "'><code>" + i + "</code></a>";
+    }
+    if (next) {
+        str += "<a class='changePage' href='" + (endPage + 1) + "'><code>&gt;</code></a>"
+    }
+
+    str += "<a class='mypage-page-last'>>></a></div>"
+    $paging.html(str);
+
+}
+
+
+$(".paging").on("click", "a.changePage", function (e) {
+    e.preventDefault();
+    pageNum = $(this).attr("href");
+    concertPlanList(type, pageNum);
+})
+
+
+
 
 $(document).ready(function () {
     // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
