@@ -33,7 +33,7 @@
             <a class="myArtist-tab" id="heart-Artist">관심 아티스트</a>
           </li>
           <li class="mypage-list">
-            <a class="myWork-tab">관심 작품</a>
+            <a class="myWork-tab" id="heart-Work">관심 작품</a>
           </li>
           <li class="mypage-list">
             <a class="myReply-tab">내가 쓴 댓글</a>
@@ -604,16 +604,16 @@
               </div>
 
               <!-- 페이징 -->
-              <div class="mypage-paging">
-                <div class="mypage-pageStyle">
-                  <a class="mypage-page-first"><<</a>
-                  <a class="mypage-page-prev"><</a>
-                  <div>
-                    <a class="">1</a>
-                  </div>
-                  <a class="mypage-page-next">></a>
-                  <a class="mypage-page-last">>></a>
-                </div>
+              <div class="paging">
+<!--                <div class="mypage-pageStyle">-->
+<!--                  <a class="mypage-page-first"><<</a>-->
+<!--                  <a class="mypage-page-prev"><</a>-->
+<!--                  <div>-->
+<!--                    <a class="">1</a>-->
+<!--                  </div>-->
+<!--                  <a class="mypage-page-next">></a>-->
+<!--                  <a class="mypage-page-last">>></a>-->
+<!--                </div>-->
               </div>
             </div>
           </div>
@@ -836,16 +836,16 @@
               </div>
             </div>
             <!-- 페이징 -->
-            <div class="mypage-paging">
-              <div class="mypage-pageStyle">
-                <a class="mypage-page-first"><<</a>
-                <a class="mypage-page-prev"><</a>
-                <div>
-                  <a class="">1</a>
-                </div>
-                <a class="mypage-page-next">></a>
-                <a class="mypage-page-last">>></a>
-              </div>
+            <div class="paging">
+<!--              <div class="mypage-pageStyle">-->
+<!--                <a class="mypage-page-first"><<</a>-->
+<!--                <a class="mypage-page-prev"><</a>-->
+<!--                <div>-->
+<!--                  <a class="">1</a>-->
+<!--                </div>-->
+<!--                <a class="mypage-page-next">></a>-->
+<!--                <a class="mypage-page-last">>></a>-->
+<!--              </div>-->
             </div>
           </div>
           <!-- 아티스트 후원회원 목록 끝 -->
@@ -864,227 +864,38 @@
 
                 <!-- 관심 작품 전체 카테고리 -->
                 <div class="sectionPadding myArtistList top myWorkList-All">
-                  <div class="artistList">
-                    <a href="" class="myWork myLike">
-                      <img
-                              class="myWork-image"
-                              src="https://image.bugsm.co.kr/album/images/170/40389/4038932.jpg"
-                      />
-                      <div class="info">
-                        <div class="myWork">
-                          <span class="myWorkName">스우파 손목 밴드</span>
-                        </div>
-                        <div class="myWork workInfo-width">
-                          <span class="myWorkType">굿즈 (잡화)</span>
-                        </div>
-                        <div class="myWork workInfo-width">
-                          <span class="myArtistName">아이키 | 퍼포먼스</span>
-                        </div>
-                      </div>
-                    </a>
-                    <div class="workLike">
-                      <a href=""
-                      ><img
-                              class="myWorkLike heart-selected"
-                              src="/images/myPage/heart-icon.png"
-                              width="30px" /><img
-                              class="myWorkLike heart-nonSelected"
-                              src="/images/myPage/heartNon-Select.png"
-                              width="30px"
-                              style="display: none"
-                      /></a>
-                    </div>
-                  </div>
+<!--                  <div class="artistList">-->
+<!--                    <a href="" class="myWork myLike">-->
+<!--                      <img-->
+<!--                              class="myWork-image"-->
+<!--                              src="https://image.bugsm.co.kr/album/images/170/40389/4038932.jpg"-->
+<!--                      />-->
+<!--                      <div class="info">-->
+<!--                        <div class="myWork">-->
+<!--                          <span class="myWorkName">스우파 손목 밴드</span>-->
+<!--                        </div>-->
+<!--                        <div class="myWork workInfo-width">-->
+<!--                          <span class="myWorkType">굿즈 (잡화)</span>-->
+<!--                        </div>-->
+<!--                        <div class="myWork workInfo-width">-->
+<!--                          <span class="myArtistName">아이키 | 퍼포먼스</span>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </a>-->
+<!--                    <div class="workLike">-->
+<!--                      <a href=""-->
+<!--                      ><img-->
+<!--                              class="myWorkLike heart-selected"-->
+<!--                              src="/images/myPage/heart-icon.png"-->
+<!--                              width="30px" /><img-->
+<!--                              class="myWorkLike heart-nonSelected"-->
+<!--                              src="/images/myPage/heartNon-Select.png"-->
+<!--                              width="30px"-->
+<!--                              style="display: none"-->
+<!--                      /></a>-->
+<!--                    </div>-->
+<!--                  </div>-->
 
-                  <div class="artistList">
-                    <a href="" class="myWork myLike">
-                      <img
-                              class="myWork-image"
-                              src="https://image.bugsm.co.kr/album/images/170/204721/20472184.jpg?version=20220608120020.0"
-                      />
-                      <div class="info">
-                        <div class="myWork">
-                          <span class="myWorkName">스우파 손목 밴드</span>
-                        </div>
-                        <div class="myWork workInfo-width">
-                          <span class="myWorkType">굿즈 (잡화)</span>
-                        </div>
-                        <div class="myWork workInfo-width">
-                          <span class="myArtistName">아이키 | 퍼포먼스</span>
-                        </div>
-                      </div>
-                    </a>
-                    <div class="workLike">
-                      <a href=""
-                      ><img
-                              class="myWorkLike heart-selected"
-                              src="/images/myPage/heart-icon.png"
-                              width="30px" /><img
-                              class="myWorkLike heart-nonSelected"
-                              src="/images/myPage/heartNon-Select.png"
-                              width="30px"
-                              style="display: none"
-                      /></a>
-                    </div>
-                  </div>
-
-                  <div class="artistList">
-                    <a href="" class="myWork myLike">
-                      <img
-                              class="myWork-image"
-                              src="https://image.bugsm.co.kr/album/images/170/40687/4068724.jpg"
-                      />
-                      <div class="info">
-                        <div class="myWork">
-                          <span class="myWorkName">스우파 손목 밴드</span>
-                        </div>
-                        <div class="myWork workInfo-width">
-                          <span class="myWorkType">굿즈 (잡화)</span>
-                        </div>
-                        <div class="myWork workInfo-width">
-                          <span class="myArtistName">아이키 | 퍼포먼스</span>
-                        </div>
-                      </div>
-                    </a>
-                    <div class="workLike">
-                      <a class="" href=""
-                      ><img
-                              class="myWorkLike heart-selected"
-                              src="/images/myPage/heart-icon.png"
-                              width="30px" /><img
-                              class="myWorkLike heart-nonSelected"
-                              src="/images/myPage/heartNon-Select.png"
-                              width="30px"
-                              style="display: none"
-                      /></a>
-                    </div>
-                  </div>
-
-                  <div class="artistList">
-                    <a href="" class="myWork myLike">
-                      <img
-                              class="myWork-image"
-                              src="https://image.bugsm.co.kr/album/images/170/40536/4053603.jpg"
-                      />
-                      <div class="info">
-                        <div class="myWork">
-                          <span class="myWorkName">버스커버스커 기타</span>
-                        </div>
-                        <div class="myWork workInfo-width">
-                          <span class="myWorkType">기타 (악기)</span>
-                        </div>
-                        <div class="myWork workInfo-width">
-                          <span class="myArtistName">장범준 | 뮤지션</span>
-                        </div>
-                      </div>
-                    </a>
-                    <div class="workLike">
-                      <a href=""
-                      ><img
-                              class="myWorkLike heart-selected"
-                              src="/images/myPage/heart-icon.png"
-                              width="30px" /><img
-                              class="myWorkLike heart-nonSelected"
-                              src="/images/myPage/heartNon-Select.png"
-                              width="30px"
-                              style="display: none"
-                      /></a>
-                    </div>
-                  </div>
-
-                  <div class="artistList">
-                    <a href="" class="myWork myLike">
-                      <img
-                              class="myWork-image"
-                              src="https://image.bugsm.co.kr/album/images/170/9996/999668.jpg"
-                      />
-                      <div class="info">
-                        <div class="myWork">
-                          <span class="myWorkName">딕펑스 슬로건</span>
-                        </div>
-                        <div class="myWork workInfo-width">
-                          <span class="myWorkType">굿즈 (잡화)</span>
-                        </div>
-                        <div class="myWork workInfo-width">
-                          <span class="myArtistName">딕펑스 | 뮤지션</span>
-                        </div>
-                      </div>
-                    </a>
-                    <div class="workLike">
-                      <a href=""
-                      ><img
-                              class="myWorkLike heart-selected"
-                              src="/images/myPage/heart-icon.png"
-                              width="30px" /><img
-                              class="myWorkLike heart-nonSelected"
-                              src="/images/myPage/heartNon-Select.png"
-                              width="30px"
-                              style="display: none"
-                      /></a>
-                    </div>
-                  </div>
-                  <div class="artistList">
-                    <a href="" class="myWork myLike">
-                      <img
-                              class="myWork-image"
-                              src="https://image.bugsm.co.kr/album/images/170/9340/934033.jpg"
-                      />
-                      <div class="info">
-                        <div class="myWork">
-                          <span class="myWorkName">유희열 안테나 티셔츠</span>
-                        </div>
-                        <div class="myWork workInfo-width">
-                          <span class="myWorkType">굿즈 (잡화)</span>
-                        </div>
-                        <div class="myWork workInfo-width">
-                          <span class="myArtistName">페퍼톤스 | 뮤지션</span>
-                        </div>
-                      </div>
-                    </a>
-                    <div class="workLike">
-                      <a href=""
-                      ><img
-                              class="myWorkLike heart-selected"
-                              src="/images/myPage/heart-icon.png"
-                              width="30px" /><img
-                              class="myWorkLike heart-nonSelected"
-                              src="/images/myPage/heartNon-Select.png"
-                              width="30px"
-                              style="display: none"
-                      /></a>
-                    </div>
-                  </div>
-                  <div class="artistList">
-                    <a href="" class="myWork myLike">
-                      <img
-                              class="myWork-image"
-                              src="https://image.bugsm.co.kr/album/images/170/9340/934033.jpg"
-                      />
-                      <div class="info">
-                        <div class="myWork">
-                          <span class="myWorkName">유희열 안테나 티셔츠</span>
-                        </div>
-                        <div class="myWork workInfo-width">
-                          <span class="myWorkType">굿즈 (잡화)</span>
-                        </div>
-                        <div class="myWork workInfo-width">
-                          <span class="myArtistName">페퍼톤스 | 뮤지션</span>
-                        </div>
-                      </div>
-                    </a>
-                    <div class="workLike">
-                      <a href=""
-                      ><img
-                              class="myWorkLike heart-selected"
-                              src="/images/myPage/heart-icon.png"
-                              width="30px" /><img
-                              class="myWorkLike heart-nonSelected"
-                              src="/images/myPage/heartNon-Select.png"
-                              width="30px"
-                              style="display: none"
-                      /></a>
-                    </div>
-                  </div>
                 </div>
 
                 <!-- 관심 작품 뮤지션 카테고리 -->
@@ -1291,16 +1102,16 @@
                 </div>
               </div>
               <!-- 페이징 -->
-              <div class="mypage-paging">
-                <div class="mypage-pageStyle">
-                  <a class="mypage-page-first"><<</a>
-                  <a class="mypage-page-prev"><</a>
-                  <div>
-                    <a class="">1</a>
-                  </div>
-                  <a class="mypage-page-next">></a>
-                  <a class="mypage-page-last">>></a>
-                </div>
+              <div class="paging">
+<!--                <div class="mypage-pageStyle">-->
+<!--                  <a class="mypage-page-first"><<</a>-->
+<!--                  <a class="mypage-page-prev"><</a>-->
+<!--                  <div>-->
+<!--                    <a class="">1</a>-->
+<!--                  </div>-->
+<!--                  <a class="mypage-page-next">></a>-->
+<!--                  <a class="mypage-page-last">>></a>-->
+<!--                </div>-->
               </div>
             </div>
           </div>
@@ -1465,16 +1276,16 @@
             </div>
 
             <!-- 페이징 -->
-            <div class="mypage-paging">
-              <div class="mypage-pageStyle">
-                <a class="mypage-page-first"><<</a>
-                <a class="mypage-page-prev"><</a>
-                <div>
-                  <a class="">1</a>
-                </div>
-                <a class="mypage-page-next">></a>
-                <a class="mypage-page-last">>></a>
-              </div>
+            <div class="paging">
+<!--              <div class="mypage-pageStyle">-->
+<!--                <a class="mypage-page-first"><<</a>-->
+<!--                <a class="mypage-page-prev"><</a>-->
+<!--                <div>-->
+<!--                  <a class="">1</a>-->
+<!--                </div>-->
+<!--                <a class="mypage-page-next">></a>-->
+<!--                <a class="mypage-page-last">>></a>-->
+<!--              </div>-->
             </div>
           </div>
 
@@ -1982,16 +1793,16 @@
               </div>
             </div>
             <!-- 페이징 -->
-            <div class="mypage-paging">
-              <div class="mypage-pageStyle">
-                <a class="mypage-page-first"><<</a>
-                <a class="mypage-page-prev"><</a>
-                <div>
-                  <a class="">1</a>
-                </div>
-                <a class="mypage-page-next">></a>
-                <a class="mypage-page-last">>></a>
-              </div>
+            <div class="paging">
+<!--              <div class="mypage-pageStyle">-->
+<!--                <a class="mypage-page-first"><<</a>-->
+<!--                <a class="mypage-page-prev"><</a>-->
+<!--                <div>-->
+<!--                  <a class="">1</a>-->
+<!--                </div>-->
+<!--                <a class="mypage-page-next">></a>-->
+<!--                <a class="mypage-page-last">>></a>-->
+<!--              </div>-->
             </div>
           </div>
           <!-- 아티스트 후원회원 목록 끝 -->
@@ -2043,7 +1854,9 @@
   let pageNum = 1;
   let type = "A";
   let myPagediv = $(".myArtistList-All");
+  let myPageWorkListDiv = $(".myWorkList-All");
 
+  // 관심 아티스트
   function myArtistList(userNumber, type, page){
     console.log("myArtistList..................");
     userService.getArtist(userNumber, type, page, function(total, list){
@@ -2074,6 +1887,7 @@
       });
 
       myPagediv.html(str);
+      myPagePaging(type, total);
   }, function(a,b,c){
       console.log(a,b,c)
     });
@@ -2097,7 +1911,92 @@
     myArtistList(24, "A", 1);
   });
 
+// 관심있는 작품
+  function myWorkList(userNumber, page){
+    console.log("myWorkList..........");
+    userService.getWork(userNumber, page, function(total, list) {
+      let str = "";
+      console.log("myWork 들어옴");
 
+      if (list == null || list.length == 0) {
+        myPageWorkListDiv.html("");
+        return;
+      }
+
+      $.each(list, function (i, myWork) {
+        let likeCategory = "";
+        if (myWork.artistType == 1) {
+          likeCategory = "뮤지션";
+        } else {
+          likeCategory = "퍼포먼서";
+        }
+        str += "<div class='artistList'>"
+        str += "<a href = '' class='myWork myLike'>"
+        str += "<img class='myWork-image' src='https://image.bugsm.co.kr/album/images/170/40389/4038932.jpg'/>"
+        str += "<div class='info'>"
+        str += "<div class='myWork'>"
+        str += "<span class='myWorkName'>" + myWork.workName + "</span>"
+        str += "</div>"
+        str += "<div class='myWork workInfo-width'>"
+        str += "<span class='myArtistName'>" + myWork.artistName + "|" + likeCategory + "</span>"
+        str += "</div>"
+        str += "</div>"
+        str += "</a>"
+        str += "<div class='workLike'>"
+        str += "<a href=''>"
+        str += "<img class='myWorkLike heart-selected' src='/images/myPage/heart-icon.png' width='30px' style='none'/>"
+        str += "</a>"
+        str += "</div>"
+        str += "</div>"
+      });
+
+      myPageWorkListDiv.html(str);
+      myPagePaging(type, total);
+    }, function(a,b,c){
+      console.log(a,b,c);
+    });
+  }
+
+  $("a#heart-Work").on("click", function() {
+    console.log("작품 들어옴 작품 들어옴");
+    myWorkList(24, 1);
+  });
+
+  function myPagePaging(type, total){
+    let endPage = Math.ceil(pageNum / 10.0) * 10; // 올림
+    let startPage = endPage - 9;
+    let realEnd = Math.ceil(total / 10.0);
+    const $paging = $(".paging");
+    if(endPage > realEnd){
+      endPage = realEnd;
+    }
+
+    let prev = startPage > 1;
+    let next = endPage * 10 < total;
+    let str = "";
+
+    str += "<div class='big-width mypage-pageStyle' style='text-align: center'>"
+
+    if (prev) {
+      str += "<a class='changePage prevList' href='" + (startPage - 1) +  "'><code>&lt;</code>Prev</a>"
+    }
+    for (let i = startPage; i <= endPage; i++) {
+      str += pageNum == i ? "<code>" + i + "</code>" : "<a class='changePage mypage-page-next' href='" + i + "'><code>" + i + "</code></a>";
+    }
+    if (next) {
+      str += "<a class='changePage nextList' href='" + (endPage + 1) + "'>Next<code>&gt;</code></a>"
+    }
+
+    str += "</div>"
+
+    $paging.html(str);
+  }
+
+  $(".paging").on("click", "a.changePage", function(e){
+    e.preventDefault();
+    pageNum = $(this).attr("href");
+    myPagePaging(type, pageNum);
+  })
 
 </script>
 </html>
