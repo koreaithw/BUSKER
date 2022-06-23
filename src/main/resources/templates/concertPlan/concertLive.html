@@ -389,8 +389,9 @@
             str += '<dt>공연시간</dt><dd>&nbsp' + showVO.showTime + '</dd>';
             str += '<dt>공연장소</dt><dd>&nbsp;' + showVO.showAddress + '</dd>';
             str += '<dt>상세주소</dt><dd>&nbsp;' + showVO.showLocation + '</dd>';
-            str += '</dl></div><a class=\'goRead-modal\' href=\'/concert/concertPlanInfo?&showNumber=" + showNumber + "\' target=\'_self\'>자세히 보기</a>';
-            str += '<a class="roadGo" href=\'/concert/concertPlanInfo?&showNumber=" + showNumber + "\' target=\'_self\'>길찾기</a></div>';
+            str += "</dl></div><a class='goRead-modal' href='/concert/concertPlanInfo?&showNumber=" + showVO.showNumber + "' target='_self'>자세히 보기</a>"
+            // str += '</dl></div><a class="goRead-modal" href="/concert/concertPlanInfo?&showNumber="' + showVO.showNumber + 'target="_self">자세히 보기</a>';
+            str += '<a class="roadGo" href="" target="_self">길찾기</a></div>';
 
             modalShowTitle.html(title);
             modalShowInfo.html(str);
@@ -409,6 +410,11 @@
     }
 
     $("a.goRead").click(function (e) {
+        e.preventDefault();
+        location.href = "/concert/concertPlanInfo&showNumber=" + $(this).attr('href');
+    });
+
+    $("a.goRead-modal").click(function (e) {
         e.preventDefault();
         location.href = "/concert/concertPlanInfo&showNumber=" + $(this).attr('href');
     });

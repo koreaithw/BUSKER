@@ -235,3 +235,8 @@ div.sm-tit1 .showCreate:hover {
 #current-page {
     background-color: #f39690;
 }
+
+.gray-text {
+    font-size: 13px;
+    color: #666;
+}
