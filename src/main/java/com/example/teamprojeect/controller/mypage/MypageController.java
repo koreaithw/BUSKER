@@ -1,6 +1,5 @@
 package com.example.teamprojeect.controller.mypage;
 
-
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.paging.user.LikePageDTO;
