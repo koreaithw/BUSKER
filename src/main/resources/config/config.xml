@@ -21,6 +21,7 @@
 
         <typeAlias type="com.example.teamprojeect.domain.vo.user.UserVO" alias="userVO"/>
         <typeAlias type="com.example.teamprojeect.domain.vo.user.UserFileVO" alias="userFileVO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.user.LikeVO" alias="likeVO"/>
 
         <typeAlias type="com.example.teamprojeect.domain.vo.show.ShowVO" alias="showVO"/>
         <typeAlias type="com.example.teamprojeect.domain.vo.show.ShowFileVO" alias="showFileVO"/>

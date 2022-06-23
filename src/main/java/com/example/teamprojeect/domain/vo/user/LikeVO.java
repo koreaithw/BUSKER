@@ -11,4 +11,7 @@ public class LikeVO {
     private Long workNumber;
     private String likeDate;
     private String likeCategory;
+    private String artistName;
+    private String artistType;
+    private String workName;
 }
