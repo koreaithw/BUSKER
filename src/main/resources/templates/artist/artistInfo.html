@@ -93,11 +93,12 @@
 
 
                         <section class="section-donation-name">
-                            <!----> <label class="input-label-common donation-name"><span> 응원 한마디 </span> <input
-                                    id="donation-name" tabindex="1" type="text" maxlength="30"></label> <label
-                                class="input-label-common donation-amount"><span> 후원 금액 </span> <input
-                                    id="donation-amount" tabindex="2" type="number" autofocus="autofocus" min="1000"
-                                    step="100" placeholder="1000" maxlength="7" pattern="\d*">
+                            <!----> <label class="input-label-common donation-name">
+                            <span> 응원 한마디 </span>
+                            <input id="donation-name" tabindex="1" type="text" maxlength="30" name="donation-message"></label>
+                            <label class="input-label-common donation-amount"><span> 후원 금액 </span>
+                                <input id="donation-amount" tabindex="2" type="number" autofocus="autofocus" min="100"
+                                    step="100" placeholder="100" maxlength="7" pattern="\d*" name="donation-money" value="100">
                                 <!---->
                                 <!---->
                             </label>
@@ -107,25 +108,12 @@
                             <!-- 안내 문구 추가해야함    -->
 
                             <p>후원 클릭 시 결제 페이지로 이동됩니다.</p>
-                            <a href="javascript:;" onclick="click_donate_api();" class="rn-bb03-2">후원</a>
+                            <a href="#" onclick="donateapi(); return false;" class="rn-bb03-2 godonate">후원</a>
                         </div>
                     </div>
                 </div>
 
-
-
-
-
             </div>
-
-
-
-
-
-
-
-
-
 
     </form>
 
@@ -135,20 +123,22 @@
 
 </body>
 
-<script>
+<!--<script>-->
 
 
-    //후원버튼 클릭시 모달창 열기
-    $("#btn-modal").click(function () {
-        console.log("fdd")
-        $(".modal").fadeIn();
-    });
-    //닫기 누를시 모달창 닫기
-    $(".modal-close-btn").click(function () {
-        $(".modal").fadeOut();
-    });
+<!--    //후원버튼 클릭시 모달창 열기-->
+<!--    $("#btn-modal").click(function () {-->
+<!--        console.log("fdd")-->
+<!--        $(".modal").fadeIn();-->
+<!--    });-->
+<!--    //닫기 누를시 모달창 닫기-->
+<!--    $(".modal-close-btn").click(function () {-->
+<!--        $(".modal").fadeOut();-->
+<!--    });-->
 
-</script>
+<!--</script>-->
 <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<script th:inline="javascript" src="/assets/js/artist/artist_info.js"></script>
 
 </html>
