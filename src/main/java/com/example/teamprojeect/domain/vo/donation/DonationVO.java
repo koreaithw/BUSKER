@@ -12,5 +12,7 @@ public class DonationVO {
     private Long artistNumber;
     private Long donationMoney;
     private String donationMessage;
-    private String recruitmentRegisterDate;
+    private String donationRegisterDate;
+    private String userName;
+    private String donationType;
 }

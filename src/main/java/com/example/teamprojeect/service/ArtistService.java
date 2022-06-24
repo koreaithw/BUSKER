@@ -30,7 +30,20 @@ public class ArtistService {
     private final ArtistMapper artistMapper;
     private final ListDTO listDTO;
 
+    // 아티스트 등록 신청
+    public void registerApply (ArtistVO artistVO){
+        artistDAO.registerApply(artistVO);
+    }
 
+    // 아티스트 정보 수정 신청
+    public void modifyApply(ArtistVO artistVO){
+        artistDAO.modifyApply(artistVO);
+    }
+
+    // 아티스트 탈퇴
+    public boolean removeArtist(Long artistNumber){
+        return artistDAO.remove(artistNumber);
+    }
 
     //아티스트 전체목록
     public List<ArtistVO> getList(Criteria criteria, ListDTO listDTO) {

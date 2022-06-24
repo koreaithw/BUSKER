@@ -674,3 +674,56 @@ let userService = (function(){
 
   return {getArtist:getArtist, getWork:getWork}
                             })();
+
+// Ajax Artist.........
+let ArtistService = (function() {
+  function registerArtist(artist, callback, error) {
+    console.log("register artist............");
+    $.ajax({
+      url: "/myPage/new",
+      type: "post",
+      data: JSON.stringify(artist),
+      contentType: "application/json",
+      success: function (result) {
+        if (callback) {
+          callback(result);
+        }
+      },
+      error: function (xhr, status, er) {
+        if (error) {
+          error(xhr, status, er);
+        }
+      }
+    });
+  }
+
+    function modifyArtist(artist, callback, error) {
+      console.log("modifyApply............");
+      $.ajax({
+        url: "/myPage/artist/" + artist.artistNumber,
+        type: "patch",
+        data: JSON.stringify(artist),
+        contentType: "application/json; charset=utf-8",
+        success: function (result) {
+          if (callback) {
+            callback(result);
+          }
+        }
+      })
+    };
+
+      function removeArtist(artistNumber, callback, error){
+        console.log("removeArtist............");
+        $.ajax({
+          url: "/myPage/artist/remove/" + artistNumber,
+          type: "delete",
+          success: function(result){
+            if(callback){
+              callback(result);
+            }
+          }
+        })
+      }
+
+  return {registerArtist: registerArtist, modifyArtist:modifyArtist, removeArtist:removeArtist};
+})();

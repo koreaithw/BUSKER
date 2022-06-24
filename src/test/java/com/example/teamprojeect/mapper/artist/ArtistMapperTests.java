@@ -14,6 +14,38 @@ public class ArtistMapperTests {
 
     @Autowired
     private ArtistMapper artistMapper;
+    // 아티스트 등록 신청
+    @Test
+    public void insertApplyTest(){
+        ArtistVO artistVO = new ArtistVO();
+        artistVO.setUserNumber(12L);
+        artistVO.setArtistName("유태경");
+        artistVO.setArtistDescription("몰라");
+        artistVO.setArtistType(1L);
+        artistVO.setArtistAccount("유태경계좌");
+        artistMapper.insertApply(artistVO);
+
+        log.info("아티스트 번호" + artistVO.getArtistNumber());
+    }
+
+    // 아티스트 정보 수정
+    @Test
+    public void updateApplyTest(){
+        ArtistVO artistVO = new ArtistVO();
+
+        artistVO.setArtistNumber(2L);
+        artistVO.setArtistName("은솔");
+        artistVO.setArtistDescription("안녕!");
+        artistVO.setArtistType(1L);
+
+        artistMapper.updateApply(artistVO);
+    }
+
+    // 아티스트 삭제
+    @Test
+    public void deleteTest(){
+        log.info("DELETE COUNT : " + artistMapper.delete(4L));
+    }
 
     //최신순 정렬 테스트
 //    @Test
