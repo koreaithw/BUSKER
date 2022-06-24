@@ -689,7 +689,7 @@
                     </th>
                     <th class="row-4">
                       <div class="">
-                        <p class="">결제수단</p>
+                        <p class="">후원 메세지</p>
                       </div>
                     </th>
                   </tr>
@@ -1615,10 +1615,10 @@
                     </p>
 
                     <div class="donation-soring">
-                      <span class="sorting"><a>최신순</a></span>
-                      <span class="sorting"><a>오래된순</a></span>
-                      <span class="sorting"><a>금액높은순</a></span>
-                      <span class="sorting"><a>금액낮은순</a></span>
+                      <span class="sorting"><a id="new">최신순</a></span>
+                      <span class="sorting"><a id="old">오래된순</a></span>
+                      <span class="sorting"><a id="expensive">금액높은순</a></span>
+                      <span class="sorting"><a id="cheap">금액낮은순</a></span>
                     </div>
                   </div>
                 </div>
@@ -1653,142 +1653,142 @@
                   </tr>
                   </thead>
 
-                  <tbody class="donation-body">
-                  <tr class="row">
-                    <td class="cell">
-                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
-                    </td>
-                    <td class="cell">
-                      <div class="table-artist-flex">
-                        <a class="" href=""
-                        ><div
-                                aria-label="채널 아이콘"
-                                class="donation-icon"
-                        >
-                          <img
-                                  class="donation-icon"
-                                  alt=""
-                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
-                          /></div
-                        ></a>
-                        <div class="">
-                          <p class="table-p">
-                            <a class="">왕고냐</a>
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="cell">
-                      <p class="">100,000</p>
-                    </td>
-                    <td class="cell">
-                      <div class="">
-                        <p class="">노래 개좋아</p>
-                      </div>
-                    </td>
-                  </tr>
+                  <tbody class="donation-body" id="artist-donation-body">
+<!--                  <tr class="row">-->
+<!--                    <td class="cell">-->
+<!--                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <div class="table-artist-flex">-->
+<!--                        <a class="" href=""-->
+<!--                        ><div-->
+<!--                                aria-label="채널 아이콘"-->
+<!--                                class="donation-icon"-->
+<!--                        >-->
+<!--                          <img-->
+<!--                                  class="donation-icon"-->
+<!--                                  alt=""-->
+<!--                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"-->
+<!--                          /></div-->
+<!--                        ></a>-->
+<!--                        <div class="">-->
+<!--                          <p class="table-p">-->
+<!--                            <a class="">왕고냐</a>-->
+<!--                          </p>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <p class="">100,000</p>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <div class="">-->
+<!--                        <p class="">노래 개좋아</p>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                  </tr>-->
 
-                  <tr class="row">
-                    <td class="cell">
-                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
-                    </td>
-                    <td class="cell">
-                      <div class="table-artist-flex">
-                        <a class="" href=""
-                        ><div
-                                aria-label="채널 아이콘"
-                                class="donation-icon"
-                        >
-                          <img
-                                  class="donation-icon"
-                                  alt=""
-                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
-                          /></div
-                        ></a>
-                        <div class="">
-                          <p class="table-p">
-                            <a class="">왕고냐</a>
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="cell">
-                      <p class="">100,000</p>
-                    </td>
-                    <td class="cell">
-                      <div class="">
-                        <p class="">노래 개좋아</p>
-                      </div>
-                    </td>
-                  </tr>
+<!--                  <tr class="row">-->
+<!--                    <td class="cell">-->
+<!--                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <div class="table-artist-flex">-->
+<!--                        <a class="" href=""-->
+<!--                        ><div-->
+<!--                                aria-label="채널 아이콘"-->
+<!--                                class="donation-icon"-->
+<!--                        >-->
+<!--                          <img-->
+<!--                                  class="donation-icon"-->
+<!--                                  alt=""-->
+<!--                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"-->
+<!--                          /></div-->
+<!--                        ></a>-->
+<!--                        <div class="">-->
+<!--                          <p class="table-p">-->
+<!--                            <a class="">왕고냐</a>-->
+<!--                          </p>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <p class="">100,000</p>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <div class="">-->
+<!--                        <p class="">노래 개좋아</p>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                  </tr>-->
 
-                  <tr class="row">
-                    <td class="cell">
-                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
-                    </td>
-                    <td class="cell">
-                      <div class="table-artist-flex">
-                        <a class="" href=""
-                        ><div
-                                aria-label="채널 아이콘"
-                                class="donation-icon"
-                        >
-                          <img
-                                  class="donation-icon"
-                                  alt=""
-                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
-                          /></div
-                        ></a>
-                        <div class="">
-                          <p class="table-p">
-                            <a class="">왕고냐</a>
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="cell">
-                      <p class="">100,000</p>
-                    </td>
-                    <td class="cell">
-                      <div class="">
-                        <p class="">노래 개좋아</p>
-                      </div>
-                    </td>
-                  </tr>
+<!--                  <tr class="row">-->
+<!--                    <td class="cell">-->
+<!--                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <div class="table-artist-flex">-->
+<!--                        <a class="" href=""-->
+<!--                        ><div-->
+<!--                                aria-label="채널 아이콘"-->
+<!--                                class="donation-icon"-->
+<!--                        >-->
+<!--                          <img-->
+<!--                                  class="donation-icon"-->
+<!--                                  alt=""-->
+<!--                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"-->
+<!--                          /></div-->
+<!--                        ></a>-->
+<!--                        <div class="">-->
+<!--                          <p class="table-p">-->
+<!--                            <a class="">왕고냐</a>-->
+<!--                          </p>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <p class="">100,000</p>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <div class="">-->
+<!--                        <p class="">노래 개좋아</p>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                  </tr>-->
 
-                  <tr class="row">
-                    <td class="cell">
-                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
-                    </td>
-                    <td class="cell">
-                      <div class="table-artist-flex">
-                        <a class="" href=""
-                        ><div
-                                aria-label="채널 아이콘"
-                                class="donation-icon"
-                        >
-                          <img
-                                  class="donation-icon"
-                                  alt=""
-                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
-                          /></div
-                        ></a>
-                        <div class="">
-                          <p class="table-p">
-                            <a class="">왕고냐</a>
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="cell">
-                      <p class="">100,000</p>
-                    </td>
-                    <td class="cell">
-                      <div class="">
-                        <p class="">노래 개좋아</p>
-                      </div>
-                    </td>
-                  </tr>
+<!--                  <tr class="row">-->
+<!--                    <td class="cell">-->
+<!--                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <div class="table-artist-flex">-->
+<!--                        <a class="" href=""-->
+<!--                        ><div-->
+<!--                                aria-label="채널 아이콘"-->
+<!--                                class="donation-icon"-->
+<!--                        >-->
+<!--                          <img-->
+<!--                                  class="donation-icon"-->
+<!--                                  alt=""-->
+<!--                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"-->
+<!--                          /></div-->
+<!--                        ></a>-->
+<!--                        <div class="">-->
+<!--                          <p class="table-p">-->
+<!--                            <a class="">왕고냐</a>-->
+<!--                          </p>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <p class="">100,000</p>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <div class="">-->
+<!--                        <p class="">노래 개좋아</p>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                  </tr>-->
                   </tbody>
                 </table>
               </div>
@@ -1856,6 +1856,7 @@
   let type = "A";
   let myPagediv = $(".myArtistList-All");
   let myPageWorkListDiv = $(".myWorkList-All");
+  let myDonationDiv = $("tbody#artist-donation-body");
 
   // 관심 아티스트
   function myArtistList(userNumber, type, page){
@@ -2056,7 +2057,7 @@
       $("textarea[id='artist-update-description']").val("");
       location.href="/myPage/myPage"
     });
-  })
+  });
 
   $("input#delete-artist").on("click", function(){
     ArtistService.removeArtist(6, function(result) {
@@ -2064,6 +2065,81 @@
       location.href = "/main/"
     });
   })
+
+// 후원 목록
+
+  function ArtistGetDonation(artistNumber, type, page){
+    console.log("getDonation................");
+    DonationService.getDonation(artistNumber, type, page, function(total, list){
+      let str="";
+      console.log(artistNumber + "getDonation 들어옴");
+
+      if(list == null || list.length == 0){
+          myDonationDiv.html("");
+          return;
+      }
+
+      $.each(list, function(i, myDonation){
+        str += "<tr class='row'>"
+        str += "<td class='cell'>"
+        str += "<p class=''>" + myDonation.donationRegisterDate + "</p>"
+        str += "</td>"
+        str += "<td class='cell'>"
+        str += "<div class='table-artist-flex'>"
+        str += "<a class ='' href=''>"
+        str += "<div aria-label='채널 아이콘' class='donation-icon'>"
+        str += "<img class='donation-icon' alt='' class='donation-icon' src='https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png'/>"
+        str += "</div>"
+        str += "</a>"
+        str += "<div class=''>"
+        str += "<p class='table-p'>"
+        str += "<a class=''>" + myDonation.userName
+        str += "</p>"
+        str += "</div>"
+        str += "</div>"
+        str += "</td>"
+        str += "<td class='cell'>"
+        str += "<p class=''>" + myDonation.donationMoney
+        str += "</p>"
+        str += "</td>"
+        str += "<td class='cell'>"
+        str += "<div class=''>"
+        str += "<p class=''>" + myDonation.donationMessage + "</p>"
+        str += "</div>"
+        str += "</td>"
+        str += "</tr>"
+      });
+    myDonationDiv.html(str);
+    myPagePaging(type, total);
+    }, function (a,b,c) {
+    console.log(a,b,c)
+    });
+  }
+
+  $("p.myDonation").on("click", function(){
+    console.log("최신순최신순최신순")
+    ArtistGetDonation(1, "new", 1);
+  });
+
+  $("a#new").on("click", function(){
+    console.log("최신순최신순최신순");
+    ArtistGetDonation(1,"new", 1);
+  })
+
+  $("a#old").on("click", function(){
+    console.log("오래된순오래된순");
+    ArtistGetDonation(1,"old", 1);
+  });
+
+  $("a#expensive").on("click", function(){
+    console.log("금액 높은 순");
+    ArtistGetDonation(1,"expensive",1);
+  });
+
+  $("a#cheap").on("click", function(){
+    console.log("금액 낮은 순");
+    ArtistGetDonation(1, "cheap", 1);
+  });
 
 </script>
 </html>

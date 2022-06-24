@@ -18,4 +18,8 @@ public interface DonationMapper {
 
     // 후원 목록 불러오기
     public List<DonationVO> donationList(@Param("criteria") Criteria criteria, @Param("artistNumber") Long artistNumber, @Param("listDTO")ListDTO listDTO);
+
+    // 후원 개수
+    public int getDonationTotal(@Param("artistNumber")Long artistNumber, @Param("listDTO") ListDTO listDTO);
+
 }

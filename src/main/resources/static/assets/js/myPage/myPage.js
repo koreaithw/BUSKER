@@ -727,3 +727,29 @@ let ArtistService = (function() {
 
   return {registerArtist: registerArtist, modifyArtist:modifyArtist, removeArtist:removeArtist};
 })();
+
+// Ajax Donation............
+
+let DonationService = (function(){
+  // 아티스트 - 후원 목록 뽑기
+  function getDonation(artistNumber, type, page, callback, error){
+    console.log("getDonation...........");
+    let pageNum = page || 1;
+    $.ajax({
+      url: "/myPage/artist/" + artistNumber + "/" + type + "/" + pageNum,
+      type: "get",
+      dataType: "json",
+      contentType: "application/json",
+      success: function(DonationPageDTO){
+        if(callback){
+          callback(DonationPageDTO.total, DonationPageDTO.list);
+        }
+      }, error: function(xhr, status, er){
+        if(error){
+          error(xhr, status, er);
+        }
+      }
+    })
+  }
+  return {getDonation:getDonation};
+})();
