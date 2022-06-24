@@ -3,10 +3,12 @@ package com.example.teamprojeect.controller.mypage;
 import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.paging.donation.DonationPageDTO;
 import com.example.teamprojeect.domain.vo.paging.user.LikePageDTO;
 import com.example.teamprojeect.domain.vo.user.LikeVO;
 import com.example.teamprojeect.domain.vo.user.UserVO;
 import com.example.teamprojeect.service.ArtistService;
+import com.example.teamprojeect.service.DonationService;
 import com.example.teamprojeect.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +30,7 @@ public class MypageController {
     // 필드 생성
     private final UserService userService;
     private final ArtistService artistService;
+    private final DonationService donationService;
 
     // 마이페이지 이동
     @GetMapping("/myPage")
@@ -125,5 +128,15 @@ public class MypageController {
     public String removeArtist(@PathVariable("artistNumber") Long artistNumber){
         artistService.removeArtist(artistNumber);
         return "아티스트 삭제 성공";
+    }
+
+    // 후원 목록
+    @GetMapping("/artist/{artistNumber}/{type}/{page}")
+    @ResponseBody
+    public DonationPageDTO donationList(@PathVariable("artistNumber")Long artistNumber, @PathVariable("type")String donationType, @PathVariable("page")int pageNum){
+        ListDTO listDTO = new ListDTO();
+        listDTO.setDonationType(donationType);
+
+        return new DonationPageDTO(donationService.donationList(new Criteria(pageNum, 10), artistNumber, listDTO), donationService.getDonationTotal(artistNumber, listDTO));
     }
 }

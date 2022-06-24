@@ -8,7 +8,7 @@
         VALUES(SEQ_SHOW.NEXTVAL, #{userNumber}, #{artistNumber}, #{donationMoney}, #{donationMessage})
     </insert>
 
-    <!-- 후원 목록 뽑기-->
+    <!-- 아티스트 쪽에서 보이는 후원 목록 뽑기-->
     <select id="donationList" resultType="donationVO">
         SELECT USER_NAME, DONATION_MONEY, DONATION_MESSAGE, DONATION_REGISTER_DATE
         FROM (SELECT ROWNUM RN, USER_NAME, DONATION_MONEY, DONATION_MESSAGE, DONATION_REGISTER_DATE
@@ -37,4 +37,81 @@
         ]]>
     </select>
 
+    <!-- 아티스트 쪽에서 보이는 후원 개수-->
+    <select id="getDonationTotal" resultType="_int">
+        SELECT COUNT(*)
+        FROM
+        (SELECT tu.USER_NAME, td.DONATION_MONEY, td.DONATION_MESSAGE, td.DONATION_REGISTER_DATE
+        FROM TBL_DONATION td, TBL_ARTIST ta, TBL_USER tu
+        WHERE ta.ARTIST_NUMBER = td.ARTIST_NUMBER AND tu.USER_NUMBER = td.USER_NUMBER AND ta.ARTIST_NUMBER =
+        #{artistNumber}
+        <choose>
+            <when test='listDTO.donationType == "new"'>
+                ORDER BY DONATION_REGISTER_DATE DESC
+            </when>
+            <when test='listDTO.donationType == "old"'>
+                ORDER BY DONATION_REGISTER_DATE ASC
+            </when>
+            <when test='listDTO.donationType == "expensive"'>
+                ORDER BY DONATION_MONEY DESC
+            </when>
+            <when test='listDTO.donationType =="cheap"'>
+                ORDER BY DONATION_MONEY ASC
+            </when>
+        </choose>
+        )
+    </select>
+
+    <!-- 유저쪽에서 보이는 후원 아티스트 목록 뽑기-->
+    <select id="donationUserList" resultType="donationVO">
+        SELECT ARTIST_NAME, DONATION_MONEY, DONATION_MESSAGE, DONATION_REGISTER_DATE
+        FROM (SELECT ROWNUM RN, ARTIST_NAME, DONATION_MONEY, DONATION_MESSAGE, DONATION_REGISTER_DATE
+        FROM (SELECT ta.ARTIST_NAME, td.DONATION_MONEY, td.DONATION_MESSAGE, td.DONATION_REGISTER_DATE
+        FROM TBL_DONATION td, TBL_ARTIST ta, TBL_USER tu
+        WHERE ta.ARTIST_NUMBER = td.ARTIST_NUMBER AND tu.USER_NUMBER  = td.USER_NUMBER AND tu.ARTIST_NUMBER = #{userNumber}
+        <choose>
+            <when test='listDTO.donationType == "new"'>
+                ORDER BY DONATION_REGISTER_DATE DESC
+            </when>
+            <when test='listDTO.donationType == "old"'>
+                ORDER BY DONATION_REGISTER_DATE ASC
+            </when>
+            <when test='listDTO.donationType == "expensive"'>
+                ORDER BY DONATION_MONEY DESC
+            </when>
+            <when test='listDTO.donationType =="cheap"'>
+                ORDER BY DONATION_MONEY ASC
+            </when>
+        </choose>
+        )
+        <![CDATA[
+         WHERE ROWNUM < #{criteria.pageNum} * #{criteria.amount}
+        )
+        WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
+        ]]>
+    </select>
+
+    <!-- 유저쪽에서 보이는 후원 개수 뽑기 -->
+    <select id="getDonationUserTotal" resultType="_int">
+        SELECT COUNT(*)
+        FROM
+        (SELECT ta.ARTIST_NAME, td.DONATION_MONEY, td.DONATION_MESSAGE, td.DONATION_REGISTER_DATE
+        FROM TBL_DONATION td, TBL_ARTIST ta, TBL_USER tu
+        WHERE ta.ARTIST_NUMBER = td.ARTIST_NUMBER AND tu.USER_NUMBER = td.USER_NUMBER AND tu.USER_NUMBER =#{userNumber}
+        <choose>
+            <when test='listDTO.donationType == "new"'>
+                ORDER BY DONATION_REGISTER_DATE DESC
+            </when>
+            <when test='listDTO.donationType == "old"'>
+                ORDER BY DONATION_REGISTER_DATE ASC
+            </when>
+            <when test='listDTO.donationType == "expensive"'>
+                ORDER BY DONATION_MONEY DESC
+            </when>
+            <when test='listDTO.donationType =="cheap"'>
+                ORDER BY DONATION_MONEY ASC
+            </when>
+        </choose>
+        )
+    </select>
 </mapper>

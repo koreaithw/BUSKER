@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 @Slf4j
 public class DonationMapperTests {
@@ -16,7 +18,16 @@ public class DonationMapperTests {
     private DonationMapper donationMapper;
 
     @Test
-    public void getLikeArtistTest(){
-        donationMapper.donationList(new Criteria(1, 10), 24L, new ListDTO("M", "new", "week", "new", "0")).stream().map(DonationVO::toString).forEach(log::info);
+    public void donationTest(){
+        donationMapper.donationList(new Criteria(1, 10), 1L, new ListDTO("M", "new", "week", "new", "0")).stream().map(DonationVO::toString).forEach(log::info);
+    }
+
+    // 후원 목록 전체 개수
+    @Test
+    public void getDonationTotal(){
+        ListDTO listDTO = new ListDTO();
+        Long artistNumber = 1L;
+        listDTO.setDonationType("new");
+        donationMapper.getDonationTotal(artistNumber, listDTO);
     }
 }
