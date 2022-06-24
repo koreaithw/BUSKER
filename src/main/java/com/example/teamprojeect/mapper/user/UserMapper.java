@@ -1,6 +1,8 @@
 package com.example.teamprojeect.mapper.user;
 
 import com.example.teamprojeect.domain.vo.list.ListDTO;
+import com.example.teamprojeect.domain.vo.list.UserListDTO;
+import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.user.UserVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -38,4 +40,10 @@ public interface UserMapper {
 
     // 마이페이지 : 아티스트 계정 등록삭제 (
     public int updateArtist(@Param("userNumber") Long userNumber, @Param("listDTO") ListDTO listDTO);
+
+    // 관리자 페이지 : 유저 리스트
+    public List<UserVO> getUserList(@Param("criteria") Criteria criteria, @Param("userListDTO") UserListDTO userListDTO);
+
+    // 관리자 페이지
+    public int getTotal();
 }

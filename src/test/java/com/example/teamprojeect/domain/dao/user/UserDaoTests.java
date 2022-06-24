@@ -59,4 +59,17 @@ public class UserDaoTests {
 //        userDAO.login("ii", "12345");
 //        log.info("로그인 성공");
 //    }
+    // 유저 리스트
+//    @Test
+//    public void getUserListTest() {
+//        Criteria criteria = new Criteria(2,10);
+//        UserListDTO userListDTO = new UserListDTO();
+//        userDAO.getUserList(criteria, userListDTO).stream().map(UserVO::toString).forEach(log::info);
+//    }
+
+    // 총 유저 수
+    @Test
+    public void getTotalTest() {
+        userDAO.getTotal();
+    }
 }
