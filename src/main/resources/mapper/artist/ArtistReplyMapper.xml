@@ -5,14 +5,14 @@
     <!--댓글 등록-->
     <insert id="insert">
         INSERT INTO TBL_ARTIST_REPLY
-        (REPLY_NUMBER, USER_NUMBER, ARTIST_NUMBER, REPLY_CONTENT, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE)
-        VALUES (SEQ_ARTIST_REPLY_NUMBER.NEXTVAL, #{userNumber}, #{artistNumber}, #{replyContent}, #{replyRegisterDate}, #{replyUpdateDate})
+        (REPLY_NUMBER, USER_NUMBER, ARTIST_NUMBER, REPLY_CONTENT)
+        VALUES (SEQ_USER_ARTIST_REPLY_NUMBER.NEXTVAL, #{userNumber}, #{artistNumber}, #{replyContent})
     </insert>
 
     <!--댓글 수정-->
     <update id="update">
         UPDATE TBL_ARTIST_REPLY
-        SET REPLY_CONTENT = #{replyContent}, REPLY_UPDATE_DATE = #{replyUpdateDate}, REPLY_REGISTER_DATE = #{replyRegisterDate}
+        SET REPLY_CONTENT = #{replyContent}, REPLY_UPDATE_DATE = SYSDATE
         WHERE REPLY_NUMBER = #{replyNumber}
     </update>
 
@@ -29,7 +29,23 @@
 
     <!--댓글 목록-->
     <select id="getList" resultType="artistReplyVO">
-
+                <![CDATA[
+    SELECT REPLY_NUMBER , ARTIST_NUMBER, REPLY_CONTENT, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE, USER_NAME FROM
+    (
+      SELECT ROWNUM RN, REPLY_NUMBER, ARTIST_NUMBER, REPLY_CONTENT, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE, USER_NAME
+      FROM (
+      SELECT REPLY_NUMBER, ARTIST_NUMBER, REPLY_CONTENT, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE, USER_NAME
+      FROM (
+                      SELECT *
+                FROM TBL_ARTIST_REPLY ta, TBL_USER tu
+                WHERE ta.USER_NUMBER = tu.USER_NUMBER
+                )
+      ORDER BY REPLY_UPDATE_DATE DESC
+      )
+      WHERE ARTIST_NUMBER = #{artistNumber} AND ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
+        )
+        WHERE RN > (#{criteria.pageNum} - 1 ) * #{criteria.amount}
+        ]]>
     </select>
 
 </mapper>
