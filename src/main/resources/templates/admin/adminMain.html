@@ -609,9 +609,9 @@
 <script th:inline="javascript">
     let pageNumW = 1; // 작품 신청 목록 페이지 넘버
     let pageNumR = 1; // 모집 공고 목록 페이지 넘버
-    let $workTr = $(".works");
+    let $workTr = $(".works"); // 작품 신청 목록이 들어갈 자리
     let remember = [[${criteria.listLink}]]; // 페이지 기억
-    let $recruitTr = $(".recruitments");
+    let $recruitTr = $(".recruitments"); //
     const $paging = $(".mypage-pageStyle");
     let todayWorkApply = parseInt($(".todayWorkApply").text());
     let todayRecruit = parseInt($(".todayRecruit").text());
@@ -724,7 +724,7 @@
                 str += `<td><a href="/recruit/recruitInfo?recruitmentNumber=${recruits.recruitmentNumber}">내용 보기</a></td>`
                 str += `<td><a href="${recruits.recruitmentUrl}">본문 링크</a></td>`;
                 str += `<td>${recruits.recruitmentDay}</td>`;
-                str += `<td><a href="/recruit/recruitUpdate${remember}&recruitmentNumber=${recruits.recruitmentNumber}">수정</a> | <a href="javascript:removeRecruitment(${recruits.recruitmentNumber})">삭제</a></td>`
+                str += `<td><a href="/admin/recruitUpdate${remember}&recruitmentNumber=${recruits.recruitmentNumber}">수정</a> | <a href="javascript:removeRecruitment(${recruits.recruitmentNumber})">삭제</a></td>`
                 str += `</tr>`;
             });
             $recruitTr.append(str);

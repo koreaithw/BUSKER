@@ -35,11 +35,11 @@
 
 <!--    좋아요 아티스트 목록-->
     <select id="getLikeArtistList" resultType="likeVO">
-        SELECT USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, ARTIST_NAME, ARTIST_TYPE
+        SELECT USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, ARTIST_NAME, ARTIST_TYPE, ARTIST_NUMBER
         FROM
-        (SELECT ROWNUM RN, USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, ARTIST_NAME, ARTIST_TYPE
+        (SELECT ROWNUM RN, USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, ARTIST_NAME, ARTIST_TYPE, ARTIST_NUMBER
         FROM
-        (SELECT tl.USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, ARTIST_NAME, ARTIST_TYPE
+        (SELECT tl.USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, ARTIST_NAME, ARTIST_TYPE, ta.ARTIST_NUMBER
         FROM TBL_LIKE tl, TBL_ARTIST ta
         WHERE tl.ARTIST_NUMBER = ta.ARTIST_NUMBER AND tl.USER_NUMBER = #{userNumber}
         <choose>
@@ -61,11 +61,11 @@
 
     <!-- 좋아요 작품 목록-->
     <select id="getLikeWorkList" resultType="likeVO">
-    SELECT USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, WORK_NAME
-    FROM(SELECT ROWNUM RN, USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, WORK_NAME
-    FROM(SELECT tl.USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, WORK_NAME
-        FROM TBL_LIKE tl, TBL_WORK tw
-        WHERE tl.WORK_NUMBER = tw.WORK_NUMBER AND tl.USER_NUMBER = #{userNumber}
+    SELECT USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, WORK_NAME, WORK_NUMBER, ARTIST_NAME
+    FROM(SELECT ROWNUM RN, USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, WORK_NAME, WORK_NUMBER, ARTIST_NAME
+    FROM(SELECT tl.USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, WORK_NAME, tw.WORK_NUMBER, ta.ARTIST_NAME
+        FROM TBL_LIKE tl, TBL_WORK tw, TBL_ARTIST ta
+        WHERE tl.WORK_NUMBER = tw.WORK_NUMBER AND tw.ARTIST_NUMBER = ta.ARTIST_NUMBER AND tl.USER_NUMBER = #{userNumber}
         ORDER BY LIKE_DATE DESC)
     <![CDATA[
         WHERE ROWNUM < #{criteria.pageNum} * #{criteria.amount}
@@ -75,5 +75,27 @@
     </select>
 
 
-    <!--아티스트, 작품의 좋아요 개수-->
+    <!--아티스트 좋아요 개수-->
+    <select id="getTotalArtist" resultType="_int">
+        SELECT COUNT(*)
+        FROM
+        (SELECT tl.USER_NUMBER, LIKE_DATE, LIKE_CATEGORY, ARTIST_NAME, ARTIST_TYPE
+        FROM TBL_LIKE tl, TBL_ARTIST ta
+        WHERE tl.ARTIST_NUMBER = ta.ARTIST_NUMBER AND tl.USER_NUMBER = #{userNumber}
+        <choose>
+            <when test='listDTO.artistType == "M"'>
+                AND ARTIST_TYPE = 1
+            </when>
+            <when test='listDTO.artistType == "P"'>
+                AND ARTIST_TYPE = 2
+            </when>
+        </choose>
+        ORDER BY LIKE_DATE DESC)
+    </select>
+
+    <!-- 작품 좋아요 개수 -->
+    <select id="getTotalWork" resultType="_int">
+        SELECT COUNT (*) FROM TBL_LIKE
+        WHERE USER_NUMBER = #{userNumber} AND LIKE_CATEGORY = 'W'
+    </select>
 </mapper>

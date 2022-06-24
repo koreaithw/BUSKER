@@ -81,15 +81,15 @@ public class WorkDaoTests {
     @Test
     public void getTagTest() {
         List<String> tag = workDAO.getTag();
-        List<String> list = new ArrayList<String>();
+        List<String> arr = new ArrayList<String>();
         for (int i = 0; i < tag.size() ; i++){
             String str[] = tag.get(i).split("#");
             // 힙합/랩 , 유튜브, 영상 (15) / 노래, 유튜브, 영상, CD
             for(int j = 0; j <str.length; j++) {
-                list.add(str[j]);
+                arr.add(str[j]);
             }
         }
-        List<String> list2 = list.stream().distinct().collect(Collectors.toList());
-        log.info(list2.toString());
+        List<String> list = arr.stream().distinct().collect(Collectors.toList());
+        log.info(list.toString());
     }
 }

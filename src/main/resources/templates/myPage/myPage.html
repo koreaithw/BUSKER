@@ -18,363 +18,1431 @@
   </header>
 
   <body class="modal_background">
-    <div class="myPage-wrap">
-      <header class="sectionPadding">
-        <div class="innerContainer"></div>
-      </header>
-      <!-- 마이페이지 헤더 탭 -->
-      <div class="sectionPadding mypage-header">
-        <div class="">
-          <ul>
-            <li class="mypage-list">
-              <a class="myInfo-tab">개인정보 관리</a>
-            </li>
-            <li class="mypage-list">
-              <a class="myArtist-tab">관심 아티스트</a>
-            </li>
-            <li class="mypage-list">
-              <a class="myWork-tab">관심 작품</a>
-            </li>
-            <li class="mypage-list">
-              <a class="myReply-tab">내가 쓴 댓글</a>
-            </li>
-            <li class="mypage-list">
-              <a class="ArtistInfo-tab">아티스트 계정</a>
-            </li>
-            <div
-              class="artistUser-Category-flex donation-user-tab"
-              style="display: none"
-            >
-              <p class="myDonation">
-                <a class="myDonationUser-tab">후원 회원 목록</a>
-              </p>
-            </div>
-          </ul>
-        </div>
+  <div class="myPage-wrap">
+    <header class="sectionPadding">
+      <div class="innerContainer"></div>
+    </header>
+    <!-- 마이페이지 헤더 탭 -->
+    <div class="sectionPadding mypage-header">
+      <div class="">
+        <ul>
+          <li class="mypage-list">
+            <a class="myInfo-tab">개인정보 관리</a>
+          </li>
+          <li class="mypage-list">
+            <a class="myArtist-tab" id="heart-Artist">관심 아티스트</a>
+          </li>
+          <li class="mypage-list">
+            <a class="myWork-tab" id="heart-Work">관심 작품</a>
+          </li>
+          <li class="mypage-list">
+            <a class="myReply-tab">내가 쓴 댓글</a>
+          </li>
+          <li class="mypage-list">
+            <a class="ArtistInfo-tab">아티스트 계정</a>
+          </li>
+          <div
+                  class="artistUser-Category-flex donation-user-tab"
+                  style="display: none"
+          >
+            <p class="myDonation">
+              <a class="myDonationUser-tab">후원 회원 목록</a>
+            </p>
+          </div>
+        </ul>
       </div>
-      <div class="sectionPadding">
-        <div class="innerContainer">
-          <!-- 소메뉴 -->
-          <div class="mypage-smallMenu">
-            <nav class="segmented">
-              <a class="smallMenu-info first">개인정보 변경</a>
-              <a class="smallMenu-pwChange second">비밀번호 변경</a>
-              <a class="smallMenu-userDelete last">회원 탈퇴</a>
-            </nav>
-          </div>
-          <div class="artistUser-smallMenu" style="display: none">
-            <nav class="segmented">
-              <a class="artistUserList-tab first">아티스트 정보 수정</a>
-              <!-- <a class="artistUserInfo-tab second">아티스트 정보 수정</a> -->
-              <a class="artistUserDelete-tab last">아티스트 계정 삭제</a>
-            </nav>
-          </div>
+    </div>
+    <div class="sectionPadding">
+      <div class="innerContainer">
+        <!-- 소메뉴 -->
+        <div class="mypage-smallMenu">
+          <nav class="segmented">
+            <a class="smallMenu-info first">개인정보 변경</a>
+            <a class="smallMenu-pwChange second">비밀번호 변경</a>
+            <a class="smallMenu-userDelete last">회원 탈퇴</a>
+          </nav>
+        </div>
+        <div class="artistUser-smallMenu" style="display: none">
+          <nav class="segmented">
+            <a class="artistUserList-tab first">아티스트 정보 수정</a>
+            <!-- <a class="artistUserInfo-tab second">아티스트 정보 수정</a> -->
+            <a class="artistUserDelete-tab last">아티스트 계정 삭제</a>
+          </nav>
+        </div>
 
-          <!-- 부모 div -->
-          <div class="mypage-body">
-            <!-- 비밀번호 인증 -->
-            <div class="myInfo-pwCheck mypage-div">
-              <div class="desc-pw">
-                회원님의 개인정보보호를 위해 현재 사용중인
-                <span class="pwRed">비밀번호를 한번 더 입력</span>해 주시기
-                바랍니다.
-              </div>
-              <div class="pwCheck-form">
-                <form name="pwCheckForm" id="pwCheckForm">
-                  <div class="mypage-row">
-                    <label id="" class="pwCheck-label input-label"
-                      ><span></span>아이디</label
-                    >
-                    <div class="mypage-col">
-                      <input
-                        class="pwCheck-label"
-                        type="text"
-                        id="userId"
-                        value="soothingkim123"
-                        readonly
-                      />
-                    </div>
-                  </div>
-                  <div class="mypage-row pwCheck-div">
-                    <label id="" class="pwCheck-label input-label"
-                      ><span></span>비밀번호</label
-                    >
-                    <div class="mypage-col">
-                      <input
-                        type="password"
-                        name="userPassword"
-                        id="userPassword"
-                      />
-                    </div>
-                    <span id="checkPw"></span>
-                    <span id="notEqualPw"></span>
-                  </div>
-
-                  <div class="mypage-btn-pwcheck">
-                    <input
-                      type="button"
-                      class="btnNormal strong small"
-                      value="확인"
-                      onclick="pwCheck();"
-                    />
-                  </div>
-                </form>
-              </div>
+        <!-- 부모 div -->
+        <div class="mypage-body">
+          <!-- 비밀번호 인증 -->
+          <div class="myInfo-pwCheck mypage-div">
+            <div class="desc-pw">
+              회원님의 개인정보보호를 위해 현재 사용중인
+              <span class="pwRed">비밀번호를 한번 더 입력</span>해 주시기
+              바랍니다.
             </div>
-            <!-- 비밀번호 인증 끝 -->
-
-            <!-- 개인정보 변경 폼 -->
-            <div class="myInfo-update mypage-div" style="display: none">
-              <p class="desc">회원님께서 가입 시 등록하셨던 정보입니다.</p>
-              <span class="guide"
-                ><span>*</span>표시의 항목은 필수 입력 항목입니다.</span
-              >
-              <div class="sectionPadding myinfoEditForm">
-                <form id="myInfoForm" action="" method="get" th:object="${user}">
-                  <div class="mypage-row">
-                    <label id="profile" class="input-label">프로필 사진</label>
-                    <div>
-                      <div class="profile-wrapper">
-                        <img
-                          class="profile-image"
-                          src="/images/myPage/profile.png"
-                          style="width: 150px; height: 150px"
-                        />
-
-                        <div id="container">
-                          <button id="btn-modal"></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal-back">
-                    <div id="modal" class="modal-overlay">
-                      <div class="modal-window">
-                        <div class="modal-box">
-                          <div class="modal-title">
-                            <div class="title">
-                              <h4>프로필 사진을 등록해주세요.</h4>
-                            </div>
-                            <div class="close-area"></div>
-                          </div>
-                          <div class="content">
-                            <input
-                              type="file"
-                              id="userImage"
-                              readonly
-                              style="display: none"
-                            />
-                            <label class="mypage-image" for="userImage"
-                              ><span class="profile-image-select">
-                                사진 선택
-                              </span></label
-                            >
-                            <span
-                              id="sample-profile-image"
-                              class="profile-image-select"
-                            >
-                              기본 프로필로 변경
-                            </span>
-                            <div class="profile-wrapper-preview">
-                              <img
-                                id="img-sample"
-                                class="profile-image"
-                                src="/images/myPage/profile.png"
-                                style="width: 150px; height: 150px"
-                              />
-                            </div>
-                            <span
-                              id="sample-profile-image"
-                              class="profile-image-select save-profile-image"
-                            >
-                              저장
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="mypage-row">
-                    <label id="modify-userId" class="input-label">아이디</label>
-                    <div class="mypage-col">
-                      <input
-                        type="text"
-                        id="modify-input-userId"
-                        value="soothingkim123"
-                        th:field="*{userId}"
-                        readonly
-                      />
-                    </div>
-                  </div>
-                  <div class="mypage-row">
-                    <label class="input-label"><span>*</span>닉네임</label>
-                    <div class="mypage-col">
-                      <input
-                        class="mypage-input"
-                        type="text"
-                        id="userName"
-                        value=""
-                        th:field="*{userName}"
-                      />
-                      <p class="phoneCheck"><span id="checkNickname"></span></p>
-                    </div>
-                  </div>
-                  <div class="mypage-row">
-                    <label class="input-label"><span>*</span>휴대폰 번호</label>
-                    <div class="mypage-col">
-                      <input
-                        type="text"
-                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                        id="userPhoneNumber"
-                        th:field="*{userPhoneNumber}"
-                        value=""
-                      />
-                      <p class="phoneCheck">
-                        'ㅡ'와 공백을 제외하고 입력해주세요.
-                      </p>
-                      <span id="checkPhoneNumber"></span>
-                    </div>
-                  </div>
-                  <div class="mypage-row">
-                    <label class="input-label"><span>*</span>이메일</label>
-                    <div class="mypage-col">
-                      <input type="text" id="userEmailId" value="" th:field="*{userEmailId}"/>
-                      @
-                      <input type="text" id="userEmailDomain" th:field="*{userDomain}" value="" />
-                      <select
-                        style="width: 100px; margin-right: 10px"
-                        name="selectEmail"
-                        id="selectEmail"
-                      >
-                        <option value="1">직접입력</option>
-                        <option value="naver.com" selected>naver.com</option>
-                        <option value="hanmail.net">hanmail.net</option>
-                        <option value="hotmail.com">hotmail.com</option>
-                        <option value="nate.com">nate.com</option>
-                        <option value="yahoo.co.kr">yahoo.co.kr</option>
-                        <option value="empas.com">empas.com</option>
-                        <option value="dreamwiz.com">dreamwiz.com</option>
-                        <option value="freechal.com">freechal.com</option>
-                        <option value="lycos.co.kr">lycos.co.kr</option>
-                        <option value="korea.com">korea.com</option>
-                        <option value="gmail.com">gmail.com</option>
-                        <option value="hanmir.com">hanmir.com</option>
-                        <option value="paran.com">paran.com</option>
-                      </select>
-                      <span id="checkEmail"></span>
-                    </div>
-                  </div>
-                  <div class="mypage-row">
-                    <label id="modify-userRegisterDate" class="input-label"
-                      >가입일</label
-                    >
-                    <div class="mypage-col">
-                      <input
-                        type="text"
-                        id="userRegisterDate"
-                        value="2022-06-07"
-                        th:field="*{userRegisterDate}"
-                        readonly
-                      />
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="mypage-btn">
-                <input
-                  type="button"
-                  class="btnNormal strong small"
-                  value="확인"
-                  id="infoChange"
-                  onclick="myInfoChange();"
-                />
-              </div>
-            </div>
-            <!-- 개인정보 변경 폼 끝 -->
-
-            <!-- 비밀번호 변경 -->
-            <div class="myInfo-pwChange mypage-div" style="display: none">
-              <div class="desc-pw">
-                벅스에서 사용하실 <span class="pwRed">새로운 비밀번호</span>를
-                입력해주세요
-              </div>
-              <form id="newPwForm">
+            <div class="pwCheck-form">
+              <form name="pwCheckForm" id="pwCheckForm">
                 <div class="mypage-row">
-                  <label id="" class="pwChange-label"
-                    ><span></span>아이디</label
+                  <label id="" class="pwCheck-label input-label"
+                  ><span></span>아이디</label
                   >
                   <div class="mypage-col">
                     <input
-                      class=""
-                      type="text"
-                      id="modifyPw-userId"
-                      value="soothingkim123"
-                      readonly
+                            class="pwCheck-label"
+                            type="text"
+                            id="userId"
+                            value="soothingkim123"
+                            readonly
                     />
                   </div>
                 </div>
-                <div class="mypage-row">
-                  <label id="" class="pwChange-label"
-                    ><span></span>새 비밀번호 입력</label
+                <div class="mypage-row pwCheck-div">
+                  <label id="" class="pwCheck-label input-label"
+                  ><span></span>비밀번호</label
                   >
-                  <div class="pwChange mypage-col">
+                  <div class="mypage-col">
                     <input
-                      type="password"
-                      name="newPassword"
-                      id="newPasswordInput"
-                      class="pwChange-input"
+                            type="password"
+                            name="userPassword"
+                            id="userPassword"
                     />
-                    <div id="pwImgNew"></div>
-
-                    <span id="newPassword"></span>
                   </div>
-                </div>
-                <p class="pwCheck">
-                  영문 대소문자, 숫자 및 특수문자 중 2가지 이상 조합하여
-                  8~20자리로 사용해 주시고 빈칸은 사용하지 마세요. <br />
-                  (입력가능 특수문자:!,@,#,$,%,^,&,*,?,_,~)
-                </p>
-                <div class="mypage-row">
-                  <label id="" class="pwChange-label"
-                    ><span></span>새 비밀번호 확인</label
-                  >
-                  <div class="pwChange mypage-col">
-                    <input
-                      type="password"
-                      name="newPasswordEqual"
-                      id="newPasswordEqualInput"
-                      class="pwChange-input"
-                    />
-                    <div id="pwImgNewCheck"></div>
-                    <span id="newPasswordNotEqual"></span>
-                  </div>
+                  <span id="checkPw"></span>
+                  <span id="notEqualPw"></span>
                 </div>
 
                 <div class="mypage-btn-pwcheck">
                   <input
-                    type="button"
-                    class="btnNormal small"
-                    id="pwChange"
-                    value="확인"
-                    onclick="changePassword();"
+                          type="button"
+                          class="btnNormal strong small"
+                          value="확인"
+                          onclick="pwCheck();"
                   />
                 </div>
               </form>
             </div>
-            <!-- 비밀변호 변경 끝 -->
+          </div>
+          <!-- 비밀번호 인증 끝 -->
 
-            <!-- 회원탈퇴  -->
-            <div class="myInfo-delete mypage-div" style="display: none">
+          <!-- 개인정보 변경 폼 -->
+          <div class="myInfo-update mypage-div" style="display: none">
+            <p class="desc">회원님께서 가입 시 등록하셨던 정보입니다.</p>
+            <span class="guide"
+            ><span>*</span>표시의 항목은 필수 입력 항목입니다.</span
+            >
+            <div class="sectionPadding myinfoEditForm">
+              <form id="myInfoForm" action="" method="get" th:object="${user}">
+                <div class="mypage-row">
+                  <label id="profile" class="input-label">프로필 사진</label>
+                  <div>
+                    <div class="profile-wrapper">
+                      <img
+                              class="profile-image"
+                              src="/images/myPage/profile.png"
+                              style="width: 150px; height: 150px"
+                      />
+
+                      <div id="container">
+                        <button id="btn-modal"></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-back">
+                  <div id="modal" class="modal-overlay">
+                    <div class="modal-window">
+                      <div class="modal-box">
+                        <div class="modal-title">
+                          <div class="title">
+                            <h4>프로필 사진을 등록해주세요.</h4>
+                          </div>
+                          <div class="close-area"></div>
+                        </div>
+                        <div class="content">
+                          <input
+                                  type="file"
+                                  id="userImage"
+                                  readonly
+                                  style="display: none"
+                          />
+                          <label class="mypage-image" for="userImage"
+                          ><span class="profile-image-select">
+                                사진 선택
+                              </span></label
+                          >
+                          <span
+                                  id="sample-profile-image"
+                                  class="profile-image-select"
+                          >
+                              기본 프로필로 변경
+                            </span>
+                          <div class="profile-wrapper-preview">
+                            <img
+                                    id="img-sample"
+                                    class="profile-image"
+                                    src="/images/myPage/profile.png"
+                                    style="width: 150px; height: 150px"
+                            />
+                          </div>
+                          <span
+                                  id="sample-profile-image"
+                                  class="profile-image-select save-profile-image"
+                          >
+                              저장
+                            </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mypage-row">
+                  <label id="modify-userId" class="input-label">아이디</label>
+                  <div class="mypage-col">
+                    <input
+                            type="text"
+                            id="modify-input-userId"
+                            value="soothingkim123"
+                            th:field="*{userId}"
+                            readonly
+                    />
+                  </div>
+                </div>
+                <div class="mypage-row">
+                  <label class="input-label"><span>*</span>닉네임</label>
+                  <div class="mypage-col">
+                    <input
+                            class="mypage-input"
+                            type="text"
+                            id="userName"
+                            value=""
+                            th:field="*{userName}"
+                    />
+                    <p class="phoneCheck"><span id="checkNickname"></span></p>
+                  </div>
+                </div>
+                <div class="mypage-row">
+                  <label class="input-label"><span>*</span>휴대폰 번호</label>
+                  <div class="mypage-col">
+                    <input
+                            type="text"
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                            id="userPhoneNumber"
+                            th:field="*{userPhoneNumber}"
+                            value=""
+                    />
+                    <p class="phoneCheck">
+                      'ㅡ'와 공백을 제외하고 입력해주세요.
+                    </p>
+                    <span id="checkPhoneNumber"></span>
+                  </div>
+                </div>
+                <div class="mypage-row">
+                  <label class="input-label"><span>*</span>이메일</label>
+                  <div class="mypage-col">
+                    <input type="text" id="userEmailId" value="" th:field="*{userEmailId}"/>
+                    @
+                    <input type="text" id="userEmailDomain" th:field="*{userDomain}" value="" />
+                    <select
+                            style="width: 100px; margin-right: 10px"
+                            name="selectEmail"
+                            id="selectEmail"
+                    >
+                      <option value="1">직접입력</option>
+                      <option value="naver.com" selected>naver.com</option>
+                      <option value="hanmail.net">hanmail.net</option>
+                      <option value="hotmail.com">hotmail.com</option>
+                      <option value="nate.com">nate.com</option>
+                      <option value="yahoo.co.kr">yahoo.co.kr</option>
+                      <option value="empas.com">empas.com</option>
+                      <option value="dreamwiz.com">dreamwiz.com</option>
+                      <option value="freechal.com">freechal.com</option>
+                      <option value="lycos.co.kr">lycos.co.kr</option>
+                      <option value="korea.com">korea.com</option>
+                      <option value="gmail.com">gmail.com</option>
+                      <option value="hanmir.com">hanmir.com</option>
+                      <option value="paran.com">paran.com</option>
+                    </select>
+                    <span id="checkEmail"></span>
+                  </div>
+                </div>
+                <div class="mypage-row">
+                  <label id="modify-userRegisterDate" class="input-label"
+                  >가입일</label
+                  >
+                  <div class="mypage-col">
+                    <input
+                            type="text"
+                            id="userRegisterDate"
+                            value="2022-06-07"
+                            th:field="*{userRegisterDate}"
+                            readonly
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="mypage-btn">
+              <input
+                      type="button"
+                      class="btnNormal strong small"
+                      value="확인"
+                      id="infoChange"
+                      onclick="myInfoChange();"
+              />
+            </div>
+          </div>
+          <!-- 개인정보 변경 폼 끝 -->
+
+          <!-- 비밀번호 변경 -->
+          <div class="myInfo-pwChange mypage-div" style="display: none">
+            <div class="desc-pw">
+              벅스에서 사용하실 <span class="pwRed">새로운 비밀번호</span>를
+              입력해주세요
+            </div>
+            <form id="newPwForm">
+              <div class="mypage-row">
+                <label id="" class="pwChange-label"
+                ><span></span>아이디</label
+                >
+                <div class="mypage-col">
+                  <input
+                          class=""
+                          type="text"
+                          id="modifyPw-userId"
+                          value="soothingkim123"
+                          readonly
+                  />
+                </div>
+              </div>
+              <div class="mypage-row">
+                <label id="" class="pwChange-label"
+                ><span></span>새 비밀번호 입력</label
+                >
+                <div class="pwChange mypage-col">
+                  <input
+                          type="password"
+                          name="newPassword"
+                          id="newPasswordInput"
+                          class="pwChange-input"
+                  />
+                  <div id="pwImgNew"></div>
+
+                  <span id="newPassword"></span>
+                </div>
+              </div>
+              <p class="pwCheck">
+                영문 대소문자, 숫자 및 특수문자 중 2가지 이상 조합하여
+                8~20자리로 사용해 주시고 빈칸은 사용하지 마세요. <br />
+                (입력가능 특수문자:!,@,#,$,%,^,&,*,?,_,~)
+              </p>
+              <div class="mypage-row">
+                <label id="" class="pwChange-label"
+                ><span></span>새 비밀번호 확인</label
+                >
+                <div class="pwChange mypage-col">
+                  <input
+                          type="password"
+                          name="newPasswordEqual"
+                          id="newPasswordEqualInput"
+                          class="pwChange-input"
+                  />
+                  <div id="pwImgNewCheck"></div>
+                  <span id="newPasswordNotEqual"></span>
+                </div>
+              </div>
+
+              <div class="mypage-btn-pwcheck">
+                <input
+                        type="button"
+                        class="btnNormal small"
+                        value="확인"
+                        onclick="changePassword();"
+                />
+              </div>
+            </form>
+          </div>
+          <!-- 비밀변호 변경 끝 -->
+
+          <!-- 회원탈퇴  -->
+          <div class="myInfo-delete mypage-div" style="display: none">
+            <p class="desc">
+              회원탈퇴에 앞서 아래의 사항들을 꼭 확인하시기 바랍니다.
+            </p>
+
+            <div class="sectionPadding mypageDelete">
+              <div class="delete-text">
+                <li>
+                  회원탈퇴 시, 회원님의 모든 개인정보 및 이용정보가 삭제되며
+                  복구가 불가능합니다.
+                </li>
+                <ul>
+                  <li>- 벅스 서비스 이용 정보, 보유 이용권, 벅스캐시 등</li>
+                  <li>
+                    - 구매하신 MP3의 재다운로드 및 라이센스 인증 등의 서비스
+                    이용 불가
+                  </li>
+                  <li>
+                    - 제휴사 결합 이용권을 사용 중인 경우, 벅스와 제휴사
+                    서비스 모두 이용 불가
+                  </li>
+                </ul>
+              </div>
+              <div class="delete-text">
+                <ul>
+                  <li></li>
+                </ul>
+              </div>
+              <div class="delete-text">
+                <ul>
+                  <li></li>
+                </ul>
+              </div>
+              <div class="delete-text">
+                <ul>
+                  <li></li>
+                </ul>
+              </div>
+              <div class="delete-text">
+                <ul>
+                  <li></li>
+                </ul>
+              </div>
+            </div>
+            <div class="mypage-btn">
+              <input
+                      type="button"
+                      id="delete"
+                      class="btnNormal strong small"
+                      value="위 내용을 모두 확인하였고, 모든 정보 삭제에 동의합니다"
+              />
+            </div>
+          </div>
+          <!-- 회원탈퇴 끝 -->
+
+          <!-- 관심 아티스트 -->
+          <div class="myArtist-list mypage-div" style="display: none">
+            <div class="sectionPadding">
+              <div class="innerContainer">
+                <nav class="segmented" style="display: none">
+                  <a id="heart-Artist" class="first selected Artist-All-button">전체</a>
+                  <a id="heart-Artist-Musician" class="second Artist-Musician-button">뮤지션</a>
+                  <a id="heart-Artist-Performance" class="last Artist-Performance-button">퍼포먼스</a>
+                </nav>
+                <div class="myArtist-Category-flex">
+                  <p class="sorting">
+                      <span class="sorting artist-All-Dot">·</span
+                      ><a href="" class="myArtist artist-All-button">전체</a>
+                    <span class="sorting artist-Musician-Dot">·</span
+                    ><a href="" class="myArtist artist-Musician-button"
+                  >뮤지션</a
+                  >
+                    <span class="sorting artist-Performance-Dot">·</span
+                    ><a href="" class="myArtist artist-Performance-button"
+                  >퍼포먼스</a
+                  >
+                  </p>
+                  <p class="myDonation-user">
+                    <a class="">나의 후원</a>
+                  </p>
+                </div>
+
+                <!-- 전체 관심 아티스트 -->
+                <div class="sectionPadding myArtistList top myArtistList-All">
+<!--                  <div class="artistList">-->
+<!--                    <a href="" class="myArtist">-->
+<!--                      <img-->
+<!--                              class="myArtist-image"-->
+<!--                              src="/images/myPage/pptnz.jpg"-->
+<!--                      />-->
+<!--                      <span class="myArtistName">페퍼톤스</span>-->
+<!--                      <span class="myArtistType">그룹 (남성) | 뮤지션</span>-->
+<!--                    </a>-->
+<!--                    <div class="artistLike">-->
+<!--                      <a class="my-heart" id="myArtist-1"-->
+<!--                      ><img-->
+<!--                              id="heart-icon-1"-->
+<!--                              class="heart-selected"-->
+<!--                              src="/images/myPage/heart-icon.png"-->
+<!--                              width="30px" /><img-->
+<!--                              id="heartNon-icon-1"-->
+<!--                              class="heart-nonSelected"-->
+<!--                              src="/images/myPage/non-heart-icon.png"-->
+<!--                              width="30px"-->
+<!--                              style="display: none"-->
+<!--                      /></a>-->
+<!--                    </div>-->
+<!--                  </div>-->
+
+
+                </div>
+
+                <!-- 뮤지션 관심 아티스트 -->
+                <div
+                        class="sectionPadding myArtistList top myArtistList-Musician"
+                        style="display: none"
+                >
+<!--                  <div class="artistList">-->
+<!--                    <a href="" class="myArtist">-->
+<!--                      <img-->
+<!--                              class="myArtist-image"-->
+<!--                              src="/images/myPage/pptnz.jpg"-->
+<!--                      />-->
+<!--                      <span class="myArtistName">페퍼톤스</span>-->
+<!--                      <span class="myArtistType">그룹 (남성) | 뮤지션</span>-->
+<!--                    </a>-->
+<!--                    <div class="artistLike">-->
+<!--                      <a class="my-heart"-->
+<!--                      ><img-->
+<!--                              class="heart-selected"-->
+<!--                              src="/images/myPage/heart-icon.png"-->
+<!--                              width="30px" /><img-->
+<!--                              class="heart-nonSelected"-->
+<!--                              src="/images/myPage/heartNon-Select.png"-->
+<!--                              width="30px"-->
+<!--                              style="display: none"-->
+<!--                      /></a>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="artistList">-->
+<!--                    <a href="" class="myArtist">-->
+<!--                      <img-->
+<!--                              class="myArtist-image"-->
+<!--                              src="https://img.hankyung.com/photo/202012/01.22909739.1.jpg"-->
+<!--                      />-->
+<!--                      <span class="myArtistName">세븐틴</span>-->
+<!--                      <span class="myArtistType">그룹 (남성) | 뮤지션</span>-->
+<!--                    </a>-->
+<!--                    <div class="artistLike">-->
+<!--                      <a class="my-heart"-->
+<!--                      ><img-->
+<!--                              class="heart-selected"-->
+<!--                              src="/images/myPage/heart-icon.png"-->
+<!--                              width="30px" /><img-->
+<!--                              class="heart-nonSelected"-->
+<!--                              src="/images/myPage/heartNon-Select.png"-->
+<!--                              width="30px"-->
+<!--                              style="display: none"-->
+<!--                      /></a>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="artistList">-->
+<!--                    <a href="" class="myArtist">-->
+<!--                      <img-->
+<!--                              class="myArtist-image"-->
+<!--                              src="https://file.mk.co.kr/meet/neds/2017/06/image_readtop_2017_417033_14980439402928151.jpg"-->
+<!--                      />-->
+<!--                      <span class="myArtistName">이수현</span>-->
+<!--                      <span class="myArtistType">솔로 (여성) | 뮤지션</span>-->
+<!--                    </a>-->
+<!--                    <div class="artistLike">-->
+<!--                      <a class="my-heart"-->
+<!--                      ><img-->
+<!--                              class="heart-selected"-->
+<!--                              src="/images/myPage/heart-icon.png"-->
+<!--                              width="30px" /><img-->
+<!--                              class="heart-nonSelected"-->
+<!--                              src="/images/myPage/heartNon-Select.png"-->
+<!--                              width="30px"-->
+<!--                              style="display: none"-->
+<!--                      /></a>-->
+<!--                    </div>-->
+<!--                  </div>-->
+                </div>
+
+                <!-- 퍼포먼스 관심 아티스트 -->
+                <div
+                        class="sectionPadding myArtistList top myArtistList-Performance"
+                        style="display: none"
+                >
+                  <div class="artistList">
+                    <a href="" class="myArtist">
+                      <img
+                              class="myArtist-image"
+                              src="https://dimg.donga.com/wps/NEWS/IMAGE/2022/02/15/111796119.2.jpg"
+                      />
+                      <span class="myArtistName">아이키</span>
+                      <span class="myArtistType">솔로 (여성) | 퍼포먼스</span>
+                    </a>
+                    <div class="artistLike">
+                      <a class="my-heart"
+                      ><img
+                              class="heart-selected"
+                              src="/images/myPage/heart-icon.png"
+                              width="30px" /><img
+                              src="/images/myPage/heartNon-Select.png"
+                              width="30px"
+                              dis
+                              style="display: none"
+                      /></a>
+                    </div>
+                  </div>
+
+                  <div class="artistList">
+                    <a href="" class="myArtist">
+                      <img
+                              class="myArtist-image"
+                              src="http://image.yes24.com/images/chyes24/4/3/e/2/43e200f057ad9ea4b9a69b918dbf696d.jpg"
+                              style="object-position: top"
+                      />
+                      <span class="myArtistName">최현우</span>
+                      <span class="myArtistType">솔로 (남성) | 퍼포먼스</span>
+                    </a>
+                    <div class="artistLike">
+                      <a class="my-heart"
+                      ><img
+                              class="heart-selected"
+                              src="/images/myPage/heart-icon.png"
+                              width="30px" /><img
+                              class="heart-nonSelected"
+                              src="/images/myPage/heartNon-Select.png"
+                              width="30px"
+                              style="display: none"
+                      /></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 페이징 -->
+              <div class="paging">
+<!--                <div class="mypage-pageStyle">-->
+<!--                  <a class="mypage-page-first"><<</a>-->
+<!--                  <a class="mypage-page-prev"><</a>-->
+<!--                  <div>-->
+<!--                    <a class="">1</a>-->
+<!--                  </div>-->
+<!--                  <a class="mypage-page-next">></a>-->
+<!--                  <a class="mypage-page-last">>></a>-->
+<!--                </div>-->
+              </div>
+            </div>
+          </div>
+
+          <!-- 관심 아티스트 나의 후원 탭-->
+          <div class="myArtistDonation-List" style="display: none">
+            <div class="artist-join-title-box">
+              <div class="work_detail">
+                <div class="detail-donation">
+                  <p>나의 후원 기록</p>
+                  <div class="announcement">
+                    <p
+                            style="
+                          font-size: 13px;
+                          margin-top: 0;
+                          margin-bottom: 0px;
+                          color: #ff9326;
+                        "
+                    >
+                        <span class="announce"
+                        >*결제 문의는 1:1 문의 페이지를 이용해주세요.</span
+                        >
+                    </p>
+
+                    <div class="donation-soring">
+                      <span class="sorting"><a>최신순</a></span>
+                      <span class="sorting"><a>오래된순</a></span>
+                      <span class="sorting"><a>금액높은순</a></span>
+                      <span class="sorting"><a>금액낮은순</a></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="myArtist-Category-flex">
+              <p class="sorting">
+                <span class="sorting artist-All-Dot">·</span
+                ><a href="" class="myArtist artist-All-button">전체</a>
+                <span class="sorting artist-Musician-Dot">·</span
+                ><a href="" class="myArtist artist-Musician-button"
+                  >뮤지션</a
+                >
+                <span class="sorting artist-Performance-Dot">·</span
+                ><a href="" class="myArtist artist-Performance-button"
+                  >퍼포먼스</a
+                >
+              </p>
+              <p class="myDonation-user">
+                <a class="">나의 후원</a>
+              </p>
+            </div> -->
+
+            <div class="donation-wrap">
+              <div class="donationTable-wrap">
+                <table class="donation-table">
+                  <thead class="donation-header">
+                  <tr class="">
+                    <th class="row-1">
+                      <div class="">
+                        <p class="">날짜</p>
+                      </div>
+                    </th>
+                    <th class="row-2">
+                      <div class="">
+                        <p class="">아티스트명</p>
+                      </div>
+                    </th>
+                    <th class="row-3">
+                      <div class="">
+                        <p class="">금액</p>
+                      </div>
+                    </th>
+                    <th class="row-4">
+                      <div class="">
+                        <p class="">결제수단</p>
+                      </div>
+                    </th>
+                  </tr>
+                  </thead>
+
+                  <tbody class="donation-body">
+                  <tr class="row">
+                    <td class="cell">
+                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
+                    </td>
+                    <td class="cell">
+                      <div class="table-artist-flex">
+                        <a class="" href=""
+                        ><div
+                                aria-label="채널 아이콘"
+                                class="donation-icon"
+                        >
+                          <img
+                                  class="donation-icon"
+                                  alt=""
+                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
+                          /></div
+                        ></a>
+                        <div class="">
+                          <p class="table-p">
+                            <a class="" href="">페퍼톤스</a>
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="cell">
+                      <p class="">100,000</p>
+                    </td>
+                    <td class="cell">
+                      <div class="">
+                        <p class="">휴대폰 간편결제</p>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr class="row">
+                    <td class="cell">
+                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
+                    </td>
+                    <td class="cell">
+                      <div class="table-artist-flex">
+                        <a class="" href=""
+                        ><div
+                                aria-label="채널 아이콘"
+                                class="donation-icon"
+                        >
+                          <img
+                                  class="donation-icon"
+                                  alt=""
+                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
+                          /></div
+                        ></a>
+                        <div class="">
+                          <p class="table-p">
+                            <a class="" href="">페퍼톤스</a>
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="cell">
+                      <p class="">100,000</p>
+                    </td>
+                    <td class="cell">
+                      <div class="">
+                        <p class="">휴대폰 간편결제</p>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr class="row">
+                    <td class="cell">
+                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
+                    </td>
+                    <td class="cell">
+                      <div class="table-artist-flex">
+                        <a class="" href=""
+                        ><div
+                                aria-label="채널 아이콘"
+                                class="donation-icon"
+                        >
+                          <img
+                                  class="donation-icon"
+                                  alt=""
+                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
+                          /></div
+                        ></a>
+                        <div class="">
+                          <p class="table-p">
+                            <a class="" href="">페퍼톤스</a>
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="cell">
+                      <p class="">100,000</p>
+                    </td>
+                    <td class="cell">
+                      <div class="">
+                        <p class="">휴대폰 간편결제</p>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr class="row">
+                    <td class="cell">
+                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
+                    </td>
+                    <td class="cell">
+                      <div class="table-artist-flex">
+                        <a class="" href=""
+                        ><div
+                                aria-label="채널 아이콘"
+                                class="donation-icon"
+                        >
+                          <img
+                                  class="donation-icon"
+                                  alt=""
+                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
+                          /></div
+                        ></a>
+                        <div class="">
+                          <p class="table-p">
+                            <a class="" href="">페퍼톤스</a>
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="cell">
+                      <p class="">100,000</p>
+                    </td>
+                    <td class="cell">
+                      <div class="">
+                        <p class="">휴대폰 간편결제</p>
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- 페이징 -->
+            <div class="paging">
+<!--              <div class="mypage-pageStyle">-->
+<!--                <a class="mypage-page-first"><<</a>-->
+<!--                <a class="mypage-page-prev"><</a>-->
+<!--                <div>-->
+<!--                  <a class="">1</a>-->
+<!--                </div>-->
+<!--                <a class="mypage-page-next">></a>-->
+<!--                <a class="mypage-page-last">>></a>-->
+<!--              </div>-->
+            </div>
+          </div>
+          <!-- 아티스트 후원회원 목록 끝 -->
+
+          <!-- 관심 아티스트 끝 -->
+
+          <!-- 관심 작품 -->
+          <div class="myWork-list mypage-div" style="display: none">
+            <div class="sectionPadding">
+              <div class="innerContainer">
+                <nav class="segmented" style="display: none">
+                  <a class="first selected" href="mypagePwCheck.html">전체</a>
+                  <a class="second" href="mypagePwChange.html">뮤지션</a>
+                  <a class="last" href="mypageDelete.html">퍼포먼스</a>
+                </nav>
+
+                <!-- 관심 작품 전체 카테고리 -->
+                <div class="sectionPadding myArtistList top myWorkList-All">
+<!--                  <div class="artistList">-->
+<!--                    <a href="" class="myWork myLike">-->
+<!--                      <img-->
+<!--                              class="myWork-image"-->
+<!--                              src="https://image.bugsm.co.kr/album/images/170/40389/4038932.jpg"-->
+<!--                      />-->
+<!--                      <div class="info">-->
+<!--                        <div class="myWork">-->
+<!--                          <span class="myWorkName">스우파 손목 밴드</span>-->
+<!--                        </div>-->
+<!--                        <div class="myWork workInfo-width">-->
+<!--                          <span class="myWorkType">굿즈 (잡화)</span>-->
+<!--                        </div>-->
+<!--                        <div class="myWork workInfo-width">-->
+<!--                          <span class="myArtistName">아이키 | 퍼포먼스</span>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </a>-->
+<!--                    <div class="workLike">-->
+<!--                      <a href=""-->
+<!--                      ><img-->
+<!--                              class="myWorkLike heart-selected"-->
+<!--                              src="/images/myPage/heart-icon.png"-->
+<!--                              width="30px" /><img-->
+<!--                              class="myWorkLike heart-nonSelected"-->
+<!--                              src="/images/myPage/heartNon-Select.png"-->
+<!--                              width="30px"-->
+<!--                              style="display: none"-->
+<!--                      /></a>-->
+<!--                    </div>-->
+<!--                  </div>-->
+
+                </div>
+
+                <!-- 관심 작품 뮤지션 카테고리 -->
+                <div
+                        class="sectionPadding myArtistList top myWorkList-Musician"
+                        style="display: none"
+                >
+                  <div class="artistList">
+                    <a href="" class="myWork myLike">
+                      <img
+                              class="myWork-image"
+                              src="https://image.bugsm.co.kr/album/images/170/40536/4053603.jpg"
+                      />
+                      <div class="info">
+                        <div class="myWork">
+                          <span class="myWorkName">버스커버스커 기타</span>
+                        </div>
+                        <div class="myWork workInfo-width">
+                          <span class="myWorkType">기타 (악기)</span>
+                        </div>
+                        <div class="myWork workInfo-width">
+                          <span class="myArtistName">장범준 | 뮤지션</span>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="workLike">
+                      <a href=""
+                      ><img
+                              class="myWorkLike heart-selected"
+                              src="/images/myPage/heart-icon.png"
+                              width="30px" /><img
+                              class="myWorkLike heart-nonSelected"
+                              src="/images/myPage/heartNon-Select.png"
+                              width="30px"
+                              style="display: none"
+                      /></a>
+                    </div>
+                  </div>
+
+                  <div class="artistList">
+                    <a href="" class="myWork myLike">
+                      <img
+                              class="myWork-image"
+                              src="https://image.bugsm.co.kr/album/images/170/9996/999668.jpg"
+                      />
+                      <div class="info">
+                        <div class="myWork">
+                          <span class="myWorkName">딕펑스 슬로건</span>
+                        </div>
+                        <div class="myWork workInfo-width">
+                          <span class="myWorkType">굿즈 (잡화)</span>
+                        </div>
+                        <div class="myWork workInfo-width">
+                          <span class="myArtistName">딕펑스 | 뮤지션</span>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="workLike">
+                      <a href=""
+                      ><img
+                              class="myWorkLike heart-selected"
+                              src="/images/myPage/heart-icon.png"
+                              width="30px" /><img
+                              class="myWorkLike heart-nonSelected"
+                              src="/images/myPage/heartNon-Select.png"
+                              width="30px"
+                              style="display: none"
+                      /></a>
+                    </div>
+                  </div>
+                  <div class="artistList">
+                    <a href="" class="myWork myLike">
+                      <img
+                              class="myWork-image"
+                              src="https://image.bugsm.co.kr/album/images/170/9340/934033.jpg"
+                      />
+                      <div class="info">
+                        <div class="myWork">
+                          <span class="myWorkName">유희열 안테나 티셔츠</span>
+                        </div>
+                        <div class="myWork workInfo-width">
+                          <span class="myWorkType">굿즈 (잡화)</span>
+                        </div>
+                        <div class="myWork workInfo-width">
+                          <span class="myArtistName">페퍼톤스 | 뮤지션</span>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="workLike">
+                      <a href=""
+                      ><img
+                              class="myWorkLike heart-selected"
+                              src="/images/myPage/heart-icon.png"
+                              width="30px" /><img
+                              class="myWorkLike heart-nonSelected"
+                              src="/images/myPage/heartNon-Select.png"
+                              width="30px"
+                              style="display: none"
+                      /></a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 관심 작품 퍼포먼스 카테고리 -->
+                <div
+                        class="sectionPadding myArtistList top myWorkList-Performance"
+                        style="display: none"
+                >
+                  <div class="artistList">
+                    <a href="" class="myWork myLike">
+                      <img
+                              class="myWork-image"
+                              src="https://image.bugsm.co.kr/album/images/170/40389/4038932.jpg"
+                      />
+                      <div class="info">
+                        <div class="myWork">
+                          <span class="myWorkName">스우파 손목 밴드</span>
+                        </div>
+                        <div class="myWork workInfo-width">
+                          <span class="myWorkType">굿즈 (잡화)</span>
+                        </div>
+                        <div class="myWork workInfo-width">
+                          <span class="myArtistName">아이키 | 퍼포먼스</span>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="workLike">
+                      <a href=""
+                      ><img
+                              class="myWorkLike heart-selected"
+                              src="/images/myPage/heart-icon.png"
+                              width="30px" /><img
+                              class="myWorkLike heart-nonSelected"
+                              src="/images/myPage/heartNon-Select.png"
+                              width="30px"
+                              style="display: none"
+                      /></a>
+                    </div>
+                  </div>
+
+                  <div class="artistList">
+                    <a href="" class="myWork myLike">
+                      <img
+                              class="myWork-image"
+                              src="https://image.bugsm.co.kr/album/images/170/204721/20472184.jpg?version=20220608120020.0"
+                      />
+                      <div class="info">
+                        <div class="myWork">
+                          <span class="myWorkName">스우파 손목 밴드</span>
+                        </div>
+                        <div class="myWork workInfo-width">
+                          <span class="myWorkType">굿즈 (잡화)</span>
+                        </div>
+                        <div class="myWork workInfo-width">
+                          <span class="myArtistName">아이키 | 퍼포먼스</span>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="workLike">
+                      <a href=""
+                      ><img
+                              class="myWorkLike heart-selected"
+                              src="/images/myPage/heart-icon.png"
+                              width="30px" /><img
+                              class="myWorkLike heart-nonSelected"
+                              src="/images/myPage/heartNon-Select.png"
+                              width="30px"
+                              style="display: none"
+                      /></a>
+                    </div>
+                  </div>
+
+                  <div class="artistList">
+                    <a href="" class="myWork myLike">
+                      <img
+                              class="myWorFk-image"
+                              src="https://image.bugsm.co.kr/album/images/170/40687/4068724.jpg"
+                      />
+                      <div class="info">
+                        <div class="myWork">
+                          <span class="myWorkName">스우파 손목 밴드</span>
+                        </div>
+                        <div class="myWork workInfo-width">
+                          <span class="myWorkType">굿즈 (잡화)</span>
+                        </div>
+                        <div class="myWork workInfo-width">
+                          <span class="myArtistName">아이키 | 퍼포먼스</span>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="workLike">
+                      <a class="" href=""
+                      ><img
+                              class="myWorkLike heart-selected"
+                              src="/images/myPage/heart-icon.png"
+                              width="30px" /><img
+                              class="myWorkLike heart-nonSelected"
+                              src="/images/myPage/heartNon-Select.png"
+                              width="30px"
+                              style="display: none"
+                      /></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- 페이징 -->
+              <div class="paging">
+<!--                <div class="mypage-pageStyle">-->
+<!--                  <a class="mypage-page-first"><<</a>-->
+<!--                  <a class="mypage-page-prev"><</a>-->
+<!--                  <div>-->
+<!--                    <a class="">1</a>-->
+<!--                  </div>-->
+<!--                  <a class="mypage-page-next">></a>-->
+<!--                  <a class="mypage-page-last">>></a>-->
+<!--                </div>-->
+              </div>
+            </div>
+          </div>
+
+          <!-- 관심 작품 끝 -->
+
+          <!-- 내가 쓴 댓글 -->
+          <div class="myReplyList-div mypage-div" style="display: none">
+            <div class="reply-admin">
+                <span class="reply-all"
+                ><button id="reply-all-button" class="reply-button">
+                    전체 선택
+                  </button></span
+                >
+              <span class="reply-delete"
+              ><button name="reply-delete-button" class="reply-button">
+                    삭제
+                  </button></span
+              >
+            </div>
+            <div class="replyBox">
+              <div class="reply-flex-box">
+                <div class="reply-checkbox">
+                  <input name="reply-check" type="checkbox" />
+                </div>
+                <div class="reply-profile">
+                  <img
+                          class="reply-img"
+                          src="https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/app/Iv/MyImg/2021/04/08/65_1617871495.jpg/dims/resize/Q_80,0"
+                          width="60px"
+                  />
+                </div>
+                <div class="reply-content-box">
+                  <span class="reply-nickname"> 왕고냐 </span>
+                  <span class="replyDate">22.06.11 13:32</span>
+                  <div class="replyContent reply-content-width">
+                    페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스
+                    개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아
+                    페퍼톤스 개좋아 페퍼톤스 개좋아
+                  </div>
+                </div>
+              </div>
+
+              <div class="reply-right">
+                <div class="replyArtist">
+                  <div class="reply-artistBox">
+                    <div class="reply-artist">
+                      <img
+                              class="reply-img-artist"
+                              src="https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG"
+                              alt=""
+                      />
+                    </div>
+
+                    <div class="reply-content-box reply-artist-content">
+                      <div class="reply-nickname">페퍼톤스</div>
+                      <div class="replyContent artist">뮤지션</div>
+                    </div>
+                  </div>
+                </div>
+                <button
+                        name="reply-delete-button"
+                        class="reply-button list-button"
+                >
+                  삭제
+                </button>
+              </div>
+            </div>
+
+            <div class="replyBox">
+              <div class="reply-flex-box">
+                <div class="reply-checkbox">
+                  <input name="reply-check" type="checkbox" />
+                </div>
+                <div class="reply-profile">
+                  <img
+                          class="reply-img"
+                          src="https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/app/Iv/MyImg/2021/04/08/65_1617871495.jpg/dims/resize/Q_80,0"
+                          width="60px"
+                  />
+                </div>
+                <div class="reply-content-box">
+                  <span class="reply-nickname"> 왕고냐 </span>
+                  <span class="replyDate">22.06.11 13:32</span>
+                  <div class="replyContent reply-content-width"></div>
+                </div>
+              </div>
+
+              <div class="reply-right">
+                <div class="replyArtist">
+                  <div class="reply-artistBox">
+                    <div class="reply-artist">
+                      <img
+                              class="reply-img-artist"
+                              src="https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG"
+                              alt=""
+                      />
+                    </div>
+
+                    <div class="reply-content-box reply-artist-content">
+                      <div class="reply-nickname">페퍼톤스</div>
+                      <div class="replyContent artist">뮤지션</div>
+                    </div>
+                  </div>
+                </div>
+                <button
+                        name="reply-delete-button"
+                        class="reply-button list-button"
+                >
+                  삭제
+                </button>
+              </div>
+            </div>
+
+            <div class="replyBox">
+              <div class="reply-flex-box">
+                <div class="reply-checkbox">
+                  <input name="reply-check" type="checkbox" />
+                </div>
+                <div class="reply-profile">
+                  <img
+                          class="reply-img"
+                          src="https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/app/Iv/MyImg/2021/04/08/65_1617871495.jpg/dims/resize/Q_80,0"
+                          width="60px"
+                  />
+                </div>
+                <div class="reply-content-box">
+                  <span class="reply-nickname"> 왕고냐 </span>
+                  <span class="replyDate">22.06.11 13:32</span>
+                  <div class="replyContent reply-content-width">
+                    페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스
+                    개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아
+                    페퍼톤스 개좋아 페퍼톤스 개좋아
+                  </div>
+                </div>
+              </div>
+
+              <div class="reply-right">
+                <div class="replyArtist">
+                  <div class="reply-artistBox">
+                    <div class="reply-artist">
+                      <img
+                              class="reply-img-artist"
+                              src="https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG"
+                              alt=""
+                      />
+                    </div>
+
+                    <div class="reply-content-box reply-artist-content">
+                      <div class="reply-nickname">페퍼톤스</div>
+                      <div class="replyContent artist">뮤지션</div>
+                    </div>
+                  </div>
+                </div>
+                <button
+                        name="reply-delete-button"
+                        class="reply-button list-button"
+                >
+                  삭제
+                </button>
+              </div>
+            </div>
+
+            <!-- 페이징 -->
+            <div class="paging">
+<!--              <div class="mypage-pageStyle">-->
+<!--                <a class="mypage-page-first"><<</a>-->
+<!--                <a class="mypage-page-prev"><</a>-->
+<!--                <div>-->
+<!--                  <a class="">1</a>-->
+<!--                </div>-->
+<!--                <a class="mypage-page-next">></a>-->
+<!--                <a class="mypage-page-last">>></a>-->
+<!--              </div>-->
+            </div>
+          </div>
+
+          <!-- 내가 쓴 댓글 끝 -->
+
+          <!-- 아티스트 계정 -->
+
+          <div class="ArtistInfo-div mypage-div">
+            <!-- 소메뉴 아티스트 나의 아티스트 계정  -->
+            <div class="artistUser-List" style="display: none">
+              <div class="artistUser-listBox">
+                <div class="reartistUser-list-right">
+                  <div class="artistUser-listArtist">
+                    <div class="artistUser-list-artistBox">
+                      <div class="artistUser-list-artist">
+                        <img
+                                class="artistUser-list-img-artist"
+                                src="https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG"
+                                alt=""
+                        />
+                      </div>
+
+                      <div
+                              class="artistUser-list-content-box artistUser-list-artist-content"
+                      >
+                        <div class="artistUser-list-nickname">페퍼톤스</div>
+                        <div class="artistUser-listContent artist">
+                          뮤지션
+                        </div>
+                      </div>
+                      <button class="artistUser-list-button list-button">
+                        수정
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class=""></div>
+            </div>
+            <!-- 소메뉴 나의 아티스트 계정 끝 -->
+            <!-- 소메뉴 아티스트 계정 수정  -->
+            <div class="artistUser-Info" style="display: none;">
+              <div class="artist-join-title-box">
+                <div class="work_detail">
+                  <div class="detail">
+                    <p>아티스트 정보 수정</p>
+                    <div class="announcement">
+                      <p
+                              style="
+                            font-size: 13px;
+                            margin-top: 0;
+                            margin-bottom: 0px;
+                            color: #ff9326;
+                          "
+                      >
+                          <span class="announce"
+                          >*수정 신청시 빠른시일내로 등록심사를
+                            진행하겠습니다.</span
+                          >
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="artist-join-title">
+                <div>아티스트명</div>
+                <p class="input-name-p">
+                  <input
+                          id="artist-update-name"
+                          class="input_text_name"
+                          placeholder="아티스트 이름을 입력하세요"
+                          value="페퍼톤스"
+                  />
+                </p>
+              </div>
+
+              <div class="artist-join-form-box">
+                <div class="artist-join-image-box" id="artist-update-image-box">
+                    <span class="input-artist-image-desc"
+                    >아티스트 대표 사진을 <br />등록해주세요.</span
+                    >
+                  <img
+                          id="artist-join-profile"
+                          class="artist-join-profile"
+                          src="/images/myPage/photo-plus-icon.png"
+                          alt=""
+                  />
+                </div>
+                <input
+                        type="file"
+                        id="artist-update-file"
+                        style="visibility: hidden; display: none"
+                />
+
+
+                <div class="artist-join-info-box">
+                  <div class="info_area1">
+                    <dl style="margin-bottom: 0">
+                      <dt>종류</dt>
+                      <dd>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                              class="form-inline"
+                      >
+                            <select
+                                    id="artist-update-category"
+                                    name="artist-form-category"
+                                    class="artist-form-category"
+                            >
+                              <option value="뮤지션">
+                                아티스트 종류를 선택해주세요.
+                              </option>
+                              <option value="뮤지션">뮤지션</option>
+                              <option value="퍼포먼스">퍼포먼스</option>
+                            </select>
+                          </span>
+                      </dd>
+                    </dl>
+                  </div>
+                  <div class="form-inline">
+                    <div class="info_area2">
+                      <dt>아티스트 소개</dt>
+                      <dd class="textarea-dd">
+                          <textarea
+                                  name=""
+                                  id="artist-update-description"
+                                  cols="79"
+                                  rows="5"
+                                  placeholder="아티스트를 간단히 소개해주세요."
+                          ></textarea>
+                      </dd>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-button">
+                <button id="artist-update-submit" class="artist-form-submit">
+                  수정
+                </button>
+              </div>
+            </div>
+            <!-- 소메뉴 아티스트 계정 수정 끝 -->
+
+            <!-- 소메뉴 아티스트 계정 삭제  -->
+            <div class="artistUser-Delete" style="display: none">
               <p class="desc">
-                회원탈퇴에 앞서 아래의 사항들을 꼭 확인하시기 바랍니다.
+                아티스트 계정 삭제에 앞서 아래의 사항들을 꼭 확인하시기
+                바랍니다.
               </p>
 
               <div class="sectionPadding mypageDelete">
                 <div class="delete-text">
                   <li>
-                    회원탈퇴 시, 회원님의 모든 개인정보 및 이용정보가 삭제되며
-                    복구가 불가능합니다.
+                    아티스트 계정 삭제 시, 회원님의 모든 아티스트 정보 및
+                    이용정보가 삭제되며 복구가 불가능합니다.
                   </li>
                   <ul>
                     <li>- 벅스 서비스 이용 정보, 보유 이용권, 벅스캐시 등</li>
@@ -411,1484 +1479,83 @@
               </div>
               <div class="mypage-btn">
                 <input
-                  type="button"
-                  id="delete"
-                  class="btnNormal strong small"
-                  value="위 내용을 모두 확인하였고, 모든 정보 삭제에 동의합니다"
+                        type="button"
+                        class="btnNormal strong small"
+                        value="위 내용을 모두 확인하였고, 모든 정보 삭제에 동의합니다"
                 />
               </div>
             </div>
             <!-- 회원탈퇴 끝 -->
+          </div>
 
-            <!-- 관심 아티스트 -->
-            <div class="myArtist-list mypage-div" style="display: none">
-              <div class="sectionPadding">
-                <div class="innerContainer">
-                  <nav class="segmented" style="display: none">
-                    <a class="first selected Artist-All-button">전체</a>
-                    <a class="second Artist-Musician-button">뮤지션</a>
-                    <a class="last Artist-Performance-button">퍼포먼스</a>
-                  </nav>
-                  <div class="myArtist-Category-flex">
-                    <p class="sorting">
-                      <span class="sorting artist-All-Dot">·</span
-                      ><a href="" class="myArtist artist-All-button">전체</a>
-                      <span class="sorting artist-Musician-Dot">·</span
-                      ><a href="" class="myArtist artist-Musician-button"
-                        >뮤지션</a
-                      >
-                      <span class="sorting artist-Performance-Dot">·</span
-                      ><a href="" class="myArtist artist-Performance-button"
-                        >퍼포먼스</a
-                      >
-                    </p>
-                    <p class="myDonation-user">
-                      <a class="">나의 후원</a>
-                    </p>
-                  </div>
+          <!-- 소메뉴 아티스트 계정 등록  -->
 
-                  <!-- 전체 관심 아티스트 -->
-                  <div class="sectionPadding myArtistList top myArtistList-All">
-                    <div class="artistList">
-                      <a href="" class="myArtist">
-                        <img
-                          class="myArtist-image"
-                          src="/images/myPage/pptnz.jpg"
-                        />
-                        <span class="myArtistName">페퍼톤스</span>
-                        <span class="myArtistType">그룹 (남성) | 뮤지션</span>
-                      </a>
-                      <div class="artistLike">
-                        <a class="my-heart" id="myArtist-1"
-                          ><img
-                            id="heart-icon-1"
-                            class="heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            id="heartNon-icon-1"
-                            class="heart-nonSelected"
-                            src="/images/myPage/non-heart-icon.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
+          <div class="artistJoin-desc"  style="display: none;">
 
-                    <div class="artistList">
-                      <a href="" class="myArtist">
-                        <img
-                          class="myArtist-image"
-                          src="https://img.hankyung.com/photo/202012/01.22909739.1.jpg"
-                        />
-                        <span class="myArtistName">세븐틴</span>
-                        <span class="myArtistType">그룹 (남성) | 뮤지션</span>
-                      </a>
-                      <div class="artistLike">
-                        <a class="my-heart"
-                          ><img
-                            class="heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="heart-nonSelected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-
-                    <div class="artistList">
-                      <a href="" class="myArtist">
-                        <img
-                          class="myArtist-image"
-                          src="https://dimg.donga.com/wps/NEWS/IMAGE/2022/02/15/111796119.2.jpg"
-                        />
-                        <span class="myArtistName">아이키</span>
-                        <span class="myArtistType">솔로 (여성) | 퍼포먼스</span>
-                      </a>
-                      <div class="artistLike">
-                        <a class="my-heart"
-                          ><img
-                            class="heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            src="/images/myPage/heart-icon.png"
-                            width="30px"
-                            dis
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-
-                    <div class="artistList">
-                      <a href="" class="myArtist">
-                        <img
-                          class="myArtist-image"
-                          src="http://image.yes24.com/images/chyes24/4/3/e/2/43e200f057ad9ea4b9a69b918dbf696d.jpg"
-                          style="object-position: top"
-                        />
-                        <span class="myArtistName">최현우</span>
-                        <span class="myArtistType">솔로 (남성) | 퍼포먼스</span>
-                      </a>
-                      <div class="artistLike">
-                        <a class="my-heart"
-                          ><img
-                            class="heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="heart-nonSelected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-
-                    <div class="artistList">
-                      <a href="" class="myArtist">
-                        <img
-                          class="myArtist-image"
-                          src="https://file.mk.co.kr/meet/neds/2017/06/image_readtop_2017_417033_14980439402928151.jpg"
-                        />
-                        <span class="myArtistName">이수현</span>
-                        <span class="myArtistType">솔로 (여성) | 뮤지션</span>
-                      </a>
-                      <div class="artistLike">
-                        <a class="my-heart"
-                          ><img
-                            class="heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="heart-nonSelected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-
-                    <div class="artistList">
-                      <a href="" class="myArtist">
-                        <img
-                          class="myArtist-image"
-                          src="https://file.mk.co.kr/meet/neds/2017/06/image_readtop_2017_417033_14980439402928151.jpg"
-                        />
-                        <span class="myArtistName">이수현</span>
-                        <span class="myArtistType">솔로 (여성) | 뮤지션</span>
-                      </a>
-                      <div class="artistLike">
-                        <a class="my-heart"
-                          ><img
-                            class="heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-
-                    <div class="artistList">
-                      <a href="" class="myArtist">
-                        <img
-                          class="myArtist-image"
-                          src="https://file.mk.co.kr/meet/neds/2017/06/image_readtop_2017_417033_14980439402928151.jpg"
-                        />
-                        <span class="myArtistName">이수현</span>
-                        <span class="myArtistType">솔로 (여성) | 뮤지션</span>
-                      </a>
-                      <div class="artistLike">
-                        <a class="my-heart"
-                          ><img
-                            class="heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- 뮤지션 관심 아티스트 -->
-                  <div
-                    class="sectionPadding myArtistList top myArtistList-Musician"
-                    style="display: none"
-                  >
-                    <div class="artistList">
-                      <a href="" class="myArtist">
-                        <img
-                          class="myArtist-image"
-                          src="/images/myPage/pptnz.jpg"
-                        />
-                        <span class="myArtistName">페퍼톤스</span>
-                        <span class="myArtistType">그룹 (남성) | 뮤지션</span>
-                      </a>
-                      <div class="artistLike">
-                        <a class="my-heart"
-                          ><img
-                            class="heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-                    <div class="artistList">
-                      <a href="" class="myArtist">
-                        <img
-                          class="myArtist-image"
-                          src="https://img.hankyung.com/photo/202012/01.22909739.1.jpg"
-                        />
-                        <span class="myArtistName">세븐틴</span>
-                        <span class="myArtistType">그룹 (남성) | 뮤지션</span>
-                      </a>
-                      <div class="artistLike">
-                        <a class="my-heart"
-                          ><img
-                            class="heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-                    <div class="artistList">
-                      <a href="" class="myArtist">
-                        <img
-                          class="myArtist-image"
-                          src="https://file.mk.co.kr/meet/neds/2017/06/image_readtop_2017_417033_14980439402928151.jpg"
-                        />
-                        <span class="myArtistName">이수현</span>
-                        <span class="myArtistType">솔로 (여성) | 뮤지션</span>
-                      </a>
-                      <div class="artistLike">
-                        <a class="my-heart"
-                          ><img
-                            class="heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- 퍼포먼스 관심 아티스트 -->
-                  <div
-                    class="sectionPadding myArtistList top myArtistList-Performance"
-                    style="display: none"
-                  >
-                    <div class="artistList">
-                      <a href="" class="myArtist">
-                        <img
-                          class="myArtist-image"
-                          src="https://dimg.donga.com/wps/NEWS/IMAGE/2022/02/15/111796119.2.jpg"
-                        />
-                        <span class="myArtistName">아이키</span>
-                        <span class="myArtistType">솔로 (여성) | 퍼포먼스</span>
-                      </a>
-                      <div class="artistLike">
-                        <a class="my-heart"
-                          ><img
-                            class="heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            dis
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-
-                    <div class="artistList">
-                      <a href="" class="myArtist">
-                        <img
-                          class="myArtist-image"
-                          src="http://image.yes24.com/images/chyes24/4/3/e/2/43e200f057ad9ea4b9a69b918dbf696d.jpg"
-                          style="object-position: top"
-                        />
-                        <span class="myArtistName">최현우</span>
-                        <span class="myArtistType">솔로 (남성) | 퍼포먼스</span>
-                      </a>
-                      <div class="artistLike">
-                        <a class="my-heart"
-                          ><img
-                            class="heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- 페이징 -->
-                <div class="mypage-paging">
-                  <div class="mypage-pageStyle">
-                    <a class="mypage-page-first"><<</a>
-                    <a class="mypage-page-prev"><</a>
-                    <div>
-                      <a class="">1</a>
-                    </div>
-                    <a class="mypage-page-next">></a>
-                    <a class="mypage-page-last">>></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 관심 아티스트 나의 후원 탭-->
-            <div class="myArtistDonation-List" style="display: none">
-              <div class="artist-join-title-box">
-                <div class="work_detail">
-                  <div class="detail-donation">
-                    <p>나의 후원 기록</p>
-                    <div class="announcement">
-                      <p
-                        style="
+            <div class="artist-join-title-box">
+              <div class="work_detail">
+                <div class="detail">
+                  <p>아티스트 등록 신청</p>
+                  <div class="announcement">
+                    <p
+                            style="
                           font-size: 13px;
                           margin-top: 0;
                           margin-bottom: 0px;
                           color: #ff9326;
                         "
-                      >
-                        <span class="announce"
-                          >*결제 문의는 1:1 문의 페이지를 이용해주세요.</span
-                        >
-                      </p>
-
-                      <div class="donation-soring">
-                        <span class="sorting"><a>최신순</a></span>
-                        <span class="sorting"><a>오래된순</a></span>
-                        <span class="sorting"><a>금액높은순</a></span>
-                        <span class="sorting"><a>금액낮은순</a></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- <div class="myArtist-Category-flex">
-                <p class="sorting">
-                  <span class="sorting artist-All-Dot">·</span
-                  ><a href="" class="myArtist artist-All-button">전체</a>
-                  <span class="sorting artist-Musician-Dot">·</span
-                  ><a href="" class="myArtist artist-Musician-button"
-                    >뮤지션</a
-                  >
-                  <span class="sorting artist-Performance-Dot">·</span
-                  ><a href="" class="myArtist artist-Performance-button"
-                    >퍼포먼스</a
-                  >
-                </p>
-                <p class="myDonation-user">
-                  <a class="">나의 후원</a>
-                </p>
-              </div> -->
-
-              <div class="donation-wrap">
-                <div class="donationTable-wrap">
-                  <table class="donation-table">
-                    <thead class="donation-header">
-                      <tr class="">
-                        <th class="row-1">
-                          <div class="">
-                            <p class="">날짜</p>
-                          </div>
-                        </th>
-                        <th class="row-2">
-                          <div class="">
-                            <p class="">아티스트명</p>
-                          </div>
-                        </th>
-                        <th class="row-3">
-                          <div class="">
-                            <p class="">금액</p>
-                          </div>
-                        </th>
-                        <th class="row-4">
-                          <div class="">
-                            <p class="">결제수단</p>
-                          </div>
-                        </th>
-                      </tr>
-                    </thead>
-
-                    <tbody class="donation-body">
-                      <tr class="row">
-                        <td class="cell">
-                          <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
-                        </td>
-                        <td class="cell">
-                          <div class="table-artist-flex">
-                            <a class="" href=""
-                              ><div
-                                aria-label="채널 아이콘"
-                                class="donation-icon"
-                              >
-                                <img
-                                  class="donation-icon"
-                                  alt=""
-                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
-                                /></div
-                            ></a>
-                            <div class="">
-                              <p class="table-p">
-                                <a class="" href="">페퍼톤스</a>
-                              </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="cell">
-                          <p class="">100,000</p>
-                        </td>
-                        <td class="cell">
-                          <div class="">
-                            <p class="">휴대폰 간편결제</p>
-                          </div>
-                        </td>
-                      </tr>
-
-                      <tr class="row">
-                        <td class="cell">
-                          <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
-                        </td>
-                        <td class="cell">
-                          <div class="table-artist-flex">
-                            <a class="" href=""
-                              ><div
-                                aria-label="채널 아이콘"
-                                class="donation-icon"
-                              >
-                                <img
-                                  class="donation-icon"
-                                  alt=""
-                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
-                                /></div
-                            ></a>
-                            <div class="">
-                              <p class="table-p">
-                                <a class="" href="">페퍼톤스</a>
-                              </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="cell">
-                          <p class="">100,000</p>
-                        </td>
-                        <td class="cell">
-                          <div class="">
-                            <p class="">휴대폰 간편결제</p>
-                          </div>
-                        </td>
-                      </tr>
-
-                      <tr class="row">
-                        <td class="cell">
-                          <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
-                        </td>
-                        <td class="cell">
-                          <div class="table-artist-flex">
-                            <a class="" href=""
-                              ><div
-                                aria-label="채널 아이콘"
-                                class="donation-icon"
-                              >
-                                <img
-                                  class="donation-icon"
-                                  alt=""
-                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
-                                /></div
-                            ></a>
-                            <div class="">
-                              <p class="table-p">
-                                <a class="" href="">페퍼톤스</a>
-                              </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="cell">
-                          <p class="">100,000</p>
-                        </td>
-                        <td class="cell">
-                          <div class="">
-                            <p class="">휴대폰 간편결제</p>
-                          </div>
-                        </td>
-                      </tr>
-
-                      <tr class="row">
-                        <td class="cell">
-                          <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
-                        </td>
-                        <td class="cell">
-                          <div class="table-artist-flex">
-                            <a class="" href=""
-                              ><div
-                                aria-label="채널 아이콘"
-                                class="donation-icon"
-                              >
-                                <img
-                                  class="donation-icon"
-                                  alt=""
-                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
-                                /></div
-                            ></a>
-                            <div class="">
-                              <p class="table-p">
-                                <a class="" href="">페퍼톤스</a>
-                              </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="cell">
-                          <p class="">100,000</p>
-                        </td>
-                        <td class="cell">
-                          <div class="">
-                            <p class="">휴대폰 간편결제</p>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <!-- 페이징 -->
-              <div class="mypage-paging">
-                <div class="mypage-pageStyle">
-                  <a class="mypage-page-first"><<</a>
-                  <a class="mypage-page-prev"><</a>
-                  <div>
-                    <a class="">1</a>
-                  </div>
-                  <a class="mypage-page-next">></a>
-                  <a class="mypage-page-last">>></a>
-                </div>
-              </div>
-            </div>
-            <!-- 아티스트 후원회원 목록 끝 -->
-
-            <!-- 관심 아티스트 끝 -->
-
-            <!-- 관심 작품 -->
-            <div class="myWork-list mypage-div" style="display: none">
-              <div class="sectionPadding">
-                <div class="innerContainer">
-                  <nav class="segmented" style="display: none">
-                    <a class="first selected" href="mypagePwCheck.html">전체</a>
-<!--                    <a class="second" href="mypagePwChange.html">뮤지션</a>-->
-<!--                    <a class="last" href="mypageDelete.html">퍼포먼스</a>-->
-                  </nav>
-
-                  <p class="sorting">
-                    <span class="sorting work-All-Dot">·</span
-                    ><a href="" class="myArtist work-All-button">전체</a>
-
-                  </p>
-
-                  <!-- 관심 작품 전체 카테고리 -->
-                  <div class="sectionPadding myArtistList top myWorkList-All">
-                    <div class="artistList">
-                      <a href="" class="myWork myLike">
-                        <img
-                          class="myWork-image"
-                          src="https://image.bugsm.co.kr/album/images/170/40389/4038932.jpg"
-                        />
-                        <div class="info">
-                          <div class="myWork">
-                            <span class="myWorkName">스우파 손목 밴드</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myWorkType">굿즈 (잡화)</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myArtistName">아이키 | 퍼포먼스</span>
-                          </div>
-                        </div>
-                      </a>
-                      <div class="workLike">
-                        <a href=""
-                          ><img
-                            class="myWorkLike heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="myWorkLike heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-
-                    <div class="artistList">
-                      <a href="" class="myWork myLike">
-                        <img
-                          class="myWork-image"
-                          src="https://image.bugsm.co.kr/album/images/170/204721/20472184.jpg?version=20220608120020.0"
-                        />
-                        <div class="info">
-                          <div class="myWork">
-                            <span class="myWorkName">스우파 손목 밴드</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myWorkType">굿즈 (잡화)</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myArtistName">아이키 | 퍼포먼스</span>
-                          </div>
-                        </div>
-                      </a>
-                      <div class="workLike">
-                        <a href=""
-                          ><img
-                            class="myWorkLike heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="myWorkLike heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-
-                    <div class="artistList">
-                      <a href="" class="myWork myLike">
-                        <img
-                          class="myWork-image"
-                          src="https://image.bugsm.co.kr/album/images/170/40687/4068724.jpg"
-                        />
-                        <div class="info">
-                          <div class="myWork">
-                            <span class="myWorkName">스우파 손목 밴드</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myWorkType">굿즈 (잡화)</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myArtistName">아이키 | 퍼포먼스</span>
-                          </div>
-                        </div>
-                      </a>
-                      <div class="workLike">
-                        <a class="" href=""
-                          ><img
-                            class="myWorkLike heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="myWorkLike heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-
-                    <div class="artistList">
-                      <a href="" class="myWork myLike">
-                        <img
-                          class="myWork-image"
-                          src="https://image.bugsm.co.kr/album/images/170/40536/4053603.jpg"
-                        />
-                        <div class="info">
-                          <div class="myWork">
-                            <span class="myWorkName">버스커버스커 기타</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myWorkType">기타 (악기)</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myArtistName">장범준 | 뮤지션</span>
-                          </div>
-                        </div>
-                      </a>
-                      <div class="workLike">
-                        <a href=""
-                          ><img
-                            class="myWorkLike heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="myWorkLike heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-
-                    <div class="artistList">
-                      <a href="" class="myWork myLike">
-                        <img
-                          class="myWork-image"
-                          src="https://image.bugsm.co.kr/album/images/170/9996/999668.jpg"
-                        />
-                        <div class="info">
-                          <div class="myWork">
-                            <span class="myWorkName">딕펑스 슬로건</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myWorkType">굿즈 (잡화)</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myArtistName">딕펑스 | 뮤지션</span>
-                          </div>
-                        </div>
-                      </a>
-                      <div class="workLike">
-                        <a href=""
-                          ><img
-                            class="myWorkLike heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="myWorkLike heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-                    <div class="artistList">
-                      <a href="" class="myWork myLike">
-                        <img
-                          class="myWork-image"
-                          src="https://image.bugsm.co.kr/album/images/170/9340/934033.jpg"
-                        />
-                        <div class="info">
-                          <div class="myWork">
-                            <span class="myWorkName">유희열 안테나 티셔츠</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myWorkType">굿즈 (잡화)</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myArtistName">페퍼톤스 | 뮤지션</span>
-                          </div>
-                        </div>
-                      </a>
-                      <div class="workLike">
-                        <a href=""
-                          ><img
-                            class="myWorkLike heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="myWorkLike heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-                    <div class="artistList">
-                      <a href="" class="myWork myLike">
-                        <img
-                          class="myWork-image"
-                          src="https://image.bugsm.co.kr/album/images/170/9340/934033.jpg"
-                        />
-                        <div class="info">
-                          <div class="myWork">
-                            <span class="myWorkName">유희열 안테나 티셔츠</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myWorkType">굿즈 (잡화)</span>
-                          </div>
-                          <div class="myWork workInfo-width">
-                            <span class="myArtistName">페퍼톤스 | 뮤지션</span>
-                          </div>
-                        </div>
-                      </a>
-                      <div class="workLike">
-                        <a href=""
-                          ><img
-                            class="myWorkLike heart-selected"
-                            src="/images/myPage/heart-icon.png"
-                            width="30px" /><img
-                            class="myWorkLike heart-nonSelected"
-                            src="/images/myPage/heartNon-Select.png"
-                            width="30px"
-                            style="display: none"
-                        /></a>
-                      </div>
-                    </div>
-                  </div>
-
-<!--                  &lt;!&ndash; 관심 작품 뮤지션 카테고리 &ndash;&gt;-->
-<!--                  <div-->
-<!--                    class="sectionPadding myArtistList top myWorkList-Musician"-->
-<!--                    style="display: none"-->
-<!--                  >-->
-<!--                    <div class="artistList">-->
-<!--                      <a href="" class="myWork myLike">-->
-<!--                        <img-->
-<!--                          class="myWork-image"-->
-<!--                          src="https://image.bugsm.co.kr/album/images/170/40536/4053603.jpg"-->
-<!--                        />-->
-<!--                        <div class="info">-->
-<!--                          <div class="myWork">-->
-<!--                            <span class="myWorkName">버스커버스커 기타</span>-->
-<!--                          </div>-->
-<!--                          <div class="myWork workInfo-width">-->
-<!--                            <span class="myWorkType">기타 (악기)</span>-->
-<!--                          </div>-->
-<!--                          <div class="myWork workInfo-width">-->
-<!--                            <span class="myArtistName">장범준 | 뮤지션</span>-->
-<!--                          </div>-->
-<!--                        </div>-->
-<!--                      </a>-->
-<!--                      <div class="workLike">-->
-<!--                        <a href=""-->
-<!--                          ><img-->
-<!--                            class="myWorkLike heart-selected"-->
-<!--                            src="/images/myPage/heart-icon.png"-->
-<!--                            width="30px" /><img-->
-<!--                            class="myWorkLike heart-nonSelected"-->
-<!--                            src="/images/myPage/heartNon-Select.png"-->
-<!--                            width="30px"-->
-<!--                            style="display: none"-->
-<!--                        /></a>-->
-<!--                      </div>-->
-<!--                    </div>-->
-
-<!--                    <div class="artistList">-->
-<!--                      <a href="" class="myWork myLike">-->
-<!--                        <img-->
-<!--                          class="myWork-image"-->
-<!--                          src="https://image.bugsm.co.kr/album/images/170/9996/999668.jpg"-->
-<!--                        />-->
-<!--                        <div class="info">-->
-<!--                          <div class="myWork">-->
-<!--                            <span class="myWorkName">딕펑스 슬로건</span>-->
-<!--                          </div>-->
-<!--                          <div class="myWork workInfo-width">-->
-<!--                            <span class="myWorkType">굿즈 (잡화)</span>-->
-<!--                          </div>-->
-<!--                          <div class="myWork workInfo-width">-->
-<!--                            <span class="myArtistName">딕펑스 | 뮤지션</span>-->
-<!--                          </div>-->
-<!--                        </div>-->
-<!--                      </a>-->
-<!--                      <div class="workLike">-->
-<!--                        <a href=""-->
-<!--                          ><img-->
-<!--                            class="myWorkLike heart-selected"-->
-<!--                            src="/images/myPage/heart-icon.png"-->
-<!--                            width="30px" /><img-->
-<!--                            class="myWorkLike heart-nonSelected"-->
-<!--                            src="/images/myPage/heartNon-Select.png"-->
-<!--                            width="30px"-->
-<!--                            style="display: none"-->
-<!--                        /></a>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                    <div class="artistList">-->
-<!--                      <a href="" class="myWork myLike">-->
-<!--                        <img-->
-<!--                          class="myWork-image"-->
-<!--                          src="https://image.bugsm.co.kr/album/images/170/9340/934033.jpg"-->
-<!--                        />-->
-<!--                        <div class="info">-->
-<!--                          <div class="myWork">-->
-<!--                            <span class="myWorkName">유희열 안테나 티셔츠</span>-->
-<!--                          </div>-->
-<!--                          <div class="myWork workInfo-width">-->
-<!--                            <span class="myWorkType">굿즈 (잡화)</span>-->
-<!--                          </div>-->
-<!--                          <div class="myWork workInfo-width">-->
-<!--                            <span class="myArtistName">페퍼톤스 | 뮤지션</span>-->
-<!--                          </div>-->
-<!--                        </div>-->
-<!--                      </a>-->
-<!--                      <div class="workLike">-->
-<!--                        <a href=""-->
-<!--                          ><img-->
-<!--                            class="myWorkLike heart-selected"-->
-<!--                            src="/images/myPage/heart-icon.png"-->
-<!--                            width="30px" /><img-->
-<!--                            class="myWorkLike heart-nonSelected"-->
-<!--                            src="/images/myPage/heartNon-Select.png"-->
-<!--                            width="30px"-->
-<!--                            style="display: none"-->
-<!--                        /></a>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
-
-                  <!-- 관심 작품 퍼포먼스 카테고리 -->
-<!--                  <div-->
-<!--                    class="sectionPadding myArtistList top myWorkList-Performance"-->
-<!--                    style="display: none"-->
-<!--                  >-->
-<!--                    <div class="artistList">-->
-<!--                      <a href="" class="myWork myLike">-->
-<!--                        <img-->
-<!--                          class="myWork-image"-->
-<!--                          src="https://image.bugsm.co.kr/album/images/170/40389/4038932.jpg"-->
-<!--                        />-->
-<!--                        <div class="info">-->
-<!--                          <div class="myWork">-->
-<!--                            <span class="myWorkName">스우파 손목 밴드</span>-->
-<!--                          </div>-->
-<!--                          <div class="myWork workInfo-width">-->
-<!--                            <span class="myWorkType">굿즈 (잡화)</span>-->
-<!--                          </div>-->
-<!--                          <div class="myWork workInfo-width">-->
-<!--                            <span class="myArtistName">아이키 | 퍼포먼스</span>-->
-<!--                          </div>-->
-<!--                        </div>-->
-<!--                      </a>-->
-<!--                      <div class="workLike">-->
-<!--                        <a href=""-->
-<!--                          ><img-->
-<!--                            class="myWorkLike heart-selected"-->
-<!--                            src="/images/myPage/heart-icon.png"-->
-<!--                            width="30px" /><img-->
-<!--                            class="myWorkLike heart-nonSelected"-->
-<!--                            src="/images/myPage/heartNon-Select.png"-->
-<!--                            width="30px"-->
-<!--                            style="display: none"-->
-<!--                        /></a>-->
-<!--                      </div>-->
-<!--                    </div>-->
-
-<!--                    <div class="artistList">-->
-<!--                      <a href="" class="myWork myLike">-->
-<!--                        <img-->
-<!--                          class="myWork-image"-->
-<!--                          src="https://image.bugsm.co.kr/album/images/170/204721/20472184.jpg?version=20220608120020.0"-->
-<!--                        />-->
-<!--                        <div class="info">-->
-<!--                          <div class="myWork">-->
-<!--                            <span class="myWorkName">스우파 손목 밴드</span>-->
-<!--                          </div>-->
-<!--                          <div class="myWork workInfo-width">-->
-<!--                            <span class="myWorkType">굿즈 (잡화)</span>-->
-<!--                          </div>-->
-<!--                          <div class="myWork workInfo-width">-->
-<!--                            <span class="myArtistName">아이키 | 퍼포먼스</span>-->
-<!--                          </div>-->
-<!--                        </div>-->
-<!--                      </a>-->
-<!--                      <div class="workLike">-->
-<!--                        <a href=""-->
-<!--                          ><img-->
-<!--                            class="myWorkLike heart-selected"-->
-<!--                            src="/images/myPage/heart-icon.png"-->
-<!--                            width="30px" /><img-->
-<!--                            class="myWorkLike heart-nonSelected"-->
-<!--                            src="/images/myPage/heartNon-Select.png"-->
-<!--                            width="30px"-->
-<!--                            style="display: none"-->
-<!--                        /></a>-->
-<!--                      </div>-->
-<!--                    </div>-->
-
-<!--                    <div class="artistList">-->
-<!--                      <a href="" class="myWork myLike">-->
-<!--                        <img-->
-<!--                          class="myWorFk-image"-->
-<!--                          src="https://image.bugsm.co.kr/album/images/170/40687/4068724.jpg"-->
-<!--                        />-->
-<!--                        <div class="info">-->
-<!--                          <div class="myWork">-->
-<!--                            <span class="myWorkName">스우파 손목 밴드</span>-->
-<!--                          </div>-->
-<!--                          <div class="myWork workInfo-width">-->
-<!--                            <span class="myWorkType">굿즈 (잡화)</span>-->
-<!--                          </div>-->
-<!--                          <div class="myWork workInfo-width">-->
-<!--                            <span class="myArtistName">아이키 | 퍼포먼스</span>-->
-<!--                          </div>-->
-<!--                        </div>-->
-<!--                      </a>-->
-<!--                      <div class="workLike">-->
-<!--                        <a class="" href=""-->
-<!--                          ><img-->
-<!--                            class="myWorkLike heart-selected"-->
-<!--                            src="/images/myPage/heart-icon.png"-->
-<!--                            width="30px" /><img-->
-<!--                            class="myWorkLike heart-nonSelected"-->
-<!--                            src="/images/myPage/heartNon-Select.png"-->
-<!--                            width="30px"-->
-<!--                            style="display: none"-->
-<!--                        /></a>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-                <!-- 페이징 -->
-                <div class="mypage-paging">
-                  <div class="mypage-pageStyle">
-                    <a class="mypage-page-first"><<</a>
-                    <a class="mypage-page-prev"><</a>
-                    <div>
-                      <a class="">1</a>
-                    </div>
-                    <a class="mypage-page-next">></a>
-                    <a class="mypage-page-last">>></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 관심 작품 끝 -->
-
-            <!-- 내가 쓴 댓글 -->
-            <div class="myReplyList-div mypage-div" style="display: none">
-              <div class="reply-admin">
-                <span class="reply-all"
-                  ><button id="reply-all-button" class="reply-button">
-                    전체 선택
-                  </button></span
-                >
-                <span class="reply-delete"
-                  ><button name="reply-delete-button" class="reply-button">
-                    삭제
-                  </button></span
-                >
-              </div>
-              <div class="replyBox">
-                <div class="reply-flex-box">
-                  <div class="reply-checkbox">
-                    <input name="reply-check" type="checkbox" />
-                  </div>
-                  <div class="reply-profile">
-                    <img
-                      class="reply-img"
-                      src="https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/app/Iv/MyImg/2021/04/08/65_1617871495.jpg/dims/resize/Q_80,0"
-                      width="60px"
-                    />
-                  </div>
-                  <div class="reply-content-box">
-                    <span class="reply-nickname"> 왕고냐 </span>
-                    <span class="replyDate">22.06.11 13:32</span>
-                    <div class="replyContent reply-content-width">
-                      페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스
-                      개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아
-                      페퍼톤스 개좋아 페퍼톤스 개좋아
-                    </div>
-                  </div>
-                </div>
-
-                <div class="reply-right">
-                  <div class="replyArtist">
-                    <div class="reply-artistBox">
-                      <div class="reply-artist">
-                        <img
-                          class="reply-img-artist"
-                          src="https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG"
-                          alt=""
-                        />
-                      </div>
-
-                      <div class="reply-content-box reply-artist-content">
-                        <div class="reply-nickname">페퍼톤스</div>
-                        <div class="replyContent artist">뮤지션</div>
-                      </div>
-                    </div>
-                  </div>
-                  <button
-                    name="reply-delete-button"
-                    class="reply-button list-button"
-                  >
-                    삭제
-                  </button>
-                </div>
-              </div>
-
-              <div class="replyBox">
-                <div class="reply-flex-box">
-                  <div class="reply-checkbox">
-                    <input name="reply-check" type="checkbox" />
-                  </div>
-                  <div class="reply-profile">
-                    <img
-                      class="reply-img"
-                      src="https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/app/Iv/MyImg/2021/04/08/65_1617871495.jpg/dims/resize/Q_80,0"
-                      width="60px"
-                    />
-                  </div>
-                  <div class="reply-content-box">
-                    <span class="reply-nickname"> 왕고냐 </span>
-                    <span class="replyDate">22.06.11 13:32</span>
-                    <div class="replyContent reply-content-width"></div>
-                  </div>
-                </div>
-
-                <div class="reply-right">
-                  <div class="replyArtist">
-                    <div class="reply-artistBox">
-                      <div class="reply-artist">
-                        <img
-                          class="reply-img-artist"
-                          src="https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG"
-                          alt=""
-                        />
-                      </div>
-
-                      <div class="reply-content-box reply-artist-content">
-                        <div class="reply-nickname">페퍼톤스</div>
-                        <div class="replyContent artist">뮤지션</div>
-                      </div>
-                    </div>
-                  </div>
-                  <button
-                    name="reply-delete-button"
-                    class="reply-button list-button"
-                  >
-                    삭제
-                  </button>
-                </div>
-              </div>
-
-              <div class="replyBox">
-                <div class="reply-flex-box">
-                  <div class="reply-checkbox">
-                    <input name="reply-check" type="checkbox" />
-                  </div>
-                  <div class="reply-profile">
-                    <img
-                      class="reply-img"
-                      src="https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/app/Iv/MyImg/2021/04/08/65_1617871495.jpg/dims/resize/Q_80,0"
-                      width="60px"
-                    />
-                  </div>
-                  <div class="reply-content-box">
-                    <span class="reply-nickname"> 왕고냐 </span>
-                    <span class="replyDate">22.06.11 13:32</span>
-                    <div class="replyContent reply-content-width">
-                      페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스
-                      개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아
-                      페퍼톤스 개좋아 페퍼톤스 개좋아
-                    </div>
-                  </div>
-                </div>
-
-                <div class="reply-right">
-                  <div class="replyArtist">
-                    <div class="reply-artistBox">
-                      <div class="reply-artist">
-                        <img
-                          class="reply-img-artist"
-                          src="https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG"
-                          alt=""
-                        />
-                      </div>
-
-                      <div class="reply-content-box reply-artist-content">
-                        <div class="reply-nickname">페퍼톤스</div>
-                        <div class="replyContent artist">뮤지션</div>
-                      </div>
-                    </div>
-                  </div>
-                  <button
-                    name="reply-delete-button"
-                    class="reply-button list-button"
-                  >
-                    삭제
-                  </button>
-                </div>
-              </div>
-
-              <!-- 페이징 -->
-              <div class="mypage-paging">
-                <div class="mypage-pageStyle">
-                  <a class="mypage-page-first"><<</a>
-                  <a class="mypage-page-prev"><</a>
-                  <div>
-                    <a class="">1</a>
-                  </div>
-                  <a class="mypage-page-next">></a>
-                  <a class="mypage-page-last">>></a>
-                </div>
-              </div>
-            </div>
-
-            <!-- 내가 쓴 댓글 끝 -->
-
-            <!-- 아티스트 계정 -->
-
-            <div class="ArtistInfo-div mypage-div">
-              <!-- 소메뉴 아티스트 나의 아티스트 계정  -->
-              <div class="artistUser-List" style="display: none">
-                <div class="artistUser-listBox">
-                  <div class="reartistUser-list-right">
-                    <div class="artistUser-listArtist">
-                      <div class="artistUser-list-artistBox">
-                        <div class="artistUser-list-artist">
-                          <img
-                            class="artistUser-list-img-artist"
-                            src="https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG"
-                            alt=""
-                          />
-                        </div>
-
-                        <div
-                          class="artistUser-list-content-box artistUser-list-artist-content"
-                        >
-                          <div class="artistUser-list-nickname">페퍼톤스</div>
-                          <div class="artistUser-listContent artist">
-                            뮤지션
-                          </div>
-                        </div>
-                        <button class="artistUser-list-button list-button">
-                          수정
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class=""></div>
-              </div>
-              <!-- 소메뉴 나의 아티스트 계정 끝 -->
-              <!-- 소메뉴 아티스트 계정 수정  -->
-              <div class="artistUser-Info" style="display: none;">
-                <div class="artist-join-title-box">
-                  <div class="work_detail">
-                    <div class="detail">
-                      <p>아티스트 정보 수정</p>
-                      <div class="announcement">
-                        <p
-                          style="
-                            font-size: 13px;
-                            margin-top: 0;
-                            margin-bottom: 0px;
-                            color: #ff9326;
-                          "
-                        >
-                          <span class="announce"
-                            >*수정 신청시 빠른시일내로 등록심사를
-                            진행하겠습니다.</span
-                          >
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="artist-join-title">
-                  <div>아티스트명</div>
-                  <p class="input-name-p">
-                    <input
-                      id="artist-update-name"
-                      class="input_text_name"
-                      placeholder="아티스트 이름을 입력하세요"
-                      value="페퍼톤스"
-                    />
-                  </p>
-                </div>
-
-                <div class="artist-join-form-box">
-                  <div class="artist-join-image-box" id="artist-update-image-box">
-                    <span class="input-artist-image-desc"
-                      >아티스트 대표 사진을 <br />등록해주세요.</span
                     >
-                    <img
-                      id="artist-join-profile"
-                      class="artist-join-profile"
-                      src="/images/myPage/photo-plus-icon.png"
-                      alt=""
-                    />
-                  </div>
-                  <input
-                    type="file"
-                    id="artist-update-file"
-                    style="visibility: hidden; display: none"
-                  />
-  
-
-                  <div class="artist-join-info-box">
-                    <div class="info_area1">
-                      <dl style="margin-bottom: 0">
-                        <dt>종류</dt>
-                        <dd>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                            class="form-inline"
-                          >
-                            <select
-                            id="artist-update-category"
-                              name="artist-form-category"
-                              class="artist-form-category"
-                            >
-                              <option value="뮤지션">
-                                아티스트 종류를 선택해주세요.
-                              </option>
-                              <option value="뮤지션">뮤지션</option>
-                              <option value="퍼포먼스">퍼포먼스</option>
-                            </select>
-                          </span>
-                        </dd>
-                      </dl>
-                    </div>
-                    <div class="form-inline">
-                      <div class="info_area2">
-                        <dt>아티스트 소개</dt>
-                        <dd class="textarea-dd">
-                          <textarea
-                            name=""
-                            id="artist-update-description" 
-                            cols="79"
-                            rows="5"
-                            placeholder="아티스트를 간단히 소개해주세요."
-                          ></textarea>
-                        </dd>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-button">
-                  <button id="artist-update-submit" class="artist-form-submit">
-                    수정
-                  </button>
-                </div>
-              </div>
-              <!-- 소메뉴 아티스트 계정 수정 끝 -->
-
-              <!-- 소메뉴 아티스트 계정 삭제  -->
-              <div class="artistUser-Delete" style="display: none">
-                <p class="desc">
-                  아티스트 계정 삭제에 앞서 아래의 사항들을 꼭 확인하시기
-                  바랍니다.
-                </p>
-
-                <div class="sectionPadding mypageDelete">
-                  <div class="delete-text">
-                    <li>
-                      아티스트 계정 삭제 시, 회원님의 모든 아티스트 정보 및
-                      이용정보가 삭제되며 복구가 불가능합니다.
-                    </li>
-                    <ul>
-                      <li>- 벅스 서비스 이용 정보, 보유 이용권, 벅스캐시 등</li>
-                      <li>
-                        - 구매하신 MP3의 재다운로드 및 라이센스 인증 등의 서비스
-                        이용 불가
-                      </li>
-                      <li>
-                        - 제휴사 결합 이용권을 사용 중인 경우, 벅스와 제휴사
-                        서비스 모두 이용 불가
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="delete-text">
-                    <ul>
-                      <li></li>
-                    </ul>
-                  </div>
-                  <div class="delete-text">
-                    <ul>
-                      <li></li>
-                    </ul>
-                  </div>
-                  <div class="delete-text">
-                    <ul>
-                      <li></li>
-                    </ul>
-                  </div>
-                  <div class="delete-text">
-                    <ul>
-                      <li></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="mypage-btn">
-                  <input
-                    type="button"
-                    class="btnNormal strong small"
-                    value="위 내용을 모두 확인하였고, 모든 정보 삭제에 동의합니다"
-                  />
-                </div>
-              </div>
-              <!-- 회원탈퇴 끝 -->
-            </div>
-
-            <!-- 소메뉴 아티스트 계정 등록  -->
-
-            <div class="artistJoin-desc"  style="display: none;">
-
-              <div class="artist-join-title-box">
-                <div class="work_detail">
-                  <div class="detail">
-                    <p>아티스트 등록 신청</p>
-                    <div class="announcement">
-                      <p
-                        style="
-                          font-size: 13px;
-                          margin-top: 0;
-                          margin-bottom: 0px;
-                          color: #ff9326;
-                        "
-                      >
                         <span class="announce"
-                          >*작품등록시 빠른시일내로 등록심사를
+                        >*작품등록시 빠른시일내로 등록심사를
                           진행하겠습니다.</span
                         >
-                      </p>
-                    </div>
+                    </p>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div class="artist-join-title">
-                <div>아티스트명</div>
-                <p class="input-name-p">
-                  <input
-                    id="artist-join-name"
-                    class="input_text_name"
-                    placeholder="아티스트 이름을 입력하세요"
-                  />
-                </p>
-              </div>
-
-              <div class="artist-join-form-box">
-                <div class="artist-join-image-box">
-                  <span class="input-artist-image-desc"
-                    >아티스트 대표 사진을 <br />등록해주세요.</span
-                  >
-                  <img
-                    id="artist-join-profile"
-                    class="artist-join-profile"
-                    src="/images/myPage/photo-plus-icon.png"
-                    alt=""
-                  />
-                </div>
+            <div class="artist-join-title">
+              <div>아티스트명</div>
+              <p class="input-name-p">
                 <input
-                  type="file"
-                  id="artist-join-file"
-                  style="visibility: hidden; display: none"
+                        id="artist-join-name"
+                        class="input_text_name"
+                        placeholder="아티스트 이름을 입력하세요"
                 />
+              </p>
+            </div>
 
-                <div class="artist-join-info-box">
-                  <div class="info_area1">
-                    <dl style="margin-bottom: 0">
-                      <dt>종류</dt>
-                      <dd>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                          class="form-inline"
-                        >
+            <div class="artist-join-form-box">
+              <div class="artist-join-image-box">
+                  <span class="input-artist-image-desc"
+                  >아티스트 대표 사진을 <br />등록해주세요.</span
+                  >
+                <img
+                        id="artist-join-profile"
+                        class="artist-join-profile"
+                        src="/images/myPage/photo-plus-icon.png"
+                        alt=""
+                />
+              </div>
+              <input
+                      type="file"
+                      id="artist-join-file"
+                      style="visibility: hidden; display: none"
+              />
+
+              <div class="artist-join-info-box">
+                <div class="info_area1">
+                  <dl style="margin-bottom: 0">
+                    <dt>종류</dt>
+                    <dd>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            class="form-inline"
+                    >
                           <select
-                          id="artist-join-category"
-                            name="artist-form-category"
-                            class="artist-form-category"
+                                  id="artist-join-category"
+                                  name="artist-form-category"
+                                  class="artist-form-category"
                           >
                             <option value="뮤지션">
                               아티스트 종류를 선택해주세요.
@@ -1897,254 +1564,254 @@
                             <option value="퍼포먼스">퍼포먼스</option>
                           </select>
                         </span>
-                      </dd>
-                    </dl>
-                  </div>
-                  <div class="form-inline">
-                    <div class="info_area2">
-                      <dt>아티스트 소개</dt>
-                      <dd class="textarea-dd">
+                    </dd>
+                  </dl>
+                </div>
+                <div class="form-inline">
+                  <div class="info_area2">
+                    <dt>아티스트 소개</dt>
+                    <dd class="textarea-dd">
                         <textarea
-                          name="workDescription"
-                          id="artist-join-description"
-                          cols="79"
-                          rows="5"
-                          placeholder="아티스트를 간단히 소개해주세요."
+                                name="workDescription"
+                                id="artist-join-description"
+                                cols="79"
+                                rows="5"
+                                placeholder="아티스트를 간단히 소개해주세요."
                         ></textarea>
-                      </dd>
-                    </div>
+                    </dd>
                   </div>
                 </div>
               </div>
-
-              <div class="form-button">
-                <button id="artist-join-submit" class="artist-form-submit">
-                  완료
-                </button>
-              </div>
             </div>
-            <!-- 아티스트 계정 등록 끝 -->
 
-            <!-- 소메뉴 아티스트 계정 후원 회원 목록  -->
-            <div class="artistUserDonation-List" style="display: none">
-              <div class="artist-join-title-box">
-                <div class="work_detail">
-                  <div class="detail-donation">
-                    <p>후원 회원 목록</p>
-                    <div class="announcement">
-                      <p
-                        style="
+            <div class="form-button">
+              <button id="artist-join-submit" class="artist-form-submit">
+                완료
+              </button>
+            </div>
+          </div>
+          <!-- 아티스트 계정 등록 끝 -->
+
+          <!-- 소메뉴 아티스트 계정 후원 회원 목록  -->
+          <div class="artistUserDonation-List" style="display: none">
+            <div class="artist-join-title-box">
+              <div class="work_detail">
+                <div class="detail-donation">
+                  <p>후원 회원 목록</p>
+                  <div class="announcement">
+                    <p
+                            style="
                           font-size: 13px;
                           margin-top: 0;
                           margin-bottom: 0px;
                           color: #ff9326;
                         "
-                      >
+                    >
                         <span class="announce"
-                          >*후원 관련 문의는 1:1 문의 페이지를
+                        >*후원 관련 문의는 1:1 문의 페이지를
                           이용해주세요.</span
                         >
-                      </p>
+                    </p>
 
-                      <div class="donation-soring">
-                        <span class="sorting"><a>최신순</a></span>
-                        <span class="sorting"><a>오래된순</a></span>
-                        <span class="sorting"><a>금액높은순</a></span>
-                        <span class="sorting"><a>금액낮은순</a></span>
-                      </div>
+                    <div class="donation-soring">
+                      <span class="sorting"><a>최신순</a></span>
+                      <span class="sorting"><a>오래된순</a></span>
+                      <span class="sorting"><a>금액높은순</a></span>
+                      <span class="sorting"><a>금액낮은순</a></span>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div class="donation-wrap">
-                <div class="donationTable-wrap">
-                  <table class="donation-table">
-                    <thead class="donation-header">
-                      <tr class="">
-                        <th class="row-1">
-                          <div class="">
-                            <p class="">날짜</p>
-                          </div>
-                        </th>
-                        <th class="row-2">
-                          <div class="">
-                            <p class="">후원자 닉네임</p>
-                          </div>
-                        </th>
-                        <th class="row-3">
-                          <div class="">
-                            <p class="">후원 금액</p>
-                          </div>
-                        </th>
-                        <th class="row-4">
-                          <div class="">
-                            <p class="">메시지</p>
-                          </div>
-                        </th>
-                      </tr>
-                    </thead>
+            <div class="donation-wrap">
+              <div class="donationTable-wrap">
+                <table class="donation-table">
+                  <thead class="donation-header">
+                  <tr class="">
+                    <th class="row-1">
+                      <div class="">
+                        <p class="">날짜</p>
+                      </div>
+                    </th>
+                    <th class="row-2">
+                      <div class="">
+                        <p class="">후원자 닉네임</p>
+                      </div>
+                    </th>
+                    <th class="row-3">
+                      <div class="">
+                        <p class="">후원 금액</p>
+                      </div>
+                    </th>
+                    <th class="row-4">
+                      <div class="">
+                        <p class="">메시지</p>
+                      </div>
+                    </th>
+                  </tr>
+                  </thead>
 
-                    <tbody class="donation-body">
-                      <tr class="row">
-                        <td class="cell">
-                          <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
-                        </td>
-                        <td class="cell">
-                          <div class="table-artist-flex">
-                            <a class="" href=""
-                              ><div
+                  <tbody class="donation-body">
+                  <tr class="row">
+                    <td class="cell">
+                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
+                    </td>
+                    <td class="cell">
+                      <div class="table-artist-flex">
+                        <a class="" href=""
+                        ><div
                                 aria-label="채널 아이콘"
                                 class="donation-icon"
-                              >
-                                <img
+                        >
+                          <img
                                   class="donation-icon"
                                   alt=""
                                   src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
-                                /></div
-                            ></a>
-                            <div class="">
-                              <p class="table-p">
-                                <a class="">왕고냐</a>
-                              </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="cell">
-                          <p class="">100,000</p>
-                        </td>
-                        <td class="cell">
-                          <div class="">
-                            <p class="">노래 개좋아</p>
-                          </div>
-                        </td>
-                      </tr>
+                          /></div
+                        ></a>
+                        <div class="">
+                          <p class="table-p">
+                            <a class="">왕고냐</a>
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="cell">
+                      <p class="">100,000</p>
+                    </td>
+                    <td class="cell">
+                      <div class="">
+                        <p class="">노래 개좋아</p>
+                      </div>
+                    </td>
+                  </tr>
 
-                      <tr class="row">
-                        <td class="cell">
-                          <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
-                        </td>
-                        <td class="cell">
-                          <div class="table-artist-flex">
-                            <a class="" href=""
-                              ><div
+                  <tr class="row">
+                    <td class="cell">
+                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
+                    </td>
+                    <td class="cell">
+                      <div class="table-artist-flex">
+                        <a class="" href=""
+                        ><div
                                 aria-label="채널 아이콘"
                                 class="donation-icon"
-                              >
-                                <img
+                        >
+                          <img
                                   class="donation-icon"
                                   alt=""
                                   src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
-                                /></div
-                            ></a>
-                            <div class="">
-                              <p class="table-p">
-                                <a class="">왕고냐</a>
-                              </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="cell">
-                          <p class="">100,000</p>
-                        </td>
-                        <td class="cell">
-                          <div class="">
-                            <p class="">노래 개좋아</p>
-                          </div>
-                        </td>
-                      </tr>
+                          /></div
+                        ></a>
+                        <div class="">
+                          <p class="table-p">
+                            <a class="">왕고냐</a>
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="cell">
+                      <p class="">100,000</p>
+                    </td>
+                    <td class="cell">
+                      <div class="">
+                        <p class="">노래 개좋아</p>
+                      </div>
+                    </td>
+                  </tr>
 
-                      <tr class="row">
-                        <td class="cell">
-                          <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
-                        </td>
-                        <td class="cell">
-                          <div class="table-artist-flex">
-                            <a class="" href=""
-                              ><div
+                  <tr class="row">
+                    <td class="cell">
+                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
+                    </td>
+                    <td class="cell">
+                      <div class="table-artist-flex">
+                        <a class="" href=""
+                        ><div
                                 aria-label="채널 아이콘"
                                 class="donation-icon"
-                              >
-                                <img
+                        >
+                          <img
                                   class="donation-icon"
                                   alt=""
                                   src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
-                                /></div
-                            ></a>
-                            <div class="">
-                              <p class="table-p">
-                                <a class="">왕고냐</a>
-                              </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="cell">
-                          <p class="">100,000</p>
-                        </td>
-                        <td class="cell">
-                          <div class="">
-                            <p class="">노래 개좋아</p>
-                          </div>
-                        </td>
-                      </tr>
+                          /></div
+                        ></a>
+                        <div class="">
+                          <p class="table-p">
+                            <a class="">왕고냐</a>
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="cell">
+                      <p class="">100,000</p>
+                    </td>
+                    <td class="cell">
+                      <div class="">
+                        <p class="">노래 개좋아</p>
+                      </div>
+                    </td>
+                  </tr>
 
-                      <tr class="row">
-                        <td class="cell">
-                          <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
-                        </td>
-                        <td class="cell">
-                          <div class="table-artist-flex">
-                            <a class="" href=""
-                              ><div
+                  <tr class="row">
+                    <td class="cell">
+                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
+                    </td>
+                    <td class="cell">
+                      <div class="table-artist-flex">
+                        <a class="" href=""
+                        ><div
                                 aria-label="채널 아이콘"
                                 class="donation-icon"
-                              >
-                                <img
+                        >
+                          <img
                                   class="donation-icon"
                                   alt=""
                                   src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
-                                /></div
-                            ></a>
-                            <div class="">
-                              <p class="table-p">
-                                <a class="">왕고냐</a>
-                              </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="cell">
-                          <p class="">100,000</p>
-                        </td>
-                        <td class="cell">
-                          <div class="">
-                            <p class="">노래 개좋아</p>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <!-- 페이징 -->
-              <div class="mypage-paging">
-                <div class="mypage-pageStyle">
-                  <a class="mypage-page-first"><<</a>
-                  <a class="mypage-page-prev"><</a>
-                  <div>
-                    <a class="">1</a>
-                  </div>
-                  <a class="mypage-page-next">></a>
-                  <a class="mypage-page-last">>></a>
-                </div>
+                          /></div
+                        ></a>
+                        <div class="">
+                          <p class="table-p">
+                            <a class="">왕고냐</a>
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="cell">
+                      <p class="">100,000</p>
+                    </td>
+                    <td class="cell">
+                      <div class="">
+                        <p class="">노래 개좋아</p>
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
-            <!-- 아티스트 후원회원 목록 끝 -->
+            <!-- 페이징 -->
+            <div class="paging">
+<!--              <div class="mypage-pageStyle">-->
+<!--                <a class="mypage-page-first"><<</a>-->
+<!--                <a class="mypage-page-prev"><</a>-->
+<!--                <div>-->
+<!--                  <a class="">1</a>-->
+<!--                </div>-->
+<!--                <a class="mypage-page-next">></a>-->
+<!--                <a class="mypage-page-last">>></a>-->
+<!--              </div>-->
+            </div>
           </div>
-          <!-- 아티스트 계정 끝-->
+          <!-- 아티스트 후원회원 목록 끝 -->
         </div>
-        <!-- 마이페이지 body끝 -->
+        <!-- 아티스트 계정 끝-->
       </div>
+      <!-- 마이페이지 body끝 -->
     </div>
+  </div>
 
     <footer th:include="~{/footer/footer :: foot}">
 
@@ -2182,6 +1849,153 @@
       alert(result);
       location.href="/myPage/myPage"
     });
+  })
+
+  let pageNum = 1;
+  let type = "A";
+  let myPagediv = $(".myArtistList-All");
+  let myPageWorkListDiv = $(".myWorkList-All");
+
+  // 관심 아티스트
+  function myArtistList(userNumber, type, page){
+    console.log("myArtistList..................");
+    userService.getArtist(userNumber, type, page, function(total, list){
+      let str = "";
+      console.log("myArtistList 들어옴");
+
+      if(list == null || list.length == 0){
+        myPagediv.html("");
+        return;
+      }
+
+      $.each(list, function(i, myArtist){
+        let likeCategory = "";
+        if (myArtist.artistType == 1){
+          likeCategory = "뮤지션";
+        } else {
+          likeCategory = "퍼포먼서";
+        }
+        let artistNumber = Number(myArtist.artistNumber);
+        str += "<div class='artistList'><a class='myArtist' href='/artist/artistInfo?pageNum=" + page + "&amount=15&type&keyword&artistNumber=" + artistNumber +"'>"
+        str += "<img class='myArtist-image' src='/images/myPage/pptnz.jpg/'>"
+        str += "<span class='myArtistName'>" + myArtist.artistName + "</span>"
+        str += "<span class='myArtistType'>" + likeCategory + "</span>"
+        str += "</a>"
+        str += "<div class='artistLike'><a class='my-heart' id='myArtist-1'><img id='heart-icon-1' class='heart-selected' src='/images/myPage/heart-icon.png' width='30px'/><img id='heartNon-icon-1' class='heart-nonSelected' src='/images/myPage/non-heart-icon.png' width='30px' style='display:none'/></a>"
+        str += "</div>"
+        str += "</div>"
+      });
+
+      myPagediv.html(str);
+      myPagePaging(type, total);
+  }, function(a,b,c){
+      console.log(a,b,c)
+    });
+  }
+
+  $("a#heart-Artist").on("click", function(){
+    myArtistList(24, "A", 1);
+  });
+
+  $("a.artist-Musician-button").on("click", function(){
+    console.log("뮤지션뮤지션뮤지션");
+    myArtistList(24, "M", 1);
+  });
+
+  $(".artist-Performance-button").on("click", function(){
+    console.log("퍼포먼서퍼포먼서퍼포먼서");
+    myArtistList(24, "P", 1);
+  })
+
+  $("a.artist-All-button").on("click", function(){
+    myArtistList(24, "A", 1);
+  });
+
+// 관심있는 작품
+  function myWorkList(userNumber, page){
+    console.log("myWorkList..........");
+    userService.getWork(userNumber, page, function(total, list) {
+      let str = "";
+      console.log("myWork 들어옴");
+
+      if (list == null || list.length == 0) {
+        myPageWorkListDiv.html("");
+        return;
+      }
+
+      $.each(list, function (i, myWork) {
+        let likeCategory = "";
+        if (myWork.artistType == 1) {
+          likeCategory = "뮤지션";
+        } else {
+          likeCategory = "퍼포먼서";
+        }
+        str += "<div class='artistList'>"
+        str += "<a href = '' class='myWork myLike'>"
+        str += "<img class='myWork-image' src='https://image.bugsm.co.kr/album/images/170/40389/4038932.jpg'/>"
+        str += "<div class='info'>"
+        str += "<div class='myWork'>"
+        str += "<span class='myWorkName'>" + myWork.workName + "</span>"
+        str += "</div>"
+        str += "<div class='myWork workInfo-width'>"
+        str += "<span class='myArtistName'>" + myWork.artistName + "|" + likeCategory + "</span>"
+        str += "</div>"
+        str += "</div>"
+        str += "</a>"
+        str += "<div class='workLike'>"
+        str += "<a href=''>"
+        str += "<img class='myWorkLike heart-selected' src='/images/myPage/heart-icon.png' width='30px' style='none'/>"
+        str += "</a>"
+        str += "</div>"
+        str += "</div>"
+      });
+
+      myPageWorkListDiv.html(str);
+      myPagePaging(type, total);
+    }, function(a,b,c){
+      console.log(a,b,c);
+    });
+  }
+
+  $("a#heart-Work").on("click", function() {
+    console.log("작품 들어옴 작품 들어옴");
+    myWorkList(24, 1);
+  });
+
+  function myPagePaging(type, total){
+    let endPage = Math.ceil(pageNum / 10.0) * 10; // 올림
+    let startPage = endPage - 9;
+    let realEnd = Math.ceil(total / 10.0);
+    const $paging = $(".paging");
+    if(endPage > realEnd){
+      endPage = realEnd;
+    }
+
+    let prev = startPage > 1;
+    let next = endPage * 10 < total;
+    let str = "";
+
+    str += "<div class='big-width mypage-pageStyle' style='text-align: center'>"
+
+    if (prev) {
+      str += "<a class='changePage prevList' href='" + (startPage - 1) +  "'><code>&lt;</code>Prev</a>"
+    }
+    for (let i = startPage; i <= endPage; i++) {
+      str += pageNum == i ? "<code>" + i + "</code>" : "<a class='changePage mypage-page-next' href='" + i + "'><code>" + i + "</code></a>";
+    }
+    if (next) {
+      str += "<a class='changePage nextList' href='" + (endPage + 1) + "'>Next<code>&gt;</code></a>"
+    }
+
+    str += "</div>"
+
+    $paging.html(str);
+  }
+
+  $(".paging").on("click", "a.changePage", function(e){
+    e.preventDefault();
+    pageNum = $(this).attr("href");
+    myPagePaging(type, pageNum);
   })
 
 </script>

@@ -64,4 +64,8 @@ public class WorkService {
     public int getTotalApply() {
         return workDAO.getTotalApply();
     }
+
+    public int getTotalListApply() {
+        return workDAO.getTotalListApply();
+    }
 }

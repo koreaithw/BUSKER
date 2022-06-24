@@ -43,4 +43,8 @@ public class RecruitService {
     public RecruitmentVO getDetail(Long recruitmentNumber) {
         return recruitmentDAO.getDetail(recruitmentNumber);
     }
+
+    public List<RecruitmentFileVO> getFiles(Long recruitmentNumber) {
+        return recruitmentFileDAO.find(recruitmentNumber);
+    }
 }
