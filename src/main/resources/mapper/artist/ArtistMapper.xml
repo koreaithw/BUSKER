@@ -5,8 +5,8 @@
     <!-- 아티스트 등록 신청 (status 1) -->
     <insert id="insertApply">
         INSERT INTO TBL_ARTIST
-        (ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE, ARTIST_DONATION, ARTIST_ACCOUNT, ARTIST_STATUS)
-        VALUES(SEQ_ARTIST.NEXTVAL, #{userNumber}, #{artistName}, #{artistDescription}, #{artistType}, #{artistDonation}, #{artistAccount}, 1)
+        (ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE, ARTIST_ACCOUNT)
+        VALUES(SEQ_ARTIST.NEXTVAL, #{userNumber}, #{artistName}, #{artistDescription}, #{artistType}, #{artistAccount})
     </insert>
 
     <!--관리자 등록 승인 (status -> 3)-->
@@ -19,8 +19,7 @@
     <!--아티스트 정보 수정 신청 (status 2)-->
     <update id="updateApply">
         UPDATE TBL_ARTIST
-        SET ARTIST_NAME = #{artistName}, ARTIST_DESCRIPTION = #{artistDescription}, ARTIST_TYPE = #{artistType}, ARTIST_DONATION = #{artistDonation},
-         ARTIST_ACCOUNT = #{artistAccount}, ARITST_STATUS = 2
+        SET ARTIST_NAME = #{artistName}, ARTIST_DESCRIPTION = #{artistDescription}, ARTIST_TYPE = #{artistType}, ARTIST_STATUS = 2
         WHERE ARTIST_NUMBER = #{artistNumber}
     </update>
 
@@ -33,7 +32,7 @@
 
     <!--아티스트 삭제--> <!---->
     <update id="delete">
-        UPDATE TBL_ARTIST SET ARITST_STATUS = 4 WHERE ARTIST_NUMBER = #{artistNumber}
+        UPDATE TBL_ARTIST SET ARTIST_STATUS = 4 WHERE ARTIST_NUMBER = #{artistNumber}
     </update>
 
 
