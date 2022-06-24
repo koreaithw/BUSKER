@@ -34,26 +34,7 @@ public class ArtistReplyController {
     public ArtistReplyPageDTO getListReply(@PathVariable("artistNumber") Long artistNumber, @PathVariable("page") int pageNum) {
         List<ArtistReplyVO> artistReplyList = artistService.getListReply(new Criteria(pageNum, 10), artistNumber);
 
-        artistReplyList.forEach(artistReplyVO -> {
-            try {
-                SimpleDateFormat rowFormate = new SimpleDateFormat("yyyy-MM-dd HH24:mm:ss");
-                SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy.MM.dd a HH:mm");
-                String replyRegisterDate = artistReplyVO.getReplyRegisterDate();
-                String replyUpdateDate = artistReplyVO.getReplyUpdateDate();
 
-                Date replyRegisterDateParse = rowFormate.parse(replyRegisterDate);
-                Date replyUpdateDateParse = dayFormat.parse(replyUpdateDate);
-
-                replyRegisterDate = rowFormate.format(replyRegisterDateParse);
-                replyUpdateDate = dayFormat.format(replyUpdateDateParse);
-
-                artistReplyVO.setReplyRegisterDate(replyRegisterDate);
-                artistReplyVO.setReplyUpdateDate(replyUpdateDate);
-            } catch (ParseException e) {
-                System.err.println("dateStr : " + ", datePattern:");
-                e.printStackTrace();
-            }
-        });
         return new ArtistReplyPageDTO(artistReplyList, artistService.getTotalReply(artistNumber));
     }
 
