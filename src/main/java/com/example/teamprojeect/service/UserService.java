@@ -4,6 +4,7 @@ import com.example.teamprojeect.domain.dao.user.LikeDAO;
 import com.example.teamprojeect.domain.dao.user.UserDAO;
 import com.example.teamprojeect.domain.dao.user.UserFileDAO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
+import com.example.teamprojeect.domain.vo.list.UserListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.user.LikeVO;
 import com.example.teamprojeect.domain.vo.user.UserFileVO;
@@ -66,4 +67,13 @@ public class UserService {
 
     //회원가입
     public void join(UserVO userVO) {userDAO.join(userVO);}
+
+    public List<UserVO> getUserList(Criteria criteria, UserListDTO userListDTO) {
+        return userDAO.getUserList(criteria, userListDTO);
+    }
+
+    // 총 유저 수
+    public int getTotal() {
+        return userDAO.getTotal();
+    }
 }

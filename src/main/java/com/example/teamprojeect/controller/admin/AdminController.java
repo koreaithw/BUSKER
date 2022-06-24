@@ -2,6 +2,7 @@ package com.example.teamprojeect.controller.admin;
 
 
 import com.example.teamprojeect.domain.vo.list.ListDTO;
+import com.example.teamprojeect.domain.vo.list.UserListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.paging.PageDTO;
 import com.example.teamprojeect.domain.vo.paging.work.WorkApplyPageDTO;
@@ -40,6 +41,7 @@ public class AdminController {
     public String goAdmin(Model model, Criteria criteria, ListDTO listDTO) {
         int total = workService.getTotalApply();
         int totalR = recruitService.getTotal(listDTO);
+        int totalU = userService.getTotal();
         // 작품 신청 전체 목록
         model.addAttribute("workList", workService.getList(criteria));
         // 관리자 페이지 메인에서 작품 신청 8개만 띄우는 목록
@@ -52,6 +54,12 @@ public class AdminController {
         model.addAttribute("recruitListSmall", recruitService.getList(new Criteria(1,7), listDTO));
         // 모집 공고 페이징
         model.addAttribute("recruitPageDTO", new PageDTO(criteria, totalR));
+        // 유저 전체 목록
+        model.addAttribute("userList", userService.getUserList(criteria, new UserListDTO()));
+        // 관리자 페이지 메인에서 최근 회원가입 7건
+        model.addAttribute("userListSmall", userService.getUserList(new Criteria(1,7), new UserListDTO()));
+        // 유저 목록 페이징
+        model.addAttribute("userPageDTO", new PageDTO(criteria, totalU));
         return "/admin/adminMain";
     }
 

@@ -1,12 +1,12 @@
 package com.example.teamprojeect.mapper.user;
 
+import com.example.teamprojeect.domain.vo.list.UserListDTO;
+import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.user.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.stream.IntStream;
 
 @SpringBootTest
 @Slf4j
@@ -78,6 +78,19 @@ public class UserMapperTests {
 //
 //         userMapper.login("i", "12345");
 //
+//    }
+    // 유저 리스트 // 잘 됨
+    @Test
+    public void getUserListTest() {
+        Criteria criteria = new Criteria(2, 10);
+        UserListDTO userListDTO = new UserListDTO();
+        userMapper.getUserList(criteria, userListDTO).stream().map(UserVO::toString).forEach(log::info);
+    }
+
+    // 총 유저 수 // 잘 됨
+//    @Test
+//    public void getTotalTest() {
+//        userMapper.getTotal();
 //    }
 }
 

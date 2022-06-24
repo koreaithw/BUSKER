@@ -1,5 +1,7 @@
 package com.example.teamprojeect.domain.dao.user;
 
+import com.example.teamprojeect.domain.vo.list.UserListDTO;
+import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.user.UserVO;
 import com.example.teamprojeect.mapper.user.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -49,5 +51,15 @@ public class UserDAO {
     // 마이페이지 : 회원 탈퇴
     public boolean remove(Long userNumber) {
         return userMapper.delete(userNumber) == 1;
+    }
+
+    // 관리자 페이지 : 유저 리스트
+    public List<UserVO> getUserList(@Param("criteria") Criteria criteria, @Param("userListDTO") UserListDTO userListDTO) {
+        return userMapper.getUserList(criteria, userListDTO);
+    }
+
+    // 관리자 페이지 : 총 유저 수
+    public int getTotal() {
+        return userMapper.getTotal();
     }
 }

@@ -51,7 +51,10 @@
                                 <p class="todayWorkApply" th:text="*{total}"></p>
                             </th:block>
                         </li>
-                        <li class="audit"><a href="" class="btn-user">회원관리</a>&nbsp;<p>0</p>
+                        <li class="audit"><a href="" class="btn-user">회원관리</a>&nbsp;
+                            <th:block th:object="${userPageDTO}">
+                                <p class="totalUser" th:text="*{total}"></p>
+                            </th:block>
                         </li>
                         <!--                             <li><a href="" class="btn-inquiry">작품 수정 신청<p></p></a>-->
                         <!--                            </li> -->
@@ -171,48 +174,14 @@
                             <th>핸드폰 번호</th>
                             <th>등록 일자</th>
                         </tr>
-                        <tr>
-                            <td>asdf222</td>
-                            <td>김가방</td>
-                            <td>000-0000-0000</td>
-                            <td>2022-06-10</td>
-                        </tr>
-                        <tr>
-                            <td>asdsad00</td>
-                            <td>배수영</td>
-                            <td>000-0000-0000</td>
-                            <td>2022-06-10</td>
-                        </tr>
-                        <tr>
-                            <td>asdf222</td>
-                            <td>김가방</td>
-                            <td>000-0000-0000</td>
-                            <td>2022-06-10</td>
-                        </tr>
-                        <tr>
-                            <td>asdsad00</td>
-                            <td>배수영</td>
-                            <td>000-0000-0000</td>
-                            <td>2022-06-10</td>
-                        </tr>
-                        <tr>
-                            <td>asdf222</td>
-                            <td>김가방</td>
-                            <td>000-0000-0000</td>
-                            <td>2022-06-10</td>
-                        </tr>
-                        <tr>
-                            <td>asdsad00</td>
-                            <td>배수영</td>
-                            <td>000-0000-0000</td>
-                            <td>2022-06-10</td>
-                        </tr>
-                        <tr>
-                            <td>asdf222</td>
-                            <td>김가방</td>
-                            <td>000-0000-0000</td>
-                            <td>2022-06-10</td>
-                        </tr>
+                        <th:block th:each="users:${userListSmall}">
+                            <tr th:object="${users}">
+                                <td th:text="*{userId}"></td>
+                                <td th:text="*{userName}"></td>
+                                <td th:text="*{userPhoneNumber}"></td>
+                                <td th:text="*{userRegisterDate}"></td>
+                            </tr>
+                        </th:block>
                     </table>
                 </div>
             </div>
@@ -387,12 +356,12 @@
                         <a href="/recruit/recruitRegister" class="btn-notice-write">작성</a>
                     </div>
                     <thead>
-                        <th>일자</th>
-                        <th>제목</th>
-                        <th>설명</th>
-                        <th>외부 링크</th>
-                        <th>실행 일자</th>
-                        <th>수정</th>
+                    <th>일자</th>
+                    <th>제목</th>
+                    <th>설명</th>
+                    <th>외부 링크</th>
+                    <th>실행 일자</th>
+                    <th>수정</th>
                     </thead>
                     <tbody class="recruitments">
 

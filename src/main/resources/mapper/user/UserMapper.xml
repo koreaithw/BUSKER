@@ -69,6 +69,38 @@
         WHERE USER_NUMBER = #{userNumber}
     </update>
 
+    <select id="getUserList" resultType="userVO">
+        SELECT USER_NUMBER, USER_ID, USER_NAME, USER_PHONE_NUMBER, USER_ARTIST_STATUS, USER_REGISTER_DATE, USER_STATUS
+        FROM (
+        SELECT ROWNUM RN, USER_NUMBER, USER_ID, USER_NAME, USER_PHONE_NUMBER, USER_ARTIST_STATUS, USER_REGISTER_DATE, USER_STATUS
+        FROM (
+        SELECT USER_NUMBER, USER_ID, USER_NAME, USER_PHONE_NUMBER, USER_ARTIST_STATUS, USER_REGISTER_DATE, USER_STATUS
+        FROM TBL_USER
+        ORDER BY USER_REGISTER_DATE DESC
+        )
+        WHERE USER_STATUS = 1
+        <choose>
+            <when test="userListDTO.isArtist == true">
+                AND USER_ARTIST_STATUS = 4-->
+            </when>
+        </choose>
+        <choose>
+            <when test="criteria.keyword != null">
+                AND (USER_NAME LIKE '%'||#{keyword}||)
+            </when>
+        </choose>
+        <![CDATA[
+            AND ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
+        )
+        WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
+        ]]>
+    </select>
+
+    <select id="getTotal" resultType="_int">
+        SELECT COUNT(USER_STATUS)
+        FROM TBL_USER
+        WHERE USER_STATUS = 1
+    </select>
 
 
 
