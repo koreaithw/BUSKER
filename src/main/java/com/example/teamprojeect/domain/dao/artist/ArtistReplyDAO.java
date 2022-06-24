@@ -25,7 +25,7 @@ public class ArtistReplyDAO {
     };
 
     // 아티스트 댓글 삭제
-    public boolean delete(Long replyNumber) {
+    public boolean remove(Long replyNumber) {
         return artistReplyMapper.delete(replyNumber) == 1;
     };
 

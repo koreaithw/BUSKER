@@ -1,0 +1,374 @@
+/* 페이징 */
+.mypage-paging {
+    outline: none;
+}
+.mypage-pageStyle {
+    text-align: center;
+    padding-bottom: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+.mypage-pageStyle > code, .mypage-page-first, .mypage-page-last {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 15px;
+    background-color: #ffb07a;
+    color: #fff;
+    margin: 0 3px;
+    cursor: pointer;
+    /*border-bottom: 3px solid #c6c5c5;*/
+    border-radius: 50%;
+}
+
+.mypage-pageStyle > a, .mypage-page-first, .mypage-page-last {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 15px;
+    background-color: #cecece;
+    color: #fff;
+    margin: 0 3px;
+    cursor: pointer;
+    /*border-bottom: 3px solid #c6c5c5;*/
+    border-radius: 50%;
+}
+
+.mypage-pageStyle > a.prevList, .mypage-pageStyle > a.nextList {
+    margin-right: 7px;
+    margin-left: 7px;
+    color: #a7a7a7;
+    font-size: 14px;
+    text-decoration: none;
+    background-color: #ffffff;
+}
+
+.mypage-pageStyle > a.prevList:hover, .mypage-pageStyle > a.nextList:hover {
+    background-color: #ffffff;
+}
+
+.mypage-pageStyle > a:hover, .mypage-page-first:hover, .mypage-page-last:hover {
+    background-color: #ffd8aa;
+}
+
+/* 댓글 창 */
+
+#reply-wrap {
+    width: 960px;
+    margin: 0 auto;
+    font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+    margin-bottom: 132px;
+    font-family: 'Spoqa Han Sans', sans-serif;
+}
+
+#reply-count {
+    font-weight: normal;
+    font-size: 20px;
+    color: #222;
+    display: block;
+    margin-bottom: 14px;
+
+}
+
+.reply-content-wrap {
+    padding: 23px 0 22px 0;
+    border-top: 1px solid #e8e8e8;
+}
+
+.reply-content-flex {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.reply-text-box {
+    width: 100%;
+    margin-left: 18px;
+}
+
+.reply-content-box{
+    justify-content: flex-start;
+    align-content: center;
+    position: relative;
+    position: relative;
+}
+.user-image {
+    display: block;
+    border-radius: 48px;
+}
+
+
+.reply-user {
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#user-name {
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.reply-date{
+    font-size: 12px;
+    color: #a7a7a7;
+    margin-top: 4px;
+    margin-left: 9px;
+}
+
+.reply-content {
+    display: block;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 13px;
+    line-height: 21px;
+    color: #5c5c5c;
+    clear: both;
+}
+
+.reply-status {
+    position: absolute;
+    right: 3px;
+    top: 0;
+    margin: 0 2px;
+    font-size: 12px;
+    color: #ff564c;
+    text-decoration: none;
+}
+
+.reply-status span:hover {
+    cursor: pointer;
+    color: #f39690;
+    text-decoration: inline;
+}
+
+
+.reply-modify, .reply-finish {
+    border-right: 1px solid #f39690;
+    padding-right: 7px;
+}
+
+.reply-delete, .reply-cancel {
+    padding-left: 7px;
+}
+
+.reply-form {
+    padding: 20px 20px 40px 20px;
+    border-top: 1px solid #e8e8e8;
+    background-color: #fafafa;
+    position: relative;
+    height: 130px;
+
+}
+
+.reply-input {
+    padding: 8px;
+    border-top: 1px solid #e8e8e8;
+    background-color: #fafafa;
+    border: 1px solid #e8e8e8;
+    background-color: #fff;
+    margin-top: 11px;
+    margin-right: 15px;
+}
+
+#replyShow {
+    width: 100%;
+    height: 70px;
+    border: 1px solid #fff;
+    font-size: 13px;
+    resize: none;
+    box-sizing: border-box;
+    resize: none;
+}
+#replyShow:focus {
+    /* border: 1px solid #f39690; */
+}
+.reply-button {
+    position: absolute;
+    bottom: 16px;
+    right: 38px;
+
+}
+
+.reply-button input {
+    width: 71px;
+    cursor: pointer;
+    height: 36px;
+    border: 0 none;
+    border-radius: 18px;
+    font-size: 13px;
+    line-height: 38px;
+    background-color: #ffb07a;
+    color: #fff;
+}
+
+.reply-button input:hover {
+    background-color: #ffd8aa;
+}
+
+
+.reply-paging {
+    height: 30px;
+    margin-top: 26px;
+    margin-bottom: 26px;
+    text-align: center;
+}
+#page-button-prev {
+    color: #a7a7a7;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+#page-button {
+    border-radius: 30px;
+    background-color: #ffb07a;
+    color: #fff;
+    min-width: 10px;
+    height: 30px;
+    margin: 0 4px;
+    padding: 5px 10px;
+    line-height: 30px;
+}
+.reply-paging a {
+    font-size: 14px;
+}
+
+
+
+
+.reply-paging a.page-button > code{
+    border-radius: 30px;
+    background-color: #cecece;
+    color: #fff;
+    height: 30px;
+    margin: 0 4px;
+    padding: 5px 10px;
+    line-height: 30px;
+    width: 27px;
+    height: 27px;
+}
+
+/*.reply-paging>code {*/
+/*    border-radius: 30px;*/
+/*    background-color: #ffb07a;*/
+/*    color: #fff;*/
+/*    height: 30px;*/
+/*    margin: 0 4px;*/
+/*    padding: 5px 10px;*/
+/*    line-height: 30px;*/
+/*    width: 27px;*/
+/*    height: 27px;*/
+/*}*/
+
+.reply-paging a {
+    font-size: 14px;
+}
+
+.reply-paging a.page-button-prev {
+    color: #a7a7a7;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.reply-paging a.page-button-next {
+    color: #a7a7a7;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+
+
+#page-button-next {
+    color: #a7a7a7;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+
+/* 댓글 페이지*/
+
+.reply-paging > a, .mypage-page-first, .mypage-page-last {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 15px;
+    background-color: #cecece;
+    color: #fff;
+    margin: 0 3px;
+    cursor: pointer;
+    /*border-bottom: 3px solid #c6c5c5;*/
+    border-radius: 50%;
+}
+
+.reply-paging > a.prevList, .reply-paging > a.nextList {
+    margin-right: 7px;
+    margin-left: 7px;
+    color: #a7a7a7;
+    font-size: 14px;
+    text-decoration: none;
+    background-color: #ffffff;
+}
+
+.reply-paging > a.prevList:hover, .reply-paging > a.nextList:hover {
+    background-color: #ffffff;
+}
+
+.reply-paging > a:hover, .mypage-page-first:hover, .mypage-page-last:hover {
+    background-color: #ffd8aa;
+}
+
+.reply-paging > code, .mypage-page-first, .mypage-page-last {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 15px;
+    background-color: #ffb07a;
+    color: #fff;
+    margin: 0 3px;
+    cursor: pointer;
+    /* border-bottom: 3px solid #c6c5c5; */
+    border-radius: 50%;
+}
+
+
+/* 목록 ajax 부분 */
+
+
+.all, .musician, .performance {
+    cursor: pointer;
+}
+
+div.sm-tit1 #current {
+    border-bottom: 4px solid #fc8334;
+}
+
+div.sm-tit1 .showCategory:hover {
+    border-bottom: 4px solid #fd975f;
+}
+
+div.sm-tit1 .showCreate:hover {
+    border-bottom: 4px solid #fd975f;
+}
+
+#current-page {
+    background-color: #ffb07a;
+}
+
+.gray-text {
+    font-size: 13px;
+    color: #666;
+    width: 370px;
+    position: absolute;
+    right: -127px;
+    bottom: 37px;
+}
+

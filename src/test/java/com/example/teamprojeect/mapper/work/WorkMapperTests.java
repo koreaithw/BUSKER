@@ -99,4 +99,13 @@ public class WorkMapperTests {
 //    public void getTagTest() {
 //        workMapper.getTag();
 //    }
+
+
+        @Test // 잘됨
+    public void insertAdminTest() {
+        for(int i = 0; i < 15; i++){
+          Long workNumber = 1L+i;
+          workMapper.insertAdmin(workNumber);
+        }
+    }
 }
