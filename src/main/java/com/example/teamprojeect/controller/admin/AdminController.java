@@ -5,6 +5,7 @@ import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.list.UserListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.paging.PageDTO;
+import com.example.teamprojeect.domain.vo.paging.user.UserPageDTO;
 import com.example.teamprojeect.domain.vo.paging.work.WorkApplyPageDTO;
 import com.example.teamprojeect.domain.vo.paging.work.WorkPageDTO;
 import com.example.teamprojeect.domain.vo.recruitment.RecruitmentFileVO;
@@ -135,7 +136,12 @@ public class AdminController {
         File file = new File("C:/upload/test/", fileName);
         return FileCopyUtils.copyToByteArray(file);
     }
-
+    
     // 유저 목록
-
+    @GetMapping("userList/{page}")
+    @ResponseBody
+    public UserPageDTO getUserList(@PathVariable("page") int pageNum, boolean isArtist, @PathVariable("artistType") String artistType) {
+        int total = userService.getTotal();
+        return new UserPageDTO(userService.getUserList(new Criteria(pageNum, 10), new UserListDTO(isArtist, artistType)),total);
+    }
 }
