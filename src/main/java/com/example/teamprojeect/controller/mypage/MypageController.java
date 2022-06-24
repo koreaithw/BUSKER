@@ -1,18 +1,23 @@
 package com.example.teamprojeect.controller.mypage;
 
+import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.paging.user.LikePageDTO;
 import com.example.teamprojeect.domain.vo.user.LikeVO;
 import com.example.teamprojeect.domain.vo.user.UserVO;
+import com.example.teamprojeect.service.ArtistService;
 import com.example.teamprojeect.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Delete;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @Slf4j
@@ -22,6 +27,7 @@ import java.util.List;
 public class MypageController {
     // 필드 생성
     private final UserService userService;
+    private final ArtistService artistService;
 
     // 마이페이지 이동
     @GetMapping("/myPage")
@@ -92,5 +98,32 @@ public class MypageController {
     @ResponseBody
     public LikePageDTO getWork(@PathVariable("userNumber") Long userNumber, @PathVariable("page") int pageNum){
         return new LikePageDTO(userService.getLikeWorkList(new Criteria(pageNum, 10), userNumber), userService.getTotalWork(userNumber));
+    }
+
+    // 아티스트 등록 신청
+    @PostMapping(value="/new", consumes = "application/json", produces = "text/plain; charset=UTF-8")
+    @ResponseBody
+    public ResponseEntity<String> create(@RequestBody ArtistVO artistVO) throws UnsupportedEncodingException{
+        log.info("artistVO" + artistVO);
+        artistService.registerApply(artistVO);
+        return new ResponseEntity<>(new String("아티스트 등록 신청".getBytes(), "UTF-8"),HttpStatus.OK);
+    }
+
+    // 아티스트 정보 수정 신청
+    @PatchMapping(value="/artist/{artistNumber}", consumes = "application/json")
+    @ResponseBody
+    public String modifyApply(@PathVariable("artistNumber") Long artistNumber, @RequestBody ArtistVO artistVO){
+        log.info("modify..............");
+        artistVO.setArtistNumber(artistNumber);
+        artistService.modifyApply(artistVO);
+        return "아티스트 정보 수정 성공";
+    }
+
+    // 아티스트 계정 삭제
+    @DeleteMapping("/artist/remove/{artistNumber}")
+    @ResponseBody
+    public String removeArtist(@PathVariable("artistNumber") Long artistNumber){
+        artistService.removeArtist(artistNumber);
+        return "아티스트 삭제 성공";
     }
 }
