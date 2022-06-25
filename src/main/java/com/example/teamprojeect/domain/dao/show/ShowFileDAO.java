@@ -22,13 +22,16 @@ public class ShowFileDAO {
         showFileMapper.delete(showNumber);
     }
 
-    // 공연 사진 변경
-    public void modify(ShowFileVO showFileVO) {
-        showFileMapper.update(showFileVO);
-    }
+//    // 공연 사진 변경
+//    public void modify(ShowFileVO showFileVO) {
+//        showFileMapper.update(showFileVO);
+//    }
 
     // 공연 사진 선택
-    public List<ShowFileVO> find(Long showNumber) {
+    public ShowFileVO find(Long showNumber) {
         return showFileMapper.find(showNumber);
     }
+//    public List<ShowFileVO> find(Long showNumber) {
+//        return showFileMapper.find(showNumber);
+//    }
 }

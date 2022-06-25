@@ -39,15 +39,23 @@ function concertPlanList(type, page){
         console.log("concertPlanList 안까지 들어왔슈  ", type, "  변수는 ", page)
 
         if(list == null || list.length == 0){
-            showDiv.html("");
+            str += '<section class="show-wrap showIng"><div class="non-show">등록된 공연이 없습니다.</div></section>'
+            showDiv.html(str);
             return;
         }
 
         $.each(list, function(i, show){
             let infoNumber = Number(show.showNumber);
+
+            $.getJSON("/file/concert/file", {showNumber: infoNumber}, function(file){
+                let src = "/file/concert/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+                $("#img-" + infoNumber).attr("src", src);
+            })
+
             str += "<a class='goRead' href='/concert/concertPlanInfo?pageNum=" + page + "&amount=15&type&keyword&showNumber=" + infoNumber +"' target='_self'>"
-            str += "<div class='list-bigger-wrap'>"
-            str += "<img class='lazyload' src='http://tkfile.yes24.com/upload2/perfblog/202205/20220516/20220516-42246.jpg/dims/quality/70/' alt='/show_view'/>"
+            str += "<div class='list-bigger-wrap'><div class='image-wrap'>"
+            str += "<img id='img-" + infoNumber + "' class='lazyload' src='' alt='/show_view'/></div>"
+            // str += "<img class='lazyload' src='/file/concert/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName + "' alt='/show_view'/>"
             str += "<div class='list-bigger-txt'>"
             str += "<p class='list-b-tit1'>" + show.showName + "</p>"
             str += "<p class='list-b-tit2'>" + show.showLocation + "</p>"
@@ -119,6 +127,7 @@ $(".paging").on("click", "a.changePage", function (e) {
 $(document).ready(function () {
     // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
     concertPlanList(type, pageNum);
+
 })
 
 let currentCategory = ".all";

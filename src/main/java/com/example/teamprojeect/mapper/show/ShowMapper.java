@@ -39,4 +39,7 @@ public interface ShowMapper {
 
     // 공연 상세 페이지
     public ShowVO detail(Long showNumber);
+
+    // 공연 댓글 랭킹
+    public List<ShowVO> getRankingReply();
 }

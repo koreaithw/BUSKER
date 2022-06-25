@@ -1,7 +1,8 @@
 @charset "utf-8";
 .lazyload {
-    width: 216px;
-    height: 303px;
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
 .sm-tit {
@@ -16,6 +17,7 @@
     align-items: center;
     justify-content: space-around;
     font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+    position: relative;
 }
 
 .sm-tit1 {
@@ -762,10 +764,15 @@
     color: #000;
 }
 
+.image-wrap {
+    width: 216px;
+    height: 303px;
+    overflow:hidden;
+}
 
-
-
-
-
-
-
+.non-show {
+    font-size: 57px;
+    font-family: 'NanumBarunGothic', 'Malgun Gothic', sans-serif;
+    font-weight: bold;
+    margin-bottom: 81px;
+}

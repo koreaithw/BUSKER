@@ -43,14 +43,17 @@
 </div>
 
 <div class="show_info_wrap">
-    <form action="/concert/concertPlanRegister" method="post" id="registerForm" name="registerForm"  enctype="multipart/form-data">
+    <form action="/concert/concertPlanRegister" method="post" id="registerForm" name="registerForm"
+          enctype="multipart/form-data">
         <div class="show_info_content">
             <div class="show_info">
                 <div class="info_left">
                     <div class="img_box">
                         <input id="file_drop" class="file_drop" readonly
                                placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공연 포스터를 드래그 앤 드롭으로 등록해주세요.">
+                        <img id='image-samplebox' class="file_drop" src='' style="width: 100%; height: auto; overflow: hidden; display: none;">
                     </div>
+
                 </div>
                 <div class="info_right">
                     <div class="info_area1">
@@ -64,7 +67,8 @@
                             </select></dd>
                             <span><p class="warning_msg1">공연 분류를 선택해 주세요.</p></span>
                             <dt>공연이름*</dt>
-                            <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="showName" value="" class="input_text"></dd>
+                            <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="showName" value=""
+                                                                           class="input_text"></dd>
                             <span><p class="warning_msg2">공연 이름을 입력해 주세요.</p></span>
 
                             <dt>공연일자*</dt>
@@ -106,6 +110,9 @@
                 </div>
             </div>
         </div>
+        <input type='hidden' id='fileName' name='file.fileName' value=''>
+        <input type='hidden' id='uuid' name='file.uuid' value=''>
+        <input type='hidden' id='uploadPath' name='file.uploadPath' value=''>
     </form>
 </div>
 </form>
@@ -134,14 +141,24 @@
 </script>
 
 <script>
+
     // 드래그 해서 영역에 아이템을 내리면 그게 files에 저장되고 그 이미지 url따서 그걸 div 영역에 이미지 태그로 넣는거
     var fileList = []; //파일 정보를 담아 둘 배열
-    $(function () {
+    let imgBox = $(".img_box");
+    let str = "";
 
+    $(function () {
         //드래그앤드랍
-        $("#file_drop").on("dragenter", function (e) { // 드래그 한 아이템을 영역 위로 올렸을 때 반응
+        $(".file_drop").on("dragenter", function (e) { // 드래그 한 아이템을 영역 위로 올렸을 때 반응
             e.preventDefault(); // 페이지를 이동시킨다거나 form 안에 있는 input 등을 전송한다던가 그러한 동작이 있는데 e.preventDefault 는 그 동작을 중단
             e.stopPropagation(); // e.stopPropagation는 이벤트가 상위 엘리먼트에 전달되지 않게 막아 준다.
+
+            $("#file_drop").show();
+            $("#image-samplebox").hide();
+            str += "<input type='hidden' name='fileName' value=''>"
+            str += "<input type='hidden' name='uuid' value=''>"
+            str += "<input type='hidden' name='uploadPath' value=''>"
+
         }).on("dragover", function (e) { // 드래그 하면서 마우스가 대상 객체의 위에 자리 잡고 있을 때 발생함.
             e.preventDefault();
             e.stopPropagation();
@@ -155,46 +172,86 @@
             // 아이템을 떨어트리면
             var files = e.originalEvent.dataTransfer.files; // 기본 event를 불러오고.기본 event로 전송된 데이터를 가져와서.files 를 찾는다.
             console.log(files);
-            $(e.target).closest("div").html( // 단 하나의 결과만을 리턴
-                "<img src='" + window.URL.createObjectURL(files[0]) + "'>"
-            );
-            console.log(files);
-            console.log("files");
-            console.log(e);
-            console.log("e");
-            console.log(URL)
-            console.log("URL")
-        });
 
-        // 등록
-        $(document).on("click", "#save", function () {
-            var formData = new FormData($("#fileForm")[0]);
-            if (fileList.length > 0) {
-                fileList.forEach(function (f) {
-                    formData.append("fileList", f);
-                });
-            }
+            $("#file_drop").hide();
+            $("#image-samplebox").show();
+
+            $("#image-samplebox").attr("src", window.URL.createObjectURL(files[0]));
+            console.log(e.target);
+            console.log($("#image-samplebox").attr("src"));
+            console.log(window.URL.createObjectURL(files[0]))
+            let formData = new FormData();
+            formData.append("uploadFiles", files[0]);
 
             $.ajax({
-                url: "서버 맵핑 URL",
+                url: "/file/concert/upload",
+                type: "post",
                 data: formData,
-                type: 'POST',
-                enctype: 'multipart/form-data',
-                processData: false,
                 contentType: false,
-                dataType: 'json',
-                cache: false,
-                success: function (res) {
-                    alert("등록에 성공하셨습니다.");
-                }, error: function (res) {
-                    alert("오류 발생.\n관리자에게 문의해주세요.");
+                processData: false,
+                success: function (file) {
+                    // showUploadResult(files);
+                    console.log(file[0]);
+                    fileList.push(file[0]);
+                    console.log(file[0].fileName);
+                    console.log(file[0].uuid);
+                    console.log(file[0].uploadPath);
+
+                    $("#fileName").val(file[0].fileName)
+                    $("#uuid").val(file[0].uuid)
+                    $("#uploadPath").val(file[0].uploadPath)
+                    console.log($("#fileName").val());
+                    console.log($("#uuid").val());
+                    console.log($("#uploadPath").val());
+                    // str += "<input type='hidden' id='fileName' name='fileName' value='" + file[0].fileName + "'>"
+                    // str += "<input type='hidden' id='uuid' name='uuid' value='" + file[0].uuid + "'>"
+                    // str += "<input type='hidden' id='uploadPath' name='uploadPath' value='" + file[0].uploadPath + "'>"
+                    // str += "<input type='hidden' name='fileList.image' value='" + $("#image-samplebox").data("image") + "'>"
+                    // str += "<input type='hidden' name='fileList[" + i + "].fileSize' value='" + $(li).data("filesize") + "'>"
                 }
             });
         });
+
+        // // 등록
+        // $(document).on("click", "#save", function () {
+        let formData = new FormData($("#fileForm")[0]);
+        //     if (fileList.length > 0) {
+        //         fileList.forEach(function (f) {
+        //             formData.append("fileList", f);
+        //         });
+        //     }
+        //
+        //     $.ajax({
+        //         url: "/upload",
+        //         data: formData,
+        //         type: 'POST',
+        //         processData: false,
+        //         contentType: false,
+        //         dataType: 'text',
+        //         // cache: false,
+        //         success: function (res) {
+        //             alert("등록에 성공하셨습니다.");
+        //         }, error: function (res) {
+        //             alert("오류 발생.\n관리자에게 문의해주세요.");
+        //         }
+        //     });
+        // });
     });
+    /*
+    1. processData:false
 
+    : 기본값은 true로, 데이터를 "application/x-www-form-urlenceded" 타입으로 전송합니다.
+
+    -> 다른 형식으로 전송하기 위해 false로 지정합니다.
+
+    2. contentType:false
+
+    : 기본값은 "application/x-www-form-urlenceded"
+
+    -> 파일의 경우 "multipart/form-data"방식으로 전송하기 위해 false로 지정합니다.
+
+    * */
 </script>
-
 <!-- 유효성 검사 -->
 <script>
     $(".purchase_link").on("click", function (e) {
@@ -203,7 +260,11 @@
             $(".warning_msg1").show();
             $(".info_area2").css("min-height", "120px");
             $("input[name=showType]").focus();
+            console.log($("#fileName").val());
+            console.log($("#uuid").val());
+            console.log($("#uploadPath").val());
             return false;
+
         } else {
             $(".warning_msg1").hide();
         }
@@ -267,9 +328,10 @@
         } else {
             $(".warning_msg7").hide();
         }
+
         //console.log("aaa");
         alert("등록이 완료되었습니다.")
-        $("form#registerForm");
+        $("form#registerForm").submit();
         return true;
     })
 

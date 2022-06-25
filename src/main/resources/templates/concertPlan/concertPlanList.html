@@ -172,50 +172,23 @@
             </p>
             <div class="ms5-rs-wrap">
                 <div class="swiper-container ms5-rs">
-                    <div class="swiper-wrapper">
-                        <div class='swiper-slide'>
-                            <a href='#' target='_self' title='버스킹버스커1'>
-                                    <span>
+<!--                    <th:block th:each="artist:${artistVO}">-->
+<!--                    <div th:object="${artist}" class="swiper-wrapper">-->
 
-                                        <img src="https://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040004/21/05/0400042105_47574_02.407.gif" alt='알라리깡숑'/>
-
-                                    </span>
-                                <div>
-                                    <p class='ms5-r-txt111'>알라리깡숑</p>
-                                    <p class='ms5-r-txt2'>뮤지션</p>
-                                </div>
-                                <p><img src="/images/myPage/non-heart-icon.png" width="30px"> </p>
-                            </a>
-                        </div>
-                        <div class='swiper-slide'>
-                            <a href='#' target='_self' title='버스킹버스커2'>
-                                    <span>
-
-                                        <img src="https://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040004/08/02/0400040802_6948_02.254.gif" alt='페퍼톤스'/>
-
-                                    </span>
-                                <div>
-                                    <p class='ms5-r-txt111'>페퍼톤스</p>
-                                    <p class='ms5-r-txt2'>퍼포먼스</p>
-                                </div>
-                                <p><img src="/images/myPage/non-heart-icon.png" width="30px"> </p>
-                            </a>
-                        </div>
-                        <div class='swiper-slide'>
-                            <a href='#' target='_self' title='버스킹버스커3'>
-                                    <span>
-
-                                        <img src="https://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040004/11/01/0400041101_24407_021.gif" alt='벤'/>
-
-                                    </span>
-                                <div>
-                                    <p class='ms5-r-txt111'>벤</p>
-                                    <p class='ms5-r-txt2'>뮤지션</p>
-                                </div>
-                                <p><img src="/images/myPage/non-heart-icon.png" width="30px"> </p>
-                            </a>
-                        </div>
-                    </div>
+<!--                        <div class='swiper-slide'>-->
+<!--                            <a href='#' target='_self' title='버스킹버스커1'>-->
+<!--                                    <span>-->
+<!--                                        <img src="https://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040004/21/05/0400042105_47574_02.407.gif" alt='알라리깡숑'/>-->
+<!--                                    </span>-->
+<!--                                <div>-->
+<!--                                    <p class='ms5-r-txt111' th:text="*{artistName}"></p>-->
+<!--                                    <p class='ms5-r-txt2' th:text="*{artistCategory}"></p>-->
+<!--                                </div>-->
+<!--                                <p><img src="/images/myPage/non-heart-icon.png" width="30px"> </p>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    </th:block>-->
                 </div>
 
                 <div class="swiper-button-next ms5-rs"></div>
@@ -232,38 +205,9 @@
 <section class='m2-sec02'>
     <div class='show-title'>BUSKER's COMING SOON</div>
     <div class='show-wrap'>
-<!--        <th:block th:each="show:${showList}">
-            <a th:object="${show}" class="goRead" th:href="*{showNumber}" target='_self'>
-                <div class='list-bigger-wrap'>
-                    <img class='lazyload' src='/images/concertPlan/img3.jpg' alt='/show_view'/>
-                    <div class='list-bigger-txt'>
-                        <p class='list-b-tit1' th:text="*{showName}"></p>
-                        <p class='list-b-tit2' th:text="*{showLocation}"></p>
-                        <p class='list-b-circle' th:text="|D-*{dDay}|"></p>
-                    </div>
-                </div>
-            </a>
-        </th:block>-->
     </div>
 
 <div class="paging"></div>
-<!--    <div th:object="${showPageDTO}">-->
-<!--        <div class="big-width mypage-pageStyle" style="text-align: center">-->
-<!--            <a class="mypage-page-first"><<</a>-->
-<!--            <a class="changePage" th:href="*{startPage - 1}" th:if="*{prev}"><code>&lt;</code></a>-->
-<!--            <th:block th:each="num:${#numbers.sequence(showPageDTO.startPage, showPageDTO.endPage)}">-->
-<!--                <code th:if="${num == showPageDTO.criteria.pageNum}" th:text="${num}"></code>-->
-<!--                <a class="changePage mypage-page-next" th:href="${num}" th:unless="${num == showPageDTO.criteria.pageNum}"><code-->
-<!--                        th:text="${num}"></code></a>-->
-<!--            </th:block>-->
-<!--            <a class="changePage" th:href="*{endPage + 1}" th:if="*{next}"><code>&gt;</code></a>-->
-<!--            <a class="mypage-page-last">>></a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <form action="/concert/concertPlanList" name="pageForm" th:object="${criteria}">-->
-<!--        <input type="hidden" th:field="*{pageNum}">-->
-<!--        <input type="hidden" th:field="*{amount}">-->
-<!--    </form>-->
 </section>
 
 
@@ -274,11 +218,5 @@
 </body>
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<!--<script src="/assets/js/concert/jquery.min.js"></script>-->
-<!--<script src="/assets/js/concert/jquery.dropotron.min.js"></script>-->
-<!--<script src="/assets/js/concert/browser.min.js"></script>-->
-<!--<script src="/assets/js/concert/breakpoints.min.js"></script>-->
-<!--<script src="/assets/js/concert/util.js"></script>-->
-<!--<script src="/assets/js/concert/main.js"></script>-->
 <script th:inline="javascript" src="/assets/js/concert/concertAjax.js"></script>
 </html>

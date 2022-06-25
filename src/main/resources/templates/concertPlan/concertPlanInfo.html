@@ -126,10 +126,10 @@
                     <p><span class="ps-date" th:text="*{showDay}"></span><a href="#" id="ps-location"><span
                             class="ps-location" th:text="|[*{showRegion}] *{showLocation}|"></span></a>
                     </p>
-                    <a th:href="*{showNumber}" class="ps-social modify">
+                    <a style="cursor: pointer;" class="ps-social modify">
                         <img src="/images/concertPlan/c.png" style="float: right; width:35px;">
                     </a>
-                    <a th:href="*{showNumber}" class="ps-social delete">
+                    <a style="cursor: pointer;"  class="ps-social delete">
                         <img src="/images/concertPlan/delete_icon.png" style="float: right; width:67px; height: 59px;">
                     </a>
                 </div>
@@ -163,8 +163,8 @@
                 <div class="rn-03-left">
                     <div class="rn-product-imgbox">
 
-                        <img src='/images/concertPlan/img3.jpg'/>
-
+<!--                        <img src='/images/concertPlan/img3.jpg'/>-->
+X
                     </div>
                     <div class="rn-product-maps" id="divPerfRelation" style="display:none;"></div>
                     <div class="rn-product-social">
@@ -335,7 +335,6 @@
     // 주소-좌표 변환 객체를 생성합니다
     var geocoder = new kakao.maps.services.Geocoder();
     let address = [[${concert.showAddress}]];
-    console.log(address);
     // 주소로 좌표를 검색합니다
     geocoder.addressSearch(address, function (result, status) {
 
@@ -512,13 +511,34 @@
     let pageNum = 1;
     let replyDiv = $(".concert-reply-div");
     let showNumber = [[${concert.showNumber}]];
+    let paging = [[${criteria.listLink}]];
 
+    $(".rn-product-short-data a.modify").click(function (e) {
+        e.preventDefault();
+        location.href = '/concert/concertPlanModify' + paging + '&showNumber=' + showNumber;
+    })
+
+    $(".rn-product-short-data a.delete").click(function (e) {
+        e.preventDefault();
+        location.href = '/concert/concertPlanDelete' + paging + '&showNumber=' + showNumber;
+    })
 
     $(document).ready(function () {
         // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
         replyList(pageNum);
+        (function(){
+            $.getJSON("/file/concert/file", {showNumber: showNumber}, function(file){showUploadResult(file);})
+        })();
     })
 
+    let $showImage = $(".rn-product-imgbox");
+    function showUploadResult(file) {
+        let str = ""
+        str += "<li data-filename='" + file.fileName.substring(file.fileName.indexOf("_") + 1) + "' data-uuid='" + file.uuid + "' data-uploadpath='" + file.uploadPath + "' data-image='" + file.image + "'>";
+        str += "<img src='/file/concert/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName + "' style=\"width: 100%; height: auto; overflow: hidden;\">";
+        str += "</li>"
+        $showImage.html(str);
+    }
     function replyList(page) {
         showReplyService.getListReply(showNumber, page, function (total, list) {
             let str = "";
@@ -577,9 +597,6 @@
             alert("이미 수정중인 댓글이 있습니다.");
             return;
         }
-        console.log("수정");
-        console.log(this);
-
         if(confirm("댓글을 수정하시겠습니까?")){
             let replyNumber = this.classList[2];
             let str = "";
@@ -589,7 +606,7 @@
             $("#finish-" + replyNumber).show();
             $("#cancel-" + replyNumber).show();
 
-            str += '<div class="reply-input">';
+            str += '<div class="reply-input" id="reply-input-' + replyNumber + '">';
             str += '<textarea id="textarea-' + replyNumber + '" class="' + replyNumber + '" name="replyShow" style="width: 100%;height: 70px;border: 1px solid #fff;font-size: 13px;resize: none;box-sizing: border-box;resize: none;margin-top: 10px;">'
             str += $("#content-" + replyNumber).text();
             str += '</textarea></div>';
@@ -597,6 +614,7 @@
             // str += "<textarea id='textarea-'" + replyNumber + " class='" + replyNumber + "' style='resize: none;'>";
             // str += $("#content-" + replyNumber).text();
             // str += "</textarea>";
+
 
             $("#content-" + replyNumber).replaceWith(str);
             updateCheck = true;
@@ -607,15 +625,26 @@
     $(".concert-reply-div").on("click", ".reply-cancel", function (e) {
         e.preventDefault();
         let replyNumber = this.classList[2];
-        $("textarea#textarea-" + replyNumber).val("");
-        $("textarea#textarea-" + replyNumber).focus();
+        if(confirm("댓글 수정을 취소하시겠습니까?")) {
+            $("#modify-" + replyNumber).show();
+            $("#delete-" + replyNumber).show();
+            $("#finish-" + replyNumber).hide();
+            $("#cancel-" + replyNumber).hide();
+            $("#reply-input-" + replyNumber).hide();
+            $("#content-" + replyNumber).show();
+            let str = "";
+            str += '<div id="content-' + replyNumber+ '" class="reply-content content ' + replyNumber+ '">';
+            str += $("#textarea-" + replyNumber).text();
+            str += '</div>'
+            console.log($("#textarea" + replyNumber).text())
+            $("#reply-input-" + replyNumber).replaceWith(str);
+            updateCheck = false;
+        }
     });
 
     //수정 완료
     $(".concert-reply-div").on("click", ".reply-finish", function (e) {
         e.preventDefault();
-        console.log("수정완료");
-        console.log(this);
         let replyNumber = this.classList[2];
 
         if(confirm("댓글을 수정하시겠습니까?")) {
@@ -688,6 +717,29 @@
         }
     })
 
+
+
+    // function showUploadResult(files){
+    //     let str ="";
+    //     $(files).each(function(i, file){
+    //         str += "<li data-filename='" + file.fileName.substring(file.fileName.indexOf("_") + 1) + "' data-uuid='" + file.uuid + "' data-uploadpath='" + file.uploadPath + "' data-image='" + file.image + "'>";
+    //         if(file.image){
+    //             str += "<a href=\"javascript:showImage(\'" + file.uploadPath + "/" + file.uuid + "_" + file.fileName +"\');\"><img src='/upload/display?fileName=" + file.uploadPath + "/s_" + file.uuid + "_"  + file.fileName + "'></a>";
+    //         }else{
+    //             str += "<a href='/upload/download?fileName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName + "'><img src='/images/attach.png' width='100'></a>";
+    //         }
+    //         str += "<p>" + file.fileName.substring(file.fileName.indexOf("_") + 1) + "</p>"
+    //         str += "</li>"
+    //     });
+    //     $uploadResult.html(str);
+    // }
+    //
+    //
+    // (function () {
+    //     $.getJSON("/upload/list", {boardBno : boardBno}, function (list) {
+    //         showUploadResult(list);
+    //     })
+    // })();
 </script>
 </body>
 </html>
