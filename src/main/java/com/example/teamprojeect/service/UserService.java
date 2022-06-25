@@ -68,8 +68,8 @@ public class UserService {
     //회원가입
     public void join(UserVO userVO) {userDAO.join(userVO);}
 
-    public List<UserVO> getUserList(Criteria criteria, UserListDTO userListDTO) {
-        return userDAO.getUserList(criteria, userListDTO);
+    public List<UserVO> getUserList(Criteria criteria, boolean isArtist) {
+        return userDAO.getUserList(criteria, isArtist);
     }
 
     // 총 유저 수

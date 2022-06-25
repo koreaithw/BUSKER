@@ -673,3 +673,43 @@ p.circle {
     border-bottom: 3px solid #ff564c;
     color: #ff564c;
 }
+
+.user_menu_wrap a {
+    color: #000000;
+}
+
+.user_menu_wrap a:hover {
+    color: #ff564c;
+}
+
+.on {
+    color: #ff564c !important;
+}
+
+.user_search_wrap {
+    text-align: right;
+    padding-right: 150px;
+    position: absolute;
+    margin: -48px 0 0 59%;
+}
+
+.user_search_wrap input {
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+    padding: 10px;
+    background-color: #fbe6d5;
+}
+
+.user_search_wrap a {
+    color: #000000;
+}
+
+.user_search_wrap a:hover {
+    color: #ff564c;
+    border-color: #ff564c;
+}
+
+

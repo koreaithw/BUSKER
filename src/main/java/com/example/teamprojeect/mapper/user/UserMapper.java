@@ -42,7 +42,7 @@ public interface UserMapper {
     public int updateArtist(@Param("userNumber") Long userNumber, @Param("listDTO") ListDTO listDTO);
 
     // 관리자 페이지 : 유저 리스트
-    public List<UserVO> getUserList(@Param("criteria") Criteria criteria, @Param("userListDTO") UserListDTO userListDTO);
+    public List<UserVO> getUserList(@Param("criteria") Criteria criteria, @Param("isArtist") boolean isArtist);
 
     // 관리자 페이지
     public int getTotal();
