@@ -107,6 +107,8 @@ dl {
     width: 430px;
     height: 600px;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .img_box img {
@@ -117,7 +119,8 @@ dl {
 
 .file_drop {
     display: inline-block;
-    width: 430px;height: 602px;
+    width: 430px;
+    height: 596px;
     border: 1px solid #000;
     overflow: auto;
     border-color: #ff9326;

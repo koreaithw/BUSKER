@@ -3,6 +3,8 @@ package com.example.teamprojeect.domain.vo.show;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @Data
 public class ShowVO {
@@ -19,4 +21,6 @@ public class ShowVO {
     private String showCategory;
     private String artistName;
     private String dDay;
+
+    private ShowFileVO file;
 }

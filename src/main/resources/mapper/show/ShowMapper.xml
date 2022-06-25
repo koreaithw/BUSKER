@@ -3,9 +3,12 @@
 <mapper namespace="com.example.teamprojeect.mapper.show.ShowMapper">
     <!--공연 등록-->
     <insert id="insert">
+        <selectKey keyProperty="showNumber" resultType="long" order="BEFORE">
+            SELECT SEQ_SHOW.NEXTVAL FROM DUAL
+        </selectKey>
         INSERT INTO TBL_SHOW
         (SHOW_NUMBER, ARTIST_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME , SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE)
-        VALUES(SEQ_SHOW.NEXTVAL, #{artistNumber}, #{showName}, #{showContent}, TO_DATE(#{showDay},'YYYY-MM-DD'), TO_DATE(#{showTime}, 'HH24:MI', 'NLS_DATE_LANGUAGE = Korean'), #{showAddress}, #{showLocation}, #{showType})
+        VALUES(#{showNumber}, #{artistNumber}, #{showName}, #{showContent}, TO_DATE(#{showDay},'YYYY-MM-DD'), TO_DATE(#{showTime}, 'HH24:MI', 'NLS_DATE_LANGUAGE = Korean'), #{showAddress}, #{showLocation}, #{showType})
     </insert>
 
     <!--공연 수정-->
@@ -150,6 +153,20 @@
                 WHERE ts.ARTIST_NUMBER = ta.ARTIST_NUMBER
                 )
         WHERE SHOW_NUMBER = #{showNumber}
+    </select>
+
+    <!--댓글 목록-->
+    <select id="getRankingReply" resultType="showVO">
+--         SELECT SHOW_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE, replycount
+--         FROM (
+--                 SELECT SHOW_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE
+--                 FROM(
+--                 (SELECT SHOW_NUMBER, COUNT(SHOW_NUMBER) as replycount
+--                 FROM TBL_SHOW_REPLY GROUP BY SHOW_NUMBER ORDER BY replycount DESC ) l JOIN TBL_SHOW a
+--                 ON a.SHOW_NUMBER = l.SHOW_NUMBER
+--                 ORDER BY REPLYCOUNT DESC
+--                 )
+--             )
     </select>
 
 </mapper>

@@ -9,28 +9,35 @@ import com.example.teamprojeect.domain.vo.show.ShowFileVO;
 import com.example.teamprojeect.domain.vo.show.ShowReplyVO;
 import com.example.teamprojeect.domain.vo.show.ShowVO;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ShowService {
     private final ShowDAO showDAO;
     private final ShowFileDAO showFileDAO;
-    private final ShowFileVO showFileVO;
     private final ShowReplyDAO showReplyDAO;
 
     @Transactional(rollbackFor = Exception.class)
     public void register(ShowVO showVO) {
         showDAO.register(showVO);
-//        showFileVO.setShowNumber(showVO.getShowNumber());
-//        showFileDAO.register(showFileVO);
+        ShowFileVO showFileVO = showVO.getFile();
+        showFileVO.setShowNumber(showVO.getShowNumber());
+        showFileDAO.register(showFileVO);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public boolean modify(ShowVO showVO) {
+        ShowFileVO showFileVO = showVO.getFile();
+        showFileVO.setShowNumber(showVO.getShowNumber());
+        showFileDAO.remove(showVO.getShowNumber());
+        showFileDAO.register(showFileVO);
         return showDAO.modify(showVO);
     }
 
@@ -78,4 +85,9 @@ public class ShowService {
     public List<ShowReplyVO> getListReply(Criteria criteria, Long showNumber) {
         return  showReplyDAO.getList(criteria, showNumber);
     }
+
+
+    public void removeFile(Long showNumber) {showFileDAO.remove(showNumber);}
+
+    public ShowFileVO find(Long showNumber) { return showFileDAO.find(showNumber);}
 }

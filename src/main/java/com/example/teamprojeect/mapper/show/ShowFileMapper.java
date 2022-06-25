@@ -13,9 +13,6 @@ public interface ShowFileMapper {
     // 공연 사진 삭제
     public void delete(Long showNumber);
 
-    // 공연 사진 변경
-    public void update(ShowFileVO showFileVO);
-
     // 공연 사진 선택
-    public List<ShowFileVO> find(Long showNumber);
+    public ShowFileVO find(Long showNumber);
 }

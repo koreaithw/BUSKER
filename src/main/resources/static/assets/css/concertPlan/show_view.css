@@ -476,6 +476,8 @@ body {
     width: 430px;
     height: 600px;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .rn-03-left .rn-product-imgbox > img {
