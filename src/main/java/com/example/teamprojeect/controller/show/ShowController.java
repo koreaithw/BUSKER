@@ -1,10 +1,12 @@
 package com.example.teamprojeect.controller.show;
 
 
+import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.paging.show.ShowPageDTO;
 import com.example.teamprojeect.domain.vo.show.ShowVO;
+import com.example.teamprojeect.service.ArtistService;
 import com.example.teamprojeect.service.ShowService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,42 +33,21 @@ public class ShowController {
     // 필드 생성
     @Autowired
     private ShowService showService;
+    private ArtistService artistService;
 
     // 진행 예정 공연 리스트 페이지 이동
     @GetMapping("/concertPlanList")
-    public String goConcertPlan() {
-//        List<ShowVO> showList = showService.getList(criteria, listDTO);
-//
-//        SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
-//
-//        showList.forEach(showVO -> {
-//            // 지역만 선택
-//            String showAddress = showVO.getShowAddress();
-//            showAddress = showAddress.substring(0, 2);
-//
-//            String showLocation = showVO.getShowLocation();
-//            showLocation = "[" + showAddress + "] " + showLocation;
-//            showVO.setShowLocation(showLocation);
-//
-//            // dday 계산
-//            String showDay = showVO.getShowDay();
-//            String todayDay = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis())); // 오늘날짜
-//
-//            try {
-//                Date date = new Date(dayFormat.parse(showDay).getTime());
-//                Date today = new Date(dayFormat.parse(todayDay).getTime());
-//                long calculate = date.getTime() - today.getTime();
-//                int Ddays = (int) (calculate / ( 24*60*60*1000));
-//                showVO.setDDay(Ddays);
-//            } catch (ParseException e) {
-//                System.err.println("dateStr : " + showDay + ", datePattern:" + dayFormat);
-//                e.printStackTrace();
+    public String goConcertPlan(Criteria criteria, ListDTO listDTO, Model model) {
+//        listDTO.setArtistSortingType("NEW");
+//        List<ArtistVO> artistVO = artistService.getList(new Criteria(1, 3), listDTO);
+//        artistVO.forEach(ArtistVO -> {
+//            if(ArtistVO.getArtistType() == 1) {
+//                ArtistVO.setArtistCategory("뮤지션");
+//            } else if (ArtistVO.getArtistType() == 2) {
+//                ArtistVO.setArtistCategory("퍼포먼스");
 //            }
-//        });
-
-//
-//        model.addAttribute("showList", showList);
-//        model.addAttribute("showPageDTO", new ShowPageDTO(criteria, showService.getTotal(listDTO)));
+//                });
+//        model.addAttribute("artistVO", artistVO);
         return "concertPlan/concertPlanList";
     }
 
@@ -403,6 +384,13 @@ public class ShowController {
     @PostMapping("/concertPlanRegister")
     public RedirectView goConcertPlanRegister(ShowVO showVO, RedirectAttributes rttr) {
         showVO.setArtistNumber(1L);
+        log.info("1111111111111111111111111111111");
+        log.info(showVO.getFile().toString());
+        log.info(showVO.getFile().toString());
+        log.info(showVO.getFile().toString());
+        log.info(showVO.getFile().toString());
+        log.info(showVO.getFile().toString());
+        log.info(showVO.getFile().toString());
         showService.register(showVO);
         rttr.addFlashAttribute("showNumber", showVO.getShowNumber());
         return new RedirectView("/concert/concertPlanList");
@@ -419,7 +407,7 @@ public class ShowController {
     @GetMapping("/concertPlanDelete")
     public String remove(Long showNumber, Criteria criteria, ListDTO listDTO, Model model) {
         showService.remove(showNumber);
-        return goConcertPlan();
+        return goConcertPlan(criteria, listDTO, model);
     }
 
 }

@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.function.Function;
-
 @SpringBootTest
 @Slf4j
 public class ShowFileMapperTests {
@@ -39,7 +37,7 @@ public class ShowFileMapperTests {
     @Test
     public void find() {
         Long showNumber = 212L;
-        showFileMapper.find(showNumber).stream().map(ShowFileVO::toString).forEach(log::info);
+        log.info(showFileMapper.find(showNumber).toString());
     }
 
 }

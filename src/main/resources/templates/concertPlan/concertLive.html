@@ -103,15 +103,15 @@
     <div>
         <div class="sm-tit"><p style="padding-bottom: 10px;">Busking Today in<span class="ing-text showIng-region"
                                                                                    style="margin-left: 17px;"></span>
-        </p></div>
+        </p>
+            <p class="mini-notice" style="position: absolute;font-size: 15px;bottom: -10px;color: #9a9494;"></p>
+        </div>
         <section class="show-wrap showIng">
 
 
         </section>
     </div>
 </div>
-
-<button id="btn-modal">모달</button>
 
 <div class="concertLive-modal">
 
@@ -135,6 +135,7 @@
             </div>
         </div>
     </div>
+    <button id="btn-modal" style="display: none;">모달</button>
 </div>
 
 <footer th:include="~{/footer/footer :: foot}">
@@ -303,7 +304,11 @@
             // 마커가 지도 위에 표시되도록 설정합니다
             marker.setMap(map);
             // iwContent 여기서 태그들 수정하면 인포윈도우에 출력되는 레이아웃 수정 가능!
-            var iwContent = '<div style="padding:8px 5px 5px 18px; width:100px; height:100px;" class="iw"><p class="info_txt">공연 위치</p><br><p class="info_txt2">' + item.loc + '</p><a href="https://map.kakao.com/link/map/공연위치' + ',' + item.lng + ',' + item.loc + '"' + 'target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            var iwContent = '<div style="padding:8px 5px 5px 18px; width:100px; height:100px;" class="iw">' +
+                '<p class="info_txt">공연 위치</p><br><p class="info_txt2">' + item.loc + '</p>' +
+                '<a href="https://map.kakao.com/link/map/공연위치,' + item.lng + ',' + item.loc + '" target="_blank">큰지도보기</a> ' +
+                '<a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" target="_blank">길찾기</a>' +
+                '</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                 iwPosition = new kakao.maps.LatLng(item.lng, item.lon); //인포윈도우 표시 위치입니다
             iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
@@ -330,23 +335,33 @@
     let modalShowTitle = $(".modal-infoTitle");
     let modalShowInfo = $(".modalShowDiv");
     let showRegion = $(".showIng-region");
+    let miniNotice = $(".mini-notice");
 
     // div 변하는 function 선언
     function concertIngList(region) {
         showIngService.regionList(region, function (total, list) {
             let str = "";
             if (list == null || list.length == 0) {
-                showDiv.html("");
-                showRegion.html("");
+                str += "<div class='non-show'>오늘의 공연이 없습니다.</div>"
+                showDiv.html(str);
+                // showRegion.html("");
                 return;
             }
 
 
+
             $.each(list, function (i, show) {
                 let infoNumber = Number(show.showNumber);
+
+                $.getJSON("/file/concert/file", {showNumber: infoNumber}, function(file){
+                    let src = "/file/concert/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+                    $("#img-" + infoNumber).attr("src", src);
+                })
+
+
                 str += "<a class='goRead' href='/concert/concertPlanInfo?&showNumber=" + infoNumber + "' target='_self'>"
-                str += "<div class='list-bigger-wrap'>"
-                str += "<img class='lazyload' src='http://tkfile.yes24.com/upload2/perfblog/202205/20220516/20220516-42246.jpg/dims/quality/70/' alt='/show_view'/>"
+                str += "<div class='list-bigger-wrap'><div class='image-wrap'>"
+                str += "<img id='img-" + infoNumber + "' class='lazyload' src='' alt='/show_view'/></div>"
                 str += "<div class='list-bigger-txt'>"
                 str += "<p class='list-b-tit1'>" + show.showName + "</p>"
                 str += "<p class='list-b-tit2'>" + show.showRegion + show.showLocation + "</p>"
@@ -354,6 +369,10 @@
                 str += "</div>"
                 str += "</div>"
                 str += "</a>"
+
+                if(i == 6) {
+                    return false;
+                }
             });
 
             showDiv.html(str);
@@ -380,7 +399,8 @@
 
             let str = "";
             str += '<div class="modal-left" style="padding-top: 14px; width: 293px; height: 408px;" >';
-            str += "<img src='http://tkfile.yes24.com/upload2/perfblog/202206/20220613/20220613-42494.jpg/dims/quality/70/' width='293px !important' height='408px !important'/>";
+            str += "<img id='modal-" + showNumber + "' class='lazyload' src='' alt='/show_view' style='width: 293px!important; height: auto!important;'/>"
+            // str += "<img src='http://tkfile.yes24.com/upload2/perfblog/202206/20220613/20220613-42494.jpg/dims/quality/70/' width='293px !important' height='408px !important'/>";
             str += '<div class="rn-product-maps" id="divPerfRelation" style="display:none;"></div>';
             str += '<a href="javascript:;" class="rn-product-good"></a></div>';
             str += '<div class="modal-right" style="padding-left: 40px; padding-top: 20px;"><div class="rn-product-area1"><dl>';
@@ -391,10 +411,16 @@
             str += '<dt>상세주소</dt><dd>&nbsp;' + showVO.showLocation + '</dd>';
             str += "</dl></div><a class='goRead-modal' href='/concert/concertPlanInfo?&showNumber=" + showVO.showNumber + "' target='_self'>자세히 보기</a>"
             // str += '</dl></div><a class="goRead-modal" href="/concert/concertPlanInfo?&showNumber="' + showVO.showNumber + 'target="_self">자세히 보기</a>';
-            str += '<a class="roadGo" href="" target="_self">길찾기</a></div>';
+            str += '<a class="roadGo" href="https://map.kakao.com/link/search/' + showVO.showAddress + '" target="_self">길찾기</a></div>';
 
             modalShowTitle.html(title);
             modalShowInfo.html(str);
+
+            $.getJSON("/file/concert/file", {showNumber: showNumber}, function(file){
+                let src = "/file/concert/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+                $("#modal-" + showNumber).attr("src", src);
+            })
+
             modal.style.display = "flex";
         }, function (a, b, c) {
             console.log(a, b, c)
@@ -421,10 +447,15 @@
 
     // 새로고침 기본값
     let regionText = "전국";
+    let mini = "";
+
+
     $(document).ready(function () {
         region = 0
         regionListChange(region);
         showRegion.text(regionText);
+        mini += "*" + regionText + " 지역에서 곧 시작되는 공연이 노출됩니다.";
+        miniNotice.text(mini);
     })
 
     // 지역 text 출력
@@ -438,6 +469,10 @@
         showRegion.text("");
         regionText = e;
         showRegion.text(e);
+        mini = ""
+        mini += "*" + regionText + " 지역에서 곧 시작되는 공연이 노출됩니다.";
+        miniNotice.text(mini);
+
     }
 
     $(document).ready(function () {

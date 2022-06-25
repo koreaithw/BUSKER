@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestExecutionListeners;
+import org.w3c.dom.Text;
 
 import javax.script.ScriptContext;
 
@@ -21,7 +22,7 @@ public class ShowMapperTests {
     public void insertTest(){
         ShowVO showVO = new ShowVO();
 
-        showVO.setArtistNumber(54L);
+        showVO.setArtistNumber(3L);
         showVO.setShowName("페퍼톤스");
         showVO.setShowContent("이승윤 무대 초대 컴컴");
         showVO.setShowDay("2022-06-06");
@@ -85,5 +86,10 @@ public class ShowMapperTests {
     @Test
     public void getTotalIngTest() {
         log.info("진행 중 공연 개수 : " +  showMapper.getTotalIng(new ListDTO("M", "new", "week", "new", "6")));
+    }
+
+    @Test
+    public void getRankingReplyTest() {
+        showMapper.getRankingReply().stream().map(ShowVO::toString).forEach(log::info);
     }
 }

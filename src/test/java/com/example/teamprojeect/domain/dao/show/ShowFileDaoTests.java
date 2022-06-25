@@ -16,7 +16,7 @@ public class ShowFileDaoTests {
     public void registerTest() {
 
         ShowFileVO showFileVO = new ShowFileVO();
-        Long showNumber = 1315L;
+        Long showNumber = 530L;
         showFileVO.setShowNumber(showNumber);
         showFileVO.setUuid("파일테스트123");
         showFileVO.setUploadPath("123123");
@@ -29,14 +29,14 @@ public class ShowFileDaoTests {
     public void removeTest() {
         ShowFileVO showFileVO = new ShowFileVO();
 
-        Long showNumber = 1315L;
+        Long showNumber = 530L;
 
         showFileDAO.remove(showNumber);
     }
 
     @Test
     public void find() {
-        Long showNumber = 1315L;
-        showFileDAO.find(showNumber).stream().map(ShowFileVO::toString).forEach(log::info);
+        Long showNumber = 530L;
+        log.info(showFileDAO.find(showNumber).toString());
     }
 }
