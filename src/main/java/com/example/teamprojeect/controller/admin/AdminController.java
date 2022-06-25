@@ -39,7 +39,7 @@ public class AdminController {
 
     // 관리자 페이지 이동
     @GetMapping("/adminMain")
-    public String goAdmin(Model model, Criteria criteria, ListDTO listDTO) {
+    public String goAdmin(Model model, Criteria criteria, ListDTO listDTO, boolean isArtist) {
         int total = workService.getTotalApply();
         int totalR = recruitService.getTotal(listDTO);
         int totalU = userService.getTotal();
@@ -56,9 +56,9 @@ public class AdminController {
         // 모집 공고 페이징
         model.addAttribute("recruitPageDTO", new PageDTO(criteria, totalR));
         // 유저 전체 목록
-        model.addAttribute("userList", userService.getUserList(criteria, new UserListDTO()));
+        model.addAttribute("userList", userService.getUserList(criteria, isArtist));
         // 관리자 페이지 메인에서 최근 회원가입 7건
-        model.addAttribute("userListSmall", userService.getUserList(new Criteria(1,7), new UserListDTO()));
+        model.addAttribute("userListSmall", userService.getUserList(new Criteria(1,7), isArtist));
         // 유저 목록 페이징
         model.addAttribute("userPageDTO", new PageDTO(criteria, totalU));
         return "/admin/adminMain";
@@ -138,10 +138,11 @@ public class AdminController {
     }
     
     // 유저 목록
-    @GetMapping("userList/{page}")
+    @PostMapping("userList/{page}/{isArtist}")
     @ResponseBody
-    public UserPageDTO getUserList(@PathVariable("page") int pageNum, boolean isArtist, @PathVariable("artistType") String artistType) {
+    public UserPageDTO getUserList(@PathVariable("page") int pageNum, @PathVariable("isArtist") boolean isArtist, String keyword) {
         int total = userService.getTotal();
-        return new UserPageDTO(userService.getUserList(new Criteria(pageNum, 10), new UserListDTO(isArtist, artistType)),total);
+        return new UserPageDTO(userService.getUserList(new Criteria(pageNum, 10, null, keyword), isArtist), total);
     }
+
 }

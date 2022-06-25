@@ -15,19 +15,19 @@ public class UserMapperTests {
     private UserMapper userMapper;
 
 //    회원가입 : 회원가입 매퍼테스트 - 성공
-    @Test
-    public void joinTest() {
-        UserVO userVO = new UserVO();
-
-        userVO.setUserId("test");
-        userVO.setUserPw("1234");
-        userVO.setUserName("추가 유저 이름 ");
-        userVO.setUserPhoneNumber("추가 유저 폰넘버 ");
-        userVO.setUserEmail("test.com");
-
-        userMapper.join(userVO);
-
-    }
+//    @Test
+//    public void joinTest() {
+//        UserVO userVO = new UserVO();
+//
+//        userVO.setUserId("test");
+//        userVO.setUserPw("1234");
+//        userVO.setUserName("추가 유저 이름 ");
+//        userVO.setUserPhoneNumber("추가 유저 폰넘버 ");
+//        userVO.setUserEmail("test.com");
+//
+//        userMapper.join(userVO);
+//
+//    }
 
 //    회원가입 : 아이디 찾기
 //    @Test
@@ -82,9 +82,8 @@ public class UserMapperTests {
     // 유저 리스트 // 잘 됨
     @Test
     public void getUserListTest() {
-        Criteria criteria = new Criteria(2, 10);
-        UserListDTO userListDTO = new UserListDTO();
-        userMapper.getUserList(criteria, userListDTO).stream().map(UserVO::toString).forEach(log::info);
+        Criteria criteria = new Criteria(13, 10);
+        userMapper.getUserList(criteria, false).stream().map(UserVO::toString).forEach(log::info);
     }
 
     // 총 유저 수 // 잘 됨

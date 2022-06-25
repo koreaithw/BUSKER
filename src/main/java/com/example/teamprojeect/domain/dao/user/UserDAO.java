@@ -54,8 +54,8 @@ public class UserDAO {
     }
 
     // 관리자 페이지 : 유저 리스트
-    public List<UserVO> getUserList(@Param("criteria") Criteria criteria, @Param("userListDTO") UserListDTO userListDTO) {
-        return userMapper.getUserList(criteria, userListDTO);
+    public List<UserVO> getUserList(@Param("criteria") Criteria criteria, @Param("isArtist") boolean isArtist) {
+        return userMapper.getUserList(criteria, isArtist);
     }
 
     // 관리자 페이지 : 총 유저 수
