@@ -48,4 +48,28 @@
         ]]>
     </select>
 
+    <!-- 특정 유저가 쇼에 남긴 댓글 -->
+    <select id="getUserShowReply" resultType="showReplyVO">
+        SELECT USER_NUMBER, USER_NAME, REPLY_CONTENT, REPLY_UPDATE_DATE, SHOW_NUMBER, SHOW_NAME, SHOW_TYPE
+        FROM (SELECT ROWNUM RN, USER_NUMBER, USER_NAME, REPLY_CONTENT, REPLY_UPDATE_DATE, SHOW_NUMBER, SHOW_NAME, SHOW_TYPE
+        FROM (SELECT tu.USER_NUMBER, tu.USER_NAME, tsr.REPLY_CONTENT, tsr.REPLY_UPDATE_DATE,tsr.SHOW_NUMBER, ts.SHOW_NAME, ts.SHOW_TYPE
+        FROM TBL_SHOW_REPLY tsr, TBL_USER tu, TBL_SHOW ts
+        WHERE tsr.USER_NUMBER =tu.USER_NUMBER AND tsr.SHOW_NUMBER = ts.SHOW_NUMBER AND tu.USER_NUMBER = #{userNumber}
+        ORDER BY REPLY_UPDATE_DATE DESC)
+        <![CDATA[
+        WHERE ROWNUM < #{criteria.pageNum} * #{criteria.amount}
+        )
+        WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
+        ]]>
+    </select>
+
+    <!-- 특정 유저가 쇼에 남긴 댓글 수 -->
+    <select id="getTotalUserShowReply" resultType="_int">
+        SELECT COUNT(*) FROM(
+        SELECT tu.USER_NUMBER,  tsr.REPLY_CONTENT, tsr.REPLY_UPDATE_DATE,tsr.SHOW_NUMBER, ts.SHOW_NAME, ts.SHOW_TYPE
+        FROM TBL_SHOW_REPLY tsr, TBL_USER tu, TBL_SHOW ts
+        WHERE tsr.USER_NUMBER =tu.USER_NUMBER AND tsr.SHOW_NUMBER = ts.SHOW_NUMBER AND tu.USER_NUMBER = #{userNumber}
+        ORDER BY REPLY_UPDATE_DATE DESC)
+    </select>
+
 </mapper>

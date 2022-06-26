@@ -1,5 +1,6 @@
 package com.example.teamprojeect.mapper.user;
 
+import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.user.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -79,5 +80,6 @@ public class UserMapperTests {
 //         userMapper.login("i", "12345");
 //
 //    }
+
 }
 
