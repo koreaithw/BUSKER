@@ -11,6 +11,7 @@ import com.example.teamprojeect.domain.vo.user.LikeVO;
 import com.example.teamprojeect.domain.vo.user.UserVO;
 import com.example.teamprojeect.service.ArtistService;
 import com.example.teamprojeect.service.DonationService;
+import com.example.teamprojeect.service.ShowService;
 import com.example.teamprojeect.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,6 +38,7 @@ public class MypageController {
     private final UserService userService;
     private final ArtistService artistService;
     private final DonationService donationService;
+    private final ShowService showService;
 
     // 마이페이지 이동
     @GetMapping("/myPage")
@@ -184,5 +186,19 @@ public class MypageController {
     @ResponseBody
     public ShowReplyPageDTO getUserShowReply(@PathVariable("userNumber") Long userNumber, @PathVariable("page") int pageNum){
         return new ShowReplyPageDTO(userService.getUserShowReply(new Criteria(pageNum, 10), userNumber), userService.getTotalUserShowReply(userNumber));
+    }
+
+    // 내가 남긴 댓글 삭제 - 쇼
+    @DeleteMapping("/reply/show/{replyNumber}")
+    public String removeArtistReply(@PathVariable("replyNumber") Long replyNumber) {
+        artistService.removeReply(replyNumber);
+        return "댓글이 삭제되었습니다.";
+    }
+
+    // 내가 남긴 댓글 삭제 - 아티스트
+    @DeleteMapping("/reply/artist/{replyNumber}")
+    public String removeShowReply(@PathVariable("replyNumber") Long replyNumber) {
+        showService.removeReply(replyNumber);
+        return "댓글이 삭제되었습니다.";
     }
 }
