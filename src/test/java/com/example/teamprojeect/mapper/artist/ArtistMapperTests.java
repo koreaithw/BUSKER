@@ -1,5 +1,6 @@
 package com.example.teamprojeect.mapper.artist;
 
+import com.example.teamprojeect.domain.vo.artist.ArtistDTO;
 import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
@@ -81,13 +82,13 @@ public class ArtistMapperTests {
     public void rankingListTest(){
         Criteria criteria = new Criteria();
         ListDTO listDTO = new ListDTO();
-//        listDTO.setDetailDate("2022");
-//        listDTO.setRankingSortingDate("year");
+        listDTO.setDetailDate("2022");
+        listDTO.setRankingSortingDate("year");
 //        listDTO.setDetailDate("2022-05");
 //        listDTO.setRankingSortingDate("month");
-        listDTO.setDetailDate("06-01");
-        listDTO.setRankingSortingDate("week");
-        artistMapper.rankingList(criteria, listDTO).stream().map(ArtistVO::toString).forEach(log::info);
+//        listDTO.setDetailDate("06-01");
+//        listDTO.setRankingSortingDate("week");
+        artistMapper.rankingList(criteria, listDTO).stream().map(ArtistDTO::toString).forEach(log::info);
     }
 
 }

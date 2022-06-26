@@ -1,5 +1,6 @@
 package com.example.teamprojeect.domain.dao.artist;
 
+import com.example.teamprojeect.domain.vo.artist.ArtistDTO;
 import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
@@ -7,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 @SpringBootTest
 @Slf4j
@@ -50,4 +53,32 @@ public class ArtistDaoTests {
         artistDAO.getList(new Criteria(1,5), new ListDTO("A","B","C","LIKE","1"))
                 .stream().map(ArtistVO::toString).forEach(log::info);
     }
+
+    @Test
+    public void rankingListTest(){
+        artistDAO.rankingList(new Criteria(1, 10), new ListDTO("A","B","C","LIKE","1"))
+                .stream().map(ArtistDTO::toString).forEach(log::info);
+    }
+
+//    @Test
+//    public List<ArtistVO> getList(){
+//        log.info(artistDAO.getList().toString());
+//    }
+
+
+
+
+//    @Test
+//    public void getListTest(){
+//        artistDAO.getList(new ListDTO("A", "new", "week", "new", "1"))
+//                .stream().map(ArtistVO::toString).forEach(log::info);
+//    }
+
+//    @Test
+//    public void rankingListTest(){
+//        artistDAO.getList(new Criteria()).stream().map(ArtistVO::toString).forEach(log::info);
+//    }
+
 }
+
+

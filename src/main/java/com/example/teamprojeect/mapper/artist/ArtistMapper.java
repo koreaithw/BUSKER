@@ -1,5 +1,6 @@
 package com.example.teamprojeect.mapper.artist;
 
+import com.example.teamprojeect.domain.vo.artist.ArtistDTO;
 import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
@@ -50,7 +51,7 @@ artistType likeType (최신, 좋아요 순)
     // 랭킹 목록
     // (매개변수로 artistType을 전달해서 'A'(전체)인지 'M'(아티스트) 인지 'P'(퍼포먼스)인지 구분)
     // (매개변수로 사용자 클릭에 따른 date를 전달, dateToday로 현재 시간도 전달)
-    public List<ArtistVO> rankingList(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO);
+    public List<ArtistDTO> rankingList(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO);
 
 
     // 아티스트 상세 정보

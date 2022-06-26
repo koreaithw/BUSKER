@@ -7,6 +7,8 @@
         <typeAlias type="com.example.teamprojeect.domain.vo.artist.ArtistFileVO" alias="artistFileVO"/>
         <typeAlias type="com.example.teamprojeect.domain.vo.artist.PaymentVO" alias="paymentVO"/>
         <typeAlias type="com.example.teamprojeect.domain.vo.donation.DonationVO" alias="donationVO"/>
+        <typeAlias type="com.example.teamprojeect.domain.vo.artist.ArtistDTO" alias="artistDTO"/>
+
 
         <typeAlias type="com.example.teamprojeect.domain.vo.paging.artist.ArtistPageDTO" alias="artistPageDTO"/>
         <typeAlias type="com.example.teamprojeect.domain.vo.paging.artist.ArtistReplyPageDTO" alias="artistReplyPageDTO"/>
@@ -30,6 +32,8 @@
 
         <typeAlias type="com.example.teamprojeect.domain.vo.work.WorkFileVO" alias="workFileVO"/>
         <typeAlias type="com.example.teamprojeect.domain.vo.work.WorkVO" alias="workVO"/>
+
+
 
     </typeAliases>
 </configuration>
