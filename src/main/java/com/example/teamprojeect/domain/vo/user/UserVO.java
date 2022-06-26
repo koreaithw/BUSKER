@@ -17,4 +17,5 @@ public class UserVO {
     private Long userStatus;
     private String userEmailId;
     private String userDomain;
+    private boolean userCookie;
 }
