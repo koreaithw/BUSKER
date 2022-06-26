@@ -75,7 +75,7 @@
                     SELECT ROWNUM RN, ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE
 
                     FROM (
-                            (SELECT ARTIST_NUMBER, COUNT(ARTIST_NUMBER) as likescount
+                            (SELECT ARTIST_NUMBER, COUNT (ARTIST_NUMBER) as likescount
                             FROM TBL_LIKE GROUP BY ARTIST_NUMBER ORDER BY likescount DESC ) l JOIN TBL_ARTIST a
                             ON a.ARTIST_NUMBER = l.ARTIST_NUMBER
                             ORDER BY LIKESCOUNT DESC
@@ -263,6 +263,12 @@
         SELECT ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE, ARTIST_DONATION, ARTIST_ACCOUNT, ARTIST_STATUS
         FROM TBL_ARTIST
         WHERE ARTIST_NUMBER = #{artistNumber}
+    </select>
+
+    <!--아티스트 좋아요 체크 -->
+    <select id="checkArtistLike" resultType="_int">
+        SELECT COUNT (*) FROM TBL_LIKE
+        WHERE USER_NUMBER = #{userNumber} AND ARTIST_NUMBER = #{artistNumber}
     </select>
 
 </mapper>

@@ -56,4 +56,6 @@ artistType likeType (최신, 좋아요 순)
     // 아티스트 상세 정보
     public ArtistVO getDetail(Long artistNumber);
 
+    public int checkArtistLike(Long artistNumber, Long userNumber);
+
 }

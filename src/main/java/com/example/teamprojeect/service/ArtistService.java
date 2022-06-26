@@ -11,6 +11,7 @@ import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.show.ShowReplyVO;
 import com.example.teamprojeect.domain.vo.show.ShowVO;
+import com.example.teamprojeect.domain.vo.user.LikeVO;
 import com.example.teamprojeect.mapper.artist.ArtistMapper;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Param;
@@ -74,6 +75,12 @@ public class ArtistService {
     public List<ArtistReplyVO> getListReply(Criteria criteria, Long showNumber) {
         return  artistReplyDAO.getList(criteria, showNumber);
     }
+
+    public void registerUserLike(LikeVO likeVO) {
+        likeDAO.registerArtistLike(likeVO);
+    }
+
+    public int checkArtistLike(Long artistNumber, Long userNumber) {return artistDAO.checkArtistLike(artistNumber, userNumber);}
 
 
 }

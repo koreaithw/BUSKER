@@ -98,4 +98,6 @@
         SELECT COUNT (*) FROM TBL_LIKE
         WHERE USER_NUMBER = #{userNumber} AND LIKE_CATEGORY = 'W'
     </select>
+
+
 </mapper>
