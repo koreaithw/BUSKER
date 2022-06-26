@@ -62,4 +62,14 @@ public class UserDAO {
     public int getTotal() {
         return userMapper.getTotal();
     }
+
+    // 관리자 페이지 : 아티스트로 등록된 유저 수
+    public int getArtistotal() {
+        return userMapper.getArtistTotal();
+    }
+
+    // 관리자 페이지 : 검색 결과 개수
+    public int getSearchTotal(Criteria criteria) {
+        return userMapper.getSearchTotal(criteria);
+    }
 }

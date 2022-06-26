@@ -404,8 +404,8 @@
                         <h4 class="user_menu"><a href="javascript:changeRange(0)" class="on">전체 회원</a> | <a href="javascript:changeRange(1)">아티스트 등록 회원</a></h4>
                     </div>
                     <div class="user_search_wrap">
-                        <input type="text" class="search">
-                        <a href="javascript:goSearch(1,'새로')" class="go_search">검색</a>
+                        <input type="text" class="search" name="keyword">
+                        <a href="" class="go_search">검색</a>
                     </div>
                     <thead>
                         <th>번호</th>
@@ -506,6 +506,16 @@
     let today = todayWorkApply + todayArtistApply + todayRecruit;
     $(".circle").html(today);
     let remember = [[${criteria.listLink}]]; // 페이지 기억
+
+    $(".go_search").on("click", function (e) {
+        e.preventDefault();
+        if($("input[name='keyword']").val() == null){
+            alert("검색어를 입력해 주세요");
+            return;
+        }
+        keyword = $("input[name='keyword']").val();
+        goSearch(1, keyword);
+    })
 
 
     showWorkApplyList(pageNumW);    // 작품 신청 전체 목록 띄우기
@@ -766,8 +776,38 @@
             });
             $userTr.append(str);
             pageNumU = page;
-            showUserPage(list.total);
+            showSearchPage(list.total, keyword);
         })
+    }
+
+    // 회원 검색 페이징
+    function showSearchPage(total, keyword) {
+        $pagingU.empty();
+        let endPage = Math.ceil(pageNumU / 10.0) * 10;
+        let startPage = endPage - 9;
+        let realEnd = Math.ceil(total / 10.0);
+
+        if(endPage > realEnd){
+            endPage = realEnd;
+        }
+
+        let prev = startPage > 1;
+        let next = endPage * 10 < total;
+        let str = "";
+
+        str += `<a class="mypage-page-first changePage" href="javascript:goSearch(${1},'${keyword}')">&lt;&lt;</a>`;
+        if(prev) {
+            str += `<a class="mypage-page-prev" href="javascript:goSearch(${startPage-1},'${keyword}')">&lt;</a>`;
+        }
+        for(let i = startPage; i <= endPage; i++){
+            str += pageNumU == i ? `<p>${i}</p>` : `<a class="changePage" href="javascript:goSearch(${i},'${keyword}')">${i}</a>`;
+        }
+        if(next){
+            str += `<a class="mypage-page-next changePage" href="javascript:goSearch(${endPage+1},'${keyword}')">&gt;</a>`;
+        }
+        str += `<a class="mypage-page-last changePage" href="javascript:goSearch(${realEnd},'${keyword}')">&gt;&gt;</a>`;
+
+        $pagingU.append(str);
     }
 
     $(".user_menu a").on("click", function (e) {

@@ -93,4 +93,14 @@ public class UserService {
     public int getTotal() {
         return userDAO.getTotal();
     }
+
+    // 아티스트로 등록한 유저 수
+    public int getArtistTotal() {
+        return userDAO.getArtistotal();
+    }
+
+    // 총 검색 결과 개수
+    public int getSearchTotal(Criteria criteria) {
+        return userDAO.getSearchTotal(criteria);
+    }
 }
