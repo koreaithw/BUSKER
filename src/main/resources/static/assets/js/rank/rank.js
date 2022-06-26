@@ -33,3 +33,34 @@ $(function(){
         $(".rank_calendar_ver3").css('display', 'block');
     })
 })
+
+
+
+
+
+// console.log("Ranking Module......");
+// let Rankingservise = (function(){
+//     function add(rankingService, callback, error){
+//         console.log("add reply..........");
+//         $.ajax({
+//             url: "/ranking",
+//             type: "get",
+//             data: JSON.stringify(rankingService),
+//             contentType: "application/json",
+//             success: function(result){
+//                 if(callback){
+//                     callback(result);
+//                 }
+//             },
+//             error: function(xhr, status, er){
+//                 if(error){
+//                     error(xhr, status, er);
+//                 }
+//             }
+//         });
+//     }
+//
+// })();
+
+
+
