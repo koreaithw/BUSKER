@@ -1017,7 +1017,6 @@ a:-webkit-any-link {
 }
 
 .replyBox {
-  margin-top: 10px;
   display: flex;
   border-bottom: 1px solid #bdbdbd;
   padding-left: 18px;
@@ -1097,6 +1096,7 @@ a:-webkit-any-link {
 
 .reply-right {
   display: flex;
+  width: 300px;
   justify-content: space-between;
   align-items: center;
 }
