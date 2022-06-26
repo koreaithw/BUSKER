@@ -38,4 +38,14 @@ public class ShowReplyDAO {
     public List<ShowReplyVO> getList(@Param("criteria") Criteria criteria, @Param("showNumber")Long showNumber) {
         return showReplyMapper.getList(criteria, showNumber);
     }
+
+    // 특정 유저가 쇼에 남긴 댓글 목록
+    public List<ShowReplyVO> getUserShowReply(@Param("criteria")Criteria criteria, @Param("userNumber")Long userNumber){
+        return showReplyMapper.getUserShowReply(criteria, userNumber);
+    }
+
+    // 특정 유저가 쇼에 남긴 댓글 수
+    public int getTotalUserShowREply(Long userNumber){
+        return showReplyMapper.getTotalUserShowReply(userNumber);
+    }
 }

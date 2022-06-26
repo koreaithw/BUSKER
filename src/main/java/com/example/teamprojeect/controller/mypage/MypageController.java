@@ -3,7 +3,9 @@ package com.example.teamprojeect.controller.mypage;
 import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.paging.artist.ArtistReplyPageDTO;
 import com.example.teamprojeect.domain.vo.paging.donation.DonationPageDTO;
+import com.example.teamprojeect.domain.vo.paging.show.ShowReplyPageDTO;
 import com.example.teamprojeect.domain.vo.paging.user.LikePageDTO;
 import com.example.teamprojeect.domain.vo.user.LikeVO;
 import com.example.teamprojeect.domain.vo.user.UserVO;
@@ -12,12 +14,16 @@ import com.example.teamprojeect.service.DonationService;
 import com.example.teamprojeect.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
@@ -44,6 +50,12 @@ public class MypageController {
         model.addAttribute("user",userVO);
         return "/myPage/myPage";
     }
+
+//    @PostMapping("/check")
+//    public RedirectView pwCheck(UserVO userVO, RedirectAttributes rttr){
+//        log.info("******************");
+//
+//    }
 
 //    유저 정보 조회 - Talend API Tester 통과
 //    @GetMapping("/{userNumber}")
@@ -84,6 +96,17 @@ public class MypageController {
     public String remove(@PathVariable("userNumber")Long userNumber){
         userService.remove(userNumber);
         return "유저 삭제 성공";
+    }
+
+    // 관심 아티스트 좋아요 취소
+    @DeleteMapping("/{userNumber}/{type}/{number}")
+    @ResponseBody
+    public String removeLike(@PathVariable("userNumber")Long userNumber, @PathVariable("type")String likeCategory, @PathVariable("number")Long number){
+        ListDTO listDTO = new ListDTO();
+        listDTO.setLikeCategory(likeCategory);
+        userService.removeLike(userNumber, listDTO, number);
+
+        return "좋아요 등록 취소 성공";
     }
 
     // 관심 아티스트 좋아요 목록 불러오기 - Talend API 통과
@@ -130,7 +153,7 @@ public class MypageController {
         return "아티스트 삭제 성공";
     }
 
-    // 후원 목록
+    // 후원 목록 (아티스트 관점)
     @GetMapping("/artist/{artistNumber}/{type}/{page}")
     @ResponseBody
     public DonationPageDTO donationList(@PathVariable("artistNumber")Long artistNumber, @PathVariable("type")String donationType, @PathVariable("page")int pageNum){
@@ -138,5 +161,28 @@ public class MypageController {
         listDTO.setDonationType(donationType);
 
         return new DonationPageDTO(donationService.donationList(new Criteria(pageNum, 10), artistNumber, listDTO), donationService.getDonationTotal(artistNumber, listDTO));
+    }
+
+    @GetMapping("/user/{userNumber}/{type}/{page}")
+    @ResponseBody
+    public DonationPageDTO donationUserList(@PathVariable("userNumber")Long userNumber, @PathVariable("type")String donationType, @PathVariable("page")int pageNum){
+        ListDTO listDTO = new ListDTO();
+        listDTO.setDonationType(donationType);
+
+        return new DonationPageDTO(donationService.donationUserList(new Criteria(pageNum, 10), userNumber, listDTO), donationService.getDonationUserTotal(userNumber, listDTO));
+    }
+
+    // 내가 남긴 댓글 - 아티스트
+    @GetMapping("/reply/artist/{userNumber}/{page}")
+    @ResponseBody
+    public ArtistReplyPageDTO getUserReply(@PathVariable("userNumber")Long userNumber, @PathVariable("page")int pageNum){
+        return new ArtistReplyPageDTO(userService.getUserReplyList(new Criteria(pageNum,10), userNumber), userService.getTotalUserReply(userNumber));
+    }
+
+    // 내가 남긴 댓글 - 쇼
+    @GetMapping("/reply/show/{userNumber}/{page}")
+    @ResponseBody
+    public ShowReplyPageDTO getUserShowReply(@PathVariable("userNumber") Long userNumber, @PathVariable("page") int pageNum){
+        return new ShowReplyPageDTO(userService.getUserShowReply(new Criteria(pageNum, 10), userNumber), userService.getTotalUserShowReply(userNumber));
     }
 }

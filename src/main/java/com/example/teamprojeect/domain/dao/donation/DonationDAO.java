@@ -24,13 +24,23 @@ public class DonationDAO {
         donationMapper.insert(donationVO);
     }
 
-    // 후원 목록
+    // 후원 목록 (아티스트 관점)
     public List<DonationVO> donationList(@Param("criteria")Criteria criteria, @Param("artistNumber")Long artistNumber, @Param("listDTO")ListDTO listDTO){
         return donationMapper.donationList(criteria, artistNumber, listDTO);
     }
 
-    // 후원 개수
+    // 후원 개수 (아티스트 관점)
     public int getDonationTotal(@Param("artistNumber")Long artistNumber, @Param("listDTO")ListDTO listDTO){
         return donationMapper.getDonationTotal(artistNumber, listDTO);
+    }
+
+    // 후원 목록 (유저 관점)
+    public List<DonationVO> donationUserList(@Param("criteria")Criteria criteria, @Param("userNumber")Long userNumber, @Param("listDTO")ListDTO listDTO){
+        return donationMapper.donationUserList(criteria, userNumber, listDTO);
+    }
+
+    // 후원 개수
+    public int getDonationUserTotal(@Param("userNumber")Long userNumber, @Param("listDTO")ListDTO listDTO){
+        return donationMapper.getDonationUserTotal(userNumber, listDTO);
     }
 }

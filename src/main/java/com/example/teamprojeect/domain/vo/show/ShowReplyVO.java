@@ -13,4 +13,6 @@ public class ShowReplyVO {
     private String replyRegisterDate;
     private String replyUpdateDate;
     private String userName;
+    private String showType;
+    private String showName;
 }
