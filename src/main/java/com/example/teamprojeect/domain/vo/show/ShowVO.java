@@ -21,6 +21,7 @@ public class ShowVO {
     private String showCategory;
     private String artistName;
     private String dDay;
+    private Long replyCount;
 
     private ShowFileVO file;
 }

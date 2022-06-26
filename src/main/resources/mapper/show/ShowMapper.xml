@@ -156,17 +156,34 @@
     </select>
 
     <!--댓글 목록-->
+<!--    <select id="getRankingReply" resultType="showVO">-->
+<!--        SELECT SHOW_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE, replycount-->
+<!--        FROM (-->
+<!--                SELECT SHOW_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE-->
+<!--                FROM(-->
+<!--                (SELECT SHOW_NUMBER, COUNT(SHOW_NUMBER) as replycount-->
+<!--                FROM TBL_SHOW_REPLY GROUP BY SHOW_NUMBER ORDER BY replycount DESC ) l JOIN TBL_SHOW a-->
+<!--                ON a.SHOW_NUMBER = l.SHOW_NUMBER-->
+<!--                ORDER BY REPLYCOUNT DESC-->
+<!--                )-->
+<!--            )-->
+<!--    </select>-->
+
+
     <select id="getRankingReply" resultType="showVO">
---         SELECT SHOW_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE, replycount
---         FROM (
---                 SELECT SHOW_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE
---                 FROM(
---                 (SELECT SHOW_NUMBER, COUNT(SHOW_NUMBER) as replycount
---                 FROM TBL_SHOW_REPLY GROUP BY SHOW_NUMBER ORDER BY replycount DESC ) l JOIN TBL_SHOW a
---                 ON a.SHOW_NUMBER = l.SHOW_NUMBER
---                 ORDER BY REPLYCOUNT DESC
+--         SELECT SHOW_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE, replyCount
+-- --         FROM (
+                SELECT l.SHOW_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE, replyCount
+                FROM
+--                 (
+                (
+                SELECT SHOW_NUMBER, COUNT(SHOW_NUMBER) as replyCount
+                FROM TBL_SHOW_REPLY GROUP BY SHOW_NUMBER ORDER BY replyCount DESC
+                ) l JOIN TBL_SHOW a
+                ON a.SHOW_NUMBER = l.SHOW_NUMBER
+                WHERE a.SHOW_DAY - SYSDATE >= 0
+                ORDER BY REPLYCOUNT DESC
 --                 )
 --             )
     </select>
-
 </mapper>
