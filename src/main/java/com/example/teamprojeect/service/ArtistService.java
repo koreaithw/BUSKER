@@ -93,6 +93,10 @@ public class ArtistService {
         likeDAO.registerArtistLike(likeVO);
     }
 
+    public void removeUserLike(LikeVO likeVO) {
+        likeDAO.removeArtistLike(likeVO);
+    }
+
     public int checkArtistLike(Long artistNumber, Long userNumber) {return artistDAO.checkArtistLike(artistNumber, userNumber);}
 
 

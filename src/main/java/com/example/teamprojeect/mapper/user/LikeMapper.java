@@ -15,6 +15,9 @@ public interface LikeMapper {
     // 좋아요 (아티스트) 등록
     public void insertArtistLike(LikeVO likeVO);
 
+    // 좋아요 (아티스트) 삭제
+    public void deleteArtistLike(LikeVO likeVO);
+
     // 좋아요 (작품) 등록
     public void insertWorkLike(LikeVO likeVO);
 
