@@ -91,4 +91,11 @@ public class ArtistMapperTests {
         artistMapper.rankingList(criteria, listDTO).stream().map(ArtistDTO::toString).forEach(log::info);
     }
 
+    @Test
+    public void likeCheckTest(){
+        artistMapper.checkArtistLike(1L,100L);
+
+
+    }
+
 }
