@@ -38,7 +38,7 @@ public class WorkController {
     }
 
     @ResponseBody
-    @PostMapping("/workList/{tag}")
+    @PostMapping("/workList/{tag}/{page}")
     public WorkApplyPageDTO goWorkList(@PathVariable("tag") String tag, Model model) {
         ListDTO listDTO = new ListDTO();
         if(tag != null) {
