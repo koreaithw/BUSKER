@@ -972,6 +972,28 @@ a:-webkit-any-link {
 }
 
 /* 내가 쓴 댓글 */
+.reply-sorting {
+  display: flex;
+  height: 40px;
+  justify-content: flex-end;
+  text-align: center;
+}
+
+#show-reply {
+  border-right: 1px solid #a5a5a5;
+}
+
+#artist-reply {
+  margin-left: 7px;
+  padding: 0;
+}
+
+
+
+.reply-sorting a{
+  margin: 0;
+}
+
 .reply-admin {
   background-color: rgba(199, 199, 199, 0.192);
   border-top: 1px solid #e6e6e6;
@@ -1416,6 +1438,7 @@ select:disabled {
 
 .donation-soring span {
   margin-left: 22px;
+  padding: 0;
 }
 
 .donation-wrap {
