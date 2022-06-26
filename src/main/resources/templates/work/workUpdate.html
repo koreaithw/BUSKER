@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <div class="work_info_wrap">
+    <div class="work_info_wrap" th:object="${work}">
         <form action="/work/workModify" method="post" name="registerForm" enctype="multipart/form-data">
             <div class="work_info_content">
                 <div class="work_info">
@@ -49,36 +49,36 @@
                             <dl>
                                 <dt>작품명*</dt>
                                 <dd>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="workName" class="input_text">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="workName" class="input_text" th:text="*{workName}">
                                     <span><p class="warning_msg1">반드시 입력해야 하는 칸입니다.</p></span>
                                 </dd>
                                 <dt>아티스트*</dt>
                                 <dd>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="artistName" class="input_text">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="artistName" class="input_text" th:text="*{artistName}">
                                     <span><p class="warning_msg2">반드시 입력해야 하는 칸입니다.</p></span>
                                 </dd>
                                 <dt>발매일*</dt>
                                 <dd>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="workReleaseDate" class="input_text">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="workReleaseDate" class="input_text" th:text="*{workReleaseDate}">
                                     <span><p class="warning_msg3">반드시 입력해야 하는 칸입니다.</p></span>
                                 </dd>
                                 <dt>장르*</dt>
                                 <dd>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="workGenre" class="input_text">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="workGenre" class="input_text" th:text="*{workGenre}">
                                     <span><p class="warning_msg4">반드시 입력해야 하는 칸입니다.</p></span>
                                 </dd>
                                 <dt>태그*</dt>
                                 <dd>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="workTag" class="input_text" placeholder="#태그 식으로 써주세요">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="workTag" class="input_text" placeholder="#태그 식으로 써주세요" th:text="*{workTag}">
                                     <span><p class="warning_msg5">반드시 입력해야 하는 칸입니다.</p></span>
                                 </dd>
                                 <dt>뮤비 링크</dt>
                                 <dd>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="workYoutubeUrl" class="input_text" placeholder="유튜브 링크로 올려주세요.">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="workYoutubeUrl" class="input_text" placeholder="유튜브 링크로 올려주세요." th:text="*{workYoutubeUrl}">
                                 </dd>
                                 <dt>구매 링크</dt>
                                 <dd>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="workPurchaseUrl" class="input_text" placeholder="구매 링크를 올려주세요.">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="workPurchaseUrl" class="input_text" placeholder="구매 링크를 올려주세요." th:text="*{workPurchaseUrl}">
                                 </dd>
                             </dl>
                         </div>
@@ -86,14 +86,14 @@
                             <dl>
                                 <dt>작품 설명</dt>
                                 <dd>
-                                    <textarea name="workDescription" id="" cols="82" rows="12" placeholder="작품설명을 입력해주세요"></textarea>
+                                    <textarea name="workDescription" id="" cols="82" rows="12" placeholder="작품설명을 입력해주세요" th:text="*{workDescription}"></textarea>
                                 </dd>
                             </dl>
                         </div>
                         <div class="info_area2" style="float: right;">
                             <div class="purchase_link_wrap">
-                                <a href="/templates/work/workList.html" class="purchase_link">뒤로가기</a>&nbsp;&nbsp;
-                                <a href="" class="purchase_link">작품 등록 신청</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="/work/workList" class="purchase_link">뒤로가기</a>&nbsp;&nbsp;
+                                <a href="" class="purchase_link">작품 수정 신청</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </div>
                         </div>
                     </div>

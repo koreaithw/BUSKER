@@ -19,5 +19,7 @@ public class WorkVO {
     private String workRegisterDate;
     private String workUpdateDate;
     private String workStatus;
+
+    private WorkFileVO workFile;
 }
 

@@ -1,6 +1,7 @@
 package com.example.teamprojeect.controller.work;
 
 import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.show.ShowFileVO;
 import com.example.teamprojeect.domain.vo.work.WorkFileVO;
 import com.example.teamprojeect.service.WorkService;
 import lombok.RequiredArgsConstructor;
@@ -118,10 +119,19 @@ public class WorkFileController {
         if(file.exists()){ file.delete(); }
     }
 
-//    @GetMapping("/list")
-//    @ResponseBody
-//    public List<WorkFileVO> getList(Criteria criteria){
-//        log.info("get file list....... : " + boardBno);
-//        return workService.getList(criteria);
-//    }
+    // find
+    @GetMapping("/find")
+    @ResponseBody
+    public WorkFileVO find(Long showNumber){
+        log.info("get file find....... : " + showNumber);
+        return workService.find(showNumber);
+    }
+
+    @GetMapping("/file")
+    @ResponseBody
+    public WorkFileVO getFile(Long showNumber) {
+        log.info("file " + showNumber);
+        return workService.find(showNumber);
+    }
+
 }

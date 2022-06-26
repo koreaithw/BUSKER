@@ -68,8 +68,23 @@ public class WorkController {
     public void goWorkRegister(){}
 
     @PostMapping("/workRegister")
-    public RedirectView goWorkRegister(WorkVO workVO, WorkFileVO workFileVO, RedirectAttributes rttr) {
-        workService.registerApply(workVO,workFileVO);
+    public RedirectView goWorkRegister(WorkVO workVO,RedirectAttributes rttr) {
+        workVO.setArtistNumber(1L);
+        workService.registerApply(workVO);
+        rttr.addFlashAttribute("workNumber", workVO.getWorkNumber());
         return new RedirectView("/work/workList");
     }
+
+    @PostMapping("/workUpdate")
+    public RedirectView goWorkUpdate(WorkVO workVO, Criteria criteria, RedirectAttributes rttr) {
+        workVO.setArtistNumber(1L);
+        if(workService.modifyApply(workVO)){
+            rttr.addAttribute("workNumber", workVO.getWorkNumber());
+            rttr.addAttribute("pageNum",criteria.getPageNum());
+            rttr.addAttribute("amount",criteria.getAmount());
+        }
+        return new RedirectView("/work/workInfo");
+    }
+
+
 }

@@ -4,10 +4,12 @@ import com.example.teamprojeect.domain.dao.work.WorkDAO;
 import com.example.teamprojeect.domain.dao.work.WorkFileDAO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.show.ShowFileVO;
 import com.example.teamprojeect.domain.vo.work.WorkFileVO;
 import com.example.teamprojeect.domain.vo.work.WorkVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,8 +20,11 @@ public class WorkService {
     private final WorkFileDAO workFileDAO;
 
     // 작품 등록 신청
-    public void registerApply(WorkVO workVO, WorkFileVO workFileVO){
+    @Transactional(rollbackFor = Exception.class)
+    public void registerApply(WorkVO workVO){
         workDAO.registerApply(workVO);
+        System.out.println(workVO.getWorkNumber());
+        WorkFileVO workFileVO = workVO.getWorkFile();
         workFileVO.setWorkNumber(workVO.getWorkNumber());
         workFileDAO.register(workFileVO);
     }
@@ -35,8 +40,13 @@ public class WorkService {
     }
 
     // 작품 수정 신청
-    public void modifyApply(WorkVO workVO){
-        workDAO.modifyApply(workVO);
+    @Transactional(rollbackFor = Exception.class)
+    public boolean modifyApply(WorkVO workVO){
+        WorkFileVO workFileVO = workVO.getWorkFile();
+        workFileVO.setWorkNumber(workVO.getWorkNumber());
+        workFileDAO.remove(workVO.getWorkNumber());
+        workFileDAO.register(workFileVO);
+        return workDAO.modifyApply(workVO);
     }
 
     // 작품 수정 신청 승인
@@ -68,4 +78,9 @@ public class WorkService {
     public int getTotalListApply() {
         return workDAO.getTotalListApply();
     }
+
+    public void removeFile(Long workNumber) {workFileDAO.remove(workNumber);}
+
+    public WorkFileVO find(Long workNumber) { return workFileDAO.find(workNumber);}
+
 }
