@@ -116,9 +116,8 @@ let adminService = (function () {
 
     function getUserSearchResult(param, callback, error) {
         $.ajax({
-            url: "/admin/userList/" + param.page + "/" + param.isArtist,
+            url: "/admin/userList/" + param.page + "/" + param.isArtist + "/" + param.keyword,
             type: "post",
-            data: JSON.stringify(param.keyword),
             dataType: "json",
             contentType: "application/json",
             success: function(result){

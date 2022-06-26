@@ -44,6 +44,13 @@ public interface UserMapper {
     // 관리자 페이지 : 유저 리스트
     public List<UserVO> getUserList(@Param("criteria") Criteria criteria, @Param("isArtist") boolean isArtist);
 
-    // 관리자 페이지
+    // 관리자 페이지 : 총 유저 수
     public int getTotal();
+
+    // 관리자 페이지 : 아티스트로 등록한 유저 수
+    public int getArtistTotal();
+
+    // 관리자 페이지 : 검색 결과 개수
+    public int getSearchTotal(Criteria criteria);
 }
+

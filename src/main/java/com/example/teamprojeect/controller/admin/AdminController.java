@@ -140,9 +140,21 @@ public class AdminController {
     // 유저 목록
     @PostMapping("userList/{page}/{isArtist}")
     @ResponseBody
-    public UserPageDTO getUserList(@PathVariable("page") int pageNum, @PathVariable("isArtist") boolean isArtist, String keyword) {
+    public UserPageDTO getUserList(@PathVariable("page") int pageNum, @PathVariable("isArtist") boolean isArtist) {
         int total = userService.getTotal();
-        return new UserPageDTO(userService.getUserList(new Criteria(pageNum, 10, null, keyword), isArtist), total);
+        if(isArtist){
+            total = userService.getArtistTotal();
+        }
+        return new UserPageDTO(userService.getUserList(new Criteria(pageNum, 10), isArtist), total);
+    }
+
+    // 유저 검색 결과
+    @PostMapping("userList/{page}/{isArtist}/{keyword}")
+    @ResponseBody
+    public UserPageDTO getUserSearchResult(@PathVariable("page") int pageNum, @PathVariable("isArtist") boolean isArtist, @PathVariable("keyword") String keyword) {
+        Criteria criteria = new Criteria(pageNum, 10,null, keyword);
+        int total = userService.getSearchTotal(criteria);
+        return new UserPageDTO(userService.getUserList(criteria, isArtist), total);
     }
 
 }
