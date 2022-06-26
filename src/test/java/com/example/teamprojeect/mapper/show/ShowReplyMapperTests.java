@@ -54,6 +54,7 @@ public class ShowReplyMapperTests {
                 .stream().map(ShowReplyVO::toString).forEach(log::info);
     }
 
+    @Test
     public void getUserShowReplyTest(){
         showReplyMapper.getUserShowReply(new Criteria(1,10), 24L);
     }
