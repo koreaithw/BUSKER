@@ -32,8 +32,15 @@ public class ArtistLikeController {
 //    }
 
     @PostMapping(value = "/likeNew", consumes = "application/json", produces = "text/plain; charset=utf-8")
-    public void donationRegister(@RequestBody LikeVO likeVO) throws UnsupportedEncodingException {
+    public void likeRegister(@RequestBody LikeVO likeVO) throws UnsupportedEncodingException {
         artistService.registerUserLike(likeVO);
+
+    }
+
+    @PostMapping(value = "/likeDelete", consumes = "application/json", produces = "text/plain; charset=utf-8")
+    public void likeRemove(@RequestBody LikeVO likeVO) throws UnsupportedEncodingException {
+        artistService.removeUserLike(likeVO);
+
     }
 
 
