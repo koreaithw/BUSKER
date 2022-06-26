@@ -672,8 +672,62 @@ let userService = (function(){
     })
   }
 
-  return {getArtist:getArtist, getWork:getWork}
-                            })();
+  // 좋아요 취소하기
+  function removeLike(userNumber, type, number, callback, error){
+    console.log("removeLike.........");
+    $.ajax({
+      url: "/myPage/" + userNumber + "/" + type + "/" + number,
+      type: "delete",
+      success: function(result){
+        if(callback){
+          callback(result);
+        }
+      }
+    })
+  }
+
+  function getArtistReply(userNumber, page, callback, error){
+    console.log("get ArtistReplyList----------");
+    let pageNum = page || 1;
+    $.ajax({
+      url: "/myPage/reply/artist/" + userNumber + "/" + pageNum,
+      type: "get",
+      dataType: "json",
+      contentType: "application/json",
+      success: function(ArtistReplyPageDTO) {
+        if(callback){
+          callback(ArtistReplyPageDTO.total, ArtistReplyPageDTO.list);
+        }
+        }, error: function(xhr, status, er){
+        if(error){
+          error(xhr, status, er);
+        }
+      }
+    })
+  }
+
+    function getShowUserReply(userNumber, page, callback, error){
+      console.log("get getShowUserReply----------");
+      let pageNum = page || 1;
+      $.ajax({
+        url: "/myPage/reply/show/" + userNumber + "/" + pageNum,
+        type: "get",
+        dataType: "json",
+        contentType: "application/json",
+        success: function(ShowReplyPageDTO) {
+          if(callback){
+            callback(ShowReplyPageDTO.total, ShowReplyPageDTO.list);
+          }
+        }, error: function(xhr, status, er){
+          if(error){
+            error(xhr, status, er);
+          }
+        }
+      })
+    }
+
+  return {getArtist:getArtist, getWork:getWork, removeLike:removeLike, getArtistReply:getArtistReply, getShowUserReply:getShowUserReply}
+})();
 
 // Ajax Artist.........
 let ArtistService = (function() {
@@ -725,7 +779,20 @@ let ArtistService = (function() {
         })
       }
 
-  return {registerArtist: registerArtist, modifyArtist:modifyArtist, removeArtist:removeArtist};
+      function removeArtistReply(replyNumber, callback, error){
+        console.log("removeArtistReply...........");
+        $.ajax({
+          url: "/myPage/artist/" + replyNumber,
+          type: "delete",
+          success: function(result){
+            if(callback){
+              callback(result);
+            }
+          }
+        })
+      }
+
+  return {registerArtist: registerArtist, modifyArtist:modifyArtist, removeArtist:removeArtist, removeArtistReply:removeArtistReply};
 })();
 
 // Ajax Donation............
@@ -751,5 +818,42 @@ let DonationService = (function(){
       }
     })
   }
-  return {getDonation:getDonation};
+
+  // 후원 목록 (유저 관점)
+  function getUserDonation(userNumber, type, page, callback, error){
+    console.log("getUserDonation...........");
+    let pageNum = page || 1;
+    $.ajax({
+      url: "/myPage/user/" + userNumber + "/" + type + "/" + pageNum,
+      type: "get",
+      dataType: "json",
+      contentType: "application/json",
+      success: function(DonationPageDTO){
+        if(callback){
+          callback(DonationPageDTO.total, DonationPageDTO.list);
+        }
+      }, error: function(xhr, status, er){
+        if(error){
+          error(xhr, status, er);
+        }
+      }
+    })
+  }
+  return {getDonation:getDonation, getUserDonation:getUserDonation};
+})();
+
+let showService = (function(){
+  function removeShowReply(replyNumber, callback, error){
+    console.log("removeArtistReply...........");
+    $.ajax({
+      url: "/myPage/show/" + replyNumber,
+      type: "delete",
+      success: function(result){
+        if(callback){
+          callback(result);
+        }
+      }
+    })
+  }
+  return {removeShowReply:removeShowReply};
 })();

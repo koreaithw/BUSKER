@@ -55,7 +55,13 @@ public class ShowReplyMapperTests {
     }
 
     @Test
-    public void getListRankTest() {
+    public void getUserShowReplyTest(){
+        showReplyMapper.getUserShowReply(new Criteria(1,10), 24L);
+    }
 
+    @Test
+    public void getTotalUserShowReplyTest(){
+        Long userNumber = 24L;
+        showReplyMapper.getTotalUserShowReply(userNumber);
     }
 }

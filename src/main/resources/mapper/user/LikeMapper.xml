@@ -8,6 +8,11 @@
         VALUES (#{userNumber}, #{artistNumber}, 'A')
     </insert>
 
+    <delete id="deleteArtistLike">
+        DELETE FROM TBL_LIKE
+        WHERE USER_NUMBER= #{userNumber} AND ARTIST_NUMBER = #{artistNumber}
+    </delete>
+
     <!--좋아요 등록 (작품)-->
     <insert id="insertWorkLike">
         INSERT INTO TBL_LIKE
@@ -98,4 +103,6 @@
         SELECT COUNT (*) FROM TBL_LIKE
         WHERE USER_NUMBER = #{userNumber} AND LIKE_CATEGORY = 'W'
     </select>
+
+
 </mapper>

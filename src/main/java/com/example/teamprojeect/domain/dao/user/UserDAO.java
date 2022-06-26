@@ -54,12 +54,22 @@ public class UserDAO {
     }
 
     // 관리자 페이지 : 유저 리스트
-    public List<UserVO> getUserList(@Param("criteria") Criteria criteria, @Param("userListDTO") UserListDTO userListDTO) {
-        return userMapper.getUserList(criteria, userListDTO);
+    public List<UserVO> getUserList(@Param("criteria") Criteria criteria, @Param("isArtist") boolean isArtist) {
+        return userMapper.getUserList(criteria, isArtist);
     }
 
     // 관리자 페이지 : 총 유저 수
     public int getTotal() {
         return userMapper.getTotal();
+    }
+
+    // 관리자 페이지 : 아티스트로 등록된 유저 수
+    public int getArtistotal() {
+        return userMapper.getArtistTotal();
+    }
+
+    // 관리자 페이지 : 검색 결과 개수
+    public int getSearchTotal(Criteria criteria) {
+        return userMapper.getSearchTotal(criteria);
     }
 }

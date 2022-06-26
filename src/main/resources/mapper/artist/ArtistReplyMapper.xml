@@ -27,25 +27,28 @@
         WHERE ARTIST_NUMBER = #{artistNumber}
     </select>
 
-    <!--댓글 목록-->
-    <select id="getList" resultType="artistReplyVO">
-                <![CDATA[
-    SELECT REPLY_NUMBER , ARTIST_NUMBER, REPLY_CONTENT, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE, USER_NAME FROM
-    (
-      SELECT ROWNUM RN, REPLY_NUMBER, ARTIST_NUMBER, REPLY_CONTENT, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE, USER_NAME
-      FROM (
-      SELECT REPLY_NUMBER, ARTIST_NUMBER, REPLY_CONTENT, REPLY_REGISTER_DATE, REPLY_UPDATE_DATE, USER_NAME
-      FROM (
-                      SELECT *
-                FROM TBL_ARTIST_REPLY ta, TBL_USER tu
-                WHERE ta.USER_NUMBER = tu.USER_NUMBER
-                )
-      ORDER BY REPLY_UPDATE_DATE DESC
-      )
-      WHERE ARTIST_NUMBER = #{artistNumber} AND ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
-        )
-        WHERE RN > (#{criteria.pageNum} - 1 ) * #{criteria.amount}
-        ]]>
+    <!-- 아티스트한테 유저가 남긴 댓글 -->
+    <select id ="getUserReplyList" resultType="artistReplyVO">
+    SELECT USER_NUMBER, USER_NAME, REPLY_NUMBER, REPLY_CONTENT, REPLY_UPDATE_DATE, ARTIST_NUMBER, ARTIST_TYPE, ARTIST_NAME
+    FROM (SELECT ROWNUM RN, USER_NUMBER, USER_NAME, REPLY_NUMBER, REPLY_CONTENT, REPLY_UPDATE_DATE, ARTIST_NUMBER, ARTIST_TYPE, ARTIST_NAME
+    FROM (SELECT tu.USER_NUMBER, tu.USER_NAME, tar.REPLY_NUMBER, tar.REPLY_CONTENT, tar.REPLY_UPDATE_DATE,tar.ARTIST_NUMBER, ta.ARTIST_TYPE, ta.ARTIST_NAME
+    FROM TBL_ARTIST_REPLY tar, TBL_USER tu, TBL_ARTIST ta
+    WHERE tar.USER_NUMBER =tu.USER_NUMBER AND tar.ARTIST_NUMBER = ta.ARTIST_NUMBER AND tu.USER_NUMBER = #{userNumber}
+    ORDER BY REPLY_UPDATE_DATE DESC)
+    <![CDATA[
+    WHERE ROWNUM < #{criteria.pageNum} * #{criteria.amount}
+    )
+    WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
+    ]]>
+    </select>
+
+    <!-- 유저가 아티스트한테 남긴 전체 댓글 개수 -->
+    <select id="getTotalUserReply" resultType="_int">
+    SELECT COUNT (*) FROM(
+    SELECT tu.USER_NUMBER,  tar.REPLY_CONTENT, tar.REPLY_UPDATE_DATE,tar.ARTIST_NUMBER, ta.ARTIST_TYPE, ta.ARTIST_NAME
+    FROM TBL_ARTIST_REPLY tar, TBL_USER tu, TBL_ARTIST ta
+    WHERE tar.USER_NUMBER =tu.USER_NUMBER AND tar.ARTIST_NUMBER = ta.ARTIST_NUMBER AND tu.USER_NUMBER = #{userNumber}
+    ORDER BY REPLY_UPDATE_DATE DESC)
     </select>
 
 </mapper>

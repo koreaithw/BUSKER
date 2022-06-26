@@ -59,9 +59,7 @@ public class ListDTO {
 
     //랭킹 상세 날짜
     private String detailDate;
-    // YYYY 연도
-    // MM 월
-    // DD 일
+
 
     // 주차 목록
     private String weekly;

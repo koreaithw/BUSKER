@@ -12,5 +12,8 @@ public class ArtistReplyVO {
     private String replyContent;
     private String replyRegisterDate;
     private String replyUpdateDate;
+    private String artistType;
+    private String artistName;
+    private String userName;
 
 }

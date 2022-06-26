@@ -72,23 +72,23 @@
     <select id="getUserList" resultType="userVO">
         SELECT USER_NUMBER, USER_ID, USER_NAME, USER_PHONE_NUMBER, USER_ARTIST_STATUS, USER_REGISTER_DATE, USER_STATUS
         FROM (
-        SELECT ROWNUM RN, USER_NUMBER, USER_ID, USER_NAME, USER_PHONE_NUMBER, USER_ARTIST_STATUS, USER_REGISTER_DATE, USER_STATUS
-        FROM (
-        SELECT USER_NUMBER, USER_ID, USER_NAME, USER_PHONE_NUMBER, USER_ARTIST_STATUS, USER_REGISTER_DATE, USER_STATUS
-        FROM TBL_USER
-        ORDER BY USER_REGISTER_DATE DESC
-        )
-        WHERE USER_STATUS = 1
-        <choose>
-            <when test="userListDTO.isArtist == true">
-                AND USER_ARTIST_STATUS = 4-->
-            </when>
-        </choose>
-        <choose>
-            <when test="criteria.keyword != null">
-                AND (USER_NAME LIKE '%'||#{keyword}||)
-            </when>
-        </choose>
+            SELECT ROWNUM RN, USER_NUMBER, USER_ID, USER_NAME, USER_PHONE_NUMBER, USER_ARTIST_STATUS, USER_REGISTER_DATE, USER_STATUS
+            FROM (
+                SELECT USER_NUMBER, USER_ID, USER_NAME, USER_PHONE_NUMBER, USER_ARTIST_STATUS, USER_REGISTER_DATE, USER_STATUS
+                FROM TBL_USER
+                ORDER BY USER_REGISTER_DATE DESC
+                )
+            WHERE USER_STATUS = 1
+            <choose>
+                <when test="isArtist == true">
+                    AND USER_ARTIST_STATUS = 4
+                </when>
+            </choose>
+            <choose>
+                <when test="criteria.keyword != null">
+                    AND (USER_NAME LIKE '%'||#{criteria.keyword}||'%' OR USER_ID LIKE '%'||#{criteria.keyword}||'%')
+                </when>
+            </choose>
         <![CDATA[
             AND ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
         )
@@ -102,6 +102,20 @@
         WHERE USER_STATUS = 1
     </select>
 
+    <select id="getArtistTotal" resultType="_int">
+        SELECT COUNT(USER_STATUS)
+        FROM TBL_USER
+        WHERE USER_STATUS = 1 AND USER_ARTIST_STATUS = 4
+    </select>
 
+    <select id="getSearchTotal" resultType="_int">
+        SELECT COUNT(USER_STATUS)
+        FROM (
+            SELECT USER_NUMBER, USER_ID, USER_NAME, USER_PHONE_NUMBER, USER_ARTIST_STATUS, USER_REGISTER_DATE, USER_STATUS
+            FROM TBL_USER
+            WHERE (USER_NAME LIKE '%'||#{keyword}||'%' OR USER_ID LIKE '%'||#{keyword}||'%')
+        )
+        WHERE USER_STATUS = 1
+    </select>
 
 </mapper>

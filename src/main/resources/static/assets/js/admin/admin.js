@@ -95,12 +95,65 @@ let adminService = (function () {
         });
     }
 
+    function getUserList(param, callback, error) {
+        $.ajax({
+            url: "/admin/userList/" + param.page + "/" + param.isArtist,
+            type: "post",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (result) {
+                if(callback){
+                    callback(result);
+                }
+            },
+            error: function (xhr, status, er) {
+                if(error){
+                    error(xhr, status, er);
+                }
+            }
+        })
+    }
+
+    function getUserSearchResult(param, callback, error) {
+        $.ajax({
+            url: "/admin/userList/" + param.page + "/" + param.isArtist + "/" + param.keyword,
+            type: "post",
+            dataType: "json",
+            contentType: "application/json",
+            success: function(result){
+                if(callback){
+                    callback(result);
+                }
+            }
+        })
+    }
+
+    function deleteUser(uno, callback, error) {
+        $.ajax({
+            url: "/myPage/" + uno,
+            type: "delete",
+            success: function (result) {
+                if(callback){
+                    callback(result);
+                }
+            },
+            error: function (xhr, status, er) {
+                if(error){
+                    error(xhr, status, er);
+                }
+            }
+        })
+    }
+
     return {
         getWorkApplyList: getWorkApplyList,
         approve: approve,
         reject: reject,
         getRecruitmentList: getRecruitmentList,
         removeRecruitment: removeRecruitment,
+        getUserList: getUserList,
+        deleteUser: deleteUser,
+        getUserSearchResult: getUserSearchResult,
     }
 })();
 

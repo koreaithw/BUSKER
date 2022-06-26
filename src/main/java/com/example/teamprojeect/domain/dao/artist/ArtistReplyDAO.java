@@ -38,4 +38,14 @@ public class ArtistReplyDAO {
     public List<ArtistReplyVO> getList(@Param("criteria") Criteria criteria, @Param("artistNumber")Long artistNumber) {
         return artistReplyMapper.getList(criteria, artistNumber);
     };
+
+    // 유저가 아티스트에게 남긴 댓글 목록
+    public List<ArtistReplyVO> getUserReplyList(@Param("criteria")Criteria criteria, @Param("userNumber")Long userNumber){
+        return artistReplyMapper.getUserReplyList(criteria, userNumber);
+    }
+
+    // 유저가 아티스트에게 남긴 댓글 수
+    public int getTotalUserReply(Long userNumber){
+        return artistReplyMapper.getTotalUserReply(userNumber);
+    }
 }

@@ -25,4 +25,10 @@ public class DonationService {
 
     // 후원 개수
     public int getDonationTotal(Long artistNumber, ListDTO listDTO) {return donationDAO.getDonationTotal(artistNumber, listDTO); };
+
+    // 후원 목록 (유저 관점)
+    public List<DonationVO> donationUserList(Criteria criteria, Long userNumber, ListDTO listDTO) { return donationDAO.donationUserList(criteria, userNumber, listDTO); }
+
+    // 후원 개수 (유저 관점)
+    public int getDonationUserTotal(Long userNumber, ListDTO listDTO) {return donationDAO.getDonationUserTotal(userNumber, listDTO); };
 }

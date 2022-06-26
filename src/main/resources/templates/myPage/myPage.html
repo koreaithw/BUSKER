@@ -639,10 +639,10 @@
                     </p>
 
                     <div class="donation-soring">
-                      <span class="sorting"><a>최신순</a></span>
-                      <span class="sorting"><a>오래된순</a></span>
-                      <span class="sorting"><a>금액높은순</a></span>
-                      <span class="sorting"><a>금액낮은순</a></span>
+                      <span class="sorting"><a id="user-new">최신순</a></span>
+                      <span class="sorting"><a id="user-old">오래된순</a></span>
+                      <span class="sorting"><a id="user-expensive">금액높은순</a></span>
+                      <span class="sorting"><a id="user-cheap">금액낮은순</a></span>
                     </div>
                   </div>
                 </div>
@@ -695,142 +695,142 @@
                   </tr>
                   </thead>
 
-                  <tbody class="donation-body">
-                  <tr class="row">
-                    <td class="cell">
-                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
-                    </td>
-                    <td class="cell">
-                      <div class="table-artist-flex">
-                        <a class="" href=""
-                        ><div
-                                aria-label="채널 아이콘"
-                                class="donation-icon"
-                        >
-                          <img
-                                  class="donation-icon"
-                                  alt=""
-                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
-                          /></div
-                        ></a>
-                        <div class="">
-                          <p class="table-p">
-                            <a class="" href="">페퍼톤스</a>
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="cell">
-                      <p class="">100,000</p>
-                    </td>
-                    <td class="cell">
-                      <div class="">
-                        <p class="">휴대폰 간편결제</p>
-                      </div>
-                    </td>
-                  </tr>
+                  <tbody class="donation-body" id="user-donation-list">
+<!--                  <tr class="row">-->
+<!--                    <td class="cell">-->
+<!--                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <div class="table-artist-flex">-->
+<!--                        <a class="" href=""-->
+<!--                        ><div-->
+<!--                                aria-label="채널 아이콘"-->
+<!--                                class="donation-icon"-->
+<!--                        >-->
+<!--                          <img-->
+<!--                                  class="donation-icon"-->
+<!--                                  alt=""-->
+<!--                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"-->
+<!--                          /></div-->
+<!--                        ></a>-->
+<!--                        <div class="">-->
+<!--                          <p class="table-p">-->
+<!--                            <a class="" href="">페퍼톤스</a>-->
+<!--                          </p>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <p class="">100,000</p>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <div class="">-->
+<!--                        <p class="">휴대폰 간편결제</p>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                  </tr>-->
 
-                  <tr class="row">
-                    <td class="cell">
-                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
-                    </td>
-                    <td class="cell">
-                      <div class="table-artist-flex">
-                        <a class="" href=""
-                        ><div
-                                aria-label="채널 아이콘"
-                                class="donation-icon"
-                        >
-                          <img
-                                  class="donation-icon"
-                                  alt=""
-                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
-                          /></div
-                        ></a>
-                        <div class="">
-                          <p class="table-p">
-                            <a class="" href="">페퍼톤스</a>
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="cell">
-                      <p class="">100,000</p>
-                    </td>
-                    <td class="cell">
-                      <div class="">
-                        <p class="">휴대폰 간편결제</p>
-                      </div>
-                    </td>
-                  </tr>
+<!--                  <tr class="row">-->
+<!--                    <td class="cell">-->
+<!--                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <div class="table-artist-flex">-->
+<!--                        <a class="" href=""-->
+<!--                        ><div-->
+<!--                                aria-label="채널 아이콘"-->
+<!--                                class="donation-icon"-->
+<!--                        >-->
+<!--                          <img-->
+<!--                                  class="donation-icon"-->
+<!--                                  alt=""-->
+<!--                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"-->
+<!--                          /></div-->
+<!--                        ></a>-->
+<!--                        <div class="">-->
+<!--                          <p class="table-p">-->
+<!--                            <a class="" href="">페퍼톤스</a>-->
+<!--                          </p>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <p class="">100,000</p>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <div class="">-->
+<!--                        <p class="">휴대폰 간편결제</p>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                  </tr>-->
 
-                  <tr class="row">
-                    <td class="cell">
-                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
-                    </td>
-                    <td class="cell">
-                      <div class="table-artist-flex">
-                        <a class="" href=""
-                        ><div
-                                aria-label="채널 아이콘"
-                                class="donation-icon"
-                        >
-                          <img
-                                  class="donation-icon"
-                                  alt=""
-                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
-                          /></div
-                        ></a>
-                        <div class="">
-                          <p class="table-p">
-                            <a class="" href="">페퍼톤스</a>
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="cell">
-                      <p class="">100,000</p>
-                    </td>
-                    <td class="cell">
-                      <div class="">
-                        <p class="">휴대폰 간편결제</p>
-                      </div>
-                    </td>
-                  </tr>
+<!--                  <tr class="row">-->
+<!--                    <td class="cell">-->
+<!--                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <div class="table-artist-flex">-->
+<!--                        <a class="" href=""-->
+<!--                        ><div-->
+<!--                                aria-label="채널 아이콘"-->
+<!--                                class="donation-icon"-->
+<!--                        >-->
+<!--                          <img-->
+<!--                                  class="donation-icon"-->
+<!--                                  alt=""-->
+<!--                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"-->
+<!--                          /></div-->
+<!--                        ></a>-->
+<!--                        <div class="">-->
+<!--                          <p class="table-p">-->
+<!--                            <a class="" href="">페퍼톤스</a>-->
+<!--                          </p>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <p class="">100,000</p>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <div class="">-->
+<!--                        <p class="">휴대폰 간편결제</p>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                  </tr>-->
 
-                  <tr class="row">
-                    <td class="cell">
-                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>
-                    </td>
-                    <td class="cell">
-                      <div class="table-artist-flex">
-                        <a class="" href=""
-                        ><div
-                                aria-label="채널 아이콘"
-                                class="donation-icon"
-                        >
-                          <img
-                                  class="donation-icon"
-                                  alt=""
-                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"
-                          /></div
-                        ></a>
-                        <div class="">
-                          <p class="table-p">
-                            <a class="" href="">페퍼톤스</a>
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="cell">
-                      <p class="">100,000</p>
-                    </td>
-                    <td class="cell">
-                      <div class="">
-                        <p class="">휴대폰 간편결제</p>
-                      </div>
-                    </td>
-                  </tr>
+<!--                  <tr class="row">-->
+<!--                    <td class="cell">-->
+<!--                      <p class="">오후 1:25 GMT+9&nbsp;2022년 6월 13일</p>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <div class="table-artist-flex">-->
+<!--                        <a class="" href=""-->
+<!--                        ><div-->
+<!--                                aria-label="채널 아이콘"-->
+<!--                                class="donation-icon"-->
+<!--                        >-->
+<!--                          <img-->
+<!--                                  class="donation-icon"-->
+<!--                                  alt=""-->
+<!--                                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png"-->
+<!--                          /></div-->
+<!--                        ></a>-->
+<!--                        <div class="">-->
+<!--                          <p class="table-p">-->
+<!--                            <a class="" href="">페퍼톤스</a>-->
+<!--                          </p>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <p class="">100,000</p>-->
+<!--                    </td>-->
+<!--                    <td class="cell">-->
+<!--                      <div class="">-->
+<!--                        <p class="">휴대폰 간편결제</p>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                  </tr>-->
                   </tbody>
                 </table>
               </div>
@@ -1120,6 +1120,10 @@
 
           <!-- 내가 쓴 댓글 -->
           <div class="myReplyList-div mypage-div" style="display: none">
+            <div class="reply-sorting">
+              <span class="sorting"><a id="show-reply">내 공연 댓글</a></span>
+              <span class="sorting"><a id="artist-reply">내 아티스트 댓글</a></span>
+            </div>
             <div class="reply-admin">
                 <span class="reply-all"
                 ><button id="reply-all-button" class="reply-button">
@@ -1132,147 +1136,149 @@
                   </button></span
               >
             </div>
-            <div class="replyBox">
-              <div class="reply-flex-box">
-                <div class="reply-checkbox">
-                  <input name="reply-check" type="checkbox" />
-                </div>
-                <div class="reply-profile">
-                  <img
-                          class="reply-img"
-                          src="https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/app/Iv/MyImg/2021/04/08/65_1617871495.jpg/dims/resize/Q_80,0"
-                          width="60px"
-                  />
-                </div>
-                <div class="reply-content-box">
-                  <span class="reply-nickname"> 왕고냐 </span>
-                  <span class="replyDate">22.06.11 13:32</span>
-                  <div class="replyContent reply-content-width">
-                    페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스
-                    개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아
-                    페퍼톤스 개좋아 페퍼톤스 개좋아
-                  </div>
-                </div>
-              </div>
+            <div class="reply-big-Box">
+<!--            <div class="replyBox">-->
+<!--              <div class="reply-flex-box">-->
+<!--                <div class="reply-checkbox">-->
+<!--                  <input name="reply-check" type="checkbox" />-->
+<!--                </div>-->
+<!--                <div class="reply-profile">-->
+<!--                  <img-->
+<!--                          class="reply-img"-->
+<!--                          src="https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/app/Iv/MyImg/2021/04/08/65_1617871495.jpg/dims/resize/Q_80,0"-->
+<!--                          width="60px"-->
+<!--                  />-->
+<!--                </div>-->
+<!--                <div class="reply-content-box">-->
+<!--                  <span class="reply-nickname"> 왕고냐 </span>-->
+<!--                  <span class="replyDate">22.06.11 13:32</span>-->
+<!--                  <div class="replyContent reply-content-width">-->
+<!--                    페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스-->
+<!--                    개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아-->
+<!--                    페퍼톤스 개좋아 페퍼톤스 개좋아-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
 
-              <div class="reply-right">
-                <div class="replyArtist">
-                  <div class="reply-artistBox">
-                    <div class="reply-artist">
-                      <img
-                              class="reply-img-artist"
-                              src="https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG"
-                              alt=""
-                      />
-                    </div>
+<!--              <div class="reply-right">-->
+<!--                <div class="replyArtist">-->
+<!--                  <div class="reply-artistBox">-->
+<!--                    <div class="reply-artist">-->
+<!--                      <img-->
+<!--                              class="reply-img-artist"-->
+<!--                              src="https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG"-->
+<!--                              alt=""-->
+<!--                      />-->
+<!--                    </div>-->
 
-                    <div class="reply-content-box reply-artist-content">
-                      <div class="reply-nickname">페퍼톤스</div>
-                      <div class="replyContent artist">뮤지션</div>
-                    </div>
-                  </div>
-                </div>
-                <button
-                        name="reply-delete-button"
-                        class="reply-button list-button"
-                >
-                  삭제
-                </button>
-              </div>
-            </div>
+<!--                    <div class="reply-content-box reply-artist-content">-->
+<!--                      <div class="reply-nickname">페퍼톤스</div>-->
+<!--                      <div class="replyContent artist">뮤지션</div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <button-->
+<!--                        name="reply-delete-button"-->
+<!--                        class="reply-button list-button"-->
+<!--                >-->
+<!--                  삭제-->
+<!--                </button>-->
+<!--              </div>-->
+<!--            </div>-->
 
-            <div class="replyBox">
-              <div class="reply-flex-box">
-                <div class="reply-checkbox">
-                  <input name="reply-check" type="checkbox" />
-                </div>
-                <div class="reply-profile">
-                  <img
-                          class="reply-img"
-                          src="https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/app/Iv/MyImg/2021/04/08/65_1617871495.jpg/dims/resize/Q_80,0"
-                          width="60px"
-                  />
-                </div>
-                <div class="reply-content-box">
-                  <span class="reply-nickname"> 왕고냐 </span>
-                  <span class="replyDate">22.06.11 13:32</span>
-                  <div class="replyContent reply-content-width"></div>
-                </div>
-              </div>
+<!--            <div class="replyBox">-->
+<!--              <div class="reply-flex-box">-->
+<!--                <div class="reply-checkbox">-->
+<!--                  <input name="reply-check" type="checkbox" />-->
+<!--                </div>-->
+<!--                <div class="reply-profile">-->
+<!--                  <img-->
+<!--                          class="reply-img"-->
+<!--                          src="https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/app/Iv/MyImg/2021/04/08/65_1617871495.jpg/dims/resize/Q_80,0"-->
+<!--                          width="60px"-->
+<!--                  />-->
+<!--                </div>-->
+<!--                <div class="reply-content-box">-->
+<!--                  <span class="reply-nickname"> 왕고냐 </span>-->
+<!--                  <span class="replyDate">22.06.11 13:32</span>-->
+<!--                  <div class="replyContent reply-content-width"></div>-->
+<!--                </div>-->
+<!--              </div>-->
 
-              <div class="reply-right">
-                <div class="replyArtist">
-                  <div class="reply-artistBox">
-                    <div class="reply-artist">
-                      <img
-                              class="reply-img-artist"
-                              src="https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG"
-                              alt=""
-                      />
-                    </div>
+<!--              <div class="reply-right">-->
+<!--                <div class="replyArtist">-->
+<!--                  <div class="reply-artistBox">-->
+<!--                    <div class="reply-artist">-->
+<!--                      <img-->
+<!--                              class="reply-img-artist"-->
+<!--                              src="https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG"-->
+<!--                              alt=""-->
+<!--                      />-->
+<!--                    </div>-->
 
-                    <div class="reply-content-box reply-artist-content">
-                      <div class="reply-nickname">페퍼톤스</div>
-                      <div class="replyContent artist">뮤지션</div>
-                    </div>
-                  </div>
-                </div>
-                <button
-                        name="reply-delete-button"
-                        class="reply-button list-button"
-                >
-                  삭제
-                </button>
-              </div>
-            </div>
+<!--                    <div class="reply-content-box reply-artist-content">-->
+<!--                      <div class="reply-nickname">페퍼톤스</div>-->
+<!--                      <div class="replyContent artist">뮤지션</div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <button-->
+<!--                        name="reply-delete-button"-->
+<!--                        class="reply-button list-button"-->
+<!--                >-->
+<!--                  삭제-->
+<!--                </button>-->
+<!--              </div>-->
+<!--            </div>-->
 
-            <div class="replyBox">
-              <div class="reply-flex-box">
-                <div class="reply-checkbox">
-                  <input name="reply-check" type="checkbox" />
-                </div>
-                <div class="reply-profile">
-                  <img
-                          class="reply-img"
-                          src="https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/app/Iv/MyImg/2021/04/08/65_1617871495.jpg/dims/resize/Q_80,0"
-                          width="60px"
-                  />
-                </div>
-                <div class="reply-content-box">
-                  <span class="reply-nickname"> 왕고냐 </span>
-                  <span class="replyDate">22.06.11 13:32</span>
-                  <div class="replyContent reply-content-width">
-                    페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스
-                    개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아
-                    페퍼톤스 개좋아 페퍼톤스 개좋아
-                  </div>
-                </div>
-              </div>
+<!--            <div class="replyBox">-->
+<!--              <div class="reply-flex-box">-->
+<!--                <div class="reply-checkbox">-->
+<!--                  <input name="reply-check" type="checkbox" />-->
+<!--                </div>-->
+<!--                <div class="reply-profile">-->
+<!--                  <img-->
+<!--                          class="reply-img"-->
+<!--                          src="https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/app/Iv/MyImg/2021/04/08/65_1617871495.jpg/dims/resize/Q_80,0"-->
+<!--                          width="60px"-->
+<!--                  />-->
+<!--                </div>-->
+<!--                <div class="reply-content-box">-->
+<!--                  <span class="reply-nickname"> 왕고냐 </span>-->
+<!--                  <span class="replyDate">22.06.11 13:32</span>-->
+<!--                  <div class="replyContent reply-content-width">-->
+<!--                    페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스-->
+<!--                    개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아 페퍼톤스 개좋아-->
+<!--                    페퍼톤스 개좋아 페퍼톤스 개좋아-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
 
-              <div class="reply-right">
-                <div class="replyArtist">
-                  <div class="reply-artistBox">
-                    <div class="reply-artist">
-                      <img
-                              class="reply-img-artist"
-                              src="https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG"
-                              alt=""
-                      />
-                    </div>
+<!--              <div class="reply-right">-->
+<!--                <div class="replyArtist">-->
+<!--                  <div class="reply-artistBox">-->
+<!--                    <div class="reply-artist">-->
+<!--                      <img-->
+<!--                              class="reply-img-artist"-->
+<!--                              src="https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG"-->
+<!--                              alt=""-->
+<!--                      />-->
+<!--                    </div>-->
 
-                    <div class="reply-content-box reply-artist-content">
-                      <div class="reply-nickname">페퍼톤스</div>
-                      <div class="replyContent artist">뮤지션</div>
-                    </div>
-                  </div>
-                </div>
-                <button
-                        name="reply-delete-button"
-                        class="reply-button list-button"
-                >
-                  삭제
-                </button>
-              </div>
+<!--                    <div class="reply-content-box reply-artist-content">-->
+<!--                      <div class="reply-nickname">페퍼톤스</div>-->
+<!--                      <div class="replyContent artist">뮤지션</div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <button-->
+<!--                        name="reply-delete-button"-->
+<!--                        class="reply-button list-button"-->
+<!--                >-->
+<!--                  삭제-->
+<!--                </button>-->
+<!--              </div>-->
+<!--            </div>-->
             </div>
 
             <!-- 페이징 -->
@@ -1857,6 +1863,8 @@
   let myPagediv = $(".myArtistList-All");
   let myPageWorkListDiv = $(".myWorkList-All");
   let myDonationDiv = $("tbody#artist-donation-body");
+  let userDonationDiv = $("tbody#user-donation-list");
+  let myReplyDiv = $(".reply-big-Box")
 
   // 관심 아티스트
   function myArtistList(userNumber, type, page){
@@ -1883,7 +1891,9 @@
         str += "<span class='myArtistName'>" + myArtist.artistName + "</span>"
         str += "<span class='myArtistType'>" + likeCategory + "</span>"
         str += "</a>"
-        str += "<div class='artistLike'><a class='my-heart' id='myArtist-1'><img id='heart-icon-1' class='heart-selected' src='/images/myPage/heart-icon.png' width='30px'/><img id='heartNon-icon-1' class='heart-nonSelected' src='/images/myPage/non-heart-icon.png' width='30px' style='display:none'/></a>"
+        str += "<div class='artistLike'><a class='my-heart' id='myArtist-1'>"
+        str += "<img id='heart-icon-1' class='artist-heart-selected' src='/images/myPage/heart-icon.png' width='30px'/>"
+        str += "<img id='heartNon-icon-1' class='artist-heart-nonSelected' src='/images/myPage/non-heart-icon.png' width='30px' style='display:none'/></a>"
         str += "</div>"
         str += "</div>"
       });
@@ -1912,6 +1922,21 @@
   $("a.artist-All-button").on("click", function(){
     myArtistList(24, "A", 1);
   });
+
+  // 좋아요 취소
+  $(".artistLike").on("click", "div.artistLike a.my-heart", function() {
+    if ($("#heart-icon-1").css("display") == "none") {
+      $("#heartNon-icon-1").hide();
+      $("#heart-icon-1").show();
+    } else if ($("#heartNon-icon-1").css("display") == "none") {
+      $("#heart-icon-1").hide();
+      $("#heartNon-icon-1").show();
+    }
+    userService.removeLike(24, "A", this.classList[1], function (result) {
+      alert(result);
+    });
+  });
+
 
 // 관심있는 작품
   function myWorkList(userNumber, page){
@@ -2031,6 +2056,8 @@
       console.log(a,b,c);})
   });
 
+  // 아티스트 정보 수정
+
   $("#artist-update-submit").on("click", function(){
     let typeCheck = $("select[id='artist-update-category']").val();
     const $artistName = $("input[id='artist-update-name']").val();
@@ -2066,7 +2093,7 @@
     });
   })
 
-// 후원 목록
+// 후원 목록 (아티스트 관점)
 
   function ArtistGetDonation(artistNumber, type, page){
     console.log("getDonation................");
@@ -2140,6 +2167,184 @@
     console.log("금액 낮은 순");
     ArtistGetDonation(1, "cheap", 1);
   });
+
+  // 나의 후원 목록
+  function UserGetDonation(userNumber, type, page){
+    console.log("getDonation................");
+    DonationService.getUserDonation(userNumber, type, page, function(total, list){
+      let str="";
+      console.log(userNumber + "getDonation 들어옴");
+
+      if(list == null || list.length == 0){
+        userDonationDiv.html("");
+        return;
+      }
+
+      $.each(list, function(i, userDonation){
+        str += "<tr class='row'>"
+        str += "<td class='cell'>"
+        str += "<p class=''>" + userDonation.donationRegisterDate + "</p>"
+        str += "</td>"
+        str += "<td class='cell'>"
+        str += "<div class='table-artist-flex'>"
+        str += "<a class ='' href=''>"
+        str += "<div aria-label='채널 아이콘' class='donation-icon'>"
+        str += "<img class='donation-icon' alt='' class='donation-icon' src='https://static-cdn.jtvnw.net/jtv_user_pictures/dde955e8-5fae-44dc-98db-79b3b14afea2-profile_image-50x50.png'/>"
+        str += "</div>"
+        str += "</a>"
+        str += "<div class=''>"
+        str += "<p class='table-p'>"
+        str += "<a class=''>" + userDonation.artistName
+        str += "</p>"
+        str += "</div>"
+        str += "</div>"
+        str += "</td>"
+        str += "<td class='cell'>"
+        str += "<p class=''>" + userDonation.donationMoney
+        str += "</p>"
+        str += "</td>"
+        str += "<td class='cell'>"
+        str += "<div class=''>"
+        str += "<p class=''>" + userDonation.donationMessage + "</p>"
+        str += "</div>"
+        str += "</td>"
+        str += "</tr>"
+      });
+      userDonationDiv.html(str);
+      myPagePaging(type, total);
+    }, function (a,b,c) {
+      console.log(a,b,c)
+    });
+  }
+
+  $("p.myDonation-user").on("click", function(){
+    console.log("최신순최신순최신순")
+    UserGetDonation(24, "new", 1);
+  });
+
+  $("a#user-new").on("click", function(){
+    console.log("최신순최신순최신순");
+    UserGetDonation(24,"new", 1);
+  })
+
+  $("a#user-old").on("click", function(){
+    console.log("오래된순오래된순");
+    UserGetDonation(24,"old", 1);
+  });
+
+  $("a#user-expensive").on("click", function(){
+    console.log("금액 높은 순");
+    UserGetDonation(24,"expensive",1);
+  });
+
+  $("a#user-cheap").on("click", function(){
+    console.log("금액 낮은 순");
+    UserGetDonation(24, "cheap", 1);
+  });
+
+  // 내가 쓴 댓글 - 아티스트
+  function getUserReply(userNumber, page){
+    console.log("myReply-Artist.......");
+    userService.getArtistReply(userNumber, page, function(total, list){
+      let str = "";
+
+      if(list == null || list.length == 0){
+        myReplyDiv.html("");
+        return;
+      }
+
+      $.each(list, function(i, myArtistReply){
+        let myReplyArtistType = "";
+        if (myArtistReply.artistType == 1){
+          myReplyArtistType = "뮤지션"
+        } else if(myArtistReply.artistType == 2){
+          myReplyArtistType = "퍼포먼서"
+        }
+
+        str += "<div class='replyBox'><div class='reply-flex-box'><div class='reply-checkbox'><input name='reply-check' type='checkbox'/></div>"
+        str += "<div class='reply-profile'><img class='reply-img' src='https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/app/Iv/MyImg/2021/04/08/65_1617871495.jpg/dims/resize/Q_80,0' width='60px'/></div>"
+        str += "<div class='reply-content-box'>"
+        str += "<span class='reply-nickname'>" + myArtistReply.userName + "</span>"
+        str += "<span class='replyDate'>" + myArtistReply.replyUpdateDate + "</span>"
+        str += "<div class='replyContent reply-content-width'>" + myArtistReply.replyContent + "</div></div></div>"
+        str += "<div class='reply-right'><div class='replyArtist'><div class='reply-artist-Box'><div class='reply-artist'>"
+        str += "<img class='reply-img-artist' src='https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG' alt='' /></div>"
+        str += "<div class='reply-content-box reply-artist-content'><div class='reply-nickname'>" + myArtistReply.artistName + "</div>"
+        str += "<div class='replyContent artist'>" + myReplyArtistType + "</div></div></div></div>"
+        str += "<button name='reply-delete-button' id='delete-artist'" + " class='reply-button " + myArtistReply.replyNumber + "' list-button'>삭제</button></div></div>"
+      });
+
+      myReplyDiv.html(str);
+      myPagePaging(type, total);
+    }, function(a,b,c){
+      console.log(a,b,c);
+    })
+  }
+
+  // 내가 쓴 댓글 - 쇼
+  function getUserShowReply(userNumber, page){
+    console.log("myReply-Artist.......");
+    userService.getShowUserReply(userNumber, page, function(total, list){
+      let str = "";
+
+      if(list == null || list.length == 0){
+        myReplyDiv.html("");
+        return;
+      }
+
+      $.each(list, function(i, myShowReply){
+        let myReplyArtistType = "";
+        if (myShowReply.showType == 1){
+          myReplyShowType = "뮤지션"
+        } else if(myShowReply.showType == 2){
+          myReplyShowType = "퍼포먼서"
+        }
+
+        str += "<div class='replyBox'><div class='reply-flex-box'><div class='reply-checkbox'><input name='reply-check' type='checkbox'/></div>"
+        str += "<div class='reply-profile'><img class='reply-img' src='https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/app/Iv/MyImg/2021/04/08/65_1617871495.jpg/dims/resize/Q_80,0' width='60px'/></div>"
+        str += "<div class='reply-content-box'>"
+        str += "<span class='reply-nickname'>" + myShowReply.userName + "</span>"
+        str += "<span class='replyDate'>" + myShowReply.replyUpdateDate + "</span>"
+        str += "<div class='replyContent reply-content-width'>" + myShowReply.replyContent + "</div></div></div>"
+        str += "<div class='reply-right'><div class='replyArtist'><div class='reply-artist-Box'><div class='reply-artist'>"
+        str += "<img class='reply-img-artist' src='https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG' alt='' /></div>"
+        str += "<div class='reply-content-box reply-artist-content'><div class='reply-nickname'>" + myShowReply.showName + "</div>"
+        str += "<div class='replyContent artist'>" + myReplyShowType + "</div></div></div></div>"
+        str += "<button name='reply-delete-button' class='reply-button list-button'>삭제</button></div></div>"
+      });
+
+      myReplyDiv.html(str);
+      myPagePaging(type, total);
+    }, function(a,b,c){
+      console.log(a,b,c);
+    })
+  }
+
+  $("a#artist-reply").on("click", function(){
+    console.log("내가 쓴 댓글 들어옴 들어옴");
+    getUserReply(24, 1);
+  })
+
+  $("a.myReply-tab").on("click", function(){
+    console.log("내가 쓴 쇼 댓글 들어옴 들어옴");
+    getUserShowReply(24, 1);
+  })
+
+  $("a#show-reply").on("click", function(){
+    console.log("내가 쓴 쇼 댓글 들어옴 들어옴");
+    getUserShowReply(24, 1);
+  })
+
+  $(".reply-right").on("click", "button#delete-artist .reply-button", function(e){
+    e.preventDefault();
+    console.log("댓글 삭제 - 아티스트 들어옴");
+    showService.removeShowReply(this.classList[1], function(result){
+      alert(result);
+    });
+
+  })
+
+
 
 </script>
 </html>
