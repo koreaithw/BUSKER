@@ -190,66 +190,68 @@ function donateapi() {
     });
 };
 
-function clickLike() {
-    // getter
+// function clickLike() {
+//     // getter
+//
+//     var usernumber = 1; //임시 넘버
+//
+//     let param = new URLSearchParams(query);
+//     let artistnumber = param.get('artistNumber');
+//
+//     console.log(usernumber);
+//     console.log(artistnumber);
+//
+//     let likeObj={
+//                 "userNumber" : usernumber,
+//                 "artistNumber" : artistnumber
+//             };
+//
+//             $.ajax({
+//                 // beforeSend: function (xhr) {
+//                 //     xhr.setRequestHeader("Content-type","application/json");
+//                 // },
+//                 url: "/like/artist/likeNew",
+//                 type: "POST",
+//                 contentType: "application/json",
+//                 data : JSON.stringify(likeObj),
+//                 success : function (data){
+//                 },
+//             });
+//
+//         // document.location.href="/user/mypage/home"; //alert창 확인 후 이동할 url 설정
+//     };
 
-    var usernumber = 1; //임시 넘버
-
-    let param = new URLSearchParams(query);
-    let artistnumber = param.get('artistNumber');
-
-    console.log(usernumber);
-    console.log(artistnumber);
-
-    let likeObj={
-                "userNumber" : usernumber,
-                "artistNumber" : artistnumber
-            };
-
-            $.ajax({
-                // beforeSend: function (xhr) {
-                //     xhr.setRequestHeader("Content-type","application/json");
-                // },
-                url: "/like/artist/likeNew",
-                type: "POST",
-                contentType: "application/json",
-                data : JSON.stringify(likeObj),
-                success : function (data){
-                },
-            });
-
-        // document.location.href="/user/mypage/home"; //alert창 확인 후 이동할 url 설정
-    };
-
-$(function() {
-    // 추천버튼 클릭시(추천 추가 또는 추천 제거)
-    $("#like").click(function () {
-        var usernumber = 1; //임시 넘버
-
-        let param = new URLSearchParams(query);
-        let artistnumber = param.get('artistNumber');
-
-        console.log(usernumber);
-        console.log(artistnumber);
-
-        let likeObj = {
-            "userNumber": usernumber,
-            "artistNumber": artistnumber
-        };
-
-        $.ajax({
-            // beforeSend: function (xhr) {
-            //     xhr.setRequestHeader("Content-type","application/json");
-            // },
-            url: "/like/artist/likeNew",
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify(likeObj),
-            success: function (data) {
-            },
-        });
-    })
-});
+// $(function() {
+//     // 추천버튼 클릭시(추천 추가 또는 추천 제거)
+//     $("#like").click(function () {
+//         var usernumber = 1; //임시 넘버
+//
+//         let param = new URLSearchParams(query);
+//         let artistnumber = param.get('artistNumber');
+//
+//         console.log(usernumber);
+//         console.log(artistnumber);
+//
+//
+//
+//         let likeObj = {
+//             "userNumber": usernumber,
+//             "artistNumber": artistnumber
+//         };
+//
+//         $.ajax({
+//             // beforeSend: function (xhr) {
+//             //     xhr.setRequestHeader("Content-type","application/json");
+//             // },
+//             url: "/like/artist/likeNew",
+//             type: "POST",
+//             contentType: "application/json",
+//             data: JSON.stringify(likeObj),
+//             success: function (data) {
+//             },
+//         });
+//     })
+// });
 
 
 
@@ -268,33 +270,78 @@ $(document).ready(function () {
     // }
 
     $("#btn-like").click(function () {
-        var usernumber = 1; //임시 넘버
 
-        let query = window.location.search;
+        if (likeval > 0) {
+            $(".img1").css('display', 'inline-block');
+            $(".img2").css('display', 'none');
+            var usernumber = 1; //임시 넘버
 
-        let param = new URLSearchParams(query);
-        let artistnumber = param.get('artistNumber');
+            let query = window.location.search;
 
-        console.log(usernumber);
-        console.log(artistnumber);
+            let param = new URLSearchParams(query);
+            let artistnumber = param.get('artistNumber');
 
-        let likeObj = {
-            "userNumber": usernumber,
-            "artistNumber": artistnumber
-        };
+            console.log(usernumber);
+            console.log(artistnumber);
 
-        $.ajax({
-            // beforeSend: function (xhr) {
-            //     xhr.setRequestHeader("Content-type","application/json");
-            // },
-            url: "/like/artist/likeNew",
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify(likeObj),
-            success: function (data) {
-            },
-        });
+            let likeObj = {
+                "userNumber": usernumber,
+                "artistNumber": artistnumber
+            };
+
+            $.ajax({
+                // beforeSend: function (xhr) {
+                //     xhr.setRequestHeader("Content-type","application/json");
+                // },
+                url: "/like/artist/likeDelete",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(likeObj),
+                success: function (data) {
+                },
+            });
+
+            likeval -= 1;
+
+
+
+
+
+        } else {
+
+            $(".img1").css('display', 'none');
+            $(".img2").css('display', 'inline-block');
+            var usernumber = 1; //임시 넘버
+
+            let query = window.location.search;
+
+            let param = new URLSearchParams(query);
+            let artistnumber = param.get('artistNumber');
+
+            console.log(usernumber);
+            console.log(artistnumber);
+
+            let likeObj = {
+                "userNumber": usernumber,
+                "artistNumber": artistnumber
+            };
+
+            $.ajax({
+                // beforeSend: function (xhr) {
+                //     xhr.setRequestHeader("Content-type","application/json");
+                // },
+                url: "/like/artist/likeNew",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(likeObj),
+                success: function (data) {
+                },
+            });
+
+            likeval += 1;
+        }
     })
+
 })
 
 

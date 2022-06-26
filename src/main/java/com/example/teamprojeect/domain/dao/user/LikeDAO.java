@@ -21,6 +21,11 @@ public class LikeDAO {
         likeMapper.insertArtistLike(likeVO);
     }
 
+    // 좋아요 등록 (아티스트)
+    public void removeArtistLike(LikeVO likeVO) {
+        likeMapper.deleteArtistLike(likeVO);
+    }
+
     // 좋아요 등록 (작품)
     public void registerWorkLike(LikeVO likeVO){
         likeMapper.insertWorkLike(likeVO);
