@@ -79,6 +79,7 @@ public class UserMapperTests {
 //         userMapper.login("i", "12345");
 //
 //    }
+
     // 유저 리스트 // 잘 됨
     @Test
     public void getUserListTest() {
@@ -91,5 +92,6 @@ public class UserMapperTests {
 //    public void getTotalTest() {
 //        userMapper.getTotal();
 //    }
+
 }
 

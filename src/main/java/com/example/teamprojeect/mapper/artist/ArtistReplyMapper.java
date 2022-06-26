@@ -23,4 +23,10 @@ public interface ArtistReplyMapper {
 
     // 아티스트 댓글 목록
     public List<ArtistReplyVO> getList(@Param("criteria") Criteria criteria, @Param("artistNumber")Long artistNumber);
+
+    // 특정 유저가 아티스트에게 남긴 댓글
+    public List <ArtistReplyVO> getUserReplyList(@Param("criteria")Criteria criteria, @Param("userNumber")Long userNumber);
+
+    // 특정 유저가 아티스트에게 남긴 전체 댓글 개수 getUserReplyTotal
+    public int getTotalUserReply(Long userNumber);
 }

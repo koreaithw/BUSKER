@@ -1,11 +1,15 @@
 package com.example.teamprojeect.service;
 
+import com.example.teamprojeect.domain.dao.artist.ArtistReplyDAO;
+import com.example.teamprojeect.domain.dao.show.ShowReplyDAO;
 import com.example.teamprojeect.domain.dao.user.LikeDAO;
 import com.example.teamprojeect.domain.dao.user.UserDAO;
 import com.example.teamprojeect.domain.dao.user.UserFileDAO;
+import com.example.teamprojeect.domain.vo.artist.ArtistReplyVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.list.UserListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.show.ShowReplyVO;
 import com.example.teamprojeect.domain.vo.user.LikeVO;
 import com.example.teamprojeect.domain.vo.user.UserFileVO;
 import com.example.teamprojeect.domain.vo.user.UserVO;
@@ -22,6 +26,8 @@ public class UserService {
     private final UserDAO userDAO;
     private final UserFileDAO userFileDAO;
     private final LikeDAO likeDAO;
+    private final ShowReplyDAO showReplyDAO;
+    private final ArtistReplyDAO artistReplyDAO;
 
     // 마이페이지 : 유저 정보 조회
     public UserVO read(Long userNumber){return userDAO.read(userNumber);}
@@ -41,6 +47,17 @@ public class UserService {
         return userDAO.remove(userNumber);
     }
 
+    // 마이페이지 : 내가 남긴 댓글 - 아티스트
+    public List<ArtistReplyVO> getUserReplyList(Criteria criteria, Long userNumber) {return artistReplyDAO.getUserReplyList(criteria, userNumber);}
+
+    // 마이페이지 : 내가 남긴 댓글 - 쇼
+    public List<ShowReplyVO> getUserShowReply(Criteria criteria, Long userNumber) { return showReplyDAO.getUserShowReply(criteria, userNumber);}
+
+    // 마이페이지 : 내가 남긴 댓글 수 - 아티스트
+    public int getTotalUserReply(Long userNumber) {return artistReplyDAO.getTotalUserReply(userNumber);}
+
+    // 마이페이지 : 내가 남긴 댓글 수 - 쇼
+    public int getTotalUserShowReply(Long userNumber) {return showReplyDAO.getTotalUserShowREply(userNumber); }
     // 로그인
     public boolean login(String userId, String userPw) {return userDAO.login(userId,userPw);}
 

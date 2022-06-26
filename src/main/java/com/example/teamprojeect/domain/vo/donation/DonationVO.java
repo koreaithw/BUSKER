@@ -15,4 +15,5 @@ public class DonationVO {
     private String donationRegisterDate;
     private String userName;
     private String donationType;
+    private String artistName;
 }

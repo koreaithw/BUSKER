@@ -672,8 +672,23 @@ let userService = (function(){
     })
   }
 
-  return {getArtist:getArtist, getWork:getWork}
-                            })();
+  // 좋아요 취소하기
+  function removeLike(userNumber, type, number, callback, error){
+    console.log("removeLike.........");
+    $.ajax({
+      url: "/myPage/" + userNumber + "/" + type + "/" + number,
+      type: "delete",
+      success: function(result){
+        if(callback){
+          callback(result);
+        }
+      }
+    })
+  }
+
+
+  return {getArtist:getArtist, getWork:getWork, removeLike:removeLike}
+})();
 
 // Ajax Artist.........
 let ArtistService = (function() {
@@ -751,5 +766,26 @@ let DonationService = (function(){
       }
     })
   }
-  return {getDonation:getDonation};
+
+  // 후원 목록 (유저 관점)
+  function getUserDonation(userNumber, type, page, callback, error){
+    console.log("getUserDonation...........");
+    let pageNum = page || 1;
+    $.ajax({
+      url: "/myPage/user/" + userNumber + "/" + type + "/" + pageNum,
+      type: "get",
+      dataType: "json",
+      contentType: "application/json",
+      success: function(DonationPageDTO){
+        if(callback){
+          callback(DonationPageDTO.total, DonationPageDTO.list);
+        }
+      }, error: function(xhr, status, er){
+        if(error){
+          error(xhr, status, er);
+        }
+      }
+    })
+  }
+  return {getDonation:getDonation, getUserDonation:getUserDonation};
 })();
