@@ -88,4 +88,6 @@ public class ArtistDAO {
     public ArtistVO getDetail(Long artistNumber) {
         return artistMapper.getDetail(artistNumber);
     }
+
+    public int checkArtistLike(Long artistNumber, Long userNumber) {return artistMapper.checkArtistLike(artistNumber, userNumber);}
 }
