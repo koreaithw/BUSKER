@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/assets/css/work/workList.css"/>
     <!-- 제이쿼리 불러오기 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="/assets/js/work/work.js"></script>
 </head>
 
 <header th:include="~{/header/header3 :: head}">
@@ -48,12 +49,14 @@
             <div class="work_list">
                 <ul class="works">
                     <th:block th:each="work:${workList}">
-                    <li th:object="${work}">
-                        <p class="works_tit" th:text="*{workName}"></p>
-                        <p class="worker" th:text="*{artistName}"></p>
-                        <a th:href="*{workNumber}" class="works_img"><img src="/images/work/20473078.jpg" alt=""></a>
-                        <p class="tags" th:text="*{workTag}"></p>
-                    </li>
+                        <li th:object="${work}">
+                            <a th:href="*{workNumber}" >
+                            <p class="works_tit" th:text="*{workName}"></p>
+                            <p class="worker" th:text="*{artistName}"></p>
+                            <img src="/images/work/20473078.jpg" class="works_img" alt="">
+                            <p class="tags" th:text="*{workTag}"></p>
+                            </a>
+                        </li>
                     </th:block>
                 </ul>
             </div>
@@ -66,22 +69,28 @@
 
 </body>
 <script>
+    let tag;
+    let pageNum = 1;
     // 해시태그 클릭시 색상변경
     $(".hash_tag a").on("click", function(e){
         if($(e.target).hasClass('on')){
             $(e.target).removeClass('on');
         } else {
             $(e.target).addClass('on');
+            let tagName = $(e.target).text();
+            let tag= tagName.substring(1);
+            console.log(tag);
+            tagList(tag);
         }
-    })
-    
+    });
+
+    tagList(tag);
 </script>
-<!--<script src="/asset/js/work/work.js"></script>-->
 <script th:inline="javascript">
     let $work = $(".workList");
     let paging = [[${criteria.listLink}]];
 
-    $("a.works_img").click(function (e) {
+    $(".works a").click(function (e) {
         e.preventDefault();
         location.href = "/work/workInfo"+paging+"&workNumber="+$(this).attr('href');
     });

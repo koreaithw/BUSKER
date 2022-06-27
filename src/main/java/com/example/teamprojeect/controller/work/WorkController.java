@@ -19,6 +19,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -38,16 +39,19 @@ public class WorkController {
     }
 
     @ResponseBody
-    @PostMapping("/workList/{tag}/{page}")
-    public WorkApplyPageDTO goWorkList(@PathVariable("tag") String tag, Model model) {
+    @GetMapping("/workList/{tag}/{page}")
+    public WorkApplyPageDTO goWorkList(@PathVariable("tag") String tag,@PathVariable("page") int pageNum, Model model) {
         ListDTO listDTO = new ListDTO();
+        List<String> tagList = new ArrayList<String>();
         if(tag != null) {
-            List<String> tagList = new ArrayList<String>();
+            System.out.println("----------------"+tag);
             tagList.add(tag);
-            listDTO.setTag(tagList);
+            List<String> list = tagList.stream().distinct().collect(Collectors.toList());
+            System.out.println("----------------"+tagList);
+            listDTO.setTag(list);
         }
         model.addAttribute("tagList",workService.getTag());
-        return new WorkApplyPageDTO(workService.getKeyword(new Criteria(1,50),listDTO),workService.getTotalListApply());
+        return new WorkApplyPageDTO(workService.getKeyword(new Criteria(pageNum,50),listDTO),workService.getTotalListApply());
     }
 
     // 작품 상세보기 페이지 이동
