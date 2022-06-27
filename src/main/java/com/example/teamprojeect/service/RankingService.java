@@ -27,7 +27,9 @@ public class RankingService {
     private final PaymentDAO paymentDAO;
     private final ArtistMapper artistMapper;
     private final ListDTO listDTO;
-    public String rankingList;
+    public String rankingListAll;
+    public String rankingListMusician;
+    public String rankingListPerformance;
 
 
     //아티스트 전체목록
@@ -54,8 +56,18 @@ public class RankingService {
     }
 
     //랭킹 목록
-    public List<ArtistDTO> rankingList(Criteria criteria, ListDTO listDTO) {
-        return artistDAO.rankingList(criteria, listDTO);
+    public List<ArtistDTO> rankingListAll(Criteria criteria, ListDTO listDTO) {
+        return artistDAO.rankingListAll(criteria, listDTO);
+    }
+
+    //뮤지션 랭킹 목록
+    public List<ArtistDTO> rankingListMusician(Criteria criteria, ListDTO listDTO) {
+        return artistDAO.rankingListMusician(criteria, listDTO);
+    }
+
+    //퍼포먼스 랭킹 목록
+    public List<ArtistDTO> rankingListPerformance(Criteria criteria, ListDTO listDTO) {
+        return artistDAO.rankingListPerformance(criteria, listDTO);
     }
 
 

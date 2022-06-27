@@ -299,7 +299,7 @@ a{
     box-sizing: border-box;
     border: 1px solid #ddd;
     border-right: 0 none;
-    width: 33.3%;
+    width: 25%;
     text-align: center;
     height: 68px;
     line-height: 68px;
@@ -643,5 +643,6 @@ span::after{
 
 .flexing{
     display: flex;
-    margin: 160px;
+    margin: auto;
+    width: 1200px;
 }
