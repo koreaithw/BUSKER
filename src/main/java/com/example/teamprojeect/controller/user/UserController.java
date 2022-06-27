@@ -5,13 +5,16 @@ import com.example.teamprojeect.domain.vo.user.UserVO;
 import com.example.teamprojeect.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.Service;
 import java.lang.reflect.Member;
 
 @Controller
@@ -31,7 +34,21 @@ public class UserController {
     // 아이디 찾기 페이지 이동
     @GetMapping("/idFind")
     public String goIdFind() {
-        return "/login/idFind";
+            return "/login/idFind";
+    }
+
+    // 아이디 찾기 페이지 이동
+    @PostMapping("/idFindResult")
+    public String resultIdFind(String userPhoneNumber, Model model) {
+        if( !((userService.findCount(userPhoneNumber)) == 0L)) {
+            UserVO userVO = userService.find(userPhoneNumber);
+            String userName = userVO.getUserId();
+            model.addAttribute("userVO", userVO);
+            return "/login/idFindResult";
+        } else {
+            model.addAttribute("alert", "일치하는 휴대폰 번호가 없습니다. 다시 입력해주세요.");
+            return "/login/idFind";
+        }
     }
 
 //    @PostMapping("/searchIdFind")
@@ -45,6 +62,24 @@ public class UserController {
     public String goPwFind() {
         return "/login/pwFind";
     }
+
+    // 비밀번호 찾기 페이지 이동
+    @PostMapping("/pwFindResult")
+    public String resultPwFind(UserVO userVO, Model model) {
+        log.info(userVO.getUserId());
+        log.info(userVO.getUserPhoneNumber());
+        if( !((userService.findPwCount(userVO)) == 0L)) {
+            UserVO userVOResult = userService.find(userVO.getUserPhoneNumber());
+            String userName = userVOResult.getUserId();
+            model.addAttribute("userVO", userVOResult);
+            return "/login/pwFindResult";
+        } else {
+            model.addAttribute("alert", "일치하는 아이디 혹은 휴대폰 번호가 없습니다. 다시 입력해주세요.");
+            log.info("야야야야ㅑ");
+            return "/login/pwFind";
+        }
+    }
+
 
     //로그인
     // 로그인 페이지 이동
