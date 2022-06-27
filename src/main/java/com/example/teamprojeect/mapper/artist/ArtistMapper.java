@@ -63,4 +63,6 @@ artistType likeType (최신, 좋아요 순)
 
     public int checkArtistLike(Long artistNumber, Long userNumber);
 
+    public int artistLikeCount(Long artistNumber);
+
 }

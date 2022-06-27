@@ -106,5 +106,5 @@ public class ArtistService {
 
     public int checkArtistLike(Long artistNumber, Long userNumber) {return artistDAO.checkArtistLike(artistNumber, userNumber);}
 
-
+    public int artistLikeCount(Long artistNumber) {return artistDAO.artistLikeCount(artistNumber);}
 }
