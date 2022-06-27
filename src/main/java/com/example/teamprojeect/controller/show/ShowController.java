@@ -48,6 +48,10 @@ public class ShowController {
 //            }
 //                });
 //        model.addAttribute("artistVO", artistVO);
+        List<ShowVO> replyRankingAll = showService.getRankingReply();
+        List<ShowVO> replyRankingFive = replyRankingAll.subList(0,5);
+        log.info(replyRankingFive.toString());
+        model.addAttribute("replyRanking", replyRankingFive);
         return "concertPlan/concertPlanList";
     }
 
@@ -84,7 +88,6 @@ public class ShowController {
                 e.printStackTrace();
             }
         });
-
         return new ShowPageDTO(showList, showService.getTotal(listDTO));
     }
 
@@ -172,7 +175,6 @@ public class ShowController {
             }
 
         });
-
         return new ShowPageDTO(showIngList, showService.getTotalIng(listDTO));
     }
 
@@ -205,7 +207,6 @@ public class ShowController {
             Date day = dayFormat.parse(showDay);
             showDay = dayFormat.format(day);
 
-
             Calendar cal = Calendar.getInstance();
             cal.setTime(day);
             int dayNum = cal.get(Calendar.DAY_OF_WEEK);
@@ -254,12 +255,9 @@ public class ShowController {
             System.err.println("dateStr : "  + ", datePattern:");
             e.printStackTrace();
         }
-
-
         model.addAttribute("concert", showVO);
         return "concertPlan/concertPlanInfo";
     }
-
 
     @GetMapping("/concertInfo/{showNumber}")
     @ResponseBody
@@ -282,7 +280,6 @@ public class ShowController {
             String showDay = showVO.getShowDay();
             Date day = dayFormat.parse(showDay);
             showDay = dayFormat.format(day);
-
 
             Calendar cal = Calendar.getInstance();
             cal.setTime(day);
@@ -311,7 +308,6 @@ public class ShowController {
                 case 7:
                     dayth = "토";
                     break ;
-
             }
 
             showDay = showDay + " (" + dayth + ")";
@@ -336,9 +332,6 @@ public class ShowController {
         return showVO;
     }
 
-
-
-
     // 진행 예정 공연 상세보기 페이지 이동
     @GetMapping("/concertPlanModify")
     public String goConcertPlanModifyPage(Long showNumber, Criteria criteria, HttpServletRequest request, Model model) {
@@ -357,8 +350,6 @@ public class ShowController {
         model.addAttribute("concert", showVO);
         return "concertPlan/concertPlanModify";
     }
-
-
 
     // 진행 예정 공연 수정 페이지 이동
     @PostMapping("/concertPlanModify")
@@ -409,5 +400,4 @@ public class ShowController {
         showService.remove(showNumber);
         return goConcertPlan(criteria, listDTO, model);
     }
-
 }

@@ -59,4 +59,7 @@ public class ShowDAO {
     public ShowVO read(Long showNumber) {
         return showMapper.detail(showNumber);
     }
+
+    // 공연 댓글 랭킹
+    public List<ShowVO> getRankingReply() { return showMapper. getRankingReply();};
 }
