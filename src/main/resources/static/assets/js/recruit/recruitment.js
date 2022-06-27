@@ -1,9 +1,10 @@
 let recruitmentService = (function () {
-    function getRecruitList(type,page, callback, error) {
+    function getRecruitList(type,page,amount, callback, error) {
         let pageNum = page || 1;
         let typeN = type || "A";
+        let amountN = amount || 10;
         $.ajax({
-            url:"/recruit/recruitmentList/"+typeN+"/"+pageNum,
+            url:"/recruit/recruitmentList/"+typeN+"/"+pageNum+"/"+amountN,
             type: "get",
             dataType: "json",
             contentType: "application/json",

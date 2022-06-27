@@ -28,42 +28,6 @@
             </div>
             <div>
                 <div class="small-5-box" style="text-align:center;">
-                    <div class="image-plus-box">
-                        <div>
-                            <img src="/images/recruit/small-5-poster.png" alt="#">
-                        </div>
-                        <div class="small-5-box-textbox">
-                            <p class="small-5-box-uptext">2022.06.10(금) 09:00</p>
-                            <p class="small-5-box-downtext">역삼역 4거리</p>
-                        </div>
-                    </div>
-                    <div class="image-plus-box">
-                        <div>
-                            <img src="/images/recruit/small-5-poster.png" alt="#">
-                        </div>
-                        <div class="small-5-box-textbox">
-                            <p class="small-5-box-uptext">2022.06.10(금) 09:00</p>
-                            <p class="small-5-box-downtext">역삼역 4거리</p>
-                        </div>
-                    </div>
-                    <div class="image-plus-box">
-                        <div>
-                            <img src="/images/recruit/small-5-poster.png" alt="#">
-                        </div>
-                        <div class="small-5-box-textbox">
-                            <p class="small-5-box-uptext">2022.06.10(금) 09:00</p>
-                            <p class="small-5-box-downtext">역삼역 4거리</p>
-                        </div>
-                    </div>
-                    <div class="image-plus-box">
-                        <div>
-                            <img src="/images/recruit/small-5-poster.png" alt="#">
-                        </div>
-                        <div class="small-5-box-textbox">
-                            <p class="small-5-box-uptext">2022.06.10(금) 09:00</p>
-                            <p class="small-5-box-downtext">역삼역 4거리</p>
-                        </div>
-                    </div>
                     
                 </div>
             </div>
@@ -90,8 +54,7 @@
 <!--        가져온거-->
         <div class="search-box">
             <input class="search-outline" type="text" placeholder="궁금하신 내용을 입력해주세요" autocomplete="off">
-            <a onclick="jsf_notice_Search();" style="cursor: pointer"></a>
-            <img src="/images/recruit/Magnifier.png" alt="">
+            <a onclick="jsf_notice_Search();" style="cursor: pointer"><img src="/images/recruit/Magnifier.png" alt=""></a>
         </div>
     </div>
     <div class="board-list">
@@ -136,7 +99,15 @@
 <script src="/assets/js/recruit/recruitment.js"></script>
 <script>
     // const $topBtn = document.querySelector(".moveTopBtn");
-
+    $(".rank_category_tiny a").on("click", function(e){
+        if($(e.target).hasClass('on')){
+            $(".rank_category_tiny a").removeClass('on');
+            $(e.target).addClass('on');
+        } else {
+            $(".rank_category_tiny a").removeClass('on');
+            $(e.target).addClass('on');
+        }
+    });
 // 버튼 클릭 시 맨 위로 이동
 // $topBtn.onclick = () => {
 //   window.scrollTo({ top: 0, behavior: "smooth" });  
@@ -162,28 +133,39 @@
 
 
     let pageNum = 1;
+    let amountN = 10;
     let $table = $(".list");
+    let $page = $(".small-5-box");
     let $paging = $(".list-pagenation");
     let type = "A";
     $(".rank_category_tiny a").on('click', function (e) {
        e.preventDefault();
        let id_check = $(this).attr("id");
        if(id_check == 'week-rank') {
-           type="A";
-           RecruitList(type,pageNum);
+           if(type != "A"){
+               type = "A";
+               RecruitList(type, pageNum,amountN);
+               RecruitListFour(type,pageNum,4);
+           }
        }else if(id_check == 'month-rank') {
-           type="M";
-           RecruitList(type,pageNum);
+           if(type != "M"){
+               type = "M";
+               RecruitList(type, pageNum,amountN);
+               RecruitListFour(type,pageNum,4);
+           }
        }else if(id_check == 'year-rank') {
-           type="P";
-           RecruitList(type,pageNum);
+           if(type != "P"){
+               type = "P";
+               RecruitList(type, pageNum,amountN);
+               RecruitListFour(type,pageNum,4);
+           }
        }
     });
 
-    RecruitList(type,pageNum);
+    RecruitList(type,pageNum,amountN);
 
-    function RecruitList(type, page){
-        recruitmentService.getRecruitList(type, page, function (total,list) {
+    function RecruitList(type, page, amount){
+        recruitmentService.getRecruitList(type, page,amount, function (total,list) {
             $table.empty();
             let str = "";
             if(list == null || list.length == 0) {
@@ -197,12 +179,13 @@
                 str += (recru.recruitmentType == 'A') ? "전체": (recru.recruitmentType == 'M') ? "뮤지션": "퍼포먼스";
                 str += "</td>";
                 str += "<td><a href='" +recru.recruitmentNumber+ "' class='clickLink'><em>" + recru.recruitmentName + "</em></a></td>";
-                str += "<td>" + recru.recruitmentDay + " " + recru.recruitmentTime + "</td>";
+                str += "<td>" + (recru.recruitmentDay).substring(0,11) + " " + recru.recruitmentTime + "</td>";
                 str += "<td>284</td>"
                 str += "</tr>"
             });
             $table.append(str);
             pageNum = page;
+            amountN = amount;
             paging(total);
         }, function (a,b,c){
             console.log(a,b,c);
@@ -238,6 +221,36 @@
         $paging.append(str);
     }
 
+    RecruitListFour(type,pageNum,4);
+
+    function RecruitListFour(type, page, amount){
+        recruitmentService.getRecruitList(type, page,amount, function (total,list) {
+            $page.empty();
+            let str = "";
+            if(list == null || list.length == 0) {
+                $page.html("");
+                return;
+            }
+
+            $.each(list, function (i, recru) {
+                str += "<div class=\"image-plus-box\">";
+                str += "<div>";
+                str += "<img src=\"/images/recruit/small-5-poster.png\" alt=\"#\">";
+                str += "</div>";
+                str += "<div class='small-5-box-textbox'>";
+                str += "<p class='small-5-box-uptext'>"+(recru.recruitmentDay).substring(0,11)+" "+recru.recruitmentTime+"</p>";
+                str += "<p class=\"small-5-box-downtext\">"+recru.recruitmentLocation+"</p>"
+                str += "</div>"
+                str += "</div>"
+
+            });
+            $page.append(str);
+            pageNum = page;
+            amountN = amount;
+        }, function (a,b,c){
+            console.log(a,b,c);
+        });
+    }
 
 
     $("a.clickLink").click(function (e) {
