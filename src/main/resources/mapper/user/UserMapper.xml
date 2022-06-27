@@ -120,4 +120,17 @@
         WHERE USER_STATUS = 1
     </select>
 
+    <insert id="kakaoJoin">
+        <selectKey keyProperty="userNumber" resultType="long" order="BEFORE">
+            SELECT SEQ_USER.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO TBL_USER
+        (USER_NUMBER, USER_ID)
+        VALUES (#{userNumber}, #{userId})
+    </insert>
+    <select id="kakaoLogin" resultType="_Long">
+        SELECT USER_NUMBER
+        FROM TBL_USER
+        WHERE USER_ID = #{userId}
+    </select>
 </mapper>
