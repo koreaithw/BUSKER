@@ -36,16 +36,20 @@ public interface ArtistMapper {
     public List<ArtistVO> getList(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO);
 
     //아티스트 뮤지션 목록
-    public List<ArtistVO> getListMusician(@Param("listDTO") ListDTO listDTO);
+    public List<ArtistVO> getListMusician(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO);
 
     //아티스트 퍼포먼스 목록
-    public List<ArtistVO> getListPerformance(@Param("listDTO") ListDTO listDTO);
+    public List<ArtistVO> getListPerformance(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO);
 /*
 artistType likeType (최신, 좋아요 순)
 * * */
     // 아티스트 목록 개수
     // 랭킹 목록 개수
     public int getTotal(ListDTO listDTO);
+
+    public int getTotalMusician(ListDTO listDTO);
+
+    public int getTotalPerformance(ListDTO listDTO);
 
     // 랭킹 //
     // 랭킹 목록

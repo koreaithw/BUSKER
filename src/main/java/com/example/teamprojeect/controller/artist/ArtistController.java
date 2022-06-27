@@ -57,6 +57,49 @@ public class ArtistController {
         return new ArtistPageDTO(artistList, artistService.getTotal(listDTO));
     }
 
+    @GetMapping("/artistListMusician")
+    public String getArtistListMusician(){
+
+
+
+        return "artist/artistListMusician";
+    }
+
+    @GetMapping("/artistListMusician/{artistSortingType}/{page}")
+    @ResponseBody
+    public ArtistPageDTO getArtistListMType( @PathVariable("artistSortingType") String sortingType, @PathVariable("page") int pageNum){
+        ListDTO listDTO = new ListDTO();
+        listDTO.setArtistSortingType(sortingType);
+        log.info("pageNum=================" +pageNum);
+        log.info("p123=================" + sortingType);
+        List<ArtistVO> artistList = artistService.getListMusician(new Criteria(pageNum, 10), listDTO);
+
+
+        return new ArtistPageDTO(artistList, artistService.getTotalMusician(listDTO));
+    }
+
+
+    @GetMapping("/artistListPerformance")
+    public String getArtistListPerformance(){
+
+
+
+        return "artist/artistListPerformance";
+    }
+
+    @GetMapping("/artistListPerformance/{artistSortingType}/{page}")
+    @ResponseBody
+    public ArtistPageDTO getArtistListPType( @PathVariable("artistSortingType") String sortingType, @PathVariable("page") int pageNum){
+        ListDTO listDTO = new ListDTO();
+        listDTO.setArtistSortingType(sortingType);
+        log.info("pageNum=================" +pageNum);
+        log.info("p123=================" + sortingType);
+        List<ArtistVO> artistList = artistService.getListPerformance(new Criteria(pageNum, 10), listDTO);
+
+
+        return new ArtistPageDTO(artistList, artistService.getTotalPerformance(listDTO));
+    }
+
 //     아티스트 상세보기 페이지
     @GetMapping("/artistInfo")
     public String goArtistInfo(Long artistNumber, Criteria criteria, HttpServletRequest request, Model model) {
