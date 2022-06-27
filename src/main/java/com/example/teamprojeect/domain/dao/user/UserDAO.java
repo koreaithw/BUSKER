@@ -46,6 +46,11 @@ public class UserDAO {
         return userMapper.find(text);
     }
 
+    // ID, PW 찾기
+    public Long findCount(String text) {
+        return userMapper.findCount(text);
+    }
+    public Long findPwCount(UserVO userVO) { return userMapper.findPwCount(userVO); };
     // 마이페이지 : 정보 조회
     public UserVO read(Long userNumber) {return userMapper.getUserDetail(userNumber);}
 

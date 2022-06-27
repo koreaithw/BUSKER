@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,11 +12,9 @@
   </head>
   <body>
     <div class="loginWrap">
-        <form name="loginForm">
+        <form name="loginForm" method="post" action="/user/pwFindResult" id="loginForm">
             <div class="loginBox idFindBox">
             <h1>비밀번호 찾기</h1>
-
-
           <div class="id-inputBox">
             <div class="id-flex">
               <input
@@ -90,4 +88,11 @@
   </body>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" src="/assets/js/login/pwFind.js?ver=1"></script>
+  <script th:inline="javascript">
+    let alertMsg = [[${alert}]];
+    console.log(alertMsg);
+    if(!(alertMsg==null)) {
+      alert(alertMsg);
+    }
+  </script>
 </html>

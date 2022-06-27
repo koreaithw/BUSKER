@@ -108,7 +108,7 @@
 }
 
 .id-find a,
-.pw-find a {
+.pw-find a,.join-click {
   text-decoration: none;
   font-size: 0.875rem;
   color: #929292;
@@ -118,7 +118,7 @@
 
 
 .id-find a:hover,
-.pw-find a:hover {
+.pw-find a:hover, .join-click:hover {
   color: #ff564c;
 }
 

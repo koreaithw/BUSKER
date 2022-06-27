@@ -24,9 +24,23 @@
 
     <!-- 회원가입 : ID, PW 찾기-->
     <select id="find" resultType="userVO">
-        SELECT USER_ID
+        SELECT USER_ID, USER_REGISTER_DATE
         FROM TBL_USER
-        WHERE USER_PHONE_NUMBER = #{text.text}
+        WHERE USER_PHONE_NUMBER = #{text}
+    </select>
+
+    <!-- 회원가입 : ID, PW 찾기-->
+    <select id="findCount" resultType="_Long">
+        SELECT COUNT(*)
+        FROM TBL_USER
+        WHERE USER_PHONE_NUMBER = #{text}
+    </select>
+
+    <!-- 회원가입 : ID, PW 찾기-->
+    <select id="findPwCount" resultType="_Long">
+        SELECT COUNT(*)
+        FROM TBL_USER
+        WHERE USER_PHONE_NUMBER = #{userPhoneNumber} AND USER_ID = #{userId}
     </select>
 
     <!--로그인-->
