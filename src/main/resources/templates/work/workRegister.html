@@ -110,15 +110,20 @@
 </body>
 
 <script>
+    $("#recru-form-submit").on("click", function (e) {
+        e.preventDefault();
+        $("#registerForm").submit();
+    });
+    // 드래그 해서 영역에 아이템을 내리면 그게 files에 저장되고 그 이미지 url따서 그걸 div 영역에 이미지 태그로 넣는거
     var fileList = []; //파일 정보를 담아 둘 배열
     let imgBox = $(".img_box");
     let str = "";
-    $(function(){
 
+    $(function () {
         //드래그앤드랍
-        $("#file_drop").on("dragenter", function(e){
-            e.preventDefault();
-            e.stopPropagation();
+        $(".file_drop").on("dragenter", function (e) { // 드래그 한 아이템을 영역 위로 올렸을 때 반응
+            e.preventDefault(); // 페이지를 이동시킨다거나 form 안에 있는 input 등을 전송한다던가 그러한 동작이 있는데 e.preventDefault 는 그 동작을 중단
+            e.stopPropagation(); // e.stopPropagation는 이벤트가 상위 엘리먼트에 전달되지 않게 막아 준다.
 
             $("#file_drop").show();
             $("#image-samplebox").hide();
@@ -126,18 +131,18 @@
             str += "<input type='hidden' name='uuid' value=''>"
             str += "<input type='hidden' name='uploadPath' value=''>"
 
-        }).on("dragover", function(e){
+        }).on("dragover", function (e) { // 드래그 하면서 마우스가 대상 객체의 위에 자리 잡고 있을 때 발생함.
             e.preventDefault();
             e.stopPropagation();
             $(this).css("background-color", "#FFF2E5");
-        }).on("dragleave", function(e){
+        }).on("dragleave", function (e) { // 드래그가 영역을 벗어났을 때
             e.preventDefault();
             e.stopPropagation();
             $(this).css("background-color", "#FFF");
-        }).on("drop", function(e){
+        }).on("drop", function (e) { // 아이템을 떨어뜨렸을 때
             e.preventDefault();
-
-            var files = e.originalEvent.dataTransfer.files;
+            // 아이템을 떨어트리면
+            var files = e.originalEvent.dataTransfer.files; // 기본 event를 불러오고.기본 event로 전송된 데이터를 가져와서.files 를 찾는다.
             console.log(files);
 
             $("#file_drop").hide();
@@ -157,6 +162,7 @@
                 contentType: false,
                 processData: false,
                 success: function (file) {
+                    // showUploadResult(files);
                     console.log(file[0]);
                     fileList.push(file[0]);
                     console.log(file[0].fileName);
@@ -176,34 +182,47 @@
                     // str += "<input type='hidden' name='fileList[" + i + "].fileSize' value='" + $(li).data("filesize") + "'>"
                 }
             });
-
         });
 
+        // // 등록
+        // $(document).on("click", "#save", function () {
         let formData = new FormData($("#fileForm")[0]);
-
-        //저장 (프론트에서 쓰는거 아님!!)
-        // $(document).on("click", "#save", function(){
-        //     var formData = new FormData($("#fileForm")[0]);
-        //     if(fileList.length > 0){
-        //         fileList.forEach(function(f){
+        //     if (fileList.length > 0) {
+        //         fileList.forEach(function (f) {
         //             formData.append("fileList", f);
         //         });
         //     }
         //
         //     $.ajax({
-        //         url : "/work/workRegister",
-        //         data : formData,
-        //         type:'POST',
-        //         processData:false,
-        //         contentType:false,
-        //         success:function(res){
-        //             alert("저장에 성공하셨습니다.");
-        //         },error:function(res){
+        //         url: "/upload",
+        //         data: formData,
+        //         type: 'POST',
+        //         processData: false,
+        //         contentType: false,
+        //         dataType: 'text',
+        //         // cache: false,
+        //         success: function (res) {
+        //             alert("등록에 성공하셨습니다.");
+        //         }, error: function (res) {
         //             alert("오류 발생.\n관리자에게 문의해주세요.");
         //         }
         //     });
         // });
     });
+    /*
+    1. processData:false
+
+    : 기본값은 true로, 데이터를 "application/x-www-form-urlenceded" 타입으로 전송합니다.
+
+    -> 다른 형식으로 전송하기 위해 false로 지정합니다.
+
+    2. contentType:false
+
+    : 기본값은 "application/x-www-form-urlenceded"
+
+    -> 파일의 경우 "multipart/form-data"방식으로 전송하기 위해 false로 지정합니다.
+
+    * */
 </script>
 
 <!-- 유효성 검사 -->
