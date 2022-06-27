@@ -106,5 +106,38 @@ public class ArtistDAO {
         return artistMapper.getDetail(artistNumber);
     }
 
+
+    // 아티스트 등록,수정 신청 목록
+    public List<ArtistVO> getArtistApplyList(Criteria criteria, boolean isUpdate) {
+        return artistMapper.getArtistApplyList(criteria, isUpdate);
+    }
+
+    // 아티스트 등록, 수정 신청 승인
+    public boolean approveArtistApply(Long artistNumber) {
+        return artistMapper.insertAdmin(artistNumber) == 1;
+    }
+
+    // 아티스트 등록, 수정 신청 반려
+    public boolean rejectArtistApply(Long artistNumber) {
+        return artistMapper.rejectArtistApply(artistNumber) == 1;
+    }
+
+    // 아티스트 등록, 수정 신청 아티스트 수
+    public int getArtistApplyTotal(boolean isUpdate) {
+        return artistMapper.getArtistApplyTotal(isUpdate);
+    }
+
+    // 전체 아티스트 리스트
+    public List<ArtistVO> getArtistList(Criteria criteria) {
+        return artistMapper.getArtistList(criteria);
+    }
+
+    // 등록된 아티스트 수
+    public int getAllArtistTotal() {
+        return artistMapper.getAllArtistTotal();
+    }
+
+
     public int checkArtistLike(Long artistNumber, Long userNumber) {return artistMapper.checkArtistLike(artistNumber, userNumber);}
+
 }
