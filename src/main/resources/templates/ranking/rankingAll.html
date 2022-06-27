@@ -33,6 +33,7 @@
         <a href="/ranking/rankingAll" class="on">전체</a>
         <a href="/ranking/rankingMusician">뮤지션</a>
         <a href="/ranking/rankingPerformance">퍼포먼스</a>
+        <a href="/ranking/rankingComment">댓글순</a>
     </div>
 
     <!-- rank_big_category 주간, 월간, 연간 div -->
@@ -114,7 +115,7 @@
 
     <!-- rank_best 랭킹 top3 공간-->
 <div class="flexing">
-    <div class="rank_best" th:each="rank : ${rankingList}" th:if="${rank.rankingCount}<4">
+    <div class="rank_best" th:each="rank : ${rankingListAll}" th:if="${rank.rankingCount}<4">
         <div>
             <a href="#" title="악동뮤지션">
                 <span class="artist_image">
@@ -144,7 +145,7 @@
 
     <!-- rank_list 랭킹 top4 아래 공간 -->
 
-    <div class="rank_list" th:each="rank : ${rankingList}" th:if="${rank.rankingCount}>3">
+    <div class="rank_list" th:each="rank : ${rankingListAll}" th:if="${rank.rankingCount}>3">
         <div>
             <div class="fluctuation">
                 <p>
@@ -201,15 +202,8 @@
 
 <script src="/assets/js/rank/rank.js"></script>
 <script th:inline="javascript">
-    console.log([[${rankingList}]]);
-    let rankingList = [[${rankingList}]];
-
-
-
-    // var ranking = [[${rankingList}]];
-    // var ranking1 = JSON.stringify(ranking, [${ranking}]);
-    // console.log(ranking1);
-    // console.log("ranking : ", ranking);
+    console.log([[${rankingListAll}]]);
+    let rankingListAll = [[${rankingListAll}]];
 </script>
 
 </html>
