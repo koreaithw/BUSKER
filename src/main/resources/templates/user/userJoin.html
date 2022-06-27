@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
     <link rel="stylesheet" href="/assets/css/admin/admin.css" />
+
 </head>
 
 <body>
@@ -85,7 +85,6 @@
         <div class="signin-form">
             <h1>회원가입</h1>
             <form action="">
-                <p>이름: 타임리프 / 휴대폰 번호: 타임리프</p>
                 <div class="select-id">
                     <input type="text" class="inputText" placeholder="아이디(이메일)" id="email"> @
                     <select class="inputText">
@@ -102,15 +101,11 @@
                     <p class="check-password"></p>
                 </div>
                 <div class="btn-signup">
-                    <a href="/main/main.html" class="btn-submitnest">가입 완료</a>
+                    <a href="/user/login" class="btn-submitnest">가입 완료</a>
                 </div>
             </form>
         </div>
     </div>
-
-    <footer th:include="~{/footer/footer :: foot}">
-
-    </footer>
 
 
 </body>
@@ -225,5 +220,10 @@
         $(".send-number").show();
     });
 </script>
+
+<script>
+
+</script>
+
 
 </html>

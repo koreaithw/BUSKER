@@ -40,9 +40,9 @@ public class UserController {
     //로그인
     // 로그인 페이지 이동
     @GetMapping("/login")
-    public String goLogin() {
-        return "/login/login";
-    }
+    public String goLogin() { return "/login/login"; }
+
+
 
     //회원가입
     @PostMapping("/join")
@@ -55,10 +55,9 @@ public class UserController {
 
         log.info("join Service 성공");
 
-        return "/main/main";
+        return "/main/";
 
     }
-
 
 
 }
