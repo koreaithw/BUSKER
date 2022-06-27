@@ -17,7 +17,7 @@ public interface ArtistMapper {
     public void insertApply(ArtistVO artistVO);
 
     // 관리자 등록 승인 (status -> 3)
-    public void insertAdmin(Long artistNumber);
+    public int insertAdmin(Long artistNumber);
 
     // 아티스트 정보 수정 신청 (status 2)
     public int updateApply(ArtistVO artistVO);
@@ -40,9 +40,9 @@ public interface ArtistMapper {
 
     //아티스트 퍼포먼스 목록
     public List<ArtistVO> getListPerformance(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO);
-/*
-artistType likeType (최신, 좋아요 순)
-* * */
+    /*
+    artistType likeType (최신, 좋아요 순)
+    * * */
     // 아티스트 목록 개수
     // 랭킹 목록 개수
     public int getTotal(ListDTO listDTO);
@@ -64,6 +64,25 @@ artistType likeType (최신, 좋아요 순)
     // 아티스트 상세 정보
     public ArtistVO getDetail(Long artistNumber);
 
+    // 아티스트 신청 목록
+    public List<ArtistVO> getArtistApplyList(@Param("criteria")Criteria criteria, @Param("isUpdate")boolean isUpdate);
+
+    // 전체 아티스트 목록
+    public List<ArtistVO> getArtistList(Criteria criteria);
+
+    // 아티스트 신청 승인
+    public int approveArtistApply(Long artistNumber);
+
+    // 아티스트 신청 반려
+    public int rejectArtistApply(Long artistNumber);
+
+    // 총 아티스트 신청 수
+    public int getArtistApplyTotal(boolean isUpdate);
+
+    // 승인된 아티스트 수
+    public int getAllArtistTotal();
+
     public int checkArtistLike(Long artistNumber, Long userNumber);
+
 
 }

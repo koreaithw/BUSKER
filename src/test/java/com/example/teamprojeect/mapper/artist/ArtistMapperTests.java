@@ -16,37 +16,37 @@ public class ArtistMapperTests {
     @Autowired
     private ArtistMapper artistMapper;
     // 아티스트 등록 신청
-    @Test
-    public void insertApplyTest(){
-        ArtistVO artistVO = new ArtistVO();
-        artistVO.setUserNumber(12L);
-        artistVO.setArtistName("유태경");
-        artistVO.setArtistDescription("몰라");
-        artistVO.setArtistType(1L);
-        artistVO.setArtistAccount("유태경계좌");
-        artistMapper.insertApply(artistVO);
-
-        log.info("아티스트 번호" + artistVO.getArtistNumber());
-    }
+//    @Test
+//    public void insertApplyTest(){
+//        ArtistVO artistVO = new ArtistVO();
+//        artistVO.setUserNumber(12L);
+//        artistVO.setArtistName("유태경");
+//        artistVO.setArtistDescription("몰라");
+//        artistVO.setArtistType(1L);
+//        artistVO.setArtistAccount("유태경계좌");
+//        artistMapper.insertApply(artistVO);
+//
+//        log.info("아티스트 번호" + artistVO.getArtistNumber());
+//    }
 
     // 아티스트 정보 수정
-    @Test
-    public void updateApplyTest(){
-        ArtistVO artistVO = new ArtistVO();
-
-        artistVO.setArtistNumber(2L);
-        artistVO.setArtistName("은솔");
-        artistVO.setArtistDescription("안녕!");
-        artistVO.setArtistType(1L);
-
-        artistMapper.updateApply(artistVO);
-    }
+//    @Test
+//    public void updateApplyTest(){
+//        ArtistVO artistVO = new ArtistVO();
+//
+//        artistVO.setArtistNumber(2L);
+//        artistVO.setArtistName("은솔");
+//        artistVO.setArtistDescription("안녕!");
+//        artistVO.setArtistType(1L);
+//
+//        artistMapper.updateApply(artistVO);
+//    }
 
     // 아티스트 삭제
-    @Test
-    public void deleteTest(){
-        log.info("DELETE COUNT : " + artistMapper.delete(4L));
-    }
+//    @Test
+//    public void deleteTest(){
+//        log.info("DELETE COUNT : " + artistMapper.delete(4L));
+//    }
 
     //최신순 정렬 테스트
 //    @Test
@@ -55,25 +55,35 @@ public class ArtistMapperTests {
 //                .stream().map(ArtistVO::toString).forEach(log::info);
 //    }
 //
-    @Test
-    public void getListTest(){
-        artistMapper.getList(new Criteria(1,10), new ListDTO("A","1","2","LIKE","3"))
 
-                .stream().map(ArtistVO::toString).forEach(log::info);
-    }
+//    @Test
+//    public void getListTest(){
+//        artistMapper.getList(new Criteria(1,5), new ListDTO("A","1","2","LIKE","3"))
+//
+//                .stream().map(ArtistVO::toString).forEach(log::info);
+//    }
 
-    @Test
-    public void getListTesM(){
-        artistMapper.getListMusician(new Criteria(1,10), new ListDTO("A","1","2","NEW","3"))
+//    @Test
+//    public void getListTest() {
+//        artistMapper.getList(new Criteria(1, 10), new ListDTO("A", "1", "2", "LIKE", "3"))
+//
+//                .stream().map(ArtistVO::toString).forEach(log::info);
+//    }
+//
+//    @Test
+//    public void getListTesM() {
+//        artistMapper.getListMusician(new Criteria(1, 10), new ListDTO("A", "1", "2", "NEW", "3"))
+//
+//                .stream().map(ArtistVO::toString).forEach(log::info);
+//    }
+//
+//    @Test
+//    public void getListTestP() {
+//        artistMapper.getListPerformance(new Criteria(1, 10), new ListDTO("A", "1", "2", "NEW", "3"))
+//
+//                .stream().map(ArtistVO::toString).forEach(log::info);
+//    }
 
-                .stream().map(ArtistVO::toString).forEach(log::info);
-    }
-    @Test
-    public void getListTestP(){
-        artistMapper.getListPerformance(new Criteria(1,10), new ListDTO("A","1","2","NEW","3"))
-
-                .stream().map(ArtistVO::toString).forEach(log::info);
-    }
 
 //
 //    @Test
@@ -91,37 +101,90 @@ public class ArtistMapperTests {
 //    }
 
 
-    @Test
-    public void rankingListTest(){
-        Criteria criteria = new Criteria();
-        ListDTO listDTO = new ListDTO();
-        listDTO.setDetailDate("2022");
-        listDTO.setRankingSortingDate("year");
-//        listDTO.setDetailDate("2022-05");
-//        listDTO.setRankingSortingDate("month");
+//    @Test
+//    public void rankingListTest(){
+//        Criteria criteria = new Criteria();
+//        ListDTO listDTO = new ListDTO();
+////        listDTO.setDetailDate("2022");
+////        listDTO.setRankingSortingDate("year");
+////        listDTO.setDetailDate("2022-05");
+////        listDTO.setRankingSortingDate("month");
 //        listDTO.setDetailDate("06-01");
 //        listDTO.setRankingSortingDate("week");
-        artistMapper.rankingListAll(criteria, listDTO).stream().map(ArtistDTO::toString).forEach(log::info);
-    }
+//        artistMapper.rankingList(criteria, listDTO).stream().map(ArtistVO::toString).forEach(log::info);
+//    }
 
     @Test
-    public void rankingListMusicianTest(){
-        Criteria criteria = new Criteria();
-        ListDTO listDTO = new ListDTO();
-        listDTO.setDetailDate("2022");
-        listDTO.setRankingSortingDate("year");
-//        listDTO.setDetailDate("2022-05");
-//        listDTO.setRankingSortingDate("month");
-//        listDTO.setDetailDate("06-01");
-//        listDTO.setRankingSortingDate("week");
-        artistMapper.rankingListMusician(criteria, listDTO).stream().map(ArtistDTO::toString).forEach(log::info);
+    public void getArtistApplyListTest() {
+        artistMapper.getArtistApplyList(new Criteria(), false);
+
+//    public void rankingListTest(){
+//        Criteria criteria = new Criteria();
+//        ListDTO listDTO = new ListDTO();
+//        listDTO.setDetailDate("2022");
+//        listDTO.setRankingSortingDate("year");
+////        listDTO.setDetailDate("2022-05");
+////        listDTO.setRankingSortingDate("month");
+////        listDTO.setDetailDate("06-01");
+////        listDTO.setRankingSortingDate("week");
+//        artistMapper.rankingListAll(criteria, listDTO).stream().map(ArtistDTO::toString).forEach(log::info);
+//    }
+
+//        @Test
+//        public void rankingListMusicianTest() {
+//            Criteria criteria = new Criteria();
+//            ListDTO listDTO = new ListDTO();
+//            listDTO.setDetailDate("2022");
+//            listDTO.setRankingSortingDate("year");
+////        listDTO.setDetailDate("2022-05");
+////        listDTO.setRankingSortingDate("month");
+////        listDTO.setDetailDate("06-01");
+////        listDTO.setRankingSortingDate("week");
+//            artistMapper.rankingListMusician(criteria, listDTO).stream().map(ArtistDTO::toString).forEach(log::info);
+//        }
+
+//    @Test
+//    public void likeCheckTest(){
+//        artistMapper.checkArtistLike(1L,100L);
+//    }
+
+//    @Test
+//    public void getArtistListTest() {
+//        artistMapper.getArtistList(new Criteria(1,10));
+//    }
+
+//    @Test
+//    public void approveArtistApply() {
+//        artistMapper.approveArtistApply(23L);
+//    }
+
+//    @Test
+//    public void rejectArtistApply() {
+//        artistMapper.rejectArtistApply(21L);
+//    }
+
+//    @Test
+//    public void getArtistApplyTotal() {
+//        artistMapper.getArtistApplyTotal(false);
+//    }
+
+//    @Test
+//    public void getAllArtistTotalTest() {
+//        artistMapper.getAllArtistTotal();
+//    }
+
+        // 아티스트 등록 신청 여러번
+//    @Test
+//    public void insertApplyMulTest() {
+//        for (long i = 113; i < 140; i++){
+//            ArtistVO artistVO = new ArtistVO();
+//            artistVO.setUserNumber(i);
+//            artistVO.setArtistName("아티스트"+i);
+//            artistVO.setArtistDescription("아티스트 설명"+i);
+//            artistVO.setArtistType(1L);
+//            artistVO.setArtistAccount("계좌번호"+i);
+//            artistMapper.insertApply(artistVO);
+//        }
+//    }
     }
-
-    @Test
-    public void likeCheckTest(){
-        artistMapper.checkArtistLike(1L,100L);
-
-
-    }
-
 }
