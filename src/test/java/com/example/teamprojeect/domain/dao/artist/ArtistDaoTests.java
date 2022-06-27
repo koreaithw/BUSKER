@@ -56,7 +56,13 @@ public class ArtistDaoTests {
 
     @Test
     public void rankingListTest(){
-        artistDAO.rankingList(new Criteria(1, 10), new ListDTO("A","B","C","LIKE","1"))
+        artistDAO.rankingListAll(new Criteria(1, 10), new ListDTO("A","B","C","LIKE","1"))
+                .stream().map(ArtistDTO::toString).forEach(log::info);
+    }
+
+    @Test
+    public void rankingListMusicianTest(){
+        artistDAO.rankingListMusician(new Criteria(1, 10), new ListDTO("A","B","C","LIKE","1"))
                 .stream().map(ArtistDTO::toString).forEach(log::info);
     }
 
