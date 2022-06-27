@@ -50,15 +50,10 @@ public class UserDaoTests {
 //    }
 
 // 로그인
-//    @Test
-//    public void loginTest(){
-//        UserVO userVO = new UserVO();
-//        userVO.setUserId("ii");
-//        userVO.setUserPw("12345");
-//
-//        userDAO.login("ii", "12345");
-//        log.info("로그인 성공");
-//    }
+    @Test
+    public void loginTest(){
+        userDAO.login("tndus", "1234");
+    }
     // 유저 리스트
 //    @Test
 //    public void getUserListTest() {
