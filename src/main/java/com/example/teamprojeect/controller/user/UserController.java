@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.lang.reflect.Member;
+
 @Controller
 @RequiredArgsConstructor
 @Slf4j
@@ -42,6 +46,29 @@ public class UserController {
     @GetMapping("/login")
     public String goLogin() {
         return "/login/login";
+    }
+
+    // 로그인
+    // 로그인
+    @PostMapping("/loginSuccess")
+    public String goMain(UserVO userVO, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String userId = userVO.getUserId();
+        String userPw = userVO.getUserPw();
+        Long userNumber = userService.login(userId, userPw);
+        String val = "userNumber";
+        session.setAttribute(val, userNumber);
+
+        Long num =  Long.valueOf(String.valueOf((session.getAttribute(val))));
+        if(session == null) {
+            log.info("===========================================");
+            log.info("없어");
+        } else {
+            log.info("===========================================");
+            log.info("있어");
+            log.info(num.toString());
+        }
+        return "/main/main";
     }
 
     //회원가입

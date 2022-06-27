@@ -26,8 +26,8 @@ public class UserDAO {
     } // null 이면 없는 거
 
     // 로그인
-    public boolean login(@Param("userId") String userId, @Param("userPw") String userPw) {
-        return userMapper.login(userId, userPw) == 1;
+    public Long login(@Param("userId") String userId, @Param("userPw") String userPw) {
+        return userMapper.login(userId, userPw);
     }
 
     // ID, PW 찾기

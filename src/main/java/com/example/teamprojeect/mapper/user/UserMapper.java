@@ -24,7 +24,7 @@ public interface UserMapper {
     public UserVO find(@Param("text") String text, @Param("findWay") String findWay);
 
     // 로그인
-    public int login(@Param("userId") String userId, @Param("userPw") String userPw);
+    public Long login(@Param("userId") String userId, @Param("userPw") String userPw);
 
     // 마이페이지 : 정보 조회 > 완료
     public UserVO getUserDetail(Long userNumber);

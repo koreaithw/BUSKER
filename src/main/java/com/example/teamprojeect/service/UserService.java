@@ -59,7 +59,7 @@ public class UserService {
     // 마이페이지 : 내가 남긴 댓글 수 - 쇼
     public int getTotalUserShowReply(Long userNumber) {return showReplyDAO.getTotalUserShowREply(userNumber); }
     // 로그인
-    public boolean login(String userId, String userPw) {return userDAO.login(userId,userPw);}
+    public Long login(String userId, String userPw) {return userDAO.login(userId,userPw);}
 
     // 좋아요 등록 (아티스트)
     public void registerArtistLike(LikeVO likeVO) {likeDAO.registerArtistLike(likeVO);}
