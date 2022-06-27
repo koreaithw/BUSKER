@@ -72,6 +72,7 @@ $(document).ready(function () {
     }
     loginForm.submit();
   }
+
 //
 // $('#login-button').click(function() {
 //
@@ -95,3 +96,28 @@ $(document).ready(function () {
 //     }
 //   })
 // });
+
+
+$('#login-button').click(function() {
+
+  var userId = $('#login-input id-input').val();
+  var userPw = $('#login-input pw-input').val();
+
+  $.ajax({
+    type : "POST",
+    url : "/user/login",
+    data : "userId=" + userId + "userPw" + userPw,
+    dataType : "text",
+    success : function(data) {
+      if (data == 'loginFail') {
+        alert('로그인에 실패하였습니다.')
+      } else {
+        window.location.href = 'main.html';
+      }
+    },
+    error : function(request, status, error) {
+      alert("code:" + request.status + "\n" + "error:" + error);
+    }
+  })
+});
+

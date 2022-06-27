@@ -36,14 +36,13 @@
     <div class="content">
         <p class="title-text">아티스트 모집 공고</p>
     </div>
-    <div class="big-box" style="display: block;">
+    <div class="big-box" style="display: block;" th:object="${recruitment}">
         <div class="detail-title">
             <span class="orange-box">new</span>
-            <p>아마추어 로드 페스티벌(Amateur Road Festival)</p>
+            <p th:text="*{recruitmentName}"></p>
         </div>
         <div class="detail-date">
-            <span>
-                등록일 : 2022-06-13
+            <span th:text="*{'등록일 : '+recruitmentDay}">
             </span>
             <span>조회수 : 506</span>
         </div>
@@ -54,14 +53,14 @@
                         height="252">
                 </div>
                 <div class="view-right">
-                    <p class="view-title">아마추어 로드 페스티벌(Amateur Road Festival)</p>
+                    <p class="view-title" th:text="*{recruitmentName}"></p>
                     <div class="view-box">
                         <div>
                             <p class="noti" id="noti1"></p>
                             <div class="view-long-box">
-                                <span id="title1"><em>신청기간</em></span>
-                                <span id="title1">2022.06.17(금) 오후 2:00</span>
-                                <span id="title1">영동고속도로 가요제</span>
+                                <span class="title1"><em>신청기간</em></span>
+                                <span class="title1"  th:text="*{recruitmentDay+' '+recruitmentTime}">2022.06.17(금) 오후 2:00</span>
+                                <span class="title1" th:text="*{recruitmentLocation}">영동고속도로 가요제</span>
                             </div>
                         </div>
                     </div>
