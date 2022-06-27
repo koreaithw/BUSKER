@@ -90,4 +90,6 @@ public class ShowService {
     public void removeFile(Long showNumber) {showFileDAO.remove(showNumber);}
 
     public ShowFileVO find(Long showNumber) { return showFileDAO.find(showNumber);}
+
+    public List<ShowVO> getRankingReply() { return showDAO. getRankingReply();};
 }
