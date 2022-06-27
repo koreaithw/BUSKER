@@ -8,6 +8,7 @@ import com.example.teamprojeect.domain.vo.paging.recruitment.RecruitmentPageDTO;
 import com.example.teamprojeect.domain.vo.paging.work.WorkApplyPageDTO;
 import com.example.teamprojeect.domain.vo.recruitment.RecruitmentFileVO;
 import com.example.teamprojeect.domain.vo.recruitment.RecruitmentVO;
+import com.example.teamprojeect.domain.vo.show.ShowVO;
 import com.example.teamprojeect.service.RecruitService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +19,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -29,12 +34,7 @@ public class RecruitmentController {
 
     // 모집공고 페이지 이동
     @GetMapping("/recruitList")
-    public String goRecruit(Criteria criteria, Model model) {
-        log.info("*************");
-        log.info("/list");
-        log.info("*************");
-        model.addAttribute("recruitList", recruitService.getList(criteria, new ListDTO()));
-        model.addAttribute("pageDTO", new RecruitmentPageDTO(criteria, recruitService.getTotal(new ListDTO())));
+    public String goRecruit() {
         return "/recruit/recruitList";
     }
 
@@ -44,6 +44,34 @@ public class RecruitmentController {
     public RecruitListPageDTO getRecruitList(@PathVariable("page") int pageNum) {
         int total = recruitService.getTotal(new ListDTO());
         return new RecruitListPageDTO(recruitService.getList(new Criteria(pageNum, 10), new ListDTO()), total);
+    }
+    @ResponseBody
+    @GetMapping("/recruitmentList/{type}/{page}")
+    public RecruitListPageDTO getRecruitList(@PathVariable("page") int pageNum, @PathVariable("type") String recruitmentType) {
+        ListDTO listDTO = new ListDTO();
+        listDTO.setArtistType(recruitmentType);
+        List<RecruitmentVO> recruitList = recruitService.getList(new Criteria(pageNum, 10), listDTO);
+
+        SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        recruitList.forEach(recruitmentVO -> {
+            String recruitDay = recruitmentVO.getRecruitmentDay();
+            String todayDay = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis()));
+
+            try {
+                Date date = new Date(dayFormat.parse(recruitDay).getTime());
+                Date today = new Date(dayFormat.parse(todayDay).getTime());
+                long calculate = date.getTime() - today.getTime();
+                int Ddays = (int) (calculate / ( 24*60*60*1000));
+                recruitmentVO.setDDay(Integer.toString(Ddays));
+            } catch (ParseException e) {
+                System.err.println("dateStr : " + recruitDay + ", datePattern:" + dayFormat);
+                e.printStackTrace();
+            }
+        });
+
+        int total = recruitService.getTotal(listDTO);
+        return new RecruitListPageDTO(recruitList, total);
     }
 
     // 관리자 페이지에서 모집 공고 삭제

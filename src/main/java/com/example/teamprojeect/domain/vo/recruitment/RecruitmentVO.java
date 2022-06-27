@@ -19,4 +19,5 @@ public class RecruitmentVO {
     private String recruitmentHost;
     private String recruitmentRegisterDate;
     private String recruitmentUpdateDate;
+    private String dDay;
 }

@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="/assets/css/recruit/recruitList.css">
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/assets/js/recruit/jquery.dropotron.min.js"></script>
+    <script src="/assets/js/recruit/browser.min.js"></script>
+    <script src="/assets/js/recruit/breakpoints.min.js"></script>
+    <script src="/assets/js/recruit/util.js"></script>
+    <script src="/assets/js/recruit/main.js"></script>
 </head>
 
 <header th:include="~{/header/header3 :: head}">
@@ -28,8 +33,8 @@
                             <img src="/images/recruit/small-5-poster.png" alt="#">
                         </div>
                         <div class="small-5-box-textbox">
-                            <p id="small-5-box-uptext">2022.06.10(금) 09:00</p>
-                            <p id="small-5-box-downtext">역삼역 4거리</p>
+                            <p class="small-5-box-uptext">2022.06.10(금) 09:00</p>
+                            <p class="small-5-box-downtext">역삼역 4거리</p>
                         </div>
                     </div>
                     <div class="image-plus-box">
@@ -37,8 +42,8 @@
                             <img src="/images/recruit/small-5-poster.png" alt="#">
                         </div>
                         <div class="small-5-box-textbox">
-                            <p id="small-5-box-uptext">2022.06.10(금) 09:00</p>
-                            <p id="small-5-box-downtext">역삼역 4거리</p>
+                            <p class="small-5-box-uptext">2022.06.10(금) 09:00</p>
+                            <p class="small-5-box-downtext">역삼역 4거리</p>
                         </div>
                     </div>
                     <div class="image-plus-box">
@@ -46,8 +51,8 @@
                             <img src="/images/recruit/small-5-poster.png" alt="#">
                         </div>
                         <div class="small-5-box-textbox">
-                            <p id="small-5-box-uptext">2022.06.10(금) 09:00</p>
-                            <p id="small-5-box-downtext">역삼역 4거리</p>
+                            <p class="small-5-box-uptext">2022.06.10(금) 09:00</p>
+                            <p class="small-5-box-downtext">역삼역 4거리</p>
                         </div>
                     </div>
                     <div class="image-plus-box">
@@ -55,8 +60,8 @@
                             <img src="/images/recruit/small-5-poster.png" alt="#">
                         </div>
                         <div class="small-5-box-textbox">
-                            <p id="small-5-box-uptext">2022.06.10(금) 09:00</p>
-                            <p id="small-5-box-downtext">역삼역 4거리</p>
+                            <p class="small-5-box-uptext">2022.06.10(금) 09:00</p>
+                            <p class="small-5-box-downtext">역삼역 4거리</p>
                         </div>
                     </div>
                     
@@ -75,9 +80,9 @@
 
                 <!-- rank_calendar 주간, 월간, 연간에 따른 calendar -->
                 <div class="rank_category_tiny category" selectedcategoryid="1">
-                    <a id="week-rank" style="cursor: pointer;" categoryId="1" class="on">주간</a>
-                    <a id="month-rank" style="cursor: pointer;" categoryId="2">월간</a>
-                    <a id="year-rank" style="cursor: pointer;" categoryId="3">연간</a>
+                    <a id="week-rank" style="cursor: pointer;" categoryId="1" class="on">전체</a>
+                    <a id="month-rank" style="cursor: pointer;" categoryId="2">뮤지션</a>
+                    <a id="year-rank" style="cursor: pointer;" categoryId="3">퍼포먼스</a>
                 </div>
             </div>
         </div>
@@ -92,293 +97,11 @@
     <div class="board-list">
         <div class="board-table">
             <table>
-                <tbody>
-                    <tr><th scope="col">구분</th><th scope="col">제목</th><th scope="col">티켓오픈 일시</th><th scope="col">조회수</th></tr>
-                        
-                            <tr>
-                                <td>
-                                    티켓오픈
-                                </td>
-                                <td>
-                                    <a href="/recruit/recruitInfo"><em>뮤지컬 데스노트 (The Musical Death Note) 2차 티켓오픈 안내</em></a>
-                                </td>
-                                <td>
-                                    2022.06.17(금) 14:00</td>
-                                <td>
-                                    284
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    티켓오픈
-                                </td>
-                                <td>
-                                    <a href="#id=11868"><em>2022 케니 지(Kenny G) 월드투어 내한공연 - 서울 티켓오픈 안내</em></a>
-                                </td>
-                                <td>
-                                    2022.06.17(금) 11:00</td>
-                                <td>
-                                    136
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    티켓오픈
-                                </td>
-                                <td>
-                                    <a href="#id=11867"><em>2022 케니 지(Kenny G) 월드투어 내한공연 - 부산 티켓오픈 안내</em></a>
-                                </td>
-                                <td>
-                                    2022.06.17(금) 11:00</td>
-                                <td>
-                                    76
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    티켓오픈
-                                </td>
-                                <td>
-                                    <a href="#id=11866"><em>뮤지컬 [쓰릴 미] 1차 티켓오픈 안내</em></a>
-                                </td>
-                                <td>
-                                    2022.06.14(화) 16:00</td>
-                                <td>
-                                    276
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    서비스점검
-                                </td>
-                                <td>
-                                    <a href="#id=11865"><em>전자금융공동망 점검 작업에 따른 결제 서비스 중단 안내(6/18, 6/19)</em></a>
-                                </td>
-                                <td>
-                                    </td>
-                                <td>
-                                    66
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    티켓오픈
-                                </td>
-                                <td>
-                                    <a href="#id=11864"><em>뮤지컬 〈시데레우스〉 프리뷰 티켓오픈 안내</em></a>
-                                </td>
-                                <td>
-                                    2022.06.16(목) 15:00</td>
-                                <td>
-                                    257
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    티켓오픈
-                                </td>
-                                <td>
-                                    <a href="#id=11862"><em>노을진 한강, 돌아온 웃음, 네온빛 음악. 스마일러브위크엔드! 티켓오픈안내</em></a>
-                                </td>
-                                <td>
-                                    2022.06.10(금) 17:00</td>
-                                <td>
-                                    519
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    티켓오픈
-                                </td>
-                                <td>
-                                    <a href="#id=11861"><em>뮤지컬 &lt;차미&gt; 마지막 티켓오픈 안내</em></a>
-                                </td>
-                                <td>
-                                    2022.06.14(화) 11:00</td>
-                                <td>
-                                    415
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    티켓오픈
-                                </td>
-                                <td>
-                                    <a href="#id=11860"><em>뮤지컬 [더 와일드의 변론 - 거짓의 쇠락, 도리안 그레이의 초상] 2차 티켓오픈 안내</em></a>
-                                </td>
-                                <td>
-                                    2022.06.17(금) 15:00<a class="noti-btn-pop" presaletit1="선예매" presaletit2="" presaletime1="2022.06.17(금) 11:00" presaletime2=""></a></td>
-                                <td>
-                                    137
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    티켓오픈
-                                </td>
-                                <td>
-                                    <a href="#id=11859"><em>뮤지컬 [괴테의 변론 - 젊은 베르테르의 슬픔] 2차 티켓오픈 안내</em></a>
-                                </td>
-                                <td>
-                                    2022.06.16(목) 15:00<a class="noti-btn-pop" presaletit1="선예매" presaletit2="" presaletime1="2022.06.16(목) 11:00" presaletime2=""></a></td>
-                                <td>
-                                    149
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    티켓오픈
-                                </td>
-                                <td>
-                                    <a href="#id=11858"><em><span>단독판매</span></em><em>[Light Up Concert] 티켓 오픈 안내</em></a>
-                                </td>
-                                <td>
-                                    2022.06.13(월) 19:00</td>
-                                <td>
-                                    2,234
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    서비스점검
-                                </td>
-                                <td>
-                                    <a href="#id=11856"><em>은행사 시스템 점검에 따른 결제 서비스 중단 안내(6/11, 6/12, 6/18, 6/19, 6/20)</em></a>
-                                </td>
-                                <td>
-                                    </td>
-                                <td>
-                                    155
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    티켓오픈
-                                </td>
-                                <td>
-                                    <a href="#id=11855"><em><span>단독판매</span></em><em>OUTLIVE Concert Vol.2 My OUTLIVE [Malibu] 티켓오픈안내</em></a>
-                                </td>
-                                <td>
-                                    2022.06.09(목) 14:00</td>
-                                <td>
-                                    1,810
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    티켓오픈
-                                </td>
-                                <td>
-                                    <a href="#id=11854"><em>뮤지컬 [미아 파밀리아] 3차 티켓 오픈 안내</em></a>
-                                </td>
-                                <td>
-                                    2022.06.15(수) 11:00</td>
-                                <td>
-                                    222
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    티켓오픈
-                                </td>
-                                <td>
-                                    <a href="#id=11853"><em>방용국 글로벌 팬밋업 [Bangstergram] 온라인중계 티켓오픈안내</em></a>
-                                </td>
-                                <td>
-                                    2022.06.09(목) 17:00</td>
-                                <td>
-                                    1,381
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    티켓오픈
-                                </td>
-                                <td>
-                                    <a href="#id=11852"><em><span>단독판매</span></em><em>춘하추동 [디톡스 콘서트] - 부산 티켓오픈안내</em></a>
-                                </td>
-                                <td>
-                                    2022.06.13(월) 14:00</td>
-                                <td>
-                                    474
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    티켓오픈
-                                </td>
-                                <td>
-                                    <a href="#id=11851"><em><span>단독판매</span></em><em>방용국 글로벌 팬밋업 [Bangstergram] 티켓 오픈안내</em></a>
-                                </td>
-                                <td>
-                                    2022.06.09(목) 17:00</td>
-                                <td>
-                                    8,559
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    티켓오픈
-                                </td>
-                                <td>
-                                    <a href="#id=11850"><em>[you.will.knovv] THE DIE IS CASTTT; Capsule live 6 티켓 오픈 안내</em></a>
-                                </td>
-                                <td>
-                                    2022.06.13(월) 20:00</td>
-                                <td>
-                                    691
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    티켓오픈
-                                </td>
-                                <td>
-                                    <a href="#id=11849"><em>Christian Kuria Live in Seoul 티켓 오픈 안내</em></a>
-                                </td>
-                                <td>
-                                    2022.06.08(수) 14:00</td>
-                                <td>
-                                    884
-                                </td>
-                            </tr>
-                        
-                            <tr>
-                                <td>
-                                    티켓오픈
-                                </td>
-                                <td>
-                                    <a href="#id=11848"><em>바이올리니스트김응수와 함께하는 비발디&amp;피아졸라의 사계 티켓오픈 안내</em></a>
-                                </td>
-                                <td>
-                                    2022.06.07(화) 11:00</td>
-                                <td>
-                                    500
-                                </td>
-                            </tr>
-                            
-                        
-                        
-                    
-                    </tbody>
+                <thead>
+                <tr><th scope="col">구분</th><th scope="col">제목</th><th scope="col">공고시작 일시</th><th scope="col">조회수</th></tr>
+                </thead>
+                <tbody class="list">
+                </tbody>
 
             </table>
 
@@ -388,32 +111,8 @@
     <!-- 페이징 -->
     <div class="paging">
         <div class="list-pagenation">
-            <a class="list-page-first">
-                <img src="http://tkfile.yes24.com/imgNew/common/ico-page2.png" alt="처음 페이지">
-            </a>
-            <a class="list-page-prev">
-                <img src="http://tkfile.yes24.com/imgNew/common/ico-page1.png" alt="이전페이지">
-            </a>
-            <div>
-                <a class="on">1</a>
-                <a href="#page=2">2</a>
-                <a href="#page=3">3</a>
-                <a href="#page=4">4</a>
-                <a href="#page=5">5</a>
-                    <a href="#page=6">6</a>
-                    <a href="#page=7">7</a>
-                    <a href="#page=8">8</a>
-                    <a
-                    href="#page=9">9</a>
-                    <a href="#page=10">10</a>
-                </div>
-                <a href="#page=2" class="list-page-next">
-                    <img src="http://tkfile.yes24.com/imgNew/common/ico-page1.png" alt="다음페이지"></a>
-                    <a href="#page=11"class="list-page-last">
-                <img src="http://tkfile.yes24.com/imgNew/common/ico-page2.png" alt="마지막 페이지">
-            </a>
+
         </div>
-    
     </div>
     <!-- <a href="#" class="moveTopBtn"> -->
         <!-- <a href="#" class="return-top"></a>
@@ -434,6 +133,7 @@
 </body>
 
 <!-- 맨위로 올리는 버튼 -->
+<script src="/assets/js/recruit/recruitment.js"></script>
 <script>
     // const $topBtn = document.querySelector(".moveTopBtn");
 
@@ -461,6 +161,95 @@
         // <!-- 맨위로 가기 이미지 버튼 끝 -->
 
 
+    let pageNum = 1;
+    let $table = $(".list");
+    let $paging = $(".list-pagenation");
+    let type = "A";
+    $(".rank_category_tiny a").on('click', function (e) {
+       e.preventDefault();
+       let id_check = $(this).attr("id");
+       if(id_check == 'week-rank') {
+           type="A";
+           RecruitList(type,pageNum);
+       }else if(id_check == 'month-rank') {
+           type="M";
+           RecruitList(type,pageNum);
+       }else if(id_check == 'year-rank') {
+           type="P";
+           RecruitList(type,pageNum);
+       }
+    });
+
+    RecruitList(type,pageNum);
+
+    function RecruitList(type, page){
+        recruitmentService.getRecruitList(type, page, function (total,list) {
+            $table.empty();
+            let str = "";
+            if(list == null || list.length == 0) {
+                $table.html("");
+                return;
+            }
+
+            $.each(list, function (i, recru) {
+                str += "<tr>";
+                str += "<td>";
+                str += (recru.recruitmentType == 'A') ? "전체": (recru.recruitmentType == 'M') ? "뮤지션": "퍼포먼스";
+                str += "</td>";
+                str += "<td><a href='" +recru.recruitmentNumber+ "' class='clickLink'><em>" + recru.recruitmentName + "</em></a></td>";
+                str += "<td>" + recru.recruitmentDay + " " + recru.recruitmentTime + "</td>";
+                str += "<td>284</td>"
+                str += "</tr>"
+            });
+            $table.append(str);
+            pageNum = page;
+            paging(total);
+        }, function (a,b,c){
+            console.log(a,b,c);
+        });
+    }
+
+    function paging(total) {
+        $paging.empty();
+        let endPage = Math.ceil(pageNum / 10.0) * 10;
+        let startPage = endPage - 9;
+        let realEnd = Math.ceil(total / 10.0);
+
+        if(endPage > realEnd){
+            endPage = realEnd;
+        }
+
+        let prev = startPage > 1;
+        let next = endPage * 10 < total;
+        let str = "";
+
+        str += `<a class="mypage-page-first changePage" href="${1}">&lt;&lt;</a>`;
+        if(prev) {
+            str += `<a class="mypage-page-prev changePage" href="${startPage-1}">&lt;</a>`;
+        }
+        for(let i = startPage; i <= endPage; i++){
+            str += pageNum == i ? `<a class="changePage"><p>${i}</p></a>` : `<a class="changePage" href="`+i+`">${i}</a>`;
+        }
+        if(next){
+            str += `<a class="mypage-page-next changePage" href="${endPage+1}">&gt;</a>`;
+        }
+        str += `<a class="mypage-page-last changePage" href="${realEnd}">&gt;&gt;</a>`;
+
+        $paging.append(str);
+    }
+
+
+
+    $("a.clickLink").click(function (e) {
+        e.preventDefault();
+        location.href = "/recruit/recruitInfo"+paging+"&workNumber="+$(this).attr('href');
+    });
+
+    $(".list-pagenation").on("click", "a.changePage", function (e) {
+        e.preventDefault();
+        pageNum = $(this).attr("href");
+        RecruitList(type, pageNum);
+    })
 </script>
 
 </html>

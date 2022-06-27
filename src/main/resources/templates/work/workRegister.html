@@ -42,6 +42,7 @@
                     <div class="info_left">
                         <div class="img_box">
                             <input id="file_drop" class="file_drop" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;작품 썸네일을 드래그 앤 드롭으로 등록해주세요.">
+                            <img id="image-samplebox" class="file_drop" src="" style="width: 100%; height: auto; overflow: hidden; display: none;">
                         </div>
                     </div>
                     <div class="info_right">
@@ -92,8 +93,8 @@
                         </div>
                         <div class="info_area2" style="float: right;">
                             <div class="purchase_link_wrap">
-                                <a href="/templates/work/workList.html" class="purchase_link">뒤로가기</a>&nbsp;&nbsp;
-                                <a href="" class="purchase_link">작품 등록 신청</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="/work/workList" class="purchase_link">뒤로가기</a>&nbsp;&nbsp;
+                                <a href="#" id="purchase_link" class="purchase_link" onclick="purchase_link()">작품 등록 신청</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </div>
                         </div>
                     </div>
@@ -110,12 +111,21 @@
 
 <script>
     var fileList = []; //파일 정보를 담아 둘 배열
+    let imgBox = $(".img_box");
+    let str = "";
     $(function(){
 
         //드래그앤드랍
         $("#file_drop").on("dragenter", function(e){
             e.preventDefault();
             e.stopPropagation();
+
+            $("#file_drop").show();
+            $("#image-samplebox").hide();
+            str += "<input type='hidden' name='fileName' value=''>"
+            str += "<input type='hidden' name='uuid' value=''>"
+            str += "<input type='hidden' name='uploadPath' value=''>"
+
         }).on("dragover", function(e){
             e.preventDefault();
             e.stopPropagation();
@@ -129,55 +139,76 @@
 
             var files = e.originalEvent.dataTransfer.files;
             console.log(files);
-            $(e.target).closest("div").html(
-                "<img src='"+ window.URL.createObjectURL(files[0]) + "'>"
-            );
-            // 파일 여러개 등록하려고 할때..
-//            if(files != null && files != undefined){
-//              var tag = "";
-//              for(i = 0; i < files.length; i++){
-//                  var f = files[i];
-//                  var fileName = f.name;
-//                  fileList.push(f);
-//                  tag += "<img src='/static/images/work/"+ fileName +"'>";       
-//              }
-//              $(this).closest("div").html(tag);
-//          }
 
-//          $(this).css("background-color", "#FFF");
-        });
+            $("#file_drop").hide();
+            $("#image-samplebox").show();
 
-        //저장 (프론트에서 쓰는거 아님!!)
-        $(document).on("click", "#save", function(){
-            var formData = new FormData($("#fileForm")[0]);
-            if(fileList.length > 0){
-                fileList.forEach(function(f){
-                    formData.append("fileList", f);
-                });
-            }         
+            $("#image-samplebox").attr("src", window.URL.createObjectURL(files[0]));
+            console.log(e.target);
+            console.log($("#image-samplebox").attr("src"));
+            console.log(window.URL.createObjectURL(files[0]))
+            let formData = new FormData();
+            formData.append("uploadFiles", files[0]);
 
             $.ajax({
-                url : "/work/workRegister",
-                data : formData,
-                type:'POST',
-                enctype:'multipart/form-data',
-                processData:false,
-                contentType:false,
-                dataType:'json',
-                cache:false,
-                success:function(res){
-                    alert("저장에 성공하셨습니다.");
-                },error:function(res){
-                    alert("오류 발생.\n관리자에게 문의해주세요.");
+                url: "/file/work/upload",
+                type: "post",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (file) {
+                    console.log(file[0]);
+                    fileList.push(file[0]);
+                    console.log(file[0].fileName);
+                    console.log(file[0].uuid);
+                    console.log(file[0].uploadPath);
+
+                    $("#fileName").val(file[0].fileName)
+                    $("#uuid").val(file[0].uuid)
+                    $("#uploadPath").val(file[0].uploadPath)
+                    console.log($("#fileName").val());
+                    console.log($("#uuid").val());
+                    console.log($("#uploadPath").val());
+                    // str += "<input type='hidden' id='fileName' name='fileName' value='" + file[0].fileName + "'>"
+                    // str += "<input type='hidden' id='uuid' name='uuid' value='" + file[0].uuid + "'>"
+                    // str += "<input type='hidden' id='uploadPath' name='uploadPath' value='" + file[0].uploadPath + "'>"
+                    // str += "<input type='hidden' name='fileList.image' value='" + $("#image-samplebox").data("image") + "'>"
+                    // str += "<input type='hidden' name='fileList[" + i + "].fileSize' value='" + $(li).data("filesize") + "'>"
                 }
             });
+
         });
+
+        let formData = new FormData($("#fileForm")[0]);
+
+        //저장 (프론트에서 쓰는거 아님!!)
+        // $(document).on("click", "#save", function(){
+        //     var formData = new FormData($("#fileForm")[0]);
+        //     if(fileList.length > 0){
+        //         fileList.forEach(function(f){
+        //             formData.append("fileList", f);
+        //         });
+        //     }
+        //
+        //     $.ajax({
+        //         url : "/work/workRegister",
+        //         data : formData,
+        //         type:'POST',
+        //         processData:false,
+        //         contentType:false,
+        //         success:function(res){
+        //             alert("저장에 성공하셨습니다.");
+        //         },error:function(res){
+        //             alert("오류 발생.\n관리자에게 문의해주세요.");
+        //         }
+        //     });
+        // });
     });
 </script>
 
 <!-- 유효성 검사 -->
 <script>
-    $("a.purchase_link").on("click", function(e){
+    function purchase_link() {
         if(!$("input[name=workName]").val()){
            // console.log("length");
             $(".warning_msg1").show();
@@ -224,9 +255,11 @@
         }
 
     //console.log("aaa");
+    $("form[name='registerForm']").submit();
     return true;
-    })
-        
+    }
+
+
 </script>
 
 </html>

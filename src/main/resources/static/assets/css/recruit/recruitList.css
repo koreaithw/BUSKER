@@ -1,4 +1,4 @@
-#small-5-box-uptext{
+.small-5-box-uptext{
     font-size: 15px;
     color: #ec7d2c;
     padding: 15px 0 26px 0;
@@ -9,7 +9,7 @@
     margin: 0;
 
 }
-#small-5-box-downtext{
+.small-5-box-downtext{
     font-size: 15px;
     color: #000;
     /* 제목 길면 ...으로 표시 */
