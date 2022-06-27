@@ -10,6 +10,8 @@ $(".modal-close-btn").click(function () {
     $(".modal").fadeOut();
 });
 
+
+
 // 좋아요 버튼 누르면 좋아요 표시 하기
 // let check = false;
 // let changeLike = function() {
@@ -257,8 +259,12 @@ function donateapi() {
 
 $(document).ready(function () {
 
+
+    let likecount = document.getElementById('like_count').value
     let likeval = document.getElementById('like_check').value
     console.log(likeval);
+
+
 
 
     if (likeval > 0) {
@@ -301,7 +307,25 @@ $(document).ready(function () {
                 },
             });
 
+            // $.ajax({
+            //     // beforeSend: function (xhr) {
+            //     //     xhr.setRequestHeader("Content-type","application/json");
+            //     // },
+            //     url: "/like/artist/likeDelete",
+            //     type: "POST",
+            //     contentType: "application/json",
+            //     data: JSON.stringify(likeObj),
+            //     success: function (data) {
+            //     },
+            // });
+
+            likecount -= 1;
             likeval -= 1;
+
+            location.replace(location.href);
+
+
+
 
 
 
@@ -337,12 +361,20 @@ $(document).ready(function () {
                 success: function (data) {
                 },
             });
-
+            likecount += 1;
             likeval += 1;
+
+            location.replace(location.href);
+
+
         }
     })
 
 })
+
+
+
+
 
 
 

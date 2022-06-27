@@ -453,4 +453,12 @@
         WHERE USER_NUMBER = #{userNumber} AND ARTIST_NUMBER = #{artistNumber}
     </select>
 
+    <select id="artistLikeCount" resultType="_int">
+    SELECT NVL(SUM_DATA, 0) FROM (
+        SELECT COUNT(*) AS SUM_DATA
+        FROM TBL_LIKE
+        WHERE ARTIST_NUMBER = #{artistNumber}
+        )
+    </select>
+
 </mapper>
