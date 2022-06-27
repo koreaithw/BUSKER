@@ -26,7 +26,20 @@ public class UserMapperTests {
         userVO.setUserEmail("test.com");
 
         userMapper.join(userVO);
+    }
 
+    @Test
+    public void kakaoJoin() {
+        UserVO userVO = new UserVO();
+        String userId = "q3686@adnfa";
+        userVO.setUserId(userId);
+        userMapper.kakaoJoin(userVO);
+    }
+    @Test
+    public void kakaoLoginTest() {
+        String userId = "q3676@naver.com";
+        userMapper.kakaoLogin(userId);
+        log.info(userMapper.kakaoLogin(userId).toString());
     }
 
 //    회원가입 : 아이디 찾기

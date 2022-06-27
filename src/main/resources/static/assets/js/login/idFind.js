@@ -64,7 +64,7 @@ function send() {
     $(".id-input").focus();
     return;
   }
-  if (!loginForm.userPhoneNumber.value) {
+  if (!$("#userPhoneNumber")) {
     $("#checkPw").text("휴대폰 번호를 입력해주세요.");
     $(".pw-flex").css("border-bottom", "1px solid #ff4d78");
     $(".pw-input").focus();
@@ -80,8 +80,8 @@ function send() {
   $("#checkPw").text("");
   $(".pw-flex").css("border-bottom", "1px solid #ebebeb");
 
-  if (!loginForm.userId.value && !loginForm.userPhoneNumber.value && !loginForm.userEmailDomain.value) {
-    $("#checkId").text("이메일를 입력해주세요.");
+  if (!($("#userId").val()) && !($("#userPhoneNumber").val())) {
+    $("#checkId").text("아이디를 입력해주세요.");
     $(".id-flex").css("border-bottom", "1px solid #ff4d78");
     $("#checkPw").text("비밀번호를 입력해주세요.");
     $(".pw-flex").css("border-bottom", "1px solid #ff4d78");
@@ -90,13 +90,13 @@ function send() {
     $(".id-input").focus();
     return;
   }
-  if (!loginForm.userId.value) {
-    $("#checkId").text("이메일을 입력해주세요.");
+  if (!($("#userId").val())) {
+    $("#checkId").text("아이디를 입력해주세요.");
     $(".id-flex").css("border-bottom", "1px solid #ff4d78");
     $(".id-input").focus();
     return;
   }
-  if (!loginForm.userPhoneNumber.value) {
+  if (!($("#userPhoneNumber").val())) {
     $("#checkPw").text("휴대폰 번호를 입력해주세요.");
     $(".pw-flex").css("border-bottom", "1px solid #ff4d78");
     $(".pw-input").focus();
