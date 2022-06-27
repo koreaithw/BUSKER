@@ -41,6 +41,26 @@ public class ArtistService {
         artistDAO.modifyApply(artistVO);
     }
 
+    // 아티스트 등록, 수정 신청 리스트
+    public List<ArtistVO> getArtistApplyList(Criteria criteria, boolean isUpdate) {
+        return artistDAO.getArtistApplyList(criteria, isUpdate);
+    }
+
+    // 아티스트 등록, 수정 승인
+    public boolean approveArtistApply(Long artistNumber){
+        return artistDAO.approveArtistApply(artistNumber);
+    }
+
+    // 아티스트 등록, 수정 반려
+    public boolean rejcetArtistApply(Long artistNumber){
+        return artistDAO.rejectArtistApply(artistNumber);
+    }
+
+    // 전체 아티스트 리스트
+    public List<ArtistVO> getArtistList(Criteria criteria) {
+        return artistDAO.getArtistList(criteria);
+    }
+
     // 아티스트 탈퇴
     public boolean removeArtist(Long artistNumber){
         return artistDAO.remove(artistNumber);
@@ -96,6 +116,18 @@ public class ArtistService {
         return  artistReplyDAO.getList(criteria, showNumber);
     }
 
+
+    // 아티스트 등록, 수정 신청 아티스트 수
+    public int getArtistApplyTotal(boolean isUpdate) {
+        return artistDAO.getArtistApplyTotal(isUpdate);
+    }
+
+    // 등록된 아티스트 수
+    public int getAllArtistTotal() {
+        return artistDAO.getAllArtistTotal();
+    }
+
+
     public void registerUserLike(LikeVO likeVO) {
         likeDAO.registerArtistLike(likeVO);
     }
@@ -105,6 +137,5 @@ public class ArtistService {
     }
 
     public int checkArtistLike(Long artistNumber, Long userNumber) {return artistDAO.checkArtistLike(artistNumber, userNumber);}
-
 
 }

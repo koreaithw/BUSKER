@@ -145,6 +145,95 @@ let adminService = (function () {
         })
     }
 
+    function getArtistApplyList(param, callback, error) {
+        $.ajax({
+            url: "/admin/artistApplyList/" + param.page + "/" + param.isUpdate,
+            type: "get",
+            dataType: "json",
+            contentType: "application/json",
+            success: function(result){
+                if(callback){
+                    callback(result);
+                }
+            },
+            error: function (xhr, status, er) {
+                if(error){
+                    error(xhr, status, er);
+                }
+            }
+        })
+    }
+
+    function getArtistList(page, callback, error) {
+        $.ajax({
+            url: "/admin/artistList/" + page,
+            type: "get",
+            dataType: "json",
+            contentType: "application/json",
+            success: function(result){
+                if(callback){
+                    callback(result);
+                }
+            },
+            error: function (xhr, status, er) {
+                if(error){
+                    error(xhr, status, er);
+                }
+            }
+        })
+    }
+
+    function approveArtist(ano, callback, error) {
+        $.ajax({
+            url: "/admin/approveArtist/" + ano,
+            type: "post",
+            success: function (result) {
+                if(callback){
+                    callback(result);
+                }
+            },
+            error: function (xhr, status, er) {
+                if(error){
+                    error(xhr, status, er);
+                }
+            }
+        });
+    }
+
+    function rejectArtist(ano, callback, error) {
+        $.ajax({
+            url: "/admin/rejectArtist/" + ano,
+            type: "post",
+            success: function (result) {
+                if(callback){
+                    callback(result);
+                }
+            },
+            error: function (xhr, status, er) {
+                if(error){
+                    error(xhr, status, er);
+                }
+            }
+        });
+    }
+
+    function removeArtist(ano, callback, error) {
+        $.ajax({
+            url: "/admin/removeArtist/" + ano,
+            type: "post",
+            success: function (result) {
+                if(callback){
+                    callback(result);
+                }
+            },
+            error: function (xhr, status, er) {
+                if(error){
+                    error(xhr, status, er);
+                }
+            }
+        });
+    }
+
     return {
         getWorkApplyList: getWorkApplyList,
         approve: approve,
@@ -154,6 +243,11 @@ let adminService = (function () {
         getUserList: getUserList,
         deleteUser: deleteUser,
         getUserSearchResult: getUserSearchResult,
+        getArtistApplyList: getArtistApplyList,
+        approveArtist: approveArtist,
+        rejectArtist: rejectArtist,
+        getArtistList: getArtistList,
+        removeArtist: removeArtist,
     }
 })();
 

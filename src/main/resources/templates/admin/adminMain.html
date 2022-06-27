@@ -39,7 +39,10 @@
                     <h5 class="audit">오늘의 할일&nbsp;<p class="circle">11</p>
                     </h5>
                     <ul>
-                        <li class="audit"><a href="" class="btn-artist">아티스트심사</a>&nbsp;<p class="todayArtistApply">10</p>
+                        <li class="audit"><a href="" class="btn-artist">아티스트심사</a>&nbsp;
+                            <th:block th:object="${artistPageDTO}">
+                                <p class="todayArtistApply" th:text="*{total}"></p>
+                            </th:block>
                         </li>
                         <li class="audit"><a href="" class="btn-notice">모집공고관리</a>&nbsp;
                             <th:block th:object="${recruitPageDTO}">
@@ -60,7 +63,7 @@
                         <!--                            </li> -->
                     </ul>
                 </div>
-                <div class="artist-list" style="height: 397px;">
+                <div class="artist-list" style="height: 430px;">
                     <table>
                         <h4>최신 작품 신청</h4>
                         <tr>
@@ -74,7 +77,7 @@
                                 <td th:text="*{workRegisterDate}"></td>
                                 <td th:text="*{workName}"></td>
                                 <td th:text="*{artistName}"></td>
-                                <td><a th:href="@{/registerApplyRead(workNumber=*{workNumber})}">내용 보기</a></td>
+                                <td><a th:href="@{/admin/registerApplyRead(workNumber=*{workNumber})}">내용 보기</a></td>
                             </tr>
                         </th:block>
                     </table>
@@ -83,68 +86,22 @@
                     <table>
                         <h4>최신 아티스트 신청</h4>
                         <tr>
-                            <th>일자</th>
+                            <th>번호</th>
                             <th>이름</th>
                             <th>설명</th>
-                            <th>후원 여부</th>
-                            <th>신청 일자</th>
+                            <th>신청자 아이디</th>
+                            <th>카테고리</th>
                         </tr>
-                        <tr>
-                            <td><img src="/images/admin/propill-1.png" class="icon" width="20px;"
-                                     height="20px;" alt=""></td>
-                            <td>청하</td>
-                            <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                            <td>O</td>
-                            <td>2022-06-10</td>
-                        </tr>
-                        <tr>
-                            <td><img src="/images/admin/propill-2.png" class="icon" width="20px;"
-                                     height="20px;" alt=""></td>
-                            <td>보아</td>
-                            <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                            <td>O</td>
-                            <td>2022-06-10</td>
-                        </tr>
-                        <tr>
-                            <td><img src="/images/admin/propill-3.png" class="icon" width="20px;"
-                                     height="20px;" alt=""></td>
-                            <td>아이유</td>
-                            <td><a href="/templates/artist/artistInfo.html">내용 보기</a></td>
-                            <td>O</td>
-                            <td>2022-06-10</td>
-                        </tr>
-                        <tr>
-                            <td><img src="/images/admin/propill-1.png" class="icon" width="20px;"
-                                     height="20px;" alt=""></td>
-                            <td>청하</td>
-                            <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                            <td>O</td>
-                            <td>2022-06-10</td>
-                        </tr>
-                        <tr>
-                            <td><img src="/images/admin/propill-2.png" class="icon" width="20px;"
-                                     height="20px;" alt=""></td>
-                            <td>보아</td>
-                            <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                            <td>O</td>
-                            <td>2022-06-10</td>
-                        </tr>
-                        <tr>
-                            <td><img src="/images/admin/propill-3.png" class="icon" width="20px;"
-                                     height="20px;" alt=""></td>
-                            <td>아이유</td>
-                            <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                            <td>O</td>
-                            <td>2022-06-10</td>
-                        </tr>
-                        <tr>
-                            <td><img src="/images/admin/propill-3.png" class="icon" width="20px;"
-                                     height="20px;" alt=""></td>
-                            <td>아이유</td>
-                            <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                            <td>O</td>
-                            <td>2022-06-10</td>
-                        </tr>
+                        <th:block th:each="artists:${artistApplyListSmall}">
+                            <tr th:object="${artists}">
+                                <td th:text="*{artistNumber}"></td>
+                                <td th:text="*{artistName}"></td>
+                                <td><a th:href="@{/artist/artistInfo(artistNumber=*{artistNumber})}">내용 보기</a></td>
+                                <td th:text="*{userId}"></td>
+                                <td th:if="*{artistType.toString().equals('1')}">뮤지션</td>
+                                <td th:if="*{artistType.toString().equals('2')}">아티스트</td>
+                            </tr>
+                        </th:block>
                     </table>
                 </div>
                 <div class="artist-list">
@@ -234,118 +191,26 @@
         <div class="artist-list-field" style="display: none;">
             <div class="page-change">
                 <table>
-                    <h4>아티스트 심사 및 관리</h4>
-                    <tr>
-                        <th>번호</th>
-                        <th>일자</th>
-                        <th>이름</th>
-                        <th>설명</th>
-                        <th>후원 여부</th>
-                        <th>신청 일자</th>
-                        <th>심사</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><img src="/images/admin/propill-1.png" class="icon" width="40px;" height="40px;"
-                                 alt=""></td>
-                        <td>청하</td>
-                        <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                        <td>O</td>
-                        <td>2022-06-10</td>
-                        <td><a href="">수락</a> | <a href="">거부</a></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><img src="/images/admin/propill-2.png" class="icon" width="40px;" height="40px;"
-                                 alt=""></td>
-                        <td>보아</td>
-                        <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                        <td>O</td>
-                        <td>2022-06-10</td>
-                        <td><a href="">수락</a> | <a href="">거부</a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><img src="/images/admin/propill-3.png" class="icon" width="40px;" height="40px;"
-                                 alt=""></td>
-                        <td>아이유</td>
-                        <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                        <td>O</td>
-                        <td>2022-06-10</td>
-                        <td><a href="">수락</a> | <a href="">거부</a></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><img src="/images/admin/propill-1.png" class="icon" width="40px;" height="40px;"
-                                 alt=""></td>
-                        <td>청하</td>
-                        <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                        <td>O</td>
-                        <td>2022-06-10</td>
-                        <td><a href="">수락</a> | <a href="">거부</a></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><img src="/images/admin/propill-2.png" class="icon" width="40px;" height="40px;"
-                                 alt=""></td>
-                        <td>보아</td>
-                        <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                        <td>O</td>
-                        <td>2022-06-10</td>
-                        <td><a href="">수락</a> | <a href="">거부</a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><img src="/images/admin/propill-3.png" class="icon" width="40px;" height="40px;"
-                                 alt=""></td>
-                        <td>아이유</td>
-                        <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                        <td>O</td>
-                        <td>2022-06-10</td>
-                        <td><a href="">수락</a> | <a href="">거부</a></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><img src="/images/admin/propill-1.png" class="icon" width="40px;" height="40px;"
-                                 alt=""></td>
-                        <td>청하</td>
-                        <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                        <td>O</td>
-                        <td>2022-06-10</td>
-                        <td><a href="">수락</a> | <a href="">거부</a></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><img src="/images/admin/propill-2.png" class="icon" width="40px;" height="40px;"
-                                 alt=""></td>
-                        <td>보아</td>
-                        <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                        <td>O</td>
-                        <td>2022-06-10</td>
-                        <td><a href="">수락</a> | <a href="">거부</a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><img src="/images/admin/propill-3.png" class="icon" width="40px;" height="40px;"
-                                 alt=""></td>
-                        <td>아이유</td>
-                        <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                        <td>O</td>
-                        <td>2022-06-10</td>
-                        <td><a href="">수락</a> | <a href="">거부</a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><img src="/images/admin/propill-3.png" class="icon" width="40px;" height="40px;"
-                                 alt=""></td>
-                        <td>아이유</td>
-                        <td><a href="/artist/artistInfo.html">내용 보기</a></td>
-                        <td>O</td>
-                        <td>2022-06-10</td>
-                        <td><a href="">수락</a> | <a href="">거부</a></td>
-                    </tr>
+                    <div class="artist_menu_wrap">
+                        <h4 class="artist_menu"><a href="javascript:changeList(0)" class="on">아티스트 등록 신청</a> | <a href="javascript:changeList(1)">아티스트 수정 신청</a> | <a href="javascript:viewAll()">등록된 아티스트</a></h4>
+                    </div>
+                    <thead>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>설명</th>
+                    <th>신청자 아이디</th>
+                    <th>카테고리</th>
+                    <th>심사</th>
+                    </thead>
+                    <tbody class="artists">
 
+                    </tbody>
                 </table>
+            </div>
+            <div class="mypage-paging">
+                <div class="mypage-pageStyle artist_page">
+
+                </div>
             </div>
         </div>
         <div class="notice-list-field" style="display: none;">
@@ -408,13 +273,13 @@
                         <a href="" class="go_search">검색</a>
                     </div>
                     <thead>
-                        <th>번호</th>
-                        <th>아이디</th>
-                        <th>아티스트 등록 여부</th>
-                        <th>이름</th>
-                        <th>핸드폰 번호</th>
-                        <th>등록 일자</th>
-                        <th>수정</th>
+                    <th>번호</th>
+                    <th>아이디</th>
+                    <th>아티스트 등록 여부</th>
+                    <th>이름</th>
+                    <th>핸드폰 번호</th>
+                    <th>등록 일자</th>
+                    <th>수정</th>
                     </thead>
                     <tbody class="users">
 
@@ -492,13 +357,17 @@
     let pageNumW = 1; // 작품 신청 목록 페이지 넘버
     let pageNumR = 1; // 모집 공고 목록 페이지 넘버
     let pageNumU = 1; // 유저 목록 페이지 넘버
+    let pageNumA = 1; // 아티스트 목록 페이지 넘버
     let $workTr = $(".works"); // 작품 신청 목록이 들어갈 자리
     let $recruitTr = $(".recruitments"); // 모집 공고 목록이 들어갈 자리
-    let $userTr = $(".users");
+    let $userTr = $(".users"); // 유저 목록이 들어갈 자리
+    let $artistTr = $(".artists");
     const $pagingW = $(".work_page");
     const $pagingR = $(".recruit_page");
     const $pagingU = $(".user_page");
+    const $pagingA = $(".artist_page");
     let isArtist = false;
+    let isUpdate = false;
     let keyword = null;
     let todayWorkApply = parseInt($(".todayWorkApply").text());
     let todayRecruit = parseInt($(".todayRecruit").text());
@@ -521,6 +390,7 @@
     showWorkApplyList(pageNumW);    // 작품 신청 전체 목록 띄우기
     showRecruitmentList(pageNumR);  // 모집 공고 전체 목록 띄우기
     showUserList(pageNumU);         // 유저 목록 띄우기
+    showArtistApplyList(pageNumA)   // 아티스트 목록 띄우기
 
     // 작품 등록 신청 목록
     function showWorkApplyList(page) {
@@ -674,6 +544,7 @@
         })
     }
 
+    // 유저 리스트 페이징
     function showUserPage(total) {
         $pagingU.empty();
         let endPage = Math.ceil(pageNumU / 10.0) * 10;
@@ -701,30 +572,6 @@
         str += `<a class="mypage-page-last changePage" href="javascript:showUserList(${realEnd})">&gt;&gt;</a>`;
 
         $pagingU.append(str);
-    }
-
-    // 작품 신청 승인
-    function approve(wno) {
-        adminService.approve(wno, function (result) {
-            alert(result);
-            showWorkApplyList(pageNumW);
-        })
-    }
-
-    // 작품 신청 반려
-    function reject(wno) {
-        adminService.reject(wno, function (result) {
-            alert(result);
-            showWorkApplyList(pageNumW);
-        })
-    }
-
-    // 모집 공고 삭제
-    function removeRecruitment(rno) {
-        adminService.removeRecruitment(rno, function (result) {
-            alert(result);
-            showRecruitmentList(pageNumR);
-        })
     }
 
     // 유저 탈퇴
@@ -810,8 +657,169 @@
         $pagingU.append(str);
     }
 
+    function showArtistApplyList(page) {
+        adminService.getArtistApplyList({page:page, isUpdate:isUpdate}, function (list) {
+            $artistTr.empty();
+            let str = "";
+            console.log(list);
+
+            if(list == null || list.length == 0) {
+                $artistTr.html("");
+                return;
+            }
+
+            $.each(list.list, function (i, artists) {
+                let category = "뮤지션"
+                if(artists.artistType == '2'){
+                    category = "아티스트";
+                }
+                str += `<tr>`;
+                str += `<td>${artists.artistNumber}</td>`;
+                str += `<td>${artists.artistName}</td>`;
+                str += `<td><a href="/artist/artistInfo?artistNumber=${artists.artistNumber}">상세 보기</a></td>`;
+                str += `<td>${artists.userId}</td>`;
+                str += `<td>${category}</td>`
+                str += `<td><a href="javascript:approveArtist(${artists.artistNumber})">승인</a> | <a href="javascript:rejectArtist(${artists.artistNumber})">반려</a></td>`;
+                str += `</tr>`;
+            });
+            $artistTr.append(str);
+            pageNumA = page;
+            showArtistPage(list.total);
+        })
+    }
+
+    function showArtistList(page) {
+        adminService.getArtistList(page, function (list) {
+            $artistTr.empty();
+            let str = "";
+            console.log(list);
+
+            if(list == null || list.length == 0) {
+                $artistTr.html("");
+                return;
+            }
+
+            $.each(list.list, function (i, artists) {
+                let category = "뮤지션"
+                if(artists.artistType == '2'){
+                    category = "아티스트";
+                }
+                str += `<tr>`;
+                str += `<td>${artists.artistNumber}</td>`;
+                str += `<td>${artists.artistName}</td>`;
+                str += `<td><a href="/artist/artistInfo?artistNumber=${artists.artistNumber}">상세 보기</a></td>`;
+                str += `<td>${artists.userId}</td>`;
+                str += `<td>${category}</td>`
+                str += `<td><a href="javascript:removeArtist(${artists.artistNumber})">정지</a></td>`;
+                str += `</tr>`;
+            });
+            $artistTr.append(str);
+            pageNumA = page;
+            showArtistPage(list.total);
+        })
+    }
+
+    function showArtistPage(total) {
+        $pagingA.empty();
+        let endPage = Math.ceil(pageNumA / 10.0) * 10;
+        let startPage = endPage - 9;
+        let realEnd = Math.ceil(total / 10.0);
+
+        if(endPage > realEnd){
+            endPage = realEnd;
+        }
+
+        let prev = startPage > 1;
+        let next = endPage * 10 < total;
+        let str = "";
+
+        str += `<a class="mypage-page-first changePage" href="javascript:showArtistApplyList(${1})">&lt;&lt;</a>`;
+        if(prev) {
+            str += `<a class="mypage-page-prev" href="javascript:showArtistApplyList(${startPage-1})">&lt;</a>`;
+        }
+        for(let i = startPage; i <= endPage; i++){
+            str += pageNumA == i ? `<p>${i}</p>` : `<a class="changePage" href="javascript:showArtistApplyList(${i})">${i}</a>`;
+        }
+        if(next){
+            str += `<a class="mypage-page-next changePage" href="javascript:showArtistApplyList(${endPage+1})">&gt;</a>`;
+        }
+        str += `<a class="mypage-page-last changePage" href="javascript:showArtistApplyList(${realEnd})">&gt;&gt;</a>`;
+
+        $pagingA.append(str);
+    }
+
+    // 아티스트 등록 신청, 아티스트 수정신청 전환
+    function changeList(flag) {
+        if(flag == 1) {
+            isUpdate = true;
+            showArtistApplyList(1);
+        }
+        if(flag == 0) {
+            isUpdate = false;
+            showArtistApplyList(1);
+        }
+    }
+
+    // 전체 아티스트 전환
+    function viewAll() {
+        showArtistList(1);
+    }
+
+    // 작품 신청 승인
+    function approve(wno) {
+        adminService.approve(wno, function (result) {
+            alert(result);
+            showWorkApplyList(pageNumW);
+        })
+    }
+
+    // 작품 신청 반려
+    function reject(wno) {
+        adminService.reject(wno, function (result) {
+            alert(result);
+            showWorkApplyList(pageNumW);
+        })
+    }
+
+    // 모집 공고 삭제
+    function removeRecruitment(rno) {
+        adminService.removeRecruitment(rno, function (result) {
+            alert(result);
+            showRecruitmentList(pageNumR);
+        })
+    }
+
+    // 아티스트 등록, 수정 신청 승인
+    function approveArtist(ano) {
+        adminService.approveArtist(ano, function (result) {
+            alert(result);
+            showArtistApplyList(pageNumA);
+        })
+    }
+
+    // 아티스트 등록, 수정 신청 반려
+    function rejectArtist(ano) {
+        adminService.rejectArtist(ano, function (result) {
+            alert(result);
+            showArtistApplyList(pageNumA);
+        })
+    }
+
+    // 아티스트 삭제
+    function removeArtist(ano) {
+        adminService.removeArtist(ano, function (result) {
+            alert(result);
+            showArtistList(pageNumA);
+        })
+    }
+
     $(".user_menu a").on("click", function (e) {
         $(".user_menu a").removeClass("on");
+        $(e.target).addClass("on");
+    })
+
+    $(".artist_menu a").on("click", function (e) {
+        $(".artist_menu a").removeClass("on");
         $(e.target).addClass("on");
     })
 

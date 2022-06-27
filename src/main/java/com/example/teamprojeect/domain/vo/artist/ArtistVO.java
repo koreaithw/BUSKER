@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class ArtistVO {
     private Long artistNumber;
     private Long userNumber;
+    private String userId;
     private String artistName;
     private String artistDescription;
     private Long artistType;
