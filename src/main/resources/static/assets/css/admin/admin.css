@@ -263,7 +263,7 @@ body {
     max-width: 560px;
 }
 
-.authentication-form button{
+.authentication-form button, .signin-container button{
     top: 1.125rem;
     right: 0;
     width: 150px;

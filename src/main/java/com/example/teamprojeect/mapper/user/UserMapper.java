@@ -21,7 +21,8 @@ public interface UserMapper {
     public String searchId(String userId); // null 이면 없는 거
 
     // 회원가입 : ID, PW 찾기
-    public UserVO find(@Param("text") String text, @Param("findWay") String findWay);
+//    public UserVO find(@Param("text") String text, @Param("findWay") String findWay);
+    public UserVO find(String text);
 
     // 로그인
     public Long login(@Param("userId") String userId, @Param("userPw") String userPw);
