@@ -50,7 +50,7 @@ $(document).ready(function () {
     $("#checkPw").text("");
     $(".pw-flex").css("border-bottom", "1px solid #ebebeb");
   
-    if (!loginForm.userId.value && !loginForm.userPhoneNumber.value) {
+    if (!($("#userId").val()) && !($("#userPhoneNumber").val())) {
       $("#checkId").text("아이디를 입력해주세요.");
       $(".id-flex").css("border-bottom", "1px solid #ff4d78");
       $("#checkPw").text("비밀번호를 입력해주세요.");
@@ -58,13 +58,13 @@ $(document).ready(function () {
       $(".id-input").focus();
       return;
     }
-    if (!loginForm.userId.value) {
+    if (!($("#userId").val())) {
       $("#checkId").text("아이디를 입력해주세요.");
       $(".id-flex").css("border-bottom", "1px solid #ff4d78");
       $(".id-input").focus();
       return;
     }
-    if (!loginForm.userPhoneNumber.value) {
+    if (!($("#userPhoneNumber").val())) {
       $("#checkPw").text("휴대폰 번호를 입력해주세요.");
       $(".pw-flex").css("border-bottom", "1px solid #ff4d78");
       $(".pw-input").focus();

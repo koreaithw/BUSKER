@@ -14,6 +14,12 @@ public interface UserMapper {
     // 회원가입
     public void join(UserVO userVO);
 
+    // 카카오 회원가입
+    public void kakaoJoin(UserVO userVO);
+
+    // 카카오 로그인
+    public Long kakaoLogin(String userId);
+
     // 회원가입시 휴대폰 번호 조회 -> 있으면 ID 찾기 실행
     public String searchPhoneNumber(String userPhoneNumber); // null 이면 없는 거
 
@@ -53,5 +59,6 @@ public interface UserMapper {
 
     // 관리자 페이지 : 검색 결과 개수
     public int getSearchTotal(Criteria criteria);
+
 }
 

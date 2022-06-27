@@ -1,6 +1,5 @@
 package com.example.teamprojeect.domain.dao.user;
 
-import com.example.teamprojeect.domain.vo.list.UserListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.user.UserVO;
 import com.example.teamprojeect.mapper.user.UserMapper;
@@ -19,6 +18,13 @@ public class UserDAO {
     public void join(UserVO userVO) {
         userMapper.join(userVO);
     }
+
+    // 카카오 회원가입
+    public void kakaoJoin(UserVO userVO) { userMapper.kakaoJoin(userVO);}
+
+    // 카카오 회원가입
+    public Long kakaoLogin(String userId) { return userMapper.kakaoLogin(userId);}
+
 
     // 회원가입시 휴대폰 번호 조회 -> 있으면 ID 찾기 실행
     public boolean searchPhoneNumber(String userPhoneNumber) {

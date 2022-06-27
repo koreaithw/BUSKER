@@ -9,15 +9,15 @@
     <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
 
     <!--카카오-->
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <script src="YOUR_SDK_FILE_PATH"></script>
-    <script>
-      // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
-      Kakao.init('2a9839ef613b9a44fa7dec258d75536e');
+<!--    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>-->
+<!--    <script src="YOUR_SDK_FILE_PATH"></script>-->
+<!--    <script>-->
+<!--      // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.-->
+<!--      // Kakao.init('6cc7804381aff3c573b6e6db3927a7c5');-->
 
-      // SDK 초기화 여부를 판단합니다.
-      console.log(Kakao.isInitialized());
-    </script>
+<!--      // SDK 초기화 여부를 판단합니다.-->
+<!--      console.log(Kakao.isInitialized());-->
+<!--    </script>-->
 
     <!--네이버-->
     <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
@@ -106,10 +106,10 @@
               /></a>
             </div>
             <div class="loginType">
-              <a id="reauthenticate-popup-btn" href="javascript:loginFormWithKakao()">
+              <a id="" href="https://kauth.kakao.com/oauth/authorize?client_id=9ac138945c16d418c246d1af4dc646a8&redirect_uri=
+http://localhost:10007/login&response_type=code">
                 <img class="loginType-img" src="/images/login/kakao.png" width="44px" /></a>
             </div>
-
           </div>
         </div>
       </form>
@@ -146,21 +146,21 @@
 
 <!--카카오-->
   <!--카카오톡 로그인-->
-  <script type="text/javascript">
-    function loginFormWithKakao() {
-      Kakao.Auth.loginForm({
-        success: function(authObj) {
-          showResult(JSON.stringify(authObj))
-        },
-        fail: function(err) {
-          showResult(JSON.stringify(err))
-        },
-      })
-    }
-    function showResult(result) {
-      result(window.location.href = "/main/"); //로그인 완료시 메인페이지 이동
-    }
-  </script>
+<!--  <script type="text/javascript">-->
+<!--    function loginFormWithKakao() {-->
+<!--      Kakao.Auth.loginForm({-->
+<!--        success: function(authObj) {-->
+<!--          showResult(JSON.stringify(authObj))-->
+<!--        },-->
+<!--        fail: function(err) {-->
+<!--          showResult(JSON.stringify(err))-->
+<!--        },-->
+<!--      })-->
+<!--    }-->
+<!--    function showResult(result) {-->
+<!--      result(window.location.href = "/main/"); //로그인 완료시 메인페이지 이동-->
+<!--    }-->
+<!--  </script>-->
 <!--카카오 끝-->
 
 </html>
