@@ -49,11 +49,13 @@ $(document).ready(function () {
     $(".id-flex").css("border-bottom", "1px solid #ebebeb");
     $("#checkPw").text("");
     $(".pw-flex").css("border-bottom", "1px solid #ebebeb");
+    $("#checkSMSNumber").text("");
+    $(".pw-flex").css("border-bottom", "1px solid #ebebeb");
   
     if (!($("#userId").val()) && !($("#userPhoneNumber").val())) {
       $("#checkId").text("아이디를 입력해주세요.");
       $(".id-flex").css("border-bottom", "1px solid #ff4d78");
-      $("#checkPw").text("비밀번호를 입력해주세요.");
+      $("#checkPw").text("휴대폰 번호를 입력해주세요.");
       $(".pw-flex").css("border-bottom", "1px solid #ff4d78");
       $(".id-input").focus();
       return;
@@ -70,8 +72,7 @@ $(document).ready(function () {
       $(".pw-input").focus();
       return;
     }
-    // loginForm.submit();
-
+    // $("#loginForm").submit();
   }
 
    //  유효성 검사
@@ -80,11 +81,13 @@ $(document).ready(function () {
     $(".id-flex").css("border-bottom", "1px solid #ebebeb");
     $("#checkPw").text("");
     $(".pw-flex").css("border-bottom", "1px solid #ebebeb");
+     $("#checkSMSNumber").text("");
+     $(".pw-flex").css("border-bottom", "1px solid #ebebeb");
   
     if (!loginForm.userId.value && !loginForm.userPhoneNumber.value) {
       $("#checkId").text("아이디를 입력해주세요.");
       $(".id-flex").css("border-bottom", "1px solid #ff4d78");
-      $("#checkPw").text("비밀번호를 입력해주세요.");
+      $("#checkPw").text("휴대폰 번호를 입력해주세요.");
       $(".pw-flex").css("border-bottom", "1px solid #ff4d78");
       $(".id-input").focus();
       return;
@@ -110,13 +113,13 @@ $(document).ready(function () {
     $(".id-flex").css("border-bottom", "1px solid #ebebeb");
     $("#checkPw").text("");
     $(".pw-flex").css("border-bottom", "1px solid #ebebeb");
-    $("#checkPw").text("");
+    $("#checkSMSNumber").text("");
     $(".checkNumber-flex").css("border-bottom", "1px solid #ebebeb");
   
     if (!loginForm.userId.value && !loginForm.userPhoneNumber.value && !loginForm.checkNumber.value) {
       $("#checkId").text("아이디를 입력해주세요.");
       $(".id-flex").css("border-bottom", "1px solid #ff4d78");
-      $("#checkPw").text("비밀번호를 입력해주세요.");
+      $("#checkPw").text("휴대폰 번호를 입력해주세요.");
       $(".pw-flex").css("border-bottom", "1px solid #ff4d78");
       $("#checkSMSNumber").text("인증번호를 입력해주세요.");
       $(".checkNumber-flex").css("border-bottom", "1px solid #ff4d78");
@@ -141,7 +144,6 @@ $(document).ready(function () {
         $(".checkNumber-input").focus();
         return;
       }
-    // loginForm.submit();
-    
+    $("#loginForm").submit();
   }
 
