@@ -33,23 +33,98 @@ public class ShowController {
     // 필드 생성
     @Autowired
     private ShowService showService;
-    private ArtistService artistService;
+    private final ArtistService artistService;
 
     // 진행 예정 공연 리스트 페이지 이동
     @GetMapping("/concertPlanList")
     public String goConcertPlan(Criteria criteria, ListDTO listDTO, Model model) {
-//        listDTO.setArtistSortingType("NEW");
-//        List<ArtistVO> artistVO = artistService.getList(new Criteria(1, 3), listDTO);
-//        artistVO.forEach(ArtistVO -> {
-//            if(ArtistVO.getArtistType() == 1) {
-//                ArtistVO.setArtistCategory("뮤지션");
-//            } else if (ArtistVO.getArtistType() == 2) {
-//                ArtistVO.setArtistCategory("퍼포먼스");
-//            }
-//                });
-//        model.addAttribute("artistVO", artistVO);
+        listDTO.setArtistSortingType("NEW");
+        List<ArtistVO> artistVO = artistService.getList(new Criteria(1, 3), listDTO);
+        artistVO.forEach(ArtistVO -> {
+            if(ArtistVO.getArtistType() == 1) {
+                ArtistVO.setArtistCategory("뮤지션");
+            } else if (ArtistVO.getArtistType() == 2) {
+                ArtistVO.setArtistCategory("퍼포먼스");
+            }
+                });
+        model.addAttribute("artistVO", artistVO);
+
         List<ShowVO> replyRankingAll = showService.getRankingReply();
         List<ShowVO> replyRankingFive = replyRankingAll.subList(0,5);
+
+        replyRankingFive.forEach(showVO -> {
+            // 지역만 선택
+            String showRegion = showVO.getShowAddress();
+            showRegion = "[" + showRegion.substring(0, 2) + "] ";
+            showVO.setShowRegion(showRegion);
+
+            // showType 문자열로 변경
+            if(showVO.getShowType() == 1) {
+                showVO.setShowCategory("뮤지션");
+            } else if (showVO.getShowType() == 2) {
+                showVO.setShowCategory("퍼포먼스");
+            }
+
+            try {
+                SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String showDay = showVO.getShowDay();
+                Date day = dayFormat.parse(showDay);
+                showDay = dayFormat.format(day);
+
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(day);
+                int dayNum = cal.get(Calendar.DAY_OF_WEEK);
+                String dayth = "" ;
+
+                switch(dayNum){
+                    case 1:
+                        dayth = "일";
+                        break ;
+                    case 2:
+                        dayth = "월";
+                        break ;
+                    case 3:
+                        dayth = "화";
+                        break ;
+                    case 4:
+                        dayth = "수";
+                        break ;
+                    case 5:
+                        dayth = "목";
+                        break ;
+                    case 6:
+                        dayth = "금";
+                        break ;
+                    case 7:
+                        dayth = "토";
+                        break ;
+
+                }
+
+                showDay = showDay + " (" + dayth + ")";
+                showVO.setShowDay(showDay);
+
+                SimpleDateFormat timeParse = new SimpleDateFormat("hh:mm:ss");
+                SimpleDateFormat timeFormat = new SimpleDateFormat("a hh:mm", Locale.KOREAN);
+
+                String showDate = showVO.getShowTime();
+                String[] showTimeList = showDate.split("\\s+");
+
+                Date date1 = timeParse.parse(showTimeList[1]);
+                showDate = timeFormat.format(date1);
+
+                showVO.setShowTime(showDate);
+
+            } catch (ParseException e) {
+                System.err.println("dateStr : "  + ", datePattern:");
+                e.printStackTrace();
+            }
+
+        });
+
+
+
+
         log.info(replyRankingFive.toString());
         model.addAttribute("replyRanking", replyRankingFive);
         return "concertPlan/concertPlanList";

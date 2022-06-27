@@ -83,22 +83,24 @@
             <p class="gray-text">*댓글 수를 기준으로 집계됩니다.</p>
             <ul>
 
-                <li>
+                <th:block th:each="replyRanking, num : ${replyRanking}">
+                <li class=''>
                     <a href='#' title=''>
                         <dl>
-                            <dt>2위</dt>
+<!--                        <dl th:text="|${num.count}위|">-->
+                            <dt></dt>
                             <dd>
-                                <img class="" src='/images/concertPlan/img3.jpg' alt=''/>
+                                <img src='/images/concertPlan/img3.jpg' alt=''/>
                             </dd>
-                            <dd class='ms5-l-txt'>
-                                <p class='ms5-l-txt1'></p>
-                                <p class='ms5-l-txt2'>2022.8.2</br></p>
+                            <dd class='ms5-l-txt'  th:object="${replyRanking}">
+                                <p class='ms5-l-txt1'  th:text="|*{showName} (*{replyCount})|"></p>
+                                <p class='ms5-l-txt2'  th:text="|*{showDay} *{showTime}|"></p>
+                                <p class='ms5-l-txt2'  th:text="*{showLocation}"></p>
                             </dd>
                         </dl>
                     </a>
                 </li>
-
-
+                </th:block>
             </ul>
         </div>
 
@@ -108,23 +110,23 @@
             </p>
             <div class="ms5-rs-wrap">
                 <div class="swiper-container ms5-rs">
-                    <!--                    <th:block th:each="artist:${artistVO}">-->
-                    <!--                    <div th:object="${artist}" class="swiper-wrapper">-->
+                                        <th:block th:each="artist:${artistVO}">
+                                        <div th:object="${artist}" class="swiper-wrapper">
 
-                    <!--                        <div class='swiper-slide'>-->
-                    <!--                            <a href='#' target='_self' title='버스킹버스커1'>-->
-                    <!--                                    <span>-->
-                    <!--                                        <img src="https://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040004/21/05/0400042105_47574_02.407.gif" alt='알라리깡숑'/>-->
-                    <!--                                    </span>-->
-                    <!--                                <div>-->
-                    <!--                                    <p class='ms5-r-txt111' th:text="*{artistName}"></p>-->
-                    <!--                                    <p class='ms5-r-txt2' th:text="*{artistCategory}"></p>-->
-                    <!--                                </div>-->
-                    <!--                                <p><img src="/images/myPage/non-heart-icon.png" width="30px"> </p>-->
-                    <!--                            </a>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-                    <!--                    </th:block>-->
+                                            <div class='swiper-slide'>
+                                                <a href='#' target='_self' title='버스킹버스커1'>
+                                                        <span>
+                                                            <img src="https://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040004/21/05/0400042105_47574_02.407.gif" alt='알라리깡숑'/>
+                                                        </span>
+                                                    <div>
+                                                        <p class='ms5-r-txt111' th:text="*{artistName}"></p>
+                                                        <p class='ms5-r-txt2' th:text="*{artistCategory}"></p>
+                                                    </div>
+                                                    <p><img src="/images/myPage/non-heart-icon.png" width="30px"> </p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        </th:block>
                 </div>
 
                 <div class="swiper-button-next ms5-rs"></div>
