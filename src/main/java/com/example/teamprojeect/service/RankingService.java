@@ -35,12 +35,12 @@ public class RankingService {
         return artistDAO.getList(criteria, listDTO);
     }
     //아티스트 뮤지션 목록
-    public List<ArtistVO> getListMusician(@Param("listDTO") ListDTO listDTO) {
-        return artistMapper.getListMusician(listDTO);
+    public List<ArtistVO> getListMusician(Criteria criteria, ListDTO listDTO) {
+        return artistDAO.getList(criteria, listDTO);
     }
     //아티스트 퍼포먼스 목록
-    public List<ArtistVO> getListPeformance(@Param("listDTO") ListDTO listDTO) {
-        return artistMapper.getListPerformance(listDTO);
+    public List<ArtistVO> getListPeformance(Criteria criteria, ListDTO listDTO) {
+        return artistDAO.getList(criteria, listDTO);
     }
 
     //아티스트 갯수

@@ -49,4 +49,16 @@ public class ArtistServiceTests {
         artistService.getList(new Criteria(1,20), new ListDTO("A","B","C","NEW","1"))
                 .stream().map(ArtistVO::toString).forEach(log::info);
     }
+
+    @Test
+    public void getListTestM(){
+        artistService.getListMusician(new Criteria(1,20), new ListDTO("A","B","C","NEW","1"))
+                .stream().map(ArtistVO::toString).forEach(log::info);
+    }
+
+    @Test
+    public void getListTestP(){
+        artistService.getListPerformance(new Criteria(1,20), new ListDTO("A","B","C","NEW","1"))
+                .stream().map(ArtistVO::toString).forEach(log::info);
+    }
 }

@@ -18,14 +18,18 @@ let artistService = (function () {
             }
         })
     }
+
+
+
     return {getArtistList:getArtistList}
 })();
 
 
 let pageNum = 1;
 let artistSortingType = "NEW";
-let artistCnt = $(".li-sec-result");
+// let artistCnt = $(".li-sec-result");
 let artistDiv = $(".ms-list-imgs");
+let artistCntNumber = 0;
 
 
 // 아티스트 수 출력
@@ -50,6 +54,7 @@ let artistDiv = $(".ms-list-imgs");
 
 function artistList(artistSortingType, page){
 
+
     artistService.getArtistList(artistSortingType, page, function (total, list) {
         let str = "";
 
@@ -68,7 +73,17 @@ function artistList(artistSortingType, page){
             str += "</div>"
             str += "</div>"
             str += "</a>"
+            // artistCntNumber += 1;
         });
+
+        // $.each(total, function(i, artist){
+        //
+        //     artistCntNumber += 1;
+        // });
+
+
+
+
 
         artistDiv.html(str);
         artistPage(artistSortingType, total);
@@ -117,6 +132,9 @@ function artistPage(artistSortingType, total) {
 
     str += "<a class='mypage-page-last'>>></a></div>"
     $paging.html(str);
+
+    artistCntNumber = total;
+    document.getElementById("ListCntText").innerHTML=artistCntNumber;
 
 }
 
@@ -203,6 +221,11 @@ $(".LIKE").click(function (e) {
     pageNum = 1;
     artistList("LIKE", pageNum)
 })
+
+
+
+
+document.getElementById("ListCntText").innerHTML=artistCntNumber;
 
 
 

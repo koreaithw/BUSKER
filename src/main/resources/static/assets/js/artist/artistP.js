@@ -1,8 +1,8 @@
 let artistService = (function () {
-    function getArtistList(artistSortingType, page, callback, error) {
+    function getArtistListPerformance(artistSortingType, page, callback, error) {
         let pageNum = page || 1;
         $.ajax({
-            url: "/artist/artistList/" + artistSortingType + "/" + pageNum,
+            url: "/artist/artistListPerformance/" + artistSortingType + "/" + pageNum,
             type: "get",
             dataType: "json",
             contentType: "application/json",
@@ -21,7 +21,7 @@ let artistService = (function () {
 
 
 
-    return {getArtistList:getArtistList}
+    return {getArtistListPerformance:getArtistListPerformance}
 })();
 
 
@@ -34,7 +34,7 @@ let artistCntNumber = 0;
 
 // 아티스트 수 출력
 // function artistCount() {
-//     artistService.getArtistList(artistSortingType, page, function (total, list) {
+//     artistService.getArtistListPerformance(artistSortingType, page, function (total, list) {
 //         let str = "";
 //         let artistCnt = 1;
 //
@@ -55,7 +55,7 @@ let artistCntNumber = 0;
 function artistList(artistSortingType, page){
 
 
-    artistService.getArtistList(artistSortingType, page, function (total, list) {
+    artistService.getArtistListPerformance(artistSortingType, page, function (total, list) {
         let str = "";
 
         if(list == null || list.length == 0){

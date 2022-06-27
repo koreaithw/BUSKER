@@ -58,12 +58,12 @@ public class ArtistDAO {
 //        return artistMapper.getList(criteria);
 //    }
     //아티스트 뮤지션 목록
-    public List<ArtistVO> getListMusician(@Param("listDTO") ListDTO listDTO) {
-        return artistMapper.getListMusician(listDTO);
+    public List<ArtistVO> getListMusician(Criteria criteria, ListDTO listDTO) {
+        return artistMapper.getListMusician(criteria, listDTO);
     }
     //아티스트 퍼포먼스 목록
-    public List<ArtistVO> getListPeformance(@Param("listDTO") ListDTO listDTO) {
-        return artistMapper.getListPerformance(listDTO);
+    public List<ArtistVO> getListPerformance(Criteria criteria, ListDTO listDTO) {
+        return artistMapper.getListPerformance(criteria, listDTO);
     }
 
     /*
@@ -73,6 +73,14 @@ public class ArtistDAO {
     // 랭킹 목록 개수
     public int getTotal(ListDTO listDTO) {
         return artistMapper.getTotal(listDTO);
+    }
+
+    public int getTotalMusician(ListDTO listDTO) {
+        return artistMapper.getTotalMusician(listDTO);
+    }
+
+    public int getTotalPerformance(ListDTO listDTO) {
+        return artistMapper.getTotalPerformance(listDTO);
     }
 
     // 랭킹 //

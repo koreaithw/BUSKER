@@ -57,7 +57,20 @@ public class ArtistMapperTests {
 //
     @Test
     public void getListTest(){
-        artistMapper.getList(new Criteria(1,5), new ListDTO("A","1","2","LIKE","3"))
+        artistMapper.getList(new Criteria(1,10), new ListDTO("A","1","2","LIKE","3"))
+
+                .stream().map(ArtistVO::toString).forEach(log::info);
+    }
+
+    @Test
+    public void getListTesM(){
+        artistMapper.getListMusician(new Criteria(1,10), new ListDTO("A","1","2","NEW","3"))
+
+                .stream().map(ArtistVO::toString).forEach(log::info);
+    }
+    @Test
+    public void getListTestP(){
+        artistMapper.getListPerformance(new Criteria(1,10), new ListDTO("A","1","2","NEW","3"))
 
                 .stream().map(ArtistVO::toString).forEach(log::info);
     }
