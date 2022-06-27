@@ -1,3 +1,4 @@
+let loginForm =  $("form[name='loginForm']");
 $(document).ready(function () {
     $(".id-input").keyup(function () {
       $(".delete-id-div").show();
@@ -50,7 +51,7 @@ $(document).ready(function () {
     $("#checkPw").text("");
     $(".pw-flex").css("border-bottom", "1px solid #ebebeb");
   
-    if (!loginForm.userId.value && !loginForm.userPw.value) {
+    if (!($(".id-input").val()) && !($(".pw-input").val())) {
       $("#checkId").text("아이디를 입력해주세요.");
       $(".id-flex").css("border-bottom", "1px solid #ff4d78");
       $("#checkPw").text("비밀번호를 입력해주세요.");
@@ -58,13 +59,13 @@ $(document).ready(function () {
       $(".id-input").focus();
       return;
     }
-    if (!loginForm.userId.value) {
+    if (!($(".id-input").val())) {
       $("#checkId").text("아이디를 입력해주세요.");
       $(".id-flex").css("border-bottom", "1px solid #ff4d78");
       $(".id-input").focus();
       return;
     }
-    if (!loginForm.userPw.value) {
+    if (!($(".pw-input").val())) {
       $("#checkPw").text("비밀번호를 입력해주세요.");
       $(".pw-flex").css("border-bottom", "1px solid #ff4d78");
       $(".pw-input").focus();
@@ -73,31 +74,8 @@ $(document).ready(function () {
     loginForm.submit();
   }
 
-//
-// $('#login-button').click(function() {
-//
-//   var userId = $('#login-input id-input').val();
-//   var userPw = $('#login-input pw-input').val();
-//
-//   $.ajax({
-//     type : "POST",
-//     url : "/user/login",
-//     data : "userId=" + userId + "userPw" + userPw,
-//     dataType : "text",
-//     success : function(data) {
-//       if (data == 'loginFail') {
-//         alert('로그인에 실패하였습니다.')
-//       } else {
-//         window.location.href = 'main.html';
-//       }
-//     },
-//     error : function(request, status, error) {
-//       // alert("code:" + request.status + "\n" + "error:" + error);
-//     }
-//   })
-// });
 
-
+/*
 $('#login-button').click(function() {
 
   var userId = $('#login-input id-input').val();
@@ -116,8 +94,8 @@ $('#login-button').click(function() {
       }
     },
     error : function(request, status, error) {
-      alert("code:" + request.status + "\n" + "error:" + error);
+      // alert("code:" + request.status + "\n" + "error:" + error);
     }
   })
 });
-
+*/

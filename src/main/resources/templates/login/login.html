@@ -7,27 +7,11 @@
     <title>로그인</title>
     <link rel="stylesheet" href="/assets/css/login/login.css" />
     <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
-
-<!--카카오-->
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <script src="YOUR_SDK_FILE_PATH"></script>
-    <script>
-      // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
-      Kakao.init('2a9839ef613b9a44fa7dec258d75536e');
-
-      // SDK 초기화 여부를 판단합니다.
-      console.log(Kakao.isInitialized());
-    </script>
-
-<!--네이버-->
-    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-
   </head>
   <body>
     <div class="loginWrap">
 
-      <form name="loginForm" method="post" action="/user/loginSuccess">
+      <form name="loginForm" id="loginForm" method="post" action="/user/loginSuccess">
 
 
         <div class="loginBox">
@@ -77,7 +61,7 @@
               type="button"
               id="login-button"
               class="login-click login-button"
-              onclick = ""
+              onclick="send();"
               value="로그인"
             />
           </div>
@@ -112,58 +96,9 @@
         </div>
       </form>
     </div>
-
-<!--네이버 로그인-->
-    <!-- //네이버 로그인 버튼 노출 영역 -->
-    <script type="text/javascript">
-      var naver_id_login = new naver_id_login("aJQ99oNDfbYzze0OIl5r", "http://localhost:10007/naverLogin");
-      var state = naver_id_login.getUniqState();
-      naver_id_login.setDomain("http://localhost:10007");
-      naver_id_login.setState(state);
-      naver_id_login.setPopup();
-      naver_id_login.init_naver_id_login();
-    </script>
-
-    <script type="text/javascript">
-      var naver_id_login = new naver_id_login("aJQ99oNDfbYzze0OIl5r", "http://localhost:10007/naverLogin");
-      // 접근 토큰 값 출력
-      alert(naver_id_login.oauthParams.access_token);
-      // 네이버 사용자 프로필 조회
-      naver_id_login.get_naver_userprofile("naverSignInCallback()");
-      // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-      function naverSignInCallback(result) {
-        result(window.location.href = "/main/");
-      }
-    </script>
-
   </body>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script type="text/javascript" src="/assets/js/login/login.js?ver=1"></script>
-
-<!--카카오톡 로그인-->
-  <script type="text/javascript">
-    function loginFormWithKakao() {
-      Kakao.Auth.loginForm({
-        success: function(authObj) {
-          showResult(JSON.stringify(authObj))
-        },
-        fail: function(err) {
-          showResult(JSON.stringify(err))
-        },
-      })
-    }
-    function showResult(result) {
-     result(window.location.href = "/main/"); //로그인 완료시 메인페이지 이동
-    }
-  </script>
-
-<!--로그인 성공-->
-<script type="text/javascript">
-
-</script>
-
-
-
+  <script type="text/javascript" src="/assets/js/login/login.js"></script>
 </html>
 
 
