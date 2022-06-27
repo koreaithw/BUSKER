@@ -8,6 +8,8 @@
     font-weight: 700;
     /* 굵게 */
     height: 70px;
+    border-bottom: 2px solid #ffb07a;
+    margin-bottom: 50px;
     
 
 
@@ -516,6 +518,14 @@ img {vertical-align: middle;}
     height: 550px;
 }
 
+.name-box {
+    width : 1016px
+    /*display: flex;*/
+    justify-content: center;
+    margin: auto;
+
+}
+
 
 
 /* 맨위로가기 버튼 */
@@ -537,3 +547,4 @@ a.jcm-top {
      z-index: 999;
      display: none;}
      a.jcm-top:hover{background-color:#000}
+

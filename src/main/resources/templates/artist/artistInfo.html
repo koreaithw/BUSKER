@@ -24,8 +24,8 @@
 </header>
 
 <body style=>
-<form name="mainForm" method="post" action="" id="mainForm">
-    <div class = "infowrap" th:object="${artist}">
+<form name="mainForm" method="post" action="" id="mainForm" th:object="${artist}">
+    <div class = "infowrap">
         <div class="renew-wrap">
             <div class="renew-content">
                 <div class="rn-01">
@@ -45,6 +45,7 @@
         </div>
         <div class="renew-content">
             <div class="rn-03">
+
                 <div class="rn-03-left">
                     <div class="rn-product-imgbox">
                         <img src="/images/artist/buskerbukser.jpg">
@@ -73,12 +74,11 @@
 
             </div>
 
-            <div class="like_box">
+            <div class="like_box" id="like_box">
                 <a href="javascript:;" class="like" id="btn-like">
-                    <img src="/images/work/unlike.png" alt="" class="img1">
-                    <img src="/images/work/like.png" alt="" class="img2" style="display: none;">
-                    <span class="like_txt1">123</span>
-                    <span class="like_txt2">Likes</span>
+                    <img src="/images/work/unlike2.png" alt="" class="img1">
+                    <img src="/images/work/like2.png" alt="" class="img2" style="display: none;">
+                    <span class="like_txt1" id="like_count" th:text="*{likesCount}"></span>
                 </a>
             </div>
         </div>
@@ -120,6 +120,8 @@
             </div>
         </div>
     </div>
+
+
     <!-- 댓글창 시작 -->
     <div id="reply-wrap">
 

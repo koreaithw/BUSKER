@@ -84,5 +84,6 @@ public interface ArtistMapper {
 
     public int checkArtistLike(Long artistNumber, Long userNumber);
 
+    public int artistLikeCount(Long artistNumber);
 
 }
