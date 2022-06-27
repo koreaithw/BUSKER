@@ -89,5 +89,9 @@ public class UserMapperTests {
         userMapper.getTotal();
     }
 
+    @Test
+    public void findTest() {
+        userMapper.find("01075013676");
+    }
 }
 
