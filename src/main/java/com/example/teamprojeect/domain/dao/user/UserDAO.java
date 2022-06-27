@@ -30,9 +30,14 @@ public class UserDAO {
         return userMapper.login(userId, userPw);
     }
 
+    // 아이디 중복 검사
+    public String searchId(String userId) {
+        return userMapper.searchId(userId);
+    }; // null 이면 없는 거
+
     // ID, PW 찾기
-    public UserVO find(@Param("text") String text, @Param("findWay") String findWay) {
-        return userMapper.find(text,findWay);
+    public UserVO find(String text) {
+        return userMapper.find(text);
     }
 
     // 마이페이지 : 정보 조회

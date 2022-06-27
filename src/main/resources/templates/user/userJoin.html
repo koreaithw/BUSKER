@@ -1,14 +1,30 @@
 <!DOCTYPE html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
     <link rel="stylesheet" href="/assets/css/admin/admin.css" />
+    <!--카카오-->
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script src="YOUR_SDK_FILE_PATH"></script>
+    <script>
+        // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.
+        Kakao.init('2a9839ef613b9a44fa7dec258d75536e');
 
+        // SDK 초기화 여부를 판단합니다.
+        console.log(Kakao.isInitialized());
+    </script>
+
+    <!--네이버-->
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!--로그인 끝-->
 </head>
 
 <body>
+<form action="/user/join" method="post" id="userJoinForm">
     <!-- 회원가입 첫 페이지 -->
     <div class="sign-logo">
         <h1>Buskers</h1>
@@ -18,11 +34,11 @@
 
         <div class="container sign-container">
             <div class="btn-signup">
-                <a href="" class="btn-signupemail">이메일 아이디로 가입하기</a>
-                <a href="" class="btn-signupkakao"><img src="/images/admin/free-icon-kakao-talk-2111466.png"
+                <a href="" class="btn-signupemail">일반 아이디로 가입하기</a>
+                <a href="javascript:loginFormWithKakao()" class="btn-signupkakao"><img src="/images/admin/free-icon-kakao-talk-2111466.png"
                         width="20px;" height="20px;" alt="">&nbsp; 카카오 아이디로 로그인</a>
                 <!-- <a href="https://www.flaticon.com/kr/free-icons/-" title="카카오 톡 아이콘">카카오 톡 아이콘  제작자: Pixel perfect - Flaticon</a> -->
-                <a href="" class="btn-signupnaver"><img src="/images/admin/naver_icon.svg" width="20px;"
+                <a href="javascript:naverSignInCallback()" class="btn-signupnaver"><img src="/images/admin/naver_icon.svg" width="20px;"
                         height="20px;" alt="">&nbsp; 네이버 아이디로 로그인</a>
             </div>
         </div>
@@ -60,6 +76,7 @@
     </div>
     <!-- 본인 인증 페이지 -->
     <div class="self-authentication" style="display: none;">
+
         <div>
             <h1>본인인증</h1>
         </div>
@@ -84,18 +101,19 @@
     <div class="signin-container" style="display: none;">
         <div class="signin-form">
             <h1>회원가입</h1>
-            <form action="">
+
                 <div class="select-id">
-                    <input type="text" class="inputText" placeholder="아이디(이메일)" id="email"> @
-                    <select class="inputText">
-                        <option value="">선택</option>
-                        <option value="naver.com">naver.com</option>
-                        <option value="gmail.com">gmail.com</option>
-                    </select>
+                    <input type="text" name="userId" class="inputText" placeholder="아이디" id="userId">
+                    <button id="searchId">중복확인</button>
+<!--                    @                    <select class="inputText">-->
+<!--                        <option value="">선택</option>-->
+<!--                        <option value="naver.com">naver.com</option>-->
+<!--                        <option value="gmail.com">gmail.com</option>-->
+<!--                    </select>-->
                 </div>
                 <p class="id-check"></p>
                 <div>
-                    <input type="password" id="password" class="inputText" placeholder="비밀번호">
+                    <input type="password" name="userPw" id="userPw" class="inputText" placeholder="비밀번호">
                     <p class="signin-password"></p>
                     <input type="password" id="pw-check" class="inputText" placeholder="비밀번호 확인">
                     <p class="check-password"></p>
@@ -103,12 +121,46 @@
                 <div class="btn-signup">
                     <a href="/user/login" class="btn-submitnest">가입 완료</a>
                 </div>
-            </form>
         </div>
     </div>
+    </form>
 
+<!--네이버-->
+<script type="text/javascript">
+    var naver_id_login = new naver_id_login("aJQ99oNDfbYzze0OIl5r", "http://localhost:10007/naverLogin");
+    // 접근 토큰 값 출력
+    alert(naver_id_login.oauthParams.access_token);
+    // 네이버 사용자 프로필 조회
+    naver_id_login.get_naver_userprofile("naverSignInCallback()");
+    // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
+    function naverSignInCallback(result) {
+        result(window.location.href = "/main/");
+    }
+</script>
+<!--네이버 끝-->
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/assets/js/login/login.js"></script>
+
+<!--카카오-->
+<!--카카오톡 로그인-->
+<script type="text/javascript">
+    function loginFormWithKakao() {
+        Kakao.Auth.loginForm({
+            success: function(authObj) {
+                showResult(JSON.stringify(authObj))
+            },
+            fail: function(err) {
+                showResult(JSON.stringify(err))
+            },
+        })
+    }
+    function showResult(result) {
+        result(window.location.href = "/main/"); //로그인 완료시 메인페이지 이동
+    }
+</script>
+<!--카카오 끝-->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
@@ -164,13 +216,13 @@
     });
     $(".btn-submitnest").on("click",function(e){
         e.preventDefault();
-        var pw = $("#password").val();
+        var pw = $("#userPw").val();
         var check = $("#pw-check").val();
         var num = pw.search(/[0-9]/g);
         var eng = pw.search(/[a-z]/ig);
-        if($("#email").val().length == 0) {
-            $(".id-check").text("이메일을 입력하세요.");
-            $("#email").focus();
+        if($("#userId").val().length == 0) {
+            $(".id-check").text("아이디를 입력하세요.");
+            $("#userId").focus();
             return false;
         }else{
             $(".id-check").text("");
@@ -197,6 +249,9 @@
             $(".check-password").text("");
         }
         console.log("통과");
+        console.log($("input[name=userName]").val())
+        $("#userJoinForm").submit();
+
         return true;
     });
 
@@ -222,7 +277,49 @@
 </script>
 
 <script>
+    $("#searchId").click(function (e) {
+        $(".id-check").text("");
+        e.preventDefault();
+        if($("#userId").val().length == 0) {
+            $(".id-check").text("아이디를 입력하세요.");
+            $("#userId").focus();
+            return;
+        }
+        let userId = $("#userId").val();
+        searchId(userId);
+    })
 
+    function searchId(userId, callback, error){
+        $.ajax({
+            url: "/user/" + userId,
+            type: "post",
+            data: userId,
+            // dataType: 'html',
+            contentType: "charset=UTF-8",
+            success: function(result){
+                if(result){
+                    // callback(result);
+                    if(!(result == null)){
+                        $(".id-check").text("이미 존재하는 아이디입니다. 다시 입력하세요.");
+                    }
+                    else if(result == "") {
+                        console.log(result);
+                        console.log("result");
+                        $(".id-check").text("사용 가능한 아이디입니다.");
+                        $(".id-check").css("color", "#001eff")
+                    }
+                }
+            },
+            error: function(xhr, status, er){
+                if(error){
+                    error(xhr, status, er);
+                    console.log(xhr);
+                    console.log(status);
+                    console.log(er);
+                }
+            }
+        })
+    };
 </script>
 
 

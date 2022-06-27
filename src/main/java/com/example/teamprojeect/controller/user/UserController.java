@@ -7,11 +7,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Member;
 
@@ -34,6 +33,12 @@ public class UserController {
     public String goIdFind() {
         return "/login/idFind";
     }
+
+//    @PostMapping("/searchIdFind")
+//    public String searchIdFind(String userPhoneNumber) {
+//        userService.id
+//        return "/login/idFindResult";
+//    }
 
     // 비밀번호 찾기 페이지 이동
     @GetMapping("/pwFind")
@@ -78,13 +83,21 @@ public class UserController {
         log.info("join 진입");
 
         // 회원가입 서비스 실행
+        log.info(user.toString());
         userService.join(user);
 
         log.info("join Service 성공");
 
-        return "/main/";
+        return "/main";
 
     }
 
-
+    // 아이디 중복확인
+    @PostMapping(value = "/{userId}", produces = "text/plain; charset=utf-8")
+    @ResponseBody
+    public String searchId(@PathVariable("userId") String userId, HttpServletResponse response) {
+        response.setCharacterEncoding("UTF-8");
+        log.info(userService.searchId(userId));
+        return userService.searchId(userId);
+    }
 }

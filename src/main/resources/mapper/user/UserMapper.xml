@@ -4,8 +4,8 @@
     <!--회원가입-->
     <insert id="join">
         INSERT INTO TBL_USER
-        (USER_NUMBER, USER_ID, USER_PW, USER_NAME, USER_PHONE_NUMBER, USER_EMAIL)
-        VALUES (SEQ_USER.NEXTVAL, #{userId}, #{userPw}, #{userName}, #{userPhoneNumber}, #{userEmail})
+        (USER_NUMBER, USER_ID, USER_PW, USER_NAME, USER_PHONE_NUMBER)
+        VALUES (SEQ_USER.NEXTVAL, #{userId}, #{userPw}, #{userName}, #{userPhoneNumber})
     </insert>
 
     <!--회원가입시 휴대폰 번호 조회 -> 있으면 ID 찾기 실행-->
@@ -24,7 +24,9 @@
 
     <!-- 회원가입 : ID, PW 찾기-->
     <select id="find" resultType="userVO">
-
+        SELECT USER_ID
+        FROM TBL_USER
+        WHERE USER_PHONE_NUMBER = #{text.text}
     </select>
 
     <!--로그인-->

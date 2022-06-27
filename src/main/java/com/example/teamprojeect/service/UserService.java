@@ -89,6 +89,9 @@ public class UserService {
         return userDAO.getUserList(criteria, isArtist);
     }
 
+    //아이디 중복확인
+    public String searchId(String userId) { return  userDAO.searchId(userId);}
+
     // 총 유저 수
     public int getTotal() {
         return userDAO.getTotal();
@@ -102,5 +105,9 @@ public class UserService {
     // 총 검색 결과 개수
     public int getSearchTotal(Criteria criteria) {
         return userDAO.getSearchTotal(criteria);
+    }
+
+    public UserVO find(String text) {
+        return userDAO.find(text);
     }
 }
