@@ -28,6 +28,8 @@
                 .insertBefore(j, f);
         })
         (window, document, 'script', 'dataLayer', 'GTM-PVHFWWM');
+
+
     </script>
 
     <!-- Google Tag Manager -->
@@ -59,6 +61,24 @@
         .body {
             font-family: 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
         }
+
+        .replyImg-wrap {
+            width: 80px;
+            height: 112px;
+            overflow: hidden;
+        }
+        .replyImg {
+            transform: scale(1.08);
+            display: block;
+            transition: all 0.3s;
+            width: 100px;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ms5-l-txt {
+            margin-left: 12px !important;
+        }
     </style>
 
 </head>
@@ -85,19 +105,21 @@
 
                 <th:block th:each="Ranking: ${replyRanking}">
                     <li class='' th:object="${Ranking}">
-                        <a href='#' title=''>
+                        <a th:href='|concert/concertPlanInfo?showNumber=*{showNumber}|' title=''>
                             <dl>
                                 <dl>
                                 <dl>
                                     <dl>
                                         <dt  th:text="|*{replyRanking}위|"></dt>
                                         <dd>
-                                            <img src='/images/concertPlan/img3.jpg' alt=''/>
+                                            <div class="replyImg-wrap">
+                                            <img th:id="*{showNumber}" th:class="|replyImg replyImg-*{showNumber}|" src='/images/concertPlan/img3.jpg' alt=''/>
+                                            </div>
                                         </dd>
                                         <dd class='ms5-l-txt'>
                                             <p class='ms5-l-txt1' th:text="|*{showName} (*{replyCount})|"></p>
                                             <p class='ms5-l-txt2' th:text="|*{showDay} *{showTime}|"></p>
-                                            <p class='ms5-l-txt2' th:text="*{showLocation}"></p>
+                                            <p class='ms5-l-txt2' th:text="|[*{showRegion}] *{showLocation}|"></p>
                                         </dd>
                                     </dl>
                                 </dl>
@@ -118,10 +140,10 @@
                         <div th:object="${artist}" class="swiper-wrapper">
 
                             <div class='swiper-slide'>
-                                <a href='#' target='_self' title='버스킹버스커1'>
+                                <a th:href='|/artist/artistInfo?&artistNumber=*{artistNumber}|' target='_self'>
                                                         <span>
-                                                            <img src="https://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040004/21/05/0400042105_47574_02.407.gif"
-                                                                 alt='알라리깡숑'/>
+                                                            <img th:id="*{artistNumber}" th:class="|newArtist newArtist-*{artistNumber}|" src="https://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040004/21/05/0400042105_47574_02.407.gif"
+                                                                 />
                                                         </span>
                                     <div>
                                         <p class='ms5-r-txt111' th:text="*{artistName}"></p>
@@ -175,6 +197,8 @@
             if (confirm("아티스트 계정 등록 후 이용하실 수 있습니다. 계정을 등록하시겠습니까?")) {
                 location.href = "/myPage/myPage";
                 return;
+            } else {
+                return;
             }
         }
 
@@ -187,6 +211,23 @@
     if (($(location).attr('host')) == "http://localhost:10007/main/") {
 
     }
+
+    $(".replyImg").each(function () {
+        let showNumber = Number($(this).attr('id'));
+        $.getJSON("/file/concert/file", {showNumber: showNumber}, function(file){
+            let src = "/file/concert/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+            $("img.replyImg-" + showNumber).attr("src", src);
+        })
+    })
+
+    $(".newArtist").each(function () {
+        let artistNumber = Number($(this).attr('id'));
+        $.getJSON("/upload/file", {artistNumber: artistNumber}, function(file){
+            let src = "/upload/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+            $("img.newArtist-" + artistNumber).attr("src", src);
+        })
+    })
+
 
 </script>
 </html>
