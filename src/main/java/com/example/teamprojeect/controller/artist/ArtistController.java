@@ -109,26 +109,43 @@ public class ArtistController {
         String requestURL = request.getRequestURI();
         ArtistVO artistVO = artistService.getDetail(artistNumber);
 
-        Long userNumber = (Long)session.getAttribute("userNumber");
-
         if(artistVO.getArtistType() == 1) {
             artistVO.setArtistCategory("뮤지션");
         } else if (artistVO.getArtistType() == 2) {
             artistVO.setArtistCategory("퍼포먼스");
         }
 
-
-
-
-        log.info("userNumber=================" + userNumber);
         log.info("artistNumber=================" + artistNumber);
 
         model.addAttribute("artist", artistVO);
-        model.addAttribute("likeCheck", artistService.checkArtistLike(artistNumber, userNumber));
+
+//        session.getAttribute("userNumber");
+
+        try{
+
+            session.getAttribute("userNumber");
+
+        } catch (NullPointerException e) {
+
+            model.addAttribute("likeCount", artistService.artistLikeCount(artistNumber));
+            artistVO.setLikesCount(artistService.artistLikeCount(artistNumber));
+
+
+            session.setAttribute("userNumber",null);
+            session.getAttribute("userNumber");
+
+
+            return "artist/artistInfo";
+
+        }
+
+        Long userNumber = (Long)session.getAttribute("userNumber");
+        if (userNumber != null) {
+            model.addAttribute("likeCheck", artistService.checkArtistLike(artistNumber, userNumber));
+        }
         model.addAttribute("likeCount", artistService.artistLikeCount(artistNumber));
-
         artistVO.setLikesCount(artistService.artistLikeCount(artistNumber));
-
+        log.info("usernumber================" + userNumber);
         return "artist/artistInfo";
     }
 

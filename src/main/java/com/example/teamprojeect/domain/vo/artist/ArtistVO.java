@@ -1,5 +1,6 @@
 package com.example.teamprojeect.domain.vo.artist;
 
+import com.example.teamprojeect.domain.vo.show.ShowFileVO;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -12,10 +13,12 @@ public class ArtistVO {
     private String artistName;
     private String artistDescription;
     private Long artistType;
-    private Long artistDonation;
+    private String artistDonation;
     private String artistAccount;
     private String artistStatus;
     private int likesCount;
     private Long likeDate;
     private String artistCategory;
+
+    private ArtistFileVO file;
 }
