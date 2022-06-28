@@ -4,13 +4,22 @@ console.log(userNumber)
 
 //후원버튼 클릭시 모달창 열기
 $("#btn-modal").click(function () {
-    if (userNumber == undefined) {
+    if (!userNumber) {
+        alert("로그인후 이용해주세요");
+    } else {
         console.log("fdd")
         $(".modal").fadeIn();
-    } else {
-        alert("로그인후 이용해주세요");
     }
 });
+
+// $("#btn-modal").click(function () {
+//     if (userNumber === undefined) {
+//         console.log("fdd")
+//         $(".modal").fadeIn();
+//     } else {
+//         alert("로그인후 이용해주세요");
+//     }
+// });
 
 
 //닫기 누를시 모달창 닫기
@@ -104,7 +113,7 @@ $("#btn-like").click(function () {
     let likecount = document.getElementById('like_count').value
     let likeval = document.getElementById('like_check').value
 
-    if (userNumber == undefined) {
+    if (!userNumber) {
         alert("로그인 후 이용해주세요")
     } else {
 
