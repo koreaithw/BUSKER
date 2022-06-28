@@ -20,7 +20,7 @@ public interface ArtistMapper {
     public int insertAdmin(Long artistNumber);
 
     // 아티스트 정보 수정 신청 (status 2)
-    public int updateApply(ArtistVO artistVO);
+    public int approveArtistApply(ArtistVO artistVO);
 
     // 관리자 수정 승인 (status -> 3)
     public void updateAdmin(Long artistNumber);
