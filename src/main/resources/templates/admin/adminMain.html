@@ -63,7 +63,7 @@
                         <!--                            </li> -->
                     </ul>
                 </div>
-                <div class="artist-list" style="height: 430px;">
+                <div class="artist-list" style="height: 423px;">
                     <table>
                         <h4>최신 작품 신청</h4>
                         <tr>
@@ -82,7 +82,7 @@
                         </th:block>
                     </table>
                 </div>
-                <div class="artist-list">
+                <div class="artist-list" style="height: 423px;">
                     <table>
                         <h4>최신 아티스트 신청</h4>
                         <tr>
@@ -408,7 +408,7 @@
                 str += "<td>" + works.workRegisterDate + "</td>";
                 str += "<td>" + works.workName + "</td>";
                 str += "<td>" + works.artistName + "</td>";
-                str += `<td><a href="/work/workInfo/${works.workNumber}">상세 보기</a></td>`
+                str += `<td><a href="/work/workInfo?workNumber=${works.workNumber}">상세 보기</a></td>`
                 str += "<td><a href='" + works.workPurchaseUrl + "'>구매 링크</a></td>";
                 str += `<td><a class="approve" href="javascript:approve(${works.workNumber})">승인</a> | <a class="reject" href="javascript:reject(${works.workNumber})">반려</a></td>`
                 str += "</tr>";
