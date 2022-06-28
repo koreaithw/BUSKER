@@ -1,7 +1,6 @@
 // ajax 생성
 let showService = (function () {
     function goConcertPlan(type, page, callback, error) {
-        console.log("getList")
         let pageNum = page || 1;
         $.ajax({
             url: "/concert/concertPlanList/" + type + "/" + pageNum,
@@ -75,14 +74,8 @@ function concertPlanList(type, page){
 
 function concertPage(type, total) {
     let endPage = Math.ceil(pageNum / 10.0) * 10; // 올림
-    console.log("endPage");
-    console.log(endPage);
     let startPage = endPage - 9;
-    console.log("startPage");
-    console.log(startPage);
     let realEnd = Math.ceil(total / 15.0);  // 올림
-    console.log("realEnd");
-    console.log(realEnd);
     const $paging = $(".paging");
     if (endPage > realEnd) {
         endPage = realEnd;
@@ -92,10 +85,6 @@ function concertPage(type, total) {
     let next = endPage * 15 < total;
     let str = "";
 
-    console.log("prev");
-    console.log(prev);
-    console.log("next");
-    console.log(next);
     str += "<div class='big-width mypage-pageStyle' style='text-align: center'>"
     // str += "<a class='mypage-page-first'>" + "<<" + "</a>"
 

@@ -1,6 +1,7 @@
 package com.example.teamprojeect.mapper.artist;
 
 import com.example.teamprojeect.domain.vo.artist.ArtistDTO;
+import com.example.teamprojeect.domain.vo.artist.ArtistFileVO;
 import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
@@ -89,4 +90,6 @@ public interface ArtistMapper {
     public int artistLikeCount(Long artistNumber);
     // 마이페이지 : 세션용
     public ArtistVO getDetail2(Long userNumber);
+
+    public ArtistFileVO find(Long artistNumber);
 }

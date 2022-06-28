@@ -17,5 +17,5 @@ public interface ArtistFileMapper {
     public void update(ArtistFileVO artistFileVO);
 
     // 아티스트 사진 선택
-    public List<ArtistFileVO> find(Long artistNumber);
+    public ArtistFileVO find(Long artistNumber);
 }

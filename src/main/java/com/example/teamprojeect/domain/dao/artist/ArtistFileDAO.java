@@ -28,7 +28,7 @@ public class ArtistFileDAO {
     };
 
     // 아티스트 사진 선택
-    public List<ArtistFileVO> find(Long artistNumber) {
+    public ArtistFileVO find(Long artistNumber) {
         return artistFileMapper.find(artistNumber);
     };
 }

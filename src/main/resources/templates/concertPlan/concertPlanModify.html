@@ -21,6 +21,17 @@
             padding-right: 20px;
             float: right;
         }
+
+        .img_box li {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            list-style: none;
+            width: 430px;
+            height: 600px;
+            background-color: #fff;
+        }
     </style>
 
     <!-- 제이쿼리 불러오기 -->
@@ -140,7 +151,7 @@
         let str = "";
         str += "<li class='data' data-filename='" + file.fileName.substring(file.fileName.indexOf("_") + 1) + "' data-uuid='" + file.uuid + "' data-uploadpath='" + file.uploadPath + "' data-image='" + file.image + "' style='list-style: none;'>";
         str += '<input id="file_drop" class="file_drop" readonly placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공연 포스터를 드래그 앤 드롭으로 등록해주세요."  style="display: none;">'
-        str += "<img id='image-samplebox' src='/file/concert/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName + "' style=\"width: 100%; height: auto; overflow: hidden; object-fit:cover;\">";
+        str += "<img id='image-samplebox' class=\"file_drop\" src='/file/concert/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName + "' style=\"width: 100%; height: auto; overflow: hidden;\">";
         str += "</li><span data-file='" + file.uploadPath + "/s_" + file.uuid + "_" + file.fileName + "' style='display: none;'></span>";
         $showImage.html(str);
     }
