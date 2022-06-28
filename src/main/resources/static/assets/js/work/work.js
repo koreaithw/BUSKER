@@ -32,7 +32,7 @@ let workService = (function(){
 
     function getImg(num,callback, error) {
         $.ajax({
-            url: "/file/work/find",
+            url: "/file/work/find"+num,
             type: "get",
             dataType: "json",
             contentType: "application/json",
@@ -49,7 +49,25 @@ let workService = (function(){
         });
     }
 
-   return { getWorkKeywordList: getWorkKeywordList};
+    function getImg(num,callback, error) {
+        $.ajax({
+            url: "/file/work/find/"+num,
+            type: "get",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (file) {
+                if(callback){
+                    callback(file);
+                }
+            },
+            error: function (xhr, status, er) {
+                if(error)   {
+                    error(xhr, status, er);
+                }
+            }
+        });
+    }
+   return { getWorkKeywordList: getWorkKeywordList, getImg:getImg};
 })();
 
 let $workList = $(".works");

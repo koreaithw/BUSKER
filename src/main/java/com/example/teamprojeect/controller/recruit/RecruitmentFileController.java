@@ -124,7 +124,7 @@ public class RecruitmentFileController {
         return recruitService.getFiles(recruitmentNumber);
     }
 
-    @GetMapping("/file/{number}")
+    @GetMapping("/find/{number}")
     @ResponseBody
     public RecruitmentFileVO getFile(@PathVariable("number") Long recruitmentNumber) {
         log.info("file " + recruitmentNumber);
