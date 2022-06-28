@@ -70,6 +70,18 @@ public class UserController {
         }
     }
 
+    // 휴대폰번호조회
+    @PostMapping("/phoneNumberSearch/{userPhoneNumber}")
+    @ResponseBody
+    public boolean phoneNumberSearch(@PathVariable("userPhoneNumber") String userPhoneNumber) {
+        if (!((userService.findCount(userPhoneNumber)) == 0L)) { // 조회되는 개수가 1개이상이면
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 //    @PostMapping("/searchIdFind")
 //    public String searchIdFind(String userPhoneNumber) {
 //        userService.id
