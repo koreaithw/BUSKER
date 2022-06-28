@@ -27,8 +27,7 @@
             <div class="work_info">
                 <div class="info_left">
                     <div class="img_box">
-                        <img th:if="*{file == null}" src="/images/work/20473078.jpg" alt="">
-                        <img th:if="*{file != null}" th:src="*{'/file/recruitment/display?fileName='+file.uploadPath + '/' + file.uuid + '_'  + file.fileName}" alt="">
+                        <img id="img-view" src="" alt="">
                     </div>
 <!--                    <div class="like_box">-->
 <!--                        <a href="javascript:changeLike()" class="like">-->
@@ -81,7 +80,8 @@
     </footer>
 
 </body>
-<script>
+<script src="/assets/js/work/work.js"></script>
+<script th:inline="javascript">
     // 좋아요 버튼 누르면 좋아요 표시 하기
     let check = false;
     let changeLike = function(){
@@ -95,6 +95,21 @@
         $(".img2").css('display', 'inline-block');
 
         check = true;
+    }
+    let number = [[${Number}]];
+
+
+    $(document).ready(function (){
+        console.log(number);
+        getImage(number);
+    })
+
+    function getImage(num) {
+        recruitmentService.getImg(num, function (file){
+            console.log("--------------------------------------"+file);
+            let src = "/file/recruitment/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+            $("#img-view").attr("src", src);
+        });
     }
 </script>
 </html>
