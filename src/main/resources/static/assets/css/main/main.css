@@ -519,7 +519,7 @@ img {vertical-align: middle;}
 }
 
 .name-box {
-    width : 1016px
+    width : 1016px;
     /*display: flex;*/
     justify-content: center;
     margin: auto;
