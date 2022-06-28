@@ -16,12 +16,14 @@ import com.example.teamprojeect.domain.vo.show.ShowVO;
 import com.example.teamprojeect.domain.vo.user.LikeVO;
 import com.example.teamprojeect.mapper.artist.ArtistMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ArtistService {
@@ -39,8 +41,13 @@ public class ArtistService {
     public void registerApply (ArtistVO artistVO){
         artistDAO.registerApply(artistVO);
         ArtistFileVO artistFileVO = artistVO.getFile();
+        log.info("===========================================");
+        log.info((artistVO.getFile()).toString());
+        log.info(artistVO.getArtistNumber().toString());
         artistFileVO.setArtistNumber(artistVO.getArtistNumber());
         artistFileDAO.insert(artistFileVO);
+        log.info("===========================================");
+        log.info(artistFileVO.toString());
     }
 
     // 아티스트 정보 수정 신청
@@ -126,6 +133,7 @@ public class ArtistService {
 
     // 아티스트 등록, 수정 신청 아티스트 수
     public int getArtistApplyTotal(boolean isUpdate) {
+
         return artistDAO.getArtistApplyTotal(isUpdate);
     }
 
