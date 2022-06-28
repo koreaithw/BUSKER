@@ -77,7 +77,9 @@
         <div class="small-box">
             <div class="left" th:each="rank : ${rankingList}" th:if="${rank.rankingCount}<2">
                 <div>
+                    <a th:href="@{/artist/artistInfo(artistNumber = ${rank.artistNumber})}">
                     <img src="/images/main/big-poster.png" alt="#">
+                    </a>
                 </div>
                 <div>
                     <p id="big-poster-text1" th:text="${rank.artistName}"></p>
