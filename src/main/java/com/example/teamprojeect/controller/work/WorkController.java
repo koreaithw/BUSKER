@@ -43,12 +43,14 @@ public class WorkController {
     public WorkApplyPageDTO goWorkList(@PathVariable("tag") String tag,@PathVariable("page") int pageNum, Model model) {
         ListDTO listDTO = new ListDTO();
         List<String> tagList = new ArrayList<String>();
-        if(tag != null) {
+        if(!tag.equals("null")) {
             System.out.println("----------------"+tag);
             tagList.add(tag);
             List<String> list = tagList.stream().distinct().collect(Collectors.toList());
             System.out.println("----------------"+tagList);
             listDTO.setTag(list);
+        }else if(tag.equals("null")) {
+            listDTO.setTag(null);
         }
         model.addAttribute("tagList",workService.getTag());
         return new WorkApplyPageDTO(workService.getKeyword(new Criteria(pageNum,100),listDTO),workService.getTotalListApply());
