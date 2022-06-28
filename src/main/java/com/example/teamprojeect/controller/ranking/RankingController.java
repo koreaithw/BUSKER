@@ -11,10 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.model.IModel;
 
 import java.time.DayOfWeek;
@@ -43,14 +40,6 @@ public class RankingController {
         ListDTO listDTO = new ListDTO();
         listDTO.setDetailDate("2022");
         listDTO.setRankingSortingDate("year");
-        log.info("*************");
-        log.info("/rankinglist");
-        log.info("*************");
-        log.info(String.valueOf(listDTO));
-        log.info("*************");
-        log.info(String.valueOf(criteria));
-        log.info("*************");
-        log.info("*************");
         log.info(rankingService.rankingListAll(criteria,listDTO) +"hi");
         model.addAttribute("rankingListAll", rankingService.rankingListAll(criteria,listDTO));
 
@@ -80,6 +69,21 @@ public class RankingController {
     //댓글 랭킹 페이지
     @GetMapping("/rankingComment")
     public String GoRankingComment(){ return "/ranking/rankingComment";}
+
+
+
+//    @RequestMapping(value = "ranking/rankingAll", method = {RequestMethod.GET})
+//    public String test(@RequestParam("year") String year){
+//       System.out.println(year);
+//       return  "안녕6/27";
+//    }
+
+//    @GetMapping("ranking/rankingAll")
+//    public String year(@PathVariable("") Long replyNumber){
+//        log.info("read........ : " + replyNumber);
+//        return rankingService.year(replyNumber);
+//    }
+
 
 
 

@@ -560,7 +560,7 @@ X
                 str += '<a id="user-name" href="">' + reply.userName + '</a></span>';
                 str += '<span class="reply-date">' + reply.replyUpdateDate + '</span></div>';
                 str += '<div class="reply-status">';
-                str += '<span id="modify-' + reply.replyNumber12342134 + '" class="reply-modify modify ' + reply.replyNumber + '" style="cursor:pointer;">수정</span>';
+                str += '<span id="modify-' + reply.replyNumber + '" class="reply-modify modify ' + reply.replyNumber + '" style="cursor:pointer;">수정</span>';
                 str += '<span id="finish-' + reply.replyNumber + '" class="reply-finish finish ' + reply.replyNumber + '" style="display: none;cursor:pointer;">수정완료</span>';
                 str += '<span id="delete-' + reply.replyNumber + '" class="reply-delete delete ' + reply.replyNumber + '">삭제</span>'
                 str += '<span id="cancel-' + reply.replyNumber + '" class="reply-cancel cancel ' + reply.replyNumber + '" style="display: none;cursor:pointer;">취소</span></div></div>';
@@ -571,7 +571,7 @@ X
             replyDiv.html(str);
             showReplyPage(total);
         });
-    }
+    }f
 
     //댓글 삭제
     $(".concert-reply-div").on("click", ".reply-delete", function (e) {
