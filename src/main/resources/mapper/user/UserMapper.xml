@@ -139,8 +139,8 @@
             SELECT SEQ_USER.NEXTVAL FROM DUAL
         </selectKey>
         INSERT INTO TBL_USER
-        (USER_NUMBER, USER_ID)
-        VALUES (#{userNumber}, #{userId})
+        (USER_NUMBER, USER_ID, USER_NAME, USER_PW)
+        VALUES (#{userNumber}, #{userId}, #{userName}, #{userPw})
     </insert>
     <select id="kakaoLogin" resultType="_Long">
         SELECT USER_NUMBER

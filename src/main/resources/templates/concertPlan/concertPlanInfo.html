@@ -126,10 +126,10 @@
                     <p><span class="ps-date" th:text="*{showDay}"></span><a href="#" id="ps-location"><span
                             class="ps-location" th:text="|[*{showRegion}] *{showLocation}|"></span></a>
                     </p>
-                    <a style="cursor: pointer;" class="ps-social modify">
+                    <a style="cursor: pointer; display: none;" class="ps-social modify showInfo-modify">
                         <img src="/images/concertPlan/c.png" style="float: right; width:35px;">
                     </a>
-                    <a style="cursor: pointer;"  class="ps-social delete">
+                    <a style="cursor: pointer;  display: none;"  class="ps-social delete showInfo-delete">
                         <img src="/images/concertPlan/delete_icon.png" style="float: right; width:67px; height: 59px;">
                     </a>
                 </div>
@@ -310,7 +310,6 @@ X
 <footer th:include="~{/footer/footer :: foot}">
 
 </footer>
->>
 </body>
 <script src="/assets/js/concert/jquery.min.js"></script>
 <script src="/assets/js/concert/jquery.dropotron.min.js"></script>
@@ -323,6 +322,16 @@ X
 <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=82047bdd8e65a83db82f7ecba662d0c3&libraries=services"></script>
 <script th:inline="javascript">
+    // 세션 체크
+    let sessionUserNumber = [[${session.userNumber}]]
+    let sessionArtistNumber = [[${session.artistNumber}]]
+    let showArtistNumber = [[${concert.artistNumber}]]
+    let sessionUserCheck = false;
+    if(!(sessionUserNumber == null)) { // 세션에 유저 넘버가 있으면
+        sessionUserCheck = true; // true로 변경
+    }
+    let replyUserNumber = 0;
+
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
             center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -506,6 +515,14 @@ X
         }
     })();
 
+    // 세션비교하여 댓글 수정삭제 버튼 노출
+    function replyShowHide(sessionUserNumber, replyUserNumber) {
+        if((sessionUserNumber == replyUserNumber)) {
+            $(".reply-modify").show();
+            $(".reply-delete").show();
+        }
+    }
+
     // 댓글 연결
     // 기본 전역변수
     let pageNum = 1;
@@ -529,6 +546,15 @@ X
         (function(){
             $.getJSON("/file/concert/file", {showNumber: showNumber}, function(file){showUploadResult(file);})
         })();
+
+        console.log(sessionArtistNumber)
+        console.log(showArtistNumber)
+        // 공연 artistNumber와 접속한 artistNumber가 같으면
+        if(showArtistNumber == sessionArtistNumber) {
+            $(".showInfo-modify").show();
+            $(".showInfo-delete").show();
+        }
+
     })
 
     let $showImage = $(".rn-product-imgbox");
@@ -554,15 +580,16 @@ X
             $("#reply-count").text(total + ' Comments');
 
             $.each(list, function (i, reply) {
+                replyShowHide(sessionUserNumber, reply.userNumber);
                 str += "<div class='reply-content-wrap' id='"  + reply.replyNumber +  "'><div class='reply-content-flex'><div class='user-profile'>";
                 str += "<img class='user-image' src='https://i1.daumcdn.net/thumb/C96x96/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F5172542%2Fattach%2F5b16521bdfb848a69f47ddb5b5d064ac' alt='' width='48' height='48'></div>";
                 str += '<div class="reply-text-box"><div class="reply-content-box"><div class="reply-name"><span class="reply-user">';
                 str += '<a id="user-name" href="">' + reply.userName + '</a></span>';
                 str += '<span class="reply-date">' + reply.replyUpdateDate + '</span></div>';
                 str += '<div class="reply-status">';
-                str += '<span id="modify-' + reply.replyNumber + '" class="reply-modify modify ' + reply.replyNumber + '" style="cursor:pointer;">수정</span>';
+                str += '<span id="modify-' + reply.replyNumber + '" class="reply-modify modify ' + reply.replyNumber + '" style="cursor:pointer; display: none;">수정</span>';
                 str += '<span id="finish-' + reply.replyNumber + '" class="reply-finish finish ' + reply.replyNumber + '" style="display: none;cursor:pointer;">수정완료</span>';
-                str += '<span id="delete-' + reply.replyNumber + '" class="reply-delete delete ' + reply.replyNumber + '">삭제</span>'
+                str += '<span id="delete-' + reply.replyNumber + '" class="reply-delete delete ' + reply.replyNumber + '" style="display: none;">삭제</span>'
                 str += '<span id="cancel-' + reply.replyNumber + '" class="reply-cancel cancel ' + reply.replyNumber + '" style="display: none;cursor:pointer;">취소</span></div></div>';
                 str += '<div id="content-' + reply.replyNumber + '"  class="reply-content content ' + reply.replyNumber + '">' + reply.replyContent + '</div></div></div></div>';
             });
@@ -571,7 +598,7 @@ X
             replyDiv.html(str);
             showReplyPage(total);
         });
-    }f
+    }
 
     //댓글 삭제
     $(".concert-reply-div").on("click", ".reply-delete", function (e) {
@@ -707,14 +734,20 @@ X
             return;
         }
 
-        if(confirm("댓글을 등록하시겠습니까?")){
-            showReplyService.createReply({userNumber: 1, showNumber: showNumber, replyContent: $replyContent},
-                function (result) {
-                    $("textarea[name='replyShow']").val("");
-                    replyList(pageNum);
-                });
-            alert("댓글이 등록되었습니다.");
+        // 세션이 있으면
+        if(sessionUserCheck) {
+            if(confirm("댓글을 등록하시겠습니까?")){
+                showReplyService.createReply({userNumber: sessionUserNumber, showNumber: showNumber, replyContent: $replyContent},
+                    function (result) {
+                        $("textarea[name='replyShow']").val("");
+                        replyList(pageNum);
+                    });
+                alert("댓글이 등록되었습니다.");
+            }
+        } else {
+            alert("로그인 후 이용해주세요.")
         }
+
     })
 
 
