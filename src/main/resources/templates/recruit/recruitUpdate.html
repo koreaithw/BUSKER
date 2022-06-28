@@ -1,138 +1,139 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Document</title>
     <link
-      rel="stylesheet"
-      href="/assets/css/recruit/recruitRegister.css"
+            rel="stylesheet"
+            href="/assets/css/recruit/recruitRegister.css"
     />
-  </head>
+</head>
 
-  <header th:include="~{/header/header3 :: head}">
+<header th:include="~{/header/header3 :: head}">
 
-  </header>
-  <body>
-    <div class="content">
-      <p class="title-text">아티스트 모집 공고</p>
-    </div>
-    <div class="big-box" style="display: block">
-      <div class="detail-title">
+</header>
+<body>
+<div class="content">
+    <p class="title-text">아티스트 모집 공고</p>
+</div>
+<div class="big-box" style="display: block" th:object="${work}">
+    <div class="detail-title">
         <div class="form-label">모집공고명</div>
         <input
-          class="recruiting-register-title"
-          type="text"
-          placeholder="모집 주최자의 이름을 입력하세요."
+                class="recruiting-register-title"
+                type="text"
+                placeholder="모집 주최자의 이름을 입력하세요."
+                th:value="*{recruitmentName}"
         />
-      </div>
-      <div class="detail-view">
+    </div>
+    <div class="detail-view">
         <div class="view-layout">
-          <div class="view-left">
-            <!-- <img src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220523/20220523-42255.jpg" width="180" height="252"> -->
+            <div class="view-left">
+                <!-- <img src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220523/20220523-42255.jpg" width="180" height="252"> -->
 
-            <div class="recru-image-box">
+                <div class="recru-image-box">
               <span class="input-image-desc"
-                >모집공고 포스터 사진을<br />등록해주세요.</span
+              >모집공고 포스터 사진을<br/>등록해주세요.</span
               >
-              <img
-                id="recru-image"
-                class="recru-image"
-                src="/images/myPage/photo-plus-icon.png"
-                alt=""
-                width="150px"
-              />
+                    <img
+                            id="recru-image"
+                            class="recru-image"
+                            src="/images/myPage/photo-plus-icon.png"
+                            alt=""
+                            width="150px"
+                    />
+                </div>
+                <input
+                        type="file"
+                        id="recru-file-input"
+                        style="visibility: hidden; display: none"
+                />
             </div>
-            <input
-              type="file"
-              id="recru-file-input"
-              style="visibility: hidden; display: none"
-            />
-          </div>
 
-          <div class="view-right">
-            <table class="recru-table">
-              <tbody>
+            <div class="view-right">
+                <table class="recru-table">
+                    <tbody>
 
-                <tr>
-                  <td class="label top">장소</td>
-                  <td><input type="text"></td>
+                    <tr>
+                        <td class="label top">장소</td>
+                        <td><input type="text" th:value="*{recruitmentLocation}"></td>
 
-                </tr>
+                    </tr>
 
-                <tr>
-                    <td class="label">날짜</td>
-                    <td class="date"><input type="date"></td>
- 
-                  </tr>
-                  
-                <tr>
-                    <td class="label">시간</td>
- 
-                    <td class="time"><input type="time"></td>
-                  </tr>
-                  
-                <tr>
-                  <td class="label">주최정보</td>
-                  <td><input type="text"></td>
+                    <tr>
+                        <td class="label">날짜</td>
+                        <td class="date"><input type="date" th:value="*{recruitmentDay}"></td>
 
-                </tr>
-                <tr>
-                  <td class="label">모집대상</td>
-                  <td><input type="text"></td>
+                    </tr>
 
-                </tr>
-              </tbody>
-            </table>
-          </div>
+                    <tr>
+                        <td class="label">시간</td>
+
+                        <td class="time"><input type="time" th:value="*{recruitmentTime}"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">주최정보</td>
+                        <td><input type="text"></td>
+
+                    </tr>
+                    <tr>
+                        <td class="label">모집대상</td>
+                        <td><input type="text" th:value="*{recruitmentType}"></td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-      </div>
+    </div>
 
-      <!-- 디테일 페이지 내용 -->
-      <div class="view-content">
+    <!-- 디테일 페이지 내용 -->
+    <div class="view-content">
         <!--공연개요, 할인정보, 기획사정보-->
         <div class="noti-view-coment">
-          <p class="noti-view-comen-tit">공연 개요</p>
-          <div class="noti-view-comen-txt">
-            <textarea rows="" cols="100" name="" id=""></textarea>
-          </div>
+            <p class="noti-view-comen-tit">공연 개요</p>
+            <div class="noti-view-comen-txt">
+                <textarea rows="" cols="100" name="recruitmentSummary" th:value="*{recruitmentSummary}"></textarea>
+            </div>
         </div>
         <div class="noti-view-coment">
-          <p class="noti-view-comen-tit">공연 소개</p>
-          <div class="noti-view-comen-txt">
-            <textarea rows="" cols="100" name="" id=""></textarea>
-          </div>
+            <p class="noti-view-comen-tit">공연 소개</p>
+            <div class="noti-view-comen-txt">
+                <textarea rows="" cols="100" name="recruitmentCondition" th:value="*{recruitmentCondition}"></textarea>
+            </div>
         </div>
         <div class="noti-view-coment">
-          <p class="noti-view-comen-tit">모집 조건</p>
-          <div class="noti-view-comen-txt">
-            <textarea rows="" cols="100" name="" id=""></textarea>
-          </div>
+            <p class="noti-view-comen-tit">모집 조건</p>
+            <div class="noti-view-comen-txt">
+                <textarea rows="" cols="100" name="recruitmentIntroduce" th:value="*{recruitmentIntroduce}"></textarea>
+            </div>
         </div>
         <div class="noti-view-coment">
-          <p class="noti-view-comen-tit">기획사 정보</p>
-          <div class="noti-view-comen-txt">
-            <textarea rows="" cols="100" name="" id=""></textarea>
-          </div>
+            <p class="noti-view-comen-tit">기획사 정보</p>
+            <div class="noti-view-comen-txt">
+                <textarea rows="" cols="100" name="recruitmentHost" th:value="*{recruitmentHost}"></textarea>
+            </div>
         </div>
-      </div>
-
     </div>
-    <div class="form-button">
-        <button id="recru-form-submit" class="recru-form-submit">
-          수정
-        </button>
-      </div>
 
-    <footer th:include="~{/footer/footer :: foot}">
+</div>
+<div class="form-button">
+    <button type="submit" id="recru-form-submit" class="recru-form-submit">
+        수정
+    </button>
+</div>
 
-    </footer>
+<footer th:include="~{/footer/footer :: foot}">
 
-  </body>
-  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-  <script
-    type="text/javascript"
-    src="/assets/js/recruit/recruitRegister.js?ver=1"
-  ></script>
+</footer>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script
+        type="text/javascript"
+        src="/assets/js/recruit/recruitRegister.js?ver=1"
+></script>
 </html>

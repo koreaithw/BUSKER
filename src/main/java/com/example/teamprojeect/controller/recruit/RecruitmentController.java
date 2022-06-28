@@ -3,6 +3,7 @@ package com.example.teamprojeect.controller.recruit;
 
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.paging.PageDTO;
 import com.example.teamprojeect.domain.vo.paging.recruitment.RecruitListPageDTO;
 import com.example.teamprojeect.domain.vo.paging.recruitment.RecruitmentPageDTO;
 import com.example.teamprojeect.domain.vo.paging.work.WorkApplyPageDTO;
@@ -46,11 +47,12 @@ public class RecruitmentController {
         return new RecruitListPageDTO(recruitService.getList(new Criteria(pageNum, 10), new ListDTO()), total);
     }
     @ResponseBody
-    @GetMapping("/recruitmentList/{type}/{page}")
-    public RecruitListPageDTO getRecruitList(@PathVariable("page") int pageNum, @PathVariable("type") String recruitmentType) {
+    @GetMapping("/recruitmentList/{type}/{page}/{amount}")
+    public RecruitListPageDTO getRecruitList(@PathVariable("page") int pageNum,@PathVariable("amount") int amount, @PathVariable("type") String recruitmentType, Criteria criteria,Model model) {
         ListDTO listDTO = new ListDTO();
         listDTO.setArtistType(recruitmentType);
-        List<RecruitmentVO> recruitList = recruitService.getList(new Criteria(pageNum, 10), listDTO);
+        model.addAttribute("pageDTO", new PageDTO(criteria, recruitService.getTotal(listDTO)));
+        List<RecruitmentVO> recruitList = recruitService.getList(new Criteria(pageNum, amount), listDTO);
 
         SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
 

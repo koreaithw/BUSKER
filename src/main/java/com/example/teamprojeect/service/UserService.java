@@ -124,6 +124,13 @@ public class UserService {
         return userDAO.find(text);
     }
 
+    // ID, PW 찾기
+    public Long findCount(String text) {
+        return userDAO.findCount(text);
+    }
+
+    public Long findPwCount(UserVO userVO) { return userDAO.findPwCount(userVO); };
+
 
     public String getKaKaoAccessToken(String code){
         String access_Token="";

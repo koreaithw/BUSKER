@@ -456,3 +456,33 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     display: none;
     color: #f54;
 }
+
+
+.info_left {
+    float: left;
+    width: 250px;
+}
+
+.img_box {
+    width: 250px;
+    height: 350px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.img_box img {
+    width: 430px;
+    height: 602px;
+    border-radius: 10px;
+}
+
+.file_drop {
+    display: inline-block;
+    width: 250px;
+    height: 260px;
+    border: 1px solid #000;
+    overflow: auto;
+    border-color: #ff9326;
+    border-radius: 10px;
+}

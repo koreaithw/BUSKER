@@ -98,6 +98,8 @@
         ORDER BY LIKE_DATE DESC)
     </select>
 
+
+
     <!-- 작품 좋아요 개수 -->
     <select id="getTotalWork" resultType="_int">
         SELECT COUNT (*) FROM TBL_LIKE

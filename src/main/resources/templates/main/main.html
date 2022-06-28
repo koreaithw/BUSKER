@@ -42,16 +42,16 @@
 
     <article class="slides">
 
-        <img src="/images/main/main-big-pic1.png" alt="">
+        <img src="/images/main/main_1.jpg" alt="">
     </article><!--1-->
     <article class="slides">
-        <img src="/images/main/main-big-pic2.png" alt="">
+        <img src="/images/main/main_2.jpg" alt="">
     </article><!--2-->
     <article class="slides">
-        <img src="/images/main/main-big-pic3.png" alt="">
+        <img src="/images/main/main_3.jpg" alt="">
     </article><!--3-->
     <article class="slides">
-        <img src="/images/main/main-big-pic4.png" alt="">
+        <img src="/images/main/main_4.jpg" alt="">
     </article><!--4-->
 </section><!-- } container-->
 
@@ -71,21 +71,24 @@
 
     
     <div class="big-box-1">
-        <div>
-            <p class="box-name">WHAT'S HOT</p>
+        <div class="name-box">
+            <p class="box-name">인기 아티스트</p>
         </div>
         <div class="small-box">
-            <div class="left">
+            <div class="left" th:each="rank : ${rankingList}" th:if="${rank.rankingCount}<2">
                 <div>
+                    <a th:href="@{/artist/artistInfo(artistNumber = ${rank.artistNumber})}">
                     <img src="/images/main/big-poster.png" alt="#">
+                    </a>
                 </div>
                 <div>
-                    <p id="big-poster-text1">코리아IT아케데미</p>
-                    <p id="big-poster-text2">역삼역 3번출구</p>
+                    <p id="big-poster-text1" th:text="${rank.artistName}"></p>
+                    <p id="big-poster-text2"></p>
                 </div>
             </div>
             <div class="right-updown">
                 <div class="right">
+<!--                    <div class="right" th:each="rank : ${rankingList}" th:if="${rank.rankingCount}>1 and ${rank.rankingCount}<5">-->
                     <div id="right-3"><img src="/images/main/small-poster.png" alt="#"></div>
                     <div id="right-3"><img src="/images/main/small-poster.png" alt="#"></div>
                     <div id="right-3"><img src="/images/main/small-poster.png" alt="#"></div>
@@ -103,8 +106,8 @@
 
         <div class="big-box-2">
             <div>
-                <div>
-                    <p class="box-name">TICKET OPEN</p>
+                <div class="name-box">
+                    <p class="box-name">버스킹 예정</p>
                 </div>
                 <div>
                     <div class="small-5-box" style="text-align:center;">
@@ -161,224 +164,224 @@
             </div>
 
     <!-- 백그라운드 이미지 -->
-    <div class="background">
-        <div class="slideshow-container">
+<!--    <div class="background">-->
+<!--        <div class="slideshow-container">-->
 
-            <div class="mySlides fade">
-              <!-- <div class="numbertext">1 / 3</div> -->
-              <img src="/images/main/background1.png" style="width:100%">
-            </div>
-            
-            <div class="mySlides fade">
-              <!-- <div class="numbertext">2 / 3</div> -->
-              <img src="/images/main/background2.png" style="width:100%">
-            </div>
-            
-            <div class="mySlides fade">
-              <!-- <div class="numbertext">3 / 3</div> -->
-              <img src="/images/main/background1.png" style="width:100%">
-            </div>
+<!--            <div class="mySlides fade">-->
+<!--              &lt;!&ndash; <div class="numbertext">1 / 3</div> &ndash;&gt;-->
+<!--              <img src="/images/main/background1.png" style="width:100%">-->
+<!--            </div>-->
+<!--            -->
+<!--            <div class="mySlides fade">-->
+<!--              &lt;!&ndash; <div class="numbertext">2 / 3</div> &ndash;&gt;-->
+<!--              <img src="/images/main/background2.png" style="width:100%">-->
+<!--            </div>-->
+<!--            -->
+<!--            <div class="mySlides fade">-->
+<!--              &lt;!&ndash; <div class="numbertext">3 / 3</div> &ndash;&gt;-->
+<!--              <img src="/images/main/background1.png" style="width:100%">-->
+<!--            </div>-->
 
-            
-        </div>
-            <br>
-            
-            <div style="text-align:center">
-              <span class="dot"></span> 
-              <span class="dot"></span> 
-              <span class="dot"></span> 
-            </div>
-        
-    </div>
+<!--            -->
+<!--        </div>-->
+<!--            <br>-->
+<!--            -->
+<!--            <div style="text-align:center">-->
+<!--              <span class="dot"></span> -->
+<!--              <span class="dot"></span> -->
+<!--              <span class="dot"></span> -->
+<!--            </div>-->
+<!--        -->
+<!--    </div>-->
 
 
             <!-- 랭킹 -->
-            <div>
-                <div>
-                    <div>
-                        <p class="box-name">RANKING</p>
-                    </div>
-                    <div>
-                        <p class="tags">
-                            <a href="" class="all">#전체</a>
-                            <a href="" class="musician">#뮤지션</a>
-                            <a href="" class="performance">#퍼포먼스</a>
-                        </p>
-                    </div>
-                </div>
-                <!-- 전체 -->
-                <div class="flexing-all" style="display: none">
-                    <div class="poster-3-text">
-                        <div>
+<!--            <div>-->
+<!--                <div>-->
+<!--                    <div>-->
+<!--                        <p class="box-name">RANKING</p>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <p class="tags">-->
+<!--                            <a href="" class="all">#전체</a>-->
+<!--                            <a href="" class="musician">#뮤지션</a>-->
+<!--                            <a href="" class="performance">#퍼포먼스</a>-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; 전체 &ndash;&gt;-->
+<!--                <div class="flexing-all" style="display: none">-->
+<!--                    <div class="poster-3-text">-->
+<!--                        <div>-->
 
-                            <img src="/images/main/3-poster-dance1.png" alt="#">
+<!--                            <img src="/images/main/3-poster-dance1.png" alt="#">-->
 
-                        </div>
-                        <div class="small-3-box-textbox">
-                            <p id="small-3-box-uptext">퍼포먼스 [Hook]</p>
-                            <p id="small-3-box-downtext">2022.08.13 수원 로데오 거리</p>
-                        </div>
-                        <div class="rank-nums">
-                            <p class="rank-num1">1위</p>
+<!--                        </div>-->
+<!--                        <div class="small-3-box-textbox">-->
+<!--                            <p id="small-3-box-uptext">퍼포먼스 [Hook]</p>-->
+<!--                            <p id="small-3-box-downtext">2022.08.13 수원 로데오 거리</p>-->
+<!--                        </div>-->
+<!--                        <div class="rank-nums">-->
+<!--                            <p class="rank-num1">1위</p>-->
 
-                        </div>
-                    </div>
-                    <div class="poster-3-text">
-                        <div>
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="poster-3-text">-->
+<!--                        <div>-->
 
-                            <img src="/images/main/3-poster-sing1.png" alt="#">
+<!--                            <img src="/images/main/3-poster-sing1.png" alt="#">-->
 
-                        </div>
-                        <div class="small-3-box-textbox">
-                            <p id="small-3-box-uptext">뮤지션 [3RD LINE-UP]</p>
-                            <p id="small-3-box-downtext">2022.06.13 서울 한강 공원</p>
-                        </div>
-                        <div class="rank-nums">
-                            <p class="rank-num1">2위</p>
+<!--                        </div>-->
+<!--                        <div class="small-3-box-textbox">-->
+<!--                            <p id="small-3-box-uptext">뮤지션 [3RD LINE-UP]</p>-->
+<!--                            <p id="small-3-box-downtext">2022.06.13 서울 한강 공원</p>-->
+<!--                        </div>-->
+<!--                        <div class="rank-nums">-->
+<!--                            <p class="rank-num1">2위</p>-->
 
-                        </div>
-                    </div>
-                    <div class="poster-3-text">
-                        <div>
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="poster-3-text">-->
+<!--                        <div>-->
 
-                            <img src="/images/main/3-poster-magic1.png" alt="#">
-                        </div>
-                        <div class="small-3-box-textbox">
-                            <p id="small-3-box-uptext">퍼포먼스 [최현우]</p>
-                            <p id="small-3-box-downtext">2022.11.13 홍대 놀이터</p>
-                        </div>
-                        <div class="rank-nums">
-                            <p class="rank-num1">3위</p>
+<!--                            <img src="/images/main/3-poster-magic1.png" alt="#">-->
+<!--                        </div>-->
+<!--                        <div class="small-3-box-textbox">-->
+<!--                            <p id="small-3-box-uptext">퍼포먼스 [최현우]</p>-->
+<!--                            <p id="small-3-box-downtext">2022.11.13 홍대 놀이터</p>-->
+<!--                        </div>-->
+<!--                        <div class="rank-nums">-->
+<!--                            <p class="rank-num1">3위</p>-->
 
-                        </div>
-                    </div>
+<!--                        </div>-->
+<!--                    </div>-->
 
-                </div>
-                <!-- 뮤지션 -->
-                <div class="flexing-musician" style="display: none">
-                    <div class="poster-3-text">
-                        <div>
+<!--                </div>-->
+<!--                &lt;!&ndash; 뮤지션 &ndash;&gt;-->
+<!--                <div class="flexing-musician" style="display: none">-->
+<!--                    <div class="poster-3-text">-->
+<!--                        <div>-->
 
-                            <img src="/images/main/3-poster-sing1.png" alt="#">
+<!--                            <img src="/images/main/3-poster-sing1.png" alt="#">-->
 
-                        </div>
-                        <div class="small-3-box-textbox">
-                            <p id="small-3-box-uptext">뮤지션 [3RD LINE-UP]</p>
-                            <p id="small-3-box-downtext">2022.02.19 서울 한강 공원</p>
-                        </div>
-                        <div class="rank-nums">
-                            <p class="rank-num1">1위</p>
-                            
-                        </div>
-                    </div>
-                    <div class="poster-3-text">
-                        <div>
+<!--                        </div>-->
+<!--                        <div class="small-3-box-textbox">-->
+<!--                            <p id="small-3-box-uptext">뮤지션 [3RD LINE-UP]</p>-->
+<!--                            <p id="small-3-box-downtext">2022.02.19 서울 한강 공원</p>-->
+<!--                        </div>-->
+<!--                        <div class="rank-nums">-->
+<!--                            <p class="rank-num1">1위</p>-->
+<!--                            -->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="poster-3-text">-->
+<!--                        <div>-->
 
-                            <img src="/images/main/3-poster-sing3.png" alt="#">
+<!--                            <img src="/images/main/3-poster-sing3.png" alt="#">-->
 
-                        </div>
-                        <div class="small-3-box-textbox">
-                            <p id="small-3-box-uptext">뮤지션 [피크닉 콘서트]</p>
-                            <p id="small-3-box-downtext">2022.09.24 서울 남산 타워</p>
-                        </div>
-                        <div class="rank-nums">
-                            <p class="rank-num1">2위</p>
-                            
-                        </div>
-                    </div>
-                    <div class="poster-3-text">
-                        <div>
+<!--                        </div>-->
+<!--                        <div class="small-3-box-textbox">-->
+<!--                            <p id="small-3-box-uptext">뮤지션 [피크닉 콘서트]</p>-->
+<!--                            <p id="small-3-box-downtext">2022.09.24 서울 남산 타워</p>-->
+<!--                        </div>-->
+<!--                        <div class="rank-nums">-->
+<!--                            <p class="rank-num1">2위</p>-->
+<!--                            -->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="poster-3-text">-->
+<!--                        <div>-->
 
-                            <img src="/images/main/3-poster-sing1.png" alt="#">
-                        </div>
-                        <div class="small-3-box-textbox">
-                            <p id="small-3-box-uptext">뮤지션 [3RD LINE-UP]</p>
-                            <p id="small-3-box-downtext">2022.02.19 서울 한강 공원</p>
-                        </div>
-                        <div class="rank-nums">
-                            <p class="rank-num1">3위</p>
-                            
-                        </div>
-                    </div>
+<!--                            <img src="/images/main/3-poster-sing1.png" alt="#">-->
+<!--                        </div>-->
+<!--                        <div class="small-3-box-textbox">-->
+<!--                            <p id="small-3-box-uptext">뮤지션 [3RD LINE-UP]</p>-->
+<!--                            <p id="small-3-box-downtext">2022.02.19 서울 한강 공원</p>-->
+<!--                        </div>-->
+<!--                        <div class="rank-nums">-->
+<!--                            <p class="rank-num1">3위</p>-->
+<!--                            -->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                </div>
-                <!-- 퍼포먼스 -->
-                <div class="flexing-performance" style= "display:none">
-                    <div class="poster-3-text">
-                        <div>
+<!--                </div>-->
+<!--                &lt;!&ndash; 퍼포먼스 &ndash;&gt;-->
+<!--                <div class="flexing-performance" style= "display:none">-->
+<!--                    <div class="poster-3-text">-->
+<!--                        <div>-->
 
-                            <img src="/images/main/3-poster-dance1.png" alt="#">
-                        </div>
-                        <div class="small-3-box-textbox">
-                            <p id="small-3-box-uptext">댄스팀 [Hook]</p>
-                            <p id="small-3-box-downtext">2022.08.13 홍대 놀이터</p>
-                        </div>
-                        <div class="rank-nums">
-                            <p class="rank-num1">1위</p>
-                            
-                        </div>
-                    </div>
-                    <div class="poster-3-text">
-                        <div>
-                            <img src="/images/main/3-poster-magic1.png" alt="#">
-                        </div>
-                        <div class="small-3-box-textbox">
-                            <p id="small-3-box-uptext">퍼포먼스 [최현우]</p>
-                            <p id="small-3-box-downtext">2022.07.21 인계동 공원</p>
-                        </div>
-                        <div class="rank-nums">
-                            <p class="rank-num1">2위</p>
-                            
-                        </div>
-                    </div>
-                    <div class="poster-3-text">
-                        <div>
-                            <img src="/images/main/3-poster-magic2.png" alt="#">
-                        </div>
-                        <div class="small-3-box-textbox">
-                            <p id="small-3-box-uptext">퍼포먼스 [최현우]</p>
-                            <p id="small-3-box-downtext">2022.12.03 반포 한강 공원</p>
-                        </div>
-                        <div class="rank-nums">
-                            <p class="rank-num1">3위</p>
-                            
-                        </div>
-                    </div>
+<!--                            <img src="/images/main/3-poster-dance1.png" alt="#">-->
+<!--                        </div>-->
+<!--                        <div class="small-3-box-textbox">-->
+<!--                            <p id="small-3-box-uptext">댄스팀 [Hook]</p>-->
+<!--                            <p id="small-3-box-downtext">2022.08.13 홍대 놀이터</p>-->
+<!--                        </div>-->
+<!--                        <div class="rank-nums">-->
+<!--                            <p class="rank-num1">1위</p>-->
+<!--                            -->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="poster-3-text">-->
+<!--                        <div>-->
+<!--                            <img src="/images/main/3-poster-magic1.png" alt="#">-->
+<!--                        </div>-->
+<!--                        <div class="small-3-box-textbox">-->
+<!--                            <p id="small-3-box-uptext">퍼포먼스 [최현우]</p>-->
+<!--                            <p id="small-3-box-downtext">2022.07.21 인계동 공원</p>-->
+<!--                        </div>-->
+<!--                        <div class="rank-nums">-->
+<!--                            <p class="rank-num1">2위</p>-->
+<!--                            -->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="poster-3-text">-->
+<!--                        <div>-->
+<!--                            <img src="/images/main/3-poster-magic2.png" alt="#">-->
+<!--                        </div>-->
+<!--                        <div class="small-3-box-textbox">-->
+<!--                            <p id="small-3-box-uptext">퍼포먼스 [최현우]</p>-->
+<!--                            <p id="small-3-box-downtext">2022.12.03 반포 한강 공원</p>-->
+<!--                        </div>-->
+<!--                        <div class="rank-nums">-->
+<!--                            <p class="rank-num1">3위</p>-->
+<!--                            -->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                </div>
-
-
+<!--                </div>-->
 
 
-                <div class="tags">
-                    <a href="/ranking/rankingAll" class="more-link-box">랭킹 더보기+</a>
-                </div>
-            </div>
-        </div>
+
+
+<!--                <div class="tags">-->
+<!--                    <a href="/ranking/rankingAll" class="more-link-box">랭킹 더보기+</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
     
 
 
 
 
 
-        <div class="youtube-box">
-            <div class="youtube-text-video-box">
-                <div class="youtube-text-box">
-                    <p class="youtube-text-top">
-                        <span>
-                            <img src="http://tkfile.yes24.com/imgNew/main/tit8.png" alt="">
-                            <!-- "::after" -->
-                        </span>
-                    </p>
-                    <p class="youtube-text-ㅡ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ㅡ</p>
-                    <p class="youtube-text-mid">스우파<br>CocaNButter</p>
-                    <p class="youtube-text-bottom">리헤이, 제트썬, 가가, 비키, 질린, 비비</p>
-                </div>
-                <div class="youtube-video-box">             
-                        <iframe src="https://www.youtube.com/embed/zc-QzNvowvw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
+<!--        <div class="youtube-box">-->
+<!--            <div class="youtube-text-video-box">-->
+<!--                <div class="youtube-text-box">-->
+<!--                    <p class="youtube-text-top">-->
+<!--                        <span>-->
+<!--                            <img src="http://tkfile.yes24.com/imgNew/main/tit8.png" alt="">-->
+<!--                            &lt;!&ndash; "::after" &ndash;&gt;-->
+<!--                        </span>-->
+<!--                    </p>-->
+<!--                    <p class="youtube-text-ㅡ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ㅡ</p>-->
+<!--                    <p class="youtube-text-mid">스우파<br>CocaNButter</p>-->
+<!--                    <p class="youtube-text-bottom">리헤이, 제트썬, 가가, 비키, 질린, 비비</p>-->
+<!--                </div>-->
+<!--                <div class="youtube-video-box">             -->
+<!--                        <iframe src="https://www.youtube.com/embed/zc-QzNvowvw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
 
 
@@ -387,9 +390,9 @@
 
 
     <div class="big-box-3">
-        <p class="big-box-title">
-            <img src="/images/main/poster-title.png" class="poster-title" alt="#">
-        </p>
+        <div class="name-box">
+        <p class="box-name">작품 목록</p>
+        </div>
         <div class="poster-list-6">
             <div class="poster-list">
                 <a href="">
@@ -448,128 +451,128 @@
         </div>
     </div>
 
-        <div class="big-box-3">
-            <p class="big-box-title">
-                <img src="/images/main/poster-title.png" class="poster-title" alt="#">
-            </p>
-            <div class="poster-list-6.png">
-                <div class="poster-list">
-                    <a href="">
-                        <div class="poster-list-text-box">
-                            <div class="poster-list-1">
-                                <img src="/images/main/big-box-5-poster.png" alt="">
-                            </div>
-                            <div>
-                                <p class="poster-list-text">댄스 <코카인버터></p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="poster-list-text-box">
-                            <div class="poster-list-1">
-                                <img src="/images/main/big-box-5-poster.png" alt="">
-                            </div>
-                            <div>
-                                <p class="poster-list-text">댄스 <코카인버터></p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="poster-list-text-box">
-                            <div class="poster-list-1">
-                                <img src="/images/main/big-box-5-poster.png" alt="">
-                            </div>
-                            <div>
-                                <p class="poster-list-text">댄스 <코카인버터></p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="poster-list-text-box">
-                            <div class="poster-list-1">
-                                <img src="/images/main/big-box-5-poster.png" alt="">
-                            </div>
-                            <div>
-                                <p class="poster-list-text">댄스 <코카인버터></p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="poster-list-text-box">
-                            <div class="poster-list-1">
-                                <img src="/images/main/big-box-5-poster.png" alt="">
-                            </div>
-                            <div>
-                                <p class="poster-list-text">댄스 <코카인버터></p>
-                            </div>
-                        </div>
-                    </a>
-                    
-    
-                </div>
-            </div>
-        </div>
-            <div class="big-box-3">
-                <p class="big-box-title">
-                    <img src="/images/main/poster-title.png" class="poster-title" alt="#">
-                </p>
-                <div class="poster-list-6">
-                    <div class="poster-list">
-                        <a href="">
-                            <div class="poster-list-text-box">
-                                <div class="poster-list-1">
-                                    <img src="/images/main/big-box-5-poster.png" alt="">
-                                </div>
-                                <div>
-                                    <p class="poster-list-text">댄스 <코카인버터></p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="poster-list-text-box">
-                                <div class="poster-list-1">
-                                    <img src="/images/main/big-box-5-poster.png" alt="">
-                                </div>
-                                <div>
-                                    <p class="poster-list-text">댄스 <코카인버터></p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="poster-list-text-box">
-                                <div class="poster-list-1">
-                                    <img src="/images/main/big-box-5-poster.png" alt="">
-                                </div>
-                                <div>
-                                    <p class="poster-list-text">댄스 <코카인버터></p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="poster-list-text-box">
-                                <div class="poster-list-1">
-                                    <img src="/images/main/big-box-5-poster.png" alt="">
-                                </div>
-                                <div>
-                                    <p class="poster-list-text">댄스 <코카인버터></p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="poster-list-text-box">
-                                <div class="poster-list-1">
-                                    <img src="/images/main/big-box-5-poster.png" alt="">
-                                </div>
-                                <div>
-                                    <p class="poster-list-text">댄스 <코카인버터></p>
-                                </div>
-                            </div>
-                        </a>
-                        
-        
-                    </div>
-                </div>
-            </div>
+<!--        <div class="big-box-3">-->
+<!--            <p class="big-box-title">-->
+<!--                <img src="/images/main/poster-title.png" class="poster-title" alt="#">-->
+<!--            </p>-->
+<!--            <div class="poster-list-6.png">-->
+<!--                <div class="poster-list">-->
+<!--                    <a href="">-->
+<!--                        <div class="poster-list-text-box">-->
+<!--                            <div class="poster-list-1">-->
+<!--                                <img src="/images/main/big-box-5-poster.png" alt="">-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <p class="poster-list-text">댄스 <코카인버터></p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="">-->
+<!--                        <div class="poster-list-text-box">-->
+<!--                            <div class="poster-list-1">-->
+<!--                                <img src="/images/main/big-box-5-poster.png" alt="">-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <p class="poster-list-text">댄스 <코카인버터></p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="">-->
+<!--                        <div class="poster-list-text-box">-->
+<!--                            <div class="poster-list-1">-->
+<!--                                <img src="/images/main/big-box-5-poster.png" alt="">-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <p class="poster-list-text">댄스 <코카인버터></p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="">-->
+<!--                        <div class="poster-list-text-box">-->
+<!--                            <div class="poster-list-1">-->
+<!--                                <img src="/images/main/big-box-5-poster.png" alt="">-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <p class="poster-list-text">댄스 <코카인버터></p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="">-->
+<!--                        <div class="poster-list-text-box">-->
+<!--                            <div class="poster-list-1">-->
+<!--                                <img src="/images/main/big-box-5-poster.png" alt="">-->
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <p class="poster-list-text">댄스 <코카인버터></p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    -->
+<!--    -->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--            <div class="big-box-3">-->
+<!--                <p class="big-box-title">-->
+<!--                    <img src="/images/main/poster-title.png" class="poster-title" alt="#">-->
+<!--                </p>-->
+<!--                <div class="poster-list-6">-->
+<!--                    <div class="poster-list">-->
+<!--                        <a href="">-->
+<!--                            <div class="poster-list-text-box">-->
+<!--                                <div class="poster-list-1">-->
+<!--                                    <img src="/images/main/big-box-5-poster.png" alt="">-->
+<!--                                </div>-->
+<!--                                <div>-->
+<!--                                    <p class="poster-list-text">댄스 <코카인버터></p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </a>-->
+<!--                        <a href="">-->
+<!--                            <div class="poster-list-text-box">-->
+<!--                                <div class="poster-list-1">-->
+<!--                                    <img src="/images/main/big-box-5-poster.png" alt="">-->
+<!--                                </div>-->
+<!--                                <div>-->
+<!--                                    <p class="poster-list-text">댄스 <코카인버터></p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </a>-->
+<!--                        <a href="">-->
+<!--                            <div class="poster-list-text-box">-->
+<!--                                <div class="poster-list-1">-->
+<!--                                    <img src="/images/main/big-box-5-poster.png" alt="">-->
+<!--                                </div>-->
+<!--                                <div>-->
+<!--                                    <p class="poster-list-text">댄스 <코카인버터></p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </a>-->
+<!--                        <a href="">-->
+<!--                            <div class="poster-list-text-box">-->
+<!--                                <div class="poster-list-1">-->
+<!--                                    <img src="/images/main/big-box-5-poster.png" alt="">-->
+<!--                                </div>-->
+<!--                                <div>-->
+<!--                                    <p class="poster-list-text">댄스 <코카인버터></p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </a>-->
+<!--                        <a href="">-->
+<!--                            <div class="poster-list-text-box">-->
+<!--                                <div class="poster-list-1">-->
+<!--                                    <img src="/images/main/big-box-5-poster.png" alt="">-->
+<!--                                </div>-->
+<!--                                <div>-->
+<!--                                    <p class="poster-list-text">댄스 <코카인버터></p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </a>-->
+<!--                        -->
+<!--        -->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         
             
                 

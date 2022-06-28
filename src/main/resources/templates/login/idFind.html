@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,7 +12,7 @@
   </head>
   <body>
     <div class="loginWrap">
-        <form name="loginForm" id="idFineForm" action="">
+        <form name="loginForm" id="idFineForm" method="post" action="/user/idFindResult">
             <div class="loginBox idFindBox">
             <h1>아이디 찾기</h1>
 
@@ -84,6 +84,7 @@
               <input
                 class="login-input checkNumber-input"
                 name="checkNumber"
+                id="checkNumber"
                 type="text"
                 placeholder="인증번호"
               />
@@ -110,5 +111,12 @@
     </div>
   </body>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script type="text/javascript" src="/assets/js/login/idFind.js?ver=1"></script>
+  <script type="text/javascript" src="/assets/js/login/idFind.js"></script>
+<script th:inline="javascript">
+    let alertMsg = [[${alert}]];
+    console.log(alertMsg);
+    if(!(alertMsg==null)) {
+        alert(alertMsg);
+    }
+</script>
 </html>

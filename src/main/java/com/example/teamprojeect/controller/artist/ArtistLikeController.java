@@ -2,6 +2,7 @@ package com.example.teamprojeect.controller.artist;
 
 
 import com.example.teamprojeect.domain.vo.artist.ArtistReplyVO;
+import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.donation.DonationVO;
 import com.example.teamprojeect.domain.vo.user.LikeVO;
 import com.example.teamprojeect.service.ArtistService;
@@ -40,6 +41,12 @@ public class ArtistLikeController {
     @PostMapping(value = "/likeDelete", consumes = "application/json", produces = "text/plain; charset=utf-8")
     public void likeRemove(@RequestBody LikeVO likeVO) throws UnsupportedEncodingException {
         artistService.removeUserLike(likeVO);
+
+    }
+
+    @PostMapping(value = "/likeCount", consumes = "application/json", produces = "text/plain; charset=utf-8")
+    public int artistLikeCount(@RequestBody Long artistNumber) throws UnsupportedEncodingException {
+        return artistService.artistLikeCount(artistNumber);
 
     }
 
