@@ -18,8 +18,9 @@
 
         <div class="black-box" id="black-box" style="position: relative;">
            <div class="black-box-right">
-               <a href="/user/login" id="consiceLogin">로그인</a>
-               <a href="/user/logout" id="consiceLogout" style="display: none;">로그아웃</a>
+               <a href="/user/login" id="consiceLogin" th:if="${sessionCheck} == '0'">로그인</a>
+               <a href="/user/logout" id="consiceLogout" th:if="${sessionCheck} == 'u'">로그아웃</a>
+               <a href="/logout" id="consicekakaoLogout"  th:if="${sessionCheck} == 'k'">로그아웃</a>
                <a href="/myPage/myPage" target="_blank">마이페이지</a>
                <a href="/user/userJoin" target="_blank">회원가입</a>
            </div>
@@ -28,13 +29,6 @@
         
         <header class="white-box" id="white-box" style="height: 100px;">
 
-
-                    
-       
-       
-       
-       
-       
             <div class="white-box-left">
 <!--               <a href="#" class="pf-ham">-->
 <!--                   <span class="pf-ham1"></span>-->
