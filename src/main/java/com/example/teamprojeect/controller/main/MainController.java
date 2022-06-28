@@ -4,6 +4,9 @@ import com.example.teamprojeect.domain.vo.artist.ArtistDTO;
 import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.paging.artist.ArtistPageDTO;
+import com.example.teamprojeect.domain.vo.paging.show.ShowPageDTO;
+import com.example.teamprojeect.domain.vo.paging.work.WorkApplyPageDTO;
 import com.example.teamprojeect.domain.vo.show.ShowVO;
 import com.example.teamprojeect.domain.vo.work.WorkVO;
 import com.example.teamprojeect.service.ArtistService;
@@ -16,11 +19,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -58,6 +68,7 @@ public class MainController {
 
         log.info("showVO=========" +showVO);
 
+
         // 세션
         if(((session.getAttribute("userNumber"))==null) && (session.getAttribute("token")==null)) {
             // 일반 회원도 아니고, 토큰도 없으면, 즉
@@ -75,5 +86,47 @@ public class MainController {
         }
 
         return "/main/main";
+    }
+
+    @GetMapping("/concertPlanList/{type}/{page}")
+    @ResponseBody
+    public ShowPageDTO goConcertPlanType(@PathVariable("type") String showType, @PathVariable("page") int pageNum){
+        ListDTO listDTO = new ListDTO();
+        listDTO.setArtistType(showType);
+        List<ShowVO> showList = showService.getList(new Criteria(1, 5), listDTO);
+        log.info("showVO=========" +showList);
+
+        return new ShowPageDTO(showList, showService.getTotal(listDTO));
+    }
+
+    @GetMapping("/artistList/{artistSortingType}/{page}")
+    @ResponseBody
+    public ArtistPageDTO getArtistListType(@PathVariable("artistSortingType") String sortingType, @PathVariable("page") int pageNum){
+        ListDTO listDTO = new ListDTO();
+        listDTO.setArtistSortingType(sortingType);
+        log.info("pageNum=================" +pageNum);
+        log.info("p123=================" + sortingType);
+        List<ArtistVO> artistList = artistService.getList(new Criteria(1, 3), listDTO);
+
+
+        return new ArtistPageDTO(artistList, artistService.getTotal(listDTO));
+    }
+
+    @ResponseBody
+    @GetMapping("/workList/{tag}/{page}")
+    public WorkApplyPageDTO goWorkList(@PathVariable("tag") String tagN, @PathVariable("page") int pageNum, Model model) {
+        ListDTO listDTO = new ListDTO();
+        List<String> tagList = new ArrayList<String>();
+        if(tagN != null) {
+            System.out.println("----------------"+tagN);
+            tagList.add(tagN);
+            List<String> list = tagList.stream().distinct().collect(Collectors.toList());
+            System.out.println("----------------"+tagList);
+            listDTO.setTag(list);
+        }
+        model.addAttribute("tagList",workService.getTag());
+
+        log.info("taglist======================================" +tagList);
+        return new WorkApplyPageDTO(workService.getKeyword(new Criteria(1,5),listDTO),workService.getTotalListApply());
     }
 }
