@@ -1360,11 +1360,11 @@
                 </div>
               </div>
 
-              <div class="artist-join-title">
+              <div class="artist-update-title">
                 <div>아티스트명</div>
                 <p class="input-name-p">
                   <input
-                          id="artist-join-name"
+                          id="artist-update-name"
                           class="input_text_name"
                           placeholder="아티스트 이름을 입력하세요"
                   />
@@ -1375,9 +1375,9 @@
                 <div class="show_info">
                   <div class="info_left">
                     <div class="img_box">
-                      <input id="file_drop" class="file_drop" readonly
+                      <input id="file_drop2" class="file_drop" readonly
                              placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공연 포스터를 드래그 앤 드롭으로 등록해주세요." style="border: 1px solid #000 !important; border-color: #ff9326 !important; border-radius: 10px !important;">
-                      <img id='image-samplebox' class="file_drop" src='' style="width: 100%; height: auto; overflow: hidden; display: none;">
+                      <img id='image-samplebox2' class="file_drop" src='' style="width: 100%; height: auto; overflow: hidden; display: none;">
                     </div>
 
                   </div>
@@ -1802,6 +1802,8 @@
   ></script>
 
 <script>
+
+  let sessionArtistNumber= [[${session.artistNumber}]]
 
   // 회원탈퇴 후 메인페이지로 돌아가는 기능
   $("input#delete").on("click", function(){
@@ -2357,7 +2359,7 @@
       formData.append("uploadFiles", files[0]);
 
       $.ajax({
-        url: "/file/concert/upload",
+        url: "/file/artist/upload",
         type: "post",
         data: formData,
         contentType: false,
@@ -2370,7 +2372,7 @@
           console.log(file[0].uuid);
           console.log(file[0].uploadPath);
 
-          $("#fileName").val(file[0].fileName)
+          $("#fileName").val(file[0])
           $("#uuid").val(file[0].uuid)
           $("#uploadPath").val(file[0].uploadPath)
           console.log($("#fileName").val());

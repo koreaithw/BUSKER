@@ -242,7 +242,7 @@ img.profile-image {
 #btn-modal {
   width: 40px;
   height: 40px;
-  background-image: url("/static/images/myPage/camera-icon.png");
+  background-image: url("/images/myPage/camera-icon.png");
   background-size: 70%;
   background-position: center;
   background-repeat: no-repeat;
