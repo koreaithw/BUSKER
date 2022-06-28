@@ -1,7 +1,9 @@
 package com.example.teamprojeect.controller.user;
 
 
+import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.user.UserVO;
+import com.example.teamprojeect.service.ArtistService;
 import com.example.teamprojeect.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +29,7 @@ import java.util.Date;
 public class UserController {
     // 필드 생성
     private final UserService userService;
+    private final ArtistService artistService;
 
     // 회원가입 페이지 이동
     @GetMapping("/userJoin")
@@ -133,6 +136,18 @@ public class UserController {
 //            session.setAttribute("userId", userId); // 세션에 유저 넘버가 담김
             Long userNumberSession = Long.valueOf(String.valueOf((session.getAttribute("userNumber"))));
             session.setAttribute("sessionCheck", "u");
+
+            // 아티스트 넘버가 있으면
+            if(!(artistService.getDetail2(userNumber)==null)) {
+                ArtistVO artistVO = artistService.getDetail2(userNumber);
+                Long artistNumber = artistVO.getArtistNumber();
+                session.setAttribute("artistNumber", artistNumber);
+                log.info("혹시 널로 나오닡" + session.getAttribute("artistNumber"));
+
+            } else { // 없으면
+                // 아티스트 넘버 세션 null
+            }
+
         } else { // 없으면
             model.addAttribute("message", "일치하는 아이디와 비밀번호가 없습니다. 다시 입력해주세요.");
             return "/login/login";
