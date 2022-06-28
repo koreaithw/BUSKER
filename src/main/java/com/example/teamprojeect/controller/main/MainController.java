@@ -60,6 +60,7 @@ public class MainController {
 
         // 세션
         if(((session.getAttribute("userNumber"))==null) && (session.getAttribute("token")==null)) {
+            // 일반 회원도 아니고, 토큰도 없으면, 즉
             // 로그인 안 되어 있으면
             model.addAttribute("sessionCheck", "0");
         }
@@ -67,7 +68,8 @@ public class MainController {
             // 카카오 토큰이 있으면
             model.addAttribute("sessionCheck", "k");
         }
-        if(!(session.getAttribute("userNumber")==null)) {
+        if((session.getAttribute("token")==null) && !((session.getAttribute("userNumber"))==null)) {
+            // 토큰은 없는데 일반 회원이 있으면, 즉
             // 일반 회원 세션 이면
             model.addAttribute("sessionCheck", "u");
         }

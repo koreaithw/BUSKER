@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.xml.ws.Service;
 import java.lang.reflect.Member;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 @RequiredArgsConstructor
@@ -27,23 +30,36 @@ public class UserController {
 
     // 회원가입 페이지 이동
     @GetMapping("/userJoin")
-    public String goUserJoin(){
+    public String goUserJoin() {
         return "/user/userJoin";
     }
 
     // 아이디 찾기 페이지 이동
     @GetMapping("/idFind")
     public String goIdFind() {
-            return "/login/idFind";
+        return "/login/idFind";
     }
 
     // 아이디 찾기 페이지 이동
     @PostMapping("/idFindResult")
     public String resultIdFind(String userPhoneNumber, Model model) {
-        if( !((userService.findCount(userPhoneNumber)) == 0L)) {
-            UserVO userVO = userService.find(userPhoneNumber);
-            String userName = userVO.getUserId();
-            model.addAttribute("userVO", userVO);
+        if (!((userService.findCount(userPhoneNumber)) == 0L)) {
+            UserVO userVOResult = userService.find(userPhoneNumber);
+            String userName = userVOResult.getUserId();
+
+            try {
+                String userRegisterDate = userVOResult.getUserRegisterDate();
+                SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Date day = dayFormat.parse(userRegisterDate);
+                userRegisterDate = dayFormat.format(day);
+                userVOResult.setUserRegisterDate(userRegisterDate);
+
+            } catch (ParseException e) {
+                System.err.println("dateStr : "  + ", datePattern:");
+                e.printStackTrace();
+            }
+
+            model.addAttribute("userVO", userVOResult);
             return "/login/idFindResult";
         } else {
             model.addAttribute("alert", "일치하는 휴대폰 번호가 없습니다. 다시 입력해주세요.");
@@ -68,8 +84,21 @@ public class UserController {
     public String resultPwFind(UserVO userVO, Model model) {
         log.info(userVO.getUserId());
         log.info(userVO.getUserPhoneNumber());
-        if( !((userService.findPwCount(userVO)) == 0L)) {
+        if (!((userService.findPwCount(userVO)) == 0L)) {
             UserVO userVOResult = userService.find(userVO.getUserPhoneNumber());
+
+            try {
+                String userRegisterDate = userVOResult.getUserRegisterDate();
+                SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Date day = dayFormat.parse(userRegisterDate);
+                userRegisterDate = dayFormat.format(day);
+                userVOResult.setUserRegisterDate(userRegisterDate);
+
+            } catch (ParseException e) {
+                System.err.println("dateStr : "  + ", datePattern:");
+                e.printStackTrace();
+            }
+
             String userName = userVOResult.getUserId();
             model.addAttribute("userVO", userVOResult);
             return "/login/pwFindResult";
@@ -84,7 +113,9 @@ public class UserController {
     //로그인
     // 로그인 페이지 이동
     @GetMapping("/login")
-    public String goLogin() { return "/login/login"; }
+    public String goLogin() {
+        return "/login/login";
+    }
 
     // 로그인
     @PostMapping("/loginSuccess")
@@ -94,23 +125,18 @@ public class UserController {
         String userId = userVO.getUserId();
         String userPw = userVO.getUserPw();
 
-        Long userNumber = userService.login(userId, userPw);
+        Long userNumber = userService.login(userId, userPw); // 로그인 시도 후 유저넘버를 가져옴
 
-        String val = "userNumber";
-        session.setAttribute("userNumber", userNumber);
-
-        Long userNumberSession =  Long.valueOf(String.valueOf((session.getAttribute("userNumber"))));
-        if(session == null) {
-            log.info("===========================================");
-            log.info("없어");
-        } else {
-            log.info("===========================================");
-            log.info("있어");
-            log.info(userNumberSession.toString());
+        if (!(userNumber == null)) { // 아디, 비번이 있으면
+            session.setAttribute("userNumber", userNumber); // 세션에 유저 넘버가 담김
+//            if()
+//            session.setAttribute("userId", userId); // 세션에 유저 넘버가 담김
+            Long userNumberSession = Long.valueOf(String.valueOf((session.getAttribute("userNumber"))));
+            session.setAttribute("sessionCheck", "u");
+        } else { // 없으면
+            model.addAttribute("message", "일치하는 아이디와 비밀번호가 없습니다. 다시 입력해주세요.");
+            return "/login/login";
         }
-
-
-        model.addAttribute("sessionCheck", "u");
         return "/main/main";
     }
 
@@ -120,18 +146,13 @@ public class UserController {
     public String goLogout(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
         if (session != null) session.invalidate();
-        model.addAttribute("sessionCheck", "0");
-        log.info(session.getAttribute("-===============================").toString());
-        log.info(session.getAttribute("userNumber").toString());
-        log.info(session.getAttribute("userNumber").toString());
-        log.info(session.getAttribute("userNumber").toString());
-        log.info(session.getAttribute("userNumber").toString());
-        return "/main/main"; }
+        return "/main/main";
+    }
 
 
     //회원가입
     @PostMapping("/join")
-    public String joinPOST(UserVO user) throws Exception{
+    public String joinPOST(UserVO user, Model model) throws Exception {
 
         log.info("join 진입");
 
@@ -140,8 +161,8 @@ public class UserController {
         userService.join(user);
 
         log.info("join Service 성공");
-
-        return "/main";
+        model.addAttribute("message", "회원가입이 완료되었습니다. 로그인 후 이용해주세요.");
+        return "/login/login";
 
     }
 
