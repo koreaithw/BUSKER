@@ -47,12 +47,14 @@ public class MypageController {
     public String goMypage(Model model, HttpSession session) {
         Long userNumber = Long.valueOf(String.valueOf(session.getAttribute("userNumber")));
         UserVO userVO = userService.read(userNumber);
+        ArtistVO artistVO = artistService.getDetail2(userNumber);
         String userEmail = userVO.getUserEmail();
         String[] str = userEmail.split("@");
         userVO.setUserEmailId(str[0]);
         userVO.setUserDomain(str[1]);
         log.info(str[0]);
         model.addAttribute("user",userVO);
+        model.addAttribute("artist", artistVO);
         return "/myPage/myPage";
     }
 
@@ -87,6 +89,16 @@ public class MypageController {
         userService.modifyPw(userNumber, password);
 
         return "비밀번호 수정 성공";
+    }
+
+    @GetMapping("/check/{userNumber}")
+    @ResponseBody
+    public boolean checkArtist(@PathVariable("userNumber") Long userNumber){
+        if(userService.checkArtist(userNumber) == 4){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // 회원 탈퇴 - Talend API Tester 통과

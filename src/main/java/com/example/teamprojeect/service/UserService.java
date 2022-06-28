@@ -65,6 +65,10 @@ public class UserService {
 
     // 마이페이지 : 내가 남긴 댓글 수 - 쇼
     public int getTotalUserShowReply(Long userNumber) {return showReplyDAO.getTotalUserShowREply(userNumber); }
+
+    // 마이페이지 : 아티스트 계정 체크
+    public int checkArtist(Long userNumber) { return userDAO.checkArtist(userNumber); }
+
     // 로그인
     public Long login(String userId, String userPw) {return userDAO.login(userId,userPw);}
 

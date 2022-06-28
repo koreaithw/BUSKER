@@ -481,8 +481,14 @@ $(".ArtistInfo-tab").click(function (e) {
     tabChange(".artistJoin-desc");
   } else {
     $(divCurrentName).hide();
-    artistUserSmallMenu(".artistUserList-tab");
-    informationTabChange(".artistUser-Info");
+    // artistUserSmallMenu(".artistUserList-tab");
+    // informationTabChange(".artistUser-Info");
+    header(".myInfo-tab");
+    smallMenu(".smallMenu-info");
+    $(".mypage-smallMenu").show();
+    informationTabChange(".myInfo-update");
+    resetText();
+    formReset();
   }
 
 });

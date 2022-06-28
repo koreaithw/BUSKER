@@ -1828,6 +1828,7 @@
   </body>
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script th:inline="javascript">let userNumber = [[${user.userNumber}]]</script>
+  <script th:inline="javascript">let artistNumber = [[${artist.artistNumber}]]</script>
   <script
     type="text/javascript"
     src="/assets/js/myPage/myPage.js?ver=1"
@@ -2076,7 +2077,7 @@
     }
 
     ArtistService.modifyArtist({
-      artistNumber: 4,
+      artistNumber: artistNumber,
       artistName: $artistName,
       artistType: $artistType,
       artistDescription: $artistDescription
@@ -2147,27 +2148,27 @@
 
   $("p.myDonation").on("click", function(){
     console.log("최신순최신순최신순")
-    ArtistGetDonation(userNumber, "new", 1);
+    ArtistGetDonation(artistNumber, "new", 1);
   });
 
   $("a#new").on("click", function(){
     console.log("최신순최신순최신순");
-    ArtistGetDonation(userNumber,"new", 1);
+    ArtistGetDonation(artistNumber,"new", 1);
   })
 
   $("a#old").on("click", function(){
     console.log("오래된순오래된순");
-    ArtistGetDonation(userNumber,"old", 1);
+    ArtistGetDonation(artistNumber,"old", 1);
   });
 
   $("a#expensive").on("click", function(){
     console.log("금액 높은 순");
-    ArtistGetDonation(userNumber,"expensive",1);
+    ArtistGetDonation(artistNumber,"expensive",1);
   });
 
   $("a#cheap").on("click", function(){
     console.log("금액 낮은 순");
-    ArtistGetDonation(userNumber, "cheap", 1);
+    ArtistGetDonation(artistNumber, "cheap", 1);
   });
 
   // 나의 후원 목록

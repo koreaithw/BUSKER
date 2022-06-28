@@ -71,6 +71,12 @@ public class UserMapperTests {
         userMapper.update(userVO);
     }
 
+    // 마이페이지 : 아티스트 계정인지 확인
+    @Test
+    public void checkArtistTest(){
+        log.info(userMapper.checkArtist(24L)+"");
+        userMapper.checkArtist(24L);}
+
 //    마이페이지 : 비밀번호 수정 - 성공
     @Test
     public void updatePwTest(){

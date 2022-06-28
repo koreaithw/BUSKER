@@ -47,6 +47,9 @@ public interface UserMapper {
     // 마이페이지 : 회원 탈퇴 > 완료
     public int delete(Long userNumber);
 
+    // 마이페이지 : 아티스트 계정인지 확인
+    public int checkArtist(Long userNumber);
+
     // 마이페이지 : 아티스트 계정 등록삭제 (
     public int updateArtist(@Param("userNumber") Long userNumber, @Param("listDTO") ListDTO listDTO);
 

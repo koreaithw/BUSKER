@@ -85,6 +85,13 @@
         WHERE USER_NUMBER = #{userNumber}
     </update>
 
+    <!-- 마이페이지 : 아티스트 정보인지 확인 -->
+    <select id="checkArtist" resultType="_int">
+        SELECT USER_ARTIST_STATUS
+        FROM TBL_USER
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
     <select id="getUserList" resultType="userVO">
         SELECT USER_NUMBER, USER_ID, USER_NAME, USER_PHONE_NUMBER, USER_ARTIST_STATUS, USER_REGISTER_DATE, USER_STATUS
         FROM (

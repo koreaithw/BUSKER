@@ -69,6 +69,9 @@ public class UserDAO {
         return userMapper.delete(userNumber) == 1;
     }
 
+    // 아티스트 계정인지 확인
+    public int checkArtist(Long userNumber) {return userMapper.checkArtist(userNumber);}
+
     // 관리자 페이지 : 유저 리스트
     public List<UserVO> getUserList(@Param("criteria") Criteria criteria, @Param("isArtist") boolean isArtist) {
         return userMapper.getUserList(criteria, isArtist);

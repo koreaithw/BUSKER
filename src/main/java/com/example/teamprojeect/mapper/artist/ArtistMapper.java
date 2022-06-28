@@ -86,4 +86,7 @@ public interface ArtistMapper {
 
     public int artistLikeCount(Long artistNumber);
 
+    // 마이페이지 : 세션용
+    public ArtistVO getDetail2(Long userNumber);
+
 }
