@@ -125,14 +125,14 @@ public class ArtistFileController {
         if(file.exists()){ file.delete(); }
     }
 
-    // find
+//     find
 //    @GetMapping("/find")
 //    @ResponseBody
 //    public ShowFileVO find(Long artistNumber){
 //        log.info("get file find....... : " + artistNumber);
 //        return artistService.find(artistNumber);
 //    }
-//
+
 //    @GetMapping("/file")
 //    @ResponseBody
 //    public ShowFileVO getFile(Long showNumber) {
