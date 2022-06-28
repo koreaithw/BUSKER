@@ -80,7 +80,7 @@
               바랍니다.
             </div>
             <div class="pwCheck-form">
-              <form name="pwCheckForm" id="pwCheckForm">
+              <form name="pwCheckForm" id="pwCheckForm" th:object="${user}">
                 <div class="mypage-row">
                   <label id="" class="pwCheck-label input-label"
                   ><span></span>아이디</label
@@ -91,6 +91,7 @@
                             type="text"
                             id="userId"
                             value="soothingkim123"
+                            th:field="*{userId}"
                             readonly
                     />
                   </div>
@@ -1836,7 +1837,7 @@
 
   // 회원탈퇴 후 메인페이지로 돌아가는 기능
   $("input#delete").on("click", function(){
-    myPageService.remove(6, function(result) {
+    myPageService.remove(userNumber, function(result) {
       alert(result);
       location.href = "/main/"
     });
@@ -1844,7 +1845,7 @@
 
   // 유저 개인정보 변경
   $("input#infoChange").on("click", function(){
-    myPageService.modify({userNumber: 6, userName: $("input#userName").val(), userPhoneNumber: $("input#userPhoneNumber").val(), userEmailId: $("input#userEmailId").val(), userDomain: $("input#userEmailDomain").val()}, function(result){
+    myPageService.modify({userNumber: userNumber, userName: $("input#userName").val(), userPhoneNumber: $("input#userPhoneNumber").val(), userEmailId: $("input#userEmailId").val(), userDomain: $("input#userEmailDomain").val()}, function(result){
       alert(result);
       location.href="/myPage/myPage"
     })
@@ -1852,7 +1853,7 @@
 
   // 비밀번호 수정
   $("input#pwChange").on("click", function(){
-    myPageService.modifyPw(4, $("input#newPasswordEqualInput").val(), function(result){
+    myPageService.modifyPw(userNumber, $("input#newPasswordEqualInput").val(), function(result){
       console.log($("input#newPasswordEqualInput").val())
       alert(result);
       location.href="/myPage/myPage"
@@ -2146,27 +2147,27 @@
 
   $("p.myDonation").on("click", function(){
     console.log("최신순최신순최신순")
-    ArtistGetDonation(1, "new", 1);
+    ArtistGetDonation(userNumber, "new", 1);
   });
 
   $("a#new").on("click", function(){
     console.log("최신순최신순최신순");
-    ArtistGetDonation(1,"new", 1);
+    ArtistGetDonation(userNumber,"new", 1);
   })
 
   $("a#old").on("click", function(){
     console.log("오래된순오래된순");
-    ArtistGetDonation(1,"old", 1);
+    ArtistGetDonation(userNumber,"old", 1);
   });
 
   $("a#expensive").on("click", function(){
     console.log("금액 높은 순");
-    ArtistGetDonation(1,"expensive",1);
+    ArtistGetDonation(userNumber,"expensive",1);
   });
 
   $("a#cheap").on("click", function(){
     console.log("금액 낮은 순");
-    ArtistGetDonation(1, "cheap", 1);
+    ArtistGetDonation(userNumber, "cheap", 1);
   });
 
   // 나의 후원 목록
@@ -2220,27 +2221,27 @@
 
   $("p.myDonation-user").on("click", function(){
     console.log("최신순최신순최신순")
-    UserGetDonation(24, "new", 1);
+    UserGetDonation(userNumber, "new", 1);
   });
 
   $("a#user-new").on("click", function(){
     console.log("최신순최신순최신순");
-    UserGetDonation(24,"new", 1);
+    UserGetDonation(userNumber,"new", 1);
   })
 
   $("a#user-old").on("click", function(){
     console.log("오래된순오래된순");
-    UserGetDonation(24,"old", 1);
+    UserGetDonation(userNumber,"old", 1);
   });
 
   $("a#user-expensive").on("click", function(){
     console.log("금액 높은 순");
-    UserGetDonation(24,"expensive",1);
+    UserGetDonation(userNumber,"expensive",1);
   });
 
   $("a#user-cheap").on("click", function(){
     console.log("금액 낮은 순");
-    UserGetDonation(24, "cheap", 1);
+    UserGetDonation(userNumber, "cheap", 1);
   });
 
   // 내가 쓴 댓글 - 아티스트
@@ -2323,17 +2324,17 @@
 
   $("a#artist-reply").on("click", function(){
     console.log("내가 쓴 댓글 들어옴 들어옴");
-    getUserReply(24, 1);
+    getUserReply(userNumber, 1);
   })
 
   $("a.myReply-tab").on("click", function(){
     console.log("내가 쓴 쇼 댓글 들어옴 들어옴");
-    getUserShowReply(24, 1);
+    getUserShowReply(userNumber, 1);
   })
 
   $("a#show-reply").on("click", function(){
     console.log("내가 쓴 쇼 댓글 들어옴 들어옴");
-    getUserShowReply(24, 1);
+    getUserShowReply(userNumber, 1);
   })
 
   $(".reply-right").on("click", "button#delete-artist .reply-button", function(e){
