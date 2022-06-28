@@ -129,18 +129,7 @@
     let sessionArtistNumber = [[${session.artistNumber}]]
     let sessionUserNumber = [[${session.userNumber}]]
     $(document).ready(function() {
-        if(sessionUserNumber == null){
-            alert("로그인 후 이용해주세요.")
-            window.history.back();
-            return;
-        }
-        if(sessionArtistNumber == null){
-            if(confirm("아티스트 계정을 등록해야 이용하실 수 있습니다. 계정을 등록하시겠습니까?")) { e
-                location.href="/myPage/myPage";
-            } else {
-                window.history.back();
-            }
-        }
+
     });
     // 주소
     window.onload = function () {

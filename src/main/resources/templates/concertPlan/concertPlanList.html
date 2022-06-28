@@ -83,11 +83,12 @@
             <p class="gray-text">*댓글 수를 기준으로 집계됩니다.</p>
             <ul>
 
-                <th:block th:each="replyRankingx : ${replyRanking}">
+                <th:block th:each="replyRanking: ${replyRanking}">
                 <li class=''>
                     <a href='#' title=''>
                         <dl>
-<!--                        <dl th:text="|${num.count}위|">-->
+<!--                        <dl th:text="|${numStat.count}위|">-->
+                        <dl>
                             <dt></dt>
                             <dd>
                                 <img src='/images/concertPlan/img3.jpg' alt=''/>
@@ -138,7 +139,7 @@
     <a id="current" class='sm-tit2 showCategory all'>전체</a>&nbsp;&nbsp;&nbsp;&nbsp;
     <a class='sm-tit2 showCategory musician'>뮤지션</a>&nbsp;&nbsp;&nbsp;&nbsp;
     <a class='sm-tit2 showCategory performance'>퍼포먼스</a>&nbsp;&nbsp;&nbsp;&nbsp;
-    <a class='sm-tit2 showCreate' href="/concert/concertPlanRegister">공연등록</a>
+    <a class='sm-tit2 showCreate' href="">공연등록</a>
 </div>
 <section class='m2-sec02'>
     <div class='show-title'>BUSKER's COMING SOON</div>
@@ -157,4 +158,23 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script th:inline="javascript" src="/assets/js/concert/concertAjax.js"></script>
+<script th:inline="javascript">
+    let sessionUserNumber = [[${session.userNumber}]];
+    let sessionArtistNumber = [[${session.artistNumber}]];
+    $(".showCreate").click(function (e) {
+        e.preventDefault();
+        if(sessionUserNumber == null){
+            alert("로그인 후 이용해주세요.")
+            return;
+        }
+        if(sessionArtistNumber == null){
+            if(confirm("아티스트 계정을 등록해야 이용하실 수 있습니다. 계정을 등록하시겠습니까?")) {
+                location.href="/myPage/myPage";
+                return;
+            }
+        }
+
+        location.href="/concert/concertPlanRegister";
+    })
+</script>
 </html>

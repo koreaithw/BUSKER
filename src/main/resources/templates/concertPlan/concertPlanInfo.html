@@ -547,8 +547,6 @@ X
             $.getJSON("/file/concert/file", {showNumber: showNumber}, function(file){showUploadResult(file);})
         })();
 
-        console.log(sessionArtistNumber)
-        console.log(showArtistNumber)
         // 공연 artistNumber와 접속한 artistNumber가 같으면
         if(showArtistNumber == sessionArtistNumber) {
             $(".showInfo-modify").show();
@@ -580,24 +578,31 @@ X
             $("#reply-count").text(total + ' Comments');
 
             $.each(list, function (i, reply) {
-                replyShowHide(sessionUserNumber, reply.userNumber);
                 str += "<div class='reply-content-wrap' id='"  + reply.replyNumber +  "'><div class='reply-content-flex'><div class='user-profile'>";
                 str += "<img class='user-image' src='https://i1.daumcdn.net/thumb/C96x96/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F5172542%2Fattach%2F5b16521bdfb848a69f47ddb5b5d064ac' alt='' width='48' height='48'></div>";
                 str += '<div class="reply-text-box"><div class="reply-content-box"><div class="reply-name"><span class="reply-user">';
                 str += '<a id="user-name" href="">' + reply.userName + '</a></span>';
                 str += '<span class="reply-date">' + reply.replyUpdateDate + '</span></div>';
                 str += '<div class="reply-status">';
-                str += '<span id="modify-' + reply.replyNumber + '" class="reply-modify modify ' + reply.replyNumber + '" style="cursor:pointer; display: none;">수정</span>';
-                str += '<span id="finish-' + reply.replyNumber + '" class="reply-finish finish ' + reply.replyNumber + '" style="display: none;cursor:pointer;">수정완료</span>';
-                str += '<span id="delete-' + reply.replyNumber + '" class="reply-delete delete ' + reply.replyNumber + '" style="display: none;">삭제</span>'
-                str += '<span id="cancel-' + reply.replyNumber + '" class="reply-cancel cancel ' + reply.replyNumber + '" style="display: none;cursor:pointer;">취소</span></div></div>';
+                str += '<span id="modify-' + reply.replyNumber + '" class="reply-modify modify ' + reply.replyNumber + ' modify-' + reply.userNumber + '" style="cursor:pointer; display: none;">수정</span>';
+                str += '<span id="finish-' + reply.replyNumber + '" class="reply-finish finish ' + reply.replyNumber + ' finish-' + reply.userNumber + '" style="display: none;cursor:pointer;">수정완료</span>';
+                str += '<span id="delete-' + reply.replyNumber + '" class="reply-delete delete ' + reply.replyNumber + ' delete-' + reply.userNumber + '" style="display: none;">삭제</span>'
+                str += '<span id="cancel-' + reply.replyNumber + '" class="reply-cancel cancel ' + reply.replyNumber + ' cancel-' + reply.userNumber + '" style="display: none;cursor:pointer;">취소</span></div></div>';
                 str += '<div id="content-' + reply.replyNumber + '"  class="reply-content content ' + reply.replyNumber + '">' + reply.replyContent + '</div></div></div></div>';
+
+
             });
             ;
 
             replyDiv.html(str);
+            console.log($(".modify-" + sessionUserNumber).classList)
+            $(".modify-" + sessionUserNumber).show();
+            $(".delete-" + sessionUserNumber).show();
             showReplyPage(total);
+
+
         });
+
     }
 
     //댓글 삭제
@@ -686,6 +691,10 @@ X
     });
 
     function showReplyPage(total) {
+        console.log($(".modify-" + sessionUserNumber).classList)
+
+        $(".modify-" + sessionUserNumber).show();
+        $(".delete-" + sessionUserNumber).show();
         let endPage = Math.ceil(pageNum / 10.0) * 10;
         let startPage = endPage - 9;
         let realEnd = Math.ceil(total / 10.0);
@@ -718,6 +727,7 @@ X
         e.preventDefault();
         pageNum = $(this).attr("href");
         replyList(pageNum);
+
     });
 
 
