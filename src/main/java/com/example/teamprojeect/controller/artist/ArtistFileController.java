@@ -128,7 +128,7 @@ public class ArtistFileController {
 //     find
 //    @GetMapping("/find")
 //    @ResponseBody
-//    public ShowFileVO find(Long artistNumber){
+//    public ArtistFileVO find(Long artistNumber){
 //        log.info("get file find....... : " + artistNumber);
 //        return artistService.find(artistNumber);
 //    }

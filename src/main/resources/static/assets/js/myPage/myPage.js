@@ -22,8 +22,8 @@ function formReset() {
   $("#pwCheckForm")[0].reset();
   $("#myInfoForm")[0].reset();
   $("#newPwForm")[0].reset();
-  $("div#pwImgNew").css("background-image", "url('/static/images/mypage/eye_hide.png')");
-  $("div#pwImgNewCheck").css("background-image", "url('/static/images/mypage/eye_hide.png')");
+  $("div#pwImgNew").css("background-image", "url('/images/mypage/eye_hide.png')");
+  $("div#pwImgNewCheck").css("background-image", "url('/images/mypage/eye_hide.png')");
   $("input[name='newPassword']").attr("type", "password");
   $("input[name='newPasswordEqual']").attr("type", "password");
 }
@@ -229,7 +229,7 @@ window.addEventListener("keyup", (e) => {
 
 // 프로필 사진 기본이미지로 변경
 $("#sample-profile-image").click(function () {
-  $("#img-sample").attr("src", "/static/images/mypage/user-icon.png");
+  $("#img-sample").attr("src", "/images/mypage/user-icon.png");
 });
 
 
@@ -262,10 +262,10 @@ $("div#pwImgNew").click(function () {
   const $input = $("input[name='newPassword']");
   if ($input.attr("type") == "password") {
     $input.attr("type", "text");
-    $(this).css("background-image", "url('/static/images/mypage/eye_visible.png')");
+    $(this).css("background-image", "url('/images/mypage/eye_visible.png')");
   } else {
     $input.attr("type", "password");
-    $(this).css("background-image", "url('/static/images/mypage/eye_hide.png')");
+    $(this).css("background-image", "url('/images/mypage/eye_hide.png')");
   }
 });
 
@@ -273,10 +273,10 @@ $("div#pwImgNewCheck").click(function () {
   const $input = $("input[name='newPasswordEqual']");
   if ($input.attr("type") == "password") {
     $input.attr("type", "text");
-    $(this).css("background-image", "url('/static/images/mypage/eye_visible.png')");
+    $(this).css("background-image", "url('/images/mypage/eye_visible.png')");
   } else {
     $input.attr("type", "password");
-    $(this).css("background-image", "url('/static/images/mypage/eye_hide.png')");
+    $(this).css("background-image", "url('/images/mypage/eye_hide.png')");
   }
 });
 
@@ -479,6 +479,11 @@ $(".ArtistInfo-tab").click(function (e) {
   header(".ArtistInfo-tab");
 
   if(sessionArtistNumber == null) {
+    // 소메뉴, 후원탭 숨기기
+    $(".artistUser-smallMenu").hide();
+    $(".myDonation").hide();
+
+
     console.log(sessionArtistNumber);
     if (confirm("아티스트 계정이 존재하지 않습니다. 새로 등록하시겠습니까?")) {
       tabChange(".artistJoin-desc");
@@ -569,7 +574,7 @@ $("button[name='reply-delete-button']").click(function () {
 
 // 아티스트 등록, 수정 유효성 검사
 $(".artist-join-submit").click(function(){
-  
+
 })
 
 $(".artist-update-submit").click(function(){
