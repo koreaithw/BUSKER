@@ -4,6 +4,7 @@ import com.example.teamprojeect.domain.vo.artist.ArtistDTO;
 import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.paging.show.ShowPageDTO;
 import com.example.teamprojeect.domain.vo.show.ShowVO;
 import com.example.teamprojeect.domain.vo.work.WorkVO;
 import com.example.teamprojeect.service.ArtistService;
@@ -16,10 +17,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -75,5 +81,42 @@ public class MainController {
         }
 
         return "/main/main";
+    }
+
+    @GetMapping("/concertPlanList/{type}/{page}")
+    @ResponseBody
+    public ShowPageDTO goConcertPlanType(@PathVariable("type") String showType, @PathVariable("page") int pageNum){
+        ListDTO listDTO = new ListDTO();
+        listDTO.setArtistType(showType);
+        List<ShowVO> showList = showService.getList(new Criteria(1, 5), listDTO);
+        log.info("showVO=========" +showList);
+
+//        SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
+//
+//        showList.forEach(showVO -> {
+//            // 지역만 선택
+//            String showAddress = showVO.getShowAddress();
+//            showAddress = showAddress.substring(0, 2);
+//
+//            String showLocation = showVO.getShowLocation();
+//            showLocation = "[" + showAddress + "] " + showLocation;
+//            showVO.setShowLocation(showLocation);
+//
+//            // dday 계산
+//            String showDay = showVO.getShowDay();
+//            String todayDay = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis())); // 오늘날짜
+//
+//            try {
+//                Date date = new Date(dayFormat.parse(showDay).getTime());
+//                Date today = new Date(dayFormat.parse(todayDay).getTime());
+//                long calculate = date.getTime() - today.getTime();
+//                int Ddays = (int) (calculate / ( 24*60*60*1000));
+//                showVO.setDDay(Integer.toString(Ddays));
+//            } catch (ParseException e) {
+//                System.err.println("dateStr : " + showDay + ", datePattern:" + dayFormat);
+//                e.printStackTrace();
+//            }
+//        });
+        return new ShowPageDTO(showList, showService.getTotal(listDTO));
     }
 }

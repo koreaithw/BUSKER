@@ -113,18 +113,18 @@
                 </div>
                 <div>
                     <div class="small-5-box" style="text-align:center;" >
-                        <div class="image-plus-box" th:each="show : ${showVO}">
-                            <a th:href="@{/concert/concertPlanInfo(showNumber = ${show.showNumber})}">
-                            <div>
-                                <img th:src="@{/'file/concert/display?fileName='+${file.uploadPath}+'/'+${file.uuid}+'_'+${file.fileName}" alt="#">
-<!--                                <img src="/file/concert/display?fileName=" + "file.uploadPath + "/" + file.uuid + "_"  + file.fileName;" alt="#">-->
-                            </div>
-                            <div class="small-5-box-textbox">
-                                <p id="small-5-box-uptext" th:text="*{show.showTime}"></p>
-                                <p id="small-5-box-downtext" th:text="*{show.showLocation}"></p>
-                            </div>
-                            </a>
-                        </div>
+<!--                        <div class="image-plus-box">-->
+<!--                        <div class="image-plus-box" th:each="show : ${showVO}">-->
+<!--                            <a th:href="@{/concert/concertPlanInfo(showNumber = ${show.showNumber})}">-->
+<!--                            <div>-->
+<!--                                <img th:src="@{/'file/concert/display?fileName='+${file.uploadPath}+'/'+${file.uuid}+'_'+${file.fileName}" alt="#">-->
+<!--                            </div>-->
+<!--                            <div class="small-5-box-textbox">-->
+<!--                                <p id="small-5-box-uptext" th:text="*{show.showTime}"></p>-->
+<!--                                <p id="small-5-box-downtext" th:text="*{show.showLocation}"></p>-->
+<!--                            </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
                     </div>
                     <div>
                         <a href="/concert/concertPlanList" class="more-link-box">버스킹 더보기+</a>
