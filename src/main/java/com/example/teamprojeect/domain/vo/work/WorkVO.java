@@ -20,6 +20,6 @@ public class WorkVO {
     private String workUpdateDate;
     private String workStatus;
 
-    private WorkFileVO workFile;
+    private WorkFileVO file;
 }
 

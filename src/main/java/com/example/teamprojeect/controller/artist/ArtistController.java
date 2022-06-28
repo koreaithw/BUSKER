@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -103,9 +104,12 @@ public class ArtistController {
 //     아티스트 상세보기 페이지
     @GetMapping("/artistInfo")
     public String goArtistInfo(Long artistNumber, Criteria criteria, HttpServletRequest request, Model model) {
+
+        HttpSession session = request.getSession();
         String requestURL = request.getRequestURI();
         ArtistVO artistVO = artistService.getDetail(artistNumber);
 
+        Long userNumber = (Long)session.getAttribute("userNumber");
 
         if(artistVO.getArtistType() == 1) {
             artistVO.setArtistCategory("뮤지션");
@@ -114,7 +118,7 @@ public class ArtistController {
         }
 
 
-        Long userNumber = 2L;
+
 
         log.info("userNumber=================" + userNumber);
         log.info("artistNumber=================" + artistNumber);

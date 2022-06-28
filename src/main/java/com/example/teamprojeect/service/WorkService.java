@@ -24,7 +24,7 @@ public class WorkService {
     public void registerApply(WorkVO workVO){
         workDAO.registerApply(workVO);
         System.out.println(workVO.getWorkNumber());
-        WorkFileVO workFileVO = workVO.getWorkFile();
+        WorkFileVO workFileVO = workVO.getFile();
         workFileVO.setWorkNumber(workVO.getWorkNumber());
         workFileDAO.register(workFileVO);
     }
@@ -42,7 +42,7 @@ public class WorkService {
     // 작품 수정 신청
     @Transactional(rollbackFor = Exception.class)
     public boolean modifyApply(WorkVO workVO){
-        WorkFileVO workFileVO = workVO.getWorkFile();
+        WorkFileVO workFileVO = workVO.getFile();
         workFileVO.setWorkNumber(workVO.getWorkNumber());
         workFileDAO.remove(workVO.getWorkNumber());
         workFileDAO.register(workFileVO);
