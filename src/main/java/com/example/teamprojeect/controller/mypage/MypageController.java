@@ -135,7 +135,9 @@ public class MypageController {
     @PostMapping(value="/new", consumes = "application/json", produces = "application/json; charset=UTF-8")
     @ResponseBody
     public ResponseEntity<String> create(@RequestBody ArtistVO artistVO) throws UnsupportedEncodingException{
+        log.info("라ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ아ㅏ아앙아ㅏ" + artistVO);
         log.info("artistVO" + artistVO);
+        log.info("artistVO" + artistVO.getFile());
         artistService.registerApply(artistVO);
         return new ResponseEntity<>(new String("아티스트 등록 신청".getBytes(), "UTF-8"),HttpStatus.OK);
     }

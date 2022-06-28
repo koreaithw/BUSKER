@@ -9,7 +9,7 @@
         </selectKey>
         INSERT INTO TBL_ARTIST
         (ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE, ARTIST_ACCOUNT)
-        VALUES(SEQ_ARTIST.NEXTVAL, #{userNumber}, #{artistName}, #{artistDescription}, #{artistType}, #{artistAccount})
+        VALUES(#{artistNumber}, #{userNumber}, #{artistName}, #{artistDescription}, #{artistType}, #{artistAccount})
     </insert>
 
     <!--관리자 등록,수정 승인 (status -> 3)-->

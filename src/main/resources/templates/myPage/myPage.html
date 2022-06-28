@@ -1836,7 +1836,8 @@
   let myPageWorkListDiv = $(".myWorkList-All");
   let myDonationDiv = $("tbody#artist-donation-body");
   let userDonationDiv = $("tbody#user-donation-list");
-  let myReplyDiv = $(".reply-big-Box")
+  let myReplyDiv = $(".reply-big-Box");
+  let $fileName = "";
 
   // 관심 아티스트
   function myArtistList(userNumber, type, page){
@@ -2031,7 +2032,12 @@
               artistName: $artistName,
               artistType: $artistType,
               artistDescription: $artistDescription,
-              artistAccount: $artistAccount
+              artistAccount: $artistAccount,
+              file : {
+                fileName: $("#fileName").val(),
+                uploadPath: $("#uploadPath").val(),
+                uuid: $("#uuid").val()
+              }
             },
             function (result) {
               $("input[id='artist-join-name']").val("");
@@ -2345,9 +2351,9 @@
 
       $("#file_drop").show();
       $("#image-samplebox").hide();
-      str += "<input type='hidden' name='fileName' value=''>"
-      str += "<input type='hidden' name='uuid' value=''>"
-      str += "<input type='hidden' name='uploadPath' value=''>"
+      // str += "<input type='hidden' name='fileName' id='fileName' value=''>"
+      // str += "<input type='hidden' name='uuid' value=''>"
+      // str += "<input type='hidden' name='uploadPath' value=''>"
 
     }).on("dragover", function (e) { // 드래그 하면서 마우스가 대상 객체의 위에 자리 잡고 있을 때 발생함.
       e.preventDefault();
@@ -2387,9 +2393,10 @@
           console.log(file[0].uuid);
           console.log(file[0].uploadPath);
 
-          $("#fileName").val(file[0])
+          $("#fileName").val(file[0].fileName)
           $("#uuid").val(file[0].uuid)
           $("#uploadPath").val(file[0].uploadPath)
+          console.log($("#fileName").val() + "야ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ");
           console.log($("#fileName").val());
           console.log($("#uuid").val());
           console.log($("#uploadPath").val());
