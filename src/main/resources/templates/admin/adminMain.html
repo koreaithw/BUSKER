@@ -30,7 +30,7 @@
         <div class="admin-name">
             <h1>관리자 이름</h1>
             <div class="btn-main-border">
-                <a href="/main/main.html" class="btn-main">메인으로 돌아가기</a>
+                <a href="/main/" class="btn-main">메인으로 돌아가기</a>
             </div>
         </div>
         <div class="home-display">
@@ -148,41 +148,8 @@
                          height="40px;" alt="">
                     <!-- <a href="https://www.flaticon.com/kr/free-icons/-" title="알 수 없는 아이콘">알 수 없는 아이콘  제작자: Freepik - Flaticon</a> -->
                     <div class="admin-field">
-                        <h4>관리자 이름</h4>
-                        <p>admin@gmail.com</p>
-                    </div>
-                </div>
-                <div class="manager-set">
-                    <div>
-                        <h4>운영진 설정</h4>
-                        <img src="/images/admin/free-icon-unknown-3088765.png" class="icon" width="40px;"
-                             height="40px;" alt="">
-                    </div>
-                    <div>
-                        <a href=""><img src="/images/admin/premium-icon-gear-484613.png" width="20px;" height="20px;" alt=""></a>
-                        <!-- <a href="https://www.flaticon.com/kr/free-icons/" title="기어 아이콘">기어 아이콘  제작자: Freepik - Flaticon</a> -->
-                    </div>
-                </div>
-                <div class="manager-set">
-                    <div>
-                        <h4>관리자</h4>
-                        <img src="/images/admin/free-icon-unknown-3088765.png" class="icon" width="40px;"
-                             height="40px;" alt="">
-                    </div>
-                    <div>
-                        <a href=""><img src="/images/admin/premium-icon-gear-484613.png" width="20px;" height="20px;" alt=""></a>
-                        <!-- <a href="https://www.flaticon.com/kr/free-icons/" title="기어 아이콘">기어 아이콘  제작자: Freepik - Flaticon</a> -->
-                    </div>
-                </div>
-                <div class="manager-set">
-                    <div>
-                        <h4>관리자 이름</h4>
-                        <img src="/images/admin/free-icon-unknown-3088765.png" class="icon" width="40px;"
-                             height="40px;" alt="">
-                    </div>
-                    <div>
-                        <a href=""><img src="/images/admin/premium-icon-gear-484613.png" width="20px;" height="20px;" alt=""></a>
-                        <!-- <a href="https://www.flaticon.com/kr/free-icons/" title="기어 아이콘">기어 아이콘  제작자: Freepik - Flaticon</a> -->
+                        <h4 th:text="${userName}"></h4>
+                        <p th:text="${userEmail}"></p>
                     </div>
                 </div>
             </div>
@@ -354,6 +321,7 @@
 </script>
 <script src="/assets/js/admin/admin.js"></script>
 <script th:inline="javascript">
+    const session = [[${session.userNumber}]];
     let pageNumW = 1; // 작품 신청 목록 페이지 넘버
     let pageNumR = 1; // 모집 공고 목록 페이지 넘버
     let pageNumU = 1; // 유저 목록 페이지 넘버
@@ -375,6 +343,8 @@
     let today = todayWorkApply + todayArtistApply + todayRecruit;
     $(".circle").html(today);
     let remember = [[${criteria.listLink}]]; // 페이지 기억
+
+    console.log(session);
 
     $(".go_search").on("click", function (e) {
         e.preventDefault();
@@ -525,7 +495,7 @@
 
             $.each(list.list, function (i, users) {
                 let isRegi = "X"
-                if(users.userArtistStatus == 4){
+                if(users.artistStatus == 3){
                     isRegi = "O";
                 }
                 str += `<tr>`;
