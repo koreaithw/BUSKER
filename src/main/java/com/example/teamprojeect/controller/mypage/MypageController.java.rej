@@ -1,0 +1,16 @@
+diff a/src/main/java/com/example/teamprojeect/controller/mypage/MypageController.java b/src/main/java/com/example/teamprojeect/controller/mypage/MypageController.java	(rejected hunks)
+@@ -47,14 +47,12 @@
+     public String goMypage(Model model, HttpSession session) {
+         Long userNumber = Long.valueOf(String.valueOf(session.getAttribute("userNumber")));
+         UserVO userVO = userService.read(userNumber);
+-        ArtistVO artistVO = artistService.getDetail2(userNumber);
+         String userEmail = userVO.getUserEmail();
+         String[] str = userEmail.split("@");
+         userVO.setUserEmailId(str[0]);
+         userVO.setUserDomain(str[1]);
+         log.info(str[0]);
+         model.addAttribute("user",userVO);
+-        model.addAttribute("artist", artistVO);
+         return "/myPage/myPage";
+     }
+ 
