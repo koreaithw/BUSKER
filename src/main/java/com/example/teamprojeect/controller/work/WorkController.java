@@ -51,7 +51,7 @@ public class WorkController {
             listDTO.setTag(list);
         }
         model.addAttribute("tagList",workService.getTag());
-        return new WorkApplyPageDTO(workService.getKeyword(new Criteria(pageNum,50),listDTO),workService.getTotalListApply());
+        return new WorkApplyPageDTO(workService.getKeyword(new Criteria(pageNum,100),listDTO),workService.getTotalListApply());
     }
 
     // 작품 상세보기 페이지 이동
@@ -74,6 +74,10 @@ public class WorkController {
     @PostMapping("/workRegister")
     public RedirectView goWorkRegister(WorkVO workVO,RedirectAttributes rttr) {
         workVO.setArtistNumber(1L);
+        log.info("*************");
+        log.info("/register");
+        log.info("*************");
+        log.info("test : "+workVO);
         workService.registerApply(workVO);
         rttr.addFlashAttribute("workNumber", workVO.getWorkNumber());
         return new RedirectView("/work/workList");

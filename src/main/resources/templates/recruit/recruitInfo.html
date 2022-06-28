@@ -19,7 +19,7 @@
 <!--configFragment 선언-->
 <th:block th:fragment="fragment-header">
     <!-- 이 영역에 공통으로 사용할 css, js library를 선언한다. -->
-    <link rel="stylesheet" th:href="@{/static/assets/css/header/header3.css}" >
+    <link rel="stylesheet" th:href="@{/assets/css/header/header3.css}" >
         
     <!-- <script th:src="@{/js/common/common.js}"></script> -->
 
@@ -42,14 +42,16 @@
             <p th:text="*{recruitmentName}"></p>
         </div>
         <div class="detail-date">
-            <span th:text="*{'등록일 : '+recruitmentDay}">
+            <span th:text="*{'등록일 : '+recruitmentRegisterDate}">
             </span>
             <span>조회수 : 506</span>
         </div>
         <div class="detail-view">
             <div class="view-layout">
                 <div class="view-left">
-                    <img src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220523/20220523-42255.jpg" width="180"
+<!--                    <img th:if="*{file == null}" src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220523/20220523-42255.jpg" width="180"-->
+<!--                        height="252">-->
+                    <img id="img-view" src="" width="180"
                         height="252">
                 </div>
                 <div class="view-right">
@@ -59,7 +61,7 @@
                             <p class="noti" id="noti1"></p>
                             <div class="view-long-box">
                                 <span class="title1"><em>신청기간</em></span>
-                                <span class="title1"  th:text="*{recruitmentDay+' '+recruitmentTime}"></span>
+                                <span class="title1"  th:text="*{(recruitmentDay).substring(0,11)+' '+recruitmentTime}"></span>
                                 <span class="title1" th:text="*{recruitmentLocation}"></span>
                             </div>
                         </div>
@@ -116,8 +118,21 @@
     </footer>
 
 </body>
-    <script>
+    <script th:inline="javascript">
+        let number = [[${recruitmentNumber}]]
             $( document ).ready( function() {$( window ).scroll( function() {if ( $( this ).scrollTop() > 200 ) {$( '.jcm-top' ).fadeIn();} else {$( '.jcm-top' ).fadeOut();}} );$( '.jcm-top' ).click( function() {$( 'html, body' ).animate( { scrollTop : 0 }, 400 );return false;} );} )
+
+        getImage(number);
+
+
+        function getImage(num) {
+            recruitmentService.getImg(num, function (file){
+                let src = "/file/recruitment/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+                $("#img-view").attr("src", src);
+            });
+        }
+
+
     </script>
 
 </html>

@@ -28,7 +28,26 @@ let workService = (function(){
        //         error(er);
        //     }
        // });
-   }
+   };
+
+    function getImg(num,callback, error) {
+        $.ajax({
+            url: "/file/work/find",
+            type: "get",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (file) {
+                if(callback){
+                    callback(file);
+                }
+            },
+            error: function (xhr, status, er) {
+                if(error)   {
+                    error(xhr, status, er);
+                }
+            }
+        });
+    }
 
    return { getWorkKeywordList: getWorkKeywordList};
 })();
@@ -47,10 +66,22 @@ function tagList(tag, page) {
         }
 
         $.each(list, function (i, work) {
+            let infoNumber = Number(work.workNumber);
+
+            $.getJSON("/file/work/file", {workNumber: infoNumber}, function(file){
+                let src = "/file/work/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+                $("#img-" + infoNumber).attr("src", src);
+            })
+
             str += "<li>";
             str += "<p className='works_tit'>"+work.workName+"</p>";
             str += "<p className='worker'>"+work.artistName+"</p>";
-            str += "<a href='"+work.workNumber+"' className='works_img'><img src='/images/work/20473078.jpg' alt=''></a>";
+            str += "<a href='"+work.workNumber+"' className='works_img'>";
+            if(work.file != null) {
+                str += "<img src='' id='#img-"+infoNumber+"' alt=''></a>";
+            }else{
+                str += "<img src='/images/work/20473078.jpg' alt=''></a>";
+            }
             str += "<p className='tags'>"+work.workTag+"</p>";
             str += "</li>";
         });
@@ -60,3 +91,4 @@ function tagList(tag, page) {
         console.log(a,b,c);
     });
 }
+

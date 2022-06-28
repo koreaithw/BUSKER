@@ -36,7 +36,6 @@
     </div>
 
     <div class="work_info_wrap">
-        <form action="/work/workRegister" method="post" name="registerForm" enctype="multipart/form-data">
             <div class="work_info_content">
                 <div class="work_info">
                     <div class="info_left">
@@ -46,6 +45,7 @@
                         </div>
                     </div>
                     <div class="info_right">
+                        <form action="/work/workRegister" method="post" id="registerForm" name="registerForm" enctype="multipart/form-data">
                         <div class="info_area1">
                             <dl>
                                 <dt>작품명*</dt>
@@ -87,20 +87,24 @@
                             <dl>
                                 <dt>작품 설명</dt>
                                 <dd>
-                                    <textarea name="workDescription" id="" cols="82" rows="12" placeholder="작품설명을 입력해주세요"></textarea>
+                                    <textarea name="workDescription" cols="82" rows="12" placeholder="작품설명을 입력해주세요"></textarea>
                                 </dd>
                             </dl>
                         </div>
+                        <input type='hidden' id='fileName' name='file.fileName' value=''>
+                        <input type='hidden' id='uuid' name='file.uuid' value=''>
+                        <input type='hidden' id='uploadPath' name='file.uploadPath' value=''>
+                        </form>
                         <div class="info_area2" style="float: right;">
                             <div class="purchase_link_wrap">
                                 <a href="/work/workList" class="purchase_link">뒤로가기</a>&nbsp;&nbsp;
-                                <a href="#" id="purchase_link" class="purchase_link" onclick="purchase_link()">작품 등록 신청</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="javascript:purchase_link();" id="purchase_link" class="purchase_link">작품 등록 신청</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
+
     </div>
 
 
@@ -110,10 +114,7 @@
 </body>
 
 <script>
-    $("#recru-form-submit").on("click", function (e) {
-        e.preventDefault();
-        $("#registerForm").submit();
-    });
+
     // 드래그 해서 영역에 아이템을 내리면 그게 files에 저장되고 그 이미지 url따서 그걸 div 영역에 이미지 태그로 넣는거
     var fileList = []; //파일 정보를 담아 둘 배열
     let imgBox = $(".img_box");
@@ -127,9 +128,7 @@
 
             $("#file_drop").show();
             $("#image-samplebox").hide();
-            str += "<input type='hidden' name='fileName' value=''>"
-            str += "<input type='hidden' name='uuid' value=''>"
-            str += "<input type='hidden' name='uploadPath' value=''>"
+
 
         }).on("dragover", function (e) { // 드래그 하면서 마우스가 대상 객체의 위에 자리 잡고 있을 때 발생함.
             e.preventDefault();
@@ -184,30 +183,7 @@
             });
         });
 
-        // // 등록
-        // $(document).on("click", "#save", function () {
         let formData = new FormData($("#fileForm")[0]);
-        //     if (fileList.length > 0) {
-        //         fileList.forEach(function (f) {
-        //             formData.append("fileList", f);
-        //         });
-        //     }
-        //
-        //     $.ajax({
-        //         url: "/upload",
-        //         data: formData,
-        //         type: 'POST',
-        //         processData: false,
-        //         contentType: false,
-        //         dataType: 'text',
-        //         // cache: false,
-        //         success: function (res) {
-        //             alert("등록에 성공하셨습니다.");
-        //         }, error: function (res) {
-        //             alert("오류 발생.\n관리자에게 문의해주세요.");
-        //         }
-        //     });
-        // });
     });
     /*
     1. processData:false
@@ -273,11 +249,10 @@
             $(".warning_msg5").hide();
         }
 
-    //console.log("aaa");
-    $("form[name='registerForm']").submit();
-    return true;
+        alert("등록되었습니다");
+        $("Form#registerForm").submit();
+        return true;
     }
-
 
 </script>
 
