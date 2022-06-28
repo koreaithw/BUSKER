@@ -177,7 +177,7 @@ X
                     <div class="rn-product-area1">
                         <dl>
                             <dt>버스커</dt>
-                            <dd><a href="" th:text="*{artistName}"></a>&nbsp</dd>
+                            <dd><a th:href="|/artist/artistInfo?artistNumber=*{artistNumber}|" th:text="*{artistName}"></a>&nbsp</dd>
                             <dt>공연일자</dt>
                             <dd th:text="*{showDay}">&nbsp;</dd>
                             <dt>공연시간</dt>
@@ -691,7 +691,8 @@ X
     });
 
     function showReplyPage(total) {
-        console.log($(".modify-" + sessionUserNumber).classList)
+        console.log($(".modify-" + sessionUserNumber))
+        console.log(sessionUserNumber);
 
         $(".modify-" + sessionUserNumber).show();
         $(".delete-" + sessionUserNumber).show();
