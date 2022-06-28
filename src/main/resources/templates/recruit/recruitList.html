@@ -102,27 +102,8 @@
             $(e.target).addClass('on');
         }
     });
-// 버튼 클릭 시 맨 위로 이동
-// $topBtn.onclick = () => {
-//   window.scrollTo({ top: 0, behavior: "smooth" });  
-// }
 
-
-
-//위로 올라가는 버튼 클릭하면
-// $(".return-top").on('click',function(e){
-// 		e.preventDefault();
-// 		$(window).scrollTop(0);
-// 	});
-
-//위로 올라가는 버튼 나타나게
-		// if(sctop>0){
-		// 	$(".return-top").addClass("on");
-		// }else{
-		// 	$(".return-top").removeClass("on");
-		// }
-
-        $( document ).ready( function() {$( window ).scroll( function() {if ( $( this ).scrollTop() > 200 ) {$( '.jcm-top' ).fadeIn();} else {$( '.jcm-top' ).fadeOut();}} );$( '.jcm-top' ).click( function() {$( 'html, body' ).animate( { scrollTop : 0 }, 400 );return false;} );} )
+    $( document ).ready( function() {$( window ).scroll( function() {if ( $( this ).scrollTop() > 200 ) {$( '.jcm-top' ).fadeIn();} else {$( '.jcm-top' ).fadeOut();}} );$( '.jcm-top' ).click( function() {$( 'html, body' ).animate( { scrollTop : 0 }, 400 );return false;} );} )
         // <!-- 맨위로 가기 이미지 버튼 끝 -->
 
 
@@ -227,9 +208,12 @@
             }
 
             $.each(list, function (i, recru) {
+
+                let infoNumber = Number(recru.recruitmentNumber);
+
                 str += "<div class=\"image-plus-box\">";
                 str += "<div>";
-                str += "<img src=\"/images/recruit/small-5-poster.png\" id='img-"+recru.recruitmentNumber+""' alt=\"#\">";
+                str += "<img src='/images/recruit/small-5-poster.png' id='img-"+recru.recruitmentNumber+"' alt='#'>";
                 str += "</div>";
                 str += "<div class='small-5-box-textbox'>";
                 str += "<p class='small-5-box-uptext'>"+(recru.recruitmentDay).substring(0,11)+" "+recru.recruitmentTime+"</p>";
@@ -237,6 +221,10 @@
                 str += "</div>"
                 str += "</div>"
 
+                $.getJSON("/file/work/file", {recruitmentNumber: infoNumber}, function(file){
+                    let src = "/file/work/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+                    $("#img-" + infoNumber).attr("src", src);
+                })
             });
             $page.append(str);
             pageNum = page;
@@ -245,12 +233,6 @@
             console.log(a,b,c);
         });
     }
-
-    //
-    // $("a.clickLink").on("click",function (e) {
-    //     e.preventDefault();
-    //     location.href = "/recruit/recruitInfo?pageNum="+pageNum+"&amount=10&type&keyword&workNumber="+$(this).attr('href');
-    // });
 
     $(".list-pagenation").on("click", "a.changePage", function (e) {
         e.preventDefault();

@@ -96,7 +96,7 @@
 
         check = true;
     }
-    let number = [[${Number}]];
+    let number = [[${work.workNumber}]];
 
 
     $(document).ready(function (){
@@ -105,9 +105,9 @@
     })
 
     function getImage(num) {
-        recruitmentService.getImg(num, function (file){
+        workService.getImg(num, function (file){
             console.log("--------------------------------------"+file);
-            let src = "/file/recruitment/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+            let src = "/file/work/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
             $("#img-view").attr("src", src);
         });
     }

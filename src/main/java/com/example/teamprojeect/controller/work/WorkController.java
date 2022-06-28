@@ -32,7 +32,7 @@ public class WorkController {
     // 작품리스트 페이지 이동
     @GetMapping("/workList")
     public String goWorkList(Criteria criteria,Model model) {
-        model.addAttribute("workList",workService.getKeyword(new Criteria(1, 50),new ListDTO()));
+        model.addAttribute("workList",workService.getKeyword(new Criteria(1, 100),new ListDTO()));
         model.addAttribute("pageDTO",new PageDTO(criteria, workService.getTotalListApply()));
         model.addAttribute("workTag", workService.getTag());
         return "/work/workList";
@@ -64,7 +64,6 @@ public class WorkController {
         log.info("================================");
         log.info(criteria.toString());
         log.info("================================");
-        model.addAttribute("number",workNumber);
         model.addAttribute("work", workService.getDetail(workNumber));
     }
 
