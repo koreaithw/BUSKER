@@ -190,6 +190,13 @@ $("#btn-like").click(function () {
     }
 })
 
+let imgDiv = $(".ms-list-imgs");
+
+$.getJSON("/file/concert/file", {showNumber: infoNumber}, function(file){
+    let src = "/file/concert/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+    $("#img-" + infoNumber).attr("src", src);
+})
+
 
 
 

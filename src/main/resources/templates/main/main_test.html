@@ -72,7 +72,7 @@
 
 <div class="big-box-1">
     <div class="name-box">
-        <p class="box-name">인기 아티스트</p>
+        <p class="box-name">최신 아티스트</p>
     </div>
     <div class="small-box">
         <div class="left" th:each="rank : ${rankingList}" th:if="${rank.rankingCount}<2">
@@ -86,23 +86,45 @@
                 <p id="big-poster-text2"></p>
             </div>
         </div>
-        <div class="right-updown">
-            <div class="right">
-                <div id="right-3" th:each="rank : ${rankingList}" th:if="${rank.rankingCount}>1 and ${rank.rankingCount}<5">
-                    <a th:href="@{/artist/artistInfo(artistNumber = ${rank.artistNumber})}">
-                        <img src="/images/main/small-poster.png" alt="#">
-                    </a>
-                </div>
-
+        <div class="left" th:each="rank : ${rankingList}" th:if="${rank.rankingCount}<2">
+            <div>
+                <a th:href="@{/artist/artistInfo(artistNumber = ${rank.artistNumber})}">
+                    <img src="/images/main/big-poster.png" alt="#">
+                </a>
             </div>
-            <div class="right">
-                <div id="right-3-down" th:each="rank : ${rankingList}" th:if="${rank.rankingCount}>4 and ${rank.rankingCount}<8">
-                    <a th:href="@{/artist/artistInfo(artistNumber = ${rank.artistNumber})}">
-                        <img src="/images/main/small-poster.png" alt="#">
-                    </a>
-                </div>
+            <div>
+                <p id="big-poster-text1" th:text="${rank.artistName}"></p>
+                <p id="big-poster-text2"></p>
             </div>
         </div>
+        <div class="left" th:each="rank : ${rankingList}" th:if="${rank.rankingCount}<2">
+            <div>
+                <a th:href="@{/artist/artistInfo(artistNumber = ${rank.artistNumber})}">
+                    <img src="/images/main/big-poster.png" alt="#">
+                </a>
+            </div>
+            <div>
+                <p id="big-poster-text1" th:text="${rank.artistName}"></p>
+                <p id="big-poster-text2"></p>
+            </div>
+        </div>
+        <!--            <div class="right-updown">-->
+        <!--                    <div class="right_1">-->
+        <!--                    <div id="right-3" th:each="rank : ${rankingList}" th:if="${rank.rankingCount}>1 and ${rank.rankingCount}<5">-->
+        <!--                        <a th:href="@{/artist/artistInfo(artistNumber = ${rank.artistNumber})}">-->
+        <!--                        <img src="/images/main/small-poster.png" alt="#">-->
+        <!--                        </a>-->
+        <!--                    </div>-->
+
+        <!--                </div>-->
+        <!--                <div class="right_2">-->
+        <!--                    <div id="right-3-down" th:each="rank : ${rankingList}" th:if="${rank.rankingCount}>4 and ${rank.rankingCount}<8">-->
+        <!--                        <a th:href="@{/artist/artistInfo(artistNumber = ${rank.artistNumber})}">-->
+        <!--                        <img src="/images/main/small-poster.png" alt="#">-->
+        <!--                        </a>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
     </div>
 </div>
 
@@ -113,17 +135,18 @@
         </div>
         <div>
             <div class="small-5-box" style="text-align:center;" >
-                <div class="image-plus-box" th:each="show : ${showVO}">
-                    <a th:href="@{/concert/concertPlanInfo(showNumber = ${show.showNumber})}">
-                        <div>
-                            <img th:src="@{/'file/concert/display?fileName='+${file.uploadPath}+'/'+${file.uuid}+'_'+${file.fileName}" alt="#">
-                        </div>
-                        <div class="small-5-box-textbox">
-                            <p id="small-5-box-uptext" th:text="*{show.showTime}"></p>
-                            <p id="small-5-box-downtext" th:text="*{show.showLocation}"></p>
-                        </div>
-                    </a>
-                </div>
+                <!--                        <div class="image-plus-box">-->
+                <!--                        <div class="image-plus-box" th:each="show : ${showVO}">-->
+                <!--                            <a th:href="@{/concert/concertPlanInfo(showNumber = ${show.showNumber})}">-->
+                <!--                            <div>-->
+                <!--                                <img th:src="@{/'file/concert/display?fileName='+${file.uploadPath}+'/'+${file.uuid}+'_'+${file.fileName}" alt="#">-->
+                <!--                            </div>-->
+                <!--                            <div class="small-5-box-textbox">-->
+                <!--                                <p id="small-5-box-uptext" th:text="*{show.showTime}"></p>-->
+                <!--                                <p id="small-5-box-downtext" th:text="*{show.showLocation}"></p>-->
+                <!--                            </div>-->
+                <!--                            </a>-->
+                <!--                        </div>-->
             </div>
             <div>
                 <a href="/concert/concertPlanList" class="more-link-box">버스킹 더보기+</a>
@@ -201,18 +224,18 @@
         </div>
         <div class="poster-list-6">
             <div class="poster-list">
-                <div th:each="work : ${workVO}">
-                    <a th:href="@{/work/workInfo(workNumber = ${work.workNumber})}">
-                        <div class="poster-list-text-box">
-                            <div class="poster-list-1">
-                                <img src="/images/main/poster-list-pic-6.png" alt="">
-                            </div>
-                            <div>
-                                <p class="poster-list-text" th:text="*{work.workName}"></p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                <!--                <div th:each="work : ${workVO}">-->
+                <!--                <a th:href="@{/work/workInfo(workNumber = ${work.workNumber})}">-->
+                <!--                    <div class="poster-list-text-box">-->
+                <!--                        <div class="poster-list-1">-->
+                <!--                            <img src="/images/main/poster-list-pic-6.png" alt="">-->
+                <!--                        </div>-->
+                <!--                        <div>-->
+                <!--                            <p class="poster-list-text" th:text="*{work.workName}"></p>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </a>-->
+                <!--            </div>-->
             </div>
         </div>
     </div>
@@ -230,4 +253,7 @@
 <script src="/assets/js/main/main.js"></script>
 <script src="/assets/js/main/slide.js/"></script>
 
+<script>
+
+</script>
 </html>
