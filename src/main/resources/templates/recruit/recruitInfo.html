@@ -118,21 +118,25 @@
     </footer>
 
 </body>
-    <script th:inline="javascript">
-        let number = [[${recruitmentNumber}]]
-            $( document ).ready( function() {$( window ).scroll( function() {if ( $( this ).scrollTop() > 200 ) {$( '.jcm-top' ).fadeIn();} else {$( '.jcm-top' ).fadeOut();}} );$( '.jcm-top' ).click( function() {$( 'html, body' ).animate( { scrollTop : 0 }, 400 );return false;} );} )
+<script src="/assets/js/recruit/recruitment.js"></script>
+<script th:inline="javascript">
+    let number = [[${recruitment.recruitmentNumber}]];
+    $( document ).ready( function() {$( window ).scroll( function() {if ( $( this ).scrollTop() > 200 ) {$( '.jcm-top' ).fadeIn();} else {$( '.jcm-top' ).fadeOut();}} );$( '.jcm-top' ).click( function() {$( 'html, body' ).animate( { scrollTop : 0 }, 400 );return false;} );} )
 
+    $(document).ready(function (){
         getImage(number);
+    })
 
 
-        function getImage(num) {
-            recruitmentService.getImg(num, function (file){
-                let src = "/file/recruitment/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
-                $("#img-view").attr("src", src);
-            });
-        }
+    function getImage(num) {
+        recruitmentService.getImg(num, function (file){
+            console.log("--------------------------------------"+file);
+            let src = "/file/recruitment/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+            $("#img-view").attr("src", src);
+        });
+    }
 
 
-    </script>
+</script>
 
 </html>

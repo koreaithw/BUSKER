@@ -229,7 +229,7 @@
             $.each(list, function (i, recru) {
                 str += "<div class=\"image-plus-box\">";
                 str += "<div>";
-                str += "<img src=\"/images/recruit/small-5-poster.png\" alt=\"#\">";
+                str += "<img src=\"/images/recruit/small-5-poster.png\" id='img-"+recru.recruitmentNumber+""' alt=\"#\">";
                 str += "</div>";
                 str += "<div class='small-5-box-textbox'>";
                 str += "<p class='small-5-box-uptext'>"+(recru.recruitmentDay).substring(0,11)+" "+recru.recruitmentTime+"</p>";
