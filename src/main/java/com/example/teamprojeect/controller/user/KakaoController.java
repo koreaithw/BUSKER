@@ -26,9 +26,9 @@ public class KakaoController {
         String token = kakaoService.getKaKaoAccessToken(code);
         log.info("==================================info.toString()");
         session.setAttribute("token", token);
-        kakaoService.getKakaoInfo(token);
+        session.setAttribute("userNumber", kakaoService.getKakaoInfo(token)); // userNumber 세션에 카카오 유저 넘버 넣음
         log.info("kakaoService.getKakaoInfo(token).toString()================================" + kakaoService.getKakaoInfo(token).toString());
-        model.addAttribute("sessionCheck", "k");
+        session.setAttribute("sessionCheck", "k");
         return "/main/main";
     }
 
@@ -38,11 +38,6 @@ public class KakaoController {
         kakaoService.logoutKakao((String) session.getAttribute("token"));
         model.addAttribute("sessionCheck", "0");
         session.invalidate();
-        log.info(session.getAttribute("-===============================").toString());
-        log.info(session.getAttribute("token").toString());
-        log.info(session.getAttribute("token").toString());
-        log.info(session.getAttribute("token").toString());
-        log.info(session.getAttribute("token").toString());
     }
 
 //    @GetMapping("/login")

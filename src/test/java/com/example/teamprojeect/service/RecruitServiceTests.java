@@ -36,7 +36,7 @@ public class RecruitServiceTests {
         recruitmentFileVO.setUploadPath("asdsdaff5522");
         recruitmentFileVO.setFileName("파일이름테스트");
 
-        recruitService.register(recruitmentVO, recruitmentFileVO);
+        recruitService.register(recruitmentVO);
 
         log.info("공고 번호 : "+recruitmentVO.getRecruitmentNumber());
     }

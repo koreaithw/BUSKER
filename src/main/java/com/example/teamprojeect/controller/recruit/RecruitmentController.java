@@ -103,11 +103,14 @@ public class RecruitmentController {
 
     // 모집공고 등록 페이지 이동
     @PostMapping("/recruitRegister")
-    public RedirectView goRecruitRegister(RecruitmentVO recruitmentVO, RecruitmentFileVO recruitmentFileVO, RedirectAttributes rttr) {
+    public RedirectView goRecruitRegister(RecruitmentVO recruitmentVO, RedirectAttributes rttr) {
         log.info("*************");
         log.info("/register");
         log.info("*************");
-        recruitService.register(recruitmentVO, recruitmentFileVO);
+        log.info(recruitmentVO.getFile().toString());
+        log.info(recruitmentVO.getFile().toString());
+        log.info(recruitmentVO.getFile().toString());
+        recruitService.register(recruitmentVO);
         rttr.addFlashAttribute("recruitmentNumber",recruitmentVO.getRecruitmentNumber());
         return new RedirectView("/recruit/recruitList");
     }

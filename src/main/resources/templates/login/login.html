@@ -1,123 +1,124 @@
 <!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="ko"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>로그인</title>
-    <link rel="stylesheet" href="/assets/css/login/login.css" />
-    <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/assets/css/login/login.css"/>
+    <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
 
     <!--카카오-->
-<!--    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>-->
-<!--    <script src="YOUR_SDK_FILE_PATH"></script>-->
-<!--    <script>-->
-<!--      // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.-->
-<!--      // Kakao.init('6cc7804381aff3c573b6e6db3927a7c5');-->
+    <!--    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>-->
+    <!--    <script src="YOUR_SDK_FILE_PATH"></script>-->
+    <!--    <script>-->
+    <!--      // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해 주세요.-->
+    <!--      // Kakao.init('6cc7804381aff3c573b6e6db3927a7c5');-->
 
-<!--      // SDK 초기화 여부를 판단합니다.-->
-<!--      console.log(Kakao.isInitialized());-->
-<!--    </script>-->
+    <!--      // SDK 초기화 여부를 판단합니다.-->
+    <!--      console.log(Kakao.isInitialized());-->
+    <!--    </script>-->
 
     <!--네이버-->
-    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+            charset="utf-8"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <!--로그인 끝-->
 
 
-  </head>
-  <body>
-    <div class="loginWrap">
+</head>
+<body>
+<div class="loginWrap">
 
-      <form name="loginForm" id="loginForm" method="post" action="/user/loginSuccess">
+    <form name="loginForm" id="loginForm" method="post" action="/user/loginSuccess">
 
 
         <div class="loginBox">
-          <div class="id-inputBox">
-            <div class="id-flex">
-              <input
-                class="login-input id-input"
-                name="userId"
-                type="text"
-                placeholder="아이디"
-              />
-              <div class="delete-div delete-id-div" style="display: none">
-                <button
-                  type="button"
-                  tabindex="-1"
-                  class="delete-text id-text-delete"
-                ></button>
-              </div>
+            <div class="id-inputBox">
+                <div class="id-flex">
+                    <input
+                            class="login-input id-input"
+                            name="userId"
+                            type="text"
+                            placeholder="아이디"
+                    />
+                    <div class="delete-div delete-id-div" style="display: none">
+                        <button
+                                type="button"
+                                tabindex="-1"
+                                class="delete-text id-text-delete"
+                        ></button>
+                    </div>
+                </div>
+                <span id="checkId"></span>
             </div>
-            <span id="checkId"></span>
-          </div>
-          <div class="pw-inputBox">
-            <div class="pw-flex">
-              <input
-                class="login-input pw-input"
-                name="userPw"
-                type="password"
-                placeholder="비밀번호"
-              />
-              <div class="delete-div delete-pw-div" style="display: none">
-                <button
-                  type="button"
-                  tabindex="-1"
-                  class="delete-text pw-text-delete"
-                ></button>
-              </div>
-              <div id="pwImg"></div>
+            <div class="pw-inputBox">
+                <div class="pw-flex">
+                    <input
+                            class="login-input pw-input"
+                            name="userPw"
+                            type="password"
+                            placeholder="비밀번호"
+                    />
+                    <div class="delete-div delete-pw-div" style="display: none">
+                        <button
+                                type="button"
+                                tabindex="-1"
+                                class="delete-text pw-text-delete"
+                        ></button>
+                    </div>
+                    <div id="pwImg"></div>
+                </div>
+                <span id="checkPw"></span>
             </div>
-            <span id="checkPw"></span>
-          </div>
-          <div class="idSave-box">
-            <input class="idSave-check" type="checkbox" />
-            <label class="id-save">아이디 저장</label>
-          </div>
-          <div class="">
-            <input
-              type="button"
-              id="login-button"
-              class="login-click login-button"
-              onclick="send();"
-              value="로그인"
-            />
-          </div>
-          <div class="loginFind-box">
-            <div class="find-button">
-              <div class="id-find"><a href="/user/idFind">아이디 찾기</a></div>
-              <div class="bound"></div>
-              <div class="pw-find"><a href="/user/pwFind">비밀번호 찾기</a></div>
+            <div class="idSave-box">
+                <input class="idSave-check" id="idSave-check" type="checkbox"/>
+                <label class="id-save">아이디 저장</label>
             </div>
-            <div class="join-button">
-              <div class="user-join-button"><a class="join-click" href="/user/userJoin">회원가입</a></div>
+            <div class="">
+                <input
+                        type="button"
+                        id="login-button"
+                        class="login-click login-button"
+                        onclick="send();"
+                        value="로그인"
+                />
             </div>
-          </div>
-          <div class="phoneLogin-box" style="display: none;">
-            <div class="phoneLogin"><a>휴대폰 번호로 로그인</a></div>
-          </div>
+            <div class="loginFind-box">
+                <div class="find-button">
+                    <div class="id-find"><a href="/user/idFind">아이디 찾기</a></div>
+                    <div class="bound"></div>
+                    <div class="pw-find"><a href="/user/pwFind">비밀번호 찾기</a></div>
+                </div>
+                <div class="join-button">
+                    <div class="user-join-button"><a class="join-click" href="/user/userJoin">회원가입</a></div>
+                </div>
+            </div>
+            <div class="phoneLogin-box" style="display: none;">
+                <div class="phoneLogin"><a>휴대폰 번호로 로그인</a></div>
+            </div>
 
-          <div class="loginType-box">
-            <div class="loginType">
-              <a id="naver_id_login" href="javascript:naverSignInCallback()" style="display: none;"><img
-                  class="loginType-img"
-                  src="https://static.nid.naver.com/oauth/button_g.PNG?version=js-2.0.1"
-                  width="44px"
-              /></a>
-            </div>
-            <div class="loginType">
-              <a id="" href="https://kauth.kakao.com/oauth/authorize?client_id=9ac138945c16d418c246d1af4dc646a8&redirect_uri=
+            <div class="loginType-box">
+                <div class="loginType">
+                    <a id="naver_id_login" href="javascript:naverSignInCallback()" style="display: none;"><img
+                            class="loginType-img"
+                            src="https://static.nid.naver.com/oauth/button_g.PNG?version=js-2.0.1"
+                            width="44px"
+                    /></a>
+                </div>
+                <div class="loginType">
+                    <a id="" href="https://kauth.kakao.com/oauth/authorize?client_id=9ac138945c16d418c246d1af4dc646a8&redirect_uri=
 http://localhost:10007/login&response_type=code">
-                <img class="loginType-img" src="/images/login/kakao.png" width="44px" /></a>
+                        <img class="loginType-img" src="/images/login/kakao.png" width="44px"/></a>
+                </div>
             </div>
-          </div>
         </div>
-      </form>
-    </div>
+    </form>
+</div>
 
 <!--네이버-->
-    <!--네이버 로그인-->
-    <!-- //네이버 로그인 버튼 노출 영역 -->
+<!--네이버 로그인-->
+<!-- //네이버 로그인 버튼 노출 영역 -->
 <!--    <script type="text/javascript">-->
 <!--      var naver_id_login = new naver_id_login("aJQ99oNDfbYzze0OIl5r", "http://localhost:10007/naverLogin");-->
 <!--      var state = naver_id_login.getUniqState();-->
@@ -140,12 +141,12 @@ http://localhost:10007/login&response_type=code">
 <!--    </script>-->
 <!--네이버 끝-->
 
-  </body>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script type="text/javascript" src="/assets/js/login/login.js"></script>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/assets/js/login/login.js"></script>
 
 <!--카카오-->
-  <!--카카오톡 로그인-->
+<!--카카오톡 로그인-->
 <!--  <script type="text/javascript">-->
 <!--    function loginFormWithKakao() {-->
 <!--      Kakao.Auth.loginForm({-->
@@ -163,6 +164,76 @@ http://localhost:10007/login&response_type=code">
 <!--  </script>-->
 <!--카카오 끝-->
 
+<script th:inline="javascript">
+    let alertMsg = [[${message}]];
+    console.log(alertMsg);
+    if (!(alertMsg == null)) {
+        alert(alertMsg);
+    }
+    //
+    // if($("#idSave-check").is(":checked") == true) {
+    //     let userId = [[${session.userId}]];
+    //     $(".id-input").attr("value", userId)
+    // }
+
+    // 쿠키심기
+    $(document).ready(function(){
+        // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
+        var userInputId = getCookie("userInputId");
+        $("input[name='userId']").val(userInputId);
+
+        if($("input[name='userId']").val() != ""){
+            // 그 전에 ID를 저장해서 처음 페이지 로딩 시, 입력 칸에 저장된 ID가 표시된 상태라면,
+            $(".idSave-check").attr("checked", true); // ID 저장하기를 체크 상태로 두기.
+        }
+
+        $(".idSave-check").change(function(){ // 체크박스에 변화가 있다면,
+            if($(".idSave-check").is(":checked")){ // ID 저장하기 체크했을 때,
+                var userInputId = $("input[name='userId']").val();
+                setCookie("userInputId", userInputId, 7); // 7일 동안 쿠키 보관
+            }else{ // ID 저장하기 체크 해제 시,
+                deleteCookie("userInputId");
+            }
+        });
+
+        // ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
+        $("input[name='userId']").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
+            if($(".idSave-check").is(":checked")){ // ID 저장하기를 체크한 상태라면,
+                var userInputId = $("input[name='userId']").val();
+                setCookie("userInputId", userInputId, 7); // 7일 동안 쿠키 보관
+            }
+        });
+
+        //쿠키를 위한 함수
+        function setCookie(cookieName, value, exdays){
+            var exdate = new Date();
+            exdate.setDate(exdate.getDate() + exdays);
+            var cookieValue = escape(value) + ((exdays==null)?"":";expires="+exdate.toGMTString());
+            document.cookie = cookieName + "=" + cookieValue;
+        }
+
+        function deleteCookie(cookieName){
+            var expireDate = new Date();
+            expireDate.setDate(expireDate.getDate() - 1);
+            document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+        }
+
+        function getCookie(cookieName) {
+            cookieName = cookieName + '=';
+            var cookieData = document.cookie;
+            var start = cookieData.indexOf(cookieName);
+            var cookieValue = '';
+            if(start != -1){
+                start += cookieName.length;
+                var end = cookieData.indexOf(';', start);
+                if(end == -1)end = cookieData.length;
+                cookieValue = cookieData.substring(start, end);
+            }
+            return unescape(cookieValue);
+        }
+    });
+
+</script>
 </html>
 
 

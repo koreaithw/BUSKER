@@ -123,6 +123,7 @@ public class KakaoService {
                 return userVO.getUserNumber();
             } else {
                 userNumber = userService.kakaoLogin(email);
+                log.info("email 아이디를 넣은 유저의 유저 넘버" + userNumber);
             }
             
             
