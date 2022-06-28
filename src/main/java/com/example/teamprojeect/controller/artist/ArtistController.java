@@ -103,9 +103,11 @@ public class ArtistController {
 //     아티스트 상세보기 페이지
     @GetMapping("/artistInfo")
     public String goArtistInfo(Long artistNumber, Criteria criteria, HttpServletRequest request, Model model) {
+
         String requestURL = request.getRequestURI();
         ArtistVO artistVO = artistService.getDetail(artistNumber);
 
+//        Long userNumber = session.getAttribute("userNumber");
 
         if(artistVO.getArtistType() == 1) {
             artistVO.setArtistCategory("뮤지션");
@@ -114,7 +116,7 @@ public class ArtistController {
         }
 
 
-        Long userNumber = 2L;
+
 
         log.info("userNumber=================" + userNumber);
         log.info("artistNumber=================" + artistNumber);

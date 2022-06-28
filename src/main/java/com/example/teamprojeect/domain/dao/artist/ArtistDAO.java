@@ -142,4 +142,6 @@ public class ArtistDAO {
 
     public int artistLikeCount(Long artistNumber) {return artistMapper.artistLikeCount(artistNumber);}
 
+    public ArtistVO getDetail2(Long userNumber) {return artistMapper.getDetail2(userNumber);}
+
 }

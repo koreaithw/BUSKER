@@ -11,6 +11,11 @@ $(".modal-close-btn").click(function () {
 });
 
 
+function modalout() {
+    $(".modal").fadeOut();
+}
+
+
 
 // 좋아요 버튼 누르면 좋아요 표시 하기
 // let check = false;
@@ -158,7 +163,7 @@ function donateapi() {
     }, function (rsp) {
         console.log(rsp);
         if (rsp.success) {
-            var msg = '결제가 완료되었습니다.';
+            var msg = '후원해주셔서 감사합니다.';
             // msg += '고유ID : ' + rsp.imp_uid;
             // msg += '상점 거래ID : ' + rsp.merchant_uid;
             msg += '결제 금액 : ' + rsp.paid_amount;
@@ -188,6 +193,7 @@ function donateapi() {
             msg += '에러내용 : ' + rsp.error_msg;
         }
         alert(msg);
+        modalout();
         // document.location.href="/user/mypage/home"; //alert창 확인 후 이동할 url 설정
     });
 };
@@ -323,6 +329,7 @@ $(document).ready(function () {
             likeval -= 1;
 
             setTimeout(function() {
+                // Location.reload(true)
                 location.replace(location.href);
             }, 50);
 
@@ -368,6 +375,7 @@ $(document).ready(function () {
 
 
             setTimeout(function() {
+                // Location.reload(true)
                 location.replace(location.href);
             }, 50);
 
