@@ -118,6 +118,8 @@ public class KakaoService {
             
             if(userService.searchId(email) == null) {
                 userVO.setUserId(email);
+                userVO.setUserName(email);
+                userVO.setUserPw("buskers");
                 userService.kakaoJoin(userVO);
                 log.info("email 여기까지22 : " + userVO.getUserNumber());
                 return userVO.getUserNumber();
