@@ -18,7 +18,7 @@
 <div class="content">
     <p class="title-text">아티스트 모집 공고</p>
 </div>
-<div class="big-box" style="display: block" th:object="${work}">
+<div class="big-box" style="display: block" th:object="${recruitmentVO}">
     <div class="detail-title">
         <div class="form-label">모집공고명</div>
         <input
@@ -76,13 +76,20 @@
 
                     <tr>
                         <td class="label">주최정보</td>
-                        <td><input type="text"></td>
+                        <td><input type="text" th:value="*{recruitmentUrl}"></td>
 
                     </tr>
                     <tr>
                         <td class="label">모집대상</td>
-                        <td><input type="text" th:value="*{recruitmentType}"></td>
-
+                        <td>
+                            <select id="recru-target" name="recruitmentType">
+                                <option value="A">퍼포먼스, 뮤지션 모두 모집</option>
+                                <option value="P">퍼포먼스 모집</option>
+                                <option value="M">뮤지션 모집</option>
+                            </select>
+                        </td>
+<!--                        <td><input class="recruit_target" type="text" th:if="*{recruitmentType == 'P'}" value="퍼포먼스"></td>-->
+<!--                        <td><input class="recruit_target" type="text" th:if="*{recruitmentType == 'M'}" value="뮤지션"></td>-->
                     </tr>
                     </tbody>
                 </table>
@@ -96,25 +103,25 @@
         <div class="noti-view-coment">
             <p class="noti-view-comen-tit">공연 개요</p>
             <div class="noti-view-comen-txt">
-                <textarea rows="" cols="100" name="recruitmentSummary" th:value="*{recruitmentSummary}"></textarea>
+                <textarea rows="" cols="100" name="recruitmentSummary" th:text="*{recruitmentSummary}"></textarea>
             </div>
         </div>
         <div class="noti-view-coment">
             <p class="noti-view-comen-tit">공연 소개</p>
             <div class="noti-view-comen-txt">
-                <textarea rows="" cols="100" name="recruitmentCondition" th:value="*{recruitmentCondition}"></textarea>
+                <textarea rows="" cols="100" name="recruitmentCondition" th:text="*{recruitmentCondition}"></textarea>
             </div>
         </div>
         <div class="noti-view-coment">
             <p class="noti-view-comen-tit">모집 조건</p>
             <div class="noti-view-comen-txt">
-                <textarea rows="" cols="100" name="recruitmentIntroduce" th:value="*{recruitmentIntroduce}"></textarea>
+                <textarea rows="" cols="100" name="recruitmentIntroduce" th:text="*{recruitmentIntroduce}"></textarea>
             </div>
         </div>
         <div class="noti-view-coment">
             <p class="noti-view-comen-tit">기획사 정보</p>
             <div class="noti-view-comen-txt">
-                <textarea rows="" cols="100" name="recruitmentHost" th:value="*{recruitmentHost}"></textarea>
+                <textarea rows="" cols="100" name="recruitmentHost" th:text="*{recruitmentHost}"></textarea>
             </div>
         </div>
     </div>
@@ -136,4 +143,5 @@
         type="text/javascript"
         src="/assets/js/recruit/recruitRegister.js?ver=1"
 ></script>
+
 </html>
