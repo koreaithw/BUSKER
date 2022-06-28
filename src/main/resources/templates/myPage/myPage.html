@@ -2402,7 +2402,63 @@
     // });
   });
 
+  $(function () {
+    //드래그앤드랍
+    $(".img_box").on("dragenter", function (e) { // 드래그 한 아이템을 영역 위로 올렸을 때 반응
+      e.preventDefault(); // 페이지를 이동시킨다거나 form 안에 있는 input 등을 전송한다던가 그러한 동작이 있는데 e.preventDefault 는 그 동작을 중단
+      e.stopPropagation(); // e.stopPropagation는 이벤트가 상위 엘리먼트에 전달되지 않게 막아 준다.
 
+      $("#file_drop").show();
+      $("#image-samplebox").hide();
+
+    }).on("dragover", function (e) { // 드래그 하면서 마우스가 대상 객체의 위에 자리 잡고 있을 때 발생함.
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).css("background-color", "#FFF2E5");
+
+    }).on("dragleave", function (e) { // 드래그가 영역을 벗어났을 때
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).css("background-color", "#FFF");
+
+    }).on("drop", function (e) { // 아이템을 떨어뜨렸을 때
+      e.preventDefault();
+      // 아이템을 떨어트리면
+      var files = e.originalEvent.dataTransfer.files; // 기본 event를 불러오고.기본 event로 전송된 데이터를 가져와서.files 를 찾는다.
+
+      $("#file_drop2").hide();
+      $("#image-samplebox").show();
+
+      $("#image-samplebox2").attr("src", window.URL.createObjectURL(files[0]));
+      let formData = new FormData();
+      formData.append("uploadFiles", files[0]);
+
+      $.ajax({
+        url: "/file/artist/delete",
+        type: "post",
+        data: {fileName: $fileName},
+        success: function(){
+        }
+      });
+
+      $.ajax({
+        url: "/file/artist/upload",
+        type: "post",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (file) {
+          // showUploadResult(files);
+          fileList.push(file[0]);
+
+          $("#fileName").val(file[0].fileName)
+          $("#uuid").val(file[0].uuid)
+          $("#uploadPath").val(file[0].uploadPath)
+        }
+      });
+    });
+    let formData = new FormData($("#fileForm")[0]);
+  });
 
 </script>
 </html>

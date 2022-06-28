@@ -46,13 +46,16 @@ public class MypageController {
     @GetMapping("/myPage")
     public String goMypage(Model model, HttpSession session) {
         Long userNumber = Long.valueOf(String.valueOf(session.getAttribute("userNumber")));
+        Long artistNumber = Long.valueOf(String.valueOf(session.getAttribute("artistNumber")));
         UserVO userVO = userService.read(userNumber);
+        ArtistVO artistVO = artistService.getDetail(artistNumber);
         String userEmail = userVO.getUserEmail();
         String[] str = userEmail.split("@");
         userVO.setUserEmailId(str[0]);
         userVO.setUserDomain(str[1]);
         log.info(str[0]);
         model.addAttribute("user",userVO);
+        model.addAttribute("artist", artistNumber);
         return "/myPage/myPage";
     }
 

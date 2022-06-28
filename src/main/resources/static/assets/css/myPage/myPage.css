@@ -1630,3 +1630,14 @@ textarea:focus,
   border-color: #ff9326 !important;
   border-radius: 10px !important;
 }
+
+.file_drop2 {
+  display: inline-block;
+  width: 430px;
+  height: 596px;
+  border: 1px solid #000 !important;
+  overflow: auto !important;
+  border-color: #ff9326 !important;
+  border-radius: 10px !important;
+}
+
