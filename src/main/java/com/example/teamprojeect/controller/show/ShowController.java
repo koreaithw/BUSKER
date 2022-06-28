@@ -429,14 +429,14 @@ public class ShowController {
 
     // 진행 예정 공연 수정 페이지 이동
     @PostMapping("/concertPlanModify")
-    public RedirectView goConcertPlanModify(ShowVO showVO, Criteria criteria, RedirectAttributes rttr) {
+    public RedirectView goConcertPlanModify(ShowVO showVO, Criteria criteria, RedirectAttributes rttr, HttpSession session) {
         log.info("*************");
         log.info("/modify");
         log.info("*************");
         log.info("================================");
         log.info(criteria.toString());
         log.info("================================");
-        showVO.setArtistNumber(1L);
+        showVO.setArtistNumber(Long.valueOf(String.valueOf((session.getAttribute("artistNumber")))));
         if(showService.modify(showVO)) {
             rttr.addAttribute("showNumber", showVO.getShowNumber());
             rttr.addAttribute("pageNum", criteria.getPageNum());
@@ -449,8 +449,8 @@ public class ShowController {
 
     // 진행 예정 공연 등록 페이지 이동
     @PostMapping("/concertPlanRegister")
-    public RedirectView goConcertPlanRegister(ShowVO showVO, RedirectAttributes rttr) {
-        showVO.setArtistNumber(1L);
+    public RedirectView goConcertPlanRegister(ShowVO showVO, RedirectAttributes rttr, HttpSession session) {
+        showVO.setArtistNumber(Long.valueOf(String.valueOf((session.getAttribute("artistNumber")))));
         showService.register(showVO);
         rttr.addFlashAttribute("showNumber", showVO.getShowNumber());
         return new RedirectView("/concert/concertPlanList");
