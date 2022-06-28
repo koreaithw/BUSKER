@@ -75,7 +75,6 @@ public class WorkController {
 
     @PostMapping("/workRegister")
     public RedirectView goWorkRegister(WorkVO workVO,RedirectAttributes rttr) {
-        workVO.setArtistNumber(1L);
         log.info("*************");
         log.info("/register");
         log.info("*************");
