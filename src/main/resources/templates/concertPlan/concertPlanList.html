@@ -67,7 +67,27 @@
             height: 112px;
             overflow: hidden;
         }
+
         .replyImg {
+            transform: scale(1.08);
+            display: block;
+            transition: all 0.3s;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ms5-l-txt {
+            margin-left: 12px !important;
+        }
+
+        .newArtist-img-wrap {
+            width: 167px;
+            height: 234px;
+            overflow: hidden;
+        }
+
+        .newArtist {
             transform: scale(1.08);
             display: block;
             transition: all 0.3s;
@@ -76,8 +96,8 @@
             object-fit: cover;
         }
 
-        .ms5-l-txt {
-            margin-left: 12px !important;
+        .ms5-r-tit {
+            height: 127px !important;
         }
     </style>
 
@@ -105,22 +125,25 @@
 
                 <th:block th:each="Ranking: ${replyRanking}">
                     <li class='' th:object="${Ranking}">
-                        <a th:href='|concert/concertPlanInfo?showNumber=*{showNumber}|' title=''>
+                        <a th:href='|/concert/concertPlanInfo?showNumber=*{showNumber}|' title=''>
                             <dl>
                                 <dl>
-                                <dl>
                                     <dl>
-                                        <dt  th:text="|*{replyRanking}위|"></dt>
-                                        <dd>
-                                            <div class="replyImg-wrap">
-                                            <img th:id="*{showNumber}" th:class="|replyImg replyImg-*{showNumber}|" src='/images/concertPlan/img3.jpg' alt=''/>
-                                            </div>
-                                        </dd>
-                                        <dd class='ms5-l-txt'>
-                                            <p class='ms5-l-txt1' th:text="|*{showName} (*{replyCount})|"></p>
-                                            <p class='ms5-l-txt2' th:text="|*{showDay} *{showTime}|"></p>
-                                            <p class='ms5-l-txt2' th:text="|[*{showRegion}] *{showLocation}|"></p>
-                                        </dd>
+                                        <dl>
+                                            <dt th:text="|*{replyRanking}위|"></dt>
+                                            <dd>
+                                                <div class="replyImg-wrap">
+                                                    <img th:id="*{showNumber}"
+                                                         th:class="|replyImg replyImg-*{showNumber}|"
+                                                         src='/images/concertPlan/img3.jpg' alt=''/>
+                                                </div>
+                                            </dd>
+                                            <dd class='ms5-l-txt'>
+                                                <p class='ms5-l-txt1' th:text="|*{showName} (*{replyCount})|"></p>
+                                                <p class='ms5-l-txt2' th:text="|*{showDay} *{showTime}|"></p>
+                                                <p class='ms5-l-txt2' th:text="|*{showRegion}*{showLocation}|"></p>
+                                            </dd>
+                                        </dl>
                                     </dl>
                                 </dl>
                             </dl>
@@ -141,15 +164,20 @@
 
                             <div class='swiper-slide'>
                                 <a th:href='|/artist/artistInfo?&artistNumber=*{artistNumber}|' target='_self'>
-                                                        <span>
-                                                            <img th:id="*{artistNumber}" th:class="|newArtist newArtist-*{artistNumber}|" src="https://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040004/21/05/0400042105_47574_02.407.gif"
-                                                                 />
+                                                        <span class="newArtist-img-wrap">
+                                                            <img th:id="*{artistNumber}"
+                                                                 th:class="|newArtist newArtist-*{artistNumber}|"
+                                                                 src="https://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040004/21/05/0400042105_47574_02.407.gif"
+                                                            />
                                                         </span>
                                     <div>
                                         <p class='ms5-r-txt111' th:text="*{artistName}"></p>
                                         <p class='ms5-r-txt2' th:text="*{artistCategory}"></p>
                                     </div>
-                                    <p><img src="/images/myPage/non-heart-icon.png" width="30px"></p>
+<!--                                    <p class=""><img th:class="|like-button like-*{artistNumber}|"-->
+<!--                                                                       th:id="*{artistNumber}"-->
+<!--                                                                       src="/images/myPage/non-heart-icon.png"-->
+<!--                                                                       width="30px"></p>-->
                                 </a>
                             </div>
                         </div>
@@ -205,25 +233,26 @@
         location.href = "/concert/concertPlanRegister";
     })
 
-    console.log("didi")
-    console.log(($(location).attr('href')))
-
     if (($(location).attr('host')) == "http://localhost:10007/main/") {
 
     }
 
     $(".replyImg").each(function () {
         let showNumber = Number($(this).attr('id'));
-        $.getJSON("/file/concert/file", {showNumber: showNumber}, function(file){
-            let src = "/file/concert/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+        $.getJSON("/file/concert/file", {showNumber: showNumber}, function (file) {
+            let src = "/file/concert/display?fileName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName;
             $("img.replyImg-" + showNumber).attr("src", src);
         })
     })
 
     $(".newArtist").each(function () {
+        console.log("1")
         let artistNumber = Number($(this).attr('id'));
-        $.getJSON("/upload/file", {artistNumber: artistNumber}, function(file){
-            let src = "/upload/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+        console.log("2")
+
+        $.getJSON("/file/artist/find", {artistNumber: artistNumber}, function (file) {
+            console.log(file)
+            let src = "/file/artist/display?fileName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName;
             $("img.newArtist-" + artistNumber).attr("src", src);
         })
     })
