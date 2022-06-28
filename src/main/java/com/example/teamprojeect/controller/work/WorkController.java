@@ -87,6 +87,12 @@ public class WorkController {
 
     @PostMapping("/workUpdate")
     public RedirectView goWorkUpdate(WorkVO workVO, Criteria criteria, RedirectAttributes rttr) {
+        log.info("*************");
+        log.info("/update");
+        log.info("*************");
+        log.info("================================");
+        log.info(criteria.toString());
+        log.info("================================");
         workVO.setArtistNumber(1L);
         if(workService.modifyApply(workVO)){
             rttr.addAttribute("workNumber", workVO.getWorkNumber());

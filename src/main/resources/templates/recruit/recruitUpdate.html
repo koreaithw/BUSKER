@@ -1,134 +1,127 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>아티스트 모집 공고</title>
     <link
             rel="stylesheet"
             href="/assets/css/recruit/recruitRegister.css"
     />
 </head>
-
-<header th:include="~{/header/header3 :: head}">
-
-</header>
 <body>
 <div class="content">
     <p class="title-text">아티스트 모집 공고</p>
 </div>
-<div class="big-box" style="display: block" th:object="${recruitmentVO}">
-    <div class="detail-title">
-        <div class="form-label">모집공고명</div>
-        <input
-                class="recruiting-register-title"
-                type="text"
-                placeholder="모집 주최자의 이름을 입력하세요."
-                th:value="*{recruitmentName}"
-        />
-    </div>
-    <div class="detail-view">
-        <div class="view-layout">
-            <div class="view-left">
-                <!-- <img src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220523/20220523-42255.jpg" width="180" height="252"> -->
+<form action="/recruit/recruitUpdate" method="post" id="registerForm" name="registerForm"
+      enctype="multipart/form-data">
+    <div class="big-box" style="display: block" th:object="${recruitment}">
+        <div class="detail-title">
+            <div class="form-label">모집공고명</div>
+            <input
+                    class="recruiting-register-title"
+                    type="text"  id="recru-title" name="recruitmentName"
+                    placeholder="모집 공고의 이름을 입력하세요."
+                    th:value="*{recruitmentName}"
+            />
+            <p>모집공고명은 비워둘 수 없습니다.</p>
+        </div>
+        <div class="detail-view">
+            <div class="view-layout">
+                <div class="view-left">
+                    <!-- <img src="http://tkfile.yes24.com/upload2/PerfBlog/202205/20220523/20220523-42255.jpg" width="180" height="252"> -->
 
-                <div class="recru-image-box">
-              <span class="input-image-desc"
-              >모집공고 포스터 사진을<br/>등록해주세요.</span
-              >
-                    <img
-                            id="recru-image"
-                            class="recru-image"
-                            src="/images/myPage/photo-plus-icon.png"
-                            alt=""
-                            width="150px"
-                    />
+                    <div class="info_left">
+                        <div class="img_box">
+                            <input id="file_drop" class="file_drop" readonly
+                                   placeholder="&nbsp; 모집 포스터를 드래그 앤 드롭으로 등록">
+                            <img id='image-samplebox' class="file_drop" src='' style="width: 100%; height: auto; overflow: hidden; display: none;">
+                        </div>
+
+                    </div>
                 </div>
-                <input
-                        type="file"
-                        id="recru-file-input"
-                        style="visibility: hidden; display: none"
-                />
-            </div>
 
-            <div class="view-right">
-                <table class="recru-table">
-                    <tbody>
+                <div class="view-right">
+                    <table class="recru-table">
+                        <tbody>
 
-                    <tr>
-                        <td class="label top">장소</td>
-                        <td><input type="text" th:value="*{recruitmentLocation}"></td>
+                        <tr>
+                            <td class="label top">장소</td>
+                            <td><input type="text" id="recru-location" name="recruitmentLocation"><p class="recru-location" th:value="*{recruitmentLocation}">장소는 비워둘 수 없습니다.</p></td>
+                        </tr>
 
-                    </tr>
+                        <tr>
+                            <td class="label">날짜</td>
+                            <td class="date"><input type="date" id="recru-day" name="recruitmentDay"><p class="recru-day" th:value="*{recruitmentDay}">날짜는 비워둘 수 없습니다.</p></td>
 
-                    <tr>
-                        <td class="label">날짜</td>
-                        <td class="date"><input type="date" th:value="*{recruitmentDay}"></td>
+                        </tr>
 
-                    </tr>
+                        <tr>
+                            <td class="label">시간</td>
 
-                    <tr>
-                        <td class="label">시간</td>
+                            <td class="time"><input type="time" id="recru-time" name="recruitmentTime"><p class="recru-time" th:value="*{recruitmentTime}">시간은 비워둘 수 없습니다.</p></td>
+                        </tr>
 
-                        <td class="time"><input type="time" th:value="*{recruitmentTime}"></td>
-                    </tr>
+                        <tr>
+                            <td class="label">주최정보</td>
+                            <td><input type="text" id="recru-notice" name="recruitmentUrl" placeholder="링크를 입력해주세요" th:value="*{recruitmentUrl}"><p class="recru-notice">정보는 비워둘 수 없습니다.</p></td>
 
-                    <tr>
-                        <td class="label">주최정보</td>
-                        <td><input type="text" th:value="*{recruitmentUrl}"></td>
-
-                    </tr>
-                    <tr>
-                        <td class="label">모집대상</td>
-                        <td>
-                            <select id="recru-target" name="recruitmentType">
+                        </tr>
+                        <tr>
+                            <td class="label">모집대상</td>
+                            <td><select id="recru-target" name="recruitmentType">
                                 <option value="A">퍼포먼스, 뮤지션 모두 모집</option>
                                 <option value="P">퍼포먼스 모집</option>
                                 <option value="M">뮤지션 모집</option>
-                            </select>
-                        </td>
-<!--                        <td><input class="recruit_target" type="text" th:if="*{recruitmentType == 'P'}" value="퍼포먼스"></td>-->
-<!--                        <td><input class="recruit_target" type="text" th:if="*{recruitmentType == 'M'}" value="뮤지션"></td>-->
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+                            </select></td>
 
-    <!-- 디테일 페이지 내용 -->
-    <div class="view-content">
-        <!--공연개요, 할인정보, 기획사정보-->
-        <div class="noti-view-coment">
-            <p class="noti-view-comen-tit">공연 개요</p>
-            <div class="noti-view-comen-txt">
-                <textarea rows="" cols="100" name="recruitmentSummary" th:text="*{recruitmentSummary}"></textarea>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-        <div class="noti-view-coment">
-            <p class="noti-view-comen-tit">공연 소개</p>
-            <div class="noti-view-comen-txt">
-                <textarea rows="" cols="100" name="recruitmentCondition" th:text="*{recruitmentCondition}"></textarea>
-            </div>
-        </div>
-        <div class="noti-view-coment">
-            <p class="noti-view-comen-tit">모집 조건</p>
-            <div class="noti-view-comen-txt">
-                <textarea rows="" cols="100" name="recruitmentIntroduce" th:text="*{recruitmentIntroduce}"></textarea>
-            </div>
-        </div>
-        <div class="noti-view-coment">
-            <p class="noti-view-comen-tit">기획사 정보</p>
-            <div class="noti-view-comen-txt">
-                <textarea rows="" cols="100" name="recruitmentHost" th:text="*{recruitmentHost}"></textarea>
-            </div>
-        </div>
-    </div>
 
-</div>
+        <!-- 디테일 페이지 내용 -->
+        <div class="view-content">
+            <!--공연개요, 할인정보, 기획사정보-->
+            <div class="noti-view-coment">
+                <p class="noti-view-comen-tit">공연 개요</p>
+                <div class="noti-view-comen-txt">
+                    <textarea rows="" cols="100" name="recruitmentSummary" id="recru-summary" th:value="*{recruitmentSummary}"></textarea>
+                    <p class="recru-summary">개요는 비워둘 수 없습니다.</p>
+                </div>
+            </div>
+            <div class="noti-view-coment">
+                <p class="noti-view-comen-tit">공연 소개</p>
+                <div class="noti-view-comen-txt">
+                    <textarea rows="" cols="100" name="recruitmentCondition" id="recru-introduce" th:value="*{recruitmentCondition}"></textarea>
+                    <p class="recru-introduce">소개는 비워둘 수 없습니다.</p>
+                </div>
+            </div>
+            <div class="noti-view-coment">
+                <p class="noti-view-comen-tit">모집 조건</p>
+                <div class="noti-view-comen-txt">
+                    <textarea rows="" cols="100" name="recruitmentIntroduce" id="recru-requirement" th:value="*{recruitmentIntroduce}"></textarea>
+                    <p class="recru-requirement">조건은 비워둘 수 없습니다.</p>
+                </div>
+            </div>
+            <div class="noti-view-coment">
+                <p class="noti-view-comen-tit">기획사 정보</p>
+                <div class="noti-view-comen-txt">
+                    <textarea rows="" cols="100" name="recruitmentHost" id="recru-information" th:value="*{recruitmentHost}"></textarea>
+                    <p class="recru-information">정보는 비워둘 수 없습니다.</p>
+                </div>
+            </div>
+        </div>
+        <input type='hidden' id='fileName' name='file.fileName' value=''>
+        <input type='hidden' id='uuid' name='file.uuid' value=''>
+        <input type='hidden' id='uploadPath' name='file.uploadPath' value=''>
+    </div>
+</form>
 <div class="form-button">
-    <button type="submit" id="recru-form-submit" class="recru-form-submit">
+    <button id="recru-form-submit" class="recru-form-submit">
         수정
     </button>
 </div>
@@ -141,7 +134,111 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script
         type="text/javascript"
-        src="/assets/js/recruit/recruitRegister.js?ver=1"
+        src="/assets/js/recruit/recruitRegister.js"
 ></script>
+<script>
 
+    // 드래그 해서 영역에 아이템을 내리면 그게 files에 저장되고 그 이미지 url따서 그걸 div 영역에 이미지 태그로 넣는거
+    var fileList = []; //파일 정보를 담아 둘 배열
+    let imgBox = $(".img_box");
+    let str = "";
+
+    $(function () {
+        //드래그앤드랍
+        $(".file_drop").on("dragenter", function (e) { // 드래그 한 아이템을 영역 위로 올렸을 때 반응
+            e.preventDefault(); // 페이지를 이동시킨다거나 form 안에 있는 input 등을 전송한다던가 그러한 동작이 있는데 e.preventDefault 는 그 동작을 중단
+            e.stopPropagation(); // e.stopPropagation는 이벤트가 상위 엘리먼트에 전달되지 않게 막아 준다.
+
+            $("#file_drop").show();
+            $("#image-samplebox").hide();
+
+        }).on("dragover", function (e) { // 드래그 하면서 마우스가 대상 객체의 위에 자리 잡고 있을 때 발생함.
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).css("background-color", "#FFF2E5");
+        }).on("dragleave", function (e) { // 드래그가 영역을 벗어났을 때
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).css("background-color", "#FFF");
+        }).on("drop", function (e) { // 아이템을 떨어뜨렸을 때
+            e.preventDefault();
+            // 아이템을 떨어트리면
+            var files = e.originalEvent.dataTransfer.files; // 기본 event를 불러오고.기본 event로 전송된 데이터를 가져와서.files 를 찾는다.
+            console.log(files);
+
+            $("#file_drop").hide();
+            $("#image-samplebox").show();
+
+            $("#image-samplebox").attr("src", window.URL.createObjectURL(files[0]));
+            console.log(e.target);
+            console.log($("#image-samplebox").attr("src"));
+            console.log(window.URL.createObjectURL(files[0]))
+            let formData = new FormData();
+            formData.append("uploadFiles", files[0]);
+
+            $.ajax({
+                url: "/file/recruitment/upload",
+                type: "post",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (file) {
+                    // showUploadResult(files);
+                    console.log(file[0]);
+                    fileList.push(file[0]);
+                    console.log(file[0].fileName);
+                    console.log(file[0].uuid);
+                    console.log(file[0].uploadPath);
+
+                    $("#fileName").val(file[0].fileName);
+                    $("#uuid").val(file[0].uuid);
+                    $("#uploadPath").val(file[0].uploadPath);
+                    console.log($("#fileName").val());
+                    console.log($("#uuid").val());
+                    console.log($("#uploadPath").val());
+                }
+            });
+        });
+
+        // // 등록
+        // $(document).on("click", "#save", function () {
+        let formData = new FormData($("#fileForm")[0]);
+        //     if (fileList.length > 0) {
+        //         fileList.forEach(function (f) {
+        //             formData.append("fileList", f);
+        //         });
+        //     }
+        //
+        //     $.ajax({
+        //         url: "/upload",
+        //         data: formData,
+        //         type: 'POST',
+        //         processData: false,
+        //         contentType: false,
+        //         dataType: 'text',
+        //         // cache: false,
+        //         success: function (res) {
+        //             alert("등록에 성공하셨습니다.");
+        //         }, error: function (res) {
+        //             alert("오류 발생.\n관리자에게 문의해주세요.");
+        //         }
+        //     });
+        // });
+    });
+    /*
+    1. processData:false
+
+    : 기본값은 true로, 데이터를 "application/x-www-form-urlenceded" 타입으로 전송합니다.
+
+    -> 다른 형식으로 전송하기 위해 false로 지정합니다.
+
+    2. contentType:false
+
+    : 기본값은 "application/x-www-form-urlenceded"
+
+    -> 파일의 경우 "multipart/form-data"방식으로 전송하기 위해 false로 지정합니다.
+
+    * */
+
+</script>
 </html>

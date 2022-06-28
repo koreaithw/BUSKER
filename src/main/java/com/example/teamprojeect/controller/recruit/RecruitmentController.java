@@ -118,7 +118,7 @@ public class RecruitmentController {
     @PostMapping("/recruitUpdate")
     public RedirectView goRecruitUpdate(RecruitmentVO recruitmentVO, Criteria criteria, RedirectAttributes rttr) {
         log.info("*************");
-        log.info("/modify");
+        log.info("/update");
         log.info("*************");
         log.info("================================");
         log.info(criteria.toString());
