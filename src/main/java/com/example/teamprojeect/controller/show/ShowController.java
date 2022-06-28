@@ -450,13 +450,6 @@ public class ShowController {
     @PostMapping("/concertPlanRegister")
     public RedirectView goConcertPlanRegister(ShowVO showVO, RedirectAttributes rttr) {
         showVO.setArtistNumber(1L);
-        log.info("1111111111111111111111111111111");
-        log.info(showVO.getFile().toString());
-        log.info(showVO.getFile().toString());
-        log.info(showVO.getFile().toString());
-        log.info(showVO.getFile().toString());
-        log.info(showVO.getFile().toString());
-        log.info(showVO.getFile().toString());
         showService.register(showVO);
         rttr.addFlashAttribute("showNumber", showVO.getShowNumber());
         return new RedirectView("/concert/concertPlanList");

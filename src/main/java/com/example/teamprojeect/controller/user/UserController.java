@@ -86,9 +86,12 @@ public class UserController {
     @GetMapping("/login")
     public String goLogin() { return "/login/login"; }
 
+    @GetMapping("/logout")
+    public String goLogout(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) session.invalidate();
+        return "/main/main"; }
 
-
-    // 로그인
     // 로그인
     @PostMapping("/loginSuccess")
     public String goMain(UserVO userVO, HttpServletRequest request) {

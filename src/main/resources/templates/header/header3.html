@@ -19,6 +19,7 @@
         <div class="black-box" id="black-box" style="position: relative;">
            <div class="black-box-right">
                <a href="/user/login" id="consiceLogin">로그인</a>
+               <a href="/user/logout" id="consiceLogout" style="display: none;">로그아웃</a>
                <a href="/myPage/myPage" target="_blank">마이페이지</a>
                <a href="/user/userJoin" target="_blank">회원가입</a>
            </div>
@@ -137,4 +138,15 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="/assets/js/header/header.js"></script>
 </body>
+
+<script th:inline="javascript">
+$(document).ready(function () {
+    if([[$session.userNumber]] == null) {
+        console.log("널이야.")
+    } else {
+        console.log("널이야2.")
+    }
+    // let session = ;
+})
+</script>
 </html>
