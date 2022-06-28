@@ -24,7 +24,7 @@
 <!--               <a href="" id="kakao"  th:if="${session.sessionCheck} == 'k'">카카오톡 탈퇴</a>-->
                <a href="/user/login" th:if="${session.userNumber} == null">마이페이지</a>
                <a href="/myPage/myPage" th:if="${session.userNumber} != null and ${session.userStatus} != 3">마이페이지</a>
-               <a href="/admin/adminMain" th:if="${session.userNumber} == 3">관리자페이지</a>
+               <a href="/admin/adminMain" th:if="${session.userStatus} == 3">관리자페이지</a>
                <a href="/user/userJoin"  th:if="${session.userNumber} == null">회원가입</a>
            </div>
         </div>
