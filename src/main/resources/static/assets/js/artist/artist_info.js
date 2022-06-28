@@ -133,7 +133,7 @@ function donateapi() {
     // getter
     var IMP = window.IMP;
     IMP.init('imp17202305');
-    var usernumber = 1; //임시 넘버
+    var usernumber = 2; //임시 넘버
     let query = window.location.search;
     let param = new URLSearchParams(query);
     let artistnumber = param.get('artistNumber');
@@ -280,7 +280,7 @@ $(document).ready(function () {
         if (likeval > 0) {
             $(".img1").css('display', 'inline-block');
             $(".img2").css('display', 'none');
-            var usernumber = 1; //임시 넘버
+            var usernumber = 2; //임시 넘버
 
             let query = window.location.search;
 
@@ -322,7 +322,9 @@ $(document).ready(function () {
             likecount -= 1;
             likeval -= 1;
 
-            location.replace(location.href);
+            setTimeout(function() {
+                location.replace(location.href);
+            }, 50);
 
 
 
@@ -335,7 +337,7 @@ $(document).ready(function () {
 
             $(".img1").css('display', 'none');
             $(".img2").css('display', 'inline-block');
-            var usernumber = 1; //임시 넘버
+            var usernumber = 2; //임시 넘버
 
             let query = window.location.search;
 
@@ -364,10 +366,14 @@ $(document).ready(function () {
             likecount += 1;
             likeval += 1;
 
-            location.replace(location.href);
+
+            setTimeout(function() {
+                location.replace(location.href);
+            }, 50);
 
 
         }
+
     })
 
 })

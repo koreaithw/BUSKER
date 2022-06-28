@@ -45,13 +45,15 @@ public class MainController {
         listDTO.setDetailDate("2022");
         listDTO.setRankingSortingDate("year");
 
-//        List<ShowVO> showVO = showService.getList(new Criteria(1, 5), listDTO);
+        List<ShowVO> showVO = showService.getList(new Criteria(1, 5), listDTO);
         List<WorkVO> workVO = workService.getList(new Criteria(1, 5));
 
 
         model.addAttribute("rankingList", rankingService.rankingListAll(criteria,listDTO));
-//      model.addAttribute("showVO", showVO);
+        model.addAttribute("showVO", showVO);
         model.addAttribute("workVO", workVO);
+
+        log.info("showVO=========" +showVO);
 
 
 
