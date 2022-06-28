@@ -36,7 +36,7 @@ public class RecruitmentController {
     // 모집공고 페이지 이동
     @GetMapping("/recruitList")
     public String goRecruit() {
-        return "/recruit/recruitList";
+        return "recruit/recruitList";
     }
 
     // 관리자 페이지에 모집 공고 리스트 가져오기 (만들 예정) by REST
@@ -48,10 +48,9 @@ public class RecruitmentController {
     }
     @ResponseBody
     @GetMapping("/recruitmentList/{type}/{page}/{amount}")
-    public RecruitListPageDTO getRecruitList(@PathVariable("page") int pageNum,@PathVariable("amount") int amount, @PathVariable("type") String recruitmentType, Criteria criteria,Model model) {
+    public RecruitListPageDTO getRecruitList(@PathVariable("page") int pageNum,@PathVariable("amount") int amount, @PathVariable("type") String recruitmentType) {
         ListDTO listDTO = new ListDTO();
         listDTO.setArtistType(recruitmentType);
-        model.addAttribute("pageDTO", new PageDTO(criteria, recruitService.getTotal(listDTO)));
         List<RecruitmentVO> recruitList = recruitService.getList(new Criteria(pageNum, amount), listDTO);
 
         SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -86,7 +85,7 @@ public class RecruitmentController {
 
 
     // 모집공고 상세페이지 이동
-    @GetMapping("/recruitInfo")
+    @GetMapping({"/recruitInfo","/recruitRegister"})
     public void goRecruitInfo(Long recruitmentNumber, Criteria criteria, HttpServletRequest request, Model model) {
         log.info("*************");
         String requestURL = request.getRequestURI();
@@ -116,7 +115,7 @@ public class RecruitmentController {
     }
 
     // 모집공고 수정 페이지 이동
-    @GetMapping("/recruitUpdate")
+    @PostMapping("/recruitUpdate")
     public RedirectView goRecruitUpdate(RecruitmentVO recruitmentVO, Criteria criteria, RedirectAttributes rttr) {
         log.info("*************");
         log.info("/modify");
