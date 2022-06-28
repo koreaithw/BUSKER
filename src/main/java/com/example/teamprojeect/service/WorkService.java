@@ -8,12 +8,14 @@ import com.example.teamprojeect.domain.vo.show.ShowFileVO;
 import com.example.teamprojeect.domain.vo.work.WorkFileVO;
 import com.example.teamprojeect.domain.vo.work.WorkVO;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class WorkService {
     private final WorkDAO workDAO;
@@ -22,9 +24,9 @@ public class WorkService {
     // 작품 등록 신청
     @Transactional(rollbackFor = Exception.class)
     public void registerApply(WorkVO workVO){
-        workDAO.registerApply(workVO);
-        System.out.println(workVO.getWorkNumber());
+        log.info("test : "+workVO);
         WorkFileVO workFileVO = workVO.getFile();
+        workDAO.registerApply(workVO);
         workFileVO.setWorkNumber(workVO.getWorkNumber());
         workFileDAO.register(workFileVO);
     }

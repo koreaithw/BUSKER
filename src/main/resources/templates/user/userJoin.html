@@ -112,6 +112,7 @@
 <!--                    </select>-->
                 </div>
                 <p class="id-check"></p>
+                <p class="id-agree"></p>
                 <div>
                     <input type="password" name="userPw" id="userPw" class="inputText" placeholder="비밀번호">
                     <p class="signin-password"></p>
@@ -124,20 +125,6 @@
         </div>
     </div>
     </form>
-
-<!--네이버-->
-<script type="text/javascript">
-    var naver_id_login = new naver_id_login("aJQ99oNDfbYzze0OIl5r", "http://localhost:10007/naverLogin");
-    // 접근 토큰 값 출력
-    alert(naver_id_login.oauthParams.access_token);
-    // 네이버 사용자 프로필 조회
-    naver_id_login.get_naver_userprofile("naverSignInCallback()");
-    // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-    function naverSignInCallback(result) {
-        result(window.location.href = "/main/");
-    }
-</script>
-<!--네이버 끝-->
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -210,6 +197,24 @@
             }else {
                 $(".user-number").text("");
             }
+            let phoneNumber = $("#Phone").val();
+            $.ajax({
+                url: "/user/phoneNumberSearch/" + phoneNumber,
+                type: "post",
+                success: function(result){
+                   if(result) {
+                       alert("이미 가입된 휴대폰 번호입니다.")
+                       location.href="/user/login"
+                   }
+                },
+                error: function(xhr, status, er){
+                    if(error){
+                        error(xhr, status, er);
+                    }
+                }
+
+            })
+
             $(".self-authentication").hide();
             $(".signin-container").show();
         });
@@ -277,6 +282,8 @@
 </script>
 
 <script>
+    $(".id-check").css("color", "red")
+    let idCheck = false;
     $("#searchId").click(function (e) {
         $(".id-check").text("");
         e.preventDefault();
@@ -290,6 +297,7 @@
     })
 
     function searchId(userId, callback, error){
+        $(".id-check").css("color", "red")
         $.ajax({
             url: "/user/" + userId,
             type: "post",
@@ -297,25 +305,18 @@
             // dataType: 'html',
             contentType: "charset=UTF-8",
             success: function(result){
-                if(result){
-                    // callback(result);
-                    if(!(result == null)){
+                    if(result != ""){
                         $(".id-check").text("이미 존재하는 아이디입니다. 다시 입력하세요.");
+                        idCheck = true;
                     }
-                    else if(result == "") {
-                        console.log(result);
-                        console.log("result");
+                    else {
                         $(".id-check").text("사용 가능한 아이디입니다.");
-                        $(".id-check").css("color", "#001eff")
+                        $(".id-check").css("color", "blue")
                     }
-                }
             },
             error: function(xhr, status, er){
                 if(error){
                     error(xhr, status, er);
-                    console.log(xhr);
-                    console.log(status);
-                    console.log(er);
                 }
             }
         })

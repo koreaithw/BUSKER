@@ -1,7 +1,9 @@
 package com.example.teamprojeect.controller.user;
 
 
+import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.user.UserVO;
+import com.example.teamprojeect.service.ArtistService;
 import com.example.teamprojeect.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +29,7 @@ import java.util.Date;
 public class UserController {
     // 필드 생성
     private final UserService userService;
+    private final ArtistService artistService;
 
     // 회원가입 페이지 이동
     @GetMapping("/userJoin")
@@ -66,6 +69,18 @@ public class UserController {
             return "/login/idFind";
         }
     }
+
+    // 휴대폰번호조회
+    @PostMapping("/phoneNumberSearch/{userPhoneNumber}")
+    @ResponseBody
+    public boolean phoneNumberSearch(@PathVariable("userPhoneNumber") String userPhoneNumber) {
+        if (!((userService.findCount(userPhoneNumber)) == 0L)) { // 조회되는 개수가 1개이상이면
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 //    @PostMapping("/searchIdFind")
 //    public String searchIdFind(String userPhoneNumber) {
@@ -126,13 +141,26 @@ public class UserController {
         String userPw = userVO.getUserPw();
 
         Long userNumber = userService.login(userId, userPw); // 로그인 시도 후 유저넘버를 가져옴
-
-        if (!(userNumber == null)) { // 아디, 비번이 있으면
+        log.info("11111111111111111111111111111111" + userNumber);
+        if (userNumber != null) { // 아디, 비번이 있으면
             session.setAttribute("userNumber", userNumber); // 세션에 유저 넘버가 담김
 //            if()
 //            session.setAttribute("userId", userId); // 세션에 유저 넘버가 담김
             Long userNumberSession = Long.valueOf(String.valueOf((session.getAttribute("userNumber"))));
             session.setAttribute("sessionCheck", "u");
+            log.info("55555555555555555555555555555555555"+artistService.getDetail2(userNumber));
+            // 아티스트 넘버가 있으면
+            if(artistService.getDetail2(userNumber)!=null) {
+                ArtistVO artistVO = artistService.getDetail2(userNumber);
+                Long artistNumber = artistVO.getArtistNumber();
+                session.setAttribute("artistNumber", artistNumber);
+                log.info("99999999999999999999999999999"+artistNumber);
+                log.info("혹시 널로 나오닡" + session.getAttribute("artistNumber"));
+
+            } else { // 없으면
+                // 아티스트 넘버 세션 null
+            }
+
         } else { // 없으면
             model.addAttribute("message", "일치하는 아이디와 비밀번호가 없습니다. 다시 입력해주세요.");
             return "/login/login";

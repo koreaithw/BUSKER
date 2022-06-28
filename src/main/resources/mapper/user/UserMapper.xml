@@ -12,42 +12,42 @@
     <select id="searchPhoneNumber" resultType="string">
         SELECT USER_PHONE_NUMBER
         FROM TBL_USER
-        WHERE USER_PHONE_NUMBER = #{userPhoneNumber}
+        WHERE USER_PHONE_NUMBER = #{userPhoneNumber}  AND USER_STATUS = 1
     </select>
 
     <!--회원가입시 아이디 조회 -> 있으면 ID 찾기 실행-->
     <select id="searchId" resultType="string">
         SELECT USER_ID
         FROM TBL_USER
-        WHERE USER_ID = #{userId}
+        WHERE USER_ID = #{userId}  AND USER_STATUS = 1
     </select>
 
     <!-- 회원가입 : ID, PW 찾기-->
     <select id="find" resultType="userVO">
         SELECT USER_ID, USER_REGISTER_DATE
         FROM TBL_USER
-        WHERE USER_PHONE_NUMBER = #{text}
+        WHERE USER_PHONE_NUMBER = #{text}  AND USER_STATUS = 1
     </select>
 
     <!-- 회원가입 : ID, PW 찾기-->
     <select id="findCount" resultType="_Long">
         SELECT COUNT(*)
         FROM TBL_USER
-        WHERE USER_PHONE_NUMBER = #{text}
+        WHERE USER_PHONE_NUMBER = #{text}  AND USER_STATUS = 1
     </select>
 
     <!-- 회원가입 : ID, PW 찾기-->
     <select id="findPwCount" resultType="_Long">
         SELECT COUNT(*)
         FROM TBL_USER
-        WHERE USER_PHONE_NUMBER = #{userPhoneNumber} AND USER_ID = #{userId}
+        WHERE USER_PHONE_NUMBER = #{userPhoneNumber} AND USER_ID = #{userId}  AND USER_STATUS = 1
     </select>
 
     <!--로그인-->
     <select id="login" resultType="_Long">
         SELECT USER_NUMBER
         FROM TBL_USER
-        WHERE USER_ID = #{userId} AND USER_PW = #{userPw}
+        WHERE USER_ID = #{userId} AND USER_PW = #{userPw} AND USER_STATUS = 1
     </select>
 
     <!-- 마이페이지 : 정보 조회-->
@@ -139,12 +139,12 @@
             SELECT SEQ_USER.NEXTVAL FROM DUAL
         </selectKey>
         INSERT INTO TBL_USER
-        (USER_NUMBER, USER_ID)
-        VALUES (#{userNumber}, #{userId})
+        (USER_NUMBER, USER_ID, USER_NAME, USER_PW)
+        VALUES (#{userNumber}, #{userId}, #{userName}, #{userPw})
     </insert>
     <select id="kakaoLogin" resultType="_Long">
         SELECT USER_NUMBER
         FROM TBL_USER
-        WHERE USER_ID = #{userId}
+        WHERE USER_ID = #{userId}  AND USER_STATUS = 1
     </select>
 </mapper>

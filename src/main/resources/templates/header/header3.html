@@ -21,9 +21,10 @@
                <a href="/user/login" id="consiceLogin" th:if="${session.userNumber} == null">로그인</a>
                <a href="/user/logout" id="consiceLogout" th:if="${session.sessionCheck} == 'u'">로그아웃</a>
                <a href="/logout" id="consicekakaoLogout"  th:if="${session.sessionCheck} == 'k'">로그아웃</a>
-               <a href="/user/login" th:if="${session.userNumber} == null" target="_blank">마이페이지</a>
-               <a href="/myPage/myPage" th:if="${session.userNumber} != null" target="_blank">마이페이지</a>
-               <a href="/user/userJoin"  th:if="${session.userNumber} == null" target="_blank">회원가입</a>
+<!--               <a href="" id="kakao"  th:if="${session.sessionCheck} == 'k'">카카오톡 탈퇴</a>-->
+               <a href="/user/login" th:if="${session.userNumber} == null">마이페이지</a>
+               <a href="/myPage/myPage" th:if="${session.userNumber} != null">마이페이지</a>
+               <a href="/user/userJoin"  th:if="${session.userNumber} == null">회원가입</a>
            </div>
         </div>
        
@@ -143,5 +144,24 @@ $(document).ready(function () {
     }
     // let session = ;
 })
+
+$("#kakao").click(function (e) {
+    e.preventDefault();
+    secession();
+})
+function secession() {
+    Kakao.API.request({
+        url: '/v1/user/unlink',
+        success: function(response) {
+            console.log(response);
+            //callback(); //연결끊기(탈퇴)성공시 서버에서 처리할 함수
+            window.location.href='/'
+        },
+        fail: function(error) {
+            console.log('탈퇴 미완료')
+            console.log(error);
+        },
+    });
+};
 </script>
 </html>

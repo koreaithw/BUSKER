@@ -5,6 +5,7 @@ import com.example.teamprojeect.domain.dao.artist.ArtistFileDAO;
 import com.example.teamprojeect.domain.dao.artist.ArtistReplyDAO;
 import com.example.teamprojeect.domain.dao.artist.PaymentDAO;
 import com.example.teamprojeect.domain.dao.user.LikeDAO;
+import com.example.teamprojeect.domain.vo.artist.ArtistFileVO;
 import com.example.teamprojeect.domain.vo.artist.ArtistReplyVO;
 import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
@@ -16,6 +17,7 @@ import com.example.teamprojeect.mapper.artist.ArtistMapper;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -31,9 +33,13 @@ public class ArtistService {
     private final ArtistMapper artistMapper;
     private final ListDTO listDTO;
 
+    @Transactional(rollbackFor = Exception.class)
     // 아티스트 등록 신청
     public void registerApply (ArtistVO artistVO){
         artistDAO.registerApply(artistVO);
+        ArtistFileVO artistFileVO = artistVO.getFile();
+        artistFileVO.setArtistNumber(artistVO.getArtistNumber());
+        artistFileDAO.insert(artistFileVO);
     }
 
     // 아티스트 정보 수정 신청

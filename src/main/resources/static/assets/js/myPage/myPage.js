@@ -477,9 +477,21 @@ $(".ArtistInfo-tab").click(function (e) {
   e.preventDefault();
   $(".myInfo-pwCheck").hide();
   header(".ArtistInfo-tab");
-  if(confirm("아티스트 계정이 존재하지 않습니다. 새로 등록하시겠습니까?") == true){
-    tabChange(".artistJoin-desc");
+
+  if(sessionArtistNumber == null) {
+    console.log(sessionArtistNumber);
+    if (confirm("아티스트 계정이 존재하지 않습니다. 새로 등록하시겠습니까?")) {
+      tabChange(".artistJoin-desc");
+    } else {
+      header(".myInfo-tab");
+      smallMenu(".smallMenu-info");
+      $(".mypage-smallMenu").show();
+      informationTabChange(".myInfo-update");
+      resetText();
+      formReset();
+    }
   } else {
+    console.log(sessionArtistNumber);
     $(divCurrentName).hide();
     artistUserSmallMenu(".artistUserList-tab");
     informationTabChange(".artistUser-Info");

@@ -21,5 +21,24 @@ let recruitmentService = (function () {
         });
     };
 
-    return {getRecruitList: getRecruitList};
+    function getImg(num,callback, error) {
+        $.ajax({
+            url: "/file/recruitment/find/"+num,
+            type: "get",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (file) {
+                if(callback){
+                    callback(file);
+                }
+            },
+            error: function (xhr, status, er) {
+                if(error)   {
+                    error(xhr, status, er);
+                }
+            }
+        });
+    }
+
+    return {getRecruitList: getRecruitList, getImg:getImg};
 })();

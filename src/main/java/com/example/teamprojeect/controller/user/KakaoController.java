@@ -1,6 +1,8 @@
 package com.example.teamprojeect.controller.user;
 
+import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.user.UserVO;
+import com.example.teamprojeect.service.ArtistService;
 import com.example.teamprojeect.service.KakaoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,25 +21,42 @@ import java.util.HashMap;
 @Slf4j
 public class KakaoController {
     private final KakaoService kakaoService;
+    private final ArtistService artistService;
 
     @GetMapping("/login")
     public String kakaoCallback(@RequestParam String code, HttpSession session, Model model) throws Exception {
         log.info(code);
         String token = kakaoService.getKaKaoAccessToken(code);
         log.info("==================================info.toString()");
+
+        Long userNumber = kakaoService.getKakaoInfo(token);
         session.setAttribute("token", token);
         session.setAttribute("userNumber", kakaoService.getKakaoInfo(token)); // userNumber 세션에 카카오 유저 넘버 넣음
+
+        // 아티스트 넘버가 있으면
+        if(!(artistService.getDetail2(userNumber)==null)) {
+            ArtistVO artistVO = artistService.getDetail2(userNumber);
+            Long artistNumber = artistVO.getArtistNumber();
+            session.setAttribute("artistNumber", artistNumber);
+            log.info("혹시 널로 나오닡" + session.getAttribute("artistNumber"));
+
+        } else { // 없으면
+            // 아티스트 넘버 세션 null
+        }
+
+
         log.info("kakaoService.getKakaoInfo(token).toString()================================" + kakaoService.getKakaoInfo(token).toString());
         session.setAttribute("sessionCheck", "k");
         return "/main/main";
     }
 
     @GetMapping("/logout")
-    public void kakaoLogout(HttpSession session, Model model) {
+    public RedirectView kakaoLogout(HttpSession session, Model model) {
         log.info("logout");
         kakaoService.logoutKakao((String) session.getAttribute("token"));
         model.addAttribute("sessionCheck", "0");
         session.invalidate();
+        return new RedirectView("/main/main");
     }
 
 //    @GetMapping("/login")
