@@ -85,7 +85,7 @@ public class RecruitmentController {
 
 
     // 모집공고 상세페이지 이동
-    @GetMapping({"/recruitInfo","/recruitRegister"})
+    @GetMapping({"/recruitInfo","/recruitUpdate"})
     public void goRecruitInfo(Long recruitmentNumber, Criteria criteria, HttpServletRequest request, Model model) {
         log.info("*************");
         String requestURL = request.getRequestURI();
