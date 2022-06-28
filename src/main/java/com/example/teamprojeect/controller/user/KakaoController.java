@@ -5,6 +5,7 @@ import com.example.teamprojeect.service.KakaoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -20,21 +21,28 @@ public class KakaoController {
     private final KakaoService kakaoService;
 
     @GetMapping("/login")
-    public String kakaoCallback(@RequestParam String code, HttpSession session) throws Exception {
+    public String kakaoCallback(@RequestParam String code, HttpSession session, Model model) throws Exception {
         log.info(code);
         String token = kakaoService.getKaKaoAccessToken(code);
         log.info("==================================info.toString()");
         session.setAttribute("token", token);
         kakaoService.getKakaoInfo(token);
         log.info("kakaoService.getKakaoInfo(token).toString()================================" + kakaoService.getKakaoInfo(token).toString());
+        model.addAttribute("sessionCheck", "k");
         return "/main/main";
     }
 
     @GetMapping("/logout")
-    public void kakaoLogout(HttpSession session) {
+    public void kakaoLogout(HttpSession session, Model model) {
         log.info("logout");
         kakaoService.logoutKakao((String) session.getAttribute("token"));
+        model.addAttribute("sessionCheck", "0");
         session.invalidate();
+        log.info(session.getAttribute("-===============================").toString());
+        log.info(session.getAttribute("token").toString());
+        log.info(session.getAttribute("token").toString());
+        log.info(session.getAttribute("token").toString());
+        log.info(session.getAttribute("token").toString());
     }
 
 //    @GetMapping("/login")
