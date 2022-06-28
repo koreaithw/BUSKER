@@ -81,7 +81,6 @@
 
     $(document).ready(function () {
         tagList();
-        getImage(number);
     })
     console.log($work);
 
@@ -102,7 +101,7 @@
                 str += `<p class='works_tit'>`+work.workName+`</p>`;
                 str += `<p class='worker'>`+work.artistName+`</p>`;
                 str += `<a href='/work/workInfo?pageNum=1&amount=100&type&keyword&workNumber=`+work.workNumber+`' class='works_img'>`;
-                str += `<img src='' id='img-`+infoNumber+`' alt=''></a>`;
+                str += `<img src='/images/work/20473078.jpg' id='img-`+infoNumber+`' alt=''></a>`;
                 str += `<p class='tags'>`+work.workTag+`</p>`;
                 str += `</li>`;
 

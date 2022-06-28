@@ -94,6 +94,7 @@
                         <input type='hidden' id='fileName' name='file.fileName' value=''>
                         <input type='hidden' id='uuid' name='file.uuid' value=''>
                         <input type='hidden' id='uploadPath' name='file.uploadPath' value=''>
+                        <input type='hidden' id='artistNumber' name='artistNumber' value=''>
                         </form>
                         <div class="info_area2" style="float: right;">
                             <div class="purchase_link_wrap">
@@ -114,7 +115,11 @@
 </body>
 
 <script>
-
+    let sessionArtistNumber = [[${session.artistNumber}]];
+    console.log(sessionArtistNumber);
+    if(sessionArtistNumber != null) {
+        $("#artistNumber").val(sessionArtistNumber);
+    }
     // 드래그 해서 영역에 아이템을 내리면 그게 files에 저장되고 그 이미지 url따서 그걸 div 영역에 이미지 태그로 넣는거
     var fileList = []; //파일 정보를 담아 둘 배열
     let imgBox = $(".img_box");
@@ -199,10 +204,7 @@
     -> 파일의 경우 "multipart/form-data"방식으로 전송하기 위해 false로 지정합니다.
 
     * */
-</script>
-
 <!-- 유효성 검사 -->
-<script>
     function purchase_link() {
         if(!$("input[name=workName]").val()){
            // console.log("length");
@@ -253,6 +255,8 @@
         $("Form#registerForm").submit();
         return true;
     }
+
+
 
 </script>
 
