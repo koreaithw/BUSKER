@@ -82,6 +82,29 @@ $(document).ready(function () {
 
 })
 
+let mainService = (function () {
+
+    function getImg(num, callback, error) {
+        $.ajax({
+            url: "/file/work/find/" + num,
+            type: "get",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (file) {
+                if (callback) {
+                    callback(file);
+                }
+            },
+            error: function (xhr, status, er) {
+                if (error) {
+                    error(xhr, status, er);
+                }
+            }
+        });
+    }
+})
+
+
 
 
 
