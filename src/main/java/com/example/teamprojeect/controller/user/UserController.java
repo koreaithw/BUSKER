@@ -70,6 +70,18 @@ public class UserController {
         }
     }
 
+    // 휴대폰번호조회
+    @PostMapping("/phoneNumberSearch/{userPhoneNumber}")
+    @ResponseBody
+    public boolean phoneNumberSearch(@PathVariable("userPhoneNumber") String userPhoneNumber) {
+        if (!((userService.findCount(userPhoneNumber)) == 0L)) { // 조회되는 개수가 1개이상이면
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 //    @PostMapping("/searchIdFind")
 //    public String searchIdFind(String userPhoneNumber) {
 //        userService.id
@@ -129,19 +141,20 @@ public class UserController {
         String userPw = userVO.getUserPw();
 
         Long userNumber = userService.login(userId, userPw); // 로그인 시도 후 유저넘버를 가져옴
-
-        if (!(userNumber == null)) { // 아디, 비번이 있으면
+        log.info("11111111111111111111111111111111" + userNumber);
+        if (userNumber != null) { // 아디, 비번이 있으면
             session.setAttribute("userNumber", userNumber); // 세션에 유저 넘버가 담김
 //            if()
 //            session.setAttribute("userId", userId); // 세션에 유저 넘버가 담김
             Long userNumberSession = Long.valueOf(String.valueOf((session.getAttribute("userNumber"))));
             session.setAttribute("sessionCheck", "u");
-
+            log.info("55555555555555555555555555555555555"+artistService.getDetail2(userNumber));
             // 아티스트 넘버가 있으면
-            if(!(artistService.getDetail2(userNumber)==null)) {
+            if(artistService.getDetail2(userNumber)!=null) {
                 ArtistVO artistVO = artistService.getDetail2(userNumber);
                 Long artistNumber = artistVO.getArtistNumber();
                 session.setAttribute("artistNumber", artistNumber);
+                log.info("99999999999999999999999999999"+artistNumber);
                 log.info("혹시 널로 나오닡" + session.getAttribute("artistNumber"));
 
             } else { // 없으면
