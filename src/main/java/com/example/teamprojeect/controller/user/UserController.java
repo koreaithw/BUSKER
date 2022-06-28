@@ -144,7 +144,11 @@ public class UserController {
         log.info("11111111111111111111111111111111" + userNumber);
         if (userNumber != null) { // 아디, 비번이 있으면
             session.setAttribute("userNumber", userNumber); // 세션에 유저 넘버가 담김
-//            if()
+
+            if((userService.read(userNumber)).getUserStatus() == 3 ) {
+                session.setAttribute("userStatus", userService.read(userNumber).getUserStatus());
+            }
+
 //            session.setAttribute("userId", userId); // 세션에 유저 넘버가 담김
             Long userNumberSession = Long.valueOf(String.valueOf((session.getAttribute("userNumber"))));
             session.setAttribute("sessionCheck", "u");

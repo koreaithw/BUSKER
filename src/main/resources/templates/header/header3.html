@@ -23,7 +23,8 @@
                <a href="/logout" id="consicekakaoLogout"  th:if="${session.sessionCheck} == 'k'">로그아웃</a>
 <!--               <a href="" id="kakao"  th:if="${session.sessionCheck} == 'k'">카카오톡 탈퇴</a>-->
                <a href="/user/login" th:if="${session.userNumber} == null">마이페이지</a>
-               <a href="/myPage/myPage" th:if="${session.userNumber} != null">마이페이지</a>
+               <a href="/myPage/myPage" th:if="${session.userNumber} != null and ${session.userStatus} != 3">마이페이지</a>
+               <a href="/admin/adminMain" th:if="${session.userNumber} == 3">관리자페이지</a>
                <a href="/user/userJoin"  th:if="${session.userNumber} == null">회원가입</a>
            </div>
         </div>
@@ -37,11 +38,11 @@
 <!--                   <span class="pf-ham2"></span>-->
 <!--                   <span class="pf-ham3"></span>-->
 <!--               </a>-->
-               <h1><a href="/main/" class="pf-logo" id="logo"><img src="/images/header/buskers-logo.png" alt="" class="fixed"></a></h1>
+               <h1><a href="/main/" class="pf-logo" id="logo"><img src="/images/header/buskers-logo.png" style="width: 197%;" alt="" class="fixed"></a></h1>
            </div>
 
            
-           <div class="white-box-center" style="left: 50%; transform: translate(-50%, 0px);">
+           <div class="white-box-center" style="">
                <h2 style="height: auto;"><a href="/artist/artistList" class="">아티스트 정보<span></span></a>
        
                
@@ -61,6 +62,25 @@
                    </div>
                
                </h2>
+
+               <h2 style="height: auto;"><a href="/concert/concertPlanList" class="">공연예정<span></span></a>
+
+
+                   <!-- <div style="display: none;">
+                       <a href="/New/Genre/GenreList.aspx?genretype=1&amp;genre=15460" class="">공연위치</a>
+                   </div> -->
+
+               </h2>
+               <h2 style="height: auto;"><a href="/concert/concertLive" class="">실시간공연<span></span></a>
+
+
+                   <!-- <div style="display: none;">
+                       <a href="/New/Genre/GenreList.aspx?genretype=1&amp;genre=999" class="">전체보기</a>
+                   </div> -->
+
+               </h2>
+
+
                <h2 style="height: auto;"><a href="/work/workList" class="">작품목록<span></span></a>
        
                
@@ -78,22 +98,7 @@
                    </div> -->
                
                </h2>
-               <h2 style="height: auto;"><a href="/concert/concertPlanList" class="">공연예정<span></span></a>
-       
-               
-                   <!-- <div style="display: none;">
-                       <a href="/New/Genre/GenreList.aspx?genretype=1&amp;genre=15460" class="">공연위치</a>
-                   </div> -->
-               
-               </h2>
-               <h2 style="height: auto;"><a href="/concert/concertLive" class="">실시간공연<span></span></a>
-       
-               
-                   <!-- <div style="display: none;">
-                       <a href="/New/Genre/GenreList.aspx?genretype=1&amp;genre=999" class="">전체보기</a>
-                   </div> -->
-               
-               </h2>
+
 
                <!-- <div id="search">
                    <input type="text">
@@ -143,6 +148,7 @@ $(document).ready(function () {
         console.log("널이야2.")
     }
     // let session = ;
+    console.log(($(location).attr('host')));
 })
 
 $("#kakao").click(function (e) {
@@ -163,5 +169,6 @@ function secession() {
         },
     });
 };
+
 </script>
 </html>

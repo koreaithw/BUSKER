@@ -1,6 +1,12 @@
+.sign-logo {
+  color: #ff952e;
+  margin-top: 100px;
+  text-align: center;
+}
+
 .loginWrap {
   min-width: 955px;
-  padding: 95px 80px 40px;
+  padding: 30px 80px 40px;
   margin: 0;
 }
 
@@ -9,7 +15,7 @@
   margin-top: 100px;
   padding: 100px 120px 58px 120px;
   width: 452px;
-  margin: 70px auto 0 auto;
+  margin: 10px auto 0 auto;
 }
 
 .id-inputBox {
@@ -47,7 +53,7 @@
 .idSave-check {
   width: 20px;
   height: 20px;
-  accent-color: #ff564c;
+  accent-color: #ffa260;
 }
 
 .idSave-box {
@@ -57,7 +63,7 @@
 
 .login-click {
   width: 100%;
-  background-color: #f8c1bf;
+  background-color: #ffa260;
   color: white;
   font-weight: 600;
   text-align: center;
@@ -69,7 +75,7 @@
 }
 
 .login-click:hover {
-  background-color: #ffa3a0;
+  background-color: #fc863c;
 }
 
 #login-button {
@@ -119,7 +125,7 @@
 
 .id-find a:hover,
 .pw-find a:hover, .join-click:hover {
-  color: #ff564c;
+  color: #ff7c35;
 }
 
 .user-join-button {
@@ -185,7 +191,7 @@ span#checkId,
 span#checkPw {
   margin: 0;
   font-size: 10px;
-  color: #ff4d78;
+  color: #fd723c;
   position: absolute;
   display: block;
   position: absolute;
@@ -290,7 +296,7 @@ span#checkPw {
 }
 
 #btnSubmitSendSMS:hover {
-  background-color: #ffa3a0;
+  background-color: #ffba70;
 }
 
 .idFind-div {
@@ -316,7 +322,7 @@ span#checkPw {
 span#checkSMSNumber {
   margin: 0;
   font-size: 10px;
-  color: #ff4d78;
+  color: #ff944d;
   position: absolute;
   display: block;
   position: absolute;

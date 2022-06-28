@@ -1,3 +1,25 @@
+@media (max-width: 1318px) {
+    .white-box-center {
+        left: 35%;
+        transform: translate(-20%, 0px);
+    }
+    .white-box-left {
+        left: -25px !important;
+    }
+}
+
+@media (max-width: 1400px) {
+    .white-box-center {
+        left: 35%;
+        transform: translate(-20%, 0px);
+    }
+}
+@media (min-width: 1400px) {
+    .white-box-center {
+        left: 50%;
+        transform: translate(-50%,0);
+    }
+}
 .black-box div a {
     font-size: 12px;
     color: #999;
@@ -89,8 +111,8 @@ input, select, textarea, div, p, span {
 
 .white-box-center {
     position: absolute;
-    left: 50%;
-    transform: translate(-50%,0);
+    /*left: 50%;*/
+    /*transform: translate(-50%,0);*/
     top: 42px;
     font-size: 0;
 }
@@ -219,7 +241,7 @@ body {
 .white-box.fixed .white-box-left h1 img.fixed{display:inline-block;}
 .white-box.movie .white-box-left h1 img.trans{display:none;}
 .white-box.movie .white-box-left h1 img.fixed{display:inline-block;}
-.white-box-center{position:absolute; left:50%; transform:translate(-50%,0); top:42px;font-size:0;}
+/*.white-box-center{position:absolute; left:50%; transform:translate(-50%,0); top:42px;font-size:0;}*/
 .white-box-center h2{display:inline-block;font-size:0;}
 .white-box-center a{font-size:18px; color:#fff; margin:0 13px;font-weight:700;position:relative;}
 /*font-family: 'Noto Sans KR', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;font-weight:300;}*/
