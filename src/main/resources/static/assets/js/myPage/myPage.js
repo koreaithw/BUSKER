@@ -100,7 +100,13 @@ function pwCheck() {
     return;
   }
 
-  if (!(pwCheckForm.userPassword.value == "1234")) {
+  let userPassword;
+  myPageService.read(userNumber, function(user){
+    userPassword = user.userPw;
+    console.log(userPassword);
+  })
+
+  if (!(($("#userPassword").val() == userPassword))) {
     $("#userPassword").focus();
     $("#checkPw").text("");
     $("#notEqualPw").text("비밀번호가 일치하지 않습니다.");
@@ -564,19 +570,20 @@ console.log("myPage Module....");
 let myPageService = (function(){
 
   // 유저 정보 조회
-  // function read(userNumber, callback){
-  //   console.log("read............");
-  //   $.ajax({
-  //     url: "/myPage/" + userNumber,
-  //     type: "get",
-  //     dataType: "json",
-  //     success: function(user){
-  //       if(callback) {
-  //         callback(user);
-  //       }
-  //     }
-  //   })
-  // }
+  function read(userNumber, callback){
+    console.log("read............");
+    $.ajax({
+      url: "/myPage/" + userNumber,
+      type: "get",
+      dataType: "json",
+      async: false,
+      success: function(user){
+        if(callback) {
+          callback(user);
+        }
+      }
+    })
+  }
 
   // 유저 정보 수정
   function modify(userVO, callback){
@@ -626,7 +633,7 @@ let myPageService = (function(){
     });
   }
 
-  return {modify:modify, modifyPw:modifyPw, remove:remove}
+  return {modify:modify, modifyPw:modifyPw, remove:remove, read:read}
 })();
 
 // ajax userService.......
