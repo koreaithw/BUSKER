@@ -1616,3 +1616,17 @@ textarea:focus,
 .textarea-dd {
   margin: 0 !important;
 }
+
+.show_info_content{
+  left: 33px !important;
+}
+
+.file_drop {
+  display: inline-block;
+  width: 430px;
+  height: 596px;
+  border: 1px solid #000 !important;
+  overflow: auto !important;
+  border-color: #ff9326 !important;
+  border-radius: 10px !important;
+}
