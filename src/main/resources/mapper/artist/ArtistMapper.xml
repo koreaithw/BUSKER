@@ -486,4 +486,12 @@
         )
     </select>
 
+    <!-- 마이페이지 세션용 : 아티스트 상세 정보 -->
+    <select id="getDetail2" resultType="artistVO">
+        SELECT ta.ARTIST_NUMBER, tu.USER_NUMBER, ta.ARTIST_NAME, ta.ARTIST_DESCRIPTION, ta.ARTIST_TYPE, ta.ARTIST_DONATION, ta.ARTIST_ACCOUNT, ta.ARTIST_STATUS, tu.USER_ARTIST_STATUS
+        FROM TBL_ARTIST ta, TBL_USER tu
+        WHERE ta.USER_NUMBER = tu.USER_NUMBER AND tu.USER_NUMBER=#{userNumber} AND USER_ARTIST_STATUS=4
+    </select>
+
+
 </mapper>
