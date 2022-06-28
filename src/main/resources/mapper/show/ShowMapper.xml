@@ -171,7 +171,8 @@
 
 
     <select id="getRankingReply" resultType="showVO">
-
+                SELECT ROWNUM, SHOW_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE, replyCount
+                FROM (
                 SELECT l.SHOW_NUMBER, SHOW_NAME, SHOW_CONTENT, SHOW_DAY, SHOW_TIME, SHOW_ADDRESS, SHOW_LOCATION, SHOW_TYPE, replyCount
                 FROM
                 (
@@ -181,5 +182,9 @@
                 ON a.SHOW_NUMBER = l.SHOW_NUMBER
                 WHERE a.SHOW_DAY - SYSDATE >= 0
                 ORDER BY REPLYCOUNT DESC
+                )
+                <![CDATA[
+                WHERE ROWNUM <= 5
+                ]]>
     </select>
 </mapper>
