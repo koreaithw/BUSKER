@@ -2071,13 +2071,19 @@
       artistName: $artistName,
       artistType: $artistType,
       artistDescription: $artistDescription,
-      artistAccount: $artistAccount
+      artistAccount: $artistAccount,
+      file : {
+        fileName: $("#fileName").val(),
+        uploadPath: $("#uploadPath").val(),
+        uuid: $("#uuid").val()
+      }
     }, function (result){
       $("select[id='artist-update-category']").val("");
       $("input[id='artist-update-name']").val("");
       $("textarea[id='artist-update-description']").val("");
       $("input[id='artist-join-account']").val("");
     });
+    alert("아티스트 정보 수정이 완료 되었슴니다.");
     location.href="/myPage/myPage"
   });
 

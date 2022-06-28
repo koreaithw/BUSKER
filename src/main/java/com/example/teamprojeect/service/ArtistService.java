@@ -51,8 +51,15 @@ public class ArtistService {
     }
 
     // 아티스트 정보 수정 신청
-    public void modifyApply(ArtistVO artistVO){
-        artistDAO.modifyApply(artistVO);
+    @Transactional(rollbackFor = Exception.class)
+    public boolean modifyApply(ArtistVO artistVO){
+        log.info("===========================================");
+        ArtistFileVO artistFileVO = artistVO.getFile();
+        artistFileVO.setArtistNumber(artistVO.getArtistNumber());
+        artistFileDAO.delete(artistVO.getArtistNumber());
+        artistFileDAO.insert(artistFileVO);
+        log.info("===========================================");
+        return artistDAO.modifyApply(artistVO);
     }
 
     // 아티스트 등록, 수정 신청 리스트

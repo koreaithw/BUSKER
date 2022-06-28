@@ -778,8 +778,8 @@ let ArtistService = (function() {
     function modifyArtist(artist, callback, error) {
       console.log("modifyApply............");
       $.ajax({
-        url: "/myPage/artist/" + artist.artistNumber,
-        type: "patch",
+        url: "/myPage/artist/" + sessionArtistNumber,
+        type: "post",
         data: JSON.stringify(artist),
         contentType: "application/json; charset=utf-8",
         success: function (result) {

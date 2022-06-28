@@ -45,6 +45,7 @@ public class MypageController {
     // 마이페이지 이동
     @GetMapping("/myPage")
     public String goMypage(Model model, HttpSession session) {
+        log.info(String.valueOf(session.getAttribute("userNumber")));
         Long userNumber = Long.valueOf(String.valueOf(session.getAttribute("userNumber")));
         if(session.getAttribute("artistNumber") != null) {
             Long artistNumber = Long.valueOf(String.valueOf(session.getAttribute("artistNumber")));

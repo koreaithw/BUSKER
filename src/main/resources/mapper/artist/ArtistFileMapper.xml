@@ -11,7 +11,7 @@
 
     <!--아티스트 사진 삭제-->
     <delete id="delete">
-        DELETE FROM TBL_ARTIST_FILE WHERE UUID = #{uuid}
+        DELETE FROM TBL_ARTIST_FILE WHERE ARTIST_NUMBER = #{artistNumber}
     </delete>
 
     <!--아티스트 사진 변경-->
