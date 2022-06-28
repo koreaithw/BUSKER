@@ -20,4 +20,6 @@ public class RecruitmentVO {
     private String recruitmentRegisterDate;
     private String recruitmentUpdateDate;
     private String dDay;
+
+    private RecruitmentFileVO file;
 }

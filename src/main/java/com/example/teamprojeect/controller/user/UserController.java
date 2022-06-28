@@ -86,30 +86,48 @@ public class UserController {
     @GetMapping("/login")
     public String goLogin() { return "/login/login"; }
 
-
-
-    // 로그인
     // 로그인
     @PostMapping("/loginSuccess")
-    public String goMain(UserVO userVO, HttpServletRequest request) {
+    public String goMain(UserVO userVO, HttpServletRequest request, Model model) {
         HttpSession session = request.getSession();
+
         String userId = userVO.getUserId();
         String userPw = userVO.getUserPw();
-        Long userNumber = userService.login(userId, userPw);
-        String val = "userNumber";
-        session.setAttribute(val, userNumber);
 
-        Long num =  Long.valueOf(String.valueOf((session.getAttribute(val))));
+        Long userNumber = userService.login(userId, userPw);
+
+        String val = "userNumber";
+        session.setAttribute("userNumber", userNumber);
+
+        Long userNumberSession =  Long.valueOf(String.valueOf((session.getAttribute("userNumber"))));
         if(session == null) {
             log.info("===========================================");
             log.info("없어");
         } else {
             log.info("===========================================");
             log.info("있어");
-            log.info(num.toString());
+            log.info(userNumberSession.toString());
         }
+
+
+        model.addAttribute("sessionCheck", "u");
         return "/main/main";
     }
+
+
+    // 로그아웃
+    @GetMapping("/logout")
+    public String goLogout(HttpServletRequest request, Model model) {
+        HttpSession session = request.getSession(false);
+        if (session != null) session.invalidate();
+        model.addAttribute("sessionCheck", "0");
+        log.info(session.getAttribute("-===============================").toString());
+        log.info(session.getAttribute("userNumber").toString());
+        log.info(session.getAttribute("userNumber").toString());
+        log.info(session.getAttribute("userNumber").toString());
+        log.info(session.getAttribute("userNumber").toString());
+        return "/main/main"; }
+
 
     //회원가입
     @PostMapping("/join")
