@@ -4,6 +4,9 @@
 
     <!-- 아티스트 등록 신청 (status 1) -->
     <insert id="insertApply">
+        <selectKey keyProperty="artistNumber" resultType ="long" order="BEFORE">
+            SELECT SEQ_ARTIST.NEXTVAL FROM DUAL
+        </selectKey>
         INSERT INTO TBL_ARTIST
         (ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE, ARTIST_ACCOUNT)
         VALUES(SEQ_ARTIST.NEXTVAL, #{userNumber}, #{artistName}, #{artistDescription}, #{artistType}, #{artistAccount})
