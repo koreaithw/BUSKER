@@ -117,9 +117,9 @@
 <div class="flexing">
     <div class="rank_best" th:each="rank : ${rankingListAll}" th:if="${rank.rankingCount}<4">
         <div>
-            <a href="#" title="악동뮤지션">
+            <a th:href="|/artist/artistInfo?artistNumber=${rank.artistNumber}|" title="악동뮤지션">
                 <span class="artist_image">
-                    <img src="/images/ranking/artist_1.jpg" alt="악동뮤지션" class="rank_best_img">
+                    <img th:object="${artist}" id=artistNumber src="/images/ranking/artist_1.jpg" alt="악동뮤지션" class="rank_best_img">
                 </span>
                 <p class="artist_title" th:text="${rank.artistName}">악동뮤지션</p>
                 <p class="artist_detail" th:text="${rank.artistDescription}">친남매로 이루어진 남매 혼성 듀오
@@ -155,13 +155,13 @@
                 </p>
             </div>
             <div>
-                <a href="#">
+                <a th:href="|/artist/artistInfo?artistNumber=${rank.artistNumber}|">
                     <img src="/images/ranking/artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
                 </a>
             </div>
             <div>
                 <p class="rank_list_title">
-                    <a href="#" th:text="${rank.artistName}">페퍼톤스</a>
+                    <a th:href="|/artist/artistInfo?artistNumber=${rank.artistNumber}|" th:text="${rank.artistName}">페퍼톤스</a>
                 </p>
             </div>
             <div>
@@ -216,6 +216,15 @@
         // console.log($(this).val()); //value값 가져오기
         console.log($("select[name=rank_calendar_ver3] option:selected").text()); //text값 가져오기
     });
+</script>
+<script>
+    $.getJSON("/file/artist/file", {showNumber: artistNumber}, function(file){
+        console.log("왔니?")
+        let src = "/file/artist/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+        console.log("왔니?2")
+        $("#img-" + artistNumber).attr("src", src);
+        console.log("왔니?3")
+    })
 </script>
 
 
