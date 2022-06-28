@@ -298,10 +298,10 @@
           <!-- 비밀번호 변경 -->
           <div class="myInfo-pwChange mypage-div" style="display: none">
             <div class="desc-pw">
-              벅스에서 사용하실 <span class="pwRed">새로운 비밀번호</span>를
+              버스커즈에서 사용하실 <span class="pwRed">새로운 비밀번호</span>를
               입력해주세요
             </div>
-            <form id="newPwForm">
+            <form id="newPwForm" th:object="${user}">
               <div class="mypage-row">
                 <label id="" class="pwChange-label"
                 ><span></span>아이디</label
@@ -312,6 +312,7 @@
                           type="text"
                           id="modifyPw-userId"
                           value="soothingkim123"
+                          th:field="*{userId}"
                           readonly
                   />
                 </div>
@@ -1337,7 +1338,7 @@
             <!-- 소메뉴 나의 아티스트 계정 끝 -->
             <!-- 소메뉴 아티스트 계정 수정  -->
             <div class="artistUser-Info" style="display: none;">
-              <div class="artist-join-title-box">
+              <div class="artist-update-title-box">
                 <div class="work_detail">
                   <div class="detail">
                     <p>아티스트 정보 수정</p>
@@ -1359,16 +1360,26 @@
                   </div>
                 </div>
               </div>
+              <div class="artist-update-title">
+                <div>아티스트명</div>
+                <p class="input-name-p">
+                  <input
+                          id="artist-update-name"
+                          class="input_text_name"
+                          placeholder="아티스트 이름을 입력하세요"
+                  />
+                </p>
+              </div>
 
               <div class="show_info_content">
                 <div class="show_info">
                   <div class="info_left">
                     <div class="img_box">
                       <input id="file_drop2" class="file_drop" readonly
-                             placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공연 포스터를 드래그 앤 드롭으로 등록해주세요." style="border: 1px solid #000 !important; border-color: #ff9326 !important; border-radius: 10px !important;">
+                             placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공연 포스터를 드래그 앤 드롭으로 등록해주세요." style="border: 1px solid #000 !important; border-color: #ff9326 !important; border-radius: 10px !important;"
+                      >
                       <img id='image-samplebox2' class="file_drop" src='' style="width: 100%; height: auto; overflow: hidden; display: none;">
                     </div>
-
                   </div>
                   <div class="info_right">
                     <div class="info_area1">
@@ -1847,8 +1858,14 @@
           likeCategory = "퍼포먼서";
         }
         let artistNumber = Number(myArtist.artistNumber);
+
+        $.getJSON("/file/artist/file", {artistNumber, artistNumber}, function(file){
+          let src="/file/artist/display?fileName" + file.uploadPath + "/" + file.uuid + "_" + file.fileName;
+          $("img-" + artistNumber).attr("src", src);
+        })
+
         str += "<div class='artistList'><a class='myArtist' href='/artist/artistInfo?pageNum=" + page + "&amount=15&type&keyword&artistNumber=" + artistNumber +"'>"
-        str += "<img class='myArtist-image' src='/images/myPage/pptnz.jpg/'>"
+        str += "<img class='myArtist-image' src='' id='img-" + artistNumber + "'/>'q"
         str += "<span class='myArtistName'>" + myArtist.artistName + "</span>"
         str += "<span class='myArtistType'>" + likeCategory + "</span>"
         str += "</a>"
@@ -1913,14 +1930,22 @@
 
       $.each(list, function (i, myWork) {
         let likeCategory = "";
+        let infoNumber = Number(myWork.workNumber);
+
+        $.getJSON("/file/work/file" + {workNumber: infoNumber}, function(file){
+          let src = "file/work/display?filaName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName;
+          $("#img-" + infoNumber).attr("src", src);
+        })
+
         if (myWork.artistType == 1) {
           likeCategory = "뮤지션";
         } else {
           likeCategory = "퍼포먼서";
         }
+
         str += "<div class='artistList'>"
         str += "<a href = '' class='myWork myLike'>"
-        str += "<img class='myWork-image' src='https://image.bugsm.co.kr/album/images/170/40389/4038932.jpg'/>"
+        str += "<img class='myWork-image' src='' id='img-" + infoNumber + "'/>"
         str += "<div class='info'>"
         str += "<div class='myWork'>"
         str += "<span class='myWorkName'>" + myWork.workName + "</span>"
@@ -2014,6 +2039,7 @@
               $("textarea[id='artist-join-description']").val("");
               $("input[id='artist-join-account']").val("");
             })
+    alert("아티스트 신청이 완료되었습니다. 등록해주셔서 감사합니다. ")
     location.href = "/main/"
   });
 
@@ -2035,7 +2061,7 @@
     }
 
     ArtistService.modifyArtist({
-      artistNumber: artistNumber,
+      artistNumber: sessionArtistNumber,
       artistName: $artistName,
       artistType: $artistType,
       artistDescription: $artistDescription,
@@ -2408,8 +2434,8 @@
       e.preventDefault(); // 페이지를 이동시킨다거나 form 안에 있는 input 등을 전송한다던가 그러한 동작이 있는데 e.preventDefault 는 그 동작을 중단
       e.stopPropagation(); // e.stopPropagation는 이벤트가 상위 엘리먼트에 전달되지 않게 막아 준다.
 
-      $("#file_drop").show();
-      $("#image-samplebox").hide();
+      $("#file_drop2").show();
+      $("#image-samplebox2").hide();
 
     }).on("dragover", function (e) { // 드래그 하면서 마우스가 대상 객체의 위에 자리 잡고 있을 때 발생함.
       e.preventDefault();
@@ -2427,7 +2453,7 @@
       var files = e.originalEvent.dataTransfer.files; // 기본 event를 불러오고.기본 event로 전송된 데이터를 가져와서.files 를 찾는다.
 
       $("#file_drop2").hide();
-      $("#image-samplebox").show();
+      $("#image-samplebox2").show();
 
       $("#image-samplebox2").attr("src", window.URL.createObjectURL(files[0]));
       let formData = new FormData();
