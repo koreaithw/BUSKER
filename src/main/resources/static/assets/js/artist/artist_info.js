@@ -1,4 +1,6 @@
 let userNumber = document.getElementById('user_number').value
+let likecount = document.getElementById('like_count').value
+let likeval = document.getElementById('like_check').value
 
 console.log(userNumber)
 
@@ -11,16 +13,6 @@ $("#btn-modal").click(function () {
         $(".modal").fadeIn();
     }
 });
-
-// $("#btn-modal").click(function () {
-//     if (userNumber === undefined) {
-//         console.log("fdd")
-//         $(".modal").fadeIn();
-//     } else {
-//         alert("로그인후 이용해주세요");
-//     }
-// });
-
 
 //닫기 누를시 모달창 닫기
 $(".modal-close-btn").click(function () {
@@ -69,7 +61,7 @@ function donateapi() {
             // msg += '카드 승인번호 : ' + rsp.apply_num;
 
             let donationObj = {
-                "userNumber": usernumber,
+                "userNumber": userNumber,
                 "artistNumber": artistnumber,
                 "donationMoney": money,
                 "donationMessage": message,
@@ -97,21 +89,25 @@ function donateapi() {
 
 
 $(document).ready(function () {
-    let likecount = document.getElementById('like_count').value
-    let likeval = document.getElementById('like_check').value
-    console.log(likeval);
-
-    if (likeval > 0) {
-        $(".img1").css('display', 'none');
-        $(".img2").css('display', 'inline-block');
+    // let likecount = document.getElementById('like_count').value
+    // let likeval = document.getElementById('like_check').value
+    // console.log(likeval);
+    if (!userNumber) {
+        if (likeval > 0) {
+            $(".img1").css('display', 'none');
+            $(".img2").css('display', 'inline-block');
+        }
     }
+
+
 })
+
+
 
 
 $("#btn-like").click(function () {
 
-    let likecount = document.getElementById('like_count').value
-    let likeval = document.getElementById('like_check').value
+
 
     if (!userNumber) {
         alert("로그인 후 이용해주세요")
@@ -127,11 +123,11 @@ $("#btn-like").click(function () {
             let param = new URLSearchParams(query);
             let artistnumber = param.get('artistNumber');
 
-            console.log(usernumber);
+            console.log(userNumber);
             console.log(artistnumber);
 
             let likeObj = {
-                "userNumber": usernumber,
+                "userNumber": userNumber,
                 "artistNumber": artistnumber
             };
 
@@ -163,11 +159,11 @@ $("#btn-like").click(function () {
             let param = new URLSearchParams(query);
             let artistnumber = param.get('artistNumber');
 
-            console.log(usernumber);
+            console.log(userNumber);
             console.log(artistnumber);
 
             let likeObj = {
-                "userNumber": usernumber,
+                "userNumber": userNumber,
                 "artistNumber": artistnumber
             };
 
@@ -193,6 +189,9 @@ $("#btn-like").click(function () {
         }
     }
 })
+
+
+
 
 
 
