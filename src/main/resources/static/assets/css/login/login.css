@@ -166,7 +166,7 @@
 div#pwImg {
   width: 40px;
   height: 40px;
-  background-image: url("/static/images/login/eye_hide.png");
+  background-image: url("/images/login/eye_hide.png");
   background-size: 70%;
   background-position: center;
   background-repeat: no-repeat;
@@ -202,7 +202,7 @@ span#checkPw {
 }
 
 .delete-text {
-  background-image: url("/static/images/login/delete-icon.png");
+  background-image: url("/images/login/delete-icon.png");
   background-color: white;
   background-position: center;
   display: block;
@@ -210,7 +210,7 @@ span#checkPw {
   height: 1rem;
   background-size: 100%;
   border: 0;
-  opacity: 0.3;
+  opacity: 0.9;
   align-items: center;
   padding: 0;
 }
