@@ -159,7 +159,7 @@ public class AdminController {
         }
 
         // 파일이 있을 때
-        List<RecruitmentFileVO> fileList = recruitService.getFiles(recruitmentNumber);
+        RecruitmentFileVO fileList = recruitService.getFiles(recruitmentNumber);
         model.addAttribute("criteria", criteria);
         model.addAttribute("recruitmentVO", recruitmentVO);
         model.addAttribute("fileList", fileList);

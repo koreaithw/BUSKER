@@ -60,7 +60,8 @@ $("#recru-form-submit").on("click", function(e) {
   }else {
     $(".recru-information").hide();
   }
-  
-  console.log("성공");
+
+  alert("등록이 완료되었습니다.");
+  $("Form#registerForm").submit();
   return true;
 });

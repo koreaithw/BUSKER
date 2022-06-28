@@ -21,7 +21,7 @@
         <div class="form-label">모집공고명</div>
         <input
           class="recruiting-register-title"
-          type="text"  id="recru-title"
+          type="text"  id="recru-title" name="recruitmentName"
           placeholder="모집 공고의 이름을 입력하세요."
         />
         <p>모집공고명은 비워둘 수 없습니다.</p>
@@ -47,29 +47,29 @@
 
                 <tr>
                   <td class="label top">장소</td>
-                  <td><input type="text" id="recru-location"><p class="recru-location">장소는 비워둘 수 없습니다.</p></td>
+                  <td><input type="text" id="recru-location" name="recruitmentLocation"><p class="recru-location">장소는 비워둘 수 없습니다.</p></td>
                 </tr>
                 
                 <tr>
                     <td class="label">날짜</td>
-                    <td class="date"><input type="date" id="recru-day"><p class="recru-day">날짜는 비워둘 수 없습니다.</p></td>
+                    <td class="date"><input type="date" id="recru-day" name="recruitmentDay"><p class="recru-day">날짜는 비워둘 수 없습니다.</p></td>
  
                   </tr>
                   
                 <tr>
                     <td class="label">시간</td>
  
-                    <td class="time"><input type="time" id="recru-time"><p class="recru-time">시간은 비워둘 수 없습니다.</p></td>
+                    <td class="time"><input type="time" id="recru-time" name="recruitmentTime"><p class="recru-time">시간은 비워둘 수 없습니다.</p></td>
                   </tr>
                   
                 <tr>
                   <td class="label">주최정보</td>
-                  <td><input type="text" id="recru-notice"><p class="recru-notice">정보는 비워둘 수 없습니다.</p></td>
+                  <td><input type="text" id="recru-notice" name="recruitmentUrl" placeholder="링크를 입력해주세요"><p class="recru-notice">정보는 비워둘 수 없습니다.</p></td>
 
                 </tr>
                 <tr>
                   <td class="label">모집대상</td>
-                  <td><select name="" id="recru-target">
+                  <td><select id="recru-target" name="recruitmentType">
                     <option value="A">퍼포먼스, 뮤지션 모두 모집</option>
                     <option value="P">퍼포먼스 모집</option>
                     <option value="M">뮤지션 모집</option>
@@ -88,33 +88,35 @@
         <div class="noti-view-coment">
           <p class="noti-view-comen-tit">공연 개요</p>
           <div class="noti-view-comen-txt">
-            <textarea rows="" cols="100" name="" id="recru-summary"></textarea>
+            <textarea rows="" cols="100" name="recruitmentSummary" id="recru-summary"></textarea>
             <p class="recru-summary">개요는 비워둘 수 없습니다.</p>
           </div>
         </div>
         <div class="noti-view-coment">
           <p class="noti-view-comen-tit">공연 소개</p>
           <div class="noti-view-comen-txt">
-            <textarea rows="" cols="100" name="" id="recru-introduce"></textarea>
+            <textarea rows="" cols="100" name="recruitmentCondition" id="recru-introduce"></textarea>
             <p class="recru-introduce">소개는 비워둘 수 없습니다.</p>
           </div>
         </div>
         <div class="noti-view-coment">
           <p class="noti-view-comen-tit">모집 조건</p>
           <div class="noti-view-comen-txt">
-            <textarea rows="" cols="100" name="" id="recru-requirement"></textarea>
+            <textarea rows="" cols="100" name="recruitmentIntroduce" id="recru-requirement"></textarea>
             <p class="recru-requirement">조건은 비워둘 수 없습니다.</p>
           </div>
         </div>
         <div class="noti-view-coment">
           <p class="noti-view-comen-tit">기획사 정보</p>
           <div class="noti-view-comen-txt">
-            <textarea rows="" cols="100" name="" id="recru-information"></textarea>
+            <textarea rows="" cols="100" name="recruitmentHost" id="recru-information"></textarea>
             <p class="recru-information">정보는 비워둘 수 없습니다.</p>
           </div>
         </div>
       </div>
-
+      <input type='hidden' id='fileName' name='file.fileName' value=''>
+      <input type='hidden' id='uuid' name='file.uuid' value=''>
+      <input type='hidden' id='uploadPath' name='file.uploadPath' value=''>
     </div>
     </form>
     <div class="form-button">
@@ -134,10 +136,7 @@
     src="/assets/js/recruit/recruitRegister.js?ver=1"
   ></script>
   <script>
-    $("#recru-form-submit").on("click", function (e) {
-      e.preventDefault();
-      $("#registerForm").submit();
-    });
+
     // 드래그 해서 영역에 아이템을 내리면 그게 files에 저장되고 그 이미지 url따서 그걸 div 영역에 이미지 태그로 넣는거
     var fileList = []; //파일 정보를 담아 둘 배열
     let imgBox = $(".img_box");
@@ -151,9 +150,6 @@
 
         $("#file_drop").show();
         $("#image-samplebox").hide();
-        str += "<input type='hidden' name='fileName' value=''>"
-        str += "<input type='hidden' name='uuid' value=''>"
-        str += "<input type='hidden' name='uploadPath' value=''>"
 
       }).on("dragover", function (e) { // 드래그 하면서 마우스가 대상 객체의 위에 자리 잡고 있을 때 발생함.
         e.preventDefault();
@@ -199,11 +195,6 @@
             console.log($("#fileName").val());
             console.log($("#uuid").val());
             console.log($("#uploadPath").val());
-            // str += "<input type='hidden' id='fileName' name='fileName' value='" + file[0].fileName + "'>"
-            // str += "<input type='hidden' id='uuid' name='uuid' value='" + file[0].uuid + "'>"
-            // str += "<input type='hidden' id='uploadPath' name='uploadPath' value='" + file[0].uploadPath + "'>"
-            // str += "<input type='hidden' name='fileList.image' value='" + $("#image-samplebox").data("image") + "'>"
-            // str += "<input type='hidden' name='fileList[" + i + "].fileSize' value='" + $(li).data("filesize") + "'>"
           }
         });
       });
@@ -247,5 +238,6 @@
     -> 파일의 경우 "multipart/form-data"방식으로 전송하기 위해 false로 지정합니다.
 
     * */
+
   </script>
 </html>
