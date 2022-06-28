@@ -8,7 +8,6 @@ let showService = (function () {
             type: "get",
             // data: JSON.stringify(type),
             dataType: "json",
-            async : false,
             contentType: "application/json",
             success: function (showPageDTO) {
                 if(callback) {
@@ -151,16 +150,17 @@ function artistList(artistSortingType, page){
         $.each(list, function(i, artist){
             let artistInfoNumber = Number(artist.artistNumber);
 
-            $.getJSON("/file/artist/file", {artistNumber: artistInfoNumber}, function(file){
+            $.getJSON("/file/artist/file", {artistNumber: infoNumber}, function(file){
                 let src = "/file/artist/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
-                $("#img-" + artistInfoNumber).attr("src", src);
+                $("#img-" + infoNumber).attr("src", src);
             })
             str += "<div class='left'>"
             str += "<div>"
             str += "<a href='/artist/artistInfo?pageNum=" + page + "&amount=3&artistSortingType&keyword&artistNumber=" + artistInfoNumber +"' target='_self'>"
-            str += "<img id='img-" + artistInfoNumber + "' class='lazyload' src='' alt='#'/>"
+            str += "<img id='img-" + infoNumber + "' class='lazyload' src='' alt='#'/>"
             str += "</a>"
             str += "</div>"
+            str += "<div>"
             str += "<div>"
             str += "<p id='big-poster-text1'>" + artist.artistName + "</p>"
             str += "<p id='big-poster-text2'></p>"
@@ -195,18 +195,18 @@ function workKeywordList(tag, page){
         }
 
         $.each(list, function(i, work){
-            let workInfoNumber = Number(work.workNumber);
+            let infoNumber = Number(work.workNumber);
 
-            $.getJSON("/file/work/file", {workNumber: workInfoNumber}, function(file){
+            $.getJSON("/file/work/file", {workNumber: infoNumber}, function(file){
                 let src = "/file/work/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
-                $("#img-" + workInfoNumber).attr("src", src);
+                $("#img-" + infoNumber).attr("src", src);
             })
 
             str += "<div>"
-            str += "<a href='/work/workInfo?pageNum=" + page + "&amount=100&tag&keyword&workNumber=" + workInfoNumber +"' target='_self'>"
+            str += "<a href='/work/workInfo?pageNum=" + page + "&amount=100&tag&keyword&workNumber=" + infoNumber +"' target='_self'>"
             str += "<div class='poster-list-text-box'>"
             str += "<div class='poster-list-1'>"
-            str += "<img id='img-" + workInfoNumber + "' class='lazyload' src='' alt='#'/>"
+            str += "<img id='img-" + infoNumber + "' class='lazyload' src='' alt='#'/>"
             str += "</div>"
             str += "<div>"
             str += "<p class='poster-list-text'>" + work.workName + "</p>"
@@ -232,8 +232,8 @@ function workKeywordList(tag, page){
 
 $(document).ready(function () {
     // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
-    // concertPlanList(type, pageNum);
-    // workKeywordList(tagN, pageNum);
+    concertPlanList(type, pageNum);
+    workKeywordList(tagN, pageNum);
     artistList(artistSortingType, pageNum);
 
 })

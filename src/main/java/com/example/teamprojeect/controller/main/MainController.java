@@ -106,7 +106,7 @@ public class MainController {
         listDTO.setArtistSortingType(sortingType);
         log.info("pageNum=================" +pageNum);
         log.info("p123=================" + sortingType);
-        List<ArtistVO> artistList = artistService.getList(new Criteria(pageNum, 7), listDTO);
+        List<ArtistVO> artistList = artistService.getList(new Criteria(1, 3), listDTO);
 
 
         return new ArtistPageDTO(artistList, artistService.getTotal(listDTO));
@@ -127,6 +127,6 @@ public class MainController {
         model.addAttribute("tagList",workService.getTag());
 
         log.info("taglist======================================" +tagList);
-        return new WorkApplyPageDTO(workService.getKeyword(new Criteria(pageNum,5),listDTO),workService.getTotalListApply());
+        return new WorkApplyPageDTO(workService.getKeyword(new Criteria(1,5),listDTO),workService.getTotalListApply());
     }
 }
