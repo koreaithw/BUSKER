@@ -116,7 +116,7 @@
                         <div class="image-plus-box" th:each="show : ${showVO}">
                             <a th:href="@{/concert/concertPlanInfo(showNumber = ${show.showNumber})}">
                             <div>
-                                <img src="/images/main/small-5-poster.png" alt="#">
+                                <img src="/file/concert/display?fileName=" + "file.uploadPath + "/" + file.uuid + "_"  + file.fileName;" alt="#">
                             </div>
                             <div class="small-5-box-textbox">
                                 <p id="small-5-box-uptext" th:text="*{show.showTime}"></p>
