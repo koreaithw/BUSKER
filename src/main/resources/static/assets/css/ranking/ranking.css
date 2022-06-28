@@ -7,7 +7,8 @@ html, body, div, span{
 .rank_genre{
     width: 1200px;
     margin: 0 auto;
-    margin-bottom: 60px;
+    /*margin-bottom: 60px;*/
+    margin-bottom: 30px;
     font-size: 0px;
 }
 
@@ -136,6 +137,8 @@ html, body, div, span{
     overflow: hidden;
     font-weight: bold;
     font-family: 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 .info{
@@ -299,7 +302,8 @@ a{
     box-sizing: border-box;
     border: 1px solid #ddd;
     border-right: 0 none;
-    width: 25%;
+    /*width: 25%;*/
+    width: 33.3%;
     text-align: center;
     height: 68px;
     line-height: 68px;
