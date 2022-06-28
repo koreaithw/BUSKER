@@ -1,6 +1,7 @@
 package com.example.teamprojeect.controller.ranking;
 
 
+import com.example.teamprojeect.domain.vo.artist.ArtistDTO;
 import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
@@ -34,7 +35,7 @@ public class RankingController {
     @Autowired
     private RankingService rankingService;
 
-    //전체 랭킹 페이지지
+    //전체 랭킹 페이지
    @GetMapping("/rankingAll")
     public String rankingListAll(Criteria criteria, Model model){
         ListDTO listDTO = new ListDTO();
@@ -45,6 +46,20 @@ public class RankingController {
 
         return "/ranking/rankingAll";
     }
+
+    //전체 랭킹 페이지
+
+    @GetMapping("/rankingAllImage")
+    @ResponseBody
+    public List<ArtistDTO> rankingListAllImage(Criteria criteria){
+        ListDTO listDTO = new ListDTO();
+        listDTO.setDetailDate("2022");
+        listDTO.setRankingSortingDate("year");
+
+        return rankingService.rankingListAll(criteria,listDTO);
+    }
+
+
 
     // 뮤지션 랭킹 페이지
     @GetMapping("/rankingMusician")
