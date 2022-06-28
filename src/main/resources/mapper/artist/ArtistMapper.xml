@@ -22,7 +22,7 @@
     <!--아티스트 정보 수정 신청 (status 2)-->
     <update id="approveArtistApply">
         UPDATE TBL_ARTIST
-        SET ARTIST_NAME = #{artistName}, ARTIST_DESCRIPTION = #{artistDescription}, ARTIST_TYPE = #{artistType}, ARTIST_STATUS = 2
+        SET ARTIST_NAME = #{artistName}, ARTIST_DESCRIPTION = #{artistDescription}, ARTIST_TYPE = #{artistType}, ARTIST_ACCOUNT = #{artistAccount}, ARTIST_STATUS = 2
         WHERE ARTIST_NUMBER = #{artistNumber}
     </update>
 
