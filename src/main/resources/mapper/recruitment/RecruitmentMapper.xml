@@ -57,6 +57,7 @@
         </choose>
         <![CDATA[
             AND ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
+            ORDER BY RECRUITMENT_REGISTER_DATE DESC
         )
         WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
         ]]>

@@ -213,7 +213,7 @@
 
                 str += "<div class=\"image-plus-box\">";
                 str += "<div>";
-                str += "<img src='/images/recruit/small-5-poster.png' id='img-"+recru.recruitmentNumber+"' alt='#'>";
+                str += "<img src='/images/recruit/small-5-poster.png' id='img-"+recru.recruitmentNumber+"' alt='#' width='220' height='300'>";
                 str += "</div>";
                 str += "<div class='small-5-box-textbox'>";
                 str += "<p class='small-5-box-uptext'>"+(recru.recruitmentDay).substring(0,11)+" "+recru.recruitmentTime+"</p>";
@@ -221,16 +221,22 @@
                 str += "</div>"
                 str += "</div>"
 
-                $.getJSON("/file/work/file", {recruitmentNumber: infoNumber}, function(file){
-                    let src = "/file/work/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
-                    $("#img-" + infoNumber).attr("src", src);
-                })
+                console.log("list in~~~~");
+                getImage(infoNumber);
             });
             $page.append(str);
             pageNum = page;
             amountN = amount;
         }, function (a,b,c){
             console.log(a,b,c);
+        });
+    }
+
+    function getImage(num) {
+        recruitmentService.getImg(num, function (file){
+            console.log("--------------------------------------"+file);
+            let src = "/file/work/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+            $("#img-"+num).attr("src", src);
         });
     }
 
