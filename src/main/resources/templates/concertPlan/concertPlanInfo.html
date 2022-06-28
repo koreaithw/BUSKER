@@ -93,6 +93,13 @@
             background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
         }
 
+        .rn-product-imgbox li {
+            width: 430px;
+            height: 600px;
+            position: relative;
+             display: flex;
+            align-items: center;
+        }
 
     </style>
 
@@ -117,13 +124,14 @@
         <div class="renew-content">
             <div class="rn-01">
                 <p class="rn-location">
-                <p><a id="goList" href="/concert/concertPlanList">버스킹 ></a><a href='#' th:text="| *{showCategory}|"></a>
+                <p><a id="goList" href="/concert/concertPlanList">버스킹 ></a><a href='/concert/concertPlanList' th:text="| *{showCategory}|"></a>
                 </p>
             </div>
             <div class="rn-02">
                 <p class="rn-big-title" th:text="*{showName}"></p>
                 <div class="rn-product-short-data">
-                    <p><span class="ps-date" th:text="*{showDay}"></span><a href="#" id="ps-location"><span
+                    <p><span class="ps-date" th:text="*{showDay}"></span><a th:href="|https://map.kakao.com/link/search/*{showAddress}
+|" id="ps-location"><span
                             class="ps-location" th:text="|[*{showRegion}] *{showLocation}|"></span></a>
                     </p>
                     <a style="cursor: pointer; display: none;" class="ps-social modify showInfo-modify">
@@ -383,7 +391,8 @@ X
 
             // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
             var content = '<div class="customoverlay" >' +
-                '  <a href="https://map.kakao.com/link/map/11394059" target="_blank">' +
+                '  <a href="https://map.kakao.com/link/search/' +
+                '[[${concert.showAddress}]]" target="_blank">' +
                 '    <span class="title">' +
                 '<img style="border-radius: 50% !important;" src="https://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040004/21/05/0400042105_47574_02.407.gif" width="50" height="50&quot;"></span>' +
                 '  </a>' +
@@ -418,6 +427,7 @@ X
     $("a.delete").click(function (e) {
         e.preventDefault();
         if (confirm("글을 삭제하시겠습니까?")) {
+            alert("공연이 삭제되었습니다.")
             location.href = "/concert/concertPlanDelete" + paging + "&showNumber=" + $(this).attr('href');
         }
     });

@@ -109,6 +109,7 @@ dl {
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 .img_box img {
