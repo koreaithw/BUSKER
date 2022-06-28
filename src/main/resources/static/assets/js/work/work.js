@@ -3,7 +3,7 @@ console.log("Work Module...");
 let workService = (function(){
    function getWorkKeywordList(tag,page,callback, error) {
        let pageN = page || 1;
-       let tagN = tag || " ";
+       let tagN = tag || null;
        console.log("in module..."+tag);
        $.ajax({
            url:"/work/workList/"+tagN+"/"+pageN,
