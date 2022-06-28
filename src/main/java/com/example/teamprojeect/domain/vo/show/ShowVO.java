@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
 @Data
@@ -22,6 +23,9 @@ public class ShowVO {
     private String artistName;
     private String dDay;
     private Long replyCount;
+    private int replyRanking;
 
     private ShowFileVO file;
 }
+
+

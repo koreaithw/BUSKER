@@ -34,7 +34,7 @@ public class ArtistDAO {
 
     // 아티스트 정보 수정 신청 (status 2)
     public boolean modifyApply(ArtistVO artistVO) {
-        return artistMapper.updateApply(artistVO) == 1;
+        return artistMapper.approveArtistApply(artistVO) == 1;
     }
 
     // 관리자 수정 승인 (status -> 3)

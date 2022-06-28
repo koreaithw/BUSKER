@@ -47,7 +47,7 @@
     <select id="login" resultType="_Long">
         SELECT USER_NUMBER
         FROM TBL_USER
-        WHERE USER_ID = #{userId} AND USER_PW = #{userPw} AND USER_STATUS = 1
+        WHERE USER_ID = #{userId} AND USER_PW = #{userPw} AND (USER_STATUS = 1 OR USER_STATUS = 3)
     </select>
 
     <!-- 마이페이지 : 정보 조회-->

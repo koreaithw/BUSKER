@@ -50,7 +50,7 @@
 
     <!-- 작품 등록 신청 상세보기 -->
     <select id="getDetail" resultType="workVO">
-        SELECT WORK_NAME, ARTIST_NAME, WORK_GENRE, WORK_DESCRIPTION, WORK_YOUTUBE_URL, WORK_PURCHASE_URL, WORK_TAG, WORK_RELEASE_DATE, WORK_REGISTER_DATE,
+        SELECT WORK_NUMBER, WORK_NAME, ARTIST_NAME, WORK_GENRE, WORK_DESCRIPTION, WORK_YOUTUBE_URL, WORK_PURCHASE_URL, WORK_TAG, WORK_RELEASE_DATE, WORK_REGISTER_DATE,
                 WORK_UPDATE_DATE
         FROM (
             SELECT *
@@ -103,6 +103,7 @@
             )
             WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
         ]]>
+        ORDER BY WORK_REGISTER_DATE DESC
     </select>
 
     <!--태그 뽑기-->

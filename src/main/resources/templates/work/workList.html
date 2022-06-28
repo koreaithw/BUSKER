@@ -48,16 +48,7 @@
             </div>
             <div class="work_list">
                 <ul class="works">
-                    <th:block th:each="work:${workList}">
-                        <li th:object="${work}">
-                            <a th:href="*{workNumber}" >
-                            <p class="works_tit" th:text="*{workName}"></p>
-                            <p class="worker" th:text="*{artistName}"></p>
-                            <img src="/images/work/20473078.jpg" class="works_img" alt="">
-                            <p class="tags" th:text="*{workTag}"></p>
-                            </a>
-                        </li>
-                    </th:block>
+
                 </ul>
             </div>
         </div>
@@ -68,13 +59,14 @@
     </footer>
 
 </body>
-<script>
+<script th:inline="javascript">
     let tag;
     let pageNum = 1;
     // 해시태그 클릭시 색상변경
     $(".hash_tag a").on("click", function(e){
         if($(e.target).hasClass('on')){
             $(e.target).removeClass('on');
+            tagList();
         } else {
             $(e.target).addClass('on');
             let tagName = $(e.target).text();
@@ -84,15 +76,52 @@
         }
     });
 
-    tagList(tag);
-</script>
-<script th:inline="javascript">
-    let $work = $(".workList");
-    let paging = [[${criteria.listLink}]];
 
-    $(".works a").click(function (e) {
-        e.preventDefault();
-        location.href = "/work/workInfo"+paging+"&workNumber="+$(this).attr('href');
-    });
+    let $work = $(".workList ul");
+
+    $(document).ready(function () {
+        tagList();
+        getImage(number);
+    })
+    console.log($work);
+
+    function tagList(tag, page) {
+        workService.getWorkKeywordList(tag, page, function (total, list) {
+            console.log("in module..."+tag);
+            $work.empty();
+            let str = "";
+            if(list == null || list.length == 0) {
+                $work.html("");
+                return;
+            }
+
+            $.each(list, function (i, work) {
+                let infoNumber = Number(work.workNumber);
+
+                str += `<li>`;
+                str += `<p class='works_tit'>`+work.workName+`</p>`;
+                str += `<p class='worker'>`+work.artistName+`</p>`;
+                str += `<a href='/work/workInfo?pageNum=1&amount=100&type&keyword&workNumber=`+work.workNumber+`' class='works_img'>`;
+                str += `<img src='' id='img-`+infoNumber+`' alt=''></a>`;
+                str += `<p class='tags'>`+work.workTag+`</p>`;
+                str += `</li>`;
+
+                console.log("list in~~~~");
+                getImage(infoNumber);
+                });
+                $("ul.works").html(str);
+                pageNum = page;
+            }, function (a,b,c){
+            console.log(a,b,c);
+        });
+    }
+
+    function getImage(num) {
+        workService.getImg(num, function (file){
+            console.log("--------------------------------------"+file.fileName);
+            let src = "/file/work/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+            $("#img-"+num).attr("src", src);
+        });
+    }
 </script>
 </html>

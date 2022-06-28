@@ -25,6 +25,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Controller
 @RequestMapping("/concert/*")
@@ -41,99 +42,111 @@ public class ShowController {
     public String goConcertPlan(Criteria criteria, ListDTO listDTO, Model model) {
         listDTO.setArtistSortingType("NEW");
         List<ArtistVO> artistVO = artistService.getList(new Criteria(1, 3), listDTO);
+
+
         artistVO.forEach(ArtistVO -> {
-            if(ArtistVO.getArtistType() == 1) {
+            if (ArtistVO.getArtistType() == 1) {
                 ArtistVO.setArtistCategory("뮤지션");
             } else if (ArtistVO.getArtistType() == 2) {
                 ArtistVO.setArtistCategory("퍼포먼스");
             }
-                });
+        });
         model.addAttribute("artistVO", artistVO);
 
-        List<ShowVO> replyRankingAll = showService.getRankingReply();
+        List<ShowVO> replyRankingFive = showService.getRankingReply();
 //        List<ShowVO> replyRankingFive = replyRankingAll.subList(0,5);
-//
-//        replyRankingFive.forEach(showVO -> {
-//            // 지역만 선택
-//            String showRegion = showVO.getShowAddress();
-//            showRegion = "[" + showRegion.substring(0, 2) + "] ";
-//            showVO.setShowRegion(showRegion);
-//
-//            // showType 문자열로 변경
-//            if(showVO.getShowType() == 1) {
-//                showVO.setShowCategory("뮤지션");
-//            } else if (showVO.getShowType() == 2) {
-//                showVO.setShowCategory("퍼포먼스");
-//            }
-//
-//            try {
-//                SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
-//                String showDay = showVO.getShowDay();
-//                Date day = dayFormat.parse(showDay);
-//                showDay = dayFormat.format(day);
-//
-//                Calendar cal = Calendar.getInstance();
-//                cal.setTime(day);
-//                int dayNum = cal.get(Calendar.DAY_OF_WEEK);
-//                String dayth = "" ;
-//
-//                switch(dayNum){
-//                    case 1:
-//                        dayth = "일";
-//                        break ;
-//                    case 2:
-//                        dayth = "월";
-//                        break ;
-//                    case 3:
-//                        dayth = "화";
-//                        break ;
-//                    case 4:
-//                        dayth = "수";
-//                        break ;
-//                    case 5:
-//                        dayth = "목";
-//                        break ;
-//                    case 6:
-//                        dayth = "금";
-//                        break ;
-//                    case 7:
-//                        dayth = "토";
-//                        break ;
-//
-//                }
-//
-//                showDay = showDay + " (" + dayth + ")";
-//                showVO.setShowDay(showDay);
-//
-//                SimpleDateFormat timeParse = new SimpleDateFormat("hh:mm:ss");
-//                SimpleDateFormat timeFormat = new SimpleDateFormat("a hh:mm", Locale.KOREAN);
-//
-//                String showDate = showVO.getShowTime();
-//                String[] showTimeList = showDate.split("\\s+");
-//
-//                Date date1 = timeParse.parse(showTimeList[1]);
-//                showDate = timeFormat.format(date1);
-//
-//                showVO.setShowTime(showDate);
-//
-//            } catch (ParseException e) {
-//                System.err.println("dateStr : "  + ", datePattern:");
-//                e.printStackTrace();
-//            }
-//
-//        });
-//
-//
-//
-//
-//        log.info(replyRankingFive.toString());
-//        model.addAttribute("replyRanking", replyRankingFive);
+
+        int count = 1;
+        for(ShowVO vo : replyRankingFive) {
+            log.info(vo.toString());
+            log.info("ㅇ@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+            log.info(count + "  들옴 ");
+            vo.setReplyRanking(count);
+
+            log.info(vo.toString());
+            count += 1;
+            log.info(count + "  나감 ");
+        }
+        replyRankingFive.forEach(showVO -> {
+            // 지역만 선택
+            String showRegion = showVO.getShowAddress();
+            showRegion = "[" + showRegion.substring(0, 2) + "] ";
+            showVO.setShowRegion(showRegion);
+
+            // showType 문자열로 변경
+            if (showVO.getShowType() == 1) {
+                showVO.setShowCategory("뮤지션");
+            } else if (showVO.getShowType() == 2) {
+                showVO.setShowCategory("퍼포먼스");
+            }
+
+            try {
+                SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String showDay = showVO.getShowDay();
+                Date day = dayFormat.parse(showDay);
+                showDay = dayFormat.format(day);
+
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(day);
+                int dayNum = cal.get(Calendar.DAY_OF_WEEK);
+                String dayth = "";
+
+                switch (dayNum) {
+                    case 1:
+                        dayth = "일";
+                        break;
+                    case 2:
+                        dayth = "월";
+                        break;
+                    case 3:
+                        dayth = "화";
+                        break;
+                    case 4:
+                        dayth = "수";
+                        break;
+                    case 5:
+                        dayth = "목";
+                        break;
+                    case 6:
+                        dayth = "금";
+                        break;
+                    case 7:
+                        dayth = "토";
+                        break;
+
+                }
+
+                showDay = showDay + " (" + dayth + ")";
+                showVO.setShowDay(showDay);
+
+                SimpleDateFormat timeParse = new SimpleDateFormat("hh:mm:ss");
+                SimpleDateFormat timeFormat = new SimpleDateFormat("a hh:mm", Locale.KOREAN);
+
+                String showDate = showVO.getShowTime();
+                String[] showTimeList = showDate.split("\\s+");
+
+                Date date1 = timeParse.parse(showTimeList[1]);
+                showDate = timeFormat.format(date1);
+
+                showVO.setShowTime(showDate);
+
+            } catch (ParseException e) {
+                System.err.println("dateStr : " + ", datePattern:");
+                e.printStackTrace();
+            }
+
+        });
+
+
+        log.info("---------------------------------------------");
+        log.info(replyRankingFive.toString());
+        model.addAttribute("replyRanking", replyRankingFive);
         return "concertPlan/concertPlanList";
     }
 
     @GetMapping("/concertPlanList/{type}/{page}")
     @ResponseBody
-    public ShowPageDTO goConcertPlanType(@PathVariable("type") String showType, @PathVariable("page") int pageNum){
+    public ShowPageDTO goConcertPlanType(@PathVariable("type") String showType, @PathVariable("page") int pageNum) {
         ListDTO listDTO = new ListDTO();
         listDTO.setArtistType(showType);
         List<ShowVO> showList = showService.getList(new Criteria(pageNum, 15), listDTO);
@@ -157,7 +170,7 @@ public class ShowController {
                 Date date = new Date(dayFormat.parse(showDay).getTime());
                 Date today = new Date(dayFormat.parse(todayDay).getTime());
                 long calculate = date.getTime() - today.getTime();
-                int Ddays = (int) (calculate / ( 24*60*60*1000));
+                int Ddays = (int) (calculate / (24 * 60 * 60 * 1000));
                 showVO.setDDay(Integer.toString(Ddays));
             } catch (ParseException e) {
                 System.err.println("dateStr : " + showDay + ", datePattern:" + dayFormat);
@@ -189,7 +202,7 @@ public class ShowController {
             showVO.setShowRegion(showRegion);
 
             // showType 문자열로 변경
-            if(showVO.getShowType() == 1) {
+            if (showVO.getShowType() == 1) {
                 showVO.setShowCategory("뮤지션");
             } else if (showVO.getShowType() == 2) {
                 showVO.setShowCategory("퍼포먼스");
@@ -204,30 +217,30 @@ public class ShowController {
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(day);
                 int dayNum = cal.get(Calendar.DAY_OF_WEEK);
-                String dayth = "" ;
+                String dayth = "";
 
-                switch(dayNum){
+                switch (dayNum) {
                     case 1:
                         dayth = "일";
-                        break ;
+                        break;
                     case 2:
                         dayth = "월";
-                        break ;
+                        break;
                     case 3:
                         dayth = "화";
-                        break ;
+                        break;
                     case 4:
                         dayth = "수";
-                        break ;
+                        break;
                     case 5:
                         dayth = "목";
-                        break ;
+                        break;
                     case 6:
                         dayth = "금";
-                        break ;
+                        break;
                     case 7:
                         dayth = "토";
-                        break ;
+                        break;
 
                 }
 
@@ -246,7 +259,7 @@ public class ShowController {
                 showVO.setShowTime(showDate);
 
             } catch (ParseException e) {
-                System.err.println("dateStr : "  + ", datePattern:");
+                System.err.println("dateStr : " + ", datePattern:");
                 e.printStackTrace();
             }
 
@@ -271,7 +284,7 @@ public class ShowController {
         showRegion = showRegion.substring(0, 2);
         showVO.setShowRegion(showRegion);
 
-        if(showVO.getShowType() == 1) {
+        if (showVO.getShowType() == 1) {
             showVO.setShowCategory("뮤지션");
         } else if (showVO.getShowType() == 2) {
             showVO.setShowCategory("퍼포먼스");
@@ -286,30 +299,30 @@ public class ShowController {
             Calendar cal = Calendar.getInstance();
             cal.setTime(day);
             int dayNum = cal.get(Calendar.DAY_OF_WEEK);
-            String dayth = "" ;
+            String dayth = "";
 
-            switch(dayNum){
+            switch (dayNum) {
                 case 1:
                     dayth = "일";
-                    break ;
+                    break;
                 case 2:
                     dayth = "월";
-                    break ;
+                    break;
                 case 3:
                     dayth = "화";
-                    break ;
+                    break;
                 case 4:
                     dayth = "수";
-                    break ;
+                    break;
                 case 5:
                     dayth = "목";
-                    break ;
+                    break;
                 case 6:
                     dayth = "금";
-                    break ;
+                    break;
                 case 7:
                     dayth = "토";
-                    break ;
+                    break;
 
             }
 
@@ -328,7 +341,7 @@ public class ShowController {
             showVO.setShowTime(showDate);
 
         } catch (ParseException e) {
-            System.err.println("dateStr : "  + ", datePattern:");
+            System.err.println("dateStr : " + ", datePattern:");
             e.printStackTrace();
         }
         model.addAttribute("concert", showVO);
@@ -345,7 +358,7 @@ public class ShowController {
         showRegion = showRegion.substring(0, 2);
         showVO.setShowRegion(showRegion);
 
-        if(showVO.getShowType() == 1) {
+        if (showVO.getShowType() == 1) {
             showVO.setShowCategory("뮤지션");
         } else if (showVO.getShowType() == 2) {
             showVO.setShowCategory("퍼포먼스");
@@ -360,30 +373,30 @@ public class ShowController {
             Calendar cal = Calendar.getInstance();
             cal.setTime(day);
             int dayNum = cal.get(Calendar.DAY_OF_WEEK);
-            String dayth = "" ;
+            String dayth = "";
 
-            switch(dayNum){
+            switch (dayNum) {
                 case 1:
                     dayth = "일";
-                    break ;
+                    break;
                 case 2:
                     dayth = "월";
-                    break ;
+                    break;
                 case 3:
                     dayth = "화";
-                    break ;
+                    break;
                 case 4:
                     dayth = "수";
-                    break ;
+                    break;
                 case 5:
                     dayth = "목";
-                    break ;
+                    break;
                 case 6:
                     dayth = "금";
-                    break ;
+                    break;
                 case 7:
                     dayth = "토";
-                    break ;
+                    break;
             }
 
             showDay = showDay + " (" + dayth + ")";
@@ -401,7 +414,7 @@ public class ShowController {
             showVO.setShowTime(showDate);
 
         } catch (ParseException e) {
-            System.err.println("dateStr : "  + ", datePattern:");
+            System.err.println("dateStr : " + ", datePattern:");
             e.printStackTrace();
         }
 
@@ -418,7 +431,7 @@ public class ShowController {
         log.info(criteria.toString());
         log.info("----------------------------");
         ShowVO showVO = showService.read(showNumber);
-        if(showVO.getShowType() == 1) {
+        if (showVO.getShowType() == 1) {
             showVO.setShowCategory("뮤지션");
         } else if (showVO.getShowType() == 2) {
             showVO.setShowCategory("퍼포먼스");
@@ -437,7 +450,7 @@ public class ShowController {
         log.info(criteria.toString());
         log.info("================================");
         showVO.setArtistNumber(Long.valueOf(String.valueOf((session.getAttribute("artistNumber")))));
-        if(showService.modify(showVO)) {
+        if (showService.modify(showVO)) {
             rttr.addAttribute("showNumber", showVO.getShowNumber());
             rttr.addAttribute("pageNum", criteria.getPageNum());
             rttr.addAttribute("amount", criteria.getAmount());
