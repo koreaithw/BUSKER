@@ -10,6 +10,7 @@ import com.example.teamprojeect.domain.vo.artist.ArtistReplyVO;
 import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.show.ShowFileVO;
 import com.example.teamprojeect.domain.vo.show.ShowReplyVO;
 import com.example.teamprojeect.domain.vo.show.ShowVO;
 import com.example.teamprojeect.domain.vo.user.LikeVO;
@@ -147,4 +148,5 @@ public class ArtistService {
     public int artistLikeCount(Long artistNumber) {return artistDAO.artistLikeCount(artistNumber);}
     // 아티스트 세션용
     public ArtistVO getDetail2(Long userNumber) {return artistDAO.getDetail2(userNumber);}
+
 }
