@@ -115,6 +115,7 @@ public class ArtistMapperTests {
 //    }
 
     @Test
+<<<<<<< HEAD
     public void getArtistApplyListTest() {
         artistMapper.getArtistApplyList(new Criteria(), false);
 
@@ -186,5 +187,31 @@ public class ArtistMapperTests {
 //            artistMapper.insertApply(artistVO);
 //        }
 //    }
+=======
+    public void rankingListCommentTest(){
+        Criteria criteria = new Criteria();
+        ListDTO listDTO = new ListDTO();
+        listDTO.setDetailDate("2022");
+        listDTO.setRankingSortingDate("year");
+//        listDTO.setDetailDate("2022-05");
+//        listDTO.setRankingSortingDate("month");
+//        listDTO.setDetailDate("06-01");
+//        listDTO.setRankingSortingDate("week");
+        artistMapper.rankingListComment(criteria, listDTO).stream().map(ArtistDTO::toString).forEach(log::info);
+    }
+
+
+    @Test
+    public void rankingListMusicianTest(){
+        Criteria criteria = new Criteria();
+        ListDTO listDTO = new ListDTO();
+        listDTO.setDetailDate("2022");
+        listDTO.setRankingSortingDate("year");
+//        listDTO.setDetailDate("2022-05");
+//        listDTO.setRankingSortingDate("month");
+//        listDTO.setDetailDate("06-01");
+//        listDTO.setRankingSortingDate("week");
+        artistMapper.rankingListMusician(criteria, listDTO).stream().map(ArtistDTO::toString).forEach(log::info);
+>>>>>>> back/backEnd
     }
 }
