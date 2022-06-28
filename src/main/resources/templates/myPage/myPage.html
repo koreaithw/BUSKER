@@ -1360,17 +1360,6 @@
                 </div>
               </div>
 
-              <div class="artist-update-title">
-                <div>아티스트명</div>
-                <p class="input-name-p">
-                  <input
-                          id="artist-update-name"
-                          class="input_text_name"
-                          placeholder="아티스트 이름을 입력하세요"
-                  />
-                </p>
-              </div>
-
               <div class="show_info_content">
                 <div class="show_info">
                   <div class="info_left">
@@ -1796,6 +1785,7 @@
   </body>
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script th:inline="javascript">let userNumber = [[${user.userNumber}]]</script>
+  <script th:inline="javascript">let sessionArtistNumber = [[${session.artistNumber}]]</script>
   <script
     type="text/javascript"
     src="/assets/js/myPage/myPage.js?ver=1"
@@ -1803,7 +1793,6 @@
 
 <script>
 
-  let sessionArtistNumber= [[${session.artistNumber}]]
 
   // 회원탈퇴 후 메인페이지로 돌아가는 기능
   $("input#delete").on("click", function(){
