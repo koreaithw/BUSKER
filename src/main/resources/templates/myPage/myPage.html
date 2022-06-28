@@ -1826,6 +1826,7 @@
 
   </body>
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script th:inline="javascript">let userNumber = [[${user.userNumber}]]</script>
   <script
     type="text/javascript"
     src="/assets/js/myPage/myPage.js?ver=1"
@@ -1906,21 +1907,21 @@
   }
 
   $("a#heart-Artist").on("click", function(){
-    myArtistList(24, "A", 1);
+    myArtistList(userNumber, "A", 1);
   });
 
   $("a.artist-Musician-button").on("click", function(){
     console.log("뮤지션뮤지션뮤지션");
-    myArtistList(24, "M", 1);
+    myArtistList(userNumber, "M", 1);
   });
 
   $(".artist-Performance-button").on("click", function(){
     console.log("퍼포먼서퍼포먼서퍼포먼서");
-    myArtistList(24, "P", 1);
+    myArtistList(userNumber, "P", 1);
   })
 
   $("a.artist-All-button").on("click", function(){
-    myArtistList(24, "A", 1);
+    myArtistList(userNumber, "A", 1);
   });
 
   // 좋아요 취소

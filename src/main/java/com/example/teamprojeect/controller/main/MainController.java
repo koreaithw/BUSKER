@@ -49,8 +49,13 @@ public class MainController {
         List<WorkVO> workVO = workService.getList(new Criteria(1, 5));
 
 
+
         model.addAttribute("rankingList", rankingService.rankingListAll(criteria,listDTO));
 //      model.addAttribute("showVO", showVO);
+
+//        model.addAttribute("rankingList", rankingService.rankingList(criteria,listDTO));
+//      model.addAttribute("showVO", showVO);X
+
         model.addAttribute("workVO", workVO);
 
 
