@@ -35,9 +35,7 @@ public class RecruitmentController {
 
     // 모집공고 페이지 이동
     @GetMapping("/recruitList")
-    public String goRecruit(Criteria criteria,Model model) {
-        log.info("----------------------------------"+criteria.getListLink());
-        model.addAttribute("pageDTO", new PageDTO(criteria, recruitService.getTotal(new ListDTO())));
+    public String goRecruit() {
         return "recruit/recruitList";
     }
 
