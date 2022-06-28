@@ -11,7 +11,7 @@ public class ArtistDTO {
         private String artistName;
         private String artistDescription;
         private Long artistType;
-        private Long artistDonation;
+        private String artistDonation;
         private String artistAccount;
         private String artistStatus;
         private Long likescount;
