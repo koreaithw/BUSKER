@@ -51,12 +51,12 @@ public class KakaoController {
     }
 
     @GetMapping("/logout")
-    public String kakaoLogout(HttpSession session, Model model) {
+    public RedirectView kakaoLogout(HttpSession session, Model model) {
         log.info("logout");
         kakaoService.logoutKakao((String) session.getAttribute("token"));
         model.addAttribute("sessionCheck", "0");
         session.invalidate();
-        return "/main/main";
+        return new RedirectView("/main/main");
     }
 
 //    @GetMapping("/login")
