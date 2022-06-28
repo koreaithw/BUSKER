@@ -4,7 +4,9 @@ import com.example.teamprojeect.domain.vo.artist.ArtistDTO;
 import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
+import com.example.teamprojeect.domain.vo.paging.artist.ArtistPageDTO;
 import com.example.teamprojeect.domain.vo.paging.show.ShowPageDTO;
+import com.example.teamprojeect.domain.vo.paging.work.WorkApplyPageDTO;
 import com.example.teamprojeect.domain.vo.show.ShowVO;
 import com.example.teamprojeect.domain.vo.work.WorkVO;
 import com.example.teamprojeect.service.ArtistService;
@@ -25,8 +27,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -64,6 +68,7 @@ public class MainController {
 
         log.info("showVO=========" +showVO);
 
+
         // 세션
         if(((session.getAttribute("userNumber"))==null) && (session.getAttribute("token")==null)) {
             // 일반 회원도 아니고, 토큰도 없으면, 즉
@@ -91,32 +96,37 @@ public class MainController {
         List<ShowVO> showList = showService.getList(new Criteria(1, 5), listDTO);
         log.info("showVO=========" +showList);
 
-//        SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy-MM-dd");
-//
-//        showList.forEach(showVO -> {
-//            // 지역만 선택
-//            String showAddress = showVO.getShowAddress();
-//            showAddress = showAddress.substring(0, 2);
-//
-//            String showLocation = showVO.getShowLocation();
-//            showLocation = "[" + showAddress + "] " + showLocation;
-//            showVO.setShowLocation(showLocation);
-//
-//            // dday 계산
-//            String showDay = showVO.getShowDay();
-//            String todayDay = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis())); // 오늘날짜
-//
-//            try {
-//                Date date = new Date(dayFormat.parse(showDay).getTime());
-//                Date today = new Date(dayFormat.parse(todayDay).getTime());
-//                long calculate = date.getTime() - today.getTime();
-//                int Ddays = (int) (calculate / ( 24*60*60*1000));
-//                showVO.setDDay(Integer.toString(Ddays));
-//            } catch (ParseException e) {
-//                System.err.println("dateStr : " + showDay + ", datePattern:" + dayFormat);
-//                e.printStackTrace();
-//            }
-//        });
         return new ShowPageDTO(showList, showService.getTotal(listDTO));
+    }
+
+    @GetMapping("/artistList/{artistSortingType}/{page}")
+    @ResponseBody
+    public ArtistPageDTO getArtistListType(@PathVariable("artistSortingType") String sortingType, @PathVariable("page") int pageNum){
+        ListDTO listDTO = new ListDTO();
+        listDTO.setArtistSortingType(sortingType);
+        log.info("pageNum=================" +pageNum);
+        log.info("p123=================" + sortingType);
+        List<ArtistVO> artistList = artistService.getList(new Criteria(pageNum, 7), listDTO);
+
+
+        return new ArtistPageDTO(artistList, artistService.getTotal(listDTO));
+    }
+
+    @ResponseBody
+    @GetMapping("/workList/{tag}/{page}")
+    public WorkApplyPageDTO goWorkList(@PathVariable("tag") String tagN, @PathVariable("page") int pageNum, Model model) {
+        ListDTO listDTO = new ListDTO();
+        List<String> tagList = new ArrayList<String>();
+        if(tagN != null) {
+            System.out.println("----------------"+tagN);
+            tagList.add(tagN);
+            List<String> list = tagList.stream().distinct().collect(Collectors.toList());
+            System.out.println("----------------"+tagList);
+            listDTO.setTag(list);
+        }
+        model.addAttribute("tagList",workService.getTag());
+
+        log.info("taglist======================================" +tagList);
+        return new WorkApplyPageDTO(workService.getKeyword(new Criteria(pageNum,5),listDTO),workService.getTotalListApply());
     }
 }

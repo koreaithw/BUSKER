@@ -42,6 +42,16 @@ li{
     /* margin: 10px; */
 }
 
+.right_1{
+    display: flex;
+    /* margin: 10px; */
+}
+
+.right_2{
+    display: flex;
+    /* margin: 10px; */
+}
+
 .right-updown{
     display: flex;
     flex-direction: column;
