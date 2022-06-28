@@ -26,6 +26,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
@@ -42,8 +44,9 @@ public class MypageController {
 
     // 마이페이지 이동
     @GetMapping("/myPage")
-    public String goMypage(Model model) {
-        UserVO userVO = userService.read(24L);
+    public String goMypage(Model model, HttpSession session) {
+        Long userNumber = Long.valueOf(String.valueOf(session.getAttribute("userNumber")));
+        UserVO userVO = userService.read(userNumber);
         String userEmail = userVO.getUserEmail();
         String[] str = userEmail.split("@");
         userVO.setUserEmailId(str[0]);

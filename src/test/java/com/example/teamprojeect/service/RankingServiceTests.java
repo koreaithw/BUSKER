@@ -19,10 +19,11 @@ public class RankingServiceTests {
         rankingService.rankingListAll(new Criteria(1, 10), new ListDTO("A","B","C","LIKE","1"))
                 .stream().map(ArtistDTO::toString).forEach(log::info);
     }
-    @Test
-    public void rankingListMusicianTest(){
-        rankingService.rankingListMusician(new Criteria(1, 10), new ListDTO("A","B","C","LIKE","1"))
-                .stream().map(ArtistDTO::toString).forEach(log::info);
-    }
+//    @Test
+//    public void rankingListMusicianTest(){
+//        rankingService.rankingListMusician(new Criteria(1, 10), new ListDTO("A","B","C","LIKE","1"))
+//        rankingService.rankingList(new Criteria(1, 7), new ListDTO("A","B","C","LIKE","1"))
+//                .stream().map(ArtistDTO::toString).forEach(log::info);
+//    }
 }
 

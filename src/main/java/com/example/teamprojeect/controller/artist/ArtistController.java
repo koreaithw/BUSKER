@@ -113,6 +113,7 @@ public class ArtistController {
             artistVO.setArtistCategory("퍼포먼스");
         }
 
+
         Long userNumber = 1L;
 
         log.info("userNumber=================" + userNumber);
@@ -120,6 +121,9 @@ public class ArtistController {
 
         model.addAttribute("artist", artistVO);
         model.addAttribute("likeCheck", artistService.checkArtistLike(artistNumber, userNumber));
+        model.addAttribute("likeCount", artistService.artistLikeCount(artistNumber));
+
+        artistVO.setLikesCount(artistService.artistLikeCount(artistNumber));
 
         return "artist/artistInfo";
     }
