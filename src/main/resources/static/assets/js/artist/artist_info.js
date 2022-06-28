@@ -1,3 +1,7 @@
+let usernumber = sessionStorage.getItem('userNumber');
+
+console.log(usernumber)
+
 //후원버튼 클릭시 모달창 열기
 $("#btn-modal").click(function () {
     console.log("fdd")
@@ -138,7 +142,7 @@ function donateapi() {
     // getter
     var IMP = window.IMP;
     IMP.init('imp17202305');
-    var usernumber = 2; //임시 넘버
+    var usernumber = 2;
     let query = window.location.search;
     let param = new URLSearchParams(query);
     let artistnumber = param.get('artistNumber');
@@ -264,8 +268,6 @@ function donateapi() {
 
 
 $(document).ready(function () {
-
-
     let likecount = document.getElementById('like_count').value
     let likeval = document.getElementById('like_check').value
     console.log(likeval);
