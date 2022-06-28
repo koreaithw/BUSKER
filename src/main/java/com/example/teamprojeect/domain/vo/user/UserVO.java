@@ -15,6 +15,7 @@ public class UserVO {
     private Long userArtistStatus;
     private String userRegisterDate;
     private Long userStatus;
+    private String artistStatus;
     private String userEmailId;
     private String userDomain;
     private boolean userCookie;

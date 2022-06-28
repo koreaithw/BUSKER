@@ -46,16 +46,19 @@ public class MypageController {
     @GetMapping("/myPage")
     public String goMypage(Model model, HttpSession session) {
         Long userNumber = Long.valueOf(String.valueOf(session.getAttribute("userNumber")));
-        Long artistNumber = Long.valueOf(String.valueOf(session.getAttribute("artistNumber")));
+        if(session.getAttribute("artistNumber") != null) {
+            Long artistNumber = Long.valueOf(String.valueOf(session.getAttribute("artistNumber")));
+            ArtistVO artistVO = artistService.getDetail(artistNumber);
+            model.addAttribute("artist", artistNumber);
+        }
         UserVO userVO = userService.read(userNumber);
-        ArtistVO artistVO = artistService.getDetail(artistNumber);
         String userEmail = userVO.getUserEmail();
         String[] str = userEmail.split("@");
         userVO.setUserEmailId(str[0]);
         userVO.setUserDomain(str[1]);
         log.info(str[0]);
         model.addAttribute("user",userVO);
-        model.addAttribute("artist", artistNumber);
+
         return "/myPage/myPage";
     }
 
@@ -132,7 +135,9 @@ public class MypageController {
     @PostMapping(value="/new", consumes = "application/json", produces = "application/json; charset=UTF-8")
     @ResponseBody
     public ResponseEntity<String> create(@RequestBody ArtistVO artistVO) throws UnsupportedEncodingException{
+        log.info("라ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ아ㅏ아앙아ㅏ" + artistVO);
         log.info("artistVO" + artistVO);
+        log.info("artistVO" + artistVO.getFile());
         artistService.registerApply(artistVO);
         return new ResponseEntity<>(new String("아티스트 등록 신청".getBytes(), "UTF-8"),HttpStatus.OK);
     }

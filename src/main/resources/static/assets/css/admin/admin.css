@@ -617,7 +617,7 @@ p.circle {
     width: 150px;
     height: 45px;
     background-size: 100%;
-    background-color: plum;
+    background-color: #ff564c;
     color: #fff;
     vertical-align: middle;
     line-height: 3.75rem;
@@ -703,13 +703,13 @@ p.circle {
 }
 
 .user_search_wrap input {
+    border-bottom: 5px solid #000 !important;
     height: 32px;
     font-size: 15px;
     border: 0;
-    border-radius: 10px;
+    border-radius: 3px;
     outline: none;
     padding: 10px;
-    background-color: #fbe6d5;
 }
 
 .user_search_wrap a {

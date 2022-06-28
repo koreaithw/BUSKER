@@ -2,7 +2,6 @@
 
 package com.example.teamprojeect.controller.admin;
 
-
 import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.list.UserListDTO;
@@ -26,6 +25,8 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -43,11 +44,19 @@ public class AdminController {
 
     // 관리자 페이지 이동
     @GetMapping("/adminMain")
-    public String goAdmin(Model model, Criteria criteria, ListDTO listDTO, boolean isArtist, boolean isUpdate) {
+    public String goAdmin(Model model, Criteria criteria, ListDTO listDTO, boolean isArtist, boolean isUpdate, HttpServletRequest request) {
+        HttpSession session = request.getSession();
         int total = workService.getTotalApply();
         int totalR = recruitService.getTotal(listDTO);
         int totalU = userService.getTotal();
         int totalA = artistService.getArtistApplyTotal(isUpdate);
+        String userName = userService.read((Long)session.getAttribute("userNumber")).getUserName();
+        String userEmail = userService.read((Long)session.getAttribute("userNumber")).getUserEmail();
+        log.info(userName);
+        // 유저 이름 가지고 가기
+        model.addAttribute("userName", userName);
+        // 유저 이메일 가지고 가기
+        model.addAttribute("userEmail", userEmail);
         // 작품 신청 전체 목록
         model.addAttribute("workList", workService.getList(criteria));
         // 관리자 페이지 메인에서 작품 신청 8개만 띄우는 목록
@@ -72,6 +81,9 @@ public class AdminController {
         model.addAttribute("artistApplyListSmall", artistService.getArtistApplyList(new Criteria(1,9),isUpdate));
         // 아티스트 신청 페이징
         model.addAttribute("artistPageDTO", new PageDTO(criteria, totalA));
+        log.info("********************************");
+        log.info(session.getAttribute("userNumber").toString());
+        log.info("********************************");
         return "/admin/adminMain";
     }
 

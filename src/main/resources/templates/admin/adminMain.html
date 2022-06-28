@@ -13,7 +13,7 @@
 <div class="all-change">
     <div class="header-change">
         <p class="h-change">Buskers</p>
-        <h1 class="h-change"><a href="" class="btn-home"><img src="/images/admin/home.png" width="15px;" height="15px;" alt=""> 관리자 이름</a></h1>
+        <h1 class="h-change"><a href="" class="btn-home"><img src="/images/admin/home.png" width="15px;" height="15px;" alt=""> 관리자 페이지</a></h1>
         <ul class="h-change">
             <li><a href="" class="btn-artist"><img src="/images/admin/art-studies.png" width="15px;" height="15px;" alt="">&nbsp;&nbsp;아티스트 관리</a></li>
             <!-- <a href="https://www.flaticon.com/free-icons/art" title="art icons">Art icons created by Hilmy Abiyyu A. - Flaticon</a> -->
@@ -30,7 +30,7 @@
         <div class="admin-name">
             <h1>관리자 이름</h1>
             <div class="btn-main-border">
-                <a href="/main/main.html" class="btn-main">메인으로 돌아가기</a>
+                <a href="/main/" class="btn-main">메인으로 돌아가기</a>
             </div>
         </div>
         <div class="home-display">
@@ -63,7 +63,7 @@
                         <!--                            </li> -->
                     </ul>
                 </div>
-                <div class="artist-list" style="height: 430px;">
+                <div class="artist-list" style="height: 423px;">
                     <table>
                         <h4>최신 작품 신청</h4>
                         <tr>
@@ -82,7 +82,7 @@
                         </th:block>
                     </table>
                 </div>
-                <div class="artist-list">
+                <div class="artist-list" style="height: 423px;">
                     <table>
                         <h4>최신 아티스트 신청</h4>
                         <tr>
@@ -148,41 +148,8 @@
                          height="40px;" alt="">
                     <!-- <a href="https://www.flaticon.com/kr/free-icons/-" title="알 수 없는 아이콘">알 수 없는 아이콘  제작자: Freepik - Flaticon</a> -->
                     <div class="admin-field">
-                        <h4>관리자 이름</h4>
-                        <p>admin@gmail.com</p>
-                    </div>
-                </div>
-                <div class="manager-set">
-                    <div>
-                        <h4>운영진 설정</h4>
-                        <img src="/images/admin/free-icon-unknown-3088765.png" class="icon" width="40px;"
-                             height="40px;" alt="">
-                    </div>
-                    <div>
-                        <a href=""><img src="/images/admin/premium-icon-gear-484613.png" width="20px;" height="20px;" alt=""></a>
-                        <!-- <a href="https://www.flaticon.com/kr/free-icons/" title="기어 아이콘">기어 아이콘  제작자: Freepik - Flaticon</a> -->
-                    </div>
-                </div>
-                <div class="manager-set">
-                    <div>
-                        <h4>관리자</h4>
-                        <img src="/images/admin/free-icon-unknown-3088765.png" class="icon" width="40px;"
-                             height="40px;" alt="">
-                    </div>
-                    <div>
-                        <a href=""><img src="/images/admin/premium-icon-gear-484613.png" width="20px;" height="20px;" alt=""></a>
-                        <!-- <a href="https://www.flaticon.com/kr/free-icons/" title="기어 아이콘">기어 아이콘  제작자: Freepik - Flaticon</a> -->
-                    </div>
-                </div>
-                <div class="manager-set">
-                    <div>
-                        <h4>관리자 이름</h4>
-                        <img src="/images/admin/free-icon-unknown-3088765.png" class="icon" width="40px;"
-                             height="40px;" alt="">
-                    </div>
-                    <div>
-                        <a href=""><img src="/images/admin/premium-icon-gear-484613.png" width="20px;" height="20px;" alt=""></a>
-                        <!-- <a href="https://www.flaticon.com/kr/free-icons/" title="기어 아이콘">기어 아이콘  제작자: Freepik - Flaticon</a> -->
+                        <h4 th:text="${userName}"></h4>
+                        <p th:text="${userEmail}"></p>
                     </div>
                 </div>
             </div>
@@ -270,7 +237,7 @@
                     </div>
                     <div class="user_search_wrap">
                         <input type="text" class="search" name="keyword">
-                        <a href="" class="go_search">검색</a>
+                        <a href="" class="go_search"><img src="http://tkfile.yes24.com/imgNew/common/pf-srch-w.png" alt="" class="fixed"></a>
                     </div>
                     <thead>
                     <th>번호</th>
@@ -354,6 +321,7 @@
 </script>
 <script src="/assets/js/admin/admin.js"></script>
 <script th:inline="javascript">
+    const session = [[${session.userNumber}]];
     let pageNumW = 1; // 작품 신청 목록 페이지 넘버
     let pageNumR = 1; // 모집 공고 목록 페이지 넘버
     let pageNumU = 1; // 유저 목록 페이지 넘버
@@ -375,6 +343,8 @@
     let today = todayWorkApply + todayArtistApply + todayRecruit;
     $(".circle").html(today);
     let remember = [[${criteria.listLink}]]; // 페이지 기억
+
+    console.log(session);
 
     $(".go_search").on("click", function (e) {
         e.preventDefault();
@@ -408,7 +378,7 @@
                 str += "<td>" + works.workRegisterDate + "</td>";
                 str += "<td>" + works.workName + "</td>";
                 str += "<td>" + works.artistName + "</td>";
-                str += `<td><a href="/work/workInfo/${works.workNumber}">상세 보기</a></td>`
+                str += `<td><a href="/work/workInfo?workNumber=${works.workNumber}">상세 보기</a></td>`
                 str += "<td><a href='" + works.workPurchaseUrl + "'>구매 링크</a></td>";
                 str += `<td><a class="approve" href="javascript:approve(${works.workNumber})">승인</a> | <a class="reject" href="javascript:reject(${works.workNumber})">반려</a></td>`
                 str += "</tr>";
@@ -525,7 +495,7 @@
 
             $.each(list.list, function (i, users) {
                 let isRegi = "X"
-                if(users.userArtistStatus == 4){
+                if(users.artistStatus == 3){
                     isRegi = "O";
                 }
                 str += `<tr>`;
