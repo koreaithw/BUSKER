@@ -60,6 +60,8 @@ public interface ArtistMapper {
     public List<ArtistDTO> rankingListMusician(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO);
     // 퍼포먼스 랭킹
     public List<ArtistDTO> rankingListPerformance(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO);
+    // 댓글 랭킹
+    public List<ArtistDTO> rankingListComment(@Param("criteria") Criteria criteria, @Param("listDTO") ListDTO listDTO);
 
     // 아티스트 상세 정보
     public ArtistVO getDetail(Long artistNumber);

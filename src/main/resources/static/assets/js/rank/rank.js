@@ -62,5 +62,31 @@ $(function(){
 //
 // })();
 
+let rankingService = (function(){
+function year(year, callback, error) {
+    console.log("6/27 ..........");
+    $.ajax({
+        url: "ranking/rankingAll",
+        type: 'get',
+        data: JSON.stringify({year}),
+        contentType: "application/json",
+        success: function (result) {
+            if (callback) {
+                callback(result);
+            }
+        },
+        error: function (xhr, status, er) {
+            if (error) {
+                error(er);
+            }
+        }
+    });
+}
+
+return {add: add};
+})();
+
+
+
 
 

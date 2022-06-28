@@ -114,7 +114,7 @@ public class ArtistController {
         }
 
 
-        Long userNumber = 1L;
+        Long userNumber = 2L;
 
         log.info("userNumber=================" + userNumber);
         log.info("artistNumber=================" + artistNumber);
