@@ -50,12 +50,6 @@
                 </div>
             </div>
         </div>
-
-<!--        가져온거-->
-        <div class="search-box">
-            <input class="search-outline" type="text" placeholder="궁금하신 내용을 입력해주세요" autocomplete="off">
-            <a onclick="jsf_notice_Search();" style="cursor: pointer"><img src="/images/recruit/Magnifier.png" alt=""></a>
-        </div>
     </div>
     <div class="board-list">
         <div class="board-table">
@@ -97,7 +91,7 @@
 
 <!-- 맨위로 올리는 버튼 -->
 <script src="/assets/js/recruit/recruitment.js"></script>
-<script>
+<script th:inline="javascript">
     // const $topBtn = document.querySelector(".moveTopBtn");
     $(".rank_category_tiny a").on("click", function(e){
         if($(e.target).hasClass('on')){
@@ -178,7 +172,7 @@
                 str += "<td>";
                 str += (recru.recruitmentType == 'A') ? "전체": (recru.recruitmentType == 'M') ? "뮤지션": "퍼포먼스";
                 str += "</td>";
-                str += "<td><a href='" +recru.recruitmentNumber+ "' class='clickLink'><em>" + recru.recruitmentName + "</em></a></td>";
+                str += "<td><a href='/recruit/recruitInfo?pageNum="+pageNum+"&amount=10&type&keyword&recruitmentNumber=" +recru.recruitmentNumber+ "' class='clickLink'><em>" + recru.recruitmentName + "</em></a></td>";
                 str += "<td>" + (recru.recruitmentDay).substring(0,11) + " " + recru.recruitmentTime + "</td>";
                 str += "<td>284</td>"
                 str += "</tr>"
@@ -252,11 +246,11 @@
         });
     }
 
-
-    $("a.clickLink").click(function (e) {
-        e.preventDefault();
-        location.href = "/recruit/recruitInfo"+paging+"&workNumber="+$(this).attr('href');
-    });
+    //
+    // $("a.clickLink").on("click",function (e) {
+    //     e.preventDefault();
+    //     location.href = "/recruit/recruitInfo?pageNum="+pageNum+"&amount=10&type&keyword&workNumber="+$(this).attr('href');
+    // });
 
     $(".list-pagenation").on("click", "a.changePage", function (e) {
         e.preventDefault();

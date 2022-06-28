@@ -49,13 +49,13 @@ public class WorkFileController {
         if(!uploadPath.exists()){uploadPath.mkdirs();}
 
         for(MultipartFile file : uploadFiles){
-            WorkFileVO WorkFileVO = new WorkFileVO();
+            WorkFileVO workFileVO = new WorkFileVO();
             String uploadFileName = file.getOriginalFilename();
 
             UUID uuid = UUID.randomUUID();
-            WorkFileVO.setFileName(uploadFileName);
-            WorkFileVO.setUuid(uuid.toString());
-            WorkFileVO.setUploadPath(getFolder());
+            workFileVO.setFileName(uploadFileName);
+            workFileVO.setUuid(uuid.toString());
+            workFileVO.setUploadPath(getFolder());
 
             uploadFileName = uuid.toString() + "_" + uploadFileName;
 
@@ -74,7 +74,7 @@ public class WorkFileController {
                 thumbnail.close();
 //                WorkFileVO.setImage(true);
             }
-            files.add(WorkFileVO);
+            files.add(workFileVO);
         }
         return files;
     }

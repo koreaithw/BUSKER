@@ -26,7 +26,10 @@
         <div class="work_info_content">
             <div class="work_info">
                 <div class="info_left">
-                    <div class="img_box"><img src="/images/work/20473078.jpg" alt=""></div>
+                    <div class="img_box">
+                        <img th:if="*{file == null}" src="/images/work/20473078.jpg" alt="">
+                        <img th:if="*{file != null}" th:src="*{'/file/recruitment/display?fileName='+file.uploadPath + '/' + file.uuid + '_'  + file.fileName}" alt="">
+                    </div>
 <!--                    <div class="like_box">-->
 <!--                        <a href="javascript:changeLike()" class="like">-->
 <!--                            <img src="/images/work/unlike.png" alt="" class="img1">-->
