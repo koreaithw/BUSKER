@@ -6,6 +6,8 @@ import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.recruitment.RecruitmentFileVO;
 import com.example.teamprojeect.domain.vo.recruitment.RecruitmentVO;
+import com.example.teamprojeect.domain.vo.show.ShowFileVO;
+import com.example.teamprojeect.domain.vo.show.ShowVO;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
@@ -18,8 +20,9 @@ public class RecruitService {
     private final RecruitmentDAO recruitmentDAO;
     private final RecruitmentFileDAO recruitmentFileDAO;
 
-    public void register(RecruitmentVO recruitmentVO, RecruitmentFileVO recruitmentFileVO){
+    public void register(RecruitmentVO recruitmentVO){
         recruitmentDAO.register(recruitmentVO);
+        RecruitmentFileVO recruitmentFileVO = new RecruitmentFileVO();
         recruitmentFileVO.setRecruitmentNumber(recruitmentVO.getRecruitmentNumber());
         recruitmentFileDAO.register(recruitmentFileVO);
     }
@@ -44,7 +47,10 @@ public class RecruitService {
         return recruitmentDAO.getDetail(recruitmentNumber);
     }
 
-    public List<RecruitmentFileVO> getFiles(Long recruitmentNumber) {
+    public RecruitmentFileVO getFiles(Long recruitmentNumber) {
         return recruitmentFileDAO.find(recruitmentNumber);
     }
+
+    public void removeFile(Long showNumber) {recruitmentFileDAO.remove(showNumber);}
+
 }

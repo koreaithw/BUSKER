@@ -14,5 +14,5 @@ public interface RecruitmentFileMapper {
     public void delete(Long recruitmentNumber);
 
     // 모집공고 사진 선택
-    public List<RecruitmentFileVO> find(Long recruitmentNumber);
+    public RecruitmentFileVO find(Long recruitmentNumber);
 }
