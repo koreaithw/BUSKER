@@ -25,10 +25,68 @@ let showService = (function () {
     return {goConcertPlan:goConcertPlan}
 })();
 
+let artistService = (function () {
+    function getArtistList(artistSortingType, page, callback, error) {
+        let pageNum = page || 1;
+        $.ajax({
+            url: "/artist/artistList/" + artistSortingType + "/" + pageNum,
+            type: "get",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (artistPageDTO) {
+                if(callback) {
+                    callback(artistPageDTO.total, artistPageDTO.list);
+                }
+            },
+            error: function (xhr, status, er) {
+                if(error)   {
+                    error(xhr, status, er);
+                }
+            }
+        })
+    }
+
+
+
+    return {getArtistList:getArtistList}
+})();
+
+let workService = (function() {
+    function getWorkKeywordList(tag, page, callback, error) {
+        let pageNum = page || 1;
+        let tagN = tag || " ";
+        console.log("in module..." + tag);
+        $.ajax({
+            url: "/main/workList/" + tagN + "/" + pageNum,
+            type: "get",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (workApplyPageDTO) {
+                if (callback) {
+                    callback(workApplyPageDTO.total, workApplyPageDTO.list);
+                }
+            }, error: function (xhr, status, er) {
+                if (error) {
+                    error(xhr, status, er);
+                }
+            }
+        });
+    }
+
+    return {getWorkKeywordList:getWorkKeywordList}
+})();
+
+
+
 // 기본 전역변수
 let pageNum = 1;
 let type = "A"
 let showDiv = $(".small-5-box");
+let artistDiv1 = $(".small-box");
+let artistDiv2 = $(".right_1");
+let artistDiv3 = $(".right_2");
+let workDiv = $(".poster-list");
+let artistSortingType = "NEW";
 
 
 // div 변하는 function 선언
@@ -76,6 +134,97 @@ function concertPlanList(type, page){
     });
 }
 
+function artistList(artistSortingType, page){
+
+
+    artistService.getArtistList(artistSortingType, page, function (total, list) {
+        let str = "";
+
+        if(list == null || list.length == 0){
+            artistDiv1.html("");
+            return;
+        }
+
+
+        $.each(list, function(i, artist){
+            let artistInfoNumber = Number(artist.artistNumber);
+
+            $.getJSON("/file/artist/file", {artistNumber: infoNumber}, function(file){
+                let src = "/file/artist/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+                $("#img-" + infoNumber).attr("src", src);
+            })
+
+            str += "<a class='getinfo' style='cursor:pointer;' href='/artist/artistInfo?pageNum=" + page + "&amount=10&artistSortingType&keyword&artistNumber=" + artistInfoNumber +"' target='_self'>"
+            str += "<div class='list-bigger-wrap'>"
+            str += "<img class='lazyload' alt='아티스트 이름' src='/images/artist/buskerbukser.jpg' style=''>"
+            str += "<div class='list-bigger-txt'>"
+            str += "<p class='list-b-tit1 v2 v2'>" + artist.artistName + "</p>"
+            str += "</div>"
+            str += "</div>"
+            str += "</a>"
+            // artistCntNumber += 1;
+        });
+
+        // $.each(total, function(i, artist){
+        //
+        //     artistCntNumber += 1;
+        // });
+
+
+
+
+
+        artistDiv1.html(str);
+        artistPage(artistSortingType, total);
+    }, function (a, b, c) {
+        console.log(a, b, c)
+    });
+}
+
+function workKeywordList(tag, page){
+    console.log("새로고침 됐슈")
+    workService.getWorkKeywordList(tag, page, function (total, list) {
+        let str = "";
+
+
+        if(list == null || list.length == 0){
+            str += '<section class="show-wrap showIng"><div class="non-show">등록된 공연이 없습니다.</div></section>'
+            workDiv.html(str);
+            return;
+        }
+
+        $.each(list, function(i, work){
+            let infoNumber = Number(work.workNumber);
+
+            $.getJSON("/file/work/file", {workNumber: infoNumber}, function(file){
+                let src = "/file/concert/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+                $("#img-" + infoNumber).attr("src", src);
+            })
+
+            str += "<div>"
+            str += "<a href='/work/workInfo?pageNum=" + page + "&amount=100&tag&keyword&workNumber=" + infoNumber +"' target='_self'>"
+            str += "<div class='poster-list-text-box'>"
+            str += "<div class='poster-list-1'>"
+            str += "<img id='img-" + infoNumber + "' class='lazyload' src='' alt='#'/>"
+            str += "</div>"
+            str += "<div>"
+            str += "<p class='poster-list-text'>" + work.workName + "</p>"
+            str += "</div>"
+            str += "</div>"
+            str += "</a>"
+            str += "</div>"
+
+        });
+
+        workDiv.html(str);
+        workPage(tag, total);
+    }, function (a, b, c) {
+        console.log(a, b, c)
+    });
+}
+
+
+
 
 
 
@@ -83,6 +232,7 @@ function concertPlanList(type, page){
 $(document).ready(function () {
     // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
     concertPlanList(type, pageNum);
+    workKeywordList(tag, pageNum);
 
 })
 

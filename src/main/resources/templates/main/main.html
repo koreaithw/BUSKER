@@ -72,7 +72,7 @@
     
     <div class="big-box-1">
         <div class="name-box">
-            <p class="box-name">인기 아티스트</p>
+            <p class="box-name">최신 아티스트</p>
         </div>
         <div class="small-box">
             <div class="left" th:each="rank : ${rankingList}" th:if="${rank.rankingCount}<2">
@@ -87,7 +87,7 @@
                 </div>
             </div>
             <div class="right-updown">
-                    <div class="right">
+                    <div class="right_1">
                     <div id="right-3" th:each="rank : ${rankingList}" th:if="${rank.rankingCount}>1 and ${rank.rankingCount}<5">
                         <a th:href="@{/artist/artistInfo(artistNumber = ${rank.artistNumber})}">
                         <img src="/images/main/small-poster.png" alt="#">
@@ -95,7 +95,7 @@
                     </div>
 
                 </div>
-                <div class="right">
+                <div class="right_2">
                     <div id="right-3-down" th:each="rank : ${rankingList}" th:if="${rank.rankingCount}>4 and ${rank.rankingCount}<8">
                         <a th:href="@{/artist/artistInfo(artistNumber = ${rank.artistNumber})}">
                         <img src="/images/main/small-poster.png" alt="#">
@@ -202,18 +202,18 @@
         </div>
         <div class="poster-list-6">
             <div class="poster-list">
-                <div th:each="work : ${workVO}">
-                <a th:href="@{/work/workInfo(workNumber = ${work.workNumber})}">
-                    <div class="poster-list-text-box">
-                        <div class="poster-list-1">
-                            <img src="/images/main/poster-list-pic-6.png" alt="">
-                        </div>
-                        <div>
-                            <p class="poster-list-text" th:text="*{work.workName}"></p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+<!--                <div th:each="work : ${workVO}">-->
+<!--                <a th:href="@{/work/workInfo(workNumber = ${work.workNumber})}">-->
+<!--                    <div class="poster-list-text-box">-->
+<!--                        <div class="poster-list-1">-->
+<!--                            <img src="/images/main/poster-list-pic-6.png" alt="">-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <p class="poster-list-text" th:text="*{work.workName}"></p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--            </div>-->
             </div>
         </div>
     </div>
