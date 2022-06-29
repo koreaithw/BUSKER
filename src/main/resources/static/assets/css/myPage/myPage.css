@@ -255,6 +255,7 @@ img.profile-image {
   border-radius: 100%;
   border: 1px solid #c8c7c7;
   padding: 0;
+  display: none;
 }
 
 /* 모달 */
@@ -979,6 +980,10 @@ a:-webkit-any-link {
   text-align: center;
 }
 
+.reply-button{
+  display: none;
+}
+
 #show-reply {
   border-right: 1px solid #a5a5a5;
 }
@@ -988,7 +993,9 @@ a:-webkit-any-link {
   padding: 0;
 }
 
-
+.reply-check{
+  display:none;
+}
 
 .reply-sorting a{
   margin: 0;
@@ -1031,6 +1038,7 @@ a:-webkit-any-link {
 .reply-profile {
   padding: 10px 0 15px 15px;
   border-radius: 50%;
+  margin: auto;
 }
 
 .reply-img {
@@ -1041,6 +1049,7 @@ a:-webkit-any-link {
 
 .reply-content-box {
   padding: 10px 0 15px 15px;
+  margin: auto;
 }
 
 .reply-nickname {
@@ -1083,6 +1092,7 @@ a:-webkit-any-link {
   align-items: center;
   margin-right: 10px;
   border-left: 1px solid #dfdfdf;
+  text-align:center;
 }
 
 .reply-artist-content {
@@ -1329,6 +1339,9 @@ a:-webkit-any-link {
   position: absolute;
 }
 
+.artist-update-title{
+  padding-left: 40px;
+}
 
 .artist-join-profile:hover {
   opacity: 0.3;
@@ -1572,13 +1585,13 @@ select:disabled {
 
 .input_text_name {
   height: 56px;
-  font-size: 30px;
+  font-size: 18px;
   border: 0;
   border-radius: 10px;
   outline: none;
   padding-left: 10px;
-  background-color: rgb(233, 233, 233);
-  width: 1141px;
+  background-color: rgb(253, 236, 221);
+  width: 1123px;
 }
 
 .input_text:focus {
