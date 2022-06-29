@@ -1882,10 +1882,11 @@
                     likeCategory = "퍼포먼서";
                 }
                 let artistNumber = Number(myArtist.artistNumber);
-
-                $.getJSON("/file/artist/file", {artistNumber, artistNumber}, function (file) {
-                    let src = "/file/artist/display?fileName" + file.uploadPath + "/" + file.uuid + "_" + file.fileName;
-                    $("img-" + artistNumber).attr("src", src);
+                let src = "";
+                $.getJSON("/file/artist/find", {artistNumber : artistNumber}, function (file) {
+                    src = "/file/artist/display?fileName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName;
+                    $("#img-" + artistNumber).attr("src", src);
+                    console.log(artistNumber);
                 })
 
                 str += "<div class='artistList'><a class='myArtist' href='/artist/artistInfo?pageNum=" + page + "&amount=15&type&keyword&artistNumber=" + artistNumber + "'>"
@@ -1898,8 +1899,8 @@
                 str += "<img id='heartNon-icon-1' class='artist-heart-nonSelected' src='/images/myPage/non-heart-icon.png' width='30px' style='display:none'/></a>"
                 str += "</div>"
                 str += "</div>"
-            });
 
+            });
             myPagediv.html(str);
             myPagePaging(type, total);
         }, function (a, b, c) {
@@ -1956,9 +1957,10 @@
                 let likeCategory = "";
                 let infoNumber = Number(myWork.workNumber);
 
-                $.getJSON("/file/work/file" + {workNumber: infoNumber}, function (file) {
+                $.getJSON("/file/work/file", {workNumber: infoNumber}, function (file) {
                     let src = "file/work/display?filaName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName;
-                    $("#img-" + infoNumber).attr("src", src);
+                    $("#imgWork-" + infoNumber).attr("src", src);
+                    console.log($(".myWork-image").attr("src"))
                 })
 
                 if (myWork.artistType == 1) {
@@ -1969,7 +1971,7 @@
 
                 str += "<div class='artistList'>"
                 str += "<a href = '' class='myWork myLike'>"
-                str += "<img class='myWork-image' src='' id='img-" + infoNumber + "'/>"
+                str += "<img class='myWork-image' src='' id='imgWork-" + infoNumber + "'/>"
                 str += "<div class='info'>"
                 str += "<div class='myWork'>"
                 str += "<span class='myWorkName'>" + myWork.workName + "</span>"
