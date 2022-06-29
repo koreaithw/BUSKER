@@ -232,21 +232,8 @@ function workKeywordList(tag, page){
 
 $(document).ready(function () {
     // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
-    concertPlanList(type, pageNum);
-
-})
-
-$(document).ready(function () {
-    // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
-
-    workKeywordList(tagN, pageNum);
-
-
-})
-
-$(document).ready(function () {
-    // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
-
+    // concertPlanList(type, pageNum);
+    // workKeywordList(tagN, pageNum);
     artistList(artistSortingType, pageNum);
 
 })

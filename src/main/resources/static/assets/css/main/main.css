@@ -42,6 +42,16 @@ li{
     /* margin: 10px; */
 }
 
+.right_1{
+    display: flex;
+    /* margin: 10px; */
+}
+
+.right_2{
+    display: flex;
+    /* margin: 10px; */
+}
+
 .right-updown{
     display: flex;
     flex-direction: column;
@@ -401,6 +411,11 @@ body {font-family: Verdana, sans-serif;}
 .mySlides {display: none;}
 img {vertical-align: middle;}
 
+#img- {
+    vertical-align: middle;
+}
+
+
 /* Slideshow container */
 .slideshow-container {
   max-width: 100%;
@@ -523,6 +538,11 @@ img {vertical-align: middle;}
     /*display: flex;*/
     justify-content: center;
     margin: auto;
+
+}
+
+.left {
+    margin:10px;
 
 }
 

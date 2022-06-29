@@ -126,18 +126,18 @@ public class ArtistFileController {
     }
 
 //     find
-//    @GetMapping("/find")
-//    @ResponseBody
-//    public ArtistFileVO find(Long artistNumber){
-//        log.info("get file find....... : " + artistNumber);
-//        return artistService.find(artistNumber);
-//    }
+    @GetMapping("/find")
+    @ResponseBody
+    public ArtistFileVO find(Long artistNumber){
+        log.info("get file find....... : " + artistNumber);
+        return artistService.find(artistNumber);
+    }
 
-//    @GetMapping("/file")
-//    @ResponseBody
-//    public ShowFileVO getFile(Long showNumber) {
-//        log.info("file " + showNumber);
-//        return artistService.find(showNumber);
-//    }
+    @GetMapping("/file")
+    @ResponseBody
+    public ArtistFileVO getFile(Long artistNumber) {
+        log.info("file " + artistNumber);
+        return artistService.find(artistNumber);
+    }
     }
 

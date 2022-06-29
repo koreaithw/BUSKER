@@ -6,6 +6,8 @@ import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.paging.artist.ArtistPageDTO;
+import com.example.teamprojeect.domain.vo.show.ShowFileVO;
+import com.example.teamprojeect.mapper.artist.ArtistFileMapper;
 import com.example.teamprojeect.mapper.artist.ArtistMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,8 +21,10 @@ import java.util.List;
 @Slf4j
 public class ArtistDAO {
     private final ArtistMapper artistMapper;
+    private final ArtistFileMapper artistFileMapper;
 
 
+    public ArtistFileVO find(Long artistNumber) { return artistFileMapper.find(artistNumber);}
     // 아티스트 정보 //
     // 아티스트 등록 신청 (status 1)
     public void registerApply(ArtistVO artistVO) {

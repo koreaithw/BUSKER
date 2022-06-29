@@ -67,6 +67,7 @@ public class ArtistService {
         return artistDAO.getArtistApplyList(criteria, isUpdate);
     }
 
+    public ArtistFileVO find(Long artistNumber) { return artistDAO.find(artistNumber);}
     // 아티스트 등록, 수정 승인
     public boolean approveArtistApply(Long artistNumber){
         return artistDAO.approveArtistApply(artistNumber);
