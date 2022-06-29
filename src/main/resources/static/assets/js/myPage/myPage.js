@@ -661,11 +661,12 @@ let userService = (function(){
   function getArtist(userNumber, type, page, callback, error){
     console.log("getArtist.................");
     let pageNum = page || 1;
+    console.log(page);
     $.ajax({
       url: "/myPage/" + userNumber + "/" + type + "/" + pageNum,
       type: "get",
       dataType: "json",
-      concentType: "application/json",
+      contentType: "application/json",
       success: function(LikePageDTO){
         if(callback){
           callback(LikePageDTO.total, LikePageDTO.list);

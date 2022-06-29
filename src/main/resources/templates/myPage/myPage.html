@@ -608,15 +608,9 @@
 
                         <!-- 페이징 -->
                         <div class="paging">
-                            <!--                <div class="mypage-pageStyle">-->
-                            <!--                  <a class="mypage-page-first"><<</a>-->
-                            <!--                  <a class="mypage-page-prev"><</a>-->
-                            <!--                  <div>-->
-                            <!--                    <a class="">1</a>-->
-                            <!--                  </div>-->
-                            <!--                  <a class="mypage-page-next">></a>-->
-                            <!--                  <a class="mypage-page-last">>></a>-->
-                            <!--                </div>-->
+                            <div class="mypage-pageStyle like_artist">
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -840,6 +834,9 @@
                     </div>
                     <!-- 페이징 -->
                     <div class="paging">
+                        <div class="mypage-pageStyle likeWork">
+
+                        </div>
                         <!--              <div class="mypage-pageStyle">-->
                         <!--                <a class="mypage-page-first"><<</a>-->
                         <!--                <a class="mypage-page-prev"><</a>-->
@@ -1788,15 +1785,9 @@
                         </div>
                         <!-- 페이징 -->
                         <div class="paging">
-                            <!--              <div class="mypage-pageStyle">-->
-                            <!--                <a class="mypage-page-first"><<</a>-->
-                            <!--                <a class="mypage-page-prev"><</a>-->
-                            <!--                <div>-->
-                            <!--                  <a class="">1</a>-->
-                            <!--                </div>-->
-                            <!--                <a class="mypage-page-next">></a>-->
-                            <!--                <a class="mypage-page-last">>></a>-->
-                            <!--              </div>-->
+                            <div class="mypage-pageStyle donation_artist_page">
+
+                            </div>
                         </div>
                     </div>
                     <!-- 아티스트 후원회원 목록 끝 -->
@@ -1820,7 +1811,10 @@
 ></script>
 
 <script>
-
+    let $pagingDA = $(".donation_artist_page");
+    let $pagingLA = $(".like_artist");
+    let $pagingUD = $(".user_donation");
+    let pageNumUD = 1;
 
     // 회원탈퇴 후 메인페이지로 돌아가는 기능
     $("input#delete").on("click", function () {
@@ -1868,6 +1862,7 @@
         userService.getArtist(userNumber, type, page, function (total, list) {
             let str = "";
             console.log(userNumber + "myArtistList 들어옴");
+            console.log(list);
 
             if (list == null || list.length == 0) {
                 myPagediv.html("");
@@ -1890,7 +1885,7 @@
                 })
 
                 str += "<div class='artistList'><a class='myArtist' href='/artist/artistInfo?pageNum=" + page + "&amount=15&type&keyword&artistNumber=" + artistNumber + "'>"
-                str += "<img class='myArtist-image' src='' id='img-" + artistNumber + "'/>'q"
+                str += "<img class='myArtist-image' src='' id='img-" + artistNumber + "'/>"
                 str += "<span class='myArtistName'>" + myArtist.artistName + "</span>"
                 str += "<span class='myArtistType'>" + likeCategory + "</span>"
                 str += "</a>"
@@ -1902,10 +1897,50 @@
 
             });
             myPagediv.html(str);
-            myPagePaging(type, total);
+            console.log('000000000000000000000000000000000000000000000000000000000000000000000000000000000')
+            myArtistPage(userNumber, type, total);
         }, function (a, b, c) {
             console.log(a, b, c)
         });
+    }
+
+    let pageNumLA = 1;
+
+    function myArtistPage(userNumber, type, total) {
+        $pagingLA.empty();
+        console.log(userNumber);
+        console.log(type);
+        console.log(total);
+        let endPage = Math.ceil(pageNumLA / 10.0) * 10;
+        let startPage = endPage - 9;
+        let realEnd = Math.ceil(total / 10.0);
+
+        if(endPage > realEnd){
+            endPage = realEnd;
+        }
+
+        let prev = startPage > 1;
+        let next = endPage * 10 < total;
+        let str = "";
+
+//str += "<a class=\"mypage-page-first changePage\" href='" + "workApplyList/" + 1 + "'>&lt;&lt;</a>";
+        str += `<a class="mypage-page-first changePage" href="javascript:myArtistList(${userNumber},${type},${1})">&lt;&lt;</a>`;
+        if(prev) {
+//str += "<a class='mypage-page-prev' href='" + "workApplyList/" + (startPage - 1) + "'><code>&lt;</code></a>";
+            str += `<a class="mypage-page-prev" href="javascript:myArtistList(${userNumber},${type},${startPage-1})">&lt;</a>`
+        }
+        for(let i = startPage; i <= endPage; i++){
+//str += pageNum == i ? "<p>" + i +"</p>": "<a class='changePage' href='" + "workApplyList/" + i + "'>" + i + "</a>";
+            str += pageNumLA == i ? `<a style="cursor:auto" onclick="this.preventDefault()" class="changePage">${i}</a>` : `<a class="changePage" onclick="myArtistList(${userNumber},` + type + `,${i})">${i}</a>`
+        }
+        if(next){
+//str += "<a class='mypage-page-next' href='" + "workApplyList/" + (endPage + 1) + "'>&gt;</a>";
+            str += `<a class="mypage-page-next changePage" href="javascript:myArtistList(${userNumber},${type},${endPage+1})">&gt;</a>`
+        }
+//str += "<a class='mypage-page-last changePage' href='" + "javascript:showWorkApplyList(" + realEnd + ")" +"'>&gt;&gt;</a>";
+        str += `<a class="mypage-page-last changePage" href="javascript:myArtistList(${userNumber},${type},${realEnd})">&gt;&gt;</a>`;
+
+        $pagingLA.append(str);
     }
 
     $("a#heart-Artist").on("click", function () {
@@ -1990,10 +2025,43 @@
             });
 
             myPageWorkListDiv.html(str);
-            myPagePaging(type, total);
+            myWorkListPage(userNumber, list.total);
         }, function (a, b, c) {
             console.log(a, b, c);
         });
+    }
+
+    let $pagingW = $(".likeWork");
+    let pageNumW = 1;
+
+    function myWorkListPage(userNumber, total) {
+        $pagingW.empty();
+        let endPage = Math.ceil(pageNumW / 10.0) * 10; // 올림
+        let startPage = endPage - 9;
+        let realEnd = Math.ceil(total / 10.0);
+        if(endPage > realEnd){
+            endPage = realEnd;
+        }
+
+        let prev = startPage > 1;
+        let next = endPage * 10 < total;
+        let str = "";
+
+
+        str += `<a class="mypage-page-first changePage" href="javascript:myWorkList(${userNumber},${1})">&lt;&lt;</a>`;
+        if (prev) {
+            str += `<a class='changePage prevList' href="javascript:myWorkList(${userNumber},${startPage-1})"><code>&lt;</code></a>`
+        }
+        for (let i = startPage; i <= endPage; i++) {
+// str += pageNum == i ? "<code>" + i + "</code>" : "<a class='changePage mypage-page-next' href='" + i + "'><code>" + i + "</code></a>";
+            str += pageNumW == i ? `<code>${i}</code>` : `<a class="changePage" href="javascript:myWorkList(${userNumber},${i})">${i}</a>`
+        }
+        if (next) {
+//str += "<a class='changePage nextList' href='" + (endPage + 1) + "'>Next<code>&gt;</code></a>"
+            str += `<a class='changePage prevList' href="javascript:myWorkList(${userNumber},${endPage + 1})"><code>&gt;</code></a>`
+        }
+        str += `<a class="mypage-page-first changePage" href="javascript:myWorkList(${userNumber},${realEnd})">&gt;&gt;</a>`;
+        $pagingW.append(str);
     }
 
     $("a#heart-Work").on("click", function () {
@@ -2239,10 +2307,46 @@
                 str += "</tr>"
             });
             userDonationDiv.html(str);
-            myPagePaging(type, total);
+            userDonationPage(userNumber, type, total);
         }, function (a, b, c) {
             console.log(a, b, c)
         });
+    }
+
+    // 나의 후원 페이징
+    function userDonationPage(userNumber, type, total){
+        console.log("페이징 들어옴");
+        $pagingUD.empty();
+        let endPage = Math.ceil(pageNumUD / 10.0) * 10;
+        let startPage = endPage - 9;
+        let realEnd = Math.ceil(total / 10.0);
+
+        if(endPage > realEnd){
+            endPage = realEnd;
+        }
+
+        let prev = startPage > 1;
+        let next = endPage * 10 < total;
+        let str = "";
+
+//str += "<a class=\"mypage-page-first changePage\" href='" + "workApplyList/" + 1 + "'>&lt;&lt;</a>";
+        str += `<a class="mypage-page-first changePage" href="javascript:userGetDonation(${userNumber}, ${type},${1})">&lt;&lt;</a>`;
+        if(prev) {
+//str += "<a class='mypage-page-prev' href='" + "workApplyList/" + (startPage - 1) + "'><code>&lt;</code></a>";
+            str += `<a class="mypage-page-prev" href="javascript:userGetDonation(${userNumber}, ${type},${startPage-1})">&lt;</a>`
+        }
+        for(let i = startPage; i <= endPage; i++){
+//str += pageNum == i ? "<p>" + i +"</p>": "<a class='changePage' href='" + "workApplyList/" + i + "'>" + i + "</a>";
+            str += pageNumUD == i ? `<p>${i}</p>` : `<a class="changePage" href="javascript:userGetDonation(${userNumber}, ${type},${i})">${i}</a>`
+        }
+        if(next){
+//str += "<a class='mypage-page-next' href='" + "workApplyList/" + (endPage + 1) + "'>&gt;</a>";
+            str += `<a class="mypage-page-next changePage" href="javascript:userGetDonation(${userNumber}, ${type},${endPage+1})">&gt;</a>`
+        }
+//str += "<a class='mypage-page-last changePage' href='" + "javascript:showWorkApplyList(" + realEnd + ")" +"'>&gt;&gt;</a>";
+        str += `<a class="mypage-page-last changePage" href="javascript:userGetDonation(${userNumber}, ${type},${realEnd})">&gt;&gt;</a>`;
+
+        $pagingUD.append(str);
     }
 
     // $("p.myDonation-user").on("click", function(){
@@ -2303,10 +2407,48 @@
             });
 
             myReplyDiv.html(str);
-            myPagePaging(type, total);
+            getUserReplyPage(userNumber, total);
         }, function (a, b, c) {
             console.log(a, b, c);
         })
+    }
+
+    let $pagingReply = $(".user_reply");
+    let pageNumReply = 1;
+
+    function getUserReplyPage(userNumber, type, total){
+        console.log("페이징 들어옴");
+        $pagingReply.empty();
+        let endPage = Math.ceil(pageNumReply / 10.0) * 10;
+        let startPage = endPage - 9;
+        let realEnd = Math.ceil(total / 10.0);
+
+        if(endPage > realEnd){
+            endPage = realEnd;
+        }
+
+        let prev = startPage > 1;
+        let next = endPage * 10 < total;
+        let str = "";
+
+//str += "<a class=\"mypage-page-first changePage\" href='" + "workApplyList/" + 1 + "'>&lt;&lt;</a>";
+        str += `<a class="mypage-page-first changePage" href="javascript:getUserReply(${userNumber},${1})">&lt;&lt;</a>`;
+        if(prev) {
+//str += "<a class='mypage-page-prev' href='" + "workApplyList/" + (startPage - 1) + "'><code>&lt;</code></a>";
+            str += `<a class="mypage-page-prev" href="javascript:getUserReply(${userNumber}, ${startPage-1})">&lt;</a>`
+        }
+        for(let i = startPage; i <= endPage; i++){
+//str += pageNum == i ? "<p>" + i +"</p>": "<a class='changePage' href='" + "workApplyList/" + i + "'>" + i + "</a>";
+            str += pageNumReply == i ? `<p>${i}</p>` : `<a class="changePage" href="javascript:getUserReply(${userNumber}, ${i})">${i}</a>`
+        }
+        if(next){
+//str += "<a class='mypage-page-next' href='" + "workApplyList/" + (endPage + 1) + "'>&gt;</a>";
+            str += `<a class="mypage-page-next changePage" href="javascript:getUserReply(${userNumber}, ${endPage+1})">&gt;</a>`
+        }
+//str += "<a class='mypage-page-last changePage' href='" + "javascript:showWorkApplyList(" + realEnd + ")" +"'>&gt;&gt;</a>";
+        str += `<a class="mypage-page-last changePage" href="javascript:getUserReply(${userNumber}, ${realEnd})">&gt;&gt;</a>`;
+
+        $pagingReply.append(str);
     }
 
     // 내가 쓴 댓글 - 쇼
