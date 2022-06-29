@@ -41,11 +41,11 @@
                 </div>
                 </th:block>
             </div>
-            <div class="regist_division">
-                <div class="regist_btn">
-                    <a href="/work/workRegister">작품 등록 신청</a>
-                </div>
-            </div>
+<!--            <div class="regist_division">-->
+<!--                <div class="regist_btn">-->
+<!--                    <a href="/work/workRegister">작품 등록 신청</a>-->
+<!--                </div>-->
+<!--            </div>-->
             <div class="work_list">
                 <ul class="works">
 
@@ -101,7 +101,7 @@
                 str += `<p class='works_tit'>`+work.workName+`</p>`;
                 str += `<p class='worker'>`+work.artistName+`</p>`;
                 str += `<a href='/work/workInfo?pageNum=1&amount=100&type&keyword&workNumber=`+work.workNumber+`' class='works_img'>`;
-                str += `<img src='/images/work/20473078.jpg' id='img-`+infoNumber+`' alt=''></a>`;
+                str += `<img src='https://cdn.icon-icons.com/icons2/3414/PNG/512/empty_pages_multiple_icon_217991.png' id='img-`+infoNumber+`' alt=''></a>`;
                 str += `<p class='tags'>`+work.workTag+`</p>`;
                 str += `</li>`;
 
@@ -131,15 +131,6 @@
             alert("로그인 후 이용해주세요.");
             location.href = "/user/login";
             return;
-        }
-        if(sessionArtistNumber == null) {
-            if(confirm("아티스트 계정 등록 후 이용하실 수 있습니다. 계정을 등록하시겠습니까?")){
-                location.href = "/myPage/myPage";
-                return;
-            }else {
-                location.href = "/work/workList";
-                return;
-            }
         }
         location.href = "/work/workRegister";
     })
