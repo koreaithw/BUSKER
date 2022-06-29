@@ -391,9 +391,8 @@ X
 
             // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
             var content = '<div class="customoverlay" >' +
-                '  <a href="https://map.kakao.com/link/search/' +
-                '[[${concert.showAddress}]]" target="_blank">' +
-                '    <span class="title">' +
+                '  <a href="https://map.kakao.com/link/search/' + [[${concert.showAddress}]]  +'" target="_blank">' +
+                '<span class="title">' +
                 '<img style="border-radius: 50% !important;" class="map-image" src="https://ticketimage.interpark.com/PlayDictionary/DATA/PlayDic/PlayDicUpload/040004/21/05/0400042105_47574_02.407.gif" width="50" height="50&quot;"></span>' +
                 '  </a>' +
                 '</div>';
@@ -724,6 +723,7 @@ X
         let str = "";
 
         if (prev) {
+            str += "<a class='changePage nextList' href='" + (1) + "'><code>&lt;&lt;</code></a>"
             str += '<a class="changePage prevList" href="' + (startPage - 1) + '"><code>&lt;</code>Prev</a>'
         }
         for (let i = startPage; i <= endPage; i++) {
@@ -731,6 +731,7 @@ X
         }
         if (next) {
             str += '<a class="changePage nextList" href="' + (endPage + 1) + '">Next<code>&gt;</code></a>'
+            str += "<a class='changePage nextList' href='" + (realEnd) + "'><code>&gt;&gt;</code></a>"
         }
 
 
