@@ -57,7 +57,7 @@
         </choose>
         ORDER BY LIKE_DATE DESC)
         <![CDATA[
-         WHERE ROWNUM < #{criteria.pageNum} * #{criteria.amount}
+         WHERE ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
         )
         WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
         ]]>
@@ -73,7 +73,7 @@
         WHERE tl.WORK_NUMBER = tw.WORK_NUMBER AND tw.ARTIST_NUMBER = ta.ARTIST_NUMBER AND tl.USER_NUMBER = #{userNumber}
         ORDER BY LIKE_DATE DESC)
     <![CDATA[
-        WHERE ROWNUM < #{criteria.pageNum} * #{criteria.amount}
+        WHERE ROWNUM <= #{criteria.pageNum} * #{criteria.amount}
         )
         WHERE RN > (#{criteria.pageNum} - 1) * #{criteria.amount}
         ]]>

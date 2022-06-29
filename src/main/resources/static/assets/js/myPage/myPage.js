@@ -530,9 +530,11 @@ $(".artistUserDelete-tab").click(function (e) {
 
 // 아티스트 후원 탭
 $(".myDonation").click(function (e) {
-  e.preventDefault();
+  // e.preventDefault();
   $(selectedArtistUserMenu).attr("id", "non-selected-artistUser");
   informationTabChange(".artistUserDonation-List");
+
+  UserGetDonation(userNumber, "new", 1);
 });
 
 // 아티스트 계정 등록
@@ -659,11 +661,12 @@ let userService = (function(){
   function getArtist(userNumber, type, page, callback, error){
     console.log("getArtist.................");
     let pageNum = page || 1;
+    console.log(page);
     $.ajax({
       url: "/myPage/" + userNumber + "/" + type + "/" + pageNum,
       type: "get",
       dataType: "json",
-      concentType: "application/json",
+      contentType: "application/json",
       success: function(LikePageDTO){
         if(callback){
           callback(LikePageDTO.total, LikePageDTO.list);
@@ -779,7 +782,7 @@ let ArtistService = (function() {
       console.log("modifyApply............");
       $.ajax({
         url: "/myPage/artist/" + sessionArtistNumber,
-        type: "post",
+        type: "patch",
         data: JSON.stringify(artist),
         contentType: "application/json; charset=utf-8",
         success: function (result) {
