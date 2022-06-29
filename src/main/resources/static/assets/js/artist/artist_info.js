@@ -2,10 +2,21 @@ let userNumber = document.getElementById('user_number').value
 let likecount = document.getElementById('like_count').value
 let likeval = document.getElementById('like_check').value
 
-let query = window.location.search;
-let param = new URLSearchParams(query);
-let artistNumber = param.get('artistNumber');
-let artistnumber = param.get('artistNumber');
+let query2 = window.location.search;
+let param2 = new URLSearchParams(query2);
+let artistNumber = param2.get('artistNumber');
+let artistnumber = param2.get('artistNumber');
+
+
+
+// console.log(likeval)
+// if (userNumber) {
+//     if (likeval > 0) {
+//         $(".img1").css('display', 'none');
+//         $(".img2").css('display', 'inline-block');
+//     }
+// }
+let replyUserNumber = 0;
 
 console.log(userNumber)
 
@@ -92,10 +103,10 @@ function donateapi() {
 
 
 $(document).ready(function () {
-    // let likecount = document.getElementById('like_count').value
-    // let likeval = document.getElementById('like_check').value
-    // console.log(likeval);
-    if (!userNumber) {
+    let likecount = document.getElementById('like_count').value
+    let likeval = document.getElementById('like_check').value
+    console.log(likeval);
+    if (userNumber) {
         if (likeval > 0) {
             $(".img1").css('display', 'none');
             $(".img2").css('display', 'inline-block');

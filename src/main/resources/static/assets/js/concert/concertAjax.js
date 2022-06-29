@@ -88,7 +88,9 @@ function concertPage(type, total) {
     str += "<div class='big-width mypage-pageStyle' style='text-align: center'>"
     // str += "<a class='mypage-page-first'>" + "<<" + "</a>"
 
+
     if (prev) {
+        str += "<a class='changePage nextList' href='" + (1) + "'><code>&lt;&lt;</code></a>"
         str += "<a class='changePage prevList' href='" + (startPage - 1) +  "'><code>&lt;</code>Prev</a>"
     }
     for (let i = startPage; i <= endPage; i++) {
@@ -96,7 +98,9 @@ function concertPage(type, total) {
     }
     if (next) {
         str += "<a class='changePage nextList' href='" + (endPage + 1) + "'>Next<code>&gt;</code></a>"
+        str += "<a class='changePage nextList' href='" + (realEnd) + "'><code>&gt;&gt;</code></a>"
     }
+
     str += "</div>"
     // str += "<a class='mypage-page-last'>>></a></div>"
     $paging.html(str);

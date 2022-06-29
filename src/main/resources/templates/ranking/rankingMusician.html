@@ -108,7 +108,7 @@
                 <div>
                     <a th:href="|/artist/artistInfo?artistNumber=${rank.artistNumber}|" title="악동뮤지션">
                 <span class="artist_image">
-                    <img src="/images/ranking/artist_1.jpg" alt="악동뮤지션" class="rank_best_img">
+                    <img th:id="${rank.artistNumber}" th:class="|rank_best_img newArtist newArtist-${rank.artistNumber}|"  alt="악동뮤지션">
                 </span>
                         <p class="artist_title" th:text="${rank.artistName}">악동뮤지션</p>
                         <p class="artist_detail" th:text="${rank.artistDescription}">친남매로 이루어진 남매 혼성 듀오
@@ -145,7 +145,7 @@
                 </div>
                 <div>
                     <a th:href="|/artist/artistInfo?artistNumber=${rank.artistNumber}|">
-                        <img src="/images/ranking/artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                        <img th:id="${rank.artistNumber}" th:class="|rank_list_img newArtist newArtist-*{artistNumber}|"  alt="페퍼톤스">
                     </a>
                 </div>
                 <div>
@@ -192,6 +192,44 @@
     <script th:inline="javascript">
         console.log([[${rankingListMusician}]]);
         let rankingListMusician = [[${rankingListMusician}]];
+</script>
+    <script>
+        $("select[name=rank_calendar_ver3]").change(function(){
+            // console.log($(this).val()); //value값 가져오기
+            console.log($("select[name=rank_calendar_ver3] option:selected").text()); //text값 가져오기
+        });
     </script>
+    <script>
+        function artistRankingListImage(callback, error){
+            $.ajax({
+                url:"/ranking/rankingMusicianImage/",
+                type: "get",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (result){
+                    if(callback){
+                        callback(result);
+                    }
+                },
+                error: function (xhr, status, er) {
+                    if(error){
+                        error(xhr, status, er);
+                    }
+                }
+            })
+        }
+        $(".newArtist").each(function () {
+            console.log("1")
+            let artistNumber = Number($(this).attr('id'));
+            console.log("2")
+            $.getJSON("/file/artist/find", {artistNumber: artistNumber}, function(file){
+                let src = "/file/artist/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+                console.log("3")
+                console.log(file)
+                $("img#" + artistNumber).attr("src", src);
+                console.log($("img#" + artistNumber).attr("src"))
+            })
+        })
+</script>
 
 </html>

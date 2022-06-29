@@ -77,6 +77,10 @@ public class WorkDAO {
         return workMapper.getDetail(workNumber);
     }
 
+    public int getArtist(Long workNumber){
+        return workMapper.getArtist(workNumber);
+    };
+
     // 작품 신청 개수
     public int getTotalApply() {
         return workMapper.getTotalApply();
