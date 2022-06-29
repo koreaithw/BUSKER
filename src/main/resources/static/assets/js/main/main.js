@@ -1,4 +1,11 @@
 // ajax 생성
+let pageNum = 1;
+let type = "A";
+let tag = "";
+let artistSortingType = "NEW";
+
+let page = 1;
+
 let showService = (function () {
     function goConcertPlan(type, page, callback, error) {
         console.log("concertList")
@@ -12,8 +19,10 @@ let showService = (function () {
             contentType: "application/json",
             success: function (showPageDTO) {
                 if(callback) {
-                    callback(showPageDTO.total, showPageDTO.list);
+                    callback(showPageDTO.total, showPageDTO.list,artistList(artistSortingType, page));
+
                 }
+
             },
             error: function (xhr, status, er) {
                 if(error)   {
@@ -22,22 +31,24 @@ let showService = (function () {
             }
         })
     }
-
     return {goConcertPlan:goConcertPlan}
 })();
 
 let artistService = (function () {
     function getArtistList(artistSortingType, page, callback, error) {
         let pageNum = page || 1;
+        var artistSortingType = "NEW";
         console.log("artistList")
         $.ajax({
             url: "/main/artistList/" + artistSortingType + "/" + pageNum,
             type: "get",
             dataType: "json",
+            async : false,
             contentType: "application/json",
             success: function (artistPageDTO) {
                 if(callback) {
-                    callback(artistPageDTO.total, artistPageDTO.list);
+                    callback(artistPageDTO.total, artistPageDTO.list,workKeywordList(tag, page));
+
                 }
             },
             error: function (xhr, status, er) {
@@ -47,27 +58,24 @@ let artistService = (function () {
             }
         })
     }
-
-
-
     return {getArtistList:getArtistList}
 })();
 
 let workService = (function() {
     function getWorkKeywordList(tag, page, callback, error) {
-        let pageNum = page || 1;
-        let tagN = tag || " ";
-        console.log("workList")
+        let pageN = page || 1;
+        let tagN = tag || null;
         console.log("in module..." + tag);
         $.ajax({
-            url: "/main/workList/" + tagN + "/" + pageNum,
+            url: "/work/workList/" + tagN + "/" + pageN,
             type: "get",
             dataType: "json",
             contentType: "application/json",
             success: function (workApplyPageDTO) {
                 if (callback) {
-                    callback(workApplyPageDTO.total, workApplyPageDTO.list);
+                    callback(workApplyPageDTO.total, workApplyPageDTO.list,);
                 }
+
             }, error: function (xhr, status, er) {
                 if (error) {
                     error(xhr, status, er);
@@ -75,19 +83,18 @@ let workService = (function() {
             }
         });
     }
-
     return {getWorkKeywordList:getWorkKeywordList}
 })();
 
 
 
 // 기본 전역변수
-let pageNum = 1;
-let type = "A"
+
+
 let showDiv = $(".small-5-box");
 let artistDiv = $(".small-box");
 let workDiv = $(".poster-list");
-let artistSortingType = "NEW";
+
 
 
 // div 변하는 function 선언
@@ -129,18 +136,17 @@ function concertPlanList(type, page){
         });
 
         showDiv.html(str);
-        concertPage(type, total);
+
     }, function (a, b, c) {
         console.log(a, b, c)
     });
 }
 
 function artistList(artistSortingType, page){
-
-
+    console.log("아티스트리스트")
     artistService.getArtistList(artistSortingType, page, function (total, list) {
         let str = "";
-        console.log("아티스트리스트")
+
 
         if(list == null || list.length == 0){
             artistDiv.html("");
@@ -176,7 +182,7 @@ function artistList(artistSortingType, page){
 
 
         artistDiv.html(str);
-        artistPage(artistSortingType, total);
+
     }, function (a, b, c) {
         console.log(a, b, c)
     });
@@ -218,38 +224,48 @@ function workKeywordList(tag, page){
         });
 
         workDiv.html(str);
-        workPage(tag, total);
+
     }, function (a, b, c) {
         console.log(a, b, c)
     });
 }
 
+// showService.goConcertPlan();
+// artistService.getArtistList();
+// workService.getWorkKeywordList();
+
+concertPlanList(type, page);
+// artistList(artistSortingType, page);
+// workKeywordList(tag, page);
 
 
 
 
 
 
-$(document).ready(function () {
-    // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
-    concertPlanList(type, pageNum);
 
-})
-
-$(document).ready(function () {
-    // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
-
-    workKeywordList(tagN, pageNum);
-
-
-})
-
-$(document).ready(function () {
-    // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
-
-    artistList(artistSortingType, pageNum);
-
-})
+// $(document).ready(function () {
+//     // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
+//     concertPlanList(type, pageNum);
+//     workKeywordList(tagN, pageNum);
+//     artistList(artistSortingType, pageNum);
+//
+// })
+//
+// $(document).ready(function () {
+//     // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
+//
+//     workKeywordList(tagN, pageNum);
+//
+//
+// })
+//
+// $(document).ready(function () {
+//     // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
+//
+//     artistList(artistSortingType, pageNum);
+//
+// })
 
 
 

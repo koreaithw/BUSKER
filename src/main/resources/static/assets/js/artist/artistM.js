@@ -1,6 +1,7 @@
 let artistService = (function () {
-    function getArtistListMusician(artistSortingType, page, callback, error) {
+    function getArtistList(artistSortingType, page, callback, error) {
         let pageNum = page || 1;
+        console.log("아티스트리스트 작동");
         $.ajax({
             url: "/artist/artistListMusician/" + artistSortingType + "/" + pageNum,
             type: "get",
@@ -21,7 +22,7 @@ let artistService = (function () {
 
 
 
-    return {getArtistListMusician:getArtistListMusician}
+    return {getArtistList:getArtistList}
 })();
 
 
@@ -34,10 +35,10 @@ let artistCntNumber = 0;
 
 // 아티스트 수 출력
 // function artistCount() {
-//     artistService.getArtistListMusician(artistSortingType, page, function (total, list) {
+//     artistService.getArtistList(artistSortingType, page, function (total, list) {
 //         let str = "";
 //         let artistCnt = 1;
-//        
+//
 //         $.each(list, function(i, artist){
 //             artistCnt += 1;
 //         });
@@ -55,19 +56,28 @@ let artistCntNumber = 0;
 function artistList(artistSortingType, page){
 
 
-    artistService.getArtistListMusician(artistSortingType, page, function (total, list) {
+    artistService.getArtistList(artistSortingType, page, function (total, list) {
         let str = "";
+        console.log("출력중");
 
         if(list == null || list.length == 0){
             artistDiv.html("");
             return;
         }
 
+
+
         $.each(list, function(i, artist){
             let artistInfoNumber = Number(artist.artistNumber);
+
+            $.getJSON("/file/artist/file", {artistNumber: artistInfoNumber}, function(file){
+                let src = "/file/artist/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+                $("#img-" + artistInfoNumber).attr("src", src);
+            })
+
             str += "<a class='getinfo' style='cursor:pointer;' href='/artist/artistInfo?pageNum=" + page + "&amount=15&type&keyword&artistNumber=" + artistInfoNumber +"' target='_self'>"
             str += "<div class='list-bigger-wrap'>"
-            str += "<img class='lazyload' alt='아티스트 이름' src='/images/artist/buskerbukser.jpg' style=''>"
+            str += "<img id='img-" + artistInfoNumber + "' class='lazyload' src='' alt='#' style=''/>"
             str += "<div class='list-bigger-txt'>"
             str += "<p class='list-b-tit1 v2 v2'>" + artist.artistName + "</p>"
             str += "</div>"
@@ -82,11 +92,9 @@ function artistList(artistSortingType, page){
         // });
 
 
-
-
-
         artistDiv.html(str);
         artistPage(artistSortingType, total);
+        console.log("출력끝");
     }, function (a, b, c) {
         console.log(a, b, c)
     });
@@ -94,6 +102,7 @@ function artistList(artistSortingType, page){
 
 $(document).ready(function () {
     artistList(artistSortingType, pageNum);
+    console.log("새로고침");
 })
 
 let currentSort = ".NEW";
