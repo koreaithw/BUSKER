@@ -167,7 +167,8 @@ public class MypageController {
     public DonationPageDTO donationList(@PathVariable("artistNumber")Long artistNumber, @PathVariable("type")String donationType, @PathVariable("page")int pageNum){
         ListDTO listDTO = new ListDTO();
         listDTO.setDonationType(donationType);
-
+        log.info(" ********************************" + artistNumber);
+        log.info("+++++++++++++++++++++++++++++++" + listDTO.toString());
         return new DonationPageDTO(donationService.donationList(new Criteria(pageNum, 10), artistNumber, listDTO), donationService.getDonationTotal(artistNumber, listDTO));
     }
 

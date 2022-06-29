@@ -50,9 +50,11 @@ public class ArtistFileController {
 
 //        yyyy/MM/dd 경로 만들기
         File uploadPath = new File(uploadFolder, getFolder());
-        if(!uploadPath.exists()){uploadPath.mkdirs();}
+        if (!uploadPath.exists()) {
+            uploadPath.mkdirs();
+        }
 
-        for(MultipartFile file : uploadFiles){
+        for (MultipartFile file : uploadFiles) {
             ArtistFileVO artistFileVO = new ArtistFileVO();
             // 화면으로 데이터를 보내주기 위함. for문안에 써주어야 함
             String uploadFileName = file.getOriginalFilename();
@@ -73,7 +75,7 @@ public class ArtistFileController {
             File saveFile = new File(uploadPath, uploadFileName);
             file.transferTo(saveFile);
 
-            if(checkImageType(saveFile)){
+            if (checkImageType(saveFile)) {
                 FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
                 Thumbnailator.createThumbnail(file.getInputStream(), thumbnail, 100, 100);
                 thumbnail.close(); // close 메서드가 플러쉬?를 써준다.
@@ -86,17 +88,17 @@ public class ArtistFileController {
     // display
     @GetMapping("/display")
     @ResponseBody
-    public byte[] getFile(String fileName) throws IOException{
+    public byte[] getFile(String fileName) throws IOException {
         File file = new File("C:/upload/", fileName);
         return FileCopyUtils.copyToByteArray(file);
     }
 
-    private boolean checkImageType(File file) throws IOException{
+    private boolean checkImageType(File file) throws IOException {
         String contentType = Files.probeContentType(file.toPath());
         return contentType.startsWith("image");
     }
 
-    private String getFolder(){
+    private String getFolder() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         Date date = new Date();
         return sdf.format(date);
@@ -110,25 +112,29 @@ public class ArtistFileController {
         HttpHeaders header = new HttpHeaders();
         String name = resource.getFilename();
         name = name.substring(name.indexOf("_") + 1);
-        header.add("Content-Disposition", "attachment;filename="+ new String(name.getBytes("UTF-8"), "ISO-8859-1"));
+        header.add("Content-Disposition", "attachment;filename=" + new String(name.getBytes("UTF-8"), "ISO-8859-1"));
         return new ResponseEntity<>(resource, header, HttpStatus.OK);
     }
 
     // delete
     @PostMapping("/delete")
     @ResponseBody
-    public void delete(String fileName){
+    public void delete(String fileName) {
         File file = new File("C:/upload/", fileName);
-        if(file.exists()){ file.delete(); }
+        if (file.exists()) {
+            file.delete();
+        }
 
         file = new File("C:/upload/", fileName.replace("s_", ""));
-        if(file.exists()){ file.delete(); }
+        if (file.exists()) {
+            file.delete();
+        }
     }
 
-//     find
+    //     find
     @GetMapping("/find")
     @ResponseBody
-    public ArtistFileVO find(Long artistNumber){
+    public ArtistFileVO find(Long artistNumber) {
         log.info("get file find....... : " + artistNumber);
         return artistService.find(artistNumber);
     }
@@ -139,5 +145,4 @@ public class ArtistFileController {
         log.info("file " + artistNumber);
         return artistService.find(artistNumber);
     }
-    }
-
+}
