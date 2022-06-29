@@ -38,6 +38,7 @@
 <!--                        </a>-->
 <!--                    </div>-->
                 </div>
+                <div class="modify-link" style="text-align: right; display: none; flex-direction: row-reverse;"><a th:href="${'/work/workUpdate?pageNum='+criteria.pageNum+'&amount='+criteria.amount+'&type&keyword&workNumber='+workNumber}">수정하기</a></div>
                 <div class="info_right">
                     <div class="info_area1">
                         <dl>
@@ -82,22 +83,16 @@
 </body>
 <script src="/assets/js/work/work.js"></script>
 <script th:inline="javascript">
-    // 좋아요 버튼 누르면 좋아요 표시 하기
-    let check = false;
-    let changeLike = function(){
-        console.log("들어옴");
-        if(check){
-            alert("이미 좋아요를 눌렀습니다.");
-            return;
-        }
-
-        $(".img1").css('display', 'none');
-        $(".img2").css('display', 'inline-block');
-
-        check = true;
-    }
     let number = [[${work.workNumber}]];
 
+    let sessionArtistNumber = [[${session.artistNumber}]];
+    let infoArtistNumber = [[${artistNumber}]]
+    console.log(sessionArtistNumber);
+    if(sessionArtistNumber != null) {
+        if(sessionArtistNumber == infoArtistNumber){
+            $(".modify-link").attr("style","text-align: right; display: flex; flex-direction: row-reverse;")
+        }
+    }
 
     $(document).ready(function (){
         console.log(number);

@@ -77,6 +77,10 @@ public class WorkService {
         return workDAO.getTotalApply();
     }
 
+    public int getArtist(Long workNumber) {
+        return workDAO.getArtist(workNumber);
+    }
+
     public int getTotalListApply() {
         return workDAO.getTotalListApply();
     }

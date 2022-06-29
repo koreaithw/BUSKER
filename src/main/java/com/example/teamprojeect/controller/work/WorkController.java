@@ -66,6 +66,7 @@ public class WorkController {
         log.info("================================");
         log.info(criteria.toString());
         log.info("================================");
+        model.addAttribute("ArtistNumber",workService.getArtist(workNumber));
         model.addAttribute("work", workService.getDetail(workNumber));
     }
 
