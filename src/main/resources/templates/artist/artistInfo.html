@@ -48,7 +48,7 @@
 
                 <div class="rn-03-left">
                     <div class="rn-product-imgbox">
-                        <img src="/images/artist/buskerbukser.jpg">
+                        <img class="artist-image" src="">
                     </div>
                 </div>
                 <div class="rn-03-right">
@@ -181,6 +181,12 @@
 <script th:inline="javascript" src="/assets/js/artist/artist_info.js"></script>
 <script>
     // ajax 선언
+
+
+
+
+
+
     let artistReplyService = (function () {
         function getListReply(artistNumber, pageNum, callback, error) {
             $.ajax({
@@ -273,9 +279,14 @@
     let artistNumber = [[${artist.artistNumber}]];
 
 
+
+
+
+
     $(document).ready(function () {
         // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
         replyList(pageNum);
+
     })
 
     function replyList(page) {
@@ -446,6 +457,7 @@
             alert("댓글이 등록되었습니다.");
         }
     })
+
 
 
 
