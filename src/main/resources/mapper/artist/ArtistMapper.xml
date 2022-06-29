@@ -318,24 +318,16 @@
     <!--랭킹 뮤지션-->
 
     <select id="rankingListMusician" resultType="artistDTO">
-        SELECT rownum rankingCount,a.* , likescount
-        FROM (SELECT ARTIST_NUMBER, COUNT(ARTIST_NUMBER) as likescount
-        FROM TBL_LIKE
-<!--        <choose>-->
-<!--            <when test="listDTO.rankingSortingDate == 'week'.toString()">-->
-<!--                WHERE TO_CHAR(LIKE_DATE, 'MM-DD') = #{listDTO.detailDate}-->
-<!--            </when>-->
-<!--            <when test="listDTO.rankingSortingDate == 'month'.toString()">-->
-<!--                WHERE TO_CHAR(LIKE_DATE, 'YYYY-MM') = #{listDTO.detailDate}-->
-<!--            </when>-->
-<!--            <when test="listDTO.rankingSortingDate == 'year'.toString()">-->
-<!--                WHERE TO_CHAR(LIKE_DATE, 'YYYY') = #{listDTO.detailDate}-->
-<!--            </when>-->
-<!--        </choose>-->
-        GROUP BY ARTIST_NUMBER ORDER BY likescount DESC) l JOIN TBL_ARTIST a
-        ON a.ARTIST_NUMBER = l.ARTIST_NUMBER
-        WHERE a.ARTIST_TYPE = 3
-        ORDER BY LIKESCOUNT DESC
+    SELECT rownum rankingCount, j.*
+    FROM (
+            SELECT a.* , likescount
+            FROM (SELECT ARTIST_NUMBER, COUNT(ARTIST_NUMBER) as likescount
+            FROM TBL_LIKE
+            GROUP BY ARTIST_NUMBER ORDER BY likescount DESC) l JOIN TBL_ARTIST a
+            ON a.ARTIST_NUMBER = l.ARTIST_NUMBER
+            WHERE a.ARTIST_TYPE = 1
+            ORDER BY LIKESCOUNT DESC
+            )j
     </select>
 
 
@@ -345,24 +337,16 @@
     <!--랭킹 퍼포먼스-->
 
     <select id="rankingListPerformance" resultType="artistDTO">
-        SELECT rownum rankingCount,a.* , likescount
-        FROM (SELECT ARTIST_NUMBER, COUNT(ARTIST_NUMBER) as likescount
-        FROM TBL_LIKE
-<!--        <choose>-->
-<!--            <when test="listDTO.rankingSortingDate == 'week'.toString()">-->
-<!--                WHERE TO_CHAR(LIKE_DATE, 'MM-DD') = #{listDTO.detailDate}-->
-<!--            </when>-->
-<!--            <when test="listDTO.rankingSortingDate == 'month'.toString()">-->
-<!--                WHERE TO_CHAR(LIKE_DATE, 'YYYY-MM') = #{listDTO.detailDate}-->
-<!--            </when>-->
-<!--            <when test="listDTO.rankingSortingDate == 'year'.toString()">-->
-<!--                WHERE TO_CHAR(LIKE_DATE, 'YYYY') = #{listDTO.detailDate}-->
-<!--            </when>-->
-<!--        </choose>-->
-        GROUP BY ARTIST_NUMBER ORDER BY likescount DESC) l JOIN TBL_ARTIST a
-        ON a.ARTIST_NUMBER = l.ARTIST_NUMBER
-        WHERE a.ARTIST_TYPE = 2
-        ORDER BY LIKESCOUNT DESC
+    SELECT rownum rankingCount, h.*
+    FROM (
+            SELECT a.* , likescount
+            FROM (SELECT ARTIST_NUMBER, COUNT(ARTIST_NUMBER) as likescount
+            FROM TBL_LIKE
+            GROUP BY ARTIST_NUMBER ORDER BY likescount DESC) l JOIN TBL_ARTIST a
+            ON a.ARTIST_NUMBER = l.ARTIST_NUMBER
+            WHERE a.ARTIST_TYPE = 2
+            ORDER BY LIKESCOUNT DESC
+            )h
     </select>
 
 

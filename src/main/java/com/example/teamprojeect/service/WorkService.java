@@ -44,8 +44,8 @@ public class WorkService {
     // 작품 수정 신청
     @Transactional(rollbackFor = Exception.class)
     public boolean modifyApply(WorkVO workVO){
-        WorkFileVO workFileVO = workVO.getFile();
         workFileDAO.remove(workVO.getWorkNumber());
+        WorkFileVO workFileVO = workVO.getFile();
         workFileVO.setWorkNumber(workVO.getWorkNumber());
         workFileDAO.register(workFileVO);
         return workDAO.modifyApply(workVO);
@@ -75,6 +75,10 @@ public class WorkService {
     // 작품 신청 개수
     public int getTotalApply() {
         return workDAO.getTotalApply();
+    }
+
+    public int getArtist(Long workNumber) {
+        return workDAO.getArtist(workNumber);
     }
 
     public int getTotalListApply() {

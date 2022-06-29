@@ -119,7 +119,7 @@
         <div>
             <a th:href="|/artist/artistInfo?artistNumber=${rank.artistNumber}|" title="악동뮤지션">
                 <span class="artist_image">
-                    <img th:id="${rank.artistNumber}" src="/images/ranking/artist_1.jpg" alt="악동뮤지션" class="rank_best_img">
+                    <img th:id="${rank.artistNumber}" th:class="|newArtist newArtist-*{artistNumber}|" src="/images/ranking/artist_1.jpg" alt="악동뮤지션" class="rank_best_img">
                 </span>
                 <p class="artist_title" th:text="${rank.artistName}">악동뮤지션</p>
                 <p class="artist_detail" th:text="${rank.artistDescription}">친남매로 이루어진 남매 혼성 듀오
@@ -156,7 +156,7 @@
             </div>
             <div>
                 <a th:href="|/artist/artistInfo?artistNumber=${rank.artistNumber}|">
-                    <img th:id="${rank.artistNumber}" src="/images/ranking/artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
+                    <img th:id="${rank.artistNumber}" th:class="|newArtist newArtist-*{artistNumber}|" src="/images/ranking/artist_2.jpg" alt="페퍼톤스" class="rank_list_img">
                 </a>
             </div>
             <div>
@@ -239,13 +239,11 @@ function artistRankingListImage(callback, error){
 
 }
 
-artistRankingListImage(function (artistVO) {
-    if (artistVO == null || artistVO.length == 0) {
-        return;
-    }
 
-    $.each(artistVO, function (i, VO) {
-        let artistNumber = Number(VO.artistNumber);
+$(".newArtist").each(function () {
+    console.log("1")
+    let artistNumber = Number($(this).attr('id'));
+    console.log("2")
 
 
 
@@ -254,11 +252,9 @@ artistRankingListImage(function (artistVO) {
         $("img#" + artistNumber).attr("src", src);
 
     })
-    })
 
 })
 
-    str += "<img id='artistimg-" + artistNumber + " class='' src='' alt='/show_view'/></div>"
 
 
 
