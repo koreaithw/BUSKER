@@ -2,6 +2,11 @@ let userNumber = document.getElementById('user_number').value
 let likecount = document.getElementById('like_count').value
 let likeval = document.getElementById('like_check').value
 
+let query = window.location.search;
+let param = new URLSearchParams(query);
+let artistNumber = param.get('artistNumber');
+let artistnumber = param.get('artistNumber');
+
 console.log(userNumber)
 
 //후원버튼 클릭시 모달창 열기
@@ -30,9 +35,7 @@ function donateapi() {
     var IMP = window.IMP;
     IMP.init('imp17202305');
     // var usernumber = userNumber;
-    let query = window.location.search;
-    let param = new URLSearchParams(query);
-    let artistnumber = param.get('artistNumber');
+
     var money = $('input[name="donation-money"]').val();
     var message = $('input[name="donation-message"]').val();
     console.log(artistnumber);
@@ -99,6 +102,12 @@ $(document).ready(function () {
         }
     }
 
+    $.getJSON("/file/artist/find", {artistNumber:artistnumber}, function (file) {
+        let src = "/file/artist/display?fileName=" + file.uploadPath + "/" + file.uuid + "_" + file.fileName;
+        console.log(src)
+        $("img.artist-image").attr("src", src);
+    })
+
 
 })
 
@@ -117,11 +126,6 @@ $("#btn-like").click(function () {
             $(".img1").css('display', 'inline-block');
             $(".img2").css('display', 'none');
 
-
-            let query = window.location.search;
-
-            let param = new URLSearchParams(query);
-            let artistnumber = param.get('artistNumber');
 
             console.log(userNumber);
             console.log(artistnumber);
@@ -154,10 +158,7 @@ $("#btn-like").click(function () {
             $(".img1").css('display', 'none');
             $(".img2").css('display', 'inline-block');
 
-            let query = window.location.search;
 
-            let param = new URLSearchParams(query);
-            let artistnumber = param.get('artistNumber');
 
             console.log(userNumber);
             console.log(artistnumber);
@@ -190,12 +191,7 @@ $("#btn-like").click(function () {
     }
 })
 
-let imgDiv = $(".ms-list-imgs");
 
-$.getJSON("/file/concert/file", {showNumber: infoNumber}, function(file){
-    let src = "/file/concert/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
-    $("#img-" + infoNumber).attr("src", src);
-})
 
 
 
