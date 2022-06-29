@@ -1862,7 +1862,7 @@
         }
         let artistNumber = Number(myArtist.artistNumber);
 
-        $.getJSON("/file/artist/file", {artistNumber, artistNumber}, function(file){
+        $.getJSON("/file/artist/find", {artistNumber, artistNumber}, function(file){
           let src="/file/artist/display?fileName" + file.uploadPath + "/" + file.uuid + "_" + file.fileName;
           $("img-" + artistNumber).attr("src", src);
         })
