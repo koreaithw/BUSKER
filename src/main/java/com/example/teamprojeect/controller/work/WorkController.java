@@ -66,7 +66,7 @@ public class WorkController {
         log.info("================================");
         log.info(criteria.toString());
         log.info("================================");
-        model.addAttribute("ArtistNumber",workService.getArtist(workNumber));
+        model.addAttribute("artistNumber",workService.getArtist(workNumber));
         model.addAttribute("work", workService.getDetail(workNumber));
     }
 
@@ -93,7 +93,6 @@ public class WorkController {
         log.info("================================");
         log.info(criteria.toString());
         log.info("================================");
-        workVO.setArtistNumber(1L);
         if(workService.modifyApply(workVO)){
             rttr.addAttribute("workNumber", workVO.getWorkNumber());
             rttr.addAttribute("pageNum",criteria.getPageNum());

@@ -17,12 +17,13 @@
 <form action="/recruit/recruitUpdate" method="post" id="registerForm" name="registerForm" enctype="multipart/form-data" th:object="${recruitment}">
     <input type="hidden" th:field="${criteria.pageNum}">
     <input type="hidden" th:field="${criteria.amount}">
+    <input type="hidden" name="recruitmentNumber" th:field="*{recruitmentNumber}">
     <div class="big-box" style="display: block">
         <div class="detail-title" >
             <div class="form-label">모집공고명</div>
             <input
                     class="recruiting-register-title"
-                    type="text"  id="recru-title"
+                    type="text"  id="recru-title" name="recruitmentName"
                     placeholder="모집 공고의 이름을 입력하세요."
                     th:field="*{recruitmentName}"
             />
@@ -36,8 +37,8 @@
                     <div class="info_left">
                         <div class="img_box">
                             <input id="file_drop" class="file_drop" readonly
-                                   placeholder="&nbsp; 모집 포스터를 드래그 앤 드롭으로 등록">
-                            <img id='image-samplebox' class="file_drop" src='' style="width: 100%; height: auto; overflow: hidden; display: none;">
+                                   placeholder="&nbsp; 모집 포스터를 드래그 앤 드롭으로 등록" style="display: none;">
+                            <img id='image-samplebox' class="file_drop" src='' style="width: 100%; height: 100%; overflow: hidden;">
                         </div>
 
                     </div>
@@ -49,24 +50,24 @@
 
                         <tr>
                             <td class="label top">장소</td>
-                            <td><input type="text" id="recru-location" th:field="*{recruitmentLocation}"><p class="recru-location" >장소는 비워둘 수 없습니다.</p></td>
+                            <td><input type="text" name="recruitmentLocation" id="recru-location" th:field="*{recruitmentLocation}"><p class="recru-location" >장소는 비워둘 수 없습니다.</p></td>
                         </tr>
 
                         <tr>
                             <td class="label">날짜</td>
-                            <td class="date"><input type="date" id="recru-day" th:field="*{recruitmentDay}"><p class="recru-day" >날짜는 비워둘 수 없습니다.</p></td>
+                            <td class="date"><input type="date" name="recruitmentDay" id="recru-day" th:field="*{recruitmentDay}"><p class="recru-day" >날짜는 비워둘 수 없습니다.</p></td>
 
                         </tr>
 
                         <tr>
                             <td class="label">시간</td>
 
-                            <td class="time"><input type="time" id="recru-time" th:field="*{recruitmentTime}"><p class="recru-time" >시간은 비워둘 수 없습니다.</p></td>
+                            <td class="time"><input type="time" name="recruitmentTime" id="recru-time" th:field="*{recruitmentTime}"><p class="recru-time" >시간은 비워둘 수 없습니다.</p></td>
                         </tr>
 
                         <tr>
                             <td class="label">주최정보</td>
-                            <td><input type="text" id="recru-notice" placeholder="링크를 입력해주세요" th:field="*{recruitmentUrl}"><p class="recru-notice">정보는 비워둘 수 없습니다.</p></td>
+                            <td><input type="text" id="recru-notice" name="recruitmentUrl" placeholder="링크를 입력해주세요" th:field="*{recruitmentUrl}"><p class="recru-notice">정보는 비워둘 수 없습니다.</p></td>
 
                         </tr>
                         <tr>
@@ -90,28 +91,28 @@
             <div class="noti-view-coment">
                 <p class="noti-view-comen-tit">공연 개요</p>
                 <div class="noti-view-comen-txt">
-                    <textarea rows="" cols="100" id="recru-summary" th:field="*{recruitmentSummary}"></textarea>
+                    <textarea rows="" cols="100" id="recru-summary" name="recruitmentSummary" th:field="*{recruitmentSummary}"></textarea>
                     <p class="recru-summary">개요는 비워둘 수 없습니다.</p>
                 </div>
             </div>
             <div class="noti-view-coment">
                 <p class="noti-view-comen-tit">공연 소개</p>
                 <div class="noti-view-comen-txt">
-                    <textarea rows="" cols="100" id="recru-introduce" th:field="*{recruitmentCondition}"></textarea>
+                    <textarea rows="" cols="100" id="recru-introduce" name="recruitmentCondition" th:field="*{recruitmentCondition}"></textarea>
                     <p class="recru-introduce">소개는 비워둘 수 없습니다.</p>
                 </div>
             </div>
             <div class="noti-view-coment">
                 <p class="noti-view-comen-tit">모집 조건</p>
                 <div class="noti-view-comen-txt">
-                    <textarea rows="" cols="100" id="recru-requirement" th:field="*{recruitmentIntroduce}"></textarea>
+                    <textarea rows="" cols="100" id="recru-requirement" name="recruitmentIntroduce" th:field="*{recruitmentIntroduce}"></textarea>
                     <p class="recru-requirement">조건은 비워둘 수 없습니다.</p>
                 </div>
             </div>
             <div class="noti-view-coment">
                 <p class="noti-view-comen-tit">기획사 정보</p>
                 <div class="noti-view-comen-txt">
-                    <textarea rows="" cols="100" id="recru-information" th:field="*{recruitmentHost}"></textarea>
+                    <textarea rows="" cols="100" id="recru-information" name="recruitmentHost" th:field="*{recruitmentHost}"></textarea>
                     <p class="recru-information">정보는 비워둘 수 없습니다.</p>
                 </div>
             </div>
@@ -137,12 +138,23 @@
         type="text/javascript"
         src="/assets/js/recruit/recruitRegister.js"
 ></script>
+<script src="/assets/js/recruit/recruitment.js"></script>
 <script th:inline="javascript">
     console.log([[${recruitment.recruitmentName}]]);
     // 드래그 해서 영역에 아이템을 내리면 그게 files에 저장되고 그 이미지 url따서 그걸 div 영역에 이미지 태그로 넣는거
     var fileList = []; //파일 정보를 담아 둘 배열
     let imgBox = $(".img_box");
     let str = "";
+    let number = [[${recruitment.recruitmentNumber}]];
+
+    getImage(number);
+    function getImage(num) {
+        recruitmentService.getImg(num, function (file){
+            console.log("--------------------------------------"+file);
+            let src = "/file/recruitment/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+            $("#image-samplebox").attr("src", src);
+        });
+    }
 
     $(function () {
         //드래그앤드랍

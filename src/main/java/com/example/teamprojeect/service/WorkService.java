@@ -44,8 +44,8 @@ public class WorkService {
     // 작품 수정 신청
     @Transactional(rollbackFor = Exception.class)
     public boolean modifyApply(WorkVO workVO){
-        WorkFileVO workFileVO = workVO.getFile();
         workFileDAO.remove(workVO.getWorkNumber());
+        WorkFileVO workFileVO = workVO.getFile();
         workFileVO.setWorkNumber(workVO.getWorkNumber());
         workFileDAO.register(workFileVO);
         return workDAO.modifyApply(workVO);
