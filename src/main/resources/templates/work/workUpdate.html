@@ -19,16 +19,16 @@
     </script>
     <!-- 제이쿼리 불러오기 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <title>작품 등록 신청</title>
+    <title>작품 수정 신청</title>
 </head>
 <body>
 <div class="work_detail_wrap">
     <div class="work_detail">
         <div class="detail">
-            <p>작품 등록 신청</p>
+            <p>작품 수정 신청</p>
             <div class="announcement">
                 <p style="font-size: 13px; margin-top: 0; margin-bottom: 0px; color:#ff9326">
-                    <span class="announce">*작품등록시 빠른시일내로 등록심사를 진행하겠습니다.</span>
+                    <span class="announce">*작품수정시 빠른시일내로 등록심사를 진행하겠습니다.</span>
                 </p>
             </div>
         </div>
@@ -40,12 +40,13 @@
         <div class="work_info">
             <div class="info_left">
                 <div class="img_box">
-                    <input id="file_drop" class="file_drop" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;작품 썸네일을 드래그 앤 드롭으로 등록해주세요.">
-                    <img id="image-samplebox" class="file_drop" src="" style="width: 100%; height: auto; overflow: hidden; display: none;">
+                    <input id="file_drop" class="file_drop" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;작품 썸네일을 드래그 앤 드롭으로 등록해주세요." style="display: none;">
+                    <img id="image-samplebox" class="file_drop" src="" style="width: 100%; height: 100%; overflow: hidden;">
                 </div>
             </div>
             <div class="info_right">
                 <form action="/work/workUpdate" method="post" id="registerForm" name="registerForm" enctype="multipart/form-data">
+                    <input type="hidden" name="workNumber" th:field="*{workNumber}">
                     <div class="info_area1">
                         <dl>
                             <dt>작품명*</dt>
@@ -94,6 +95,7 @@
                     <input type='hidden' id='fileName' name='file.fileName' value=''>
                     <input type='hidden' id='uuid' name='file.uuid' value=''>
                     <input type='hidden' id='uploadPath' name='file.uploadPath' value=''>
+                    <input type='hidden' th:field="${artistNumber}">
                 </form>
                 <div class="info_area2" style="float: right;">
                     <div class="purchase_link_wrap">
@@ -112,13 +114,23 @@
 
 </footer>
 </body>
-
+<script src="/assets/js/work/work.js"></script>
 <script>
 
     // 드래그 해서 영역에 아이템을 내리면 그게 files에 저장되고 그 이미지 url따서 그걸 div 영역에 이미지 태그로 넣는거
     var fileList = []; //파일 정보를 담아 둘 배열
     let imgBox = $(".img_box");
     let str = "";
+    let number = [[${work.workNumber}]];
+
+    getImage(number);
+    function getImage(num) {
+        workService.getImg(num, function (file){
+            console.log("--------------------------------------"+file);
+            let src = "/file/work/display?fileName=" + file.uploadPath + "/" + file.uuid + "_"  + file.fileName;
+            $("#image-samplebox").attr("src", src);
+        });
+    }
 
     $(function () {
         //드래그앤드랍

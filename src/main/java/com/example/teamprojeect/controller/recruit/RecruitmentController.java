@@ -78,8 +78,8 @@ public class RecruitmentController {
     // 관리자 페이지에서 모집 공고 삭제
     @ResponseBody
     @GetMapping("/recruitmentDelete/{rno}")
-    public String deleteRecruitment(@PathVariable("rno") Long recruitementNumber){
-        recruitService.remove(recruitementNumber);
+    public String deleteRecruitment(@PathVariable("rno") Long recruitmentNumber){
+        recruitService.remove(recruitmentNumber);
         return "모집 공고가 삭제되었습니다.";
     }
 

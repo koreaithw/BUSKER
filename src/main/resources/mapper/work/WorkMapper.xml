@@ -60,6 +60,12 @@
         WHERE WORK_NUMBER = #{workNumber}
     </select>
 
+    <select id="getArtist" resultType="_int">
+        SELECT ARTIST_NUMBER
+        FROM TBL_WORK
+        WHERE WORK_NUMBER = #{workNumber}
+    </select>
+
     <!-- 작품 등록 신청 전체 목록 -->
     <select id="getList" resultType="workVO">
         <![CDATA[
