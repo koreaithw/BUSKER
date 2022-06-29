@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
 
     <link rel='stylesheet' type='text/css' href='/assets/css/artist/artistReply.css'/>
     <link rel="stylesheet" href="/assets/css/artist/artistInfo.css">
@@ -25,7 +25,7 @@
 
 <body style=>
 <form name="mainForm" method="post" action="" id="mainForm" th:object="${artist}">
-    <div class = "infowrap">
+    <div class="infowrap">
         <div class="renew-wrap">
             <div class="renew-content">
                 <div class="rn-01">
@@ -87,7 +87,6 @@
     <div class="rn-05">
 
         <a href="javascript:;" onclick="click_like();" class="rn-bb03" id="btn-modal">후원하기</a>
-
 
 
     </div>
@@ -182,9 +181,21 @@
 <script>
     // ajax 선언
 
+    let sessionUserNumber = document.getElementById('user_number').value
+    console.log(sessionUserNumber);
+
+    let userNumber = [[${session.userNumber}]]
 
 
-
+    let query1 = window.location.search;
+    let param1 = new URLSearchParams(query1);
+    let artistNumber = param1.get('artistNumber');
+    console.log(artistNumber);
+    let sessionUserCheck = false;
+    if (!(sessionUserNumber == null)) { // 세션에 유저 넘버가 있으면
+        sessionUserCheck = true; // true로 변경
+    }
+    let replyUserNumber = 0;
 
 
     let artistReplyService = (function () {
@@ -226,6 +237,7 @@
                 }
             })
         }
+
         function modifyReply(replyNumber, artistReplyVO, callback, error) {
             $.ajax({
                 url: "/reply/artist/" + replyNumber,
@@ -272,14 +284,18 @@
         }
     })();
 
+    // 세션비교하여 댓글 수정삭제 버튼 노출
+    function replyShowHide(sessionUserNumber, replyUserNumber) {
+        if ((sessionUserNumber == replyUserNumber)) {
+            $(".reply-modify").show();
+            $(".reply-delete").show();
+        }
+    }
+
     // 댓글 연결
     // 기본 전역변수
     let pageNum = 1;
     let replyDiv = $(".artist-reply-div");
-    let artistNumber = [[${artist.artistNumber}]];
-
-
-
 
 
 
@@ -304,7 +320,7 @@
             $("#reply-count").text(total + ' Comments');
 
             $.each(list, function (i, reply) {
-                str += "<div class='reply-content-wrap' id='"  + reply.replyNumber +  "'><div class='reply-content-flex'><div class='user-profile'>";
+                str += "<div class='reply-content-wrap' id='" + reply.replyNumber + "'><div class='reply-content-flex'><div class='user-profile'>";
                 str += "<img class='user-image' src='https://i1.daumcdn.net/thumb/C96x96/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F5172542%2Fattach%2F5b16521bdfb848a69f47ddb5b5d064ac' alt='' width='48' height='48'></div>";
                 str += '<div class="reply-text-box"><div class="reply-content-box"><div class="reply-name"><span class="reply-user">';
                 str += '<a id="user-name" href="">' + reply.userName + '</a></span>';
@@ -319,6 +335,8 @@
             ;
 
             replyDiv.html(str);
+            $(".modify-" + sessionUserNumber).show();
+            $(".delete-" + sessionUserNumber).show();
             artistReplyPage(total);
         });
     }
@@ -330,7 +348,7 @@
             alert("이미 수정중인 댓글이 있습니다.");
             return;
         }
-        if(confirm("댓글을 삭제하시겠습니까?")) {
+        if (confirm("댓글을 삭제하시겠습니까?")) {
             artistReplyService.removeReply(this.classList[2], function (result) {
                 alert(result);
                 replyList(pageNum);
@@ -350,7 +368,7 @@
         console.log("수정");
         console.log(this);
 
-        if(confirm("댓글을 수정하시겠습니까?")){
+        if (confirm("댓글을 수정하시겠습니까?")) {
             let replyNumber = this.classList[2];
             let str = "";
 
@@ -377,8 +395,21 @@
     $(".artist-reply-div").on("click", ".reply-cancel", function (e) {
         e.preventDefault();
         let replyNumber = this.classList[2];
-        $("textarea#textarea-" + replyNumber).val("");
-        $("textarea#textarea-" + replyNumber).focus();
+        if (confirm("댓글 수정을 취소하시겠습니까?")) {
+            $("#modify-" + replyNumber).show();
+            $("#delete-" + replyNumber).show();
+            $("#finish-" + replyNumber).hide();
+            $("#cancel-" + replyNumber).hide();
+            $("#reply-input-" + replyNumber).hide();
+            $("#content-" + replyNumber).show();
+            let str = "";
+            str += '<div id="content-' + replyNumber + '" class="reply-content content ' + replyNumber + '">';
+            str += $("#textarea-" + replyNumber).text();
+            str += '</div>'
+            console.log($("#textarea" + replyNumber).text())
+            $("#reply-input-" + replyNumber).replaceWith(str);
+            updateCheck = false;
+        }
     });
 
     //수정 완료
@@ -388,7 +419,7 @@
         console.log(this);
         let replyNumber = this.classList[2];
 
-        if(confirm("댓글을 수정하시겠습니까?")) {
+        if (confirm("댓글을 수정하시겠습니까?")) {
             artistReplyService.modifyReply(replyNumber, {
                 replyContent: $("textarea#textarea-" + replyNumber).val()
             }, function (result) {
@@ -400,6 +431,11 @@
     });
 
     function artistReplyPage(total) {
+        console.log($(".modify-" + sessionUserNumber))
+        console.log(sessionUserNumber);
+
+        $(".modify-" + sessionUserNumber).show();
+        $(".delete-" + sessionUserNumber).show();
         let endPage = Math.ceil(pageNum / 10.0) * 10;
         let startPage = endPage - 9;
         let realEnd = Math.ceil(total / 10.0);
@@ -417,7 +453,7 @@
             str += '<a class="changePage prevList" href="' + (startPage - 1) + '"><code>&lt;</code>Prev</a>'
         }
         for (let i = startPage; i <= endPage; i++) {
-            str += pageNum == i ?  "<code>" + i + "</code>" : "<a class='changePage mypage-page-next' href='" + i + "'><code>" + i + "</code></a>";
+            str += pageNum == i ? "<code>" + i + "</code>" : "<a class='changePage mypage-page-next' href='" + i + "'><code>" + i + "</code></a>";
         }
         if (next) {
             str += '<a class="changePage nextList" href="' + (endPage + 1) + '">Next<code>&gt;</code></a>'
@@ -447,19 +483,19 @@
             alert("내용을 입력해주세요.");
             return;
         }
-
-        if(confirm("댓글을 등록하시겠습니까?")){
-            artistReplyService.createReply({userNumber: 1, artistNumber: artistNumber, replyContent: $replyContent},
-                function (result) {
-                    $("textarea[name='replyShow']").val("");
-                    replyList(pageNum);
-                });
-            alert("댓글이 등록되었습니다.");
+        if (sessionUserCheck) {
+            if (confirm("댓글을 등록하시겠습니까?")) {
+                artistReplyService.createReply({userNumber: sessionUserNumber, artistNumber: artistNumber, replyContent: $replyContent},
+                    function (result) {
+                        $("textarea[name='replyShow']").val("");
+                        replyList(pageNum);
+                    });
+                alert("댓글이 등록되었습니다.");
+            }
+        } else {
+            alert("로그인 후 이용해주세요.")
         }
     })
-
-
-
 
 
 </script>
