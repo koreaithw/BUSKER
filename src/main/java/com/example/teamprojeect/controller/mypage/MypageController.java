@@ -54,12 +54,16 @@ public class MypageController {
         }
         UserVO userVO = userService.read(userNumber);
         String userEmail = userVO.getUserEmail();
-//        String[] str = userEmail.split("@");
-//        userVO.setUserEmailId(str[0]);
-//        userVO.setUserDomain(str[1]);
-//        log.info(str[0]);
-        model.addAttribute("user",userVO);
+        log.info("==========================================userEmail");
+        log.info(userEmail);
 
+        if(userEmail != null) {
+            String[] str = userEmail.split("@");
+            userVO.setUserEmailId(str[0]);
+            userVO.setUserDomain(str[1]);
+        }
+
+        model.addAttribute("user",userVO);
         return "/myPage/myPage";
     }
 
