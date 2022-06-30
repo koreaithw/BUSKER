@@ -1135,8 +1135,7 @@
                         <!--                    삭제-->
                         <!--                  </button></span-->
                         <!--              >-->
-                        <span class="sorting"><a id="show-reply">내 공연 댓글</a></span>
-                        <span class="sorting"><a id="artist-reply">내 아티스트 댓글</a></span>
+                        <span class="sorting"><a id="show-reply">내 댓글</a></span>
                     </div>
                     <div class="reply-big-Box">
                         <!--            <div class="replyBox">-->
@@ -1360,8 +1359,8 @@
                             </div>
                         </div>
                         <div class="artist-update-title">
-                            <div>아티스트명</div>
-                            <p class="input-name-p">
+                            <div style="display:none;">아티스트명</div>
+                            <p class="input-name-p" style="margin-top: 31px">
                                 <input
                                         id="artist-update-name"
                                         class="input_text_name"
@@ -1375,7 +1374,7 @@
                                 <div class="info_left">
                                     <div class="img_box">
                                         <input id="file_drop2" class="file_drop" readonly
-                                               placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공연 포스터를 드래그 앤 드롭으로 등록해주세요."
+                                               placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아티스트 사진을 드래그 앤 드롭으로 등록해주세요."
                                                style="border: 1px solid #000 !important; border-color: #ff9326 !important; border-radius: 10px !important;"
                                         >
                                         <img id='image-samplebox2' class="file_drop" src=''
@@ -1387,7 +1386,7 @@
                                         <dl>
                                             <dt>분류*</dt>
                                             <dd>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
                                                     id="artist-update-category" class="classification">
                                                 <option style="background: white;" value="">선택</option>
                                                 <option style="background: white;" value=1>뮤지션</option>
@@ -1441,14 +1440,12 @@
                                         이용정보가 삭제되며 복구가 불가능합니다.
                                     </li>
                                     <ul>
-                                        <li>- 벅스 서비스 이용 정보, 보유 이용권, 벅스캐시 등</li>
+                                        <li>- 버스커즈 서비스 이용 정보, 버스커즈 캐시 등</li>
                                         <li>
-                                            - 구매하신 MP3의 재다운로드 및 라이센스 인증 등의 서비스
-                                            이용 불가
+                                            - 버스커즈 아티스트 시 관련 정보 열람 불가
                                         </li>
                                         <li>
-                                            - 제휴사 결합 이용권을 사용 중인 경우, 벅스와 제휴사
-                                            서비스 모두 이용 불가
+
                                         </li>
                                     </ul>
                                 </div>
@@ -1503,7 +1500,7 @@
                         "
                                         >
                         <span class="announce"
-                        >*작품등록시 빠른시일내로 등록심사를
+                        >*아티스트 등록시 빠른시일내로 등록심사를
                           진행하겠습니다.</span
                         >
                                         </p>
@@ -1528,7 +1525,7 @@
                                 <div class="info_left">
                                     <div class="img_box">
                                         <input id="file_drop" class="file_drop" readonly
-                                               placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공연 포스터를 드래그 앤 드롭으로 등록해주세요."
+                                               placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아티스트 사진을 드래그 앤 드롭으로 등록해주세요."
                                                style="border: 1px solid #000 !important; border-color: #ff9326 !important; border-radius: 10px !important;">
                                         <img id='image-samplebox' class="file_drop" src=''
                                              style="width: 100%; height: auto; overflow: hidden; display: none;">
@@ -1540,7 +1537,7 @@
                                         <dl>
                                             <dt>분류*</dt>
                                             <dd>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
                                                     id="artist-join-category" class="classification">
                                                 <option style="background: white;" value="">선택</option>
                                                 <option style="background: white;" value=1>뮤지션</option>
@@ -1811,6 +1808,10 @@
 ></script>
 
 <script>
+    if(session.getAttribute("kakaoJoin") == "kakaoJoin") {
+        alert("카카오 로그인 유저의 초기 비밀번호는 buskers 입니다. 비밀번호 변경을 누른 후 비밀번호를 변경해주세요.");
+    }
+    
     let $pagingDA = $(".donation_artist_page");
     let $pagingLA = $(".like_artist");
     let $pagingUD = $(".user_donation");
@@ -1824,50 +1825,6 @@
         });
     })
 
-<<<<<<< HEAD
-  // 비밀번호 수정
-  $("input#pwChange").on("click", function(){
-    myPageService.modifyPw(userNumber, $("input#newPasswordEqualInput").val(), function(result){
-      console.log($("input#newPasswordEqualInput").val())
-      alert(result);
-      location.href="/myPage/myPage"
-    });
-  })
-
-  let pageNum = 1;
-  let type = "A";
-  let myPagediv = $(".myArtistList-All");
-  let myPageWorkListDiv = $(".myWorkList-All");
-  let myDonationDiv = $("tbody#artist-donation-body");
-  let userDonationDiv = $("tbody#user-donation-list");
-  let myReplyDiv = $(".reply-big-Box");
-  let $fileName = "";
-
-  // 관심 아티스트
-  function myArtistList(userNumber, type, page){
-    console.log("myArtistList..................");
-    userService.getArtist(userNumber, type, page, function(total, list){
-      let str = "";
-      console.log(userNumber + "myArtistList 들어옴");
-
-      if(list == null || list.length == 0){
-        myPagediv.html("");
-        return;
-      }
-
-      $.each(list, function(i, myArtist){
-        let likeCategory = "";
-        if (myArtist.artistType == 1){
-          likeCategory = "뮤지션";
-        } else {
-          likeCategory = "퍼포먼서";
-        }
-        let artistNumber = Number(myArtist.artistNumber);
-
-        $.getJSON("/file/artist/find", {artistNumber, artistNumber}, function(file){
-          let src="/file/artist/display?fileName" + file.uploadPath + "/" + file.uuid + "_" + file.fileName;
-          $("img-" + artistNumber).attr("src", src);
-=======
     // 유저 개인정보 변경
     $("input#infoChange").on("click", function () {
         myPageService.modify({
@@ -1879,7 +1836,6 @@
         }, function (result) {
             alert(result);
             location.href = "/myPage/myPage"
->>>>>>> back_artistFile
         })
     });
 
@@ -2050,7 +2006,7 @@
                 }
 
                 str += "<div class='artistList'>"
-                str += "<a href = '' class='myWork myLike'>"
+                str += "<a href = '/work/workInfo?pageNum=1&amount=100&type&keyword&workNumber='" + myWork.workNumber + "class='myWork myLike'>"
                 str += "<img class='myWork-image' src='' id='imgWork-" + infoNumber + "'/>"
                 str += "<div class='info'>"
                 str += "<div class='myWork'>"
@@ -2448,7 +2404,7 @@
                 str += "<img class='reply-img-artist' src='https://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/014/944/144/14944144_7_600x600.JPG' alt='' /></div>"
                 str += "<div class='reply-content-box reply-artist-content'><div class='reply-nickname'>" + myArtistReply.artistName + "</div>"
                 str += "<div class='replyContent artist'>" + myReplyArtistType + "</div></div></div></div>"
-                str += "<button name='reply-delete-button' id='delete-artist'" + " class='reply-button " + myArtistReply.replyNumber + "' list-button'>삭제</button></div></div>"
+                str += "</div></div>"
             });
 
             myReplyDiv.html(str);
@@ -2515,7 +2471,7 @@
                     myReplyShowType = "퍼포먼서"
                 }
 
-                str += "<div class='replyBox'><div class='reply-flex-box'><div class='reply-checkbox'><input name='reply-check' type='checkbox'/></div>"
+                str += "<div class='replyBox'><div class='reply-flex-box'><div class='reply-checkbox'><input class='reply-check' name='reply-check' type='checkbox'/></div>"
                 str += "<div class='reply-profile'><img class='reply-img' src='https://image.genie.co.kr/Y/IMAGE/IMG_MUZICAT/app/Iv/MyImg/2021/04/08/65_1617871495.jpg/dims/resize/Q_80,0' width='60px'/></div>"
                 str += "<div class='reply-content-box'>"
                 str += "<span class='reply-nickname'>" + myShowReply.userName + "</span>"
