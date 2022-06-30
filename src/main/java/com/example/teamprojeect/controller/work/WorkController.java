@@ -1,5 +1,6 @@
 package com.example.teamprojeect.controller.work;
 
+import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
 import com.example.teamprojeect.domain.vo.paging.PageDTO;
@@ -7,6 +8,7 @@ import com.example.teamprojeect.domain.vo.paging.work.WorkApplyPageDTO;
 import com.example.teamprojeect.domain.vo.paging.work.WorkPageDTO;
 import com.example.teamprojeect.domain.vo.work.WorkFileVO;
 import com.example.teamprojeect.domain.vo.work.WorkVO;
+import com.example.teamprojeect.service.ArtistService;
 import com.example.teamprojeect.service.WorkService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,13 +31,16 @@ import java.util.stream.Collectors;
 public class WorkController {
     // 필드 생성
     private final WorkService workService;
+    private final ArtistService artistService;
 
     // 작품리스트 페이지 이동
     @GetMapping("/workList")
-    public String goWorkList(Criteria criteria,Model model) {
+    public String goWorkList(Criteria criteria,Model model, HttpServletRequest request) {
         model.addAttribute("workList",workService.getKeyword(new Criteria(1, 100),new ListDTO()));
         model.addAttribute("pageDTO",new PageDTO(criteria, workService.getTotalListApply()));
         model.addAttribute("workTag", workService.getTag());
+        HttpSession session = request.getSession();
+        model.addAttribute("artistNumber",session.getAttribute("artistNumber"));
         return "/work/workList";
     }
 
@@ -73,14 +78,25 @@ public class WorkController {
 
     // 작품 등록 신청 페이지 이동
     @GetMapping("/workRegister")
-    public void goWorkRegister(){}
-
-    @PostMapping("/workRegister")
-    public RedirectView goWorkRegister(WorkVO workVO,RedirectAttributes rttr, HttpSession session) {
+    public void goWorkRegister(Model model, HttpServletRequest request){
         log.info("*************");
         log.info("/register");
         log.info("*************");
-        log.info("test : "+workVO);
+        HttpSession session = request.getSession();
+        log.info("-------------------------------session: "+ session.getAttribute("artistNumber"));
+        ArtistVO artistVO = artistService.getDetail(Long.valueOf(String.valueOf((session.getAttribute("artistNumber")))));
+        log.info("-------------------------------session: "+ artistVO.getArtistName());
+        model.addAttribute("artistName", artistVO.getArtistName());
+    }
+
+    @PostMapping("/workRegister")
+    public RedirectView goWorkRegister(WorkVO workVO,RedirectAttributes rttr, HttpServletRequest request) {
+        log.info("*************");
+        log.info("/register");
+        log.info("*************");
+        HttpSession session = request.getSession();
+        log.info("test : "+workVO +" session: "+ session.getAttribute("artistNumber"));
+
         workVO.setArtistNumber(Long.valueOf(String.valueOf((session.getAttribute("artistNumber")))));
         workService.registerApply(workVO);
         rttr.addFlashAttribute("workNumber", workVO.getWorkNumber());
@@ -88,13 +104,14 @@ public class WorkController {
     }
 
     @PostMapping("/workUpdate")
-    public RedirectView goWorkUpdate(WorkVO workVO, Criteria criteria, RedirectAttributes rttr, HttpSession session) {
+    public RedirectView goWorkUpdate(WorkVO workVO, Criteria criteria, RedirectAttributes rttr, HttpServletRequest request) {
         log.info("*************");
         log.info("/update");
         log.info("*************");
         log.info("================================");
         log.info(criteria.toString());
         log.info("================================");
+        HttpSession session = request.getSession();
         workVO.setArtistNumber(Long.valueOf(String.valueOf((session.getAttribute("artistNumber")))));
         if(workService.modifyApply(workVO)){
             rttr.addAttribute("workNumber", workVO.getWorkNumber());

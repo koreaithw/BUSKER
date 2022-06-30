@@ -124,7 +124,7 @@
     }
 
     let sessionUserNumber = [[${session.userNumber}]];
-    let sessionArtistNumber = [[${session.artistNumber}]];
+    let sessionArtistNumber = [[${artistNumber}]];
     $(".regist_btn").click(function (e){
         e.preventDefault();
         if(sessionUserNumber == null) {
@@ -132,6 +132,13 @@
             location.href = "/user/login";
             return;
         }
+        if(sessionArtistNumber == null) {
+            if(confirm("아티스트 계정 등록 후 이용하실 수 있습니다. 계정을 등록하시겠습니까?")){
+                location.href="/myPage/myPage";
+                return;
+            }
+        }
+
         location.href = "/work/workRegister";
     })
 </script>
