@@ -369,16 +369,16 @@
 
     <!--랭킹 목록 개수-->
     <select id="getTotal" resultType="_int">
-        SELECT COUNT(*) FROM TBL_ARTIST
+        SELECT COUNT(*) FROM TBL_ARTIST WHERE ARTIST_STATUS = 3
 
     </select>
 
     <select id="getTotalMusician" resultType="_int">
-        SELECT COUNT(*) FROM TBL_ARTIST WHERE ARTIST_TYPE = 1
+        SELECT COUNT(*) FROM TBL_ARTIST WHERE ARTIST_TYPE = 1 AND ARTIST_STATUS = 3
     </select>
 
     <select id="getTotalPerformance" resultType="_int">
-        SELECT COUNT(*) FROM TBL_ARTIST WHERE ARTIST_TYPE = 2
+        SELECT COUNT(*) FROM TBL_ARTIST WHERE ARTIST_TYPE = 2 AND ARTIST_STATUS = 3
     </select>
 
     <!--아티스트 상세 정보-->
