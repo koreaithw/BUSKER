@@ -744,6 +744,7 @@ button {
     border-width: 5px;
     border-style: solid;
     display:none;
+    border-radius: 13px;
 }
 
 .main-content-pane section {
