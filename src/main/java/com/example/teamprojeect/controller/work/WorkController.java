@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -75,24 +76,26 @@ public class WorkController {
     public void goWorkRegister(){}
 
     @PostMapping("/workRegister")
-    public RedirectView goWorkRegister(WorkVO workVO,RedirectAttributes rttr) {
+    public RedirectView goWorkRegister(WorkVO workVO,RedirectAttributes rttr, HttpSession session) {
         log.info("*************");
         log.info("/register");
         log.info("*************");
         log.info("test : "+workVO);
+        workVO.setArtistNumber(Long.valueOf(String.valueOf((session.getAttribute("artistNumber")))));
         workService.registerApply(workVO);
         rttr.addFlashAttribute("workNumber", workVO.getWorkNumber());
         return new RedirectView("/work/workList");
     }
 
     @PostMapping("/workUpdate")
-    public RedirectView goWorkUpdate(WorkVO workVO, Criteria criteria, RedirectAttributes rttr) {
+    public RedirectView goWorkUpdate(WorkVO workVO, Criteria criteria, RedirectAttributes rttr, HttpSession session) {
         log.info("*************");
         log.info("/update");
         log.info("*************");
         log.info("================================");
         log.info(criteria.toString());
         log.info("================================");
+        workVO.setArtistNumber(Long.valueOf(String.valueOf((session.getAttribute("artistNumber")))));
         if(workService.modifyApply(workVO)){
             rttr.addAttribute("workNumber", workVO.getWorkNumber());
             rttr.addAttribute("pageNum",criteria.getPageNum());

@@ -44,10 +44,10 @@
         ]]>
         <choose>
             <when test='listDTO.artistType == "M"'>
-                AND RECRUITMENT_TYPE = 'M'
+                AND RECRUITMENT_TYPE IN ('M','A')
             </when>
             <when test='listDTO.artistType == "P"'>
-                AND RECRUITMENT_TYPE = 'P'
+                AND RECRUITMENT_TYPE IN ('P','A')
             </when>
         </choose>
         <choose>
