@@ -1808,6 +1808,10 @@
 ></script>
 
 <script>
+    if(session.getAttribute("kakaoJoin") == "kakaoJoin") {
+        alert("카카오 로그인 유저의 초기 비밀번호는 buskers 입니다. 비밀번호 변경을 누른 후 비밀번호를 변경해주세요.");
+    }
+    
     let $pagingDA = $(".donation_artist_page");
     let $pagingLA = $(".like_artist");
     let $pagingUD = $(".user_donation");
