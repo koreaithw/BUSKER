@@ -1,6 +1,7 @@
 package com.example.teamprojeect.mapper.artist;
 
 import com.example.teamprojeect.domain.vo.artist.ArtistDTO;
+import com.example.teamprojeect.domain.vo.artist.ArtistFileVO;
 import com.example.teamprojeect.domain.vo.artist.ArtistVO;
 import com.example.teamprojeect.domain.vo.list.ListDTO;
 import com.example.teamprojeect.domain.vo.paging.Criteria;
@@ -15,19 +16,27 @@ public class ArtistMapperTests {
 
     @Autowired
     private ArtistMapper artistMapper;
+    private ArtistFileMapper artistFileMapper;
+
     // 아티스트 등록 신청
-//    @Test
-//    public void insertApplyTest(){
-//        ArtistVO artistVO = new ArtistVO();
-//        artistVO.setUserNumber(12L);
-//        artistVO.setArtistName("유태경");
-//        artistVO.setArtistDescription("몰라");
-//        artistVO.setArtistType(1L);
-//        artistVO.setArtistAccount("유태경계좌");
-//        artistMapper.insertApply(artistVO);
-//
-//        log.info("아티스트 번호" + artistVO.getArtistNumber());
-//    }
+    @Test
+    public void insertApplyTest(){
+        ArtistVO artistVO = new ArtistVO();
+        ArtistFileVO artistFileVO = new ArtistFileVO();
+        for(Long i = 79L ; i < 105L ; i++) {
+            artistVO.setUserNumber(i);
+            artistVO.setArtistName("페퍼톤스");
+            artistVO.setArtistDescription("수많은 목소리로 변치 않는 한 가지를 이야기하는 뮤지션. 음악 속에서 영롱하게 빛나는 선명한 청춘. 길위에서 만나요.");
+            artistVO.setArtistType(1L);
+            artistVO.setArtistAccount("하나은행 123412341234");
+            artistMapper.insertApply(artistVO);
+
+            artistFileMapper.insert(artistFileVO);
+
+        }
+
+        log.info("아티스트 번호" + artistVO.getArtistNumber());
+    }
 
     // 아티스트 정보 수정
 //    @Test
