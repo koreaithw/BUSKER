@@ -171,7 +171,7 @@ body {
 
 #logo{
     position: relative;
-    bottom:40px;
+    bottom: 48px;
 }
 
 /* common.css */
@@ -445,7 +445,7 @@ footer .cont{width:1200px;}
 .footer-menu .family li .family-btn:hover{text-decoration:none;}
 .footer-txt{position:relative;height:165px;}
 .footer-txt .flogo{display:block;position:absolute;top:53px;left:2px;}
-.footxt{position:absolute;top:22px;left:221px;}
+.footxt{position:absolute;top:22px;left:0px;}
 .footxt p{font-size:15px;color:#333;line-height:23px;margin-bottom:5px;}
 .footxt p.gray{color:#999;font-size:13px;}
 .footxt p.gray+p{font-size:13px;}
