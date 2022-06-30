@@ -442,7 +442,7 @@
                 str += `<td><a href="/recruit/recruitInfo?recruitmentNumber=${recruits.recruitmentNumber}">내용 보기</a></td>`
                 str += `<td><a href="${recruits.recruitmentUrl}">본문 링크</a></td>`;
                 str += `<td>${recruits.recruitmentDay}</td>`;
-                str += `<td><a href="/admin/recruitUpdate${remember}&recruitmentNumber=${recruits.recruitmentNumber}">수정</a> | <a href="javascript:removeRecruitment(${recruits.recruitmentNumber})">삭제</a></td>`
+                str += `<td><a href="/recruit/recruitUpdate${remember}&recruitmentNumber=${recruits.recruitmentNumber}">수정</a> | <a href="javascript:removeRecruitment(${recruits.recruitmentNumber})">삭제</a></td>`
                 str += `</tr>`;
             });
             $recruitTr.append(str);
