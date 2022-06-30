@@ -213,7 +213,7 @@
 
                 str += "<div class=\"image-plus-box\">";
                 str += "<div>";
-                str += "<img src='https://cdn.icon-icons.com/icons2/3414/PNG/512/empty_pages_multiple_icon_217991.png' id='img-"+recru.recruitmentNumber+"' alt='#' width='220' height='300'>";
+                str += "<a href='/recruit/recruitInfo?pageNum="+pageNum+"&amount=10&type&keyword&recruitmentNumber=" +recru.recruitmentNumber+ "' class='clickLink'><img src='https://cdn.icon-icons.com/icons2/3414/PNG/512/empty_pages_multiple_icon_217991.png' id='img-"+recru.recruitmentNumber+"' alt='#' width='220' height='300'></a>";
                 str += "</div>";
                 str += "<div class='small-5-box-textbox'>";
                 str += "<p class='small-5-box-uptext'>"+(recru.recruitmentDay).substring(0,11)+" "+recru.recruitmentTime+"</p>";
