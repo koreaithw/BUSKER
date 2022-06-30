@@ -533,7 +533,11 @@ div.cont{width:1200px; margin:0 auto;}
 .white-box .white-box-left a span{background:#000;}
 .white-box .white-box-left a span.on{background:#fff;}
 .white-box .white-box-left h1 img.trans{display:none;}
-.white-box .white-box-left h1 img.fixed{display:inline-block;}
+.white-box .white-box-left h1 img.fixed{
+    display:inline-block;
+    width: 232.76px !important;
+    height: 75.33px !important;
+}
 .white-box .white-box-center a{color:#000;}
 .white-box .white-box-center h2{position:relative;}
 .white-box .white-box-center h2 div{display:none;position:absolute; top:48px; width:500px; font-size:0;}
