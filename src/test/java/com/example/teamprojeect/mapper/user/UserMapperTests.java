@@ -17,18 +17,14 @@ public class UserMapperTests {
 //    회원가입 : 회원가입 매퍼테스트 - 성공
     @Test
     public void joinTest() {
-
         UserVO userVO = new UserVO();
-
-        for(int i = 31 ; i < 50 ; i ++) {
+        for(int i = 51 ; i < 200 ; i ++) {
             userVO.setUserId("busker" + i);
             userVO.setUserPw("12341234r");
             userVO.setUserName("왕고냥" + i);
             userVO.setUserPhoneNumber("0101234123" + i);
             userMapper.join(userVO);
         }
-
-
     }
 
     @Test
