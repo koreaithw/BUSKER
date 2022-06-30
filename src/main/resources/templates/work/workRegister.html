@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,7 +55,7 @@
                                 </dd>
                                 <dt>아티스트*</dt>
                                 <dd>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="artistName" class="input_text">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="artistName" class="input_text" th:value="${artistName}" readonly>
                                     <span><p class="warning_msg2">반드시 입력해야 하는 칸입니다.</p></span>
                                 </dd>
                                 <dt>발매일*</dt>
@@ -94,7 +94,6 @@
                         <input type='hidden' id='fileName' name='file.fileName' value=''>
                         <input type='hidden' id='uuid' name='file.uuid' value=''>
                         <input type='hidden' id='uploadPath' name='file.uploadPath' value=''>
-                        <input type='hidden' id='artistNumber' name='artistNumber' value=''>
                         </form>
                         <div class="info_area2" style="float: right;">
                             <div class="purchase_link_wrap">
@@ -114,12 +113,13 @@
     </footer>
 </body>
 
-<script>
-    let sessionArtistNumber = [[${session.artistNumber}]];
-    console.log(sessionArtistNumber);
-    if(sessionArtistNumber != null) {
-        $("#artistNumber").val(sessionArtistNumber);
-    }
+<script th:inline="javascript">
+    console.log([[${artistName}]]);
+    // let sessionArtistNumber = [[${session.artistNumber}]];
+    // console.log(sessionArtistNumber);
+    // if(sessionArtistNumber != null) {
+    //     $("#artistNumber").val(sessionArtistNumber);
+    // }
     // 드래그 해서 영역에 아이템을 내리면 그게 files에 저장되고 그 이미지 url따서 그걸 div 영역에 이미지 태그로 넣는거
     var fileList = []; //파일 정보를 담아 둘 배열
     let imgBox = $(".img_box");

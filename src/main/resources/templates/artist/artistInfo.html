@@ -121,33 +121,33 @@
     </div>
 
 
-    <!-- 댓글창 시작 -->
-    <div id="reply-wrap">
+<!--    &lt;!&ndash; 댓글창 시작 &ndash;&gt;-->
+<!--    <div id="reply-wrap">-->
 
-        <strong id='reply-count'></strong>
-        <div class="artist-reply-div">
+<!--        <strong id='reply-count'></strong>-->
+<!--        <div class="artist-reply-div">-->
 
-        </div>
+<!--        </div>-->
 
-        <!--입력-->
-        <div class="reply-form">
-            <div class="reply-input">
-                <textarea name="replyShow" id="replyShow" placeholder="여러분의 소중한 댓글을 입력해주세요."></textarea>
-            </div>
-            <div class="reply-button">
-                <input class="finish" type="submit" value="등록">
-            </div>
-        </div>
+<!--        &lt;!&ndash;입력&ndash;&gt;-->
+<!--        <div class="reply-form">-->
+<!--            <div class="reply-input">-->
+<!--                <textarea name="replyShow" id="replyShow" placeholder="여러분의 소중한 댓글을 입력해주세요."></textarea>-->
+<!--            </div>-->
+<!--            <div class="reply-button">-->
+<!--                <input class="finish" type="submit" value="등록">-->
+<!--            </div>-->
+<!--        </div>-->
 
-        <!--페이징-->
-        <div class="reply-paging">
-            <!--                <a id="page-button-prev" href="">< Prev</a>-->
-            <!--                <a id="page-button" href="">1</a>-->
-            <!--                <a id="page-button-next" href="">Next ></a>-->
-        </div>
+<!--        &lt;!&ndash;페이징&ndash;&gt;-->
+<!--        <div class="reply-paging">-->
+<!--            &lt;!&ndash;                <a id="page-button-prev" href="">< Prev</a>&ndash;&gt;-->
+<!--            &lt;!&ndash;                <a id="page-button" href="">1</a>&ndash;&gt;-->
+<!--            &lt;!&ndash;                <a id="page-button-next" href="">Next ></a>&ndash;&gt;-->
+<!--        </div>-->
 
-    </div>
-    <!-- 댓글창 끝 -->
+<!--    </div>-->
+<!--    &lt;!&ndash; 댓글창 끝 &ndash;&gt;-->
 
     </div>
     <input type="hidden" id="like_check" th:value="${likeCheck}">
@@ -187,9 +187,9 @@
     let userNumber = [[${session.userNumber}]]
 
 
-    let query1 = window.location.search;
-    let param1 = new URLSearchParams(query1);
-    let artistNumber = param1.get('artistNumber');
+    let query = window.location.search;
+    let param = new URLSearchParams(query);
+    let artistNumber = param.get('artistNumber');
     console.log(artistNumber);
     let sessionUserCheck = false;
     if (!(sessionUserNumber == null)) { // 세션에 유저 넘버가 있으면
@@ -198,304 +198,307 @@
     let replyUserNumber = 0;
 
 
-    let artistReplyService = (function () {
-        function getListReply(artistNumber, pageNum, callback, error) {
-            $.ajax({
-                url: "/reply/artist/replyList/" + artistNumber + "/" + pageNum,
-                type: "get",
-                dataType: "json",
-                contentType: "application/json",
-
-                success: function (ArtistReplyPageDTO) {
-                    if (callback) {
-                        callback(ArtistReplyPageDTO.total, ArtistReplyPageDTO.list);
-                    }
-                },
-                error: function (xhr, status, er) {
-                    if (error) {
-                        error(xhr, status, er);
-                    }
-                }
-            })
-        }
-
-        function createReply(artistReplyVO, callback, error) {
-            $.ajax({
-                url: "/reply/artist/replyNew",
-                type: "post",
-                data: JSON.stringify(artistReplyVO),
-                contentType: "application/json",
-                success: function (result) {
-                    if (callback) {
-                        callback(result);
-                    }
-                },
-                error: function (xhr, status, er) {
-                    if (error) {
-                        error(xhr, status, er);
-                    }
-                }
-            })
-        }
-
-        function modifyReply(replyNumber, artistReplyVO, callback, error) {
-            $.ajax({
-                url: "/reply/artist/" + replyNumber,
-                type: "post",
-                data: JSON.stringify(artistReplyVO),
-                contentType: "application/json",
-                success: function (result) {
-                    if (callback) {
-                        callback(result);
-                    }
-                },
-                error: function (xhr, status, er) {
-                    if (error) {
-                        error(xhr, status, er);
-                    }
-                }
-
-            })
-        }
-
-        function removeReply(replyNumber, callback, error) {
-            $.ajax({
-                url: "/reply/artist/" + replyNumber,
-                type: "delete",
-                success: function (result) {
-                    if (callback) {
-                        callback(result);
-                    }
-                },
-                error: function (xhr, status, er) {
-                    if (error) {
-                        error(xhr, status, er);
-                    }
-                }
-
-            })
-        }
-
-        return {
-            getListReply: getListReply,
-            createReply: createReply,
-            modifyReply: modifyReply,
-            removeReply: removeReply
-        }
-    })();
-
-    // 세션비교하여 댓글 수정삭제 버튼 노출
-    function replyShowHide(sessionUserNumber, replyUserNumber) {
-        if ((sessionUserNumber == replyUserNumber)) {
-            $(".reply-modify").show();
-            $(".reply-delete").show();
-        }
-    }
-
-    // 댓글 연결
-    // 기본 전역변수
-    let pageNum = 1;
-    let replyDiv = $(".artist-reply-div");
-
-
-
-    $(document).ready(function () {
-        // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
-        replyList(pageNum);
-
-    })
-
-    function replyList(page) {
-        artistReplyService.getListReply(artistNumber, page, function (total, list) {
-            let str = "";
-            if (list == null || list.length == 0) {
-                $("#reply-count").text("");
-                $("#reply-count").text(total + ' Comments');
-
-                replyDiv.html("");
-                return;
-            }
-            // str += "<strong id='reply-count'>" + total + ' Comments' + "</strong>";
-            $("#reply-count").text("");
-            $("#reply-count").text(total + ' Comments');
-
-            $.each(list, function (i, reply) {
-                str += "<div class='reply-content-wrap' id='" + reply.replyNumber + "'><div class='reply-content-flex'><div class='user-profile'>";
-                str += "<img class='user-image' src='https://i1.daumcdn.net/thumb/C96x96/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F5172542%2Fattach%2F5b16521bdfb848a69f47ddb5b5d064ac' alt='' width='48' height='48'></div>";
-                str += '<div class="reply-text-box"><div class="reply-content-box"><div class="reply-name"><span class="reply-user">';
-                str += '<a id="user-name" href="">' + reply.userName + '</a></span>';
-                str += '<span class="reply-date">' + reply.replyUpdateDate + '</span></div>';
-                str += '<div class="reply-status">';
-                str += '<span id="modify-' + reply.replyNumber + '" class="reply-modify modify ' + reply.replyNumber + '" style="cursor:pointer;">수정</span>';
-                str += '<span id="finish-' + reply.replyNumber + '" class="reply-finish finish ' + reply.replyNumber + '" style="display: none;cursor:pointer;">수정완료</span>';
-                str += '<span id="delete-' + reply.replyNumber + '" class="reply-delete delete ' + reply.replyNumber + '">삭제</span>'
-                str += '<span id="cancel-' + reply.replyNumber + '" class="reply-cancel cancel ' + reply.replyNumber + '" style="display: none;cursor:pointer;">취소</span></div></div>';
-                str += '<div id="content-' + reply.replyNumber + '"  class="reply-content content ' + reply.replyNumber + '">' + reply.replyContent + '</div></div></div></div>';
-            });
-            ;
-
-            replyDiv.html(str);
-            $(".modify-" + sessionUserNumber).show();
-            $(".delete-" + sessionUserNumber).show();
-            artistReplyPage(total);
-        });
-    }
-
-    //댓글 삭제
-    $(".artist-reply-div").on("click", ".reply-delete", function (e) {
-        e.preventDefault();
-        if (updateCheck) {
-            alert("이미 수정중인 댓글이 있습니다.");
-            return;
-        }
-        if (confirm("댓글을 삭제하시겠습니까?")) {
-            artistReplyService.removeReply(this.classList[2], function (result) {
-                alert(result);
-                replyList(pageNum);
-            });
-        }
-    });
-
-
-    let updateCheck = false;
-
-    //댓글 수정
-    $(".artist-reply-div").on("click", ".reply-modify", function (e) {
-        if (updateCheck) {
-            alert("이미 수정중인 댓글이 있습니다.");
-            return;
-        }
-        console.log("수정");
-        console.log(this);
-
-        if (confirm("댓글을 수정하시겠습니까?")) {
-            let replyNumber = this.classList[2];
-            let str = "";
-
-            $("#modify-" + replyNumber).hide();
-            $("#delete-" + replyNumber).hide();
-            $("#finish-" + replyNumber).show();
-            $("#cancel-" + replyNumber).show();
-
-            str += '<div class="reply-input">';
-            str += '<textarea id="textarea-' + replyNumber + '" class="' + replyNumber + '" name="replyShow" style="width: 100%;height: 70px;border: 1px solid #fff;font-size: 13px;resize: none;box-sizing: border-box;resize: none;margin-top: 10px;">'
-            str += $("#content-" + replyNumber).text();
-            str += '</textarea></div>';
-
-            // str += "<textarea id='textarea-'" + replyNumber + " class='" + replyNumber + "' style='resize: none;'>";
-            // str += $("#content-" + replyNumber).text();
-            // str += "</textarea>";
-
-            $("#content-" + replyNumber).replaceWith(str);
-            updateCheck = true;
-        }
-    });
-
-    // 취소 버튼
-    $(".artist-reply-div").on("click", ".reply-cancel", function (e) {
-        e.preventDefault();
-        let replyNumber = this.classList[2];
-        if (confirm("댓글 수정을 취소하시겠습니까?")) {
-            $("#modify-" + replyNumber).show();
-            $("#delete-" + replyNumber).show();
-            $("#finish-" + replyNumber).hide();
-            $("#cancel-" + replyNumber).hide();
-            $("#reply-input-" + replyNumber).hide();
-            $("#content-" + replyNumber).show();
-            let str = "";
-            str += '<div id="content-' + replyNumber + '" class="reply-content content ' + replyNumber + '">';
-            str += $("#textarea-" + replyNumber).text();
-            str += '</div>'
-            console.log($("#textarea" + replyNumber).text())
-            $("#reply-input-" + replyNumber).replaceWith(str);
-            updateCheck = false;
-        }
-    });
-
-    //수정 완료
-    $(".artist-reply-div").on("click", ".reply-finish", function (e) {
-        e.preventDefault();
-        console.log("수정완료");
-        console.log(this);
-        let replyNumber = this.classList[2];
-
-        if (confirm("댓글을 수정하시겠습니까?")) {
-            artistReplyService.modifyReply(replyNumber, {
-                replyContent: $("textarea#textarea-" + replyNumber).val()
-            }, function (result) {
-                alert(result);
-                replyList(pageNum);
-                updateCheck = false;
-            })
-        }
-    });
-
-    function artistReplyPage(total) {
-        console.log($(".modify-" + sessionUserNumber))
-        console.log(sessionUserNumber);
-
-        $(".modify-" + sessionUserNumber).show();
-        $(".delete-" + sessionUserNumber).show();
-        let endPage = Math.ceil(pageNum / 10.0) * 10;
-        let startPage = endPage - 9;
-        let realEnd = Math.ceil(total / 10.0);
-        const $paging = $(".reply-paging");
-
-        if (endPage > realEnd) {
-            endPage = realEnd;
-        }
-
-        let prev = startPage > 1;
-        let next = endPage * 10 < total;
-        let str = "";
-
-        if (prev) {
-            str += '<a class="changePage prevList" href="' + (startPage - 1) + '"><code>&lt;</code>Prev</a>'
-        }
-        for (let i = startPage; i <= endPage; i++) {
-            str += pageNum == i ? "<code>" + i + "</code>" : "<a class='changePage mypage-page-next' href='" + i + "'><code>" + i + "</code></a>";
-        }
-        if (next) {
-            str += '<a class="changePage nextList" href="' + (endPage + 1) + '">Next<code>&gt;</code></a>'
-        }
-
-
-        $paging.html(str);
-    }
-
-
-    $(".reply-paging").on("click", "a.changePage", function (e) {
-        e.preventDefault();
-        pageNum = $(this).attr("href");
-        replyList(pageNum);
-    });
-
-
-    $(".finish").click(function (e) {
-        e.preventDefault();
-        if (updateCheck) {
-            alert("이미 수정중인 댓글이 있습니다.");
-            return;
-        }
-        const $replyContent = $("textarea[name='replyShow']").val();
-
-        if (!$replyContent) {
-            alert("내용을 입력해주세요.");
-            return;
-        }
-        if (sessionUserCheck) {
-            if (confirm("댓글을 등록하시겠습니까?")) {
-                artistReplyService.createReply({userNumber: sessionUserNumber, artistNumber: artistNumber, replyContent: $replyContent},
-                    function (result) {
-                        $("textarea[name='replyShow']").val("");
-                        replyList(pageNum);
-                    });
-                alert("댓글이 등록되었습니다.");
-            }
-        } else {
-            alert("로그인 후 이용해주세요.")
-        }
-    })
+    // let artistReplyService = (function () {
+    //     function getListReply(artistNumber, pageNum, callback, error) {
+    //         $.ajax({
+    //             url: "/reply/artist/replyList/" + artistNumber + "/" + pageNum,
+    //             type: "get",
+    //             dataType: "json",
+    //             contentType: "application/json",
+    //
+    //             success: function (ArtistReplyPageDTO) {
+    //                 if (callback) {
+    //                     callback(ArtistReplyPageDTO.total, ArtistReplyPageDTO.list);
+    //                 }
+    //             },
+    //             error: function (xhr, status, er) {
+    //                 if (error) {
+    //                     error(xhr, status, er);
+    //                 }
+    //             }
+    //         })
+    //     }
+    //
+    //     function createReply(artistReplyVO, callback, error) {
+    //         $.ajax({
+    //             url: "/reply/artist/replyNew",
+    //             type: "post",
+    //             data: JSON.stringify(artistReplyVO),
+    //             contentType: "application/json",
+    //             success: function (result) {
+    //                 if (callback) {
+    //                     callback(result);
+    //                 }
+    //             },
+    //             error: function (xhr, status, er) {
+    //                 if (error) {
+    //                     error(xhr, status, er);
+    //                 }
+    //             }
+    //         })
+    //     }
+    //
+    //     function modifyReply(replyNumber, artistReplyVO, callback, error) {
+    //         $.ajax({
+    //             url: "/reply/artist/" + replyNumber,
+    //             type: "post",
+    //             data: JSON.stringify(artistReplyVO),
+    //             contentType: "application/json",
+    //             success: function (result) {
+    //                 if (callback) {
+    //                     callback(result);
+    //                 }
+    //             },
+    //             error: function (xhr, status, er) {
+    //                 if (error) {
+    //                     error(xhr, status, er);
+    //                 }
+    //             }
+    //
+    //         })
+    //     }
+    //
+    //     function removeReply(replyNumber, callback, error) {
+    //         $.ajax({
+    //             url: "/reply/artist/" + replyNumber,
+    //             type: "delete",
+    //             success: function (result) {
+    //                 if (callback) {
+    //                     callback(result);
+    //                 }
+    //             },
+    //             error: function (xhr, status, er) {
+    //                 if (error) {
+    //                     error(xhr, status, er);
+    //                 }
+    //             }
+    //
+    //         })
+    //     }
+    //
+    //     return {
+    //         getListReply: getListReply,
+    //         createReply: createReply,
+    //         modifyReply: modifyReply,
+    //         removeReply: removeReply
+    //     }
+    // })();
+    //
+    // // 세션비교하여 댓글 수정삭제 버튼 노출
+    // function replyShowHide(sessionUserNumber, replyUserNumber) {
+    //     if ((sessionUserNumber == replyUserNumber)) {
+    //         $(".reply-modify").show();
+    //         $(".reply-delete").show();
+    //     }
+    // }
+    //
+    // // 댓글 연결
+    // // 기본 전역변수
+    // let pageNum = 1;
+    // let replyDiv = $(".artist-reply-div");
+    //
+    //
+    // $(document).ready(function () {
+    //     // 새로고침 첫 실행 (type : A, pageNum : 1 (기본값))
+    //     replyList(pageNum);
+    //
+    // })
+    //
+    // function replyList(page) {
+    //     artistReplyService.getListReply(artistNumber, page, function (total, list) {
+    //         let str = "";
+    //         if (list == null || list.length == 0) {
+    //             $("#reply-count").text("");
+    //             $("#reply-count").text(total + ' Comments');
+    //
+    //             replyDiv.html("");
+    //             return;
+    //         }
+    //         // str += "<strong id='reply-count'>" + total + ' Comments' + "</strong>";
+    //         $("#reply-count").text("");
+    //         $("#reply-count").text(total + ' Comments');
+    //
+    //         $.each(list, function (i, reply) {
+    //             str += "<div class='reply-content-wrap' id='" + reply.replyNumber + "'><div class='reply-content-flex'><div class='user-profile'>";
+    //             str += "<img class='user-image' src='https://i1.daumcdn.net/thumb/C96x96/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F5172542%2Fattach%2F5b16521bdfb848a69f47ddb5b5d064ac' alt='' width='48' height='48'></div>";
+    //             str += '<div class="reply-text-box"><div class="reply-content-box"><div class="reply-name"><span class="reply-user">';
+    //             str += '<a id="user-name" href="">' + reply.userName + '</a></span>';
+    //             str += '<span class="reply-date">' + reply.replyUpdateDate + '</span></div>';
+    //             str += '<div class="reply-status">';
+    //             str += '<span id="modify-' + reply.replyNumber + '" class="reply-modify modify ' + reply.replyNumber + '" style="cursor:pointer;">수정</span>';
+    //             str += '<span id="finish-' + reply.replyNumber + '" class="reply-finish finish ' + reply.replyNumber + '" style="display: none;cursor:pointer;">수정완료</span>';
+    //             str += '<span id="delete-' + reply.replyNumber + '" class="reply-delete delete ' + reply.replyNumber + '">삭제</span>'
+    //             str += '<span id="cancel-' + reply.replyNumber + '" class="reply-cancel cancel ' + reply.replyNumber + '" style="display: none;cursor:pointer;">취소</span></div></div>';
+    //             str += '<div id="content-' + reply.replyNumber + '"  class="reply-content content ' + reply.replyNumber + '">' + reply.replyContent + '</div></div></div></div>';
+    //         });
+    //         ;
+    //
+    //         replyDiv.html(str);
+    //         $(".modify-" + sessionUserNumber).show();
+    //         $(".delete-" + sessionUserNumber).show();
+    //         artistReplyPage(total);
+    //     });
+    // }
+    //
+    // //댓글 삭제
+    // $(".artist-reply-div").on("click", ".reply-delete", function (e) {
+    //     e.preventDefault();
+    //     if (updateCheck) {
+    //         alert("이미 수정중인 댓글이 있습니다.");
+    //         return;
+    //     }
+    //     if (confirm("댓글을 삭제하시겠습니까?")) {
+    //         artistReplyService.removeReply(this.classList[2], function (result) {
+    //             alert(result);
+    //             replyList(pageNum);
+    //         });
+    //     }
+    // });
+    //
+    //
+    // let updateCheck = false;
+    //
+    // //댓글 수정
+    // $(".artist-reply-div").on("click", ".reply-modify", function (e) {
+    //     if (updateCheck) {
+    //         alert("이미 수정중인 댓글이 있습니다.");
+    //         return;
+    //     }
+    //     console.log("수정");
+    //     console.log(this);
+    //
+    //     if (confirm("댓글을 수정하시겠습니까?")) {
+    //         let replyNumber = this.classList[2];
+    //         let str = "";
+    //
+    //         $("#modify-" + replyNumber).hide();
+    //         $("#delete-" + replyNumber).hide();
+    //         $("#finish-" + replyNumber).show();
+    //         $("#cancel-" + replyNumber).show();
+    //
+    //         str += '<div class="reply-input">';
+    //         str += '<textarea id="textarea-' + replyNumber + '" class="' + replyNumber + '" name="replyShow" style="width: 100%;height: 70px;border: 1px solid #fff;font-size: 13px;resize: none;box-sizing: border-box;resize: none;margin-top: 10px;">'
+    //         str += $("#content-" + replyNumber).text();
+    //         str += '</textarea></div>';
+    //
+    //         // str += "<textarea id='textarea-'" + replyNumber + " class='" + replyNumber + "' style='resize: none;'>";
+    //         // str += $("#content-" + replyNumber).text();
+    //         // str += "</textarea>";
+    //
+    //         $("#content-" + replyNumber).replaceWith(str);
+    //         updateCheck = true;
+    //     }
+    // });
+    //
+    // // 취소 버튼
+    // $(".artist-reply-div").on("click", ".reply-cancel", function (e) {
+    //     e.preventDefault();
+    //     let replyNumber = this.classList[2];
+    //     if (confirm("댓글 수정을 취소하시겠습니까?")) {
+    //         $("#modify-" + replyNumber).show();
+    //         $("#delete-" + replyNumber).show();
+    //         $("#finish-" + replyNumber).hide();
+    //         $("#cancel-" + replyNumber).hide();
+    //         $("#reply-input-" + replyNumber).hide();
+    //         $("#content-" + replyNumber).show();
+    //         let str = "";
+    //         str += '<div id="content-' + replyNumber + '" class="reply-content content ' + replyNumber + '">';
+    //         str += $("#textarea-" + replyNumber).text();
+    //         str += '</div>'
+    //         console.log($("#textarea" + replyNumber).text())
+    //         $("#reply-input-" + replyNumber).replaceWith(str);
+    //         updateCheck = false;
+    //     }
+    // });
+    //
+    // //수정 완료
+    // $(".artist-reply-div").on("click", ".reply-finish", function (e) {
+    //     e.preventDefault();
+    //     console.log("수정완료");
+    //     console.log(this);
+    //     let replyNumber = this.classList[2];
+    //
+    //     if (confirm("댓글을 수정하시겠습니까?")) {
+    //         artistReplyService.modifyReply(replyNumber, {
+    //             replyContent: $("textarea#textarea-" + replyNumber).val()
+    //         }, function (result) {
+    //             alert(result);
+    //             replyList(pageNum);
+    //             updateCheck = false;
+    //         })
+    //     }
+    // });
+    //
+    // function artistReplyPage(total) {
+    //     console.log($(".modify-" + sessionUserNumber))
+    //     console.log(sessionUserNumber);
+    //
+    //     $(".modify-" + sessionUserNumber).show();
+    //     $(".delete-" + sessionUserNumber).show();
+    //     let endPage = Math.ceil(pageNum / 10.0) * 10;
+    //     let startPage = endPage - 9;
+    //     let realEnd = Math.ceil(total / 10.0);
+    //     const $paging = $(".reply-paging");
+    //
+    //     if (endPage > realEnd) {
+    //         endPage = realEnd;
+    //     }
+    //
+    //     let prev = startPage > 1;
+    //     let next = endPage * 10 < total;
+    //     let str = "";
+    //
+    //     if (prev) {
+    //         str += '<a class="changePage prevList" href="' + (startPage - 1) + '"><code>&lt;</code>Prev</a>'
+    //     }
+    //     for (let i = startPage; i <= endPage; i++) {
+    //         str += pageNum == i ? "<code>" + i + "</code>" : "<a class='changePage mypage-page-next' href='" + i + "'><code>" + i + "</code></a>";
+    //     }
+    //     if (next) {
+    //         str += '<a class="changePage nextList" href="' + (endPage + 1) + '">Next<code>&gt;</code></a>'
+    //     }
+    //
+    //
+    //     $paging.html(str);
+    // }
+    //
+    //
+    // $(".reply-paging").on("click", "a.changePage", function (e) {
+    //     e.preventDefault();
+    //     pageNum = $(this).attr("href");
+    //     replyList(pageNum);
+    // });
+    //
+    //
+    // $(".finish").click(function (e) {
+    //     e.preventDefault();
+    //     if (updateCheck) {
+    //         alert("이미 수정중인 댓글이 있습니다.");
+    //         return;
+    //     }
+    //     const $replyContent = $("textarea[name='replyShow']").val();
+    //
+    //     if (!$replyContent) {
+    //         alert("내용을 입력해주세요.");
+    //         return;
+    //     }
+    //     if (sessionUserCheck) {
+    //         if (confirm("댓글을 등록하시겠습니까?")) {
+    //             artistReplyService.createReply({
+    //                     userNumber: sessionUserNumber,
+    //                     artistNumber: artistNumber,
+    //                     replyContent: $replyContent
+    //                 },
+    //                 function (result) {
+    //                     $("textarea[name='replyShow']").val("");
+    //                     replyList(pageNum);
+    //                 });
+    //             alert("댓글이 등록되었습니다.");
+    //         }
+    //     } else {
+    //         alert("로그인 후 이용해주세요.")
+    //     }
+    // })
 
 
 </script>

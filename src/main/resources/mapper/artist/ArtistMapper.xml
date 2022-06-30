@@ -150,7 +150,7 @@
                 SELECT ROWNUM RN, ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE
                 FROM (
                 SELECT a.ARTIST_NUMBER, a.USER_NUMBER, a.ARTIST_NAME, a.ARTIST_DESCRIPTION , a.ARTIST_TYPE FROM TBL_ARTIST a
-                ORDER BY a.ARTIST_NUMBER DESC
+                WHERE a.ARTIST_STATUS = 3 ORDER BY a.ARTIST_NUMBER DESC
                 )
             </when>
             <when test="listDTO.artistSortingType == 'LIKE'.toString()">
@@ -181,7 +181,7 @@
                 SELECT ROWNUM RN, ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE
                 FROM (
                 SELECT a.ARTIST_NUMBER, a.USER_NUMBER, a.ARTIST_NAME, a.ARTIST_DESCRIPTION , a.ARTIST_TYPE FROM TBL_ARTIST a
-                WHERE a.ARTIST_TYPE = 1 ORDER BY a.ARTIST_NUMBER DESC
+                WHERE a.ARTIST_TYPE = 1 AND a.ARTIST_STATUS = 3 ORDER BY a.ARTIST_NUMBER DESC
                 )
             </when>
             <when test="listDTO.artistSortingType == 'LIKE'.toString()">
@@ -212,7 +212,7 @@
                 SELECT ROWNUM RN, ARTIST_NUMBER, USER_NUMBER, ARTIST_NAME, ARTIST_DESCRIPTION, ARTIST_TYPE
                 FROM (
                 SELECT a.ARTIST_NUMBER, a.USER_NUMBER, a.ARTIST_NAME, a.ARTIST_DESCRIPTION , a.ARTIST_TYPE FROM TBL_ARTIST a
-                WHERE a.ARTIST_TYPE = 2 ORDER BY a.ARTIST_NUMBER DESC
+                WHERE a.ARTIST_TYPE = 2 AND a.ARTIST_STATUS = 3 ORDER BY a.ARTIST_NUMBER DESC
                 )
             </when>
             <when test="listDTO.artistSortingType == 'LIKE'.toString()">
@@ -376,16 +376,16 @@
 
     <!--랭킹 목록 개수-->
     <select id="getTotal" resultType="_int">
-        SELECT COUNT(*) FROM TBL_ARTIST
+        SELECT COUNT(*) FROM TBL_ARTIST WHERE ARTIST_STATUS = 3
 
     </select>
 
     <select id="getTotalMusician" resultType="_int">
-        SELECT COUNT(*) FROM TBL_ARTIST WHERE ARTIST_TYPE = 1
+        SELECT COUNT(*) FROM TBL_ARTIST WHERE ARTIST_TYPE = 1 AND ARTIST_STATUS = 3
     </select>
 
     <select id="getTotalPerformance" resultType="_int">
-        SELECT COUNT(*) FROM TBL_ARTIST WHERE ARTIST_TYPE = 2
+        SELECT COUNT(*) FROM TBL_ARTIST WHERE ARTIST_TYPE = 2 AND ARTIST_STATUS = 3
     </select>
 
     <!--아티스트 상세 정보-->
