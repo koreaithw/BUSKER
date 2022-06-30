@@ -19,6 +19,13 @@
         WHERE ARTIST_NUMBER = #{artistNumber}
     </update>
 
+    <!--관리자 등록,수정 승인 (user_artist_status -> 4)-->
+    <update id="changeStatus">
+        UPDATE TBL_USER
+        SET USER_ARTIST_STATUS = 4
+        WHERE USER_NUMBER = #{userNumber}
+    </update>
+
     <!--아티스트 정보 수정 신청 (status 2)-->
     <update id="approveArtistApply">
         UPDATE TBL_ARTIST
