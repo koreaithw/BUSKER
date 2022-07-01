@@ -84,6 +84,7 @@ html, body, div, span{
     padding-bottom: 24px;
     width: 261px;
     height: 18px;
+    padding-bottom: 70px;
 }
 
 .rank_best div a .like_point{
@@ -129,11 +130,11 @@ html, body, div, span{
 }
 
 .rank_list div div:nth-child(3){
-    width: 460px;
+    width: 161px;
     height: 112px;
     margin: 20px 0 10px 40px;
     position: relative;
-    padding-right: 100px;
+    /*padding-right: 100px;*/
 }
 
 .content_name{
@@ -260,7 +261,7 @@ p.big_title{
 }
 
 .rank_list div div:nth-child(4){
-    width: 220px;
+    width: 618px;
     font-size: 13px;
     line-height: 24px;
     color: #999;
@@ -666,8 +667,10 @@ span::after{
 }
 
 .rank_best_img {
-    width:100%;
-    height:100%;
-    object-fit:cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
-
+.detailText{
+    padding: 10px;
+}
