@@ -134,7 +134,7 @@
 
         <!-- rank_list 랭킹 top4 아래 공간 -->
 
-        <div class="rank_list" th:each="rank : ${rankingListMusician}" th:if="${rank.rankingCount}>3">
+        <div class="rank_list" th:each="rank : ${rankingListMusician}" th:if="${rank.rankingCount}>3 and ${rank.rankingCount}<=15">
             <div>
                 <div class="fluctuation">
                     <p>
