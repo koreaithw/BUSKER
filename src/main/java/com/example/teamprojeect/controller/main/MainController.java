@@ -57,8 +57,8 @@ public class MainController {
         listDTO.setDetailDate("2022");
         listDTO.setRankingSortingDate("year");
 
-        List<ShowVO> showVO = showService.getList(new Criteria(1, 5), listDTO);
-        List<WorkVO> workVO = workService.getList(new Criteria(1, 5));
+        List<ShowVO> showVO = showService.getList(new Criteria(1, 3), listDTO);
+        List<WorkVO> workVO = workService.getList(new Criteria(1, 3));
 
 
         model.addAttribute("rankingList", rankingService.rankingListAll(criteria,listDTO));
@@ -93,7 +93,7 @@ public class MainController {
     public ShowPageDTO goConcertPlanType(@PathVariable("type") String showType, @PathVariable("page") int pageNum){
         ListDTO listDTO = new ListDTO();
         listDTO.setArtistType(showType);
-        List<ShowVO> showList = showService.getList(new Criteria(1, 5), listDTO);
+        List<ShowVO> showList = showService.getList(new Criteria(1, 3), listDTO);
         log.info("showVO=========" +showList);
 
         return new ShowPageDTO(showList, showService.getTotal(listDTO));
@@ -127,6 +127,6 @@ public class MainController {
         model.addAttribute("tagList",workService.getTag());
 
         log.info("taglist======================================" +tagList);
-        return new WorkApplyPageDTO(workService.getKeyword(new Criteria(1,5),listDTO),workService.getTotalListApply());
+        return new WorkApplyPageDTO(workService.getKeyword(new Criteria(1,1),listDTO),workService.getTotalListApply());
     }
 }
